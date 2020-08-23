@@ -22,7 +22,13 @@ set -e
 cd "$(dirname "${BASH_SOURCE[0]}")"
 . ./installer_base.sh
 
-apt_get_update_and_install libgeos-dev
+# Note(infra):
+# 1) python3-tk provides tkinter
+
+apt_get_update_and_install \
+    libgeos-dev \
+    python3-tk
+
 pip3_install -r py3_requirements.txt
 
 # Clean up cache to reduce layer size.
