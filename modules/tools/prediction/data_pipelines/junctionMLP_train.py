@@ -26,9 +26,8 @@ import logging
 import argparse
 import numpy as np
 import tensorflow as tf
-from modules.tools.prediction.data_pipelines.proto import fnn_model_pb2
-from fnn_model_pb2 import FnnModel, Layer
 from sklearn.model_selection import train_test_split
+from modules.tools.prediction.data_pipelines.proto.fnn_model_pb2 import FnnModel, Layer
 
 dim_input = 7 + 72
 dim_output = 12

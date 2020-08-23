@@ -40,14 +40,13 @@ from keras.utils import np_utils
 from sklearn.model_selection import train_test_split
 import google.protobuf.text_format as text_format
 
-from modules.tools.prediction.data_pipelines.proto import fnn_model_pb2
+from modules.tools.prediction.data_pipelines.proto.fnn_model_pb2 import FnnModel, Layer
 from modules.tools.prediction.data_pipelines.common import log
 from modules.tools.prediction.data_pipelines.common.data_preprocess import load_h5
 from modules.tools.prediction.data_pipelines.common.data_preprocess import down_sample
 from modules.tools.prediction.data_pipelines.common.data_preprocess import train_test_split
 from modules.tools.prediction.data_pipelines.common.configure import parameters
 from modules.tools.prediction.data_pipelines.common.configure import labels
-from fnn_model_pb2 import FnnModel, Layer
 
 
 # Constants

@@ -59,7 +59,7 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
     from os import listdir
     from os.path import isfile, join
-    from record_reader import RecordItemReader
+    from modules.tools.plot_planning.record_reader import RecordItemReader
 
     folders = sys.argv[1:]
     fig, ax = plt.subplots()
