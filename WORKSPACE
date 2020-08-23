@@ -42,9 +42,22 @@ load("@rules_python//python:repositories.bzl", "py_repositories")
 
 py_repositories()
 
-# Only needed if using the packaging rules.
-# load("@rules_python//python:pip.bzl", "pip_repositories")
-# pip_repositories()
+load("@rules_python//python:pip.bzl", "pip3_import", "pip_repositories")
+
+pip_repositories()
+
+pip3_import(
+    name = "apollo_py3_deps",
+    timeout = 600,  # timeout in seconds
+    extra_pip_args = [
+        "-i https://pypi.tuna.tsinghua.edu.cn/simple",
+    ],
+    requirements = "//third_party/py:requirements.txt",
+)
+
+load("@apollo_py3_deps//:requirements.bzl", "pip_install")
+
+pip_install()
 
 # load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 # See https://github.com/bazelbuild/bazel/issues/11406
