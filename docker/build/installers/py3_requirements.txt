@@ -1,17 +1,16 @@
 # system utils
-supervisor
+# supervisor # @unused
 psutil
 
 # Google infras
 absl-py
 glog
-grpcio-tools
-protobuf
+# grpcio-tools # @unused
+# Note(infra): Use protobuf built from source
+# protobuf
 python-gflags
 
 # Web
-flask
-flask-cors
 requests
 simplejson
 
@@ -20,15 +19,13 @@ pyproj
 shapely
 matplotlib
 
-# Driver
-pyusb
-
 # Data format
 h5py
-utm
+# utm # @unused
 
 # Learning
-#opencv-python
+# Note(infra): Use opencv built from source
+# opencv-python
 numpy
 scipy
 
