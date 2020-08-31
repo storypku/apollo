@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo 2.0 Software Architecture - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo 2.0 Software Architecture";
+    var mkdocs_page_input_path = "specs/Apollo_2.0_Software_Architecture.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo 2.0 Software Architecture</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Apollo_2.0_Software_Architecture.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-20-software-architecture">Apollo 2.0 Software Architecture</h2>
+<p>Core software modules running on the Apollo 2.0 powered autonomous vehicle include:</p>
+<ul>
+<li><strong>Perception</strong> — The perception module identifies the world surrounding the autonomous vehicle. There are two important submodules inside perception: obstacle detection and traffic light detection.</li>
+<li><strong>Prediction</strong> — The prediction module anticipates the future motion trajectories of the perceived obstacles.</li>
+<li><strong>Routing</strong> — The routing module tells the autonomous vehicle how to reach its destination via a series of lanes or roads.</li>
+<li><strong>Planning</strong> — The planning module plans the spatio-temporal trajectory for the autonomous vehicle to take.</li>
+<li><strong>Control</strong> — The control module executes the planned spatio-temporal trajectory by generating control commands such as throttle, brake, and steering.</li>
+<li><strong>CanBus</strong> — The CanBus is the interface that passes control commands to the vehicle hardware. It also passes chassis information to the software system.</li>
+<li><strong>HD-Map</strong> — This module is similar to a library. Instead of publishing and subscribing messages, it frequently functions as query engine support to provide ad-hoc structured information regarding the roads.</li>
+<li><strong>Localization</strong> — The localization module leverages various information sources such as GPS, LiDAR and IMU to estimate where the autonomous vehicle is located.</li>
+</ul>
+<p>The interactions of these modules are illustrated in the picture below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/Apollo_2_0_Software_Arch.png" /></p>
+<p>Every module is running as a separate CarOS-based ROS node. Each module node publishes and subscribes certain topics. The subscribed topics serve as data input while the published topics serve as data output. The detailed interactions are described in the following sections.</p>
+<h3 id="perception">Perception</h3>
+<p>Perception depends on the raw sensor data such as LiDAR point cloud data and camera data. In addition to these raw sensor data inputs, traffic light detection also depends on the localization data as well as the HD-Map. Because real-time ad-hoc traffic light detection is computationally infeasible,  traffic light detection needs localization to determine when and where to start detecting traffic lights through the camera captured pictures.</p>
+<h3 id="prediction">Prediction</h3>
+<p>The prediction module estimates the future motion trajectories for all the perceived obstacles. The output prediction message wraps the perception information. Prediction subscribes to both localization and perception obstacle messages as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/prediction.png" /></p>
+<p>When a localization update is received, the prediction module updates its internal status. The actual prediction is triggered when perception sends out its published perception obstacle message.</p>
+<h3 id="localization">Localization</h3>
+<p>The routing module aggregates various data to locate the autonomous vehicle. There are two types of localization modes: OnTimer and Multiple SensorFusion.</p>
+<p>The first localization method is RTK-based, with a timer-based callback function <code>OnTimer</code>, as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/localization.png" /></p>
+<p>The other localization method is the Multiple Sensor Fusion (MSF) method, where a bunch of event-triggered callback functions are registered, as shown  below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/localization_2.png" /></p>
+<h3 id="routing">Routing</h3>
+<p>The routing module needs to know the routing start point and routing end point, to compute the passage lanes and roads. Usually the routing start point is the autonomous vehicle location. The important data interface is an event triggered function called <code>OnRoutingRequest</code>, in which <code>RoutingResponse</code> is computed and published as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/routing.png" /></p>
+<h3 id="planning">Planning</h3>
+<p>Apollo 2.0 uses several information sources to plan a safe and collision free trajectory, so the planning module interacts with almost every other module.</p>
+<p>Initially, the planning module takes the prediction output. Because the prediction output wraps the original perceived obstacle, the planning module subscribes to the traffic light detection output rather than the perception obstacles output.</p>
+<p>Then, the planning module takes the routing output. Under certain scenarios, the planning module might also trigger a new routing computation by sending a routing request if the current route cannot be faithfully followed.</p>
+<p>Finally, the planning module needs to know the location (Localization: where I am) as well as the current autonomous vehicle information (Chassis: what is my status).  The planning module is also triggered by a fixed frequency, and the main data interface is the <code>OnTimer</code> callback function that invokes the <code>RunOnce</code> function.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/planning_1.png" /></p>
+<p>The data dependencies such as chassis, localization, traffic light, and prediction are managed through the <code>AdapterManager</code> class. The core software modules are similarly managed.  For example, localization is managed through <code>AdapterManager::GetLocalization()</code> as shown below.<img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/planning_2.png" /></p>
+<h3 id="control">Control</h3>
+<p>As described in the planning module, control takes the planned trajectory as input, and generates the control command to pass to CanBus.  It has three main data interfaces: OnPad, OnMonitor, and OnTimer.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/control_1.png" /></p>
+<p>The <code>OnPad</code> and <code>OnMonitor</code> are routine interactions with the PAD-based human interface and simulations. The main data interface is the <code>OnTimer</code> interface, which periodically produces the actual control commands as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/control_2.png" /></p>
+<h3 id="canbus">CanBus</h3>
+<p>The CanBus has two data interfaces as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/canbus_1.png" /></p>
+<p>The first data interface is a timer-based publisher with the callback function <code>OnTimer</code>. This data interface periodically publishes the chassis information as well as chassis details, if enabled.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/canbus_2.png" /></p>
+<p>The second data interface is an event-based publisher with a callback function <code>OnControlCommand</code>, which is triggered when the CanBus module receives control commands.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

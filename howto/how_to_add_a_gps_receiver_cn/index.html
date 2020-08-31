@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>如何添加新的GPS接收器 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5982\u4f55\u6dfb\u52a0\u65b0\u7684GPS\u63a5\u6536\u5668";
+    var mkdocs_page_input_path = "howto/how_to_add_a_gps_receiver_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>如何添加新的GPS接收器</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_gps_receiver_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="gps">如何添加新的GPS接收器</h2>
+<h3 id="_1">简介</h3>
+<p>GPS接收器是一种从GPS卫星上接收信息，然后根据这些信息计算设备地理位置、速度和精确时间的设备。这种设备通常包括一个接收器，一个IMU（Inertial measurement unit，惯性测量单元），一个针对轮编码器的接口以及一个将各传感器获取的数据融合到一起的融合引擎。Apollo系统中默认使用Novatel 板卡，该说明详细介绍如何添加并使用一个新的GPS接收器。</p>
+<h3 id="gps_1">添加GPS新接收器的步骤</h3>
+<p>请按照下面的步骤添加新的GPS接收器.
+  1. 通过继承基类“Parser”，实现新GPS接收器的数据解析器
+  2. 在Parser类中为新GPS接收器添加新接口
+  3. 在文件<code>config.proto</code>中, 为新GPS接收器添加新数据格式
+  4. 在函数<code>create_parser</code>（见文件data_parser.cpp）, 为新GPS接收器添加新解析器实例</p>
+<p>下面让我们用上面的方法来添加u-blox GPS接收器。</p>
+<h4 id="1">步骤 1</h4>
+<p>通过继承类“Parser”，为新GPS接收器实现新的数据解析器:</p>
+<pre><code class="cpp">class UbloxParser : public Parser {
+public:
+    UbloxParser();
+
+    virtual MessageType get_message(MessagePtr&amp; message_ptr);
+
+private:
+    bool verify_checksum();
+
+    Parser::MessageType prepare_message(MessagePtr&amp; message_ptr);
+
+    // The handle_xxx functions return whether a message is ready.
+    bool handle_esf_raw(const ublox::EsfRaw* raw, size_t data_size);
+    bool handle_esf_ins(const ublox::EsfIns* ins);
+    bool handle_hnr_pvt(const ublox::HnrPvt* pvt);
+    bool handle_nav_att(const ublox::NavAtt *att);
+    bool handle_nav_pvt(const ublox::NavPvt* pvt);
+    bool handle_nav_cov(const ublox::NavCov *cov);
+    bool handle_rxm_rawx(const ublox::RxmRawx *raw);
+
+    double _gps_seconds_base = -1.0;
+
+    double _gyro_scale = 0.0;
+
+    double _accel_scale = 0.0;
+
+    float _imu_measurement_span = 0.0;
+
+    int _imu_frame_mapping = 5;
+
+    double _imu_measurement_time_previous = -1.0;
+
+    std::vector&lt;uint8_t&gt; _buffer;
+
+    size_t _total_length = 0;
+
+    ::apollo::drivers::gnss::Gnss _gnss;
+    ::apollo::drivers::gnss::Imu _imu;
+    ::apollo::drivers::gnss::Ins _ins;
+};
+
+</code></pre>
+
+<h4 id="2">步骤 2</h4>
+<p>在Parser类中，为新GPS接收器添加新的接口:</p>
+<p>在Parser类中添加函数‘create_ublox‘:</p>
+<pre><code class="cpp">class Parser {
+public:
+    // Return a pointer to a NovAtel parser. The caller should take ownership.
+    static Parser* create_novatel();
+
+    // Return a pointer to a u-blox parser. The caller should take ownership.
+    static Parser* create_ublox();
+
+    virtual ~Parser() {}
+
+    // Updates the parser with new data. The caller must keep the data valid until get_message()
+    // returns NONE.
+    void update(const uint8_t* data, size_t length) {
+        _data = data;
+        _data_end = data + length;
+    }
+
+    void update(const std::string&amp; data) {
+        update(reinterpret_cast&lt;const uint8_t*&gt;(data.data()), data.size());
+    }
+
+    enum class MessageType {
+        NONE,
+        GNSS,
+        GNSS_RANGE,
+        IMU,
+        INS,
+        WHEEL,
+        EPHEMERIDES,
+        OBSERVATION,
+        GPGGA,
+    };
+
+    // Gets a parsed protobuf message. The caller must consume the message before calling another
+    // get_message() or update();
+    virtual MessageType get_message(MessagePtr&amp; message_ptr) = 0;
+
+protected:
+    Parser() {}
+
+    // Point to the beginning and end of data. Do not take ownership.
+    const uint8_t* _data = nullptr;
+    const uint8_t* _data_end = nullptr;
+
+private:
+    DISABLE_COPY_AND_ASSIGN(Parser);
+};
+
+Parser* Parser::create_ublox() {
+    return new UbloxParser();
+}
+</code></pre>
+
+<h4 id="3">步骤 3</h4>
+<p>在config.proto文件中, 为新的GPS接收器添加新的数据格式定义:</p>
+<p>在配置文件（modules/drivers/gnss/proto/config.proto）中添加<code>UBLOX_TEXT</code> and <code>UBLOX_BINARY</code> </p>
+<pre><code class="txt">message Stream {
+    enum Format {
+        UNKNOWN = 0;
+        NMEA = 1;
+        RTCM_V2 = 2;
+        RTCM_V3 = 3;
+
+        NOVATEL_TEXT = 10;
+        NOVATEL_BINARY = 11;
+
+        UBLOX_TEXT = 20;
+        UBLOX_BINARY = 21;
+    }
+... ...
+</code></pre>
+
+<h4 id="4">步骤 4</h4>
+<p>在函数<code>create_parser</code>（见data_parser.cpp）, 为新GPS接收器添加新解析器实例.
+我们将通过添加处理<code>config::Stream::UBLOX_BINARY</code>的代码实现上面的步骤，具体如下。</p>
+<pre><code class="cpp">Parser* create_parser(config::Stream::Format format, bool is_base_station = false) {
+    switch (format) {
+    case config::Stream::NOVATEL_BINARY:
+        return Parser::create_novatel();
+
+    case config::Stream::UBLOX_BINARY:
+        return Parser::create_ubloxl();
+
+    default:
+        return nullptr;
+    }
+}
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

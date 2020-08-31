@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Run Offline Perception LowCost Visualizer (Apollo 2.5) - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Run Offline Perception LowCost Visualizer (Apollo 2.5)";
+    var mkdocs_page_input_path = "howto/how_to_run_apollo_2.5_perception_visualizer.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Run Offline Perception LowCost Visualizer (Apollo 2.5)</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_run_apollo_2.5_perception_visualizer.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-run-offline-perception-lowcost-visualizer-apollo-25">How to Run Offline Perception LowCost Visualizer (Apollo 2.5)</h2>
+<p>For Apollo 2.5, we provide an offline visualization tool based OpenGL and PCL libraries to show the obstacle perception results(including lane info) in both image front view and bird view.</p>
+<p>We introduce the detailed steps to build and run the offline visualizer in docker as below:</p>
+<h4 id="build-the-perception-lowcost">Build The Perception Lowcost</h4>
+<p>We use Bazel to build the offline perception visualizer:</p>
+<pre><code>cd /apollo
+./apollo.sh build_opt_gpu
+</code></pre>
+
+<p>In order to invoke visualizer subnode, we need to change the pointing of dag streaming config by modifying /modules/perception/conf/perception_lowcost.conf with either of the following two gflag config.
+(The default ones are defined in perception scripts already)</p>
+<p>This config is image only:</p>
+<pre><code> --dag_config_path=conf/dag_camera_obstacle_lane_motion_vis.config
+</code></pre>
+
+<p>This config contains both image and radar with fusion:</p>
+<pre><code> --dag_config_path=conf/dag_camera_obstacle_offline_fusion_sync.config
+</code></pre>
+
+<h4 id="run-the-visualizer-with-collected-ros-bag-for-apollo-25">Run The Visualizer With Collected ROS Bag for Apollo 2.5</h4>
+<p>Please double check that your collected rosbag contains topics including camera images, radar, as well as localization results. The 3 corresponding topics are show below:</p>
+<pre><code>/apollo/sensor/camera/obstacle/front_6mm
+/apollo/sensor/conti_radar
+/apollo/localization/pose
+
+</code></pre>
+
+<p>After that, you can start perception and play bags. As done before, remember to bootstrap first:</p>
+<pre><code>./scripts/bootstrap.sh
+</code></pre>
+
+<p>Then you have 3 options to run:
+* Run perception with camera subnode only + visualization
+* Run full low-cost perception of camera, radar, lane markings + visualization
+* Run full low-cost perception of camera, radar, lane markings, and no visualization</p>
+<p>Let's look at how they can be run:</p>
+<h4 id="run-perception-with-camera-subnode-only-visualization">Run perception with camera subnode only + visualization</h4>
+<p>This option requires <code>/apollo/sensor/camera/obstacle/front_6mm</code> only.</p>
+<pre><code>./scripts/perception_offline_visualizer.sh
+</code></pre>
+
+<h4 id="run-full-low-cost-perception-of-camera-radar-lane-markings-visualization">Run full low-cost perception of camera, radar, lane markings + visualization</h4>
+<pre><code>./scripts/perception_lowcost_vis.sh
+</code></pre>
+
+<h4 id="run-full-low-cost-perception-of-camera-radar-lane-markings-and-no-visualization">Run full low-cost perception of camera, radar, lane markings, and no visualization</h4>
+<pre><code>./scripts/perception_lowcost.sh
+</code></pre>
+
+<p>After starting perception module, run a rosbag with required rostopics:</p>
+<pre><code>rosbag play &lt;bag file&gt; [-l] [--clock]
+</code></pre>
+
+<p>You can also see obstacles and lane markings in Dreamview with <code>natigationn</code> and <code>simcontrol</code></p>
+<p>If running with visualization, you will see a pop-up window showing the perception result with images frame-by-frame. Top level panes display image detections in both 2D and 3D. The bottom left display is the bird view visualization showing image obstacle tracks, radar obstacle tracks as well as fused tracks. You may switch on/off by pressing <code>O</code> (image track), <code>F</code> (fused track) and <code>D</code> (radar track) on the fly.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

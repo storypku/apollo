@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Nuvo 6108GC Installation Guide cn - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Nuvo 6108GC Installation Guide cn";
+    var mkdocs_page_input_path = "specs/IPC/Nuvo-6108GC_Installation_Guide_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Nuvo 6108GC Installation Guide cn</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/IPC/Nuvo-6108GC_Installation_Guide_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="nuvo-6108gc">Nuvo-6108GC配置和安装指南</h3>
+<pre><code>Nuvo-6018GC is world's first industrial-grade GPU computer supporting high-end graphics cards. It's designed to fuel emerging GPU-accelerated applications, such as artificial intelligence, VR, autonomous driving and CUDA computing, by accommodating nVidia GPU with up to 250W TDP. Leveraging Intel® C236 chipset, Nuvo-6018GC supports Xeon® E3 V5 or 6th-Gen Core™ i7/i5 CPU with up to 32 GB ECC/ non-ECC DDR4 memory. It incorporates general computer I/Os such as Gigabit Ethernet, USB 3.0 and serial ports. In addition to the x16 PCIe port for GPU installation, Nuvo-6108GC further provides two x8 PCIe slots so you can have additional devices for information collection and communication.Nuvo-6108GC comes with sophisticated power design to handle heavy power consumption and power transient of a 250W GPU. Furthermore, to have reliable GPU performance for industrial environments, Nuvo-6018GC inherits Neousys' patented design, a tuned cold air intake to effectively dissipate the heat generated by GPU. This unique design guarantees operation at 60°C with 100% GPU loading and makes Nuvo-6018GC extremely reliable for demanding field usage.
+
+----NEOUSYS MARKETING TEAM
+</code></pre>
+
+<h4 id="ipc">IPC配置</h4>
+<p>参考下述IPC配置：</p>
+<ul>
+<li>
+<p>华硕 GTX1080 GPU-A8G-Gaming 显卡</p>
+</li>
+<li>
+<p>32GB DDR4 内存</p>
+</li>
+<li>
+<p>PO-280W-OW 280W AC/DC 电源适配器</p>
+</li>
+<li>
+<p>2.5" SATA磁盘 1TB 7200转/秒</p>
+</li>
+</ul>
+<p><img alt="IPC-6108GC-front-side" src="../images/IPC-6108GC-front-side.jpg" /></p>
+<h4 id="ipc_1">准备IPC</h4>
+<p>参考下述步骤：</p>
+<ol>
+<li>准备好CAN卡并进行安装：在Neousys Nuvo-6108GC中，华硕GTX1080 GPU-A8G-Gaming显卡被预先安装在一个PCI插槽中，我们需要将CAN卡安装在另外一个PCI插槽中。</li>
+</ol>
+<p>a. 找到并拧下机器边上的8个螺丝（显示在棕色方框内或棕色箭头指向的区域）</p>
+<p><img alt="Positions_of_Screws" src="../images/IPC-6108GC-Screw-Positions_labeled.png" /></p>
+<p>b. 移除机器盖板</p>
+<p><img alt="removing the cover" src="../images/Removing_the_cover.jpg" /></p>
+<p>在机箱底部将能看到固定着的3个PCI插槽（其中一个已经被显卡占据）</p>
+<p><img alt="Before installing the CAN card" src="../images/Before_installing_the_can_card.png" /></p>
+<p>c. 【可选】设置CAN卡的终端跳线：将红色的跳线帽从原位置移除（下图所示）并放置在终端位置</p>
+<p><img alt="prepare_can_card2" src="../images/prepare_can_card2.png" /></p>
+<p><strong><img alt="warning_icon" src="../images/warning_icon.png" />WARNING</strong>：如果终端跳线没有被正确设置，CAN卡将不能正确工作。</p>
+<p>d. 【可选】将CAN卡插入到一个PCI插槽中</p>
+<p><img alt="installed CAN" src="../images/After_installing_the_CAN_Card.png" /></p>
+<p>e. 安装IPC的盖板</p>
+<p><img alt="IPC-6108GC-Screw-Positions.png" src="../images/IPC-6108GC-Screw-Positions.png" /></p>
+<ol>
+<li>配置IPC加电组件：</li>
+</ol>
+<p>a. 将电源线接入到为IPC配置的电源连接器（接线板）
+   <img alt="warning_icon" src="../images/warning_icon.png" /><strong>WARNING</strong>：确保电源线的正极（标记为 <strong>R</strong> 表示红色）和负极（标记为 <strong>B</strong> 表示黑色）接入到了IPC接线板的正确接口，如下图所示：</p>
+<p><img alt="ipc_power_RB" src="../images/ipc_power_RB.png" /></p>
+<p>b. 将显示器、以太网线、键盘和鼠标接入IPC</p>
+<p><img alt="IPC-6108GC-CableConnected-overexposed.png" src="../images/IPC-6108GC-CableConnected-overexposed.png" /></p>
+<ol>
+<li>启动计算机</li>
+</ol>
+<p><img alt="warning" src="../images/tip_icon.png" />如果系统接入了一个或多个外部插入卡，建议通过BIOS设置风扇的转速</p>
+<pre><code>- 计算机启动时按F2进入BIOS设置菜单
+- 进入 [Advanced] =&gt; [Smart Fan Setting]
+- 设置 [Fan Max. Trip Temp] 为 50
+- 设置 [Fan Start Trip Temp] 为 20
+</code></pre>
+
+<p><img alt="tip_icon" src="../images/tip_icon.png" />建议使用者使用数字视频接口（DVI）连接器连接显卡和显示器。设置投影到主板的DVI接口，参考下述的设置步骤：</p>
+<pre><code>- 计算机启动时按F2进入BIOS设置菜单
+- 进入 [Advanced]=&gt;[System Agent (SA) Configuration]=&gt;[Graphics Configuration]=&gt;[Primary Display]=&gt; 设置为 &quot;PEG&quot;
+</code></pre>
+
+<p><img alt="tip_icon" src="../images/tip_icon.png" />建议设置IPC的运行状态为一直以最佳性能状态运行：</p>
+<pre><code>- 计算机启动时按F2进入BIOS设置菜单
+- 进入 [Power] =&gt; [SKU POWER CONFIG] =&gt; 设置为 &quot;MAX. TDP&quot;
+</code></pre>
+
+<ol>
+<li>连接电源：</li>
+</ol>
+<p><img alt="IPC-6108GC-PowerCable.jpg" src="../images/IPC-6108GC-PowerCable.jpg" /></p>
+<h4 id="_1">参考资料</h4>
+<ol>
+<li>Neousys Nuvo-6108GC <a href="http://www.neousys-tech.com/en/product/application/rugged-embedded/nuvo-6108gc-gpu-computing">产品页面</a></li>
+</ol>
+<h3 id="_2">免责声明</h3>
+<p>This device is <code>Apollo Platform Supported</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

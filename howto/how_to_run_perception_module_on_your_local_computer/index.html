@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Run Perception Module on Your Local Computer - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Run Perception Module on Your Local Computer";
+    var mkdocs_page_input_path = "howto/how_to_run_perception_module_on_your_local_computer.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Run Perception Module on Your Local Computer</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_run_perception_module_on_your_local_computer.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-run-perception-module-on-your-local-computer">How to Run Perception Module on Your Local Computer</h2>
+<p>The perception module requires Nvidia GPU and CUDA installed to run the perception algorithms with Caffe. We have already installed the CUDA and Caffe libraries in the released docker. However, the Nvidia GPU driver is not installed in the released dev docker image. To run the perception module with CUDA acceleration, we suggest to install the exactly same version of Nvidia driver in the docker as the one installed in your host machine, and build Apollo with GPU option.</p>
+<p>We provide a step-by-step instruction on running perception module with Nvidia GPU as below:
+1. Get into the docker container via: 
+    <code>bash
+    $APOLLO_HOME/docker/scripts/dev_start.sh
+    $APOLLO_HOME/docker/scripts/dev_into.sh</code>
+2. Build Apollo
+    <code>bash
+    ./apollo.sh build_opt_gpu</code>
+3. Run bootstrap.sh
+    <code>bash
+    bootstrap.sh</code>
+4. Launch Dreamview from your web browser by typing following address
+http://localhost:8888/</p>
+<ol>
+<li>
+<p>Select your car and map using the dropdowm options in the top right corner in Dreamview</p>
+</li>
+<li>
+<p>Select the transform button in Dreamview or type the following command in your terminal
+    <code>bash
+    cyber_launch start /apollo/modules/transform/launch/static_transform.launch</code></p>
+</li>
+<li>
+<p>If the image is compressed, launch the image decompression module
+    <code>cyber_launch start modules/drivers/tools/image_decompress/launch/image_decompress.launch</code></p>
+</li>
+<li>
+<p>Launch the perception modules</p>
+<ul>
+<li>
+<p>If you want to launch all modules 
+<code>cyber_launch start /apollo/modules/perception/production/launch/perception_all.launch</code></p>
+</li>
+<li>
+<p>If you want to test camera-based obstacle and lane detection
+<code>cyber_launch start /apollo/modules/perception/production/launch/perception_camera.launch</code></p>
+</li>
+</ul>
+<p>If you want to visualize camera-based results overlaid on the captured image and in bird view, mark <code>enable_visualization: true</code> in <code>‘modules/perception/production/conf/perception/camera/fusion_camera_detection_component.pb.txt</code> befor executing the above command. It will pop up when you play recorded data in point 9
+Also, If you want to enable CIPO, add ‘enable_cipv: true’ as a new line in the same file</p>
+<ul>
+<li>
+<p>If you want to test lane detection alone use
+<code>mainboard -d ./modules/perception/production/dag/dag_streaming_perception_lane.dag</code>
+If you want to visualize lane results overlaid on the captured image and in bird view, mark <code>enable_visualization: true</code> in <code>modules/perception/production/conf/perception/camera/lane_detection_component.config</code> before executing the above command. It will pop up when you play recorded data in point 9</p>
+</li>
+<li>
+<p>If you want to test traffic light detection module alone use
+<code>cyber_launch start /apollo/modules/perception/production/launch/perception_trafficlight.launch</code>
+If you want to visualize the traffic light detection results overlaid on the captured image, mark <code>—start_visualizer=true</code> in <code>apollo/modules/perception/production/conf/perception/perception_common.flag</code> before executing the above command. It will pop up when you play recorded data in point 9</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Play your recorded bag
+    <code>cyber_recorder play -f /apollo/data/bag/anybag -r 0.2</code></p>
+</li>
+</ol>
+<p>Please note that the Nvidia driver should be installed appropriately even if the perception module is running in Caffe CPU_ONLY mode (i.e., using <code>./apollo.sh build</code> or <code>./apollo.sh build_opt</code> to build the perception module). Please see the detailed instruction of perception module in <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/perception/README.md">the perception README</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

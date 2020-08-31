@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>HDL64E S3 Installation Guide cn - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "HDL64E S3 Installation Guide cn";
+    var mkdocs_page_input_path = "specs/Lidar/HDL64E_S3_Installation_Guide_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>HDL64E S3 Installation Guide cn</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Lidar/HDL64E_S3_Installation_Guide_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="velodyne-hdl64e-s3">Velodyne HDL64E-S3安装指南</h3>
+<p>Apollo使用来自Velodyne LiDAR, Inc.的64线激光雷达系统 <strong>HDL-64E S3</strong>。</p>
+<p><img alt="" src="../images/lidar_pic.png" /></p>
+<h4 id="_1">主要特性:</h4>
+<ul>
+<li>64频道</li>
+<li>120米范围</li>
+<li>每秒2.2百万点</li>
+<li>360°水平视场</li>
+<li>26.9°垂直视场</li>
+<li>0.08°角分辨率（方位角）</li>
+<li>精确度&lt;2cm</li>
+<li>~0.4°垂直分辨率</li>
+<li>用户可选择的帧速率</li>
+<li>坚固耐用的DesignLidar / Velodyne / HDL64E-S3 /</li>
+</ul>
+<h5 id="_2">安装</h5>
+<p>HDL64E S3 LiDAR需要定制的结构才能安装在车辆顶部。该结构必须能为LiDAR系统提供刚性支撑，同时在驾驶条件下将LiDAR升高到地面以上的某个高度。该高度应保证来自LiDAR的激光束不被车辆的前部和/或后部阻挡。 LiDAR所需的实际高度取决于车辆的设计，并且LiDAR的安装点取决于所使用的车辆。激光器的垂直倾斜角通常在相对于地平线+2~-24.8度范围内。
+对于标准的林肯MKZ，建议您将LiDAR安装在1.8米的最小高度（从地面到激光雷达底座），以便有效地使用角度范围进行探测。</p>
+<pre><code>如果由于某种原因，LiDAR光束必须被车辆阻挡，则在处理接收的数据时可能需要应用滤波器来移除这些点。
+</code></pre>
+
+<h5 id="_3">布线</h5>
+<p>每个HDL-64E S3 LiDAR都包含一个电缆束，用于将LiDAR连接到电源、GPS时间同步源和计算机（用于数据传输的以太网和用于LiDAR配置的串行端口）。</p>
+<p><img alt="" src="../images/HDL64_Cable_whitened_labeled.png" /></p>
+<ul>
+<li><strong>连接LiDAR</strong></li>
+</ul>
+<p>将电源线和信号线连接到LiDAR上的匹配端口</p>
+<p><img alt="HDL64_Cabling" src="../images/HDL64_Cabling.jpg" /></p>
+<ul>
+<li><strong>连接电源</strong></li>
+</ul>
+<p>两根AWG 16线用于为HDL-64E S3 LiDAR供电。 它需要大约3A的电流12V电压。连接电源时，请完全接触电线并拧紧螺钉。</p>
+<p><img alt="HDL64_Power_Cable" src="../images/HDL64_PowerCable.jpg" /></p>
+<ul>
+<li><strong>连接IPC</strong></li>
+</ul>
+<p>与IPC的连接是通过以太网电缆进行的。将以太网连接器插入电缆束中，连接到IPC上的以太网端口。 </p>
+<ul>
+<li><strong>连接GPS</strong>:</li>
+</ul>
+<p>HDL64E S3 LiDAR需要建议的最小特定GPS /传输数据（GPRMC）和每秒脉冲数（PPS）信号才能与GPS时间同步。需要定制连接以建立GPS接收器和LiDAR之间的通信，如下所示：</p>
+<ul>
+<li>
+<p><strong>SPAN-IGM-A1</strong></p>
+<p>如果您按照<a href="#configuration-the-gps-and-imu">配置GPS和IMU</a>中的说明配置了SPAN-IGM-A1，GPS接收器通过“用户端口”电缆发送GPRMC信号到“主要”端口。PPS信号通过标记为“PPS”和“PPS dgnd”的线缆从AUX端口发送。下图中的虚线框显示了HDL64E S3 LiDAR和SPAN-IGM-A1 GPS接收器的可用连接。其余连接必须由用户进行。</p>
+<p><img alt="Wiring_Schematics_IGM_A1" src="../images/LiDAR_A1_wiring.png" /></p>
+</li>
+<li>
+<p><strong>Propak 6 and IMU-IGM-A1</strong></p>
+<p>如果您按照<a href="#configuration-the-gps-and-imu">配置GPS和IMU</a>中的说明配置了Propak 6，GPS接收器通过COM2端口发送GPRMC信号。 PPS信号通过IO端口发送。 下图中的虚线框是HDL-64E S3 LiDAR和Propak 6 GPS接收器附带的可用连接。其余连接需要由用户进行。</p>
+<p><img alt="Wiring_Schematics_PP6" src="../images/LiDAR_PP6_wiring.png" /></p>
+</li>
+<li>
+<p><strong>通过串口连接计算机以进行LiDAR配置</strong></p>
+</li>
+</ul>
+<p>可通过串行端口配置一些低层参数。 在Velodyne LiDAR，Inc. 提供的电缆束中，有两对红/黑电缆，如下面的引脚表所示。较厚的一对（AWG 16）用于为LiDAR系统供电。较薄的一对用于串行连接。将黑线（串行输入）连接到RX，红线连接到串行电缆的地线。将串行电缆与USB串行适配器连接到所选计算机。 </p>
+<p><img alt="pinout_table" src="../images/pinout_table.png" /></p>
+<h5 id="_4">配置</h5>
+<p>默认情况下，HDL-64E S3的网络IP地址为192.168.0.1。 但是，在设置Apollo时，请将网络IP地址更改为 <strong>192.168.20.13</strong> 。 您可以将终端应用程序与Termite3.2一起使用。可以使用以下步骤配置HDL-64E S3的IP地址：</p>
+<ul>
+<li>将串行电缆的一侧连接到笔记本电脑</li>
+<li>将串行电缆的另一端连接到HDL-64E S3的串行线</li>
+<li>
+<p>使用以下默认COM端口设置:</p>
+<ul>
+<li>
+<p>波特率: 9600</p>
+</li>
+<li>
+<p>奇偶校验: None</p>
+</li>
+<li>
+<p>数据位: 8</p>
+</li>
+<li>
+<p>停止位: 1</p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用COM端口应用程序：从以下链接下载Termite3.2并将其安装在您的笔记本电脑上（Windows） - <a href="http://www.compuphase.com/software_termite.htm">安装连接</a></p>
+</li>
+<li>
+<p>使用HDL-64E S3和笔记本电脑之间COM端口的串行电缆连接:</p>
+</li>
+</ul>
+<p><img alt="Serial cable connected to laptop.png" src="../images/Serial_cable_connected_to_laptop.png" /></p>
+<ul>
+<li>
+<p>从笔记本电脑启动 <strong>Termite 3.2</strong>  </p>
+</li>
+<li>
+<p>发出串行命令，通过串口"#HDLIPA192168020013192168020255"设置HDL-64E S3的IP地址</p>
+</li>
+<li>
+<p>重启设备以启用新的IP地址</p>
+</li>
+</ul>
+<p><img alt="Issuing the serial command" src="../images/Issuing_the_serial_command.png" /></p>
+<h5 id="_5">参考资料</h5>
+<p>有关Velodyne HDL-64E S3的更多信息，请参阅他们的<a href="http://velodynelidar.com/hdl-64e.html">官网</a>.</p>
+<h3 id="_6">免责声明</h3>
+<p>该设备由<code>Apollo平台提供支持</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

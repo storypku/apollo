@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Apollo Sensor Unit Installation Guide cn - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo Sensor Unit Installation Guide cn";
+    var mkdocs_page_input_path = "specs/Apollo_Sensor_Unit/Apollo_Sensor_Unit_Installation_Guide_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo Sensor Unit Installation Guide cn</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Apollo_Sensor_Unit/Apollo_Sensor_Unit_Installation_Guide_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="apolloasu">Apollo传感器单元（ASU）安装指南</h3>
+<p>Apollo传感器单元（ASU）被设计为和工业级PC（IPC）协同工作以实现在Apollo自动驾驶平台上的传感器数据融合、车辆控制和网络访问。</p>
+<p>ASU系统提供多种接口以收集来自不同传感器的数据，包括摄像机、激光雷达、雷达和超声波传感器。该系统同样使用GNSS接收器的秒脉冲（PPS）和GPRMC信号实现摄像机和激光雷达的数据收集同步。</p>
+<p>ASU和IPC的通讯通过PCI Express接口。ASU收集传感器数据并通过PCI Express接口传输给IPC，IPC通过ASU发送车辆控制指令，该指令基于区域网络控制协议（CAN协议）。</p>
+<p>另外，应用以太网的激光雷达连接，应用4G LTE模块的WWAN网关和应用WiFi模块的WiFi访问将在未来的版本中发布。</p>
+<p><img alt="ASU_pic" src="../images/ASU_pic.jpg" /></p>
+<h4 id="_1">系统接口</h4>
+<h5 id="_2">前面板接口</h5>
+<ol>
+<li>外部GPS PPS / GPRMC输入接口</li>
+<li>FAKRA摄像机数据输入接口（5个接口）</li>
+<li>10/100/1000M Base-T以太网接口（2个接口）</li>
+<li>KL-15 (AKA Car Ignite)信号输入接口</li>
+</ol>
+<h5 id="_3">后面板接口</h5>
+<ol>
+<li>通用UART接口（保留）</li>
+<li>外部PCI Express接口（支持X4或X8）连接IPC请使用EXTN</li>
+<li>GPS PPS / GPRMC输出接口（3个接口）</li>
+<li>连接Stereo Camera的电源和PPS/GPRMC输出接口</li>
+<li>CAN Bus（4个接口）</li>
+<li>主电源输入接口</li>
+</ol>
+<h4 id="_4">购买渠道</h4>
+<p>Apollo传感器单元（ASU）目前只提供给Apollo合作伙伴和特定的开发者。关于使用和获取ASU的问题可通过Apollo官方渠道获得更多信息。</p>
+<h4 id="_5">安装</h4>
+<ol>
+<li>电源线</li>
+</ol>
+<p>主电源来自于车辆电池9V ~ 36V, 120W</p>
+<p><img alt="conn-DTF13-2P" src="../images/conn-DTF13-2P.jpeg" /></p>
+<table>
+<thead>
+<tr>
+<th>MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TE Connectivity</td>
+<td>DTF13-2P</td>
+<td>DT RECP ASM</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>12V</td>
+<td>PWR</td>
+<td>12V (9V~36V, 120W)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND</td>
+<td>PWR</td>
+<td>GROUND</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>FPD-Link III摄像机</li>
+</ol>
+<p>在ASU的前面板上有5个从右至左分别标记为1~5的FAKRA接头连接FPD Link III摄像机。ASU可以支持多达5个摄像机，摄像机的解串行单元(TI, DS90UB914ATRHSTQ1) 将FPD Link III的信号转换为并行的数据信号。</p>
+<table>
+<thead>
+<tr>
+<th>Camera #</th>
+<th>I2C Address</th>
+<th>Deserializer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0x60</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0x61</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0x62</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0x63</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0x64</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>GPS同步输入通道</li>
+</ol>
+<p>GPS同步输入通道使用   接头是TE Connectivity的1565749-1。接头和引脚的信息在下图中展示。</p>
+<p><img alt="conn_1565749-1" src="../images/conn_1565749-1.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">TE Connectivity</td>
+<td>1565749-1</td>
+<td>Automotive Connectors 025 CAP ASSY, 4 Pin</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>NC</td>
+<td>NC</td>
+<td>NO CIRCUIT</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPRMC</td>
+<td>INPUT</td>
+<td>GPS Specific information contains time, date, position, track made good and speed data provided by GPS navigation receiver.  RS-232 Signal level.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GND</td>
+<td>PWR</td>
+<td>GROUND (the ground for PPS and GPRMC should be shorted on ground)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PPS</td>
+<td>INPUT</td>
+<td>Pulse per Second from GPS transceiver, 3.3V CMOS Signal</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>GPS同步输出通道</li>
+</ol>
+<p>定制的8 Pin接头为需要同步输出的传感器例如激光雷达、摄像机等提供了3种PPS/GPRMC输出序列。</p>
+<p><img alt="1376350-2" src="../images/1376350-2.jpeg" /></p>
+<table>
+<thead>
+<tr>
+<th>MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TE Connectivity</td>
+<td>1376350-2</td>
+<td>Automotive Connectors 025 I/O CAP HSG ASSY, 8 Pin</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GPRMC0</td>
+<td>OUTPUT</td>
+<td>Channel 0, GPRMC OUTPUT, RS-232 Signal</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PPS0</td>
+<td>OUTPUT</td>
+<td>Pulse per Second from GPS transceiver, 3.3V CMOS Signal</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GPRMC1</td>
+<td>OUTPUT</td>
+<td>Channel 1, GPRMC OUTPUT, RS-232 Signal</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PPS1</td>
+<td>OUTPUT</td>
+<td>Pulse per Second from GPS transceiver, 3.3V CMOS Signal</td>
+</tr>
+<tr>
+<td>5</td>
+<td>GPRMC2</td>
+<td>OUTPUT</td>
+<td>Channel 2, GPRMC OUTPUT, RS-232 Signal</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GND</td>
+<td>PWR</td>
+<td>GROUND</td>
+</tr>
+<tr>
+<td>7</td>
+<td>GND</td>
+<td>PWR</td>
+<td>GROUND</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PPS2</td>
+<td>OUTPUT</td>
+<td>Pulse per Second from GPS transceiver, 3.3V CMOS Signal</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>CAN卡接口</li>
+</ol>
+<p>CAN卡提供了4种车辆接口，数据通路（传输路径）为：</p>
+<p><img alt="CAN_datapath" src="../images/CAN_datapath.png" /></p>
+<table>
+<thead>
+<tr>
+<th>MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TE Connectivity</td>
+<td>1318772-2</td>
+<td>Automotive Connectors 025 I/O CAP HSG ASSY, 12 Pin</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>CANH-0</td>
+<td>INOUT</td>
+<td>Channel 0, CANH</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CANL-0</td>
+<td>INOUT</td>
+<td>Channel 0, CANL</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CANH-1</td>
+<td>INOUT</td>
+<td>Channel 1, CANH</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CANL-1</td>
+<td>INOUT</td>
+<td>Channel 1, CANL</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CANH-1</td>
+<td>INOUT</td>
+<td>Channel 2, CANH</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CANL-1</td>
+<td>INOUT</td>
+<td>Channel 2, CANL</td>
+</tr>
+<tr>
+<td>9</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>10</td>
+<td>CANH-2</td>
+<td>INOUT</td>
+<td>Channel 3, CANH</td>
+</tr>
+<tr>
+<td>11</td>
+<td>CANL-2</td>
+<td>INOUT</td>
+<td>Channel 3, CANL</td>
+</tr>
+<tr>
+<td>12</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">免责声明</h3>
+<p>This device is <code>Apollo Platform Supported</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

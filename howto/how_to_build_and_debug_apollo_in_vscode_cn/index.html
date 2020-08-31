@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>使用VSCode构建、调试Apollo项目 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u4f7f\u7528VSCode\u6784\u5efa\u3001\u8c03\u8bd5Apollo\u9879\u76ee";
+    var mkdocs_page_input_path = "howto/how_to_build_and_debug_apollo_in_vscode_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>使用VSCode构建、调试Apollo项目</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_build_and_debug_apollo_in_vscode_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="vscodeapollo">使用VSCode构建、调试Apollo项目</h2>
+<p>Apollo项目以其优异的系统架构、完整的模块功能、良好的开源生态及规范的代码风格，受到众多开发者的喜爱和好评。然而，该项目使用命令行编译和调试，不能使用IDE开发，既不直观，也不利于提高效率。我有点追求完美，必须想办法让Apollo项目能在IDE中编译、调试。     <br />
+Visual Studio Code（以下简称VSCode）是微软第一款支持Linux的轻量级代码编辑器，其功能介于编辑器与IDE之间，但更倾向于一个编辑器。优点是运行速度快，占用内存少，使用方法与Visual Stuio类似。缺点在于，与Visual Studio、QT等IDE相比，功能还不够强大。我认为，Windows中最强大的C++ IDE为Visual Studio，Linux中最强大的C++ IDE为QT。Apollo项目目前只支持Ubuntu系统（Mac OS系统部分支持），Windows系统中的Visual Studio自然排除在外；此外，Apollo项目使用Bazel编译，而QT目前只支持QMake和CMake工程，因此只能忍痛割爱。在无法使用上述两种IDE的前提下，退而求次选用VSCode。我写了几个配置文件，允许使用VSCode编译、调试Apollo项目，下面对其进行具体阐述，希望能给广大开发者带来一定的帮助。     </p>
+<h3 id="vscodeapollo_1">一、使用VSCode编译Apollo项目</h3>
+<p>首先从<a href="https://github.com/ApolloAuto/apollo">GitHub网站</a>下载Apollo源代码，可以使用git命令下载，也可以直接通过网页下载压缩包。源代码下载完成后，将其放置到合适的目录。使用VSCode编译Apollo项目有一个前提，就是在你的机器上已经顺利安装了Docker。Apollo之前版本提供了一个“install_docker.sh”脚本文件，因为很多开发者反映可能出错，Apollo项目组已将该文件移除。现在要安装Docker就只能参考<a href="https://www.docker.com/">Docker官方网站</a>的帮助文档了。</p>
+<h4 id="11">1.1 编译方法</h4>
+<p>打开“Visual Studio Code”，执行菜单命令“文件-&gt;打开文件夹”，在弹出的对话框中，选择“Apollo”项目源文件夹，点击“确定”，如下图所示：
+<img alt="1" src="../images/vscode/open_directory.png" />
+<img alt="2" src="../images/vscode/choose_apollo_root_directory.png" />
+之后，执行菜单命令“任务-&gt;运行生成任务”或直接按快捷键“Ctrl+Shift+B”（与Visual Studio和QT的快捷键一致）构建工程，若之前没有启动过Docker，则编译时会启动Docker，需在底部终端窗口输入超级用户密码，如下图所示：
+<img alt="3" src="../images/vscode/vscode_call_for_password.png" />
+命令执行完毕，若在底部终端窗口出现“<strong>终端将被任务重用，按任意键关闭。</strong>”信息（如下图所示），则表示构建成功。整个过程一定要保持网络畅通，否则无法下载依赖包。
+<img alt="4" src="../images/vscode/vscode_build_complete.png" /></p>
+<h4 id="12">1.2 配置文件解析</h4>
+<p>我在<code>.vscode/tasks.json</code>文件中总共配置了四个常见的任务：<code>build the apollo project</code>（构建Apollo项目）、<code>run all unit tests for the apollo project</code>（运行Apollo项目的所有单元测试）、<code>code style check for the apollo project</code>（Apollo项目的代码风格检查）、<code>clean the apollo project</code>（清理Apollo项目）。其中第一个任务是默认生成任务，可以直接按快捷键“Ctr+Shift+B”调用，其他任务可通过执行菜单命令：任务-&gt;运行任务(R)…，在弹出的窗口中，选择对应选项即可，如下图所示：
+<img alt="5" src="../images/vscode/run_normal_build_task.png" />
+<img alt="6" src="../images/vscode/selete_build_task.png" />
+下面是具体的配置内容，请参考里面的注释来调整编译任务以满足你的构建需求：</p>
+<pre><code>{
+    &quot;version&quot;: &quot;2.0.0&quot;,
+    &quot;tasks&quot;: [
+        {
+            &quot;label&quot;: &quot;build the apollo project&quot;,
+            &quot;type&quot;: &quot;shell&quot;,
+            // 可根据&quot;apollo.sh&quot;提供的选项来调整编译任务，例如：build_gpu
+            &quot;command&quot;: &quot;bash apollo_docker.sh build&quot;,
+            &quot;group&quot;: {
+                &quot;kind&quot;: &quot;build&quot;,
+                &quot;isDefault&quot;: true // default building task invoked by &quot;Ctrl+Shift+B&quot;
+            },
+            // 格式化错误信息
+            &quot;problemMatcher&quot;: {
+                &quot;owner&quot;: &quot;cc&quot;,
+                &quot;fileLocation&quot;: [
+                    &quot;relative&quot;,
+                    &quot;${workspaceFolder}&quot;
+                ],
+                &quot;pattern&quot;: {
+                    &quot;regexp&quot;: &quot;^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$&quot;,
+                    &quot;file&quot;: 1,
+                    &quot;line&quot;: 2,
+                    &quot;column&quot;: 3,
+                    &quot;severity&quot;: 4,
+                    &quot;message&quot;: 5
+                }
+            }
+        }, 
+        {
+            &quot;label&quot;: &quot;run all unit tests for the apollo project&quot;,
+            &quot;type&quot;: &quot;shell&quot;,           
+            &quot;command&quot;: &quot;bash apollo_docker.sh test&quot;,
+            &quot;problemMatcher&quot;: {
+                &quot;owner&quot;: &quot;cc&quot;,
+                &quot;fileLocation&quot;: [
+                    &quot;relative&quot;,
+                    &quot;${workspaceFolder}&quot;
+                ],
+                &quot;pattern&quot;: {
+                    &quot;regexp&quot;: &quot;^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$&quot;,
+                    &quot;file&quot;: 1,
+                    &quot;line&quot;: 2,
+                    &quot;column&quot;: 3,
+                    &quot;severity&quot;: 4,
+                    &quot;message&quot;: 5
+                }
+            }
+        },
+        {
+            &quot;label&quot;: &quot;code style check for the apollo project&quot;,
+            &quot;type&quot;: &quot;shell&quot;,            
+            &quot;command&quot;: &quot;bash apollo_docker.sh lint&quot;,          
+            &quot;problemMatcher&quot;: {
+                &quot;owner&quot;: &quot;cc&quot;,
+                &quot;fileLocation&quot;: [
+                    &quot;relative&quot;,
+                    &quot;${workspaceFolder}&quot;
+                ],
+                &quot;pattern&quot;: {
+                    &quot;regexp&quot;: &quot;^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$&quot;,
+                    &quot;file&quot;: 1,
+                    &quot;line&quot;: 2,
+                    &quot;column&quot;: 3,
+                    &quot;severity&quot;: 4,
+                    &quot;message&quot;: 5
+                }
+            }
+        },
+        {
+            &quot;label&quot;: &quot;clean the apollo project&quot;,
+            &quot;type&quot;: &quot;shell&quot;,            
+            &quot;command&quot;: &quot;bash apollo_docker.sh clean&quot;,           
+            &quot;problemMatcher&quot;: {
+                &quot;owner&quot;: &quot;cc&quot;,
+                &quot;fileLocation&quot;: [
+                    &quot;relative&quot;,
+                    &quot;${workspaceFolder}&quot;
+                ],
+                &quot;pattern&quot;: {
+                    &quot;regexp&quot;: &quot;^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$&quot;,
+                    &quot;file&quot;: 1,
+                    &quot;line&quot;: 2,
+                    &quot;column&quot;: 3,
+                    &quot;severity&quot;: 4,
+                    &quot;message&quot;: 5
+                }
+            }
+        }
+    ]
+}
+</code></pre>
+
+<h4 id="13">1.3 可能存在的问题及解决方法</h4>
+<h5 id="131-error-query-interrupted">1.3.1 编译时遇到“ERROR: query interrupted”错误</h5>
+<p>这是由于bazel内部缓存不一致造成的。 
+解决方法： 
+按任意键退出编译过程，在VSCode的命令终端窗口（如果未打开，按快捷键“Ctrl + `”开启）执行如下命令进入Docker环境：</p>
+<pre><code class="bash">bash docker/scripts/dev_into.sh
+</code></pre>
+
+<p>在Docker环境中输入如下命令，执行bazel的清理缓存任务（<strong>一定要保持网络畅通</strong>，以便成功下载依赖包，否则该命令即使执行一万次也不会奏效）：</p>
+<pre><code class="bash">bazel query //...
+</code></pre>
+
+<p>最后输入exit命令退出Docker环境，按快捷键“Ctrl+Shift+B”，重新执行构建任务。</p>
+<h5 id="132-building-no-action-running">1.3.2 编译时长时间停留在“Building: no action running”界面</h5>
+<p>这是由于当前系统中存在多个不同版本的Docker或者是bazel内部缓存不一致造成的。 
+解决方法： 
+按快捷键“Ctrl+C”键终止当前构建过程，在VSCode的命令终端窗口（如果未打开，按快捷键“Ctrl + `”开启），使用下述方法中的任意一种，停止当前运行的Docker：</p>
+<pre><code class="bash"># 方法1：停止当前所有的Apollo项目Docker
+docker stop $(docker ps -a | grep apollo | awk '{print $1}')
+# 方法2：停止当前所有的Docker
+docker stop $(docker ps -aq)
+</code></pre>
+
+<p>执行VSCode的菜单命令：任务-&gt;运行任务(R)…，在弹出的窗口中，选择 
+“clean the apollo project”（清理Apollo项目）。待清理完毕后，按快捷键“Ctrl+Shift+B”，重新构建Apollo项目。</p>
+<h5 id="133-another-command-pid2466-is-running-waiting-for-it-to-complete">1.3.3 编译时出现类似“Another command (pid=2466) is running. Waiting for it to complete…”的错误</h5>
+<p>这是由于在其他命令行终端进行编译或是在之前编译时按下“Ctrl+C”键强行终止但残留了部分编译进程所引起的。 
+解决方法： 
+按快捷键“Ctrl+C”键终止当前构建过程，在VSCode的命令终端窗口（如果未打开，按快捷键“Ctrl + `”开启），使用如下命令终止残留的编译进程：</p>
+<pre><code class="bash"># 1.进入Docker
+bash docker/scripts/dev_into.sh
+# 2.杀死Docker中残留的编译进程
+pkill bazel-real
+# 3.查看Docker中是否残留bazel-real进程，若有则按“q”退出，再次执行步骤2。
+# 也可使用“ps aux | grep bazel-real”查看
+top
+# 4.退出Docker
+exit
+</code></pre>
+
+<p>按快捷键“Ctrl+Shift+B”，重新执行构建任务。</p>
+<h3 id="vscodeapollo_2">二、使用VSCode本地调试Apollo项目</h3>
+<p>Apollo项目运行于Docker中，不能在宿主机（所谓宿主机就是运行Docker的主机，因为Docker服务像寄宿于主机中，故有此称呼）中直接使用GDB调试，而必须先在Docker中借助GDBServer创建调试服务进程，再在宿主机中使用GDB连接Docker中的调试服务进程来完成。下面介绍具体操作方法：</p>
+<h4 id="21">2.1 前提条件</h4>
+<h5 id="211-apollo">2.1.1 编译Apollo项目需带调试信息</h5>
+<p>编译Apollo项目时需使用<code>build</code>或<code>build_gpu</code>等带调试信息的选项，而不能使用<code>build_opt</code>或<code>build_opt_gpu</code>等优化选项。</p>
+<h5 id="222-dockergdbserver">2.2.2 Docker内部已安装GDBServer</h5>
+<p>进入Docker后，可使用如下命令查看：</p>
+<pre><code class="bash">gdbserver --version
+</code></pre>
+
+<p>若提示类似如下信息：</p>
+<pre><code>GNU gdbserver (Ubuntu 7.7.1-0ubuntu5~14.04.3) 7.7.1
+Copyright (C) 2014 Free Software Foundation, Inc.
+gdbserver is free software, covered by the GNU General Public License.
+This gdbserver was configured as &quot;x86_64-linux-gnu&quot;
+</code></pre>
+
+<p>则表示Docker内部已安装了GDBServer。
+若提示如下信息：</p>
+<pre><code>bash: gdbserver: command not found
+</code></pre>
+
+<p>则表示Docker内部未安装GDBServer，可使用如下命令安装：</p>
+<pre><code class="bash">sudo apt-get install gdbserver
+</code></pre>
+
+<h4 id="22-docker">2.2 Docker内部的操作</h4>
+<h5 id="221-dreamview">2.2.1 启动Dreamview后台服务程序</h5>
+<p>进入Docker，启动Dreamview，命令如下：</p>
+<pre><code class="bash">cd your_apollo_project_root_dir
+# 如果没有启动Docker，首先启动，否则忽略该步
+bash docker/scripts/dev_start.sh -C
+# 进入Docker
+bash docker/scripts/dev_into.sh
+# 启动Dreamview后台服务
+bash scripts/bootstrap.sh
+</code></pre>
+
+<h5 id="222">2.2.2 启动待调试模块</h5>
+<p>启动待调试模块，既可使用命令行操作，也可借助Dreamview界面完成。我肯定喜欢使用Dreamview界面操作了，下面以调试“planning”模块为例进行说明。
+打开Chrome浏览器，输入网址：<a href="http://localhost:8888/">http://localhost:8888/</a>，打开Dreamview界面，打开“SimControl”选项，如下图所示：
+<img alt="7" src="../images/vscode/enable_simcontrol.png" />
+点击左侧工具栏“Module Controler”标签页，选中“Routing”和“Planning”选项，如下图所示：
+<img alt="8" src="../images/vscode/start_routing_and_planning.png" />
+点击左侧工具栏“Default Routing”标签页，选中“Route: Reverse Early Change Lane”或其中任意一个选项，发送“Routing Request”请求，生成全局导航路径，如下图所示：
+<img alt="9" src="../images/vscode/check_route_reverse_early_change_lane.png" /></p>
+<h5 id="223-planningid">2.2.3 查看“Planning”进程ID</h5>
+<p>使用如下命令，查看“Planning”进程ID：</p>
+<pre><code class="bash">ps aux | grep mainboard | grep planning
+</code></pre>
+
+<p>结果类似下图，可以看到“Planning”进程ID为4147。
+<img alt="11" src="../images/vscode/planning_id_ps.png" /></p>
+<h5 id="224-gdbserverplanning">2.2.4 使用GDBServer附加调试“Planning”进程</h5>
+<p>接下来需要进行我们的关键操作了，使用GDBServer附加调试“Planning”进程，命令如下：</p>
+<pre><code class="bash">sudo gdbserver :1111 --attach 4147
+</code></pre>
+
+<p>上述命令中，<strong>“:1111”表示开启端口为“1111”的调试服务进程，“4147”表示<code>步骤2.2.3</code>中查到的“Planning”进程ID</strong>。若结果如下图所示，则表示操作成功。
+<img alt="12" src="../images/vscode/gdbserver_attach_debug.png" />
+重新开启一个命令终端，进入Docker后，使用如下命令可看到“gdbserver”进程已正常运行：</p>
+<pre><code class="bash">ps aux | grep gdbserver
+</code></pre>
+
+<p><img alt="13" src="../images/vscode/view_gdbserver_process.png" /></p>
+<h5 id="225-gdbserver">2.2.5 使用脚本文件启动GDBServer</h5>
+<p>我写了两个脚本文件：<code>scripts/start_gdb_server.sh</code>、<code>docker/scripts/dev_start_gdb_server.sh</code>，其中前者用于在Docker内部启动GDBServer，后者直接在宿主机（Docker外部）启动GDBServer。
+假设调试<code>planning</code>模块，端口号为<code>1111</code>，<code>scripts/start_gdb_server.sh</code>的使用方法为：</p>
+<pre><code class="bash"># 进入Docker
+bash docker/scripts/dev_into.sh
+# 启动gdbserver
+bash scripts/start_gdb_server.sh planning 1111
+</code></pre>
+
+<p>假设调试<code>planning</code>模块，端口号为<code>1111</code>，<code>docker/scripts/dev_start_gdb_server.sh</code>的使用方法为：</p>
+<pre><code class="bash"># 在宿主机中（Docker外部）直接启动gdbserver
+bash docker/scripts/dev_start_gdb_server.sh planning 1111
+</code></pre>
+
+<p>在<strong>2.3节</strong>我还将继续配置VSCode文件，以便在VSCode中直接按快捷键“F5”就可启动调试。
+<code>start_gdb_server.sh</code>的内容如下：</p>
+<pre><code class="bash">#!/usr/bin/env bash
+
+function print_usage() {
+  RED='\033[0;31m'
+  BLUE='\033[0;34m'
+  BOLD='\033[1m'
+  NONE='\033[0m'
+
+  echo -e &quot;\n${RED}Usage${NONE}:
+  .${BOLD}/start_gdb_server.sh${NONE} MODULE_NAME PORT_NUMBER&quot;
+
+  echo -e &quot;${RED}MODULE_NAME${NONE}:
+  ${BLUE}planning${NONE}: debug the planning module. 
+  ${BLUE}control${NONE}: debug the control module.
+  ${BLUE}routing${NONE}: debug the routing module.
+  ..., and so on.&quot;
+
+  echo -e &quot;${RED}PORT_NUMBER${NONE}: 
+  ${NONE}a port number, such as '1111'.&quot;
+}
+
+if [ $# -lt 2 ];then
+    print_usage
+    exit 1
+fi
+
+DIR=&quot;$( cd &quot;$( dirname &quot;${BASH_SOURCE[0]}&quot; )&quot; &amp;&amp; pwd )&quot;
+source &quot;${DIR}/apollo_base.sh&quot;
+
+MODULE_NAME=$1
+PORT_NUM=$2
+shift 2
+
+# If there is a gdbserver process running, stop it first. 
+GDBSERVER_NUMS=$(pgrep -c -x &quot;gdbserver&quot;)
+if [ ${GDBSERVER_NUMS} -ne 0 ]; then
+  sudo pkill -SIGKILL -f &quot;gdbserver&quot;
+fi
+
+echo ${MODULE_NAME}
+# Because the &quot;grep ${MODULE_NAME}&quot; always generates a process with the name of 
+# &quot;${MODULE_NAME}&quot;, I added another grep to remove grep itself from the output.
+PROCESS_ID=$(ps -ef | grep &quot;mainboard&quot; | grep &quot;${MODULE_NAME}&quot; | grep -v &quot;grep&quot; | awk '{print $2}')
+echo ${PROCESS_ID}
+
+# If the moudle is not started, start it first. 
+if [ -z ${PROCESS_ID} ]; then       
+  #echo &quot;The '${MODULE_NAME}' module is not started, please start it in the dreamview first. &quot;  
+  #exit 1 
+
+  # run function from apollo_base.sh
+  # run command_name module_name
+  run ${MODULE_NAME} &quot;$@&quot;
+
+  PROCESS_ID=$(ps -ef | grep &quot;mainboard&quot; | grep &quot;${MODULE_NAME}&quot; | grep -v &quot;grep&quot; | awk '{print $2}')
+  echo ${PROCESS_ID}
+fi 
+
+sudo gdbserver :${PORT_NUM} --attach ${PROCESS_ID}
+</code></pre>
+
+<p><code>dev_start_gdb_server.sh</code>的内容如下：</p>
+<pre><code class="bash">#!/usr/bin/env bash
+
+function check_docker_open() {
+  docker ps --format &quot;{{.Names}}&quot; | grep apollo_dev 1&gt;/dev/null 2&gt;&amp;1
+  if [ $? != 0 ]; then       
+    echo &quot;The docker is not started, please start it first. &quot;  
+    exit 1  
+  fi
+}
+
+function print_usage() {
+  RED='\033[0;31m'
+  BLUE='\033[0;34m'
+  BOLD='\033[1m'
+  NONE='\033[0m'
+
+  echo -e &quot;\n${RED}Usage${NONE}:
+  .${BOLD}/dev_debug_server.sh${NONE} MODULE_NAME PORT_NUMBER&quot;
+
+  echo -e &quot;${RED}MODULE_NAME${NONE}:
+  ${BLUE}planning${NONE}: debug the planning module. 
+  ${BLUE}control${NONE}: debug the control module.
+  ${BLUE}routing${NONE}: debug the routing module.
+  ..., and so on.&quot;
+
+  echo -e &quot;${RED}PORT_NUMBER${NONE}: 
+  ${NONE}a port number, such as '1111'.&quot;
+}
+
+if [ $# -lt 2 ];then
+    print_usage
+    exit 1
+fi
+
+check_docker_open
+
+DIR=&quot;$( cd &quot;$( dirname &quot;${BASH_SOURCE[0]}&quot; )&quot; &amp;&amp; pwd )&quot;
+cd &quot;${DIR}/../..&quot;
+# pwd
+
+xhost +local:root 1&gt;/dev/null 2&gt;&amp;1
+#echo $@
+docker exec \
+    -u $USER \
+    -it apollo_dev \
+    /bin/bash scripts/start_gdb_server.sh $@
+xhost -local:root 1&gt;/dev/null 2&gt;&amp;1
+</code></pre>
+
+<h4 id="23-vscode">2.3 宿主机上VSCode内部的操作</h4>
+<p>在宿主机上使用VSCode打开Apollo项目（必须是你刚才构建的版本），打开需要调试的文件，在指定位置设置断点，按“F5”键启动调试。注意：<strong>由于VSCode使用脚本语言编写，因此启动过程会较慢，若加上网速不够快，甚至出现一分钟等待也有可能</strong>。调试方法和Visual Studio类似，此处不再赘述。如下图所示：
+<img alt="14" src="../images/vscode/vscode_debug_interface.png" /></p>
+<h4 id="24">2.4 配置文件解析</h4>
+<p>我对<code>.vscode/launch.json</code>文件作出配置以便能在VSCode中连接Docker中的调试服务进程。此外，为了能在VSCode中直接启动GDBServer，我在<code>.vscode/launch.json</code>文件中添加了一个调试前启动任务：<code>"preLaunchTask": "start gdbserver"</code>，该任务对应于<code>.vscode/tasks.json</code>文件中的一个启动GDBServer的任务，因为GDBServer启动后会一直阻塞命令行窗口，且无法通过在命令后面添加<code>&amp;</code>的方式进行后台启动，我只能将其配置为一个VSCode的后台运行任务。
+<code>.vscode/launch.json</code>文件的配置内容如下：</p>
+<pre><code>{
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+    {
+        &quot;name&quot;: &quot;C++ Launch&quot;,
+        &quot;type&quot;: &quot;cppdbg&quot;,
+        &quot;request&quot;: &quot;launch&quot;,
+        &quot;program&quot;: &quot;${workspaceRoot}/bazel-bin/cyber/mainboard&quot;,
+        // You can change &quot;localhost:1111&quot; to another &quot;IP:port&quot; name, but it 
+        // should be same as those in gdbserver of the docker container.  
+        &quot;miDebuggerServerAddress&quot;: &quot;localhost:1111&quot;,
+        // You can set the name of the module to be debugged in the 
+        // &quot;.vscode/tasks.json&quot; file, for example &quot;planning&quot;.
+        // Tips: search the label &quot;start gdbserver&quot; in &quot;.vscode/tasks.json&quot;.
+        // The port number should be consistent with this file.        
+        &quot;preLaunchTask&quot;: &quot;start gdbserver&quot;,
+        &quot;args&quot;: [],
+        &quot;stopAtEntry&quot;: false,
+        &quot;cwd&quot;: &quot;${workspaceRoot}&quot;,
+        &quot;environment&quot;: [],
+        &quot;externalConsole&quot;: true,
+        &quot;linux&quot;: {
+            &quot;MIMode&quot;: &quot;gdb&quot;
+        },
+        &quot;osx&quot;: {
+            &quot;MIMode&quot;: &quot;gdb&quot;
+        },
+        &quot;windows&quot;: {
+            &quot;MIMode&quot;: &quot;gdb&quot;
+        }
+    }
+    ]
+}
+</code></pre>
+
+<p><code>.vscode/tasks.json</code>文件中用于启动GDBServer的任务配置如下：</p>
+<pre><code>        {
+            &quot;label&quot;: &quot;start gdbserver&quot;,
+            &quot;type&quot;: &quot;shell&quot;,
+            // you can change the &quot;planning&quot; module name to another one and 
+            // change the &quot;1111&quot; to another port number. The port number should 
+            // be same as that in the &quot;launch.json&quot; file. 
+            &quot;command&quot;: &quot;bash docker/scripts/dev_start_gdb_server.sh planning 1111&quot;,            
+            &quot;isBackground&quot;: true,
+            &quot;problemMatcher&quot;: {
+                &quot;owner&quot;: &quot;custom&quot;,
+                &quot;pattern&quot;: {
+                    &quot;regexp&quot;: &quot;__________&quot;
+                },
+                &quot;background&quot;: { 
+                    &quot;activeOnStart&quot;: true,
+                    // Don't change the following two lines, otherwise the 
+                    // gdbserver can't run in the background.
+                    &quot;beginsPattern&quot;: &quot;^Listening on port$&quot;,
+                    &quot;endsPattern&quot;: &quot;^$&quot;
+                }
+            }                           
+        }
+</code></pre>
+
+<h4 id="25">2.5 可能碰到的问题及解决方法</h4>
+<p>调试过程中，可能会碰到以下问题：
+一是Docker内部待调试进程崩溃，无法在VSCode中调试（如下图所示），解决办法是：重启Docker内部的调试进程；   <br />
+<img alt="15" src="../images/vscode/failed_to_connect_gdbserver.png" />   <br />
+二是网络连接不畅，无法在VSCode中调试，解决办法是：确保网络畅通，并停用代理工具；   <br />
+三是在VSCode内部关闭调试后，会同时将Docker内部的调试服务进程关闭，可能会出现无法直接在VSCode再次启动调试服务里程的情形，解决办法是：在Docker内部重启调试服务进程，再在VSCode中按“F5”键启动调试。     </p>
+<h3 id="vscodeapollo_3">三、使用VSCode远程调试Apollo项目</h3>
+<p>研发过程中，我们还需远程调试车内工控机上的Apollo项目，即在调试电脑上借助SSH服务连接车内工控机，启动工控机内相关进程，然后在调试电脑上进行远程调试。下面以调试<code>planning</code>模块为例进行具体阐述：</p>
+<h4 id="31-ip">3.1 查看车内工控机IP地址</h4>
+<p>在车内工控机上，通过如下命令查看本机IP：</p>
+<pre><code class="bash">ifconfig
+</code></pre>
+
+<p>如下图所示，白色选中部分：<code>192.168.3.137</code>即为车内工控机的<strong>局域网IP地址</strong>。
+<img alt="16" src="../images/vscode/view_ipc_ip.png" /></p>
+<h4 id="32-dreamview">3.2 在调试电脑的浏览器中打开Dreamview并启动待调试模块</h4>
+<p>假设车内工控机局域网IP地址为：<code>192.168.3.137</code>，打开Chrome或Firefox浏览器，输入如下网址：<a href="http://192.168.3.137:8888/">http://192.168.3.137:8888/</a>，按照<strong>2.2.2</strong>节中的方法，启动待调试的<code>planning</code>及其依赖的<code>routing</code>模块。
+<img alt="17" src="../images/vscode/remote_show_dreamview.png" /></p>
+<h4 id="33-sshgdbserver">3.3 使用SSH命令远程登录车内工控机并启动工控机的gdbserver服务</h4>
+<p>假设车内工控机的用户名为：<code>davidhopper</code>，局域网IP地址为：<code>192.168.3.137</code>，使用如下命令远程登录车内工控机：</p>
+<pre><code class="bash">ssh davidhopper@192.168.3.137
+</code></pre>
+
+<p><img alt="18" src="../images/vscode/ssh_remote_login_192_168_3_137.png" />
+成功进入工控机后，假设需调试<code>planning</code>模块，端口号为<code>1111</code>，使用如下命令启动车内工控机的gdbserver服务：</p>
+<pre><code class="bash"># 切换到工控机上Apollo项目根目录
+cd ~/code/apollo
+# 在Docker外部启动gdbserver服务
+bash docker/scripts/dev_start_gdb_server.sh planning 1111
+</code></pre>
+
+<p>如下图所示，如看到类似<code>Listening on port 1111</code>的提示，表示<code>gdbserver</code>服务顺利启动。
+<img alt="19" src="../images/vscode/remote_start_gdbserver.png" /></p>
+<h4 id="34-vscodeplanning">3.4 在调试电脑上使用VSCode远程调试工控机上的<code>planning</code>模块</h4>
+<p>在调试电脑上使用VSCode打开Apollo项目，注意项目版本应与工控机上的版本一致，否则调试起来会输出许多不一致的信息。首先，将配置文件<code>.vscode/launch.json</code>中的调试前加载任务：<code>"preLaunchTask": "start gdbserver",</code>注释掉，再将远程调试服务地址修改为：<code>"miDebuggerServerAddress": "192.168.3.137:1111",</code>，如下图所示：
+<img alt="20" src="../images/vscode/config_launch_json_for_remote_debug.png" />
+在需要的位置设置断点，按<code>F5</code>键启动调试，因为是远程连接，<strong>启动等待的时间会更长，甚至会超过1分钟</strong>。下图是远程调试界面。<strong>注意：每次在VSCode中中止调试后，需再次启动调试时，一定要再次在命令行终端执行3.3节的操作，重启工控机内的gdbserver服务进程。</strong>在本机调试时，因为我配置了一个<code>preLaunchTask</code>任务，就可省略此步骤。
+<img alt="21" src="../images/vscode/remote_debug_planning_module.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

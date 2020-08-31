@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to set up Apollo 3.5's software on Dual-IPCs - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to set up Apollo 3.5's software on Dual-IPCs";
+    var mkdocs_page_input_path = "howto/how_to_setup_dual_ipc.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to set up Apollo 3.5's software on Dual-IPCs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_setup_dual_ipc.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-set-up-apollo-35s-software-on-dual-ipcs">How to set up Apollo 3.5's software on Dual-IPCs</h2>
+<p>The modules of Apollo 3.5 are separately launched from two industrial PCs. This guide introduces the hardware/software setup on two parallel IPCs.</p>
+<h3 id="software">Software</h3>
+<ul>
+<li>Apollo 3.5</li>
+<li>Linux precision time protocol </li>
+</ul>
+<h3 id="runtime-framework">Runtime Framework</h3>
+<ul>
+<li>CyberRT</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<p>There are two steps in the installation process:
+ - Clone and install linux PTP code on both of IPCs
+ - Clone Apollo 3.5 Github code on both of IPCs</p>
+<h4 id="clone-and-install-linux-ptp">Clone and install linux PTP</h4>
+<p>Install PTP utility and synchorize the system time on both of IPCs.</p>
+<p>```sh
+    git clone https://github.com/richardcochran/linuxptp.git
+    cd linuxptp
+    make</p>
+<pre><code># on IPC1:
+sudo ./ptp4l -i eth0 -m &amp;
+
+# on IPC2:
+sudo ./ptp4l -i eth0 -m -s &amp;
+sudo ./phc2sys -a -r &amp;
+</code></pre>
+<p>```</p>
+<h4 id="clone-apollo-35">Clone Apollo 3.5</h4>
+<p>Install Apollo 3.5 on local ubuntu machine
+  <code>sh
+    git clone https://github.com/ApolloAuto/apollo.git</code></p>
+<p>### Build Docker environment
+  Refer to the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_release.md">How to build and release docker</a> guide</p>
+<p>### Run CyberRT on both of IPCs
+  1. Change directory to apollo
+  <code>sh
+     cd apollo</code>
+  2. Start docker environment
+  <code>sh
+     bash docker/scripts/dev_start.sh</code>
+  3. Enter docker environment
+  <code>sh
+     bash docker/scripts/dev_into.sh</code>
+  4. Build Apollo in the Container:
+  <code>sh
+     bash apollo.sh build_opt_gpu</code>
+  5. Change CYBER_IP in cyber/setup.bash to IPC1's ip address:
+  <code>sh
+     source cyber/setup.bash</code>
+  6. Start CyberRT and Dreamview:
+  <code>sh
+     bash scripts/bootstrap.sh</code></p>
+<ol>
+<li>
+<p>Open Chrome and go to localhost:8888 to access Apollo Dreamview:</p>
+<ul>
+<li>
+<p>on IPC1 </p>
+<p>The header has 3 drop-downs, mode selector, vehicle selector and map selector. </p>
+<p><img alt="IPC1 Task" src="../images/IPC1_dv.png" /></p>
+<p>Select mode, for example "ipc1 Mkz Standard Debug" </p>
+<p><img alt="IPC1 mode" src="../images/IPC1_mode.png" /> </p>
+<p>Select vehicle, for example "Mkz Example"</p>
+<p><img alt="IPC1 car" src="../images/IPC1_car.png" /></p>
+<p>Select map, for example "Sunnyvale Big Loop"  </p>
+<p><img alt="IPC1 map" src="../images/IPC1_map.png" /> </p>
+<p>All the tasks that you could perform in DreamView, in general, setup button turns on all the modules. </p>
+<p><img alt="IPC1 setup" src="../images/IPC1_setup.png" /></p>
+<p>All the hardware components should be connected to IPC1 and the modules, localization, perception, routing, recorder, traffic light and transform, are allocated on IPC1 also.</p>
+<p>Module Control on sidebar panel is used to check the modules on IPC1   </p>
+<p><img alt="IPC1 check" src="../images/IPC1_check.png" /> </p>
+<p>In order to open dreamview on IPC2, user must stop it on IPC1 by using the below command:
+<code>sh
+  # Stop dreamview on IPC1
+  bash scripts/bootstrap.sh stop</code></p>
+</li>
+<li>
+<p>on IPC2 
+    Change CYBER_IP in cyber/setup.bash to IPC2's ip address:
+    <code>sh
+      source cyber/setup.bash</code></p>
+<p>Start dreamview on IPC2 by using the below command:</p>
+<p><code>sh
+  # Start dremview on IPC2
+  bash scripts/bootstrap.sh</code></p>
+<p>Select mode, vehicle and map on dreamview as the same operations on IPC1
+<img alt="IPC2 Task" src="../images/IPC2_setup.png" /></p>
+<p>The modules - planning, prediction and control are assigned on IPC2.</p>
+<p>Module Control on sidebar panel is used to check the modules on IPC2   </p>
+<p><img alt="IPC2 modules" src="../images/IPC2_check.png" /> </p>
+<p><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/dreamview_usage_table.md">See Dreamview user's guide</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>How to start/stop Dreamview:</p>
+</li>
+</ol>
+<p>The current version of Dreamview shouldn't run on the different IPCs simultaneously, so the user must perform it alternatively on IPC1 or IPC2. </p>
+<p>The code below can be used to stop Dreamview on IPC2 and start it on IPC1.</p>
+<p>```sh
+     # Stop Dreamview on IPC2
+     bash scripts/bootstrap.sh stop</p>
+<pre><code> # Start Dreamview on IPC1
+ bash scripts/bootstrap.sh
+</code></pre>
+<p>```</p>
+<ol>
+<li>
+<p>Cyber monitor</p>
+<p>Cyber monitor is CyberRT's tool used to check the status of all of the modules on local and remote machines. The User may observe the activity status of all the hardware and software components and ensure that they are working correctly.   </p>
+</li>
+</ol>
+<h3 id="future-work-to-do">Future work (To Do)</h3>
+<ul>
+<li>Multiple Dreamviews may run simultaneously</li>
+<li>Fix a bug that modules are still greyed-out after clicking the setup button. Users may check each modules' status by using the command
+  <code>sh
+     ps aux | grep mainboard</code></li>
+</ul>
+<h2 id="license">License</h2>
+<p><a href="https://github.com/ApolloAuto/apollo/blob/master/LICENSE">Apache license</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

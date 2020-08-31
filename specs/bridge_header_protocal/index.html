@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Bridge Header Protocol - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Bridge Header Protocol";
+    var mkdocs_page_input_path = "specs/bridge_header_protocal.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Bridge Header Protocol</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/bridge_header_protocal.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="bridge-header-protocol">Bridge Header Protocol</h2>
+<p>This document provides the details about bridge header protocol.</p>
+<h3 id="introduction">Introduction</h3>
+<p>Bridge is responsible for forwarding the proto message specified in Apollo to the external module in UDP mode, and receiving the proto message from the external module.
+Due to the limitation of the UDP packet (the maximum packet size is 65535 bytes), the proto message exceeds this limit after serialization.
+It is possible, so the serialized packets need to be fragmented, and each slice is called a frame.
+The receiver receives all the frames and then combines and deserializes them.
+In order to conveniently distinguish each frame of data, to facilitate subsequent combination and deserialization,
+it is necessary to add frame header information at the head of each frame of data, as shown in the following figure:</p>
+<pre><code>    +-----+------------+------------+-------+-----------+
+    |Flag |Header Size |Header Item |... ...|Header Item|
+    +-----+------------+------------+-------+-----------+
+</code></pre>
+
+<p>As shown in the figure above, the Header divides three segments: Flag, Size, and Items, where the segment is separated by '\n'.
+Flag: The sign of this agreement, currently a string "ApolloBridgeHeader";
+Size: the length of the entire Items section (unit: byte)
+Items: The specific content of the header, where each item has three components, each of which is divided by ':'. The specific schematic is shown in the figure below.</p>
+<pre><code>    +----------+----------+-------------+
+    |Item Type |Item Size | Item Content|
+    +----------+----------+-------------+
+</code></pre>
+
+<p>The Item Type is defined as follows:</p>
+<pre><code>Enum HType {
+Header_Ver, // header version number, type: uint32_t
+Msg_Name,   //proto name, such as Chassis, type: std::string
+Msg_ID,     // sequence num of proto, guaranteed unique value in the same proto, type: uint32_t
+Msg_Size,   // the size of the proto serialized, type: size_t
+Msg_Frames, // how many frames are proto serialized, type: uint32_t
+Frame_Size, // the size of the current frame, type: size_t
+Frame_Pos   // The offset of the current frame in the meta-serialized buf, type: size_t
+Frame_Index,// The sequence number of the current frame in the total number of frames, starting from 0, type: uint32_t
+Time_Stamp, // timestamp, type: double
+Header_Tail,// indicates the maximum value of the currently supported Type, always at the end of the enum
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

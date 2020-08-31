@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>传感器标定 FAQs - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u4f20\u611f\u5668\u6807\u5b9a FAQs";
+    var mkdocs_page_input_path = "FAQs/Calibration_FAQs_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>传感器标定 FAQs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/FAQs/Calibration_FAQs_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="faqs">传感器标定 FAQs</h2>
+<h3 id="_1">如何查看传感器是否有数据输出?</h3>
+<p>使用 rostopic 命令。例如，查看 HDL-64ES3 的输出，可以在终端中输入:</p>
+<pre><code class="bash"> rostopic echo /apollo/sensor/velodyne64/VelodyneScanUnified
+</code></pre>
+
+<p>若该 topic 的数据会显示在终端上，则激光雷达工作正常。</p>
+<h3 id="_2">如何查看车辆的定位状态?</h3>
+<p>以使用 Novatel 组合惯导为例，在终端中输入:</p>
+<pre><code class="bash">rostopic echo /apollo/sensor/gnss/ins_stat
+</code></pre>
+
+<p>找到“pos_type”字段，若该字段的值为 56，则表示进入了良好的定位状态 (RTK_FIXED)，可以用于标定。若不为 56，则无法获得可靠的标定结果。</p>
+<h3 id="_3">如何进行质检?</h3>
+<p>目前进行质检方法主要通过人工来完成。标定完成后，页面会提供标定过程中拼接得到的点云。若标定结果良好，会得到锐利和清晰的拼接点云，可反映出标定场地的细节。通常质检的参照物有平整的建筑立面、路灯和电线杆以及路沿等。若标定质量较差，则会使拼接点云出现一些模糊、重影的效果。图1是两张不同标定质量的拼接点云对比。</p>
+<p><img alt="" src="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/images/calibration/lidar_calibration/good_calib.png" />
+<p align="center">
+(a)
+</p></p>
+<p><img alt="" src="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/images/calibration/lidar_calibration/poor_calib.png" />
+<p align="center">
+(b)
+</p></p>
+<p align="center">
+图1. (a) 高质量的标定结果 (b) 质量较差的标定结果。
+</p>
+
+<h3 id="_4">如何解决标定程序权限错误？</h3>
+<p>Output path需要<code>write</code>权限来创建文件夹以及保存标定结果，若缺少相关权限，则会出现如下错误：</p>
+<pre><code class="bash">terminate called after throwing an instance of ‘boost::filesystem::filesystem_error’ what(): boost::filesystem::create_directories: permission denied: “***” 
+</code></pre>
+
+<p>输入以下命令，来为Output path添加<code>write</code>权限：</p>
+<pre><code class="bash"># 为output path(如：/apollo/modules/calibration/data/mkz8)添加write权限
+sudo chmod a+w /apollo/modules/calibration/data/mkz8 -R
+</code></pre>
+
+<h3 id="sensor_calibrationsh">如何解决执行sensor_calibration.sh时出现的权限错误？</h3>
+<p>Log存储文件夹需要<code>write</code>权限来创建日志，若缺少相关权限，则会出现如下错误：</p>
+<pre><code class="bash">tee: /apollo/data/log/***.out: permission denied
+</code></pre>
+
+<p>输入以下命令，来为脚本添加<code>write</code>权限：</p>
+<pre><code class="bash">sudo chmod a+x /apollo/data/log
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

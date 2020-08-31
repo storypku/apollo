@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Add a New External Dependency - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Add a New External Dependency";
+    var mkdocs_page_input_path = "howto/how_to_add_an_external_dependency.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Add a New External Dependency</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_an_external_dependency.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-add-a-new-external-dependency">How to Add a New External Dependency</h2>
+<h3 id="1-library-that-supports-bazel">1. Library that supports bazel</h3>
+<p>For example,</p>
+<ul>
+<li><a href="https://github.com/abseil/abseil-cpp">Abseil</a></li>
+<li><a href="https://github.com/google/googletest">Google Test</a></li>
+</ul>
+<p>Simply import it into WORKSPACE:</p>
+<pre><code class="python">git_repository(
+  name = &quot;com_google_absl&quot;,
+  remote = &quot;https://github.com/abseil/abseil-cpp&quot;,
+  tag = &quot;20190808&quot;,
+)
+</code></pre>
+
+<h3 id="2-library-that-has-third-party-bazel-rule">2. Library that has third-party bazel rule</h3>
+<p>Some popular libraries don't support bazel natively, but may be resolved by
+other developers.</p>
+<p>Try boost as an example:</p>
+<pre><code class="python">git_repository(
+    name = &quot;com_github_nelhage_rules_boost&quot;,
+    commit = &quot;9f9fb8b2f0213989247c9d5c0e814a8451d18d7f&quot;,
+    remote = &quot;https://github.com/nelhage/rules_boost&quot;,
+    shallow_since = &quot;1570056263 -0700&quot;,
+)
+
+load(&quot;@com_github_nelhage_rules_boost//:boost/boost.bzl&quot;, &quot;boost_deps&quot;)
+boost_deps()
+</code></pre>
+
+<p>Now you can refer to it in BUILD files with <code>@boost//:system</code>, etc.</p>
+<h3 id="3-library-with-handcrafted-build-file">3. Library with handcrafted BUILD file</h3>
+<p>It's pretty common to do so. But it needs very solid knowledge with bazel.</p>
+<pre><code class="python">new_http_archive(
+    name = &quot;civetweb&quot;,
+    url = &quot;https://github.com/civetweb/civetweb/archive/v1.11.tar.gz&quot;,
+    sha256 = &quot;de7d5e7a2d9551d325898c71e41d437d5f7b51e754b242af897f7be96e713a42&quot;,
+    build_file = &quot;third_party/civetweb.BUILD&quot;,
+    strip_prefix = &quot;civetweb-1.11&quot;,
+)
+</code></pre>
+
+<h3 id="4-library-which-is-pre-installed-into-the-operating-system">4. Library which is pre-installed into the operating system</h3>
+<p>It's NOT recommended, as it breaks the rule of a self-contained bazel WORKSPACE.
+However, some libraries are very complicated to build with bazel, while the
+operating system, such as Ubuntu, provides easy installation.</p>
+<p>For example,</p>
+<ul>
+<li><a href="https://github.com/opencv/opencv">OpenCV</a></li>
+<li><a href="https://github.com/pocoproject/poco">Poco</a></li>
+</ul>
+<p>Please do raise a discussion before doing so. Then we can add it to the docker
+image:</p>
+<pre><code class="bash">sudo apt install libopencv-dev libpoco-dev
+</code></pre>
+
+<p>Then add it as a third_party library in
+<a href="https://github.com/ApolloAuto/apollo/blob/master/third_party/BUILD">third_party/BUILD</a>.</p>
+<pre><code class="python">cc_library(
+    name = &quot;PocoFoundation&quot;,
+    linkopts = [&quot;-lPocoFoundation&quot;],
+)
+</code></pre>
+
+<p>Note that in such case, you should include the headers like
+<code>#include &lt;Poco/SharedLibrary.h&gt;</code> instead of <code>#include "Poco/SharedLibrary.h"</code>
+as they are in the system path.</p>
+<h3 id="references">References</h3>
+<p>For a detailed description on adding a dependency with Bazel, refer to the following:
+* <a href="https://bazel.build/versions/master/docs/be/workspace.html">Workspace Rules</a>
+* <a href="https://docs.bazel.build/versions/master/external.html">Working with external dependencies</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

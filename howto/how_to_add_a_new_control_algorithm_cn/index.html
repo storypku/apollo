@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>如何添加新的控制算法 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5982\u4f55\u6dfb\u52a0\u65b0\u7684\u63a7\u5236\u7b97\u6cd5";
+    var mkdocs_page_input_path = "howto/how_to_add_a_new_control_algorithm_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>如何添加新的控制算法</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_new_control_algorithm_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">如何添加新的控制算法</h2>
+<p>Apollo中的控制算法由一个或多个控制器组成，可以轻松更改或替换为不同的算法。 每个控制器将一个或多个控制命令输出到<code>CANbus</code>。 Apollo中的默认控制算法包含横向控制器（LatController）和纵向控制器（LonController）。 它们分别负责横向和纵向的车辆控制。</p>
+<p>新的控制算法不必遵循默认模式，例如，一个横向控制器+一个纵向控制器。 它可以是单个控制器，也可以是任意数量控制器的组合。</p>
+<p>添加新的控制算法的步骤：</p>
+<ol>
+<li>创建一个控制器</li>
+<li>在文件<code>control_config</code> 中添加新控制器的配置信息</li>
+<li>注册新控制器</li>
+</ol>
+<p>为了更好的理解，下面对每个步骤进行详细的阐述:</p>
+<h3 id="_2">创建一个控制器</h3>
+<p>所有控制器都必须继承基类<code>Controller</code>，它定义了一组接口。 以下是控制器实现的示例:</p>
+<pre><code class="c++">namespace apollo {
+namespace control {
+
+class NewController : public Controller {
+ public:
+  NewController();
+  virtual ~NewController();
+  Status Init(const ControlConf* control_conf) override;
+  Status ComputeControlCommand(
+      const localization::LocalizationEstimate* localization,
+      const canbus::Chassis* chassis, const planning::ADCTrajectory* trajectory,
+      ControlCommand* cmd) override;
+  Status Reset() override;
+  void Stop() override;
+  std::string Name() const override;
+};
+}  // namespace control
+}  // namespace apollo
+</code></pre>
+
+<h3 id="control_config">在文件<code>control_config</code> 中添加新控制器的配置信息</h3>
+<p>按照下面的步骤添加新控制器的配置信息:</p>
+<ol>
+<li>根据算法要求为新控制器配置和参数定义<code>proto</code>。作为示例，可以参考以下位置的<code>LatController</code>的<code>proto</code>定义：<code>modules/control/proto/ lat_controller_conf.proto</code></li>
+<li>
+<p>定义新的控制器<code>proto</code>之后，例如<code>new_controller_conf.proto</code>，输入以下内容:</p>
+<p>```protobuf
+syntax = "proto2";</p>
+<p>package apollo.control;</p>
+<p>message NewControllerConf {
+    double parameter1 = 1;
+    int32 parameter2 = 2;
+}
+```</p>
+</li>
+<li>
+<p>参考如下内容更新 <code>modules/control/proto/control_conf.proto</code>文件:</p>
+<p><code>protobuf
+optional apollo.control.NewControllerConf new_controller_conf = 15;</code></p>
+</li>
+<li>
+<p>参考以内容更新 <code>ControllerType</code>（在<code>modules/control/proto/control_conf.proto</code> 中）:</p>
+<p><code>protobuf
+enum ControllerType {
+    LAT_CONTROLLER = 0;
+    LON_CONTROLLER = 1;
+    NEW_CONTROLLER = 2;
+  };</code></p>
+</li>
+<li>
+<p><code>protobuf</code>定义完成后，在<code>modules/control/conf/control_conf.pb.txt</code>中相应更新控制配置文件。</p>
+</li>
+</ol>
+<pre><code>注意：上面的&quot;control/conf&quot;文件是Apollo的默认文件。您的项目可能使用不同的控制配置文件.
+</code></pre>
+
+<h3 id="_3">注册新控制器</h3>
+<p>要激活Apollo系统中的新控制器，请在如下文件中的“ControllerAgent”中注册新控制器:</p>
+<blockquote>
+<p>modules/control/controller/controller_agent.cc</p>
+</blockquote>
+<p>按照如下示例添加注册信息:</p>
+<pre><code class="c++">void ControllerAgent::RegisterControllers() {
+  controller_factory_.Register(
+      ControlConf::NEW_CONTROLLER,
+      []() -&gt; Controller * { return new NewController(); });
+}
+</code></pre>
+
+<p>在完成以上步骤后，您的新控制器便可在Apollo系统中生效。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

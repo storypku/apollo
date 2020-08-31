@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo 1.0 Quick Start Guide for Developers - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo 1.0 Quick Start Guide for Developers";
+    var mkdocs_page_input_path = "quickstart/apollo_1_0_quick_start_developer.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo 1.0 Quick Start Guide for Developers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/apollo_1_0_quick_start_developer.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-10-quick-start-guide-for-developers">Apollo 1.0 Quick Start Guide for Developers</h2>
+<h3 id="contents">Contents</h3>
+<ul>
+<li><a href="#about-this-guide">About This Guide</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#build-the-apollo-kernel">Build the Apollo Kernel</a></li>
+<li><a href="#access-the-apollo-dev-container">Access the Apollo Dev Container</a></li>
+<li><a href="#build-the-apollo-ros">Build the Apollo ROS</a></li>
+<li><a href="#build-apollo">Build Apollo</a></li>
+<li><a href="#release">Release</a></li>
+</ul>
+<h2 id="about-this-guide">About This Guide</h2>
+<p><em>The Apollo 1.0 Quick Start for Developers</em> provides the basic instructions to all Developers who want to build the Apollo Kernel, the Robot Operating System (ROS), and Apollo.</p>
+<h3 id="document-conventions">Document Conventions</h3>
+<p>The following table lists the conventions that are used in this document:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bold</strong></td>
+<td>Emphasis</td>
+</tr>
+<tr>
+<td><code>Mono-space font</code></td>
+<td>Code, typed data</td>
+</tr>
+<tr>
+<td><em>Italic</em></td>
+<td>Titles of documents, sections, and headingsTerms used</td>
+</tr>
+<tr>
+<td><img alt="info" src="../images/info_icon.png" /></td>
+<td><strong>Info</strong>  Contains information that might be useful.  Ignoring the Info icon has no negative consequences.</td>
+</tr>
+<tr>
+<td><img alt="tip" src="../images/tip_icon.png" /></td>
+<td><strong>Tip</strong>. Includes helpful hints or a shortcut that might assist you in completing a task.</td>
+</tr>
+<tr>
+<td><img alt="online" src="../images/online_icon.png" /></td>
+<td><strong>Online</strong>. Provides a link to a particular web site where you can get more information.</td>
+</tr>
+<tr>
+<td><img alt="warning" src="../images/warning_icon.png" /></td>
+<td><strong>Warning</strong>. Contains information that must <strong>not</strong> be ignored or you risk failure when you perform a certain task or step.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="introduction">Introduction</h2>
+<p>It is assumed that you have read and performed the instructions in the companion guide, the <em>Apollo 1.0 Quick Start Guide</em>, to set up the basic environment. Use this guide to build your own version of the Apollo Kernel, the ROS, and Apollo. There are also instructions on how to release your own Apollo container to others who might want to build on what you have developed.  It is strongly recommended that you build all of the components (Apollo Kernel, ROS, and Apollo) in the Apollo pre-specified dev Docker container.</p>
+<h2 id="build-the-apollo-kernel">Build the Apollo Kernel</h2>
+<p>The Apollo runtime in the vehicle requires the <a href="https://github.com/ApolloAuto/apollo-kernel">Apollo Kernel</a>. You are strongly recommended to install the pre-built kernel.</p>
+<h3 id="use-pre-built-apollo-kernel">Use pre-built Apollo Kernel.</h3>
+<p>You get access and install the pre-built kernel with the following commands.</p>
+<ol>
+<li>Download the release packages from the release section on github</li>
+</ol>
+<pre><code>https://github.com/ApolloAuto/apollo-kernel/releases
+</code></pre>
+
+<ol>
+<li>Install the kernel
+After having the release package downloaded:</li>
+</ol>
+<pre><code>tar zxvf linux-4.4.32-apollo-1.0.0.tar.gz
+cd install
+sudo ./install_kernel.sh
+</code></pre>
+
+<ol>
+<li>Reboot your system by the <code>reboot</code> command</li>
+<li>Build the ESD CAN driver source code
+Now you need to build the ESD CAN driver source code according to <a href="https://github.com/ApolloAuto/apollo-kernel/blob/master/linux/ESDCAN-README.md">ESDCAN-README.md</a></li>
+</ol>
+<h3 id="build-your-own-kernel">Build your own kernel.</h3>
+<p>If have modified the kernel, or the pre-built kernel is not the best for your platform, you can build your own kernel with the following steps.</p>
+<ol>
+<li>Clone the code from repository</li>
+</ol>
+<pre><code>git clone https://github.com/ApolloAuto/apollo-kernel.git
+cd apollo-kernel
+</code></pre>
+
+<ol>
+<li>
+<p>Build the ESD CAN driver source code according to <a href="https://github.com/ApolloAuto/apollo-kernel/blob/master/linux/ESDCAN-README.md">ESDCAN-README.md</a></p>
+</li>
+<li>
+<p>Build the kernel with the following command.</p>
+</li>
+</ol>
+<pre><code>bash build.sh
+</code></pre>
+
+<ol>
+<li>Install the kernel the same way as using a pre-built Apollo Kernel.</li>
+</ol>
+<h2 id="access-the-apollo-dev-container">Access the Apollo Dev Container</h2>
+<ol>
+<li>Please follow the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_0_quick_start.md">Quick Start Guide</a> to clone the Apollo source code.</li>
+</ol>
+<p><img alt="tip" src="../images/tip_icon.png" /> In the following sections, it is assumed that the Apollo directory is located in  <code>$APOLLO_HOME</code>.</p>
+<ol>
+<li>Apollo provides a build environment Docker image: <code>dev-latest</code>.  Run the following command to start a container with the build image:</li>
+</ol>
+<pre><code>cd $APOLLO_HOME
+bash docker/scripts/dev_start.sh
+</code></pre>
+
+<ol>
+<li>Run the following command to log into the container:</li>
+</ol>
+<pre><code>bash docker/scripts/dev_into.sh
+</code></pre>
+
+<p>In the container, the default directory lives in <code>/apollo</code> , which contains the mounted source code repo.</p>
+<h2 id="build-the-apollo-ros">Build the Apollo ROS</h2>
+<p>Check out Apollo ROS from <a href="https://github.com/ApolloAuto/apollo-platform">github source</a>:</p>
+<pre><code class="bash">git clone https://github.com/ApolloAuto/apollo-platform.git apollo-platform
+cd apollo-platform/ros
+bash build.sh build
+</code></pre>
+
+<h2 id="build-apollo">Build Apollo</h2>
+<p>Before your proceed to build, please obtain ESD CAN library according to instructions in <a href="https://github.com/ApolloAuto/apollo/blob/master/third_party/can_card_library/esd_can/README.md">ESD CAN README</a>.</p>
+<p>Run the following command:</p>
+<pre><code class="bash">cd $APOLLO_HOME
+bash apollo.sh build
+</code></pre>
+
+<h2 id="release">Release</h2>
+<p>Apollo uses Docker images to release packages. <strong>For advanced developers</strong>: you can generate a new Docker image to test in an actual vehicle. Apollo has set up a base Docker image environment to test the Apollo build.</p>
+<p>The image is called: <code>run-env-latest</code>.</p>
+<ol>
+<li>Run the following command:</li>
+</ol>
+<pre><code>bash apollo.sh release
+</code></pre>
+
+<p>The release command generates a release directory, which contains:</p>
+<ul>
+<li>ROS environment</li>
+<li>Running scripts</li>
+<li>Binaries</li>
+<li>
+<p>Dependent shared libraries (<code>.so</code> files)</p>
+</li>
+<li>
+<p>Open a new terminal and run the following command in an Apollo source directory outside of Docker:</p>
+</li>
+</ul>
+<pre><code>cd $APOLLO_HOME
+bash apollo_docker.sh gen
+</code></pre>
+
+<p>The command creates a new Docker image using the release directory.</p>
+<p>The release image tag will be named:<code>release-yyyymmdd_hhmm</code>. The existing release image tag, <code>release-latest</code>, is always pointing to the most current release.</p>
+<ol>
+<li>Push your release image online using your own Docker registry set up from outside of the container:</li>
+</ol>
+<pre><code>cd $APOLLO_HOME
+bash apollo_docker.sh push
+</code></pre>
+
+<p>The command pushes the newly built Docker image to the release Docker registry. To set up a new Docker registry, see <a href="https://docs.docker.com/registry">this page</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

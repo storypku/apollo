@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Build and Release your Docker Container - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Build and Release your Docker Container";
+    var mkdocs_page_input_path = "howto/how_to_build_and_release.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Build and Release your Docker Container</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_build_and_release.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-build-and-release-your-docker-container">How to Build and Release your Docker Container</h2>
+<ul>
+<li><a href="#install-docker">1. Install Docker</a></li>
+<li><a href="#build-apollo">2. Build Apollo</a></li>
+<li><a href="#what's-next">3. What's next</a></li>
+<li><a href="#build-in-visual-studio-code">4. Build in VSCode</a></li>
+<li><a href="#test">5. Test</a></li>
+<li><a href="#legal-disclaimer">6. Legal Disclaimer</a></li>
+</ul>
+<h3 id="install-docker">Install Docker</h3>
+<p>Please follow the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md#Set-up-the-Docker-environment">Apollo Software Installation Guide</a>.</p>
+<h3 id="build-apollo">Build Apollo</h3>
+<h4 id="start-container">Start container</h4>
+<p>We provide a build image named <em>dev-latest</em>. The Container will mount your local apollo repo to <em>/apollo</em>.</p>
+<pre><code class="bash">bash docker/scripts/dev_start.sh
+</code></pre>
+
+<h4 id="get-into-the-container">Get into the container</h4>
+<pre><code class="bash">bash docker/scripts/dev_into.sh
+</code></pre>
+
+<h4 id="build-modules">Build modules</h4>
+<pre><code class="bash">bash apollo.sh build
+</code></pre>
+
+<p><code>Note:</code> If you do not have a GPU, you can use the following script instead</p>
+<pre><code>bash apollo.sh build_cpu
+</code></pre>
+
+<p><code>Note:</code> If your computer is very slow, you can enter the following command to limit the CPU.</p>
+<pre><code>bash apollo.sh build --local_resources 2048,1.0,1.0
+</code></pre>
+
+<h3 id="whats-next">What's next</h3>
+<ol>
+<li>If at this point, you do not have a vehicle setup or you want to confirm that Apollo has been built out correctly, please continue to <a href="../how_to_launch_Apollo/">How to Launch and Run Apollo</a></li>
+<li>If you do have a vehicle setup, please continue back to our <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md">Software Installation guide</a></li>
+</ol>
+<h3 id="build-in-visual-studio-code">Build in Visual Studio Code</h3>
+<h4 id="install-vscode">Install VSCode</h4>
+<p>The easiest way to install for Debian/Ubuntu based distributions is to download from  https://code.visualstudio.com and install the .deb package (64-bit) either through the graphical software center if it's available or through the command line with:</p>
+<pre><code class="bash">sudo dpkg -i &lt;file&gt;.deb
+sudo apt-get install -f # Install dependencies
+</code></pre>
+
+<h4 id="start-vscode">Start VSCode</h4>
+<p>Start VSCode with the following command:</p>
+<pre><code class="bash">code
+</code></pre>
+
+<h4 id="open-the-apollo-project-in-vscode">Open the Apollo project in VSCode</h4>
+<p>Use the keyboard shortcut <strong>(Ctrl+K Ctrl+O)</strong> to open the Apollo project.</p>
+<h4 id="build-the-apollo-project-in-vscode">Build the Apollo project in VSCode</h4>
+<p>Use the keyboard shortcut <strong>(Ctrl+Shift+B)</strong> to build the Apollo project.</p>
+<h4 id="run-all-unit-tests-for-the-apollo-project-in-vscode">Run all unit tests for the Apollo project in VSCode</h4>
+<p>Select the "Tasks-&gt;Run Tasks..." menu command and click "run all unit tests for the apollo project" from a popup menu to check the code style for the Apollo project.</p>
+<p>If you are currently developing on 16.04, you will get a build error.
+As seen in the image below, 2 perception tests. To avoid this build error, refer to the <a href="../how_to_run_apollo_2.5_with_ubuntu16/">how to build Apollo using Ubuntu 16</a>.</p>
+<p><img alt="Build error" src="../images/build_fail.png" /></p>
+<h4 id="run-a-code-style-check-task-for-the-apollo-project-in-vscode">Run a code style check task for the Apollo project in VSCode</h4>
+<p>Select the "Tasks-&gt;Run Tasks..." menu command and click "code style check for the apollo project" from a popup menu to check the code style for the Apollo project.</p>
+<h4 id="clean-the-apollo-project-in-vscode">Clean the Apollo project in VSCode</h4>
+<p>Select the "Tasks-&gt;Run Tasks..." menu command and click "clean the apollo project" from a popup menu to clean the Apollo project.</p>
+<h4 id="change-the-building-option">Change the building option</h4>
+<p>You can change the "build" option to another one such as "build_gpu" (refer to the "apollo.sh" file for details) in ".vscode/tasks.json"</p>
+<h3 id="test"><span id="test">Test</span></h3>
+<pre><code class="bash">bash docker/scripts/release_start.sh [release tag]
+</code></pre>
+
+<p>The <em>HMI</em> will automatically start and you can control each apollo module through any web browser by inputting IP address and port number, such as <em>localhost:8887</em>. You can get into the release container if quick fix needed.</p>
+<pre><code class="bash">bash docker/scripts/release_into.sh
+</code></pre>
+
+<h3 id="legal-disclaimer">Legal Disclaimer</h3>
+<p>The docker image that you build may contain ESD CAN library files provided by ESD Electronics (hereby referred as ESD), which you should have obtained via a licensing agreement with ESD. The licensing agreement shall have granted you (as an individual or a business entity) the right to use the said software provided by ESD; however, you may (and likely you do) need explicit re-distribution permission from ESD to publish the docker image for any other third party to consume. Such licensing agreement is solely between you and ESD, and is not covered by the license terms of the Apollo project (see file LICENSE under Apollo top directory).</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

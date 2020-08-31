@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Multiple-LiDAR GNSS Calibration Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Multiple-LiDAR GNSS Calibration Guide";
+    var mkdocs_page_input_path = "quickstart/multiple_lidar_gnss_calibration_guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Multiple-LiDAR GNSS Calibration Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/multiple_lidar_gnss_calibration_guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="multiple-lidar-gnss-calibration-guide">Multiple-LiDAR GNSS Calibration Guide</h2>
+<pre><code>NOTE: Supports upto Apollo 3.0. Apollo 3.5 is not supported yet.
+</code></pre>
+
+<p>Welcome to use the Multiple-LiDAR GNSS calibration tool. This guide will show you the steps to successfully calibrate multiple LiDARs.</p>
+<h3 id="contents">Contents</h3>
+<ul>
+<li>Overview</li>
+<li>Preparation</li>
+<li>Using the Calibration Tool</li>
+<li>Results and Validation</li>
+</ul>
+<h3 id="overview">Overview</h3>
+<p>In many autonomous driving tasks such as HDMap production, the scans from multiple LiDARs need to be registered in a unified coordinate system. In this case, the extrinsic parameters of multiple LiDARs need to be carefully calibrated. This Multiple-LiDAR GNSS calibration tool is developed to solve this problem.</p>
+<h3 id="preparation">Preparation</h3>
+<ol>
+<li>Download the <a href="https://github.com/ApolloAuto/apollo/releases/download/v2.5.0/multi_lidar_gnss_calibrator_and_doc.zip">calibration tool</a>, and extract files to <code>$APOLLO_HOME/modules/calibration</code>. APOLLO_HOME is the root directory of apollo repository.</li>
+<li>Choose a calibration place according to the calibration guide provided in Apollo 1.5.</li>
+<li>Make sure the GNSS is in a good status. To verify this, use <code>rostopic echo /apollo/sensor/gnss/best_pose</code> and check the number after keywords <code>latitude_std_dev</code>, <code>longitude_std_dev</code> and <code>height_std_dev</code>. The smaller the deviation, the better the calibration quality. <strong><em> We strongly recommend calibrating the sensors when deviations are smaller than 0.02.</em></strong> </li>
+</ol>
+<h3 id="using-the-calibration-tool">Using the Calibration Tool</h3>
+<h4 id="record-calibration-data">Record Calibration Data</h4>
+<p>When the LiDARs and GNSS are ready, use <code>/apollo/modules/calibration/multi_lidar_gnss/record.sh</code> to record calibration data. Note that, this script is only for recording  velodyne HDL64 and VLP16. For other purpose, some modification of this script is needed or just use rosbag record to do the same thing. Usually, 2 minites length of data is sufficient. After data capture, run <code>/apollo/modules/calibration/multi_lidar_gnss/calibrate.sh</code> to calibrate sensors. The script is composed of the following two steps.</p>
+<h4 id="export-data">Export Data</h4>
+<p>Once the calibration bag is recorded, use <code>/apollo/modules/calibration/exporter/export_msgs --config /apollo/modules/calibration/exporter/conf/export_config.yaml</code> to get sensor data. The only input of the exporter is a YAML configuration file as follow.</p>
+<pre><code class="bash">bag_path: &quot;/apollo/data/bag/calibration/&quot; # The path where the calibration bag is placed.
+dump_dir: &quot;/apollo/data/bag/calibration/export/&quot; # The path where the sensor data will be placed using exporter
+topics:
+    - /apollo/sensor/gnss/odometry: # Odometry topic name
+        type: ApolloOdometry        # Odometry type
+    - /apollo/sensor/velodyne16/PointCloud2: # vlp16 topic name
+        type: PointCloud2                    # vlp16 type
+    - /apollo/sensor/velodyne64/PointCloud2: # hdl64 topic name
+        type: PointCloud2                    # hdl64 type
+</code></pre>
+
+<p>Other topics of PointCloud2 type also can be exported, if new topics are added to the file in the rule as follow.</p>
+<pre><code class="bash">    - TOPIC_NAME: # topic name
+        type: PointCloud2
+</code></pre>
+
+<p>Till now, we only support <code>ApolloOdometry</code> and <code>PointCloud2</code>.  </p>
+<h4 id="run-the-calibration-tool">Run the Calibration Tool</h4>
+<p>If all sensor data are exported, run <code>/apollo/modules/calibration/lidar_gnss_calibrator/multi_lidar_gnss_calibrator --config /apollo/modules/calibration/lidar_gnss_calibrator/conf/multi_lidar_gnss_calibrator_config.yaml</code> will get the results. The input of the tool is a YAML configuration file as follow.</p>
+<pre><code class="bash"># multi-LiDAR-GNSS calibration configurations
+data:
+    odometry: &quot;/apollo/data/bag/calibration/export/multi_lidar_gnss/_apollo_sensor_gnss_odometry/odometry&quot;
+    lidars: 
+        - velodyne16: 
+            path: &quot;/apollo/data/bag/calibration/export/multi_lidar_gnss/_apollo_sensor_velodyne16_PointCloud2/&quot;
+        - velodyne64: 
+            path: &quot;/apollo/data/bag/calibration/export/multi_lidar_gnss/_apollo_sensor_velodyne64_PointCloud2/&quot;
+    result: &quot;/apollo/data/bag/calibration/export/multi_lidar_gnss/result/&quot;
+calibration:
+    init_extrinsics:
+        velodyne16:
+            translation:    
+                x: 0.0
+                y: 1.77 
+                z: 1.1
+            rotation:
+                x: 0.183014 
+                y: -0.183014 
+                z: 0.683008 
+                w: 0.683008
+        velodyne64:
+            translation:    
+                x: 0.0
+                y: 1.57
+                z: 1.3
+            rotation:
+                x: 0.0
+                y: 0.0
+                z: 0.707
+                w: 0.707
+    steps: 
+        - source_lidars: [&quot;velodyne64&quot;]
+          target_lidars: [&quot;velodyne64&quot;]
+          lidar_type: &quot;multiple&quot;
+          fix_target_lidars: false
+          fix_z: true
+          iteration: 3
+        - source_lidars: [&quot;velodyne16&quot;]
+          target_lidars: [&quot;velodyne16&quot;]
+          lidar_type: &quot;multiple&quot;
+          fix_target_lidars: false
+          fix_z: true
+          iteration: 3
+        - source_lidars: [&quot;velodyne16&quot;]
+          target_lidars: [&quot;velodyne64&quot;]
+          lidar_type: &quot;multiple&quot;
+          fix_target_lidars: true
+          fix_z: false
+          iteration: 3
+</code></pre>
+
+<p>The <code>data</code> section tells the tool where to get point clouds and odometry file, and also where to save the results. Note that, the keywords in <code>lidar</code> node will be recognized as frame id for the LiDARs. </p>
+<p>The <code>calibration</code> section provides initial guess of the extrinsics. <strong><em>All extrinsics are from LiDAR to GNSS</em></strong>, which means this transformation maps the coordinates of a point defined in the LiDAR coordinate system to the coordinates of this point defined in the GNSS coordinate system. The initial guess requires the rotation angle error less than 5 degrees, and the translation error less than 0.1 meter.</p>
+<p>The <code>steps</code> section specifies the calibration procedure. Each step is defined as follow and their meanings are in comments.</p>
+<pre><code class="bash">- source_lidars: [&quot;velodyne16&quot;] # Source LiDAR in point cloud registration.
+  target_lidars: [&quot;velodyne64&quot;] # Target LiDAR in point cloud registration.
+  lidar_type: &quot;multiple&quot; # &quot;multiple&quot; for multi-beam LiDAR, otherwise &quot;single&quot;
+  fix_target_lidars: true # Whether to fix  extrinsics of target LiDARS. Only &quot;true&quot; when align different LiDARs.
+  fix_z: false # Whether to fix the z component of translation. Only &quot;false&quot; when align different LiDARs.
+  iteration: 3 # Iteration number
+</code></pre>
+
+<h3 id="results-and-validation">Results and Validation</h3>
+<p>The calibration tool saves the results to <code>result</code> path as follow.</p>
+<pre><code class="bash">.
+└── calib_result
+    ├── velodyne16_novatel_extrinsics.yaml
+    ├── velodyne16_result.pcd
+    ├── velodyne16_result_rgb.pcd
+    ├── velodyne64_novatel_extrinsics.yaml
+    ├── velodyne64_result.pcd
+    └── velodyne64_result_rgb.pcd
+</code></pre>
+
+<p>The two YAML files are extrinsics. To validate the results, use <code>pcl_viewer *_result.pcd</code> to check the registration quality. If the sensors are well calibrated, a large amount of details can be identified from the point cloud. For more details, please refer to the calibration guide in Apollo 1.5. </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

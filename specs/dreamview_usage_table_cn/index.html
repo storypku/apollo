@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>DreamView用法介绍 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "DreamView\u7528\u6cd5\u4ecb\u7ecd";
+    var mkdocs_page_input_path = "specs/dreamview_usage_table_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>DreamView用法介绍</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/dreamview_usage_table_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="dreamview">DreamView用法介绍</h2>
+<p>DreamView是一个web应用程序，提供如下的功能：
+1. 可视化显示当前自动驾驶车辆模块的输出信息，例如规划路径、车辆定位、车架信息等。
+2. 为使用者提供人机交互接口以监测车辆硬件状态，对模块进行开关操作，启动自动驾驶车辆等。
+3. 提供调试工具，例如PnC监视器可以高效的跟踪模块输出的问题</p>
+<h3 id="_1">界面布局和特性</h3>
+<p>该应用程序的界面被划分为多个区域：标题、侧边栏、主视图和工具视图。</p>
+<h4 id="_2">标题</h4>
+<p>标题包含4个下拉列表，可以像下述图片所示进行操作：
+<img alt="" src="../images/dreamview_usage_table/header.png" /> </p>
+<p>附注：导航模块是在Apollo 2.5版本引入的满足低成本测试的特性。在该模式下，Baidu或Google地图展现的是车辆的绝对位置，而主视图中展现的是车辆的相对位置。</p>
+<h4 id="_3">侧边栏和工具视图</h4>
+<p><img alt="" src="../images/dreamview_usage_table/sidebar.png" /> 
+侧边栏控制着显示在工具视图中的模块</p>
+<h4 id="tasks">Tasks</h4>
+<p>在DreamView中使用者可以操作的tasks有：
+<img alt="" src="../images/dreamview_usage_table/tasks.png" /></p>
+<ul>
+<li>
+<p><strong>Quick Start</strong>: 当前选择的模式支持的指令。通常情况下，</p>
+<p><strong>setup</strong>: 开启所有模块</p>
+<p><strong>reset all</strong>: 关闭所有模块</p>
+<p><strong>start auto</strong>: 开始车辆的自动驾驶
+* <strong>Others</strong>: 工具经常使用的开关和按钮
+* <strong>Module Delay</strong>: 从模块中输出的两次事件的时间延迟
+* <strong>Console</strong>: 从Apollo平台输出的监视器信息</p>
+</li>
+</ul>
+<h4 id="module-controller">Module Controller</h4>
+<p>监视硬件状态和对模块进行开关操作
+<img alt="" src="../images/dreamview_usage_table/module_controller.png" /> </p>
+<h4 id="layer-menu">Layer Menu</h4>
+<p>显式控制各个元素是否显示的开关
+<img alt="" src="../images/dreamview_usage_table/layer_menu.png" /> </p>
+<h4 id="route-editing">Route Editing</h4>
+<p>在向Routing模块发送寻路信息请求前可以编辑路径信息的可视化工具
+<img alt="" src="../images/dreamview_usage_table/route_editing.png" /></p>
+<h4 id="data-recorder">Data Recorder</h4>
+<p>将问题报告给rosbag中的drive event的界面
+<img alt="" src="../images/dreamview_usage_table/data_recorder.png" />  </p>
+<h4 id="default-routing">Default Routing</h4>
+<p>预先定义的路径或者路径点，该路径点称为兴趣点（POI）。</p>
+<p><img alt="" src="../images/dreamview_usage_table/default_routing.png" /> </p>
+<p>如果打开了路径编辑模式，路径点可被显式的在地图上添加。</p>
+<p>如果关闭了路径编辑模式，点击一个期望的POI会向服务器发送一次寻路请求。如果只选择了一个点，则寻路请求的起点是自动驾驶车辆的当前点。否则寻路请求的起点是选择路径点中的第一个点。</p>
+<p>查看Map目录下的<a href="https://github.com/ApolloAuto/apollo/blob/master/modules/map/data/demo/default_end_way_point.txt">default_end_way_point.txt</a>文件可以编译POI信息。例如，如果选择的地图模式为“Demo”，则在<code>modules/map/data/demo</code>目录下可以查看对应的 <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/map/data/demo/default_end_way_point.txt">default_end_way_point.txt</a> 文件。</p>
+<h4 id="_4">主视图</h4>
+<p>主视图在web页面中以动画的方式展示3D计算机图形</p>
+<p><img alt="" src="../images/dreamview_usage_table/mainview.png" /> </p>
+<p>下表列举了主视图中各个元素：</p>
+<table>
+<thead>
+<tr>
+<th>Visual Element</th>
+<th>Depiction Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image002.png" /></td>
+<td><ul><li>自动驾驶车辆    </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image004.png" /></td>
+<td><ul><li>车轮转动的比率</li> <li>左右转向灯的状态</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image003.png" /></td>
+<td><ul><li>交通信号灯状态</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image005.png" /></td>
+<td><ul><li>  驾驶状态（AUTO/DISENGAGED/MANUAL等） </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image006.png" /></td>
+<td><ul><li>行驶速度 km/h</li> <li>加速速率/刹车速率</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image026.png" /></td>
+<td><ul><li> 红色粗线条表示建议的寻路路径</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image038.png" /></td>
+<td><ul><li>  轻微移动物体决策—橙色表示应该避开的区域 </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image062.png" /></td>
+<td><ul><li>  绿色的粗曲线条带表示规划的轨迹 </li></ul></td>
+</tr>
+</tbody>
+</table>
+<h5 id="_5">障碍物</h5>
+<table>
+<thead>
+<tr>
+<th>Visual Element</th>
+<th>Depiction Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image010.png" /></td>
+<td><ul><li>车辆障碍物   </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image012.png" /></td>
+<td><ul><li>行人障碍物    </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image014.png" /></td>
+<td><ul><li>自行车障碍物      </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image016.png" /></td>
+<td><ul><li>未知障碍物 </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image018.png" /></td>
+<td><ul><li>速度方向显示了移动物体的方向，长度随速度按照比率变化</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image020.png" /></td>
+<td><ul><li>白色箭头显示了障碍物的移动方向</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image022.png" /></td>
+<td>黄色文字表示: <ul><li>障碍物的跟踪ID</li><li>自动驾驶车辆和障碍物的距离及障碍物速度</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image024.png" /></td>
+<td><ul><li>线条显示了障碍物的预测移动轨迹，线条标记为和障碍物同一个颜色</li></ul></td>
+</tr>
+</tbody>
+</table>
+<h5 id="planning">Planning决策</h5>
+<h6 id="_6">决策栅栏区</h6>
+<p>决策栅栏区显示了Planning模块对车辆障碍物做出的决策。每种类型的决策会表示为不同的颜色和图标，如下图所示：</p>
+<table>
+<thead>
+<tr>
+<th>Visual Element</th>
+<th>Depiction Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image028.png" /></td>
+<td><ul><li><strong>停止</strong> 表示物体主要的停止原因</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image030.png" /></td>
+<td><ul><li><strong>停止</strong> 表示物体的停止原因n</li></ul></td>
+</tr>
+<tr>
+<td><img alt="2" src="../images/dreamview_usage_table/0clip_image032.png" /></td>
+<td><ul><li><strong>跟车</strong> 物体</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image034.png" /></td>
+<td><ul><li><strong>让行</strong> 物体决策—点状的线条连接了各个物体</li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image036.png" /></td>
+<td><ul><li><strong>超车</strong> 物体决策—点状的线条连接了各个物体</li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>线路变更是一个特殊的决策，因此不显示决策栅栏区，而是将路线变更的图标显示在车辆上。</p>
+<table>
+<thead>
+<tr>
+<th>Visual Element</th>
+<th>Depiction Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/change-lane-left.png" /></td>
+<td><ul><li>变更到<strong>左</strong>车道 </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/change-lane-right.png" /></td>
+<td><ul><li>变更到<strong>右</strong>车道 </li></ul></td>
+</tr>
+</tbody>
+</table>
+<p>在优先通行的规则下，当在交叉路口的停车标志处做出让行决策时，被让行的物体在头顶会显示让行图标</p>
+<table>
+<thead>
+<tr>
+<th>Visual Element</th>
+<th>Depiction Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image037.png" /></td>
+<td>停止标志处的让行物体</td>
+</tr>
+</tbody>
+</table>
+<h6 id="_7">停止原因</h6>
+<p>如果显示了停止决策栅栏区，则停止原因展示在停止图标的右侧。可能的停止原因和对应的图标为：</p>
+<table>
+<thead>
+<tr>
+<th>Visual Element</th>
+<th>Depiction Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image040.png" /></td>
+<td><ul><li><strong>前方道路侧边区域</strong> </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image042.png" /></td>
+<td><ul><li><strong>前方人行道</strong> </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image044.png" /></td>
+<td><ul><li><strong>到达目的地</strong> </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image046.png" /></td>
+<td><ul><li><strong>紧急停车</strong>  </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image048.png" /></td>
+<td><ul><li> <strong>自动驾驶模式未准备好</strong> </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image050.png" /></td>
+<td><ul><li><strong>障碍物阻塞道路</strong></li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image052.png" /></td>
+<td><ul><li> <strong>前方行人穿越</strong> </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image054.png" /></td>
+<td><ul><li><strong>黄/红信号灯</strong> </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image056.png" /></td>
+<td><ul><li> <strong>前方有车辆</strong> </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image058.png" /></td>
+<td><ul><li> <strong>前方停止标志</strong> </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/0clip_image060.png" /></td>
+<td><ul><li><strong>前方让行标志</strong> </li></ul></td>
+</tr>
+</tbody>
+</table>
+<h5 id="_8">视图</h5>
+<p>可以在主视图中展示多种从<strong>Layer Menu</strong>选择的视图模式：</p>
+<table>
+<thead>
+<tr>
+<th>Visual Element</th>
+<th>Point of View</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/default_view.png" /></td>
+<td><ul><li><strong>默认视图</strong>      </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/near_view.png" /></td>
+<td><ul><li><strong>近距离视图</strong>   </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/overhead_view.png" /></td>
+<td><ul><li><strong>俯瞰视图</strong>    </li></ul></td>
+</tr>
+<tr>
+<td><img alt="" src="../images/dreamview_usage_table/map_view.png" /></td>
+<td><strong>地图</strong> <ul><li> 放大/缩小：滚动鼠标滚轮或使用两根手指滑动 </li><li> 移动：按下右键并拖拽或或使用三根手指滑动</li></ul></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

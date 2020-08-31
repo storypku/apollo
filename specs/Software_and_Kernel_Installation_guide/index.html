@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Software and Kernel Installation Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Software and Kernel Installation Guide";
+    var mkdocs_page_input_path = "specs/Software_and_Kernel_Installation_guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Software and Kernel Installation Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Software_and_Kernel_Installation_guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="software-and-kernel-installation-guide">Software and Kernel Installation Guide</h2>
+<p>This section describes the steps to install the following:</p>
+<ul>
+<li>Ubuntu Linux</li>
+<li>Apollo Kernel</li>
+<li>Nvidia GPU Driver</li>
+</ul>
+<p><img alt="tip_icon" src="../images/tip_icon.png" />It is assumed that you have experience working with Linux to successfully perform the software installation.</p>
+<h3 id="installing-ubuntu-linux">Installing Ubuntu Linux</h3>
+<p>Follow these steps:</p>
+<ol>
+<li>Create a bootable Ubuntu Linux USB flash drive:</li>
+</ol>
+<p>Download Ubuntu 14.04 (or a variant such as Xubuntu) <a href="https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0">create a bootable USB flash drive</a>. It is recommended that you use Ubuntu 14.04. You can type F2 during the system boot process to enter the BIOS settings. It is recommended that you disable Quick Boot and Quiet Boot in the BIOS to make it easier to catch any issues in the boot process.</p>
+<ol>
+<li>Install Ubuntu Linux:</li>
+</ol>
+<p>a.   Insert the Ubuntu installation drive into a USB port and turn on the system.
+   b.   Install Linux by following the on-screen instructions.</p>
+<ol>
+<li>Perform a software update:
+   a.   Reboot into Linux after the installation is done.
+   b.   Launch the Software Updater to update to the latest software packages (for the installed distribution) or type the following commands in a terminal program such as GNOME Terminal.</li>
+</ol>
+<p><code>shell
+   sudo apt-get update; sudo apt-get upgrade</code></p>
+<p>c. Launch a terminal program such as GNOME Terminal and type the following command to install the Linux 4.4 kernel:</p>
+<p><code>shell
+   sudo apt-get install linux-generic-lts-xenial</code></p>
+<p><img alt="tip_icon" src="../images/tip_icon.png" />The IPC must have Internet access to update and install software. Make sure that the Ethernet cable is connected to a network with Internet access. You might need to configure the network for the IPC if the network that it is connected to is not using the Dynamic Host Configuration Protocol (DHCP).</p>
+<h3 id="installing-the-apollo-kernel">Installing the Apollo Kernel</h3>
+<p>The Apollo runtime in the vehicle requires the <a href="https://github.com/ApolloAuto/apollo-kernel">Apollo Kernel</a>. It is strongly recommended to install the pre-built kernel.</p>
+<h4 id="use-the-pre-built-apollo-kernel">Use the pre-built Apollo Kernel.</h4>
+<p>You get access to and install the pre-built kernel using the following commands.</p>
+<ol>
+<li>Download the release packages from the release section on GitHub:</li>
+</ol>
+<pre><code>https://github.com/ApolloAuto/apollo-kernel/releases
+</code></pre>
+
+<ol>
+<li>Install the kernel after having downloaded the release package:</li>
+</ol>
+<pre><code>tar zxvf linux-4.4.32-apollo-1.5.0.tar.gz
+cd install
+sudo bash install_kernel.sh
+</code></pre>
+
+<ol>
+<li>Reboot your system using the <code>reboot</code> command.</li>
+<li>[Optional - if you are using CAN card for interface] Build the CAN driver source code, according to the vendor's instructions</li>
+</ol>
+<h4 id="build-your-own-kernel">Build your own kernel.</h4>
+<p>If you have modified the kernel, or the pre-built kernel is not the best for your platform, you can build your own kernel using the following steps:</p>
+<ol>
+<li>Clone the code from the repository</li>
+</ol>
+<pre><code>git clone https://github.com/ApolloAuto/apollo-kernel.git
+cd apollo-kernel
+</code></pre>
+
+<ol>
+<li>Add the CAN driver source code according to vendor's instruction</li>
+<li>Build the kernel using the following command:</li>
+</ol>
+<pre><code>bash build.sh
+</code></pre>
+
+<ol>
+<li>Install the kernel using the steps for a pre-built Apollo Kernel as described in the previous section.</li>
+</ol>
+<h3 id="installing-nvidia-gpu-driver">Installing NVIDIA GPU Driver</h3>
+<p>The Apollo runtime in the vehicle requires the <a href="http://www.nvidia.com/download/driverResults.aspx/114708/en-us">NVIDIA GPU Driver</a>. You must install the NVIDIA GPU driver with specific options.</p>
+<ol>
+<li>Download the installation files</li>
+</ol>
+<pre><code>wget http://us.download.nvidia.com/XFree86/Linux-x86_64/375.39/NVIDIA-Linux-x86_64-375.39.run
+</code></pre>
+
+<ol>
+<li>Start the driver installation</li>
+</ol>
+<pre><code>sudo bash ./NVIDIA-Linux-x86_64-375.39.run --no-x-check -a -s --no-kernel-module
+</code></pre>
+
+<h3 id="references">References</h3>
+<ol>
+<li>Ubuntu official <a href="https://www.ubuntu.com/desktop">website</a></li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

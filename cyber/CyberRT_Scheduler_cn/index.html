@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>CyberRT Scheduler cn - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "CyberRT Scheduler cn";
+    var mkdocs_page_input_path = "cyber/CyberRT_Scheduler_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>CyberRT Scheduler cn</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_Scheduler_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="1">1. 调度策略</h3>
+<p>调度系统调度策略分为classic策略和choreography策略。<br />
+classic策略是一个较为通用的调度策略，如果对当前车上dag结构不清楚，建议用此策略。<br />
+choreography策略是基于对车上任务足够熟悉，根据任务的依赖执行关系、任务的执行时长、任务cpu消耗情况、消息频率等，对任务进行编排。  </p>
+<h3 id="2-classic">2. classic策略</h3>
+<h4 id="21-classic">2.1 classic策略配置示例</h4>
+<p>cyber/conf/example_classic_sched.conf：</p>
+<pre><code class="bash">scheduler_conf {
+    policy: &quot;classic&quot;
+    process_level_cpuset: &quot;0-7,16-23&quot;
+    threads: [
+        {
+            name: &quot;async_log&quot;
+            cpuset: &quot;1&quot;
+            policy: &quot;SCHED_OTHER&quot;
+            prio: 0
+        }, {
+            name: &quot;shm&quot;
+            cpuset: &quot;2&quot;
+            policy: &quot;SCHED_FIFO&quot;
+            prio: 10
+        }
+    ]
+    classic_conf {
+        groups: [
+            {
+                name: &quot;group1&quot;
+                processor_num: 16
+                affinity: &quot;range&quot;
+                cpuset: &quot;0-7,16-23&quot;
+                processor_policy: &quot;SCHED_OTHER&quot;
+                processor_prio: 0
+                tasks: [
+                    {
+                        name: &quot;E&quot;
+                        prio: 0   
+                    }
+                ]
+            },{
+                name: &quot;group2&quot;
+                processor_num: 16
+                affinity: &quot;1to1&quot;
+                cpuset: &quot;8-15,24-31&quot;
+                processor_policy: &quot;SCHED_OTHER&quot;
+                processor_prio: 0
+                tasks: [
+                    {
+                        name: &quot;A&quot;
+                        prio: 0
+                    },{
+                        name: &quot;B&quot;
+                        prio: 1
+                    },{
+                        name: &quot;C&quot;
+                        prio: 2
+                    },{
+                        name: &quot;D&quot;
+                        prio: 3
+                    }
+                ]
+            }
+        ]
+    }
+}
+</code></pre>
+
+<h4 id="22">2.2 配置属性说明</h4>
+<p>每个配置属性的含义、影响：
+- groups：如2.1的配置示例，classic策略可以配置多个group，主要为了实现资源隔离、跨numa问题，比如一个进程产生的所有task在0-31号cpu上执行，内核的调度会将线程在0-31号cpu上切换，跨numa节点会给系统带来额外的开销，这里可以通过group将numa节点进行隔离，一个numa节点下的0-7,16-23号cpu划分到一个group中，另外一个numa节点下的8-15,24-31号cpu划分到另一个group，这样既保证了资源利用，也能避免跨numa节点带来的开销。</p>
+<ul>
+<li>
+<p>process_level_cpuset: 控制mainboard进程使用哪些cpu</p>
+</li>
+<li>
+<p>affinity： 取值为range或者1to1，如第一个group，创建16个线程，在0-7,16-23号cpu上设置亲和性，每个线程都可以在0-7，16-23号核上执行。第二个group中，affinity为1to1，表示16个线程对应8-15,24-31号cpu，每个线程和一个cpu进行亲和性设置，能减少线程在cpu之间切换带来的开销，但是前提是开启的线程数和cpu数必须一致。</p>
+</li>
+<li>
+<p>processor_policy和processor_prio: 这两个一般成对出现，processor_policy指设置线程的调度策略，取值为SCHED_FIFO（实时调度策略，先到先服务）, SCHED_RR（实时调度策略，时间片轮转）, SCHED_OTHER（分时调度策略，为默认策略），对于设置了SCHED_FIFO或者SCHED_RR的线程会更优先的得到cpu执行， 调度模型中设置processor_policy背景：为了保证主链路的任务或者其他一些实时task的优先执行。如果processor_policy设置为SCHED_FIFO/SCHED_RR，processor_prio取值为(1-99)，值越大，表明优先级越高，抢到cpu概率越大。如果processor_policy设置为SCHED_OTHER，processor_prio取值为（-20-19，0为默认值），这里为nice值，nice值不影响分配到cpu的优先级，但是影响分到cpu时间片的大小，如果nice值越小，分到的时间片越多。</p>
+</li>
+<li>
+<p>tasks：这里是对task任务进行配置，name表示task的名字，prio表示任务的优先级，为了提高性能，减小任务队列锁的粒度，调度模型中采用的是多优先级队列，也就是同一优先级的task在同一个队列里面，系统调度时会优先执行优先级高的任务。</p>
+</li>
+</ul>
+<h4 id="23">2.3 配置案例详解</h4>
+<p>例如拓扑结构为下图所示，对应2.1中的配置文件，那么A、B、C、D任务在第一个group中执行，E在第二个group中执行，对于没有出现在配置中的任务，比如F默认会放到第一个group中执行。
+而且配置中我们对于任务进行了优先级设置，A、B、C、D优先级依次增大，正好对应下图的拓扑依赖关系，在链路中越靠后的任务优先级越高。这样设置的目的是解决任务优先级反转的问题。</p>
+<p><img src="images/topo_sched.png" width="30%" height="30%" /></p>
+<h3 id="3-choreography">3. choreography策略</h3>
+<h4 id="31-choreography">3.1 choreography策略配置示例</h4>
+<p>cyber/conf/example_choreography_sched.conf:</p>
+<pre><code class="bash">scheduler_conf {
+    policy: &quot;choreography&quot;
+    process_level_cpuset: &quot;0-7,16-23&quot;
+    threads: [
+        {
+            name: &quot;lidar&quot;
+            cpuset: &quot;1&quot;
+            policy: &quot;SCHED_RR&quot;
+            prio: 10
+        }, {
+            name: &quot;shm&quot;
+            cpuset: &quot;2&quot;
+            policy: &quot;SCHED_FIFO&quot;
+            prio: 10
+        }
+    ]
+    choreography_conf {
+        choreography_processor_num: 8
+        choreography_affinity: &quot;range&quot;
+        choreography_cpuset: &quot;0-7&quot;
+        choreography_processor_policy: &quot;SCHED_FIFO&quot;
+        choreography_processor_prio: 10
+
+        pool_processor_num: 8
+        pool_affinity: &quot;range&quot;
+        pool_cpuset: &quot;16-23&quot;
+        pool_processor_policy: &quot;SCHED_OTHER&quot;
+        pool_processor_prio: 0
+
+        tasks: [
+            {
+                name: &quot;A&quot;
+                processor: 0
+                prio: 1
+            },
+            {
+                name: &quot;B&quot;
+                processor: 0
+                prio: 2
+            },
+            {
+                name: &quot;C&quot;
+                processor: 1
+                prio: 1
+            },
+            {
+                name: &quot;D&quot;
+                processor: 1
+                prio: 2
+            },
+            {
+                name: &quot;E&quot;
+            }
+        ]
+    }
+}
+</code></pre>
+
+<h4 id="32">3.2 配置属性说明</h4>
+<p>choreography策略，主要是对主链路上的任务进行编排（choreography开头的配置），将非主链路的任务放到线程池中由classic策略（pool开头的配置）执行，choreography策略中classic线程池存在的意义：主链路的任务执行先后关系比较明确，但是存在一些其他链路的任务在不清楚前后拓扑关系的情况下，或者说未被编排的任务（包括Async创建的异步task），会被放到classic线程池中执行。<br />
+关于配置属性：<br />
+- affinity： 在2.2中进行了解释说明。
+- choreography_processor_policy和choreography_processor_prio是设置编排线程的调度策略和优先级，这里设置SCHED_FIFO是为了保证主链路能够及时抢占cpu执行， pool_processor_policy和pool_processor_prio是设置classic线程的调度策略和优先级。</p>
+<h4 id="33">3.3 配置案例详解</h4>
+<p>用2.3中的拓扑图来进行说明
+A、B、C、D是主链路任务，都设置了processor属性，那么A、B在0号cpu上执行，C、D在1号cpu上执行。在同一个核上，A和B还设置了优先级，所以优先执行B，再执行A。<br />
+没有配置processor属性的任务E以及没有出现在task配置中的任务如F，则默认进入classic线程池中执行。<br />
+考虑到任务优先级、执行时长、频率与调度之间的关系，任务编排有如下几个依据：
+- 同一个path的任务尽量编排在同一个processor，如果processor负载过高，将部分任务拆分到另外其他processor
+- 同一个path上的任务从开始到结束，优先级逐级升高
+- 不同path上的任务尽量不混排
+- 高频&amp;短耗时任务尽量排放同一processor</p>
+<h3 id="4">4. 默认配置说明</h3>
+<p>如果进程没有对应的调度配置文件，默认采用classic调度策略，开启调度任务线程数值为conf/cyber.pb.conf中default_proc_num设置的值</p>
+<h3 id="5">5. 进程加载调度配置文件示例</h3>
+<p>modules/dreamview/conf/hmi_modes/mkz_close_loop.pb.txt中，设置了两个process_group，分别为compute_sched/control_sched,也就是这两个进程启动时候，分别加载compute_sched.conf/control_sched.conf的调度配置文件。<br />
+另外要注意的是dreamview进程的process_group：dreamview_sched 是在modules/dreamview/backend/main.cc 中进行设置的，加载对应的调度配置文件dreamview_sched.conf。</p>
+<h3 id="6">6. 调度策略切换</h3>
+<p>默认调度策略采用classic策略，compute_sched.conf和control_sched.conf两个软链分别指向compute_sched_classic.conf和control_sched_classic.conf文件。可以通过将软链指向compute_sched_choreography.conf和control_sched_choreography.conf配置文件来切换到choreography策略。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

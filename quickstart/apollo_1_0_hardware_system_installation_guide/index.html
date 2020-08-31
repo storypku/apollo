@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo 1.0 Hardware and System Installation Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo 1.0 Hardware and System Installation Guide";
+    var mkdocs_page_input_path = "quickstart/apollo_1_0_hardware_system_installation_guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo 1.0 Hardware and System Installation Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/apollo_1_0_hardware_system_installation_guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-10-hardware-and-system-installation-guide">Apollo 1.0 Hardware and System Installation Guide</h2>
+<ul>
+<li><a href="#about-this-guide">About This Guide</a><ul>
+<li><a href="#document-conventions">Document Conventions</a></li>
+</ul>
+</li>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#documentation">Documentation</a></li>
+</ul>
+</li>
+<li><a href="#key-hardware-components">Key Hardware Components</a><ul>
+<li><a href="#additional-components-required">Additional Components Required</a></li>
+<li><a href="#onboard-computer-system---ipc">Onboard Computer System - IPC</a><ul>
+<li><a href="#ipc-configuration">IPC Configuration</a></li>
+<li><a href="#ipc-front-and-rear-views">IPC Front and Rear Views</a></li>
+</ul>
+</li>
+<li><a href="#controller-area-network-(can)-card">Controller Area Network (CAN) Card</a></li>
+<li>
+<p><a href="#global-positioning-system-(gps)-and-inertial-measurement-unit-(imu)">Global Positioning System (GPS) and Inertial Measurement Unit (IMU)</a></p>
+<ul>
+<li><a href="#option-1:-the-novatel-span-igm-a1">Option 1: The NovAtel SPAN-IGM-A1</a></li>
+<li><a href="#option-2:-the-novatel-span-propak6-and-novatel-imu-igm-a1">Option 2: The NovAtel SPAN ProPak6 and NovAtel IMU-IGM-A1</a><ul>
+<li><a href="#the-gps-receiver/antenna">The GPS Receiver/Antenna</a></li>
+</ul>
+</li>
+<li><a href="#overview-of-the-installation-tasks">Overview of the Installation Tasks</a></li>
+<li><a href="#steps-for-the-installation-tasks">Steps for the Installation Tasks</a><ul>
+<li><a href="#at-the-office">At the Office</a></li>
+</ul>
+</li>
+<li><a href="#preparing-the-ipc">Preparing the IPC</a></li>
+<li><a href="#installing-the-software-for-the-ipc">Installing the Software for the IPC</a><ul>
+<li><a href="#in-the-vehicle">In the Vehicle</a></li>
+</ul>
+</li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#diagrams-of-the-major-component-installations">Diagrams of the Major Component Installations</a></li>
+<li><a href="#installing-the-gps-receiver-and-antenna">Installing the GPS Receiver and Antenna</a></li>
+<li><a href="#installing-the-ipc">Installing the IPC</a></li>
+<li><a href="#configuring-the-gps-and-imu">Configuring the GPS and IMU</a></li>
+<li><a href="#setting-up-the-network">Setting up the Network</a><ul>
+<li><a href="#recommendations">Recommendations</a></li>
+</ul>
+</li>
+<li><a href="#additional-tasks-required">Additional Tasks Required</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="about-this-guide">About This Guide</h2>
+<p>The <em>Apollo 1.0 Hardware and System Installation Guide</em> provides the instructions to install all of the hardware components and system software for the <strong>Apollo Project </strong>. The system installation information included pertains to the procedures to download and install the Apollo Linux Kernel.</p>
+<h3 id="document-conventions">Document Conventions</h3>
+<p>The following table lists the conventions that are used in this document:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bold</strong></td>
+<td>Emphasis</td>
+</tr>
+<tr>
+<td><code>Mono-space font</code></td>
+<td>Code, typed data</td>
+</tr>
+<tr>
+<td><em>Italic</em></td>
+<td>Titles of documents, sections, and headings Terms used</td>
+</tr>
+<tr>
+<td><img alt="info" src="../images/info_icon.png" /></td>
+<td><strong>Info</strong>  Contains information that might be useful.  Ignoring the Info icon has no negative consequences.</td>
+</tr>
+<tr>
+<td><img alt="tip" src="../images/tip_icon.png" /></td>
+<td><strong>Tip</strong>. Includes helpful hints or a shortcut that might assist you in completing a task.</td>
+</tr>
+<tr>
+<td><img alt="online" src="../images/online_icon.png" /></td>
+<td><strong>Online</strong>. Provides a link to a particular web site where you can get more information.</td>
+</tr>
+<tr>
+<td><img alt="warning" src="../images/warning_icon.png" /></td>
+<td><strong>Warning</strong>. Contains information that must <strong>not</strong> be ignored or you risk failure when you perform a certain task or step.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="introduction">Introduction</h2>
+<p>The <strong>Apollo Project</strong> is an initiative that provides an open, complete, and reliable software platform for Apollo partners in the automotive and autonomous driving industries. The aim of this project is to enable these entities to develop their own self-driving systems based on Apollo software stack.</p>
+<h3 id="documentation">Documentation</h3>
+<p>The following set of documentation describes Apollo 1.0:</p>
+<ul>
+<li>
+<p><strong><em><u>[Apollo Hardware and System Installation Guide]</u></em></strong>  ─ Provides the instructions to install the hardware components and the system software for the vehicle:</p>
+<ul>
+<li>
+<p><strong>Vehicle</strong>:</p>
+</li>
+<li>
+<p>Industrial PC (IPC)</p>
+</li>
+<li>Global Positioning System (GPS)</li>
+<li>Inertial Measurement Unit (IMU)</li>
+<li>Controller Area Network (CAN) card</li>
+<li>Hard drive</li>
+<li>GPS Antenna</li>
+<li>
+<p>GPS Receiver</p>
+</li>
+<li>
+<p><strong>Software</strong>:</p>
+</li>
+<li>Ubuntu Linux</li>
+<li>Apollo Linux Kernel</li>
+</ul>
+</li>
+<li>
+<p><strong><em><u>[Apollo Quick Start Guide]</u></em></strong> ─ A combination tutorial and roadmap that provide the complete set of end-to-end instructions. The Quick Start Guide also provides links to additional documents that describe the conversion of a regular car to an autonomous-driving vehicle.</p>
+</li>
+</ul>
+<h2 id="key-hardware-components">Key Hardware Components</h2>
+<p>The key hardware components to install include:</p>
+<ul>
+<li>Onboard computer system ─ Neousys Nuvo-5095GC</li>
+<li>Controller Area Network (CAN) Card ─ ESD CAN-PCIe/402-1</li>
+<li>General Positioning System (GPS) and Inertial Measurement Unit (IMU) ─
+  You can select one of the following options:</li>
+<li>NovAtel SPAN-IGM-A1</li>
+<li>NovAtel SPAN® ProPak6™ and NovAtel IMU-IGM-A1</li>
+</ul>
+<h3 id="additional-components-required">Additional Components Required</h3>
+<p>You need to provide these additional components for the Additional Tasks Required:</p>
+<ul>
+<li>A 4G router for Internet access</li>
+<li>A monitor, keyboard, and mouse for debugging at the car onsite</li>
+<li>Cables: Video Graphics Array (VGA) connector, a Digital Visual Interface (DVI) cable (optional)</li>
+<li>Apple iPad Pro: 9.7-inch, Wi-Fi (optional)</li>
+</ul>
+<p>The features of the key hardware components are presented in the subsequent sections.</p>
+<h3 id="onboard-computer-system-ipc">Onboard Computer System - IPC</h3>
+<p>The onboard computer system is an industrial PC (IPC) for the autonomous vehicle and uses the <strong>NeousysNuvo-5095GC</strong> that is powered by a sixth-generation Intel Skylake core i7-6700 CPU.</p>
+<p>The Neousys Nuvo-5095GC is the central unit of the autonomous driving system (ADS).</p>
+<h4 id="ipc-configuration">IPC Configuration</h4>
+<p>Configure the IPC as follows:</p>
+<ul>
+<li>32GB DDR4 RAM</li>
+<li>MezIO-V20-EP module (with ignition control for in-vehicle usage)</li>
+<li>PO-160W-OW 160W AC/DC power adapter</li>
+<li>CSM2 module (x16 PCIe expansion Gen3 8-lane cassette)</li>
+</ul>
+<h4 id="ipc-front-and-rear-views">IPC Front and Rear Views</h4>
+<p>The front and rear views of the IPC are shown with the Graphics Processing Unit (GPU) installed in the following pictures:</p>
+<p>The front view of the Nuvo-5095GC:</p>
+<p><img alt="ipc_front" src="../images/ipc_front.png" /></p>
+<p>The rear view of the Nuvo-5095GC:</p>
+<p><img alt="ipc_back" src="../images/ipc_back.png" /></p>
+<p>For more information about the Nuvo-5095GC, see:</p>
+<p><img alt="online" src="../images/online_icon.png" />
+Neousys Nuvo-5095GC Product Page:</p>
+<p><a href="http://www.neousys-tech.com/en/product/application/gpu-computing/product/nuvo-5095gc-gpu-computer">http://www.neousys-tech.com/en/product/application/gpu-computing/product/nuvo-5095gc-gpu-computer</a>
+<img alt="online" src="../images/online_icon.png" /></p>
+<p>Neousys Nuvo-5095GC-Manual:</p>
+<p><a href="http://www.neousys-tech.com/en/support/resources/category/162-manual">http://www.neousys-tech.com/en/support/resources/category/162-manual</a></p>
+<h3 id="controller-area-network-can-card">Controller Area Network (CAN) Card</h3>
+<p>The CAN card to use with the IPC is <strong>ESD</strong> <strong>CAN-PCIe/402</strong>.</p>
+<p><img alt="can_card" src="../images/can_card.png" /></p>
+<p>For more information about the CAN-PCIe/402, see:</p>
+<p><img alt="online" src="../images/online_icon.png" />    ESD CAN-PCIe/402 Product Page:</p>
+<p><a href="https://esd.eu/en/products/can-pcie402">https://esd.eu/en/products/can-pcie402</a></p>
+<h3 id="global-positioning-system-gps-and-inertial-measurement-unit-imu">Global Positioning System (GPS) and Inertial Measurement Unit (IMU)</h3>
+<p>There are <strong>two</strong> GPS-IMU <strong>options</strong> available,and the choice depends upon the one that most fits your needs:</p>
+<ul>
+<li><strong>Option 1: NovAtel SPAN-IGM-A1</strong></li>
+<li><strong>Option 2: NovAtel SPAN® ProPak6™ and NovAtel IMU-IGM-A1</strong></li>
+</ul>
+<h4 id="option-1-the-novatel-span-igm-a1">Option 1: The NovAtel SPAN-IGM-A1</h4>
+<p>The NovAtel SPAN-IGM-A1 is an integrated, single-box solution that offers tightly coupled Global Navigation Satellite System (GNSS) positioning and inertial navigation featuring the NovAtel OEM615 receiver.</p>
+<p><img alt="novatel_imu" src="../images/Novatel_imu.png" /></p>
+<p>For more information about the NovAtel SPAN-IGM-A1, see:</p>
+<p><img alt="online" src="../images/online_icon.png" /> NovAtel SPAN-IGM-A1 Product Page:</p>
+<p><a href="https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/">https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/</a></p>
+<h4 id="option-2-the-novatel-span-propak6-and-novatel-imu-igm-a1">Option 2: The NovAtel SPAN ProPak6 and NovAtel IMU-IGM-A1</h4>
+<p>NovAtel ProPak6 is a standalone GNSS receiver. It works with a separate NovAtel- supported IMU (in this case, the NovAtel IMU-IGM-A1)to provide localization.</p>
+<p>The ProPak6 provides the latest and most sophisticated enclosure product manufactured by NovAtel.</p>
+<p>The IMU-IGM-A1 is an IMU that pairs with a SPAN-enabled GNSS receiver such as the SPAN ProPak6.</p>
+<p><img alt="novatel_pp6" src="../images/Novatel_pp6.png" /></p>
+<p>For more information about the NovAtel SPAN ProPak6 and the IMU-IGM-A1, see:</p>
+<p><img alt="online" src="../images/online_icon.png" /> NovAtel ProPak6 Installation &amp; Operation Manual:</p>
+<p><a href="https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf">https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf</a></p>
+<p><img alt="online" src="../images/online_icon.png" />NovAtel IMU-IGM-A1 Product Page:</p>
+<p><a href="https://www.novatel.com/products/span-gnss-inertial-systems/span-imus/span-mems-imus/imu-igm-a1/#overview">https://www.novatel.com/products/span-gnss-inertial-systems/span-imus/span-mems-imus/imu-igm-a1/#overview</a></p>
+<h3 id="the-gps-receiverantenna">The GPS Receiver/Antenna</h3>
+<p>The GPS Receiver/Antenna used with the GPS-IMU component is the <strong>NovAtel GPS-703-GGG-HV</strong>.</p>
+<p><strong>NOTE: </strong>The GPS NovAtelGPS-703-GGG-HV works with either model of the two GPS-IMU options that are described in the previous section, Global Positioning System (GPS) and Inertial Measurement Unit (IMU).</p>
+<p><img alt="gps_receiver" src="../images/gps_receiver.png" /></p>
+<p>For more information about the NovAtel GPS-703-GGG-HV, see:</p>
+<p><img alt="online" src="../images/online_icon.png" /> NovAtel GPS-703-GGG-HV Product Page:</p>
+<p><a href="https://www.novatel.com/products/gnss-antennas/high-performance-gnss-antennas/gps-703-ggg-hv/">https://www.novatel.com/products/gnss-antennas/high-performance-gnss-antennas/gps-703-ggg-hv/</a></p>
+<h2 id="overview-of-the-installation-tasks">Overview of the Installation Tasks</h2>
+<p>Installing the hardware and the software components involves these tasks:</p>
+<p><strong>AT THE OFFICE:</strong>
+1. Prepare the IPC:
+    a. Examine the Graphics Processing Unit (GPU) cassette to determine if you need to remove the GPU card (if it was pre-installed).
+    b. Prepare and then install the Controller Area Network (CAN) card by first repositioning the CAN card termination jumper before you insert the card into the slot.</p>
+<ol>
+<li>
+<p>Install the hard drive (if none was pre-installed) in the IPC.</p>
+<p>You can also choose to replace a pre-installed hard drive if you prefer.</p>
+<p><strong>Recommendations</strong> :
+- Install a Solid-State Drive (SSD) for better reliability.
+- Use a high-capacity drive if you need to collect driving data.</p>
+</li>
+<li>
+<p>Prepare the IPC for powering up:
+    a. Attach the power cable to the power connector (terminal block).
+    b. Connect the monitor, Ethernet, keyboard, and mouse to the IPC.
+    c. Connect the IPC to a power source.</p>
+</li>
+<li>
+<p>Install the software on the IPC (some Linux experience is required):
+    a. Install Ubuntu Linux.
+    b. Install the Apollo Linux kernel.</p>
+</li>
+</ol>
+<p><strong>IN THE VEHICLE:</strong></p>
+<ul>
+<li>
+<p>Make sure that all the modifications for the vehicle, which are listed in the section Prerequisites, have been performed.</p>
+</li>
+<li>
+<p>Install the major components (according to the illustrations and the instructions included in this document):</p>
+<ul>
+<li>GPS Antenna</li>
+<li>IPC</li>
+<li>GPS Receiver</li>
+</ul>
+</li>
+</ul>
+<p>The actual steps to install all of the hardware and software components are detailed in the section, Steps for the Installation Tasks.</p>
+<h2 id="steps-for-the-installation-tasks">Steps for the Installation Tasks</h2>
+<p>This section describes the steps to install:</p>
+<ul>
+<li>The key hardware and software components</li>
+<li>The hardware in the vehicle</li>
+</ul>
+<h3 id="at-the-office">At the Office</h3>
+<p>Perform these tasks:</p>
+<ul>
+<li>
+<p>Prepare the IPC:</p>
+<ul>
+<li>Install the CAN card</li>
+<li>Install or replace the hard drive</li>
+<li>Prepare the IPC for powering up</li>
+</ul>
+</li>
+<li>
+<p>Install the software for the IPC:</p>
+<ul>
+<li>Ubuntu Linux</li>
+<li>Apollo Kernel</li>
+</ul>
+</li>
+</ul>
+<h4 id="preparing-the-ipc">Preparing the IPC</h4>
+<p>Follow these steps:</p>
+<ol>
+<li>
+<p>In the IPC, examine the GPU cassette to determine if there is a pre-installed GPU card, which you need to remove:</p>
+<p>a. Turn over the IPC to unscrew the four screws (shown in the purple squares) on the bottom of computer that are holding the GPU cassette in place:</p>
+<p><img alt="ipc_gpu_cassette" src="../images/ipc_gpu_cassette.png" /></p>
+<p>b. Remove the GPU cassette from the IPC:</p>
+<p><img alt="ipc_gpu_cassette_remove" src="../images/ipc_gpu_cassette_remove.png" /></p>
+<p>c. Remove the GPU cassette from the IPC: Unscrew three additional screws (shown in the purple circles) on the bottom of the GPU cassette to open the cover:</p>
+<p><img alt="ipc_gpu_cassette_unscrew" src="../images/ipc_gpu_cassette_unscrew.png" /></p>
+<p>d. Remove the GPU card (if installed):</p>
+<p><img alt="ipc_gpu_remove" src="../images/ipc_gpu_remove.png" /></p>
+</li>
+<li>
+<p>Prepare and install the CAN card:</p>
+<p>a. Set the CAN card termination jumper by removing the red jumper cap (shown in yellow circles) from its default location and placing it at its termination position:</p>
+<p><img alt="prepare_can_card" src="../images/prepare_can_card.png" /></p>
+<p><strong><img alt="warning" src="../images/warning_icon.png" />WARNING</strong>: The CAN card will not work if the termination jumper is not set correctly.</p>
+<p>b. Insert the CAN card into the slot in the IPC:</p>
+<p><img alt="insert_can_card" src="../images/insert_can_card.png" /></p>
+<p>c. Reinstall the GPU cassette in the IPC:</p>
+<p><img alt="reinstall_gpu_cassette" src="../images/reinstall_gpu_cassette.png" /></p>
+</li>
+<li>
+<p>Install or replace the hard drive.</p>
+<p>You need to install one or two 2.5” SSD or hard drives if none have been pre-installed. As an alternative, you might want to replace a pre-installed hard drive with one of your own (say, an SSD).</p>
+<p><img alt="tip_icon" src="../images/tip_icon.png" /> An SSD drive is highly recommended for better reliability. Also consider using a high-capacity drive if you need to collect driving data.</p>
+<p>To install the hard drive:</p>
+<p>a. Unscrew the three screws (shown in the purple circles) to open the hard drive cover (caddy):</p>
+<p><img alt="hard_drive_unscrew" src="../images/hard_drive_unscrew.png" /></p>
+<p>b. Install the drive in the caddy (as shown with an Intel SSD):</p>
+<p><img alt="tip_icon" src="../images/tip_icon.png" /> Observe the way the hard drive is situated in the caddy for the installation.
+The Serial Advanced Technology Attachment (SATA) and the power connectors should be placed in the caddy facing the end that has the <strong>two</strong> screw holes showing.</p>
+<p><img alt="hard_drive" src="../images/hard_drive.png" /></p>
+<p>The hard drive in the caddy is now connected:</p>
+<p><img alt="hard_drive_connect" src="../images/hard_drive_connect.png" /></p>
+<p>c. Reinstall the SSD caddy in the IPC:</p>
+<p><img alt="reinstall_ssd" src="../images/reinstall_ssd.png" /></p>
+</li>
+<li>
+<p>Prepare the IPC for powering up:</p>
+<p>a. Attach the power cable to the power connector(terminal block) that comes with the IPC:</p>
+<p><img alt="warning_icon" src="../images/warning_icon.png" /><strong>WARNING</strong>: Make sure that the positive(labeled <strong>R</strong> for red) and the negative(labeled <strong>B</strong> for black) wires of the power cable are inserted into the correct holes on the power terminal block.</p>
+<p><img alt="ipc_power_RB" src="../images/ipc_power_RB.png" /></p>
+<p>b.   Connect the monitor, Ethernet cable, keyboard, and mouse to the IPC:</p>
+<p><img alt="ipc_power_back" src="../images/ipc_power_back.png" /></p>
+<p>​</p>
+<p><img alt="tip_icon" src="../images/tip_icon.png" />It is recommended that you use a Video Graphics Array (VGA) connector for the monitor for these reasons:</p>
+</li>
+<li>
+<p>If you do not see any screen display when the IPC boots up, switch to the VGA input. The Neousys Nuvo-5095GC IPC <strong>always</strong> outputs to a <strong>VGA port</strong> even if there is no monitor connected. Consequently, the Linux installer might “elect” to output to a VGA port instead of a DVI port.</p>
+</li>
+<li>If you do not see a dialog window during the installation process when using a dual-monitor setup, try switching between VGA and DVI to find it. The Linux installer might detect two monitors and use them both.</li>
+</ol>
+<p>For better display quality, you have the option to:</p>
+<ul>
+<li>Connect to another monitor using a DVI cable, or a High-Definition Multimedia Interface (HMI) with DVI-HMI adapter</li>
+<li>
+<p>Use the DVI/HDMI port on the same monitor</p>
+<p>c. Connect the power:</p>
+<p><img alt="ipc_connect_power" src="../images/ipc_connect_power.png" /></p>
+</li>
+</ul>
+<h4 id="installing-the-software-for-the-ipc">Installing the Software for the IPC</h4>
+<p>This section describes the steps to install:</p>
+<ul>
+<li>Ubuntu Linux</li>
+<li>Apollo Kernel</li>
+</ul>
+<p><img alt="tip_icon" src="../images/tip_icon.png" />It is assumed that you have experience working with Linux to successfully perform the software installation.</p>
+<h5 id="installing-ubuntu-linux">Installing Ubuntu Linux</h5>
+<p>Follow these steps:</p>
+<ol>
+<li>
+<p>Create a bootable Ubuntu Linux USB flash drive:</p>
+<p>Download Ubuntu (or a variant such as Xubuntu) and follow the online instructions to create a bootable USB flash drive.</p>
+</li>
+</ol>
+<p><img alt="tip_icon" src="../images/tip_icon.png" />It is recommended that you use <strong>Ubuntu 14.04.3</strong>.</p>
+<p><img alt="tip_icon" src="../images/tip_icon.png" />You can type F2 during the system boot process to enter the BIOS settings. It is recommended that you disable Quick Boot and Quiet Boot in the BIOS to make it easier to catch any issues in the boot process.</p>
+<p>For more information about Ubuntu, see:
+<img alt="online_icon" src="../images/online_icon.png" /> Ubuntu for Desktop web site:</p>
+<p><a href="https://www.ubuntu.com/desktop">https://www.ubuntu.com/desktop</a></p>
+<ol>
+<li>
+<p>Install Ubuntu Linux:</p>
+<p>a.   Insert the Ubuntu installation drive into a USB port and turn on the system.
+b.   Install Linux by following the on-screen instructions.</p>
+</li>
+<li>
+<p>Perform a software update and the installation:
+    a.   Reboot into Linux after the installation is done.
+    b.   Launch the Software Updater to update to the latest software packages (for the installed distribution) or type the following commands in a terminal program such as GNOME Terminal.
+    <code>shell
+    sudo apt-get update; sudo apt-get upgrade</code></p>
+<p>c. Launch a terminal program such as GNOME Terminal and type the following command to install the Linux 4.4 kernel:</p>
+</li>
+</ol>
+<pre><code class="shell">sudo apt-get install linux-generic-lts-xenial
+</code></pre>
+
+<p><img alt="tip_icon" src="../images/tip_icon.png" />The IPC must have Internet access to update and install software. Make sure that the Ethernet cable is connected to a network with Internet access. You might need to configure the network for the IPC if the network that it is connected to is not using the Dynamic Host Configuration Protocol (DHCP).</p>
+<h5 id="installing-the-apollo-kernel">Installing the Apollo Kernel</h5>
+<p>The Apollo runtime in the vehicle requires the <a href="https://github.com/ApolloAuto/apollo-kernel">Apollo Kernel</a>. You are strongly recommended to install the pre-built kernel.</p>
+<h6 id="use-pre-built-apollo-kernel">Use pre-built Apollo Kernel.</h6>
+<p>You get access and install the pre-built kernel with the following commands.</p>
+<ol>
+<li>Download the release packages from the release section on github</li>
+</ol>
+<pre><code>https://github.com/ApolloAuto/apollo-kernel/releases
+</code></pre>
+
+<ol>
+<li>Install the kernel
+After having the release package downloaded:</li>
+</ol>
+<pre><code>tar zxvf linux-4.4.32-apollo-1.0.0.tar.gz
+cd install
+sudo bash install_kernel.sh
+</code></pre>
+
+<ol>
+<li>Reboot your system by the <code>reboot</code> command</li>
+<li>Build the ESD CAN driver source code
+Now you need to build the ESD CAN driver source code according to <a href="https://github.com/ApolloAuto/apollo-kernel/blob/master/linux/ESDCAN-README.md">ESDCAN-README.md</a></li>
+</ol>
+<h6 id="build-your-own-kernel">Build your own kernel.</h6>
+<p>If have modified the kernel, or the pre-built kernel is not the best for your platform, you can build your own kernel with the following steps.</p>
+<ol>
+<li>Clone the code from repository</li>
+</ol>
+<pre><code>git clone https://github.com/ApolloAuto/apollo-kernel.git
+cd apollo-kernel
+</code></pre>
+
+<ol>
+<li>
+<p>Add the ESD CAN driver source code according to <a href="https://github.com/ApolloAuto/apollo-kernel/blob/master/linux/ESDCAN-README.md">ESDCAN-README.md</a></p>
+</li>
+<li>
+<p>Build the kernel with the following command.</p>
+</li>
+</ol>
+<pre><code>bash build.sh
+</code></pre>
+
+<ol>
+<li>Install the kernel the same way as using a pre-built Apollo Kernel.</li>
+</ol>
+<h6 id="optional-test-the-esd-can-device-node">Optional: Test the ESD CAN device node</h6>
+<p>After rebooting the IPC with the new kernel:</p>
+<p>a. Create the CAN device node by issuing the following commands in a terminal:</p>
+<pre><code class="shell">cd /dev; sudo mknod –-mode=a+rw can0 c 52 0
+</code></pre>
+
+<p>b. Test the CAN device node using the test program that is part of the ESD CAN software package that you have acquired from ESD Electronics.</p>
+<p>The IPC is now ready to be mounted on the vehicle.</p>
+<h3 id="in-the-vehicle">In the Vehicle</h3>
+<p>Perform these tasks:</p>
+<ul>
+<li>Make the necessary modifications to the vehicle as specified in the list of prerequisites</li>
+<li>Install the major components:<ul>
+<li>GPS Antenna</li>
+<li>IPC</li>
+<li>GPS Receiver</li>
+</ul>
+</li>
+</ul>
+<h4 id="prerequisites">Prerequisites</h4>
+<p><strong><img alt="warning_icon" src="../images/warning_icon.png" />WARNING</strong>: Prior to mounting the major components (GPS Antenna, IPC, and GPS Receiver) in the vehicle, certain modifications must be performed as specified in the list of prerequisites. The instructions for making the mandatory changes in the list are outside the scope of this document.</p>
+<p>The list of prerequisites are as follows:</p>
+<ul>
+<li>The vehicle must be modified for “drive-by-wire” technology by a professional service company. Also, a CAN interface hookup must be provided in the trunk where the IPC will be mounted.</li>
+<li>A power panel must be installed in the trunk to provide power to the IPC and the GPS-IMU. The power panel would also service other devices in the vehicle such as a 4G LTE router. The power panel should be hooked up to the power system in the vehicle.</li>
+<li>A custom-made rack must be installed to mount the GPS-IMU Antenna on top of the vehicle.</li>
+<li>A custom-made rack must be installed to mount the GPS-IMU in the trunk.</li>
+<li>A 4G LTE router must be mounted in the trunk to provide Internet access for the IPC. The router must have built-in Wi-Fi access point (AP) capability to connect to other devices, such as an iPad, to interface with the autonomous driving (AD) system. A user would be able to use the mobile device to start AD mode or monitor AD status, for example.</li>
+</ul>
+<h4 id="diagrams-of-the-major-component-installations">Diagrams of the Major Component Installations</h4>
+<p>The following two diagrams indicate the locations of where the three major components (GPS Antenna, IPC, and GPS Receiver) should be installed on the vehicle:</p>
+<p><img alt="major_component_side_view" src="../images/major_component_side_view.png" /></p>
+<p><img alt="major_component_rear_view" src="../images/major_component_rear_view.png" /></p>
+<h4 id="installing-the-gps-receiver-and-antenna">Installing the GPS Receiver and Antenna</h4>
+<p>This section provides general information about installing <strong>one</strong> of two choices:</p>
+<ul>
+<li><strong>Option 1:</strong> GPS-IMU: <strong>NovAtel SPAN-IGM-A1</strong></li>
+<li><strong>Option 2:</strong> GPS-IMU: <strong>NovAtel SPAN® ProPak6™ and NovAtel IMU-IGM-A1</strong></li>
+</ul>
+<h5 id="option-1-installing-the-novatel-span-igm-a1">Option 1: Installing the NovAtel SPAN-IGM-A1</h5>
+<p>The installation instructions describe the procedures to mount, connect, and take the lever arm measurements for the GPS-IMU NovAtel SPAN-IGM-A1.</p>
+<h6 id="mounting">Mounting</h6>
+<p>You can place the GPS-IMU NovAtel SPAN-IGM-A1 in most places in the vehicle but it is suggested that you follow these recommendations:</p>
+<ul>
+<li>Place and secure the NovAtel SPAN-IGM-A1 inside the trunk with the Y-axis pointing forward.</li>
+<li>Mount the NovAtel GPS-703-GGG-HV antenna in an unobscured location on top of the vehicle.</li>
+</ul>
+<h6 id="wiring">Wiring</h6>
+<p>You must connect two cables:</p>
+<ul>
+<li>The antenna cable ─ Connects the GNSS antenna to the antenna port of the SPAN-IGM-A1</li>
+<li>The main cable:<ul>
+<li>Connects its 15-pin end to the SPAN-IGM-A1</li>
+<li>Connects its power wires to a power supply of 10-to-30V DC</li>
+<li>Connects its serial port to the IPC. If the power comes from a vehicle battery, add an auxiliary battery (recommended).</li>
+</ul>
+</li>
+</ul>
+<p><img alt="imu_main_cable_connection" src="../images/imu_main_cable_connection.png" /></p>
+<p>Main Cable Connections</p>
+<p>For more information, see the <em>SPAN-IGM™ Quick Start Guide</em>, page 3, for a detailed diagram:</p>
+<p><img alt="online_icon" src="../images/online_icon.png" />SPAN-IGM™ Quick Start Guide</p>
+<p><a href="http://www.novatel.com/assets/Documents/Manuals/GM-14915114.pdf">http://www.novatel.com/assets/Documents/Manuals/GM-14915114.pdf</a></p>
+<h6 id="taking-the-lever-arm-measurement">Taking the Lever Arm Measurement</h6>
+<p>When the SPAN-IGM-A1 and the GPS Antenna are in position,the distance from the SPAN-IGM-A1 to the GPS Antenna must be measured. The distance should be measured as: X offset, Y offset, and Z offset.</p>
+<p>The error of offset must be within one centimeter to achieve high accuracy. For more information, see the <em>SPAN-IGM™ Quick Start Guide</em>, page 5, for a detailed diagram.</p>
+<p>For an additional information about the SPAN-IGM-A1, see:</p>
+<p><img alt="online_icon" src="../images/online_icon.png" />SPAN-IGM™ User Manual:</p>
+<p><a href="http://www.novatel.com/assets/Documents/Manuals/OM-20000141.pdf">http://www.novatel.com/assets/Documents/Manuals/OM-20000141.pdf</a></p>
+<h5 id="option-2-installing-novatel-span-propak6tm-and-novatel-imu-igm-a1">Option 2: Installing NovAtel SPAN® ProPak6™ and NovAtel IMU-IGM-A1</h5>
+<p>The installation instructions describe the procedures to mount, connect, and take the lever arm measurements for the GPS NovAtel SPAN® ProPak6™ <strong>and</strong> the NovAtel IMU-IGM-A1.</p>
+<h6 id="components-for-the-installation">Components for the Installation</h6>
+<p>The components that are required for the installation include:</p>
+<ul>
+<li>
+<p>NovAtel GPS SPAN ProPak6</p>
+</li>
+<li>
+<p>NovAtel IMU-IGM-A1</p>
+</li>
+<li>
+<p>NovAtel GPS-703-GGG-HV Antenna</p>
+</li>
+<li>
+<p>NovAtel GPS-C006 Cable (to connect antenna to GPS)</p>
+</li>
+<li>
+<p>NovAtel 01019014 Main Cable (to connect GPS to a serial port the IPC)</p>
+</li>
+<li>
+<p>Data Transport Unit (DTU) – similar to a 4G router</p>
+</li>
+<li>
+<p>Magnetic adapters (for antenna and DTU)</p>
+</li>
+<li>
+<p>DB9 Straight Through Cable</p>
+</li>
+</ul>
+<h6 id="mounting_1">Mounting</h6>
+<p>You can place the two devices, the ProPak6 and the IMU, inmost places in the vehicle but it is suggested that you follow these recommendations:</p>
+<ul>
+<li>Place and secure the ProPak6 and the IMU side-by-side inside the trunk with the Y-axis pointing forward.</li>
+<li>Mount the NovAtel GPS-703-GGG-HV antenna on top of the vehicle or on top of the trunk lid as shown:</li>
+</ul>
+<p><img alt="gps_receiver_on_car" src="../images/gps_receiver_on_car.png" /></p>
+<ul>
+<li>Use a magnetic adapter to tightly attach the antenna to the trunk lid.</li>
+<li>Install the antenna cable in the trunk by opening the trunk and placing the cable in the space between the trunk lid and the body of the car.</li>
+</ul>
+<h6 id="wiring_1">Wiring</h6>
+<p>Follow these steps to connect the ProPak6 GNSS Receiver and the IMU to the Apollo system:</p>
+<ol>
+<li>Use the split cable that comes with IMU-IGM-A1 to connect the IMU Main port and theProPak6 COM3/IMU port.</li>
+<li>Use a USB-A-to-MicroUSB cable to connect the USB port of the IPC and the MicroUSB port of the ProPak6.</li>
+<li>Connect the other end of the IMU-IGM-A1 split cable to the vehicle power.</li>
+<li>Connect the GNSS antenna to Propak6.</li>
+<li>Connect the Propak6 power cable.</li>
+</ol>
+<p><img alt="wiring" src="../images/wiring.png" /></p>
+<p>For more information about the NovAtel SPAN ProPak6, see:</p>
+<p><img alt="online_icon" src="../images/online_icon.png" />NovAtel ProPak6 Installation&amp; Operation Manual:</p>
+<p><a href="https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf">https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf</a></p>
+<h4 id="installingthe-ipc">Installingthe IPC</h4>
+<p>Follow these steps:</p>
+<ol>
+<li>Use a power cable to connect the vehicle power source to the IPC:</li>
+</ol>
+<p>Use its power connector as one end <img alt="ipc_power_RB" src="../images/ipc_power_RB.png" /> , and connect the other end to the power panel in the vehicle(see the section, Prerequisites).</p>
+<ol>
+<li>Place the onboard computer system, the 5059GC,inside the trunk (recommended).</li>
+</ol>
+<p>For example, Apollo 1.0 uses 4x4 self-tapping screws to bolt the 5059GC to the carpeted floor of the trunk. <img alt="IPC-bolt_down-936x720" src="../images/IPC-bolt_down-936x720.jpg" /></p>
+<ol>
+<li>Mount the IPC so that its front and back sides(where all ports are located) face the right side (passenger) and the left side(driver) of the trunk.</li>
+</ol>
+<p>This positioning makes it easier to connect all of the cables.</p>
+<p>For more information, see:</p>
+<p><img alt="online_icon" src="../images/online_icon.png" />Neousys Nuvo-5095GC – Manual:</p>
+<p><a href="http://www.neousys-tech.com/en/support/resources/category/162-manual">http://www.neousys-tech.com/en/support/resources/category/162-manual</a></p>
+<ol>
+<li>
+<p>Connect all cables, which include:</p>
+</li>
+<li>
+<p>Power cable</p>
+</li>
+<li>
+<p>Controller Area Network (CAN) cable</p>
+</li>
+<li>
+<p>Ethernet cable from the 4G router to the IPC</p>
+</li>
+<li>
+<p>GPS Receiver to the IPC</p>
+</li>
+<li>
+<p>(Optional) Monitor, keyboard, mouse</p>
+</li>
+</ol>
+<p>a.   Connect the power cable to the IPC (as shown):</p>
+<p><img alt="IPC-power-842x636" src="../images/IPC-power-842x636.jpg" /></p>
+<p>b. Connect the other end of the power cable to the vehicle battery (as shown):</p>
+<p><img alt="IPC-power-cable" src="../images/IPC-power-cable.jpg" /></p>
+<p>c. Connect the DB9 cable to the IPC to talk to the CAN (as shown):</p>
+<p><img alt="DB9_cable" src="../images/DB9_cable.png" /></p>
+<p>d. Connect:</p>
+<ul>
+<li>
+<p>the Ethernet cable from the 4G router to the IPC (labeled as Router)</p>
+</li>
+<li>
+<p>the GPS Receiver to the IPC (labeled as GPSIMU)</p>
+</li>
+<li>
+<p>(optional) the monitor (labeled as Monitor):</p>
+</li>
+</ul>
+<p><img alt="ipc_other_cables" src="../images/ipc_other_cables.png" /></p>
+<h5 id="taking-the-lever-arm-measurement_1">Taking the Lever Arm Measurement</h5>
+<p>Follow these steps:</p>
+<ol>
+<li>
+<p>Before taking the measurement, turn on the IPC.</p>
+</li>
+<li>
+<p>When the IMU and the GPS Antenna are in position, the distance from the IMU to the GPS Antenna must be measured. The distance should be measured as: X offset, Yoffset, and Z offset.</p>
+</li>
+</ol>
+<p>The error of offset must be within one centimeter to achieve high accuracy in positioning and localization.</p>
+<p>For an additional information, see:</p>
+<p><img alt="online_icon" src="../images/online_icon.png" />NovAtel ProPak6 Installation &amp; Operation Manual:</p>
+<p><a href="https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf">https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf</a></p>
+<p><img alt="online_icon" src="../images/online_icon.png" />NovAtel SPAN-IGM-A1 Product Page:</p>
+<p><a href="https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/">https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/</a></p>
+<h4 id="configuring-the-gps-and-imu">Configuring the GPS and IMU</h4>
+<p>Configure the GPS and IMU as shown:</p>
+<pre><code>WIFICONFIGSTATE OFF
+UNLOGALLTHISPORT
+SETIMUTOANTOFFSET0.00 1.10866 1.14165 0.05 0.05 0.08
+SETINSOFFSET0 0 0
+LOGCOM2 GPRMC ONTIME 1.0 0.25
+EVENTOUTCONTROLMARK2 ENABLE POSITIVE 999999990 10
+EVENTOUTCONTROLMARK1 ENABLE POSITIVE 500000000 500000000
+LOGNCOM1 GPGGA ONTIME 1.0
+
+logbestgnssposb ontime 0.5
+logbestgnssvelb ontime 0.5
+logbestposb ontime 0.5
+logINSPVASB ontime 0.01
+logCORRIMUDATASB ontime 0.01
+logINSCOVSB ontime 1
+logmark1pvab onnew
+
+logimutoantoffsetsb once
+logvehiclebodyrotationb onchanged
+
+SAVECONFIG
+</code></pre>
+
+<p>For ProPak6:</p>
+<pre><code>WIFICONFIG STATE OFF
+CONNECTIMU COM3 IMU_ADIS16488
+INSCOMMAND ENABLE
+SETIMUORIENTATION 5
+ALIGNMENTMODE AUTOMATIC  
+SETIMUTOANTOFFSET 0.00 1.10866 1.14165 0.05 0.05 0.08
+VEHICLEBODYROTATION 0 0 0
+ 
+COM COM1 9600 N 8 1 N OFF OFF
+COM COM2 9600 N 8 1 N OFF OFF
+INTERFACEMODE COM1 NOVATEL NOVATEL OFF
+LOG COM2 GPRMC ONTIME 1 0.25
+PPSCONTROL ENABLE POSITIVE 1.0 10000
+MARKCONTROL MARK1 ENABLE POSITIVE
+EVENTINCONTROL MARK1 ENABLE POSITIVE 0 2
+ 
+interfacemode usb2 rtcmv3 none off
+rtksource auto any
+psrdiffsource auto any
+ 
+SAVECONFIG
+</code></pre>
+
+<p><strong><img alt="warning_icon" src="../images/warning_icon.png" /> WARNING:</strong> Modify the <strong><u>SETIMUTOANTOFFSE</u>T</strong> line based on the actual measurement (of the antenna and the IMU offset).</p>
+<p>For example:</p>
+<pre><code>SETIMUTOANTOFFSET -0.05 0.5 0.8 0.05 0.05 0.08
+</code></pre>
+
+<h2 id="setting-up-the-network">Setting up the Network</h2>
+<p>This section provides recommendations for setting up the network.</p>
+<p>The IPC that is running the Apollo software must access the Internet to acquire the Real Time Kinematic (RTK) data for accurate localization. A mobile device also needs to connect to the IPC to run the Apollo software.</p>
+<h3 id="recommendations">Recommendations</h3>
+<p>Itis recommended that you set up your network according to the following diagram:</p>
+<p><img alt="4G_network_setup" src="../images/4G_network_setup.png" /></p>
+<p>Follow these steps:</p>
+<ol>
+<li>
+<p>Install and configure a 4G LTE router with Wi-Fi Access Point (AP) capability and Gigabit Ethernet ports.</p>
+</li>
+<li>
+<p>Connect the IPC to the LTE router using an Ethernet cable.</p>
+</li>
+<li>
+<p>Configure the LTE router to access the Internet using the LTE cellular network.</p>
+</li>
+<li>
+<p>Configure the AP capability of the LTE router so that the iPad Pro or another mobile device can connect to the router, and, in turn, connect to the IPC.</p>
+</li>
+</ol>
+<p><img alt="tip_icon" src="../images/tip_icon.png" />It is recommended that you configure a fixed IP instead of using DHCP on the IPC to make it easier to connect to it from a mobile terminal.</p>
+<h2 id="additional-tasks-required">Additional Tasks Required</h2>
+<p>Youwill use the components that you were required to provide to perform the following tasks:</p>
+<ol>
+<li>
+<p>Connect a monitor using the DVI or the HDMI cables and connect the keyboard and mouse to perform debugging tasks at the car onsite.</p>
+</li>
+<li>
+<p>Establish a Wi-Fi connection on the Apple iPad Pro to access the HMI and control the Apollo ADS that is running on the IPC.</p>
+</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>After you complete the hardware installation in the vehicle, see the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_0_quick_start.md">Apollo Quick Start</a> for the steps to complete the software installation.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

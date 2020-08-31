@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to add a new Lidar driver - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to add a new Lidar driver";
+    var mkdocs_page_input_path = "howto/how_to_add_a_new_lidar_driver.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to add a new Lidar driver</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_new_lidar_driver.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-add-a-new-lidar-driver">How to add a new Lidar driver</h2>
+<h3 id="introduction">Introduction</h3>
+<p>Lidar is a commonly used environment-aware sensor. Lidar uses pulsed laser to illuminate a target, receives the reflected pulse from the target, then calculates the distance to the target based on the time of laser return. Differences in multiple measurements can then be used to make digital 3-D representations of the environment.</p>
+<p>As default, Apollo platform support multiple types of Lidar drivers, including 16 channels, 32 channels, 64 channels and 128 channels Velodyne lidars. This manual describes the major functions of Lidar driver and how to add a new lidar driver in Apollo platform.</p>
+<h3 id="whats-inside-a-lidar-driver">What's inside a lidar driver</h3>
+<p>Taking velodyne lidar driver as an example, there are three major components:</p>
+<ol>
+<li><a href="https://github.com/ApolloAuto/apollo/tree/master/modules/drivers/velodyne/driver">Driver</a>: Driver receives UDP data packets from lidar sensor, and packages the data packets into a frame of scanning data in the format of VelodyneScan. VelodyneScan is defined in file below:</li>
+</ol>
+<pre><code>modules/drivers/velodyne/proto/velodyne.proto
+</code></pre>
+
+<ol>
+<li><a href="https://github.com/ApolloAuto/apollo/tree/master/modules/drivers/velodyne/parser">Parser</a>: Parser takes one frame data in format of VelodyneScan as input, converts the cloud points in the frame from spherical coordinate system to Cartesian coordinates system, then sends out the point cloud as output. The pointcloud format is defined in file below:</li>
+</ol>
+<pre><code>modules/drivers/proto/pointcloud.proto
+</code></pre>
+
+<ol>
+<li><a href="https://github.com/ApolloAuto/apollo/tree/master/modules/drivers/velodyne/compensator">Compensator</a>: Compensator takes pointcloud data and pose data as inputs. Based on the corresponding pose information for each cloud point, it converts each cloud point information aligned with the latest time in the current lidar scan frame, minimizing the motion error due the movement of the vehicle. Thus, each cloud point needs carry its own timestamp information.</li>
+</ol>
+<h3 id="steps-to-add-a-new-lidar-driver">Steps to add a new Lidar driver</h3>
+<h5 id="1-get-familiar-with-apollo-cyber-rt-framework">1. Get familiar with Apollo Cyber RT framework.</h5>
+<p>Please refer to the <a href="https://github.com/ApolloAuto/apollo/tree/master/docs/cyber">manuals of Apollo Cyber RT</a>.</p>
+<h5 id="2-define-message-for-raw-data">2. Define message for raw data</h5>
+<p>Apollo already define the format of pointcloud. For new lidar, you only need to define the protobuf message for the raw scannning data. Those raw data will be used for archive and offline development. Compared to processed pointcloud data, raw data saves a lot of storage spaces for long term. The new message of the scan data can be define as below:</p>
+<pre><code class="c++">// a scan message sample
+message ScanData {
+    optional apollo.common.Header header = 1;  // apollo header
+    optional Model model = 2;                  // device model
+    optional Mode mode = 3;                    // work mode
+    // device serial number, corresponds to a specific calibration file
+    optional string sn = 4;
+    repeated bytes raw_data = 5;               // raw scan data
+}
+</code></pre>
+
+<p>In velodyne driver, the scan data message is define as <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/drivers/velodyne/proto/velodyne.proto#L29">VelodyneScan</a>.</p>
+<h5 id="3-access-the-raw-data">3. Access the raw data</h5>
+<p>Each seconds, Lidar will generate a lot of data, so it relied on UDP to efficiently transport the raw data. You need to create a DriverComponent class, which inherits the Component withotu any parameter. In its Init function, you need to start a async polling thread, whic will receive Lidar data from the specific port. Then depending on the Lidar's frequency, the DriverComponent needs to package all the packets in a fix period into a frame of ScanData. Eventually, the writer will send the ScanData through a corresponding channel.</p>
+<pre><code class="c++">// Inherit component with no template parameters, 
+// do not receive message from any channel
+class DriverComponent : public Component&lt;&gt; {
+ public:
+  ~VelodyneDriverComponent();
+  bool Init() override {
+    poll_thread_.reset(new thread([this]{
+        this-&gt;Poll();
+    }));
+  }
+
+ private: 
+  void Poll() {
+    while (apollo::cyber::Ok()) {
+      // poll data from port xxx
+      // ...
+      austo scan = std::make_shared&lt;ScanData&gt;();
+      // pack ScanData
+      // ...
+      writer_.write(scan);
+    }
+  }
+
+  std::shared_ptr&lt;std::thread&gt; poll_thread_;
+  std::shared_ptr&lt;apollo::cyber::Writer&lt;ScanData&gt;&gt; writer_;
+};
+
+CYBER_REGISTER_COMPONENT(DriverComponent)
+</code></pre>
+
+<h5 id="4-parse-the-scan-data-convert-to-pointcloud">4. Parse the scan data, convert to pointcloud</h5>
+<p>If the new lidar driver already provides the pointcloud data in Cartesian coordinates system, then you just need to store those data in the protobuf format defined in Apollo.</p>
+<p>The Parser converts the lidar raw data to the pointcloud format in Cartesian coordinates system. Parser takes ScanData as input. For each cloud point, it will parse the timestamp, x/y/z coordinates and intensity, then packages all the cloudpoint information into a frame of pointcloud. Each cloud point transformed into the FLU (Front: x, Left: y, Up: z）coordinates with Lidar as the origin point.</p>
+<pre><code class="c++">message PointXYZIT {
+  optional float x = 1 [default = nan];
+  optional float y = 2 [default = nan];
+  optional float z = 3 [default = nan];
+  optional uint32 intensity = 4 [default = 0];
+  optional uint64 timestamp = 5 [default = 0];
+}
+</code></pre>
+
+<p>Then you need to create a new ParserComponent，which inherits Components templates with ScanData. ParserComponent takes ScanData as input, then generates pointcloud message and sents it out.</p>
+<pre><code class="c++">...
+class ParserComponent : public Component&lt;ScanData&gt; {
+ public:
+  bool Init() override {
+    ...
+  }
+
+  bool Proc(const std::shared_ptr&lt;ScanData&gt;&amp; scan_msg) override {
+    // get a pointcloud object from objects pool
+    auto point_cloud_out = point_cloud_pool_-&gt;GetObject(); 
+    // clear befor using
+    point_cloud_out-&gt;clear();   
+    // parse scan data and generate pointcloud
+    parser_-&gt;parse(scan_msg, point_cloud_out);
+    // write pointcloud to a specific channel
+    writer_-&gt;write(point_cloud);
+  }
+
+ private:
+  std::shared_ptr&lt;Writer&lt;PointCloud&gt;&gt; writer_;
+  std::unique_ptr&lt;Parser&gt; parser_ = nullptr;
+
+  std::shared_ptr&lt;CCObjectPool&lt;PointCloud&gt;&gt; point_cloud_pool_ = nullptr; 
+  int pool_size_ = 8;
+};
+
+CYBER_REGISTER_COMPONENT(ParserComponent)
+</code></pre>
+
+<h5 id="5-motion-compensation-for-pointcloud">5. Motion compensation for pointcloud</h5>
+<p>Motion compensation is optional depends on lidar hardware design. E.g. if the the pointcloud information from lidar already have the motion error included, then no compensator needed as extra steps. Otherwise, you need your own compensator. However, if each cloud point in your lidar's output carries its own timestamp information, you can probably reuse the current compensator without any changes.</p>
+<h5 id="6-configure-the-dag-file">6. Configure the dag file</h5>
+<p>After done with each component, you just need to configure the DAG config file to add each component into the data processing pipeline. E.g.  lidar_driver.dag:</p>
+<pre><code class="python"># Define all coms in DAG streaming.
+module_config {
+    module_library : &quot;/apollo/bazel-bin/modules/drivers/xxx/driver/libxxx_driver_component.so&quot;
+    components {
+      class_name : &quot;DriverComponent&quot;
+      config {
+        name : &quot;xxx_driver&quot;
+        config_file_path : &quot;/path/to/lidar_driver_conf.pb.txt&quot;
+      }
+    }
+}
+
+module_config {
+    module_library : &quot;/apollo/bazel-bin/modules/drivers/xxx/parser/libxxx_parser_component.so&quot;
+    components {
+      class_name : &quot;ParserComponent&quot;
+      config {
+        name : &quot;xxx_parser&quot;
+        config_file_path : &quot;/path/to/lidar_parser_conf.pb.txt&quot;
+        readers { channel: &quot;/apollo/sensor/xxx/Scan&quot; }
+      }
+    }
+}
+
+module_config {
+    module_library : &quot;/apollo/bazel-bin/modules/drivers/xxx/compensator/libxxx_compensator_component.so&quot;
+    components {
+      class_name : &quot;CompensatorComponent&quot;
+      config {
+        name : &quot;pointcloud_compensator&quot;
+        config_file_path : &quot;/apollo/modules/drivers/xxx/conf/xxx_compensator_conf.pb.txt&quot;
+        readers {channel: &quot;/apollo/sensor/xxx/PointCloud2&quot;}
+      }
+    }
+}
+</code></pre>
+
+<h5 id="7-run-the-lidar-driver-and-visualize-the-pointlcoud-output">7. Run the lidar driver and visualize the pointlcoud output</h5>
+<p>After finishing all the previous steps, you can use the following command to start your new lidar driver.</p>
+<pre><code class="bash">mainboard -d /path/to/lidar_driver.dag
+</code></pre>
+
+<p>To visualize the pointcloud output, you can run <code>cyber_visualizer</code> and choose the right channel for the pointcloud.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

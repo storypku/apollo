@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to debug dreamview start problem - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to debug dreamview start problem";
+    var mkdocs_page_input_path = "howto/how_to_debug_dreamview_start_problem.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to debug dreamview start problem</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_debug_dreamview_start_problem.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="how-to-debug-the-dreamview-start-problem">How to Debug the Dreamview Start Problem</h3>
+<h4 id="steps-to-start-dreamview">Steps to Start Dreamview</h4>
+<p>If you encounter problems when starting Dreamview in the <code>docker/scripts/dev</code> sequence, first check if you are using the correct commands as shown below.</p>
+<pre><code class="bash">$ bash docker/scripts/dev_start.sh
+$ bash docker/scripts/dev_into.sh
+$ bash apollo.sh build
+$ bash scripts/bootstrap.sh
+</code></pre>
+
+<h4 id="dreamview-fails-to-start">Dreamview Fails to Start</h4>
+<p>If Dreamview fails to start, use the script below to check the Dreamview startup log and restart Dreamview.</p>
+<pre><code class="bash"># Start Dreamview in foreground to see any error message it prints out during startup
+$ bash scripts/dreamview.sh start_fe
+
+# check dreamview startup log
+$ cat data/log/dreamview.out
+terminate called after throwing an instance of 'CivetException'
+  what():  null context when constructing CivetServer. Possible problem binding to port.
+
+$ sudo apt-get install psmisc
+
+# to check if dreamview is running from other terminal
+$ sudo lsof -i :8888
+
+# kill other running/pending dreamview
+$ sudo fuser -k 8888/tcp
+
+# restart dreamview again
+$ bash scripts/dreamview.sh
+</code></pre>
+
+<h4 id="debug-dreamview-with-gdb">Debug dreamview with gdb</h4>
+<p>If you get nothing in dreamview startup logs, you can try to debug dreamview with gdb, use the following commands:</p>
+<pre><code>$ gdb --args /apollo/bazel-bin/modules/dreamview/dreamview --flagfile=/apollo/modules/dreamview/conf/dreamview.conf
+# or
+$ source scripts/apollo_base.sh;
+$ start_gdb dreamview
+</code></pre>
+
+<p>Once gdb is launched, press <code>r</code> and <code>enter</code> key to run,  if dreamview crashes, then get the backtrace with <code>bt</code>.</p>
+<h4 id="cpu-does-not-support-fmafma3-instructions">CPU does not support FMA/FMA3 instructions</h4>
+<p>If you see an error <code>Illegal instruction</code> and something related with <strong>libpcl_sample_consensus.so.1.7</strong> in gdb backtrace, then you probably need to rebuild pcl lib from source by yourself and replace the one in the docker.</p>
+<p>This usually happens when you're trying to run Apollo/dreamview on a machine that the CPU does not support FMA/FMA3 instructions, it will fail because the prebuilt pcl lib shipped with docker image is compiled with FMA/FMA3 support.</p>
+<p>There are 2 steps to resolve this issue:
+1. Identify if the issue is due to pcl lib through gdb:
+    find the coredump file under /apollo/data/core/ with name core_dreamview.$PID.
+If you see logs like:</p>
+<pre><code>@in_dev_docker:/apollo$ gdb bazel-bin/modules/dreamview/dreamview  data/core/core_dreamview.378
+GNU gdb (Ubuntu 7.7.1-0ubuntu5~14.04.3) 7.7.1
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;
+and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;x86_64-linux-gnu&quot;.
+Type &quot;show configuration&quot; for configuration details.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.
+Find the GDB manual and other documentation resources online at:
+&lt;http://www.gnu.org/software/gdb/documentation/&gt;.
+For help, type &quot;help&quot;.
+Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;...
+Reading symbols from bazel-bin/modules/dreamview/dreamview...done.
+
+warning: exec file is newer than core file.
+[New LWP 378]
+[New LWP 379]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library &quot;/lib/x86_64-linux-gnu/libthread_db.so.1&quot;.
+
+warning: the debug information found in &quot;/home/caros/secure_upgrade/depend_lib/libyaml-cpp.so.0.5.1&quot; does not match &quot;/home/caros/secure_upgrade/depend_lib/libyaml-cpp.so.0.5&quot; (CRC mismatch).
+
+Core was generated by `/apollo/bazel-bin/modules/dreamview/dreamview --flagfile=/apollo/modules/dreamv'.
+Program terminated with signal SIGILL, Illegal instruction.
+#0  0x00007f79ebd32bec in double boost::math::detail::erf_inv_imp&lt;double, boost::math::policies::policy&lt;boost::math::policies::promote_float&lt;false&gt;, boost::math::policies::promote_double&lt;false&gt;, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy&gt; &gt;(double const&amp;, double const&amp;, boost::math::policies::policy&lt;boost::math::policies::promote_float&lt;false&gt;, boost::math::policies::promote_double&lt;false&gt;, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy&gt; const&amp;, mpl_::int_&lt;64&gt; const*) () from /usr/local/lib/libpcl_sample_consensus.so.1.7
+(gdb) bt
+#0  0x00007f79ebd32bec in double boost::math::detail::erf_inv_imp&lt;double, boost::math::policies::policy&lt;boost::math::policies::promote_float&lt;false&gt;, boost::math::policies::promote_double&lt;false&gt;, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy&gt; &gt;(double const&amp;, double const&amp;, boost::math::policies::policy&lt;boost::math::policies::promote_float&lt;false&gt;, boost::math::policies::promote_double&lt;false&gt;, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy&gt; const&amp;, mpl_::int_&lt;64&gt; const*) () from /usr/local/lib/libpcl_sample_consensus.so.1.7
+#1  0x00007f79ebcf7f1e in _GLOBAL__sub_I_sac.cpp () from /usr/local/lib/libpcl_sample_consensus.so.1.7
+#2  0x00007f79f3e1a2da in call_init (l=&lt;optimized out&gt;, argc=argc@entry=2, argv=argv@entry=0x7ffc7bc11c78, env=env@entry=0x7ffc7bc11c90) at dl-init.c:78
+#3  0x00007f79f3e1a3c3 in call_init (env=&lt;optimized out&gt;, argv=&lt;optimized out&gt;, argc=&lt;optimized out&gt;, l=&lt;optimized out&gt;) at dl-init.c:36
+#4  _dl_init (main_map=0x7f79f402e1c8, argc=2, argv=0x7ffc7bc11c78, env=0x7ffc7bc11c90) at dl-init.c:126
+#5  0x00007f79f3e0b29a in _dl_start_user () from /lib64/ld-linux-x86-64.so.2
+#6  0x0000000000000002 in ?? ()
+#7  0x00007ffc7bc134bd in ?? ()
+#8  0x00007ffc7bc134eb in ?? ()
+#9  0x0000000000000000 in ?? ()
+(gdb) q
+
+@in_dev_docker:/apollo$ addr2line -C -f -e /usr/local/lib/libpcl_sample_consensus.so.1.7.2 0x375bec
+double boost::math::detail::erf_inv_imp&lt;double, boost::math::policies::policy&lt;boost::math::policies::promote_float&lt;false&gt;, boost::math::policies::promote_double&lt;false&gt;, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy&gt; &gt;(double const&amp;, double const&amp;, boost::math::policies::policy&lt;boost::math::policies::promote_float&lt;false&gt;, boost::math::policies::promote_double&lt;false&gt;, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy, boost::math::policies::default_policy&gt; const&amp;, mpl_::int_&lt;64&gt; const*)
+??:?
+</code></pre>
+
+<p>More info:</p>
+<pre><code>~/playground/apollo$ git rev-parse HEAD
+321bc25633fe2115e8ea4b2e68555c8c0d301b41
+
+~/playground/apollo$ docker image ls
+REPOSITORY          TAG                                    IMAGE ID            CREATED             SIZE
+apolloauto/apollo   dev-x86_64-20180320_1118               6a23927e28c3        7 days ago          6.92GB
+apolloauto/apollo   yolo3d_volume-x86_64-latest            562d2b2b5a71        11 days ago         70.6MB
+apolloauto/apollo   map_volume-sunnyvale_big_loop-latest   80aca30fa08a        3 weeks ago         1.3GB
+apolloauto/apollo   localization_volume-x86_64-latest      be947abaa650        2 months ago        5.74MB
+apolloauto/apollo   map_volume-sunnyvale_loop-latest       36dc0d1c2551        2 months ago        906MB
+
+build cmd:
+in_dev_docker:/apollo$ ./apollo.sh build_no_perception dbg
+</code></pre>
+
+<ol>
+<li>Compile pcl and copy the pcl library files to <code>/usr/local/lib</code>:</li>
+</ol>
+<p>See <a href="https://github.com/ApolloAuto/apollo/blob/master/WORKSPACE.in">/apollo/WORKSPACE.in</a> to identify your pcl library version:
+- Prior to Apollo 5.0 (inclusive): pcl-1.7
+- After Apollo 5.0: pcl-1.9</p>
+<p>Inside docker:</p>
+<pre><code>(to keep pcl in host, we save pcl under /apollo)
+cd /apollo
+git clone https://github.com/PointCloudLibrary/pcl.git
+
+git checkout -b &lt;your pcl-lib version&gt; pcl-&lt;your pcl-lib version&gt;
+Ex: git checkout -b 1.7.2 pcl-1.7.2
+    git checkout -b 1.9.1 pcl-1.9.1
+</code></pre>
+
+<p>then hack CMakeLists.txt with :</p>
+<pre><code>~/playground/apollo/pcl$ git diff
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f0a5600..42c182e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,15 @@ endif()
+
+ set(CMAKE_CONFIGURATION_TYPES &quot;Debug;Release&quot; CACHE STRING &quot;possible configurations&quot; FORCE)
+
++if (CMAKE_VERSION VERSION_LESS &quot;3.1&quot;)
++# if (CMAKE_CXX_COMPILER_ID STREQUAL &quot;GNU&quot;)
++    set (CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} -std=gnu++11&quot;)
++    message(&quot;Build with c++11 support&quot;)
++# endif ()
++else ()
++  set (CMAKE_CXX_STANDARD 11)
++endif ()
++
+ # In case the user does not setup CMAKE_BUILD_TYPE, assume it's RelWithDebInfo
+ if(&quot;${CMAKE_BUILD_TYPE}&quot; STREQUAL &quot;&quot;)
+   set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING &quot;build type default to RelWithDebInfo, set to Release to improve performance&quot; FORCE)
+</code></pre>
+
+<p>Then build with:</p>
+<pre><code>cd pcl
+mkdir build
+cd build
+cmake  ..
+make
+(We don't know the parameters that Apollo used, so we keep it by default)
+
+#backup pcl lib
+mkdir -p /usr/local/lib/pcl.origin
+mv /usr/local/lib/libpcl* /usr/local/lib/pcl.origin
+
+#replace with our build
+cp -a lib/* /usr/local/lib/
+
+ldconfig
+</code></pre>
+
+<p>And finally restart Dreamview using</p>
+<pre><code>    bash scripts/bootstrap.sh stop
+    bash scripts/bootstrap.sh start
+</code></pre>
+
+<h4 id="cpu-does-not-support-avx-instructions">CPU does not support AVX instructions</h4>
+<p>If CPU does not support AVX instructions, and you gdb the coredump file under /apollo/data/core/ with name core_dreamview.$PID, you may see logs like:</p>
+<pre><code>Program terminated with signal SIGILL, Illegal instruction.
+#0  0x000000000112b70a in std::_Hashtable&lt;std::string, std::string, std::allocator&lt;std::string&gt;, std::__detail::_Identity, std::equal_to&lt;std::string&gt;, google::protobuf::hash&lt;std::string&gt;, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits&lt;true, true, true&gt; &gt;::_Hashtable (this=0x3640288, __bucket_hint=10,
+    __h1=..., __h2=..., __h=..., __eq=..., __exk=..., __a=...)
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+    at /usr/include/c++/4.8/bits/hashtable.h:828
+828          _M_rehash_policy()
+</code></pre>
+
+<p>To resolve this issue, in apollo/apollo.sh, comment or delete:</p>
+<pre><code>--copt=-mavx2
+</code></pre>
+
+<p>Then try to build and start dreamview again.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

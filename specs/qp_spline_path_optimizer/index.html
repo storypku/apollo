@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>QP-Spline-Path Optimizer - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "QP-Spline-Path Optimizer";
+    var mkdocs_page_input_path = "specs/qp_spline_path_optimizer.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>QP-Spline-Path Optimizer</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/qp_spline_path_optimizer.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="qp-spline-path-optimizer">QP-Spline-Path Optimizer</h2>
+<p><em><strong>Tip</strong>: to read the equations in the document, you are recommended to use Chrome with <a href="https://chrome.google.com/webstore/detail/tex-all-the-things/cbimabofgmfdkicghcadidpemeenbffn">a plugin</a> or copy the latex equation to <a href="http://www.hostmath.com/">an online editor</a></em></p>
+<p>Quadratic programming + Spline interpolation</p>
+<h3 id="1-objective-function">1.  Objective function</h3>
+<h4 id="11-get-path-length">1.1  Get path length</h4>
+<p>Path is defined in station-lateral coordination system. The <strong>s</strong> range from vehicle's current position to  default planning path length.</p>
+<h4 id="12-get-spline-segments">1.2   Get spline segments</h4>
+<p>Split the path into <strong>n</strong> segments. each segment trajectory is defined by a polynomial.</p>
+<h4 id="13-define-function-for-each-spline-segment">1.3  Define function for each spline segment</h4>
+<p>Each segment <strong><em>i</em></strong> has accumulated distance $d_i$ along reference line. The trajectory for the segment is defined as a polynomial of degree five by default.</p>
+<pre><code>$$
+l = f_i(s)
+  = a_{i0} + a_{i1} \cdot s + a_{i2} \cdot s^2 + a_{i3} \cdot s^3 + a_{i4} \cdot s^4 + a_{i5} \cdot s^5        (0 \leq s \leq d_{i})
+$$
+</code></pre>
+
+<h4 id="14-define-objective-function-of-optimization-for-each-segment">1.4  Define objective function of optimization for each segment</h4>
+<pre><code>$$
+cost = \sum_{i=1}^{n} \Big( w_1 \cdot \int\limits_{0}^{d_i} (f_i')^2(s) ds + w_2 \cdot \int\limits_{0}^{d_i} (f_i'')^2(s) ds + w_3 \cdot \int\limits_{0}^{d_i} (f_i^{\prime\prime\prime})^2(s) ds \Big)
+$$
+</code></pre>
+
+<h4 id="15-convert-the-cost-function-to-qp-formulation">1.5  Convert the cost function to QP formulation</h4>
+<p>QP formulation:</p>
+<pre><code>$$
+\begin{aligned}
+minimize  &amp; \frac{1}{2}  \cdot x^T \cdot H \cdot x  + f^T \cdot x \\
+s.t. \qquad &amp; LB \leq x \leq UB \\
+      &amp; A_{eq}x = b_{eq} \\
+      &amp; Ax \geq b
+\end{aligned}
+$$
+</code></pre>
+
+<p>Below is the example for converting the cost function into the QP formulation. </p>
+<pre><code>$$
+f_i(s) ＝
+\begin{vmatrix} 1 &amp; s &amp; s^2 &amp; s^3 &amp; s^4 &amp; s^5 \end{vmatrix}
+\cdot
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix}   
+$$
+</code></pre>
+
+<p>And</p>
+<pre><code>$$
+f_i'(s) =
+\begin{vmatrix} 0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4 \end{vmatrix}
+\cdot
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix}   
+$$
+</code></pre>
+
+<p>And </p>
+<pre><code>$$
+f_i'(s)^2 =
+\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5}  \end{vmatrix} 
+\cdot 
+\begin{vmatrix} 0 \\ 1 \\ 2s \\ 3s^2 \\ 4s^3 \\ 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} 0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix}
+$$
+</code></pre>
+
+<p>then we have,</p>
+<pre><code>$$
+\int\limits_{0}^{d_i} f_i'(s)^2 ds ＝
+\int\limits_{0}^{d_i}
+\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5} \end{vmatrix} 
+\cdot  
+\begin{vmatrix} 0 \\ 1 \\ 2s \\ 3s^2 \\ 4s^3 \\ 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} 0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix} ds
+$$
+</code></pre>
+
+<p>extract the const outside the integration, we have,</p>
+<pre><code>$$
+\int\limits_{0}^{d_i} f'(s)^2 ds ＝
+\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5} \end{vmatrix} 
+\cdot 
+\int\limits_{0}^{d_i}  
+\begin{vmatrix} 0 \\ 1 \\ 2s \\ 3s^2 \\ 4s^3 \\ 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} 0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4 \end{vmatrix} ds 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix}
+$$
+$$
+＝\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5} \end{vmatrix} 
+\cdot \int\limits_{0}^{d_i}
+\begin{vmatrix} 
+0  &amp; 0 &amp;0&amp;0&amp;0&amp;0\\ 
+0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4\\
+0 &amp; 2s &amp; 4s^2 &amp; 6s^3 &amp; 8s^4 &amp; 10s^5\\
+0 &amp; 3s^2 &amp;  6s^3 &amp; 9s^4 &amp; 12s^5&amp;15s^6 \\
+0 &amp; 4s^3 &amp; 8s^4 &amp;12s^5 &amp;16s^6&amp;20s^7 \\
+0 &amp; 5s^4 &amp; 10s^5 &amp; 15s^6 &amp; 20s^7 &amp; 25s^8 
+\end{vmatrix} ds 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix}
+$$
+</code></pre>
+
+<p>Finally, we have</p>
+<pre><code>$$
+\int\limits_{0}^{d_i} 
+f'_i(s)^2 ds =\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5} \end{vmatrix} 
+\cdot \begin{vmatrix} 
+0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 
+0 &amp; d_i &amp; d_i^2 &amp; d_i^3 &amp; d_i^4&amp;d_i^5\\
+0&amp; d_i^2 &amp; \frac{4}{3}d_i^3&amp; \frac{6}{4}d_i^4 &amp; \frac{8}{5}d_i^5&amp;\frac{10}{6}d_i^6\\
+0&amp; d_i^3 &amp; \frac{6}{4}d_i^4 &amp; \frac{9}{5}d_i^5 &amp; \frac{12}{6}d_i^6&amp;\frac{15}{7}d_i^7\\
+0&amp; d_i^4 &amp; \frac{8}{5}d_i^5 &amp; \frac{12}{6}d_i^6 &amp; \frac{16}{7}d_i^7&amp;\frac{20}{8}d_i^8\\
+0&amp; d_i^5 &amp; \frac{10}{6}d_i^6 &amp; \frac{15}{7}d_i^7 &amp; \frac{20}{8}d_i^8&amp;\frac{25}{9}d_i^9
+\end{vmatrix} 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix}
+$$
+</code></pre>
+
+<p>Please notice that we got a 6 x 6 matrix to represent the derivative cost of 5th order spline.</p>
+<p>Similar deduction can also be used to calculate the cost of second and third order derivatives.</p>
+<h3 id="2-constraints">2  Constraints</h3>
+<h4 id="21-the-init-point-constraints">2.1  The init point constraints</h4>
+<p>Assume that the first point is ($s_0$, $l_0$), ($s_0$, $l'_0$) and ($s_0$, $l''_0$), where $l_0$ , $l'_0$ and $l''_0$ is the lateral offset and its first and second derivatives on the init point of planned path, and are calculated from $f_i(s)$, $f'_i(s)$, and $f_i(s)''$.  </p>
+<p>Convert those constraints into QP equality constraints, using: </p>
+<pre><code>$$
+A_{eq}x = b_{eq}
+$$
+</code></pre>
+
+<p>Below are the steps of conversion.</p>
+<pre><code>$$
+f_i(s_0) = 
+\begin{vmatrix} 1 &amp; s_0 &amp; s_0^2 &amp; s_0^3 &amp; s_0^4&amp;s_0^5 \end{vmatrix} 
+\cdot 
+\begin{vmatrix}  a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}\end{vmatrix} = l_0
+$$
+</code></pre>
+
+<p>And</p>
+<pre><code>$$
+f'_i(s_0) = 
+\begin{vmatrix} 0&amp; 1 &amp; 2s_0 &amp; 3s_0^2 &amp; 4s_0^3 &amp;5 s_0^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix}  a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix} = l'_0
+$$
+</code></pre>
+
+<p>And </p>
+<pre><code>$$
+f''_i(s_0) = 
+\begin{vmatrix} 0&amp;0&amp; 2 &amp; 3\times2s_0 &amp; 4\times3s_0^2 &amp; 5\times4s_0^3  \end{vmatrix} 
+\cdot 
+\begin{vmatrix}  a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix} = l''_0
+$$
+</code></pre>
+
+<p>where i is the index of the segment that contains the $s_0$.</p>
+<h4 id="22-the-end-point-constraints">2.2  The end point constraints</h4>
+<p>Similar to the init point, the end point $(s_e, l_e)$ is known and should produce the same constraint as described in the init point calculations. </p>
+<p>Combine the init point and end point, and show the equality constraint as: </p>
+<pre><code>$$
+\begin{vmatrix} 
+ 1 &amp; s_0 &amp; s_0^2 &amp; s_0^3 &amp; s_0^4&amp;s_0^5 \\
+ 0&amp;1 &amp; 2s_0 &amp; 3s_0^2 &amp; 4s_0^3 &amp; 5s_0^4 \\
+ 0&amp; 0&amp;2 &amp; 3\times2s_0 &amp; 4\times3s_0^2 &amp; 5\times4s_0^3  \\
+ 1 &amp; s_e &amp; s_e^2 &amp; s_e^3 &amp; s_e^4&amp;s_e^5 \\
+ 0&amp;1 &amp; 2s_e &amp; 3s_e^2 &amp; 4s_e^3 &amp; 5s_e^4 \\
+ 0&amp; 0&amp;2 &amp; 3\times2s_e &amp; 4\times3s_e^2 &amp; 5\times4s_e^3  
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix}  a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix} 
+ = 
+ \begin{vmatrix}
+ l_0\\
+ l'_0\\
+ l''_0\\
+ l_e\\
+ l'_e\\
+ l''_e\\
+ \end{vmatrix}
+$$
+</code></pre>
+
+<h4 id="23-joint-smoothness-constraints">2.3  Joint smoothness  constraints</h4>
+<p>This constraint is designed to smooth the spline joint.  Assume two segments $seg_k$ and $seg_{k+1}$ are connected, and the accumulated <strong>s</strong> of segment $seg_k$ is $s_k$. Calculate the constraint equation as: </p>
+<pre><code>$$
+f_k(s_k) = f_{k+1} (s_0)
+$$
+</code></pre>
+
+<p>Below are the steps of the calculation.</p>
+<pre><code>$$
+\begin{vmatrix} 
+ 1 &amp; s_k &amp; s_k^2 &amp; s_k^3 &amp; s_k^4&amp;s_k^5 \\
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix} 
+ a_{k0} \\ a_{k1} \\ a_{k2} \\ a_{k3} \\ a_{k4} \\ a_{k5} 
+ \end{vmatrix} 
+ = 
+\begin{vmatrix} 
+ 1 &amp; s_{0} &amp; s_{0}^2 &amp; s_{0}^3 &amp; s_{0}^4&amp;s_{0}^5 \\
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix} 
+ a_{k+1,0} \\ a_{k+1,1} \\ a_{k+1,2} \\ a_{k+1,3} \\ a_{k+1,4} \\ a_{k+1,5} 
+ \end{vmatrix}
+$$
+</code></pre>
+
+<p>Then</p>
+<pre><code>$$
+\begin{vmatrix} 
+ 1 &amp; s_k &amp; s_k^2 &amp; s_k^3 &amp; s_k^4&amp;s_k^5 &amp;  -1 &amp; -s_{0} &amp; -s_{0}^2 &amp; -s_{0}^3 &amp; -s_{0}^4&amp;-s_{0}^5\\
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix} 
+ a_{k0} \\ a_{k1} \\ a_{k2} \\ a_{k3} \\ a_{k4} \\ a_{k5} \\ a_{k+1,0} \\ a_{k+1,1} \\ a_{k+1,2} \\ a_{k+1,3} \\ a_{k+1,4} \\ a_{k+1,5}  
+ \end{vmatrix} 
+ = 0
+$$
+</code></pre>
+
+<p>Use $s_0$ = 0 in the equation.</p>
+<p>Similarly calculate the equality constraints for: </p>
+<pre><code>$$
+f'_k(s_k) = f'_{k+1} (s_0)
+\\
+f''_k(s_k) = f''_{k+1} (s_0)
+\\
+f'''_k(s_k) = f'''_{k+1} (s_0)
+$$
+</code></pre>
+
+<h4 id="24-sampled-points-for-boundary-constraint">2.4  Sampled points for boundary constraint</h4>
+<p>Evenly sample <strong>m</strong> points along the path, and check the obstacle boundary at those points.  Convert the constraint into QP inequality constraints, using:</p>
+<pre><code>$$
+Ax \geq b
+$$
+</code></pre>
+
+<p>First find the lower boundary $l_{lb,j}$ at those points $(s_j, l_j)$ and  $j\in[0, m]$ based on the road width and surrounding obstacles. Calculate the inequality constraints as:</p>
+<pre><code>$$
+\begin{vmatrix} 
+ 1 &amp; s_0 &amp; s_0^2 &amp; s_0^3 &amp; s_0^4&amp;s_0^5 \\
+  1 &amp; s_1 &amp; s_1^2 &amp; s_1^3 &amp; s_1^4&amp;s_1^5 \\
+ ...&amp;...&amp;...&amp;...&amp;...&amp;... \\
+ 1 &amp; s_m &amp; s_m^2 &amp; s_m^3 &amp; s_m^4&amp;s_m^5 \\
+ \end{vmatrix} \cdot \begin{vmatrix}a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix} 
+ \geq 
+ \begin{vmatrix}
+ l_{lb,0}\\
+ l_{lb,1}\\
+ ...\\
+ l_{lb,m}\\
+ \end{vmatrix}
+$$
+</code></pre>
+
+<p>Similarly, for the upper boundary $l_{ub,j}$, calculate the inequality constraints as: </p>
+<pre><code>$$
+\begin{vmatrix} 
+ -1 &amp; -s_0 &amp; -s_0^2 &amp; -s_0^3 &amp; -s_0^4&amp;-s_0^5 \\
+  -1 &amp; -s_1 &amp; -s_1^2 &amp; -s_1^3 &amp; -s_1^4&amp;-s_1^5 \\
+ ...&amp;...-&amp;...&amp;...&amp;...&amp;... \\
+ -1 &amp; -s_m &amp; -s_m^2 &amp; -s_m^3 &amp; -s_m^4&amp;-s_m^5 \\
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix} 
+ \geq
+ -1 \cdot
+ \begin{vmatrix}
+ l_{ub,0}\\
+ l_{ub,1}\\
+ ...\\
+ l_{ub,m}\\
+ \end{vmatrix}
+$$
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

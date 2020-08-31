@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>如何使用 Cyber RT 来创建一个新的组件 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5982\u4f55\u4f7f\u7528 Cyber RT \u6765\u521b\u5efa\u4e00\u4e2a\u65b0\u7684\u7ec4\u4ef6";
+    var mkdocs_page_input_path = "cyber/CyberRT_Quick_Start_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>如何使用 Cyber RT 来创建一个新的组件</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_Quick_Start_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="cyber-rt">如何使用 Cyber RT 来创建一个新的组件</h2>
+<p>Apollo Cyber 运行时框架 (Apollo Cyber RT Framework) 是基于组件概念来构建的。每个组件都是 Cyber 框架的一个构建块，它包括一个特定的算法模块， 此算法模块处理一组输入数椐并产生一组输出数椐。</p>
+<p>要创建并启动一个算法组件，需要通过以下 4 个步骤：</p>
+<ul>
+<li>初如化组件的文件结构</li>
+<li>实现组件类</li>
+<li>设置配置文件</li>
+<li>启动组件</li>
+</ul>
+<p>下面的例子展示了如何创建，编译，运行一个组件，并观察组件在屏幕上的输出。 如果想更深入的探索 Apollo Cyber RT 框架，可以在这个目录<code>/apollo/cyber/examples/</code>找到很多例子，这些例子详细展示了如何使用 Cyber 框架的各种功能。</p>
+<p><em>Note: 这些例子必须运行在 Apollo docker 环境， 且需要通过 Bazel 来编译。</em></p>
+<h3 id="_1">初始化组件文件结构</h3>
+<p>例如组件的根目录为<code>/apollo/cyber/examples/common_component_example/</code>需要创建以下文件：</p>
+<ul>
+<li>Header file: common_component_example.h</li>
+<li>Source file: common_component_example.cc</li>
+<li>Build file: BUILD</li>
+<li>DAG dependency file: common.dag</li>
+<li>Launch file: common.launch</li>
+</ul>
+<h3 id="_2">实现组件类</h3>
+<h4 id="_3">实现组件头文件</h4>
+<p>如何实现<code>common_component_example.h</code>:</p>
+<ul>
+<li>继承 Component 类</li>
+<li>定义自己的 <code>Init</code> 和 <code>Proc</code> 函数。Proc 需要指定输入数椐类型。</li>
+<li>使用<code>CYBER_REGISTER_COMPONENT</code>宏定义把组件类注册成全局可用。</li>
+</ul>
+<pre><code class="cpp">#include &lt;memory&gt;
+#include &quot;cyber/class_loader/class_loader.h&quot;
+#include &quot;cyber/component/component.h&quot;
+#include &quot;cyber/examples/proto/examples.pb.h&quot;
+
+using apollo::cyber::examples::proto::Driver;
+using apollo::cyber::Component;
+using apollo::cyber::ComponentBase;
+
+class CommonComponentSample : public Component&lt;Driver, Driver&gt; {
+ public:
+  bool Init() override;
+  bool Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
+            const std::shared_ptr&lt;Driver&gt;&amp; msg1) override;
+};
+
+CYBER_REGISTER_COMPONENT(CommonComponentSample)
+</code></pre>
+
+<h4 id="_4">实现组件源文件</h4>
+<p>对于源文件 <code>common_component_example.cc</code>,  <code>Init</code> 和 <code>Proc</code> 这两个函数需要实现。</p>
+<pre><code class="cpp">#include &quot;cyber/examples/common_component_example/common_component_example.h&quot;
+#include &quot;cyber/class_loader/class_loader.h&quot;
+#include &quot;cyber/component/component.h&quot;
+
+bool CommonComponentSample::Init() {
+  AINFO &lt;&lt; &quot;Commontest component init&quot;;
+  return true;
+}
+
+bool CommonComponentSample::Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
+                               const std::shared_ptr&lt;Driver&gt;&amp; msg1) {
+  AINFO &lt;&lt; &quot;Start common component Proc [&quot; &lt;&lt; msg0-&gt;msg_id() &lt;&lt; &quot;] [&quot;
+        &lt;&lt; msg1-&gt;msg_id() &lt;&lt; &quot;]&quot;;
+  return true;
+}
+</code></pre>
+
+<h4 id="build">创建 BUILD 编译文件</h4>
+<p>创建 bazel BUILD 文件。</p>
+<pre><code class="python">load(&quot;//tools:cpplint.bzl&quot;, &quot;cpplint&quot;)
+
+package(default_visibility = [&quot;//visibility:public&quot;])
+
+cc_binary(
+    name = &quot;libcommon_component_example.so&quot;,
+    deps = [&quot;:common_component_example_lib&quot;],
+    linkopts = [&quot;-shared&quot;],
+    linkstatic = False,
+)
+
+cc_library(
+    name = &quot;common_component_example_lib&quot;,
+    srcs = [
+        &quot;common_component_example.cc&quot;,
+    ],
+    hdrs = [
+        &quot;common_component_example.h&quot;,
+    ],
+    deps = [
+        &quot;//cyber&quot;,
+        &quot;//cyber/examples/proto:examples_cc_proto&quot;,
+    ],
+)
+
+cpplint()
+</code></pre>
+
+<h3 id="_5">设置配置文件</h3>
+<h4 id="dag">配置 DAG 依赖文件</h4>
+<p>在 DAG 依赖配置文件 （例如 common.dag) 中配置下面的项：</p>
+<ul>
+<li>Channel names: 输入输出数椐的 Channel 名字</li>
+<li>Library path: 此组件最终编译出的库的名字</li>
+<li>Class name: 此组件的入口类的名字</li>
+</ul>
+<pre><code class="bash"># Define all components in DAG streaming.
+component_config {
+    component_library : &quot;/apollo/bazel-bin/cyber/examples/common_component_example/libcommon_component_example.so&quot;
+    components {
+        class_name : &quot;CommonComponentSample&quot;
+        config {
+            name : &quot;common&quot;
+            readers {
+                channel: &quot;/apollo/prediction&quot;
+            }
+            readers {
+                channel: &quot;/apollo/test&quot;
+            }
+        }
+    }
+}
+</code></pre>
+
+<h4 id="launch">配置 launch 启动文件</h4>
+<p>在 launch 启动文件中 (common.launch), 配置下面的项：</p>
+<ul>
+<li>组件的名字</li>
+<li>上一步创建的 dag 配置的名字。</li>
+<li>组件运行时所在的进程目录。</li>
+</ul>
+<pre><code class="xml">&lt;cyber&gt;
+    &lt;component&gt;
+        &lt;name&gt;common&lt;/name&gt;
+        &lt;dag_conf&gt;/apollo/cyber/examples/common_component_example/common.dag&lt;/dag_conf&gt;
+        &lt;process_name&gt;common&lt;/process_name&gt;
+    &lt;/component&gt;
+&lt;/cyber&gt;
+</code></pre>
+
+<h3 id="_6">启动这个组件</h3>
+<p>通过下面的命令来编译组件：</p>
+<pre><code class="bash">bash /apollo/apollo.sh build
+</code></pre>
+
+<p>Note: 确定组件正常编译成功</p>
+<p>然后配置环境：</p>
+<pre><code class="bash">cd /apollo/cyber
+source setup.bash
+</code></pre>
+
+<p>有两种方法来启动组件：</p>
+<ul>
+<li>使用 launch 文件来启动 （推荐这种方式）</li>
+</ul>
+<pre><code class="bash">cyber_launch start /apollo/cyber/examples/common_component_example/common.launch
+</code></pre>
+
+<ul>
+<li>使用 dag 文件来启动</li>
+</ul>
+<pre><code class="bash">mainboard -d /apollo/cyber/examples/common_component_example/common.dag
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

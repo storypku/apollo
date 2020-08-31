@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Calibration FAQs - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Calibration FAQs";
+    var mkdocs_page_input_path = "FAQs/Calibration_FAQs.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Calibration FAQs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/FAQs/Calibration_FAQs.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="calibration-faqs">Calibration FAQs</h2>
+<h3 id="how-to-check-sensor-output">How to Check  Sensor Output?</h3>
+<p>Use the <code>rostopic</code> command. For example, type the following command to check the
+output of HDL-64ES3:</p>
+<pre><code class="bash"> rostopic echo /apollo/sensor/velodyne64/VelodyneScanUnified
+</code></pre>
+
+<p>If the topic data is displayed on the terminal, the LiDAR works normally.</p>
+<h3 id="how-to-check-ins-status">How to Check INS Status?</h3>
+<p>Using Novatel INS as an example, type the following command to check the INS status:</p>
+<pre><code class="bash">rostopic echo /apollo/sensor/gnss/ins_stat
+</code></pre>
+
+<p>Find the <code>pos_type</code> field:  If the value is 56, it has entered a good positioning status (RTK_FIXED) and can be used for calibration. If it is not 56, reliable calibration results cannot be obtained.</p>
+<h3 id="how-to-complete-a-quality-inspection">How to Complete a Quality Inspection?</h3>
+<p>At present, you complete the quality verification manually with a visual inspection of the results.</p>
+<p>When the calibration is completed, the point cloud stitched during the calibration process is provided.  In the point cloud, details of the calibration field can be easily identified. Assess the calibration quality for clarity. Look at objects such as building facades, street lights, poles and road curbs.   If the point cloud is blurry and a ghosting effect can be found, the calibration is poor. If the calibration result is good, a sharp and clear stitched point cloud is shown.</p>
+<p>Figure 1 shows the comparison between the stitched point clouds with good (a) and insufficient(b) calibration quality.</p>
+<p><img alt="" src="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/images/calibration/lidar_calibration/good_calib.png" />
+<p align="center">
+(a)
+</p></p>
+<p><img alt="" src="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/images/calibration/lidar_calibration/poor_calib.png" />
+<p align="center">
+(b)
+</p></p>
+<p align="center">
+Figure 1. (a) a high quality calibration result (b) an insufficient one.
+</p>
+
+<h3 id="how-to-solve-the-permission-error-of-calibration-tools">How to solve the permission error of calibration tools?</h3>
+<p>Output path needs <code>write</code> permission to be created folders and saved results. If the path is missing the relevant permissions, you will receive the following error:</p>
+<pre><code class="bash">terminate called after throwing an instance of ‘boost::filesystem::filesystem_error’ what(): boost::filesystem::create_directories: permission denied: “***” 
+</code></pre>
+
+<p>Enter the following command to add <code>write</code> permission:</p>
+<pre><code class="bash"># add write permission to output path(e.g. /apollo/modules/calibration/data/mkz8)
+sudo chmod a+w /apollo/modules/calibration/data/mkz8 -R
+</code></pre>
+
+<h3 id="how-to-solve-permission-error-when-running-sensor_calibrationsh">How to solve permission error when running sensor_calibration.sh?</h3>
+<p>Log path needs <code>write</code> permission to be created log files. If it is missing the relevant permissions, you will receive the following error:</p>
+<pre><code class="bash">tee: /apollo/data/log/***.out: permission denied
+</code></pre>
+
+<p>Enter the following command to add <code>write</code> permission:</p>
+<pre><code class="bash">sudo chmod a+w /apollo/data/log
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

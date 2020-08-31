@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>how to prepare centosbased gpu enabled image for ROS perception module - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "how to prepare centosbased gpu enabled image for ROS perception module";
+    var mkdocs_page_input_path = "howto/how_to_prepare_centosbased_gpu_enabled_image_for_ROS_perception_module.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>how to prepare centosbased gpu enabled image for ROS perception module</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_prepare_centosbased_gpu_enabled_image_for_ROS_perception_module.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="how-to-prepare-centos7-based-gpu-enabled-image-for-the-perception-module">How to Prepare CENTOS(7) based GPU enabled image for the Perception Module</h3>
+<h3 id="setup-docker-image-in-centos-based-system">Setup docker image in CentOS based system</h3>
+<p>ApolloAuto uses Ubuntu partially because of the Linux distribution dependency of ROS indigo. There is a script
+<code>${apollo\_root}/docker/scripts/install\_dcoker.sh</code> inside the docker image involved. Most cloud based servers have already installed docker, hence you can just go ahead without touching it.</p>
+<p>In CentOS, to install docker
+you can either follow <a href="https://docs.docker.com/engine/installation/linux/docker-ce/centos/#os-requirements">this installation guide</a>
+ to install Docker- CE for CentOS or you could write the following:</p>
+<blockquote>
+<p>sudo yum update &amp;&amp; sudo yum install -y docker</p>
+</blockquote>
+<p>Start docker by</p>
+<blockquote>
+<p>sudo systemctl start docker</p>
+</blockquote>
+<p>Check its health status by</p>
+<blockquote>
+<p>sudo systemctl status docker</p>
+</blockquote>
+<p>As a matter of the fact, we recommend you to install <code>nvidia-docker</code>. <code>Nvidia-docker2</code> is currently
+under <code>alpha</code> verision, and should not be used in production environment.</p>
+<p>As typically sugggested by Docker, you should add your name to the docker group</p>
+<blockquote>
+<p>sudo usermod -aG docker $(whoami)</p>
+</blockquote>
+<p>You can then build out Apollo based on the steps in the installation guide.</p>
+<p>Before executing <code>dev_start.sh</code> to build or pull an image from  apolloauto for CentOS, you have to
+modify ${apollo_auto}/scripts/docker_adduser.sh first by adding <code>--force-badname</code> in line 21.</p>
+<blockquote>
+<p>adduser --force-badname --disable-password ...</p>
+</blockquote>
+<h3 id="gpu-enabled-container-for-perception-research">GPU enabled container for perception research</h3>
+<h5 id="update-driver-in-host">Update driver in host</h5>
+<p>This part is much more tricky because you have to install an nvidia driver in docker container as the same
+version of that in your host machine and stop "nvidia.uvm" relevant modules.</p>
+<p>If you are using <code>VirtualBox</code>, whether the virtual graphic adapter (VGA) can pass through hardware depends
+on your nvidia driver and gpu versions. Some developlers suggest KVM, VMWare and Xen where hardware passthrough to VM
+is well developed.</p>
+<p>Check hardware modules from nvidia driver, using</p>
+<pre><code>&gt; lsmod | grep nvidia
+</code></pre>
+<p>To successfully build nvidia driver <code>375.39</code> suggested by Baidu, you have to download the compatible linux source version, for example
+<code>3.10.0-693.5.2.el7.x86_64</code> and pass it to the "NVIDIA.*run". Whether it
+will or not succeed really depends on your Linux Kernel version. Please vim "NVIDIA.*run" to check correct keyword to pass.</p>
+<h5 id="update-driver-in-docker">Update driver in docker</h5>
+<p>Although you can succeed in the above solution, it is not recommended as it is time intensive and not very efficient.</p>
+<p>A better way is to apply for operation time and update Baidu's driver inside docker. The following problems may arise:</p>
+<ol>
+<li>gcc version confliction with NVIDIA driver:</li>
+<li>baidu uses gcc-4.8.4, it is old, check <code>install_nvidia_driver.sh</code> to see how to update</li>
+<li>bazel dependency: after installation of the driver, you would have to roll back the default gcc version to build apollo</li>
+<li>resintall cuda: it will cost you roughly 2GB, please scale the container to proper size by adjusting paremters in <code>docker run</code> statement</li>
+<li>inspect mounted disk inside docker, <code>df -h</code>, replace the directory which you think good in <code>reinstall_cuda.sh</code>
+     keyword <code>--tmpdir</code></li>
+</ol>
+<p>After installation you, can check the situation by issuing</p>
+<pre><code class="bash">cat /proc/driver/nvidia/version
+nvidia-smi
+</code></pre>
+
+<p><code>nvidia-smi</code> should work normally now.</p>
+<p>Finally,</p>
+<pre><code>&gt; ./apollo.sh build_gpu &amp;&amp; ./scripts/percetion.sh start
+</code></pre>
+<p>If there is no error records in <code>data/log/</code>, you are good to go.</p>
+<h3 id="prebuild-image-for-download">Prebuild image for download</h3>
+<p>You can refer to my <a href="https://hub.docker.com/r/yiakwy/apolloautocentos_gpu">DockerHub</a> for further instructions.</p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>What if you committed incorrect <code>\*.pd.txt</code> files and cannot rebase to the latest developer branch? Try the
+following commands:</p>
+<pre><code>git reset --soft HEAD^ # back to the staging area from previous commit
+for f in $UNWANTED_FILES
+    git reset HEAD $f
+    git git update-index --assume-unchanged $f
+git commit -m ${MESSAGE}
+</code></pre>
+
+<p>replace it with the arguments you actually need.</p>
+<h3 id="contact-me">Contact me</h3>
+<p>https://yiakwy.github.io</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

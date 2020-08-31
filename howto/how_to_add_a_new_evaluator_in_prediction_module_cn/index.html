@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>如何在预测模块中添加新评估器 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5982\u4f55\u5728\u9884\u6d4b\u6a21\u5757\u4e2d\u6dfb\u52a0\u65b0\u8bc4\u4f30\u5668";
+    var mkdocs_page_input_path = "howto/how_to_add_a_new_evaluator_in_prediction_module_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>如何在预测模块中添加新评估器</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_new_evaluator_in_prediction_module_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">如何在预测模块中添加新评估器</h2>
+<h3 id="_2">简介</h3>
+<p>评估器通过应用预训练的深度学习模型生成特征（来自障碍物和当前车辆的原始信息）以获得模型输出。</p>
+<h3 id="_3">添加评估器的步骤</h3>
+<p>按照下面的步骤添加名称为<code>NewEvaluator</code>的评估器。
+1. 在proto中添加一个字段
+2. 声明一个从<code>Evaluator</code>类继承的类<code>NewEvaluator</code>
+3. 实现类<code>NewEvaluator</code>
+4. 更新预测配置
+5. 更新评估器管理</p>
+<h4 id="evaluatornewevaluator">声明一个从<code>Evaluator</code>类继承的类<code>NewEvaluator</code></h4>
+<p><code>modules/prediction/evaluator/vehicle</code>目录下新建文件<code>new_evaluator.h</code>。声明如下:</p>
+<pre><code class="cpp">#include &quot;modules/prediction/evaluator/evaluator.h&quot;
+
+namespace apollo {
+namespace prediction {
+
+class NewEvaluator : public Evaluator {
+ public:
+  NewEvaluator();
+  virtual ~NewEvaluator();
+  void Evaluate(Obstacle* obstacle_ptr) override;
+  // Other useful functions and fields.
+};
+
+}  // namespace prediction
+}  // namespace apollo
+</code></pre>
+
+<h4 id="newevaluator">实现类 <code>NewEvaluator</code></h4>
+<p>在<code>new_evaluator.h</code>所在目录下新建文件<code>new_evaluator.cc</code>。实现如下:</p>
+<pre><code class="cpp">#include &quot;modules/prediction/evaluator/vehicle/new_evaluator.h&quot;
+
+namespace apollo {
+namespace prediction {
+
+NewEvaluator::NewEvaluator() {
+  // Implement
+}
+
+NewEvaluator::～NewEvaluator() {
+  // Implement
+}
+
+NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
+  // Extract features
+  // Compute new_output by applying pre-trained model
+}
+
+// Other functions
+
+}  // namespace prediction
+}  // namespace apollo
+
+</code></pre>
+
+<h4 id="proto">在proto中添加新评估器</h4>
+<p>在<code>prediction_conf.proto</code>中添加新评估器类型:</p>
+<pre><code class="cpp">  enum EvaluatorType {
+    MLP_EVALUATOR = 0;
+    NEW_EVALUATOR = 1;
+  }
+</code></pre>
+
+<h4 id="prediction_conf">更新prediction_conf文件</h4>
+<p>在 <code>modules/prediction/conf/prediction_conf.pb.txt</code>中，按照如下方式更新字段<code>evaluator_type</code>:</p>
+<pre><code>obstacle_conf {
+  obstacle_type: VEHICLE
+  obstacle_status: ON_LANE
+  evaluator_type: NEW_EVALUATOR
+  predictor_type: NEW_PREDICTOR
+}
+</code></pre>
+
+<h4 id="_4">更新评估器管理</h4>
+<p>按照如下方式更新<code>CreateEvluator( ... )</code> :</p>
+<pre><code class="cpp">  case ObstacleConf::NEW_EVALUATOR: {
+      evaluator_ptr.reset(new NewEvaluator());
+      break;
+    }
+</code></pre>
+
+<p>按照如下方式更新<code>RegisterEvaluators()</code> :</p>
+<pre><code class="cpp">  RegisterEvaluator(ObstacleConf::NEW_EVALUATOR);
+</code></pre>
+
+<p>完成上述步骤后，新评估器便创建成功了。</p>
+<h3 id="_5">添加新特性</h3>
+<p>如果你想添加新特性，请按照如下的步骤进行操作:</p>
+<h4 id="proto_1">在proto中添加一个字段</h4>
+<p>假设新的评估结果名称是<code>new_output</code>且类型是<code>int32</code>。如果输出直接与障碍物相关，可以将它添加到<code>modules/prediction/proto/feature.proto</code>中，如下所示:</p>
+<pre><code class="cpp">message Feature {
+    // Other existing features
+    optional int32 new_output = 1000;
+}
+</code></pre>
+
+<p>如果输出与车道相关，请将其添加到<code>modules/prediction/proto/lane_graph.proto</code>中，如下所示:</p>
+<pre><code class="cpp">message LaneSequence {
+    // Other existing features
+    optional int32 new_output = 1000;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

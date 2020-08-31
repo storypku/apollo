@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>如何在本地运行基于NDT点云匹配的定位模块 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5982\u4f55\u5728\u672c\u5730\u8fd0\u884c\u57fa\u4e8eNDT\u70b9\u4e91\u5339\u914d\u7684\u5b9a\u4f4d\u6a21\u5757";
+    var mkdocs_page_input_path = "howto/how_to_run_NDT_localization_module_on_your_local_computer_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>如何在本地运行基于NDT点云匹配的定位模块</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_run_NDT_localization_module_on_your_local_computer_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="ndt">如何在本地运行基于NDT点云匹配的定位模块</h2>
+<p>本文档提供了如何在本地基于NDT点云匹配的定位模块的方法。</p>
+<h3 id="1">1. 事先准备</h3>
+<ul>
+<li>从<a href="https://github.com/ApolloAuto/apollo">GitHub网站</a>下载Apollo master分支源代码</li>
+<li>按照<a href="https://github.com/ApolloAuto/apollo/blob/master/README_cn.md">教程</a>设置Docker环境并搭建Apollo工程</li>
+<li>从<a href="http://data.apollo.auto/?name=sensor%20data&amp;data_key=multisensor&amp;data_type=1&amp;locale=en-us&amp;lang=en">Apollo数据平台</a>下载定位数据（仅限美国地区）</li>
+</ul>
+<p>此定位数据为实验性质的demo数据，用于验证定位模块的可用性。数据主要包含定位地图(ndt_map/), 车辆参数(params/), 传感器数据(records/)。具体属性如下：<br />
+时长：5分钟<br />
+里程：3km<br />
+场景：Sunnyvale 城市道路<br />
+天气：晴天  </p>
+<h3 id="2">2. 配置定位模块</h3>
+<p>为了使定位模块正确运行，需要对地图路径和传感器外参进行配置。假设下载的定位数据的所在路径为DATA_PATH。</p>
+<p>在进行以下步骤前，首先确定你在docker容器中。</p>
+<h4 id="21">2.1 配置传感器外参</h4>
+<p>将定位数据中的传感器外参拷贝至指定文件夹下, 目前NDT定位模块与MSF定位模块使用相同外参路径。</p>
+<pre><code>  cp DATA_PATH/params/ant_imu_leverarm.yaml /apollo/modules/localization/msf/params/gnss_params/
+  cp DATA_PATH/params/velodyne64_novatel_extrinsics_example.yaml /apollo/modules/localization/msf/params/velodyne_params/
+  cp DATA_PATH/params/velodyne64_height.yaml /apollo/modules/localization/msf/params/velodyne_params/
+</code></pre>
+
+<p>在<code>/apollo/modules/localization/conf/localization.conf</code>中添加传感器外参文件配置，以覆盖默认值。</p>
+<pre><code># The lidar extrinsics file
+--lidar_extrinsics_file=/apollo/modules/localization/msf/params/velodyne_params/velodyne64_novatel_extrinsics_example.yaml
+</code></pre>
+
+<p>各个外参的意义
+ - ant_imu_leverarm.yaml： 杆臂值参数，GNSS天线相对Imu的距离
+ - velodyne64_novatel_extrinsics_example.yaml： Lidar相对Imu的外参
+ - velodyne64_height.yaml： Lidar相对地面的高度</p>
+<h4 id="22">2.2 配置地图路径</h4>
+<p>在<code>/apollo/modules/localization/conf/localization.conf</code>中添加关于地图路径的配置</p>
+<pre><code># Redefine the map_dir in global_flagfile.txt
+--map_dir=DATA_PATH
+</code></pre>
+
+<p>这将会覆盖global_flagfile.txt中的默认值。</p>
+<h4 id="23-topic">2.3 修改Topic名称</h4>
+<p>由于目前Apollo支持velodyne 64线,128线lidar, 因此为区分不同设备数据，采用不同的topic名称。因此，在启动之前需要设置正确的lidar topic名称。在<code>/apollo/modules/localization/conf/localization.conf</code>中添加lidar topic名称，以覆盖默认值。</p>
+<pre><code># The pointcloud topic name.
+--lidar_topic=/apollo/sensor/velodyne64/compensator/PointCloud2
+</code></pre>
+
+<p>(可选)另外，对于定位可视化工具的使用，同样需要配置相应的topic名称。修改文件<code>/apollo/modules/localization/dag/dag_streaming_msf_visualizer.dag</code> 中的channel值为:</p>
+<pre><code>channel: /apollo/sensor/velodyne64/compensator/PointCloud2
+</code></pre>
+
+<h3 id="3-ndt">3. 运行NDT定位模块</h3>
+<pre><code>./scripts/ndt_localization.sh
+</code></pre>
+
+<p>定位程序将在后台运行，可以通过以下命令进行查看。</p>
+<pre><code>ps -e | grep ndt_localization
+</code></pre>
+
+<p>在/apollo/data/log目录下，可以看到定位模块输出的相关文件。 </p>
+<ul>
+<li>localization.INFO : INFO级别的log信息</li>
+<li>localization.WARNING : WARNING级别的log信息</li>
+<li>localization.ERROR : ERROR级别的log信息</li>
+<li>localization.out : 标准输出重定向文件</li>
+<li>localizaiton.flags : 启动localization模块使用的配置</li>
+</ul>
+<h3 id="4-record">4. 播放演示record</h3>
+<pre><code>cd DATA_PATH/record
+cyber_record play -f *.record
+</code></pre>
+
+<p>另外打开一个终端，进入docker环境，执行</p>
+<pre><code>cyber_monitor
+</code></pre>
+
+<p>终端会显示出topic列表，可以看到定位topic <code>/apollo/localization/pose</code> 有输出。</p>
+<h3 id="5">5. 记录与可视化定位结果（可选）</h3>
+<h4 id="_1">记录定位结果</h4>
+<pre><code>python ./scripts/record_bag.py
+</code></pre>
+
+<p>该脚本会在后台运行录包程序，并将存放路径输出到终端上。</p>
+<h4 id="_2">可视化定位结果</h4>
+<p>NDT定位模块使用与MSF定位模块相同的可视化工具。</p>
+<p>运行可视化工具</p>
+<pre><code>./scripts/localization_online_visualizer.sh
+</code></pre>
+
+<p>该可视化工具首先根据MSF定位地图生成用于可视化的缓存文件，存放在/apollo/data/map_visual目录下。</p>
+<p>然后接收以下topic并进行可视化绘制。</p>
+<ul>
+<li>/apollo/sensor/velodyne64/compensator/PointCloud2</li>
+<li>/apollo/localization/pose</li>
+</ul>
+<p>可视化效果如下
+<img alt="1" src="../images/ndt_localization/online_visualizer.png" /></p>
+<p>如果发现可视化工具运行时卡顿，可使用如下命令重新编译可视化工具</p>
+<pre><code>cd /apollo
+bazel build -c opt //modules/localization/msf/local_tool/local_visualization/online_visual:online_local_visualizer
+</code></pre>
+
+<p>编译选项-c opt优化程序性能，从而使可视化工具可以实时运行。</p>
+<h3 id="6">6. 结束运行定位模块</h3>
+<pre><code>./scripts/ndt_localization.sh stop
+</code></pre>
+
+<p>如果之前有运行步骤5的录包脚本，还需执行</p>
+<pre><code>python ./scripts/record_bag.py --stop
+</code></pre>
+
+<h3 id="7">7. 验证定位结果（可选）</h3>
+<p>NDT模块定位结果的验证使用MSF模块的验证工具。
+假设步骤5中录取的数据存放路径为OUTPUT_PATH，杆臂值外参的路径为ANT_IMU_PATH。
+首先将录制的数据包重命名为以<code>.record</code>为后缀的文件。</p>
+<p>运行脚本</p>
+<pre><code>./scripts/msf_local_evaluation.sh OUTPUT_PATH ANT_IMU_PATH
+</code></pre>
+
+<p>该脚本会以RTK定位模式为基准，将多传感器融合模式的定位结果进行对比。</p>
+<p>(注意只有在GNSS信号良好，RTK定位模式运行良好的区域，这样的对比才是有意义的。)</p>
+<p>获得如下统计结果：</p>
+<p><img alt="2" src="../images/ndt_localization/ndt_eval.png" /></p>
+<p>NDT模块的统计结果只有一组，即定位输出<code>/apollo/localization/pose</code>的统计结果。</p>
+<p>表格中各项的意义， 
+ - error：  平面误差，单位为米
+ - error lon：  车前进方向的误差，单位为米
+ - error lat：  车横向方向的误差，单位为米
+ - error roll： 翻滚角误差，单位为度
+ - error pit：  俯仰角误差，单位为度
+ - error yaw：  偏航角误差，单位为度
+ - mean： 误差的平均值
+ - std：  误差的标准差
+ - max：  误差的最大值
+ - &lt;30cm：  距离误差少于30cm的帧所占的百分比
+ - &lt;1.0d：  角度误差小于1.0d的帧所占的百分比
+ - con_frame()： 满足括号内条件的最大连续帧数</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

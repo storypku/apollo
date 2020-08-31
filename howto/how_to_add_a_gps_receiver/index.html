@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to add a new GPS Receiver - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to add a new GPS Receiver";
+    var mkdocs_page_input_path = "howto/how_to_add_a_gps_receiver.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to add a new GPS Receiver</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_gps_receiver.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-add-a-new-gps-receiver">How to add a new GPS Receiver</h2>
+<h3 id="introduction">Introduction</h3>
+<p>GPS receiver is a device that receives information from GPS satellites and then calculates the device's geographical position, velocity and precise time. The device usually includes a receiver, an IMU (depends on the model), an interface to a wheel encoder, and a fusion engine that combines information from those sensors. The Default GPS receiver used in Apollo is Novatel cards. The instruction demonstrates how to add and use a new GPS Receiver.</p>
+<h3 id="steps-to-add-a-new-gps-receiver">Steps to add a new GPS Receiver</h3>
+<p>Please follow the steps below to add a new GPS Receiver.
+  1. Implement the new data parser for the new GPS receiver, by inheriting class <code>Parser</code>
+  2. Add new interfaces in <code>Parser</code> class for the new GPS receiver
+  3. In <code>config.proto</code>, add the new data format for the new GPS receiver
+  4. In function <code>create_parser</code> from file data_parser.cpp, add the new parser instance for the new GPS receiver</p>
+<p>Let's look at how to add the GPS Receiver using the above-mentioned steps for Receiver: <code>u-blox</code>.</p>
+<h4 id="step-1">Step 1</h4>
+<p>Let us implement the new data parser for the new GPS receiver, by inheriting class <code>Parser</code>:</p>
+<pre><code class="cpp">class UbloxParser : public Parser {
+public:
+    UbloxParser();
+
+    virtual MessageType get_message(MessagePtr&amp; message_ptr);
+
+private:
+    bool verify_checksum();
+
+    Parser::MessageType prepare_message(MessagePtr&amp; message_ptr);
+
+    // The handle_xxx functions return whether a message is ready.
+    bool handle_esf_raw(const ublox::EsfRaw* raw, size_t data_size);
+    bool handle_esf_ins(const ublox::EsfIns* ins);
+    bool handle_hnr_pvt(const ublox::HnrPvt* pvt);
+    bool handle_nav_att(const ublox::NavAtt *att);
+    bool handle_nav_pvt(const ublox::NavPvt* pvt);
+    bool handle_nav_cov(const ublox::NavCov *cov);
+    bool handle_rxm_rawx(const ublox::RxmRawx *raw);
+
+    double _gps_seconds_base = -1.0;
+
+    double _gyro_scale = 0.0;
+
+    double _accel_scale = 0.0;
+
+    float _imu_measurement_span = 0.0;
+
+    int _imu_frame_mapping = 5;
+
+    double _imu_measurement_time_previous = -1.0;
+
+    std::vector&lt;uint8_t&gt; _buffer;
+
+    size_t _total_length = 0;
+
+    ::apollo::drivers::gnss::Gnss _gnss;
+    ::apollo::drivers::gnss::Imu _imu;
+    ::apollo::drivers::gnss::Ins _ins;
+};
+
+</code></pre>
+
+<h4 id="step-2">Step 2</h4>
+<p>Let us now add the new interfaces in the Parser class for the new GPS receiver:</p>
+<p>Add the function <code>create_ublox</code> in <code>Parser</code> class:</p>
+<pre><code class="cpp">class Parser {
+public:
+    // Return a pointer to a NovAtel parser. The caller should take ownership.
+    static Parser* create_novatel();
+
+    // Return a pointer to a u-blox parser. The caller should take ownership.
+    static Parser* create_ublox();
+
+    virtual ~Parser() {}
+
+    // Updates the parser with new data. The caller must keep the data valid until get_message()
+    // returns NONE.
+    void update(const uint8_t* data, size_t length) {
+        _data = data;
+        _data_end = data + length;
+    }
+
+    void update(const std::string&amp; data) {
+        update(reinterpret_cast&lt;const uint8_t*&gt;(data.data()), data.size());
+    }
+
+    enum class MessageType {
+        NONE,
+        GNSS,
+        GNSS_RANGE,
+        IMU,
+        INS,
+        WHEEL,
+        EPHEMERIDES,
+        OBSERVATION,
+        GPGGA,
+    };
+
+    // Gets a parsed protobuf message. The caller must consume the message before calling another
+    // get_message() or update();
+    virtual MessageType get_message(MessagePtr&amp; message_ptr) = 0;
+
+protected:
+    Parser() {}
+
+    // Point to the beginning and end of data. Do not take ownership.
+    const uint8_t* _data = nullptr;
+    const uint8_t* _data_end = nullptr;
+
+private:
+    DISABLE_COPY_AND_ASSIGN(Parser);
+};
+
+Parser* Parser::create_ublox() {
+    return new UbloxParser();
+}
+</code></pre>
+
+<h4 id="step-3">Step 3</h4>
+<p>In config.proto, let us add the new data format definition for the new GPS receiver:</p>
+<p>Add <code>UBLOX_TEXT</code> and <code>UBLOX_BINARY</code> in the config file: modules/drivers/gnss/proto/config.proto</p>
+<pre><code class="txt">message Stream {
+    enum Format {
+        UNKNOWN = 0;
+        NMEA = 1;
+        RTCM_V2 = 2;
+        RTCM_V3 = 3;
+
+        NOVATEL_TEXT = 10;
+        NOVATEL_BINARY = 11;
+
+        UBLOX_TEXT = 20;
+        UBLOX_BINARY = 21;
+    }
+... ...
+</code></pre>
+
+<h4 id="step-4">Step 4</h4>
+<p>In function <code>create_parser</code> from file data_parser.cpp, let us add the new parser instance for the new GPS receiver.
+We will do so by adding code to process <code>config::Stream::UBLOX_BINARY</code> as below:</p>
+<pre><code class="cpp">Parser* create_parser(config::Stream::Format format, bool is_base_station = false) {
+    switch (format) {
+    case config::Stream::NOVATEL_BINARY:
+        return Parser::create_novatel();
+
+    case config::Stream::UBLOX_BINARY:
+        return Parser::create_ubloxl();
+
+    default:
+        return nullptr;
+    }
+}
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

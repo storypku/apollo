@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Navigation mode tutorial cn - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Navigation mode tutorial cn";
+    var mkdocs_page_input_path = "technical_tutorial/navigation_mode_tutorial_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Navigation mode tutorial cn</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/technical_tutorial/navigation_mode_tutorial_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h4 id="apollo">Apollo导航模式教程</h4>
+<h5 id="1">1. 教程简介</h5>
+<p>无人驾驶系统利用实时感知信息和静态地图信息构建出完整驾驶环境，并在构建的环境中，依据routing数据，规划出行车轨迹，并由控制模块执行完成。Apollo导航模式在上述的框架下，针对高速、乡村道路等简单道路场景，进行了以下的提升：</p>
+<ol>
+<li>Apollo导航模式以提高安全性和稳定性为目的，在驾驶环境中加入了静态引导信息，引导在驾驶环境中的轨迹规划，使其更安全更舒适。同时，引导信息也降低了对驾驶环境的完整性的要求 -- 即降低了对地图信息的要求。</li>
+<li>Apollo导航模式使用了相对/车身坐标系。减少了sensor数据的转化。同时也支持各种驾驶模式之间的转化，以应对不同的驾驶场景和条件。</li>
+<li>Apollo导航模式引入了百度地图的Routing功能，考虑实时路况信息，使得Routing的结果更实用，更精确，更稳定。也使得Apollo系统更易于落地和商用。</li>
+</ol>
+<h6 id="_1">在本教程中，你将完成</h6>
+<p>学习完本教程后，你将能够在导航模式下进行规划模块（planning）的线下调试和开发。</p>
+<h6 id="_2">在本教教中，你将掌握</h6>
+<ul>
+<li>如何设置Apollo导航模式</li>
+<li>如何利用云端指引者发送指引线</li>
+<li>如何利用录制的ros bag产生指引线并用线下指引者发送</li>
+<li>如何进行规划模块的调试</li>
+</ul>
+<h6 id="_3">在本教程中，你需要如下准备</h6>
+<ul>
+<li>
+<p>下载并编译Apollo最新源码（<a href="https://github.com/ApolloAuto/apollo/tree/master/docs/demo_guide">Howto</a>）</p>
+</li>
+<li>
+<p>下载 <a href="https://github.com/ApolloAuto/apollo/releases/download/v2.5.0/demo_2.5.bag">Apollo2.5 demo bag</a></p>
+</li>
+</ul>
+<h5 id="2">2. 配置导航模式</h5>
+<p>在导航模式下，有以下几个参数需要进行配置：</p>
+<ul>
+<li>感知方案：目前支持摄像头方案（CAMERA）和基于Mobileye的方案（MOBILEYE）</li>
+<li>Apollo UTM Zone</li>
+<li>规划模块的Planner：目前支持EM, LATTICE, 和NAVI三种</li>
+<li>系统限速：单位为米/秒</li>
+</ul>
+<h6 id="docker">在Docker下修改配置文件</h6>
+<p>配置文件位于：</p>
+<pre><code class="bash">/apollo/modules/tools/navigation/config/default.ini
+</code></pre>
+
+<p>默认配置为：</p>
+<pre><code class="bash">[PerceptionConf]
+# three perception solutions: MOBILEYE, CAMERA, and VELODYNE64
+perception = CAMERA
+
+[LocalizationConf]
+utm_zone = 10
+
+[PlanningConf]
+# three planners are available: EM, LATTICE, NAVI
+planner_type = EM
+
+# highest speed for planning algorithms, unit is meter per second
+speed_limit = 5
+</code></pre>
+
+<p>该默认配置为Apollo 2.5 Demo bag录制时的配置，在此教程中，我们直接使用。</p>
+<h6 id="_4">生效配置信息</h6>
+<p>为了使配置生效，在Docker内的Apollo根目录下，运行如下命令</p>
+<pre><code class="bash">in_dev_docker:/apollo$ cd /apollo/modules/tools/navigation/config/
+in_dev_docker:/apollo/modules/tools/navigation/config$ python navi_config.py default.ini
+</code></pre>
+
+<h5 id="3">3. 云端指引者的使用</h5>
+<h6 id="demo-bag">回放demo bag</h6>
+<p>在进入Docker，启动Apollo之前，我们把<a href="https://github.com/ApolloAuto/apollo/releases/download/v2.5.0/demo_2.5.bag">Apollo2.5 demo bag</a> 拷贝到Apollo代码根目录下的data目录中。</p>
+<p>在Docker内编译成功后，我们用如下命令启动Dreamview：</p>
+<pre><code class="bash">in_dev_docker:/apollo$ ./scripts/bootstrap.sh start
+</code></pre>
+
+<p>并在本地浏览器中打开</p>
+<pre><code class="bash">http://localhost:8888
+</code></pre>
+
+<p>如下图所示，在模式框中选择“Navigation”。</p>
+<p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_1_init.png" /> </p>
+<p>然后在Docker内的apollo根目录下运行如下命令进行bag播放</p>
+<pre><code class="bash">in_dev_docker:/apollo$cd data
+in_dev_docker:/apollo/data$rosbag play demo_2.5.bag
+</code></pre>
+
+<p>播放开始后，可以看到Dreamview界面如下</p>
+<p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_2_play.png" /></p>
+<h6 id="_5">请求云端指引线</h6>
+<p>在地图中选择一个目的地（沿canada路），点击地图视图中的红色Route按钮，云端指引者会接收到这个请求，并返回指引线，该指引线会被显示在地图视图中。如下图所示。</p>
+<p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_3_cloud.png" /></p>
+<p>以上就是云端指引者的调用过程。</p>
+<h5 id="4">4.  离线指引者工具的使用</h5>
+<p>目前云端指引者只覆盖了有限的区域。除了云端的服务之外，我们还提供了离线指引者工具来制作和发送线下指引线。在本教程中，我们以<a href="https://github.com/ApolloAuto/apollo/releases/download/v2.5.0/demo_2.5.bag">Apollo2.5 demo bag</a>为例来生成指引线。</p>
+<h6 id="_6">指引线的制作</h6>
+<p>生成指引线的步骤为</p>
+<ul>
+<li>从bag中提取路径数据</li>
+</ul>
+<pre><code class="bash">in_dev_docker:/apollo$cd modules/tools/navigator
+in_dev_docker:/apollo/modules/tools/navigator$python extractor.py /apollo/data/demo_2.5.bag
+</code></pre>
+
+<p>提取出来的路径数据在路径</p>
+<pre><code class="bash">in_dev_docker:/apollo/modules/tools/navigator$
+</code></pre>
+
+<p>中的</p>
+<pre><code class="bash">path_demo_2.5.bag.txt
+</code></pre>
+
+<ul>
+<li>平滑路径数据</li>
+</ul>
+<pre><code class="bash">in_dev_docker:/apollo/modules/tools/navigator$bash smooth.sh path_demo_2.5.bag.txt 200
+</code></pre>
+
+<p>平滑后的的数据在</p>
+<pre><code class="bash">in_dev_docker:/apollo/modules/tools/navigator$path_demo_2.5.bag.txt.smoothed
+</code></pre>
+
+<h6 id="_7">指引线的发送</h6>
+<p>得到平滑后的数据就可以发送到Apollo系统中，作为指引线，步骤为：</p>
+<pre><code class="bash">in_dev_docker:/apollo/modules/tools/navigator$python navigator.py path_demo_2.5.bag.txt.smoothed
+</code></pre>
+
+<p>发送完成后，Dreamview的地图视图中的红色指引线会更新为如下图所示：</p>
+<p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_4_offline.png" /></p>
+<h5 id="5">5. 规划模块的调试</h5>
+<h6 id="_8">调试数据准备</h6>
+<p>利用bag来进行模块调试，首先要把bag中的相应ros message过滤掉。假设我们想要调试规划模块，我们需要把消息</p>
+<pre><code>/apollo/planning
+</code></pre>
+
+<p>过滤，使用以下命令</p>
+<pre><code class="bash">in_dev_docker:/apollo$cd data
+in_dev_docker:/apollo/data$rosbag filter demo_2.5.bag demo_2.5_no_planning.bag &quot;topic != '/apollo/planning'&quot;
+</code></pre>
+
+<p>过滤后的bag位于</p>
+<pre><code class="bash">in_dev_docker:/apollo/data$demo_2.5_no_planning.bag
+</code></pre>
+
+<h6 id="_9">规划轨迹的产生</h6>
+<p>我们播放没有规划的bag，用下面的命令</p>
+<pre><code class="bash">in_dev_docker:/apollo/data$rosbag play demo_2.5_no_planning.bag
+</code></pre>
+
+<p>在Dreamview中我们会看到车辆的规划轨迹没有输出，如下图</p>
+<p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_5_no_planning.png" /></p>
+<p>我们在Dreamview中打开Navi Planning模块，如下图</p>
+<p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_6_live_planning.png" /></p>
+<p>我们看到实时计算的车辆的规划轨迹显示在Dreamview中。这时你可以试着更改一些规划模块的配置</p>
+<pre><code>in_dev_docker:/apollo/modules/planning/conf$planning_config_navi.pb.txt
+</code></pre>
+
+<p>去了解，这些参数会对规划结果有什么影响。或者修改规划算法的代码，进行调试。</p>
+<h5 id="6">6.结束</h5>
+<p>恭喜你完成了本教程。现在你应该了解</p>
+<ul>
+<li>如何设置Apollo导航模式</li>
+<li>如何利用云端指引者发送指引线</li>
+<li>如何利用录制的ros bag产生指引线并用线下指引者发送</li>
+<li>如何进行规划模块的调试</li>
+</ul>
+<p>你也可以试着利用demo bag对其他一些模块进行调试。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

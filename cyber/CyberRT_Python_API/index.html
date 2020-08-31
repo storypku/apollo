@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>CyberRT Python API - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "CyberRT Python API";
+    var mkdocs_page_input_path = "cyber/CyberRT_Python_API.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>CyberRT Python API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_Python_API.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="1-background">1. Background</h3>
+<p>The core functions of Cyber RT are developed in C++. We also provide more python interfaces to help developers build their own utilities for specific projects.</p>
+<h3 id="2-cyber-rt-python-interfaces">2. Cyber RT Python Interfaces</h3>
+<p>The python interfaces of Cyber RT are wrapper the corresponding C++ interfaces. The implementation doesn't rely on other third-party tools, e.g. swig, which makes it easier to maintain.</p>
+<h3 id="3-overview-of-python-interfaces-in-cyber-rt">3. Overview of Python Interfaces in Cyber RT</h3>
+<p>So far, the python interfaces covers:</p>
+<ul>
+<li>access the information of channels</li>
+<li>server/client communication</li>
+<li>query informatoin in record files</li>
+<li>read and write from/to record files</li>
+<li>Time/Duration/Rate related operations</li>
+<li>Timer</li>
+</ul>
+<h4 id="31-readwrite-of-channels">3.1 Read/Write of Channels</h4>
+<p>Steps shown as below:
+  1. First create a Node；
+  2. Create corresponding reader or writer;
+  3. If write to a channel, use write interface in writer.
+  4. If read from a channel, use the spin interface in the node, and process the messages in your callback function</p>
+<p>The interfaces are shown below:</p>
+<pre><code class="python">class Node:
+    &quot;&quot;&quot;
+    Class for cyber Node wrapper.
+    &quot;&quot;&quot;
+
+    def create_writer(self, name, data_type, qos_depth=1):
+        &quot;&quot;&quot;
+        create a topic writer for send message to topic.
+        @param self
+        @param name str: topic name
+        @param data_type proto: message class for serialization
+        &quot;&quot;&quot;
+
+   def create_reader(self, name, data_type, callback, args=None):
+        &quot;&quot;&quot;
+        create a topic reader for receive message from topic.
+        @param self
+        @param name str: topic name
+        @param data_type proto: message class for serialization
+        @callback fn: function to call (fn(data)) when data is
+                   received. If args is set, the function must
+                   accept the args as a second argument,
+                   i.e. fn(data, args)
+        @args any: additional arguments to pass to the callback
+        &quot;&quot;&quot;
+    def create_client(self, name, request_data_type, response_data_type):
+    &quot;&quot;&quot;
+    &quot;&quot;&quot;
+    def create_service(self, name, req_data_type, res_data_type, callback, args=None):
+
+    def spin(self):
+        &quot;&quot;&quot;
+        spin in wait and process message.
+        @param self
+        &quot;&quot;&quot;
+
+class Writer(object):
+    &quot;&quot;&quot;
+    Class for cyber writer wrapper.
+    &quot;&quot;&quot;
+    def write(self, data):
+        &quot;&quot;&quot;
+        writer msg string
+        &quot;&quot;&quot;
+</code></pre>
+
+<h4 id="32-record-interfaces">3.2 Record Interfaces</h4>
+<p>Read from record：</p>
+<ol>
+<li>Create a RecordReader;</li>
+<li>Read messages from Record;</li>
+</ol>
+<p>Write to record：</p>
+<ol>
+<li>Create a RecordWriter</li>
+<li>Write messages to record；</li>
+</ol>
+<p>The interfaces are shown below:</p>
+<pre><code class="python">class RecordReader(object):
+    &quot;&quot;&quot;
+    Class for cyber RecordReader wrapper.
+    &quot;&quot;&quot;
+    def read_messages(self, start_time=0, end_time=18446744073709551615):
+        &quot;&quot;&quot;
+        read message from bag file.
+        @param self
+        @param start_time:
+        @param end_time:
+        @return: generator of (message, data_type, timestamp)
+        &quot;&quot;&quot;
+    def get_messagenumber(self, channel_name):
+        &quot;&quot;&quot;
+        return message count.
+        &quot;&quot;&quot;
+    def get_messagetype(self, channel_name):
+        &quot;&quot;&quot;
+        return message type.
+        &quot;&quot;&quot;
+    def get_protodesc(self, channel_name):
+        &quot;&quot;&quot;
+        return message protodesc.
+        &quot;&quot;&quot;
+    def get_headerstring(self):
+        &quot;&quot;&quot;
+        return message header string.
+        &quot;&quot;&quot;
+    def reset(self):
+        &quot;&quot;&quot;
+        return reset.
+        &quot;&quot;&quot;
+        return _CYBER_RECORD.PyRecordReader_Reset(self.record_reader)
+
+    def get_channellist(self):
+        &quot;&quot;&quot;
+        return channel list.
+        &quot;&quot;&quot;
+        return _CYBER_RECORD.PyRecordReader_GetChannelList(self.record_reader)
+
+
+class RecordWriter(object):
+    &quot;&quot;&quot;
+    Class for cyber RecordWriter wrapper.
+    &quot;&quot;&quot;
+    def open(self, path):
+        &quot;&quot;&quot;
+        open record file for write.
+        &quot;&quot;&quot;
+    def write_channel(self, channel_name, type_name, proto_desc):
+        &quot;&quot;&quot;
+        writer channel by channelname,typename,protodesc
+        &quot;&quot;&quot;
+    def write_message(self, channel_name, data, time, raw = True):
+        &quot;&quot;&quot;
+        writer msg:channelname,data,time,is data raw
+        &quot;&quot;&quot;
+
+    def set_size_fileseg(self, size_kilobytes):
+        &quot;&quot;&quot;
+        return filesegment size.
+        &quot;&quot;&quot;
+
+    def set_intervaltime_fileseg(self, time_sec):
+        &quot;&quot;&quot;
+        return file interval time.
+        &quot;&quot;&quot;
+
+    def get_messagenumber(self, channel_name):
+        &quot;&quot;&quot;
+        return message count.
+        &quot;&quot;&quot;
+
+    def get_messagetype(self, channel_name):
+        &quot;&quot;&quot;
+        return message type.
+        &quot;&quot;&quot;
+
+    def get_protodesc(self, channel_name):
+        &quot;&quot;&quot;
+        return message protodesc.
+        &quot;&quot;&quot;
+
+</code></pre>
+
+<h4 id="33-time-interfaces">3.3 Time Interfaces</h4>
+<pre><code class="python">class Time(object):
+    @staticmethod
+    def now():
+        time_now = Time(_CYBER_TIME.PyTime_now())
+        return time_now
+
+    @staticmethod
+    def mono_time():
+        mono_time = Time(_CYBER_TIME.PyTime_mono_time())
+        return mono_time
+
+    def to_sec(self):
+        return _CYBER_TIME.PyTime_to_sec(self.time)
+
+    def to_nsec(self):
+        return _CYBER_TIME.PyTime_to_nsec(self.time)
+
+    def sleep_until(self, nanoseconds):
+        return _CYBER_TIME.PyTime_sleep_until(self.time, nanoseconds)
+</code></pre>
+
+<h4 id="34-timer-interfaces">3.4 Timer Interfaces</h4>
+<pre><code class="python">class Timer(object):
+
+    def set_option(self, period, callback, oneshot=0):
+        &quot;&quot;&quot;
+        set the option of timer.
+        @param period The period of the timer, unit is ms.
+        @param callback The tasks that the timer needs to perform.
+        @param oneshot 1:perform the callback only after the first timing cycle
+        0:perform the callback every timed period
+        &quot;&quot;&quot;
+
+    def start(self):
+
+    def stop(self):
+
+</code></pre>
+
+<h3 id="4-examples">4. Examples</h3>
+<h4 id="41-read-from-channel-in-cyberpythoncyber_py3exampleslistenerpy">4.1 Read from Channel (in cyber/python/cyber_py3/examples/listener.py)</h4>
+<pre><code class="python">from cyber_py3 import cyber
+from cyber.proto.unit_test_pb2 import ChatterBenchmark
+
+
+def callback(data):
+    &quot;&quot;&quot;
+    Reader message callback.
+    &quot;&quot;&quot;
+    print(&quot;=&quot; * 80)
+    print(&quot;py:reader callback msg-&gt;:&quot;)
+    print(data)
+    print(&quot;=&quot; * 80)
+
+
+def test_listener_class():
+    &quot;&quot;&quot;
+    Reader message.
+    &quot;&quot;&quot;
+    print(&quot;=&quot; * 120)
+    test_node = cyber.Node(&quot;listener&quot;)
+    test_node.create_reader(&quot;channel/chatter&quot;, ChatterBenchmark, callback)
+    test_node.spin()
+
+
+if __name__ == '__main__':
+    cyber.init()
+    test_listener_class()
+    cyber.shutdown()
+ ```
+
+### 4.2 Write to Channel(in cyber/python/cyber_py3/examples/talker.py)
+
+ ```python
+import time
+
+from cyber_py3 import cyber
+from cyber.proto.unit_test_pb2 import ChatterBenchmark
+
+
+def test_talker_class():
+    &quot;&quot;&quot;
+    Test talker.
+    &quot;&quot;&quot;
+    msg = ChatterBenchmark()
+    msg.content = &quot;py:talker:send Alex!&quot;
+    msg.stamp = 9999
+    msg.seq = 0
+    print(msg)
+    test_node = cyber.Node(&quot;node_name1&quot;)
+    g_count = 1
+
+    writer = test_node.create_writer(&quot;channel/chatter&quot;, ChatterBenchmark, 6)
+    while not cyber.is_shutdown():
+        time.sleep(1)
+        g_count = g_count + 1
+        msg.seq = g_count
+        msg.content = &quot;I am python talker.&quot;
+        print(&quot;=&quot; * 80)
+        print(&quot;write msg -&gt; %s&quot; % msg)
+        writer.write(msg)
+
+
+if __name__ == '__main__':
+    cyber.init(&quot;talker_sample&quot;)
+    test_talker_class()
+    cyber.shutdown()
+
+</code></pre>
+
+<h4 id="43-read-and-write-messages-fromto-record-filein-cyberpythoncyber_py3examplesrecordpy">4.3 Read and Write Messages from/to Record File(in cyber/python/cyber_py3/examples/record.py)</h4>
+<pre><code class="python">&quot;&quot;&quot;
+Module for example of record.
+Run with:
+    bazel run //cyber/python/cyber_py3/examples:record
+&quot;&quot;&quot;
+
+import time
+
+from google.protobuf.descriptor_pb2 import FileDescriptorProto
+
+from cyber.proto.unit_test_pb2 import Chatter
+from cyber.python.cyber_py3 import record
+from modules.common.util.testdata.simple_pb2 import SimpleMessage
+
+
+MSG_TYPE = &quot;apollo.common.util.test.SimpleMessage&quot;
+MSG_TYPE_CHATTER = &quot;apollo.cyber.proto.Chatter&quot;
+
+
+def test_record_writer(writer_path):
+    &quot;&quot;&quot;
+    Record writer.
+    &quot;&quot;&quot;
+    fwriter = record.RecordWriter()
+    fwriter.set_size_fileseg(0)
+    fwriter.set_intervaltime_fileseg(0)
+
+    if not fwriter.open(writer_path):
+        print('Failed to open record writer!')
+        return
+    print('+++ Begin to writer +++')
+
+    # Writer 2 SimpleMessage
+    msg = SimpleMessage()
+    msg.text = &quot;AAAAAA&quot;
+
+    file_desc = msg.DESCRIPTOR.file
+    proto = FileDescriptorProto()
+    file_desc.CopyToProto(proto)
+    proto.name = file_desc.name
+    desc_str = proto.SerializeToString()
+    print(msg.DESCRIPTOR.full_name)
+    fwriter.write_channel(
+        'simplemsg_channel', msg.DESCRIPTOR.full_name, desc_str)
+    fwriter.write_message('simplemsg_channel', msg, 990, False)
+    fwriter.write_message('simplemsg_channel', msg.SerializeToString(), 991)
+
+    # Writer 2 Chatter
+    msg = Chatter()
+    msg.timestamp = 99999
+    msg.lidar_timestamp = 100
+    msg.seq = 1
+
+    file_desc = msg.DESCRIPTOR.file
+    proto = FileDescriptorProto()
+    file_desc.CopyToProto(proto)
+    proto.name = file_desc.name
+    desc_str = proto.SerializeToString()
+    print(msg.DESCRIPTOR.full_name)
+    fwriter.write_channel('chatter_a', msg.DESCRIPTOR.full_name, desc_str)
+    fwriter.write_message('chatter_a', msg, 992, False)
+    msg.seq = 2
+    fwriter.write_message(&quot;chatter_a&quot;, msg.SerializeToString(), 993)
+
+    fwriter.close()
+
+
+def test_record_reader(reader_path):
+    &quot;&quot;&quot;
+    Record reader.
+    &quot;&quot;&quot;
+    freader = record.RecordReader(reader_path)
+    time.sleep(1)
+    print('+' * 80)
+    print('+++ Begin to read +++')
+    count = 0
+    for channel_name, msg, datatype, timestamp in freader.read_messages():
+        count += 1
+        print('=' * 80)
+        print('read [%d] messages' % count)
+        print('channel_name -&gt; %s' % channel_name)
+        print('msgtime -&gt; %d' % timestamp)
+        print('msgnum -&gt; %d' % freader.get_messagenumber(channel_name))
+        print('msgtype -&gt; %s' % datatype)
+        print('message is -&gt; %s' % msg)
+        print('***After parse(if needed),the message is -&gt;')
+        if datatype == MSG_TYPE:
+            msg_new = SimpleMessage()
+            msg_new.ParseFromString(msg)
+            print(msg_new)
+        elif datatype == MSG_TYPE_CHATTER:
+            msg_new = Chatter()
+            msg_new.ParseFromString(msg)
+            print(msg_new)
+
+
+if __name__ == '__main__':
+    test_record_file = &quot;/tmp/test_writer.record&quot;
+
+    print('Begin to write record file: {}'.format(test_record_file))
+    test_record_writer(test_record_file)
+
+    print('Begin to read record file: {}'.format(test_record_file))
+    test_record_reader(test_record_file)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

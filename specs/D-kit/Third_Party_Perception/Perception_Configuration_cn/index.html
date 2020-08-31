@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>基于双目感知的封闭园区自动驾驶搭建--感知适配 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u57fa\u4e8e\u53cc\u76ee\u611f\u77e5\u7684\u5c01\u95ed\u56ed\u533a\u81ea\u52a8\u9a7e\u9a76\u642d\u5efa--\u611f\u77e5\u9002\u914d";
+    var mkdocs_page_input_path = "specs/D-kit/Third_Party_Perception/Perception_Configuration_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>基于双目感知的封闭园区自动驾驶搭建--感知适配</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/D-kit/Third_Party_Perception/Perception_Configuration_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="-">基于双目感知的封闭园区自动驾驶搭建--感知适配</h2>
+<h3 id="_1">前提条件</h3>
+<ol>
+<li>
+<p>正确完成了<a href="../../Waypoint_Following/Start_Waypoint_Following_cn/">循迹搭建--车辆循迹演示</a>。</p>
+</li>
+<li>
+<p>正确完成了<a href="../Sensor_Integration_cn/">基于双目感知的封闭园区自动驾驶搭建--设备集成</a>。</p>
+</li>
+</ol>
+<h3 id="_2">配置文件的修改</h3>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>待修改文件</th>
+<th>修改内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>modules/common/data/global_flagfile.txt</code></td>
+<td>添加<code>--half_vehicle_width=0.43</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">感知开环验证及测试</h3>
+<p>把车辆开到户外，手动控制车辆，看感知是否有数据。</p>
+<ol>
+<li>
+<p>进入docker环境，编译apollo，启动DreamView。</p>
+<p><code>cd /apollo  
+bash docker/scripts/dev_start.sh  
+bash docker/scripts/dev_into.sh  
+bash apollo.sh build_opt  
+bash scripts/bootstrap.sh</code></p>
+</li>
+<li>
+<p>在浏览器中打开(http://localhost:8888), 选择<code>Dev_Kit</code>并选择相应高精地图，在Module Controller标签页启动GPS、Localization、Camera、Transform模块。</p>
+</li>
+</ol>
+<p><img alt="camera_adaption_dreamview" src="../images/camera_adaption_dreamview.jpeg" /></p>
+<ol>
+<li>
+<p>在docker中输入<code>cyber_monitor</code>命令并检查以下channel（使用<code>上下方向键</code>选择channel，使用<code>右方向键</code>查看channel详细信息）：</p>
+<table>
+<thead>
+<tr>
+<th>channel_name</th>
+<th>检查项目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/apollo/localization/pose</code></td>
+<td>确保能正常输出数据</td>
+</tr>
+<tr>
+<td><code>/apollo/sensor/gnss/best_pose</code></td>
+<td>确保能正常输出数据，<code>sol_type:</code> 选项显示为<code>NARROW_INT</code></td>
+</tr>
+<tr>
+<td><code>/apollo/sensor/smartereye/image</code></td>
+<td>确保能正常输出数据，帧率稳定在15HZ左右</td>
+</tr>
+<tr>
+<td><code>/apollo/sensor/smartereye/image/compressed</code></td>
+<td>确保能正常输出数据，帧率稳定在15HZ左右</td>
+</tr>
+<tr>
+<td><code>/tf</code></td>
+<td>确保能正常输出数据</td>
+</tr>
+<tr>
+<td><code>/tf_static</code></td>
+<td>确保能正常输出数据</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>在<code>DreamView</code>的<code>Module Controller</code>界面点击<code>ThirdPartyPerception</code>按钮，使用<code>cyber_monitor</code>查看<code>/apollo/perception/obstacles</code>是否正常输出，并在<code>DreamView</code>上查看障碍物信息。查看车前方运动的人或者自行车（自行车上要有人），在DreamView上查看障碍物颜色以及位置速度信息（自行车青蓝色，行人黄色，车辆绿色），如下图所示：</p>
+</li>
+</ol>
+<p><img alt="camera_adaption_dreamview_vehicle" src="../images/camera_adaption_dreamview_vehicle.png" /></p>
+<p><code>/apollo/perception/obstacles</code>的数据如下图所示：</p>
+<p><img alt="camera_adaption_dreamview_obstacle1" src="../images/camera_adaption_dreamview_obstacle1.png" /></p>
+<p><img alt="camera_adaption_dreamview_obstacle2" src="../images/camera_adaption_dreamview_obstacle2.png" /></p>
+<p>如果在DreamView上能看到障碍物并且<code>/apollo/perception/obstacles</code>有障碍物信息，则开环测试通过。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

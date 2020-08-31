@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Run the Fusion Obstacle Visualization Tool - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Run the Fusion Obstacle Visualization Tool";
+    var mkdocs_page_input_path = "howto/how_to_run_offline_sequential_obstacle_perception_visualizer.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Run the Fusion Obstacle Visualization Tool</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_run_offline_sequential_obstacle_perception_visualizer.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-run-the-fusion-obstacle-visualization-tool">How to Run the Fusion Obstacle Visualization Tool</h2>
+<p>Apollo created the LiDAR Obstacle Visualization Tool, an offline visualization tool to show LiDAR-based obstacle perception results (see <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_run_offline_perception_visualizer.md">How to Run Offline Perception Visualizer</a>). However, the tool lacks the ability to visualize the radar-based obstacle perception results and the fusion results based on its two sensors. </p>
+<p>Apollo has developed a second visualization tool, the Fusion Obstacle Visualization Tool, to complement the LiDAR Obstacle Visualization Tool. The Fusion Obstacle Visualization Tool shows obstacle perception results from these modules:</p>
+<ul>
+<li>LiDAR-based algorithm module </li>
+<li>Radar-based algorithm module</li>
+<li>Fusion algorithm module for debugging and testing the complete obstacle perception algorithms</li>
+</ul>
+<p>All of the visualization is based on LiDAR data visualization. The source data from LiDAR (a set of 3D points to shape any object in the scene) is better than radar in depicting the visual features of an entire scene. Go to the Apollo web site to see the <a href="http://apollo.auto/platform/perception.html">demo videos</a> for the Fusion Obstacle Visualization Tool.</p>
+<p>In general, you follow three steps to build and run the Fusion Obstacle Visualization Tool in Docker:</p>
+<ol>
+<li>Prepare the source data.</li>
+<li>Build the Fusion Obstacle Visualization Tool.</li>
+<li>Run the tool.</li>
+</ol>
+<p>The next three sections provide the details for each of the three steps.</p>
+<h3 id="prepare-the-source-data">Prepare the Source Data</h3>
+<p>Before running the Fusion Obstacle Visualization Tool, you need to prepare the following for:</p>
+<h6 id="lidar-based-obstacle-perception">LiDAR-Based Obstacle Perception</h6>
+<ul>
+<li>Point Cloud Data (PCD) file</li>
+<li>Host vehicle pose</li>
+</ul>
+<h6 id="radar-based-obstacle-perception">Radar-Based Obstacle Perception</h6>
+<ul>
+<li>Radar source obstacle data in the protocol buffers (protobuf) format</li>
+<li>Host vehicle pose</li>
+<li>Host vehicle velocity</li>
+</ul>
+<p>To facilitate the data extraction, Apollo provides a tool named <code>export_sensor_data</code> to export the data from a ROS bag.</p>
+<h4 id="steps">Steps</h4>
+<ol>
+<li>Build the data exporter using these commands:</li>
+</ol>
+<pre><code>cd /apollo
+bazel build //modules/perception/tool/export_sensor_data:export_sensor_data
+</code></pre>
+
+<ol>
+<li>Run the data exporter using this command:</li>
+</ol>
+<pre><code>/apollo/bazel-bin/modules/perception/tool/export_sensor_data/export_sensor_data
+</code></pre>
+
+<ol>
+<li>Play the ROS bag.   </li>
+</ol>
+<p>​       The default directory of the ROS bag is <code>/apollo/data/bag</code>. 
+​       In the following example, the file name of ROS bag is <code>example.bag</code>.</p>
+<p>​      Use these commands:</p>
+<pre><code>cd /apollo/data/bag
+rosbag play --clock example.bag --rate=0.1
+</code></pre>
+
+<p>To ensure that you do not miss any frame data when performing callbacks to the ROS messages, it is recommended that you reduce the playing rate, which is set to <code>0.1</code> in the example above. </p>
+<p>When you play the bag, all data files are dumped to the export directory, using the timestamp as the file name, frame by frame. </p>
+<p>The default LiDAR data export directory is <code>/apollo/data/lidar</code>.</p>
+<p>The radar directory is <code>/apollo/data/radar</code>. </p>
+<p>The directories can be defined in <code>/apollo/modules/perception/tool/export_sensor_data/conf/export_sensor_data.flag</code> using the flags, <code>lidar_path</code> and <code>radar_path</code>.</p>
+<p>In the <code>lidar_path</code>, two types of files are generated with the suffixes: <em><code>.pcd</code></em> and <em><code>.pose</code></em>.</p>
+<p>In the <code>radar_path</code>, three types of files are generated with the suffixes <em><code>.radar</code></em>, <em><code>.pose</code></em>, and <em><code>.velocity</code></em>.</p>
+<h3 id="build-the-fusion-obstacle-visualization-tool">Build the Fusion Obstacle Visualization Tool</h3>
+<p>Apollo uses the Bazel tool to build the Fusion Obstacle Visualization Tool.</p>
+<ol>
+<li>Build the Fusion Obstacle Visualization Tool using these commands:</li>
+</ol>
+<pre><code>cd /apollo
+bazel build -c opt //modules/perception/tool/offline_visualizer_tool:offline_sequential_obstacle_perception_test
+</code></pre>
+
+<p>The <code>-c opt</code> option is used to build the program with optimized performance, which is important for the offline simulation and visualization of the perception module in real time.</p>
+<ol>
+<li>(Optional) If you want to run the perception module with GPU, use this command:</li>
+</ol>
+<pre><code>bazel build -c opt --cxxopt=-DUSE_GPU //modules/perception/tool/offline_visualizer_tool:offline_sequential_obstacle_perception_test
+</code></pre>
+
+<h3 id="run-the-tool">Run the Tool</h3>
+<p>Before running the Fusion Obstacle Visualization Tool, you can set up the source data directories and the algorithm module settings in the configuration file: <code>/apollo/modules/perception/tool/offline_visualizer_tool/conf/offline_sequential_obstacle_perception_test.flag</code>. </p>
+<p>The default source data directories are <code>/apollo/data/lidar</code>and <code>/apollo/data/radar</code> for <code>lidar_path</code> and <code>radar_path</code>, respectively. </p>
+<p>The visualization-enabling Boolean flag is <code>true</code>, and the obstacle result type to be shown is <code>fused</code> (the fusion obstacle results based on both LiDAR and RADAR sensors) by default.  You can change  <code>fused</code> to <code>lidar</code> or <code>radar</code> to visualize the pure obstacle results generated by the single-sensor-based obstacle perception.</p>
+<p>Run the Fusion Obstacle Visualization Tool using this command:</p>
+<pre><code>/apollo/bazel-bin/modules/perception/tool/offline_visualizer_tool/offline_sequential_obstacle_perception_test
+</code></pre>
+
+<p>You see results such as:</p>
+<ul>
+<li>A pop-up window showing the perception result with the point cloud, frame-by-frame </li>
+<li>The raw point cloud shown in grey </li>
+<li>Bounding boxes (with red arrows that indicate the headings) that have detected:</li>
+<li>Cars (green)</li>
+<li>Pedestrians (pink)</li>
+<li>Cyclists (blue)</li>
+<li>Unknown elements (purple) </li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

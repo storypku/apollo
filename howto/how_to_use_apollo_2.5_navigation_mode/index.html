@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to use Apollo 2.5 navigation mode - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to use Apollo 2.5 navigation mode";
+    var mkdocs_page_input_path = "howto/how_to_use_apollo_2.5_navigation_mode.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to use Apollo 2.5 navigation mode</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_use_apollo_2.5_navigation_mode.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-use-apollo-25-navigation-mode">How to use Apollo 2.5 navigation mode</h2>
+<h4 id="this-article-is-translated-by-the-apollo-community-team">This article is translated by the Apollo community team.</h4>
+<p>Apollo is well received and highly commended by developers in the field of autonomous driving for its well-designed architecture, full functionality, robust open-source ecosystem, and standardized coding style. However, previous versions of Apollo had their perception, prediction, routing, and planning modules all heavily reliant on HDMaps, for which development was cumbersome and opaque. For many developers, this posed an insurmountable barrier. Given the inaccessibility of HDMaps, developers could only play demo data bag on Apollo's simulation tools, rather than deploy the Apollo system on vehicles for road testing. This greatly undermined the usage scenarios of Apollo and hampered the development and growth of the Apollo community. Obviously, the Apollo team had been aware of this problem. With months of hard work, they released a new navigation mode in Apollo 2.5 based on a relative map. Leveraging navigation mode, developers could easily deploy Apollo for road testing on a real vehicle.</p>
+<p>Relative map is the newest feature to be introduced in Apollo 2.5. From the architectural level, the relative map module is the middle layer linking the HDMap to the Perception module and the Planning module as seen in the image below. The relative map module generates real-time maps based on the vehicle’s coordinate system (the format is in the same format as HDMaps). The module also outputs reference lines for the Planning module to use. From the angle of developers, a navigation mode based on relative maps enables developers to implement real-vehicle road tests. As a result, barriers to development have been significantly reduced.</p>
+<p><img alt="Software OverView" src="https://github.com/ApolloAuto/apollo/blob/master/docs/demo_guide/images/Software_Overview.png" /></p>
+<p>The basic idea behind the navigation mode is: 
+* Record the driving path of a manually driven vehicle on a desired path
+* Use Apollo tools to process the original path and obtain a smoothed out path (navigation line). This path is then used to
+  * Replace the global route given by the routing module
+  * Serve as the reference line for the planning modulefor generating the relative map. 
+  * In addition, the path can also be used in combination with the HDMap to replace the lane reference line in the HDMap (by default, the HDMap uses the lane centerline as the reference. However, this method may not suit certain circumstances where using the vehicle's actual navigation line instead could be a more effective solution).
+* A driver drives the vehicle to the starting point of a desired path, then selects the navigation mode and enables relevant modules in Dreamview. After the above configuration, the vehicle needs to be switched to autonomous driving status and run in this status. 
+* While travelling in the autonomous mode, the perception module’s camera will dynamically detect obstacles and road boundaries, while the map module’s relative map sub-module generates a relative map in real time (using a relative coordinate system with the current position of the vehicle as the origin), based on the recorded path (navigation line) and the road boundaries. With the relative map created by the map module and obstacle information created by the perception module, the planning module will dynamically output a local driving path to the control module for execution. 
+* At present, the navigation mode only supports single-lane driving. It can perform tasks such as acceleration and deceleration, car following, slowing down and stopping before obstacles, or nudge obstacles within the lane width. Subsequent versions will see further improvements to support multi-lane driving and traffic lights/signs detection.</p>
+<p>This article fully explains the build of Apollo 2.5, navigation line data collection and production, front-end compilation and configuration of Dreamview, and navigation mode usage, etc. Hopefully this will bring convenience to developers when properly using Apollo 2.5.</p>
+<h3 id="1-building-the-apollo-25-environment">1. Building the Apollo 2.5 environment</h3>
+<p>First, download the Apollo 2.5 source code from GitHub website. This can be done by either using git command or getting the compressed package directly from the web page. There are two options to build Apollo after downloading the source code to an appropriate directory: 1. in Visual Studio Code (recommended); 2. by using the command line. Of course, the common prerequisite is that Docker has already been successfully installed on your computer. You can use the script file <a href="https://github.com/ApolloAuto/apollo/blob/master/docker/scripts/install_docker.sh"><code>install_docker.sh</code></a> to  install Docker firstly.</p>
+<h4 id="11-build-with-the-visual-studio-code">1.1 Build with the Visual Studio Code</h4>
+<p>Open Visual Studio Code and execute menu command <code>File -&gt; Open Folder</code>. In the pop-up dialog, select a  Apollo project source folder and click <code>OK</code>, as shown in the following figure:</p>
+<p><img alt="img" src="../images/navigation_mode/open_directory_en.png" /> </p>
+<p><img alt="img" src="../images/navigation_mode/choose_apollo_directory_en.png" /> </p>
+<p>Next, execute menu command <code>Tasks -&gt; Run Build Task</code> or directly press <code>Ctrl + Shift + B</code> (shortcut keys which are  the same as in Visual Studio and QT) to build a project. Docker will be launched when compiling if it has not yet been started. A superuser password needs to be entered in the terminal window at the bottom. After the command is executed, a display of <code>Terminal will be reused by tasks, press any key to close it.</code> in the terminal window at the bottom indicates that the build is successful. Keep good internet connection during the whole process, otherwise the dependencies cannot be downloaded. You may encounter some problems during the build.  Solutions can be found in <a href="https://blog.csdn.net/davidhopper/article/details/79349927">this blog</a> post and the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_debug_apollo_in_vscode_cn.md">Help Doc</a> on GitHub.</p>
+<p><img alt="img" src="../images/navigation_mode/build_successfully_en.png" /> </p>
+<h4 id="12-build-in-a-terminal">1.2 Build in a terminal</h4>
+<p>Press <code>Ctrl + Alt + T</code> to open a terminal and enter the following command to launch Docker:</p>
+<pre><code class="bash">cd your_apollo_project_root_dir
+# if you access from mainland China, it’s better to add “-C” option, visit mirror servers in mainland China will enable the highest download speed
+bash docker/scripts/dev_start.sh -C
+</code></pre>
+
+<p>Enter the following command to enter Docker:</p>
+<pre><code class="bash">bash docker/scripts/dev_into.sh
+</code></pre>
+
+<p>In Docker, execute the following command to build the Apollo project:</p>
+<pre><code class="bash">bash apollo.sh build
+</code></pre>
+
+<p>The steps are shown in the following figure:</p>
+<p><img alt="img" src="../images/navigation_mode/build_with_command.png" /></p>
+<h4 id="13-change-the-utm-area-id-in-localization-module">1.3 Change the UTM area ID in <code>Localization</code> module</h4>
+<p>The default ID of the localization module in Apollo is the UTM coordinates of the US west coast. If you are in China, this ID must be changed. Outside of Docker, using vi or another text editor, open<code>[your_apollo_root_dir]/modules/localization/conf/localization.conf</code>, and change:</p>
+<pre><code class="bash">--local_utm_zone_id=10
+</code></pre>
+
+<p>We are using the UTM area ID of Changsha area, for UTM sub-areas in China, please go to <a href="http://www.360doc.com/content/14/0729/10/3046928_397828751.shtml">this page</a>)：</p>
+<pre><code class="bash">--local_utm_zone_id=49
+</code></pre>
+
+<p><code>Note:</code> If the coordinates were not changed before recording data, they must not be changed when playing back data during offline testing. Changing the ID after recording will disturb navigation line locating! </p>
+<h4 id="14-configuring-your-utm-area-id-for-dreamview">1.4 Configuring your UTM area ID for Dreamview</h4>
+<p>Open<code>[your_apollo_root_dir]/modules/common/data/global_flagfile.txt</code>, add this line at the bottom (we are using the UTM area ID of Changsha area, for UTM sub-areas in China, please go to <a href="http://www.360doc.com/content/14/0729/10/3046928_397828751.shtml">this page</a>): </p>
+<pre><code>--local_utm_zone_id=49
+</code></pre>
+
+<h3 id="2-collect-navigation-line-raw-data">2. Collect navigation line raw data</h3>
+<p>Import the pre-specified Apollo file into the in-car IPC, enter Docker (follow steps in 1.2), and execute the following command to launch Dreamview: </p>
+<pre><code class="bash">bash scripts/bootstrap.sh
+</code></pre>
+
+<p>Open <a href="http://localhost:8888">http://localhost:8888</a> in a Chrome or Firfox browser (do not use proxy), and enter the Dreamview interface:</p>
+<p><img alt="img" src="../images/navigation_mode/dreamview_interface.png" /> </p>
+<ul>
+<li>The driver controls the vehicle and parks at the starting location of the road test;</li>
+<li>The operator clicks the <code>Module Controller</code> button in the toolbar from the left side of the Dreamview interface. In the <code>Module Controller</code> page, select <code>GPS</code>, <code>Localization</code>, and <code>Record Bag</code>. Note: If the recorded data bag will be used in offline test, also select <code>CAN Bus</code>.</li>
+<li>The driver starts the engine and drives to the end location as planned;</li>
+<li>The operator unselects the <code>Record Bag</code> option in the Dreamview interface, and a directory such as <code>2018-04-01-09-58-0</code>0 will be generated in the<code>/apollo/data/bag</code> directory (in Docker, an associative directory will be created on the dedicated host<code>[your your_apollo_root_dir]/data/bag</code>). The data bag (i.e. <code>2018-04-01-09-58-00.bag</code>) will be kept there. Take note of its path and filename as it will be needed next. </li>
+</ul>
+<p><code>Note:</code> the default recording time in a bag is 1 minute, and the default size of a bag is 2048 MB, which can be edited in <code>/apollo/scripts/record_bag.sh</code>.
+For convenience, the next steps assume the <code>2018-04-01-09-58-00.bag</code> is in the <code>/apollo/data/bag</code> directory in this article.</p>
+<h3 id="3-generation-of-navigation-lines">3. Generation of navigation lines</h3>
+<p>Either create a navigation line on an in-car IPC, or other computers. In both situations, we assume: we are already in Docker (Step 1.2), we have imported the data bag under the <code>/apollo/data/bag</code> directory, and the name of the file is <code>2018-04-01-09-58-00.bag</code> (which is not the name of the file in your computer, we are using it only as an example).</p>
+<h4 id="31-extract-raw-data-from-the-data-bag">3.1 Extract raw data from the data bag</h4>
+<p>In Docker, enter the command to extract the data from the data bag:</p>
+<pre><code class="bash">cd /apollo/modules/tools/navigator
+python extractor.py /apollo/data/bag/2018-04-01-09-58-00.bag
+</code></pre>
+
+<p>A raw data file <code>path_2018-04-01-09-58-00.bag.txt</code> will be generated under the current directory (assuming we are under <code>/apollo/modules/tools/navigator</code>)
+To check the data, enter the following command:</p>
+<pre><code class="bash">python viewer_raw.py ./path_2018-04-01-09-58-00.bag.txt
+</code></pre>
+
+<p>And a figure like the image below, will be generated:</p>
+<p><img alt="img" src="../images/navigation_mode/view_raw_data.png" /> </p>
+<h4 id="32-smoothen-the-raw-data">3.2 Smoothen the raw data</h4>
+<p>If the test drive was bumpy, the raw path data will not be smooth enough. It must be smoothed in Docker using the following command:</p>
+<pre><code class="bash">bash smooth.sh ./path_2018-04-01-09-58-00.bag.txt 200
+</code></pre>
+
+<p>Note: <code>200</code> is the smoothing length, which is usually <code>150-200</code>. If this process failed, try to adjust this argument and smooth the data again.
+To verify the smoothed result, use the following command:</p>
+<pre><code class="bash">python viewer_smooth.py ./path_2018-04-01-09-58-00.bag.txt ./path_2018-04-01-09-58-00.bag.txt.smoothed
+</code></pre>
+
+<p>The first argument <code>./path_2018-04-01-09-58-00.bag.txt</code> is raw data, the second argument <code>./path_2018-04-01-09-58-00.bag.txt.smoothed</code> is the smoothed result. A figure like below will be generated:</p>
+<p><img alt="img" src="../images/navigation_mode/view_smoothing_results.png" /> </p>
+<h3 id="4-dreamview-frontend-compilation-and-configuration">4. Dreamview frontend compilation and configuration</h3>
+<p>Dreamview frontend uses the Baidu Map by default. It can be changed to Google Maps by re-compiling frontend, as seen in the sub-sections below (Note: if you wish to continue with the default Map application, please ignore the sub-sections below): </p>
+<h4 id="41-change-navigation-map-settings">4.1 Change navigation map settings</h4>
+<p>Open the file<code>[your_apollo_root_dir]/modules/dreamview/frontend/src/store/config/ parameters.yml</code>, change the map settings to meet your needs: </p>
+<pre><code class="bash">navigation:
+  # possible options: BaiduMap or GoogleMap
+  map: &quot;BaiduMap&quot;
+
+  # Google Map API: &quot;https://maps.google.com/maps/api/js&quot;
+  # Baidu Map API: &quot;https://api.map.baidu.com/api?v=3.0&amp;ak=0kKZnWWhXEPfzIkklmzAa3dZ&amp;callback=initMap&quot;
+  mapAPiUrl: &quot;https://api.map.baidu.com/api?v=3.0&amp;ak=0kKZnWWhXEPfzIkklmzAa3dZ&amp;callback=initMap&quot;
+</code></pre>
+
+<h4 id="42-re-compile-the-dreamview-front-end">4.2 Re-compile the Dreamview front end</h4>
+<p>As in Step 1.2, enter Docker and execute the following command to compile Dreamview Front End:</p>
+<pre><code class="bash">#Install Dreamview front end dependent package. Note: you only need to execute it once, not every time.
+cd /apollo/modules/dreamview/frontend/
+yarn install
+# Compile Dreamview front end
+cd /apollo
+bash apollo.sh build_fe
+</code></pre>
+
+<p>You might encounter errors like this one below, during the process:</p>
+<pre><code>ERROR in ../~/css-loader!../~/sass-loader/lib/loader.js?{&quot;includePaths&quot;:[&quot;./node_modules&quot;]}!./styles/main.scss*
+*Module build failed: Error: ENOENT: no such file or directory, scandir '/apollo/modules/dreamview/frontend/node_modules/node-sass/vendor'*
+...
+(The error continues, but we have the information we need to debug it)
+</code></pre>
+
+<p>This is because of built-in dependent package inconsistency, which can be resolved by executing the following command in Docker: 
+(<code>Note:</code> keep your internet connection steady, or you might not be able to download the dependent package again): </p>
+<pre><code class="bash">cd /apollo/modules/dreamview/frontend/
+rm -rf node_modules
+yarn install
+cd /apollo
+bash apollo.sh build_fe
+</code></pre>
+
+<h3 id="5-usage-of-the-navigation-mode">5. Usage of the navigation mode</h3>
+<h4 id="51-open-dreamview-and-switch-to-the-navigation-mode">5.1. Open Dreamview and switch to the navigation mode</h4>
+<p>Enter Docker, open Dreamview and execute the following command:</p>
+<pre><code class="bash">cd your_apollo_project_root_dir
+# If you haven’t opened Docker, do it first or ignore that step
+bash docker/scripts/dev_start.sh -C
+# Enter Docker
+bash docker/scripts/dev_into.sh
+# Start Dreamview and monitoring process
+bash scripts/bootstrap.sh
+</code></pre>
+
+<p>For offline mock tests, loop the data bag recorded in Step 2 <code>/apollo/data/bag/2018-04-01-09-58-00.bag</code> (data recorded in my device).  Please ignore this step for real vehicle commissioning. </p>
+<pre><code class="bash"># For offline mock tests, loop the data bag recorded in step 2. Please ignore this step for real vehicle commissioning.  
+rosbag play -l /apollo/data/bag/2018-04-01-09-58-00.bag
+</code></pre>
+
+<p>Open this website<a href="http://localhost:8888"> http://localhost:8888</a> in the browser (DO NOT use proxy), enter Dreamview interface, click on the dropdown box in the upper right, and select <code>Navigation</code> mode, as shown in the screenshot below:</p>
+<p><img alt="img" src="../images/navigation_mode/enable_navigation_mode.png" /> </p>
+<h4 id="52-enable-relevant-modules-in-the-navigation-mode">5.2 Enable relevant modules in the navigation mode</h4>
+<p>Click on the <code>Module Controller</code> button in the toolbar on the left side of the Dreamview interface and enter the module controller page. For offline mock tests, select <code>Relative Map</code>, <code>Navi Planning</code>, and other modules as needed as shown in the screenshot below (the module that shows blank text is the Mobileye module, which will be visible only if the related hardware is installed and configured):</p>
+<p><img alt="img" src="../images/navigation_mode/test_in_navigation_mode.png" /> </p>
+<p>For real vehicle commissioning, all modules except <code>Record Bag</code>, <code>Mobileye</code>(if Mobileye hardware has not been installed, it will be shown as blank text) and <code>Third Party Perception</code> should be activated, as displayed in the next screenshot:</p>
+<p><img alt="img" src="../images/navigation_mode/drive_car_in_navigation_mode.png" /> </p>
+<h4 id="53-send-the-navigation-line-data">5.3 Send the navigation line data</h4>
+<p>In Docker, execute the following command to send the navigation line data made in step 3:</p>
+<pre><code class="bash">cd /apollo/modules/tools/navigator
+python navigator.py ./path_2018-04-01-09-58-00.bag.txt.smoothed
+</code></pre>
+
+<p>The following screenshot shows the interface after Dreamview receives navigation line data during offline mock testing. You can see the Baidu Map interface in the upper left corner. Our navigation line is shown as red lines in the Baidu Map, and white lines in the main interface.</p>
+<p><img alt="img" src="../images/navigation_mode/navigation_mode_with_reference_line_test.png" /> </p>
+<p>The next screenshot shows the interface after Dreamview receives navigation line data during real vehicle commissioning. You can see the Baidu Map interface in the upper left corner. Our navigation line is shown as red lines in Baidu Map, and yellow lines in the main interface.</p>
+<p><img alt="img" src="../images/navigation_mode/navigation_mode_with_reference_line_car.png" /> </p>
+<p>A few tips to focus on:
+* If the navigation line is not displayed correctly in Dreamview interface, the reasons could be:
+    * Navigation line data is not sent correctly - execute the sending command again to solve this problem
+    * If Browser cache is inconsistent, press <code>Ctrl+R</code> or <code>F5</code> to reload the page or clear the cache
+    * If the Dreamview back end service program is not executing correctly - restart the program in Docker, using:
+  <code>bash
+  # Stop Dreamview and monitoring process
+  bash scripts/bootstrap.sh stop
+  # Restart Dreamview and monitoring process
+  bash scripts/bootstrap.sh</code>
+* Every time the vehicle returns to the starting point, it is necessary to send the navigation line data again, whether it is the offline mock test or the vehicle commissioning.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

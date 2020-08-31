@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo 快速入门指南  1.0 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo \u5feb\u901f\u5165\u95e8\u6307\u5357  1.0";
+    var mkdocs_page_input_path = "quickstart/apollo_1_0_quick_start_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo 快速入门指南  1.0</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/apollo_1_0_quick_start_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-10">Apollo 快速入门指南  1.0</h2>
+<h3 id="_1">目录</h3>
+<ul>
+<li><a href="#关于这个文档">关于这个文档</a><ul>
+<li><a href="#文档规约">文档规约</a></li>
+</ul>
+</li>
+<li><a href="#概览">概览</a></li>
+<li><a href="#车辆环境描述">车辆环境描述</a></li>
+<li><a href="#硬件安装">硬件安装</a></li>
+<li><a href="#软件安装">软件安装</a></li>
+<li><a href="#在车辆上运行示例">在车辆上运行示例</a><ul>
+<li><a href="#启动本地版本Docker映像">启动本地版本Docker映像</a></li>
+<li><a href="#记录驾驶轨迹">记录驾驶轨迹</a></li>
+<li><a href="#执行自动驾驶">执行自动驾驶</a></li>
+<li><a href="#关闭">关闭</a></li>
+</ul>
+</li>
+<li><a href="#运行离线演示">运行离线演示</a></li>
+</ul>
+<h2 id="_2">关于这个文档</h2>
+<p><em>Apollo 快速入门指南 1.0</em> 提供了所有关于了解、安装以及构建Apollo的基本说明</p>
+<h3 id="_3">文档规约</h3>
+<p>下表列出了本文档中使用的归约：</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>粗体</strong></td>
+<td>重要</td>
+</tr>
+<tr>
+<td><code>等宽字体</code></td>
+<td>代码，类型数据</td>
+</tr>
+<tr>
+<td><em>斜体</em></td>
+<td>文件标题，章节和标题使用的术语</td>
+</tr>
+<tr>
+<td><img alt="info" src="../images/info_icon.png" /></td>
+<td><strong>Info</strong>  包含可能有用的信息。忽略信息图标没有消极的后果</td>
+</tr>
+<tr>
+<td><img alt="tip" src="../images/tip_icon.png" /></td>
+<td><strong>Tip</strong>. 包括有用的提示或可能有助于您完成任务的捷径。</td>
+</tr>
+<tr>
+<td><img alt="online" src="../images/online_icon.png" /></td>
+<td><strong>Online</strong>. 提供指向特定网站的链接，您可以在其中获取更多信息</td>
+</tr>
+<tr>
+<td><img alt="warning" src="../images/warning_icon.png" /></td>
+<td><strong>Warning</strong>. 包含<strong>不</strong>能忽略的信息，或者执行某个任务或步骤时，您将面临失败风险</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">概览</h2>
+<p>Apollo 1.0, 也被称为 <em>Automatic GPS Waypoint Following(自动GPS跟随)</em>, 使用在封闭的区域内，如测试轨道或停车场。它可以准确地以人类驾驶员在封闭的平坦区域的速度复现一个驾驶轨迹。</p>
+<p>在这个开发阶段, Apollo 1.0 <strong>无法</strong> 察觉到邻近的障碍物, <strong>不要</strong>在公共道路或没有GPS信号的区域行驶。</p>
+<h2 id="_5">车辆环境描述</h2>
+<p>The Lincoln MKZ, enhanced by Autonomous Stuff, 为用户提供了一个无障碍的自动车辆平台。该平台为用户提供了一整套硬件和软件解决方案。</p>
+<p>用户可以直接获得车辆某些模块控制权限，如档位，速度和指示灯。平台已经为转向，刹车，加速和档位创建了接口，为开发人员提供了可使用的用户界面。</p>
+<p>包含的其他功能:</p>
+<ul>
+<li>电源分配器终端</li>
+<li>集成PC与ROS预安装和配置</li>
+<li>线控驱动的紧急停止系统</li>
+<li>以太网和USB连接 (to PC)</li>
+</ul>
+<h2 id="_6">硬件安装</h2>
+<p>请参考 <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_0_hardware_system_installation_guide.md">Apollo 1.0 Hardware and System Installation Guide</a>
+中的步骤来安装硬件组件以及系统软件</p>
+<h2 id="_7">软件安装</h2>
+<p>请参考<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide_cn.md">Apollo软件安装指南</a></p>
+<h2 id="_8">在车辆上运行示例</h2>
+<p>本节提供运行Apollo 1.0 Demo on Vehicle的说明。
+1. 设置硬件：</p>
+<ul>
+<li>打开平台车辆</li>
+<li>打开工业PC机（IPC）.
+    <img alt="" src="../images/IPC_powerbutton.png" /></li>
+<li>通过按住电源按钮打开调制解调器电源，直到指示灯亮起</li>
+<li>设置IPC的网络配置：静态IP（例如192.168.10.6），子网掩码（例如255.255.255.0）和网关（例如192.168.10.1）</li>
+<li>配置您的DNS服务器IP（例如，8.8.8.8）。</li>
+<li>使用平板电脑访问<strong>设置</strong>并连接到MKZ wifi 热点：</li>
+</ul>
+<p><img alt="" src="../images/ipad_config_wifi.png" /></p>
+<ol>
+<li>在Docker中使用<strong>Chrome（只能使用Chrome）</strong> 启动HMI：</li>
+</ol>
+<p><img alt="warning" src="../images/warning_icon.png" /><strong>Warning:</strong> 确保您不是同时从两个Docker容器启动HMI。</p>
+<h3 id="docker">启动本地版本Docker映像</h3>
+<p>运行以下命令：</p>
+<pre><code>cd $APOLLO_HOME
+bash docker/scripts/release_start.sh local_release
+</code></pre>
+
+<p>当Docker启动时，它创建一个端口映射，将Docker内部端口8887映射到主机端口8887.然后，您可以在主机浏览器中访问HMI Web服务：</p>
+<p>打开Chrome浏览器并启动阿波罗人机界面，转到 <strong>192.168.10.6:8887</strong>.
+ <img alt="" src="../images/start_hmi.png" /></p>
+<h3 id="_9">记录驾驶轨迹</h3>
+<p>按照以下步骤记录驾驶轨迹：</p>
+<ol>
+<li>在Apollo HMI中，在<strong>Quick Record</strong>下，单击<strong>Setup</strong>以启动所有模块并执行硬件运行状况检查。
+   <img alt="" src="../images/hmi_record_setup.png" /></li>
+<li>如果硬件健康检查通过，单击 <strong>Start</strong> 按钮开始记录驱动程序轨迹。
+   <img alt="" src="../images/hmi_record_start.png" /></li>
+<li>到达目的地后，点击<strong>Stop</strong> 按钮停止录制。
+   <img alt="" src="../images/hmi_record_stop.png" /></li>
+<li>如果要记录不同的轨迹，请单击<strong>New</strong> 按钮再次开始录制。
+   <img alt="" src="../images/hmi_record_reset.png" /></li>
+</ol>
+<h3 id="_10">执行自动驾驶</h3>
+<p>按照以下步骤执行自主驾驶：</p>
+<ol>
+<li>
+<p>在Apollo HMI中，在Quick Play下，单击 <strong>Setup</strong> 启动所有模块并执行硬件运行状况检查。
+   <img alt="" src="../images/hmi_play_setup.png" /></p>
+</li>
+<li>
+<p>如果车辆顺利通过Setup这一步, 它已经准备好进入自动模式了。 <strong>确保驾驶员准备好了！</strong>  点击 <strong>Start</strong>按钮开始自动驾驶。</p>
+</li>
+</ol>
+<p><img alt="" src="../images/hmi_play_start.png" /></p>
+<ol>
+<li>到达目的地后，点击 <strong>Stop</strong> 按钮停止重放录制的轨迹。
+   <img alt="" src="../images/hmi_play_stop.png" /></li>
+</ol>
+<h3 id="_11">关闭</h3>
+<ol>
+<li>
+<p>从终端关闭系统：
+    <code>sudo shutdown now</code></p>
+</li>
+<li>
+<p>关闭IPC（找到桌面右上角的图标点击 <strong>Shut Down</strong>).</p>
+</li>
+<li>
+<p>按住电源按钮关闭调制解调器，直到指示灯熄灭。</p>
+</li>
+<li>
+<p>关掉车子</p>
+</li>
+</ol>
+<h2 id="_12">运行离线演示</h2>
+<p>参考 <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/demo_guide/README.md">Offline Demo Guide</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to do performance profiling - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to do performance profiling";
+    var mkdocs_page_input_path = "howto/how_to_do_performance_profiling.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to do performance profiling</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_do_performance_profiling.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-do-performance-profiling">How to do performance profiling</h2>
+<p>The purpose of profiling a module is to use tools (here we use google-perftools) to examine the performance problems of a module.</p>
+<p>The Apollo development docker has all the profiling tools you need configured. Therefore, you can do all the following steps in the Apollo development docker.</p>
+<h3 id="build-apollo-in-profiling-mode">Build Apollo in profiling mode</h3>
+<p>First, build Apollo in profiling mode</p>
+<pre><code>bash apollo.sh clean
+bash apollo.sh build_prof
+</code></pre>
+
+<h3 id="play-a-rosbag">Play a rosbag</h3>
+<p>To profile a module, you need to provide its input data to make sure the majority of its code can be exercised.
+You can start play an information-rich rosbag by</p>
+<pre><code>rosbag play -l your_rosbag.bag
+</code></pre>
+
+<p>or after Apollo 3.5, run</p>
+<pre><code>cyber_record play -f your_record.record
+</code></pre>
+
+<h3 id="start-module-in-profiling-mode">Start module in profiling mode</h3>
+<p>Start your module with the following command</p>
+<pre><code>CPUPROFILE=/tmp/${MODULE}.prof /path/to/module/bin/${MODULE} --flagfile=modules/${MODULE}/conf/${MODULE}.conf \
+ --${MODULE}_test_mode \
+ --${MODULE}_test_duration=60.0 \
+ --log_dir=/apollo/data/log
+
+</code></pre>
+
+<p>Where <code>MODULE</code> is the name of the module you want to test.</p>
+<p>or after Apollo 3.5, use</p>
+<pre><code>CPUPROFILE=/tmp/${MODULE}.prof mainboard -d /apollo/modules/${MODULE}/dag/${MODULE}.dag  --flagfile=modules/${MODULE}/conf/${MODULE}.conf \
+ --${MODULE}_test_mode \
+ --${MODULE}_test_duration=60.0 \
+ --log_dir=/apollo/data/log
+
+</code></pre>
+
+<h3 id="the-profiling-mode-gflags">The profiling mode gflags</h3>
+<p>Each module should have a pre-defined <code>${MODULE}_test_mode</code>
+and <code>${MODULE}_test_duration</code> gflag.
+These two flags tells the module to run for <code>${MODULE}_test_duration</code> amount of time when <code>${MODULE}_test_mode</code> is true.</p>
+<p>Most of Apollo modules already have these two gflags. If they does not exist in the module you are interested in, you can define it by yourself. You can refer to gflag <code>planning_test_mode</code> and <code>planning_test_duration</code> to see how they are being used.</p>
+<h3 id="create-pdf-report">Create pdf report</h3>
+<p>Finally you can create a pdf report to view the profiling result.</p>
+<pre><code>google-pprof --pdf --lines /path/to/module/bin/${MODULE} /tmp/${MODULE}.prof &gt; ${MODULE}_profiling.pdf
+</code></pre>
+
+<p>or after 3.5, run</p>
+<pre><code>google-pprof --pdf --lines /path/to/module/component_lib/$lib{MODULE}_component_lib.so /tmp/${MODULE}.prof &gt; ${MODULE}_profiling.pdf
+</code></pre>
+
+<h3 id="example">Example</h3>
+<p>Here is an example command of starting the planning module.</p>
+<pre><code>CPUPROFILE=/tmp/planning.prof /apollo/bazel-bin/modules/planning/planning \
+ --flagfile=modules/planning/conf/planning.conf \
+ --log_dir=/apollo/data/log \
+ --planning_test_mode \
+ --test_duration=65.0
+
+google-pprof --pdf --lines /apollo/bazel-bin/modules/planning/planning /tmp/planning.prof &gt; planning_prof.pdf
+</code></pre>
+
+<p>or after Apollo 3.5, run</p>
+<pre><code>CPUPROFILE=/tmp/planning.prof mainboard -d /apollo/modules/planning/dag/planning.dag \
+ --flagfile=modules/planning/conf/planning.conf \
+ --log_dir=/apollo/data/log \
+ --planning_test_mode \
+ --test_duration=65.0
+
+google-pprof --pdf --lines /apollo/bazel-bin/modules/planning/libplanning_component_lib.so  /tmp/planning.prof &gt; planning_prof.pdf
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

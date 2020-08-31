@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo 3.0 快速入门指南 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo 3.0 \u5feb\u901f\u5165\u95e8\u6307\u5357";
+    var mkdocs_page_input_path = "quickstart/apollo_3_0_quick_start_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo 3.0 快速入门指南</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/apollo_3_0_quick_start_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-30">Apollo 3.0 快速入门指南</h2>
+<p>该指南是帮助使用者在车辆上安装和启动Apollo 3.0软硬件套件的用户手册。</p>
+<p>这个快速入门指南专注于Apollo 3.0新功能的介绍。对于Apollo的通用概念，请参考<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_0_quick_start_cn.md">Apollo 1.0 快速入门指南</a>。</p>
+<h3 id="_1">内容</h3>
+<ul>
+<li><a href="#车辆校准指南">车辆校准指南</a></li>
+<li><a href="#硬件和软件安装">硬件和软件安装</a></li>
+<li><a href="#硬件和软件安装">DreamView的使用</a></li>
+<li><a href="#上车测试">上车测试</a></li>
+</ul>
+<h3 id="_2">车辆校准指南</h3>
+<p>在进行车辆测试前必须确保已经校准了所有的传感器，关于传感器校准，请参考<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_2_0_sensor_calibration_guide_cn.md">Apollo 2.0 传感器标定方法使用指南</a>。</p>
+<h3 id="_3">硬件和软件安装</h3>
+<p>请参考<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_3_0_hardware_system_installation_guide_cn.md">Apollo 3.0 硬件与系统安装指南</a>获取安装硬件组件的步骤，参考<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide_cn.md">Apollo软件安装指南</a>获取软件安装步骤。</p>
+<h3 id="dreamview">DreamView的使用</h3>
+<p>关于DreamView使用时的相关问题请参考<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/dreamview_usage_table_cn.md">DreamView用法介绍</a>。</p>
+<h3 id="_4">上车测试</h3>
+<ol>
+<li>将一个外部磁盘驱动器接入主机任一可用USB接口。</li>
+<li>首先启动车辆，然后启动主机。</li>
+<li>启动发布版本的Docker容器。</li>
+<li>启动DreamView。</li>
+</ol>
+<p>打开浏览器（譬如Chrome）然后在地址栏输入 http://localhost:8888</p>
+<p><img alt="" src="../images/dreamview_2_5.png" /></p>
+<ol>
+<li>选择模式、车辆和地图。</li>
+</ol>
+<p><img alt="" src="../images/dreamview_2_5_setup_profile.png" /></p>
+<p>附注：在进行任何测试前会要求使用者设置参数。点击下拉列表并选择想要使用的导航模式，高清地图和车辆。该列表数据在<a href="https://raw.githubusercontent.com/ApolloAuto/apollo/master/modules/dreamview/conf/hmi.conf">HMI config file</a>中定义。</p>
+<p>附注：允许使用者在HMI的右侧面板中更改参数，但是需要点击右上角的Reset All按钮重启该系统以使参数生效。</p>
+<ol>
+<li>启动模块。
+   点击 <code>Setup</code>按钮。</li>
+</ol>
+<p><img alt="" src="../images/dreamview_2_5_setup.png" /></p>
+<p>附注：进入 <strong>Module Controller</strong> 面板，检查是否所有的模块和硬件已经准备好（在离线环境中，某些硬件模块如GPS， CANBus， Velodyne，Camera和Radar不会显示）（为了获得更佳的GPS信号，可能需要车辆运行一段距离。）</p>
+<ol>
+<li>
+<p>在 <code>Default Routing</code>中选择期望的路线。</p>
+</li>
+<li>
+<p>在Tasks面板中，点击 <code>Start Auto</code>（将要进入自动驾驶模式时需要十分小心谨慎）。</p>
+</li>
+</ol>
+<p><img alt="" src="../images/dreamview_2_5_start_auto.png" /></p>
+<ol>
+<li>
+<p>自动驾驶测试结束后，在Tasks面板中点击 <code>Reset All</code>，关闭所有窗口，关闭主机。</p>
+</li>
+<li>
+<p>移除磁盘驱动器。</p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

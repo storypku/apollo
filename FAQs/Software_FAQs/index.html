@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Software FAQs - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Software FAQs";
+    var mkdocs_page_input_path = "FAQs/Software_FAQs.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Software FAQs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/FAQs/Software_FAQs.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="software-faqs">Software FAQs</h2>
+<h3 id="can-other-operating-systems-besides-ubuntu-be-used">Can other operating systems besides Ubuntu be used?</h3>
+<p>We have only tested on Ubuntu which means it's the only operating system we currently officially support. Ubuntu is an ideal operating system as ROS is required to support it. Users are always welcome to try different operating systems and can share their patches with the community if they are successfully able to use them.</p>
+<hr />
+<h3 id="im-having-difficulty-connecting-to-localhost8888-dreamview">I’m having difficulty connecting to localhost:8888 (Dreamview).</h3>
+<p>The Dreamview web server is provided by the dreamview node(A node is an executable in ROS concept). Before accessing the Dreamview page, you need to build the system(including dreamview node) within the docker container following the <a href="https://github.com/ApolloAuto/apollo/blob/master/README.md">guide</a>. Once built, dreamview node will be started after the step <code>bash scripts/bootstrap.sh</code>.</p>
+<p>So if you can not access Dreamview, please check:</p>
+<ul>
+<li>Make sure you have dreamview process running correctly. In the latest version, <code>bash scripts/bootstrap.sh</code> will report <code>dreamview: ERROR (spawn error)</code> if dreamview fails to start. For early version, please check with command: <code>supervisorctl status dreamview</code> or <code>ps aux | grep dreamview</code>. If dreamview is not running, please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_debug_dreamview_start_problem.md">How to Debug a Dreamview Start Problem</a>.</li>
+<li>Make sure the address and port are not blocked by the firewall.</li>
+<li>Make sure you're using <apollo_host_ip>:8888 instead of localhost:8888 if you are not accessing the Dreamview page through the host machine.</li>
+</ul>
+<hr />
+<h3 id="how-can-i-perform-step-by-step-debugging">How can I perform step-by-step debugging?</h3>
+<p>The majority of bugs can be found through logging (using AERROR, AINFO, ADEBUG). If step-by-step debugging is needed, we recommend using gdb.</p>
+<hr />
+<h3 id="how-do-i-run-the-offline-perception-visualizer">How do I run the Offline Perception Visualizer?</h3>
+<p>Refer to the How-To guide located <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_run_offline_perception_visualizer.md">here</a>.</p>
+<hr />
+<h3 id="ubuntu-1404-login-loop-problem-after-installing-the-pre-built-apollo-kernel">Ubuntu 14.04 login loop problem after installing the pre-built Apollo kernel.</h3>
+<p>Here is a solution to solve this problem:
+* Reboot ubuntu system, and press and hold 'shift' button and then enter grub menu.
+* Choose a generic and bootable item(not boot loader with Apollo kernel) to boot up.
+* Press 'Ctrl+Alt+F1' and install 'NVIDIA-Linux-x86_64-375.39.run' according to the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_2_0_hardware_system_installation_guide_v1.md">link</a>.
+* Reboot and start computer with the default boot loader with Apollo kernel.</p>
+<hr />
+<h3 id="could-i-build-apollo-on-ubuntu-18">Could I build Apollo on Ubuntu 18</h3>
+<p><strong>We highly recommend that you use Ubuntu 14.04 to build Apollo.</strong></p>
+<p>Yes, you should be able to make Apollo work on Ubuntu 18. Just follow the document to install docker, then <code>apollo.sh build</code> and <code>apollo.sh lint</code> should work. But <code>apollo.sh test</code> might not, because the nvidia-drivers are generally miss-matched between HOST and Docker container, which will raise test failures.</p>
+<hr />
+<h3 id="how-do-i-add-a-new-module">How do I add a new module</h3>
+<p>Apollo currently functions as a single system, therefore before adding a module to it, understand that there would be a lot of additional work to be done to ensure that the module functions perfectly with the other modules of Apollo. Simply add your module to the <code>modules/</code> folder. You can use <code>modules/routing</code> as an example, which is a relatively simple module. Write the BUILD files properly and apollo.sh will build your module automatically</p>
+<hr />
+<h3 id="rosbag-not-found-what-now">Rosbag: not found - What now?</h3>
+<p>Should you see this error while building Apollo, please confirm the following:</p>
+<ol>
+<li>Make sure you are running rosbag when you are inside docker (dev or release). We recommend using the dev docker container.</li>
+<li>
+<p>You are probably running it as <code>root</code>. If yes, you would need to add:
+    <code>source /apollo/scripts/apollo_base.sh (this script includes the ros environment setup procedure source /home/tmp/ros/setup.bash(for dev docker), or you can only source the ros env setup script as well).</code>
+    Usually, this could be avoid by running Apollo as a normal user, since it will be configured into .bashrc automatically.</p>
+</li>
+<li>
+<p>Do not use <code>sudo</code> parameter, when executing <code>dev_start.sh</code> and <code>dev_into.sh</code></p>
+</li>
+</ol>
+<hr />
+<h3 id="build-error-docker-error-response-from-daemon-failed-to-copy-files-userspace-copy-failed">Build error "docker: Error response from daemon: failed to copy files: userspace copy failed":</h3>
+<p>An error message like this means that your system does not have enough space to build Apollo and the build process will fail. To resolve this issue, run the following to free up some space:</p>
+<pre><code>docker/setup_host/cleanup_resources.sh 
+</code></pre>
+
+<p>If it does not work, delete the Apollo repo, free up some space and then try again.</p>
+<hr />
+<h3 id="bootstrap-error-unixtmpsupervisorsock-refused-connection">Bootstrap error: unix:///tmp/supervisor.sock refused connection</h3>
+<p>There could be a number of reasons why this error occurs. 
+Please follow the steps recommended in the <a href="https://github.com/ApolloAuto/apollo/issues/5344">following thread</a>. There are quite a few suggestions. If it still does not work for you, comment on the thread mentioned above.</p>
+<hr />
+<h3 id="my-os-keeps-freezing-when-building-apollo-35">My OS keeps freezing when building Apollo 3.5?</h3>
+<p>If you see an error like this, you do not have enough memory to build Apollo. Please ensure that you have at least <strong>16GB</strong> memory available before building Apollo.
+You could also find <code>--jobs=$(nproc)</code> in apollo.sh file and replace it with <code>--jobs=2</code>. This will make build process to use only 2 cores. Building will be longer, but will use less memory.</p>
+<hr />
+<p><strong>More Software FAQs to follow.</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

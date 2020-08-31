@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Best Coding Practice - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Best Coding Practice";
+    var mkdocs_page_input_path = "technical_tutorial/best_coding_practice.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Best Coding Practice</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/technical_tutorial/best_coding_practice.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="best-coding-practice">Best Coding Practice</h2>
+<ol>
+<li>Always compile all, test all and lint all.</li>
+</ol>
+<p><code>bash
+   apollo.sh check</code></p>
+<ol>
+<li>Always write unit test and put it along with the source code.</li>
+</ol>
+<p><code>text
+   foobar.h
+   foobar.cc
+   foobar_test.cc</code></p>
+<ol>
+<li>A bazel target contains at most one header and one source file.</li>
+</ol>
+<p>```text
+   cc_library(
+     name = "foobar",
+     hdrs = ["foobar.h"],
+     srcs = ["foobar.cc"],
+     deps = [
+       ...
+     ],
+   )</p>
+<p>cc_test(
+     name = "foobar_test",
+     srcs = ["foobar_test.cc"],
+     deps = [
+       ":foobar",
+       ...
+     ]
+   )
+   ```</p>
+<p>You could setup and run <code>scripts/buildifier.sh &lt;some/path&gt;</code> to fix BUILD file
+   style issues.</p>
+<ol>
+<li>
+<p>In general, we follow
+   <a href="https://google.github.io/styleguide/cppguide.html">Google C++ coding style</a>.
+   You could run <code>scripts/clang-format.sh &lt;some/path&gt;</code> to fix C++ style issues.</p>
+</li>
+<li>
+<p>Simple and unified function signature.</p>
+</li>
+</ol>
+<p>```C++
+   // 1. For input objects, const reference guarantes that it is valid, while
+   //    pointers might be NULL or wild. Don't give others the chance to break
+   //    you.
+   // 2. For input scalas, just pass by value, which gives better locality and
+   //    thus performance.
+   // 3. For output, it's callers' responsibility to make sure the pointers are
+   //    valid. No need to do sanity check, and also no need to mark as
+   //    "OutputType<em> const", because pointer redirection is never allowed.
+   void FooBar(const InputObjectType&amp; input1, const InputScalaType input2, ...,
+               OutputType</em> output1, ...);</p>
+<p>// RVO machanism will help you avoid unnecessary object copy.
+   // See https://en.wikipedia.org/wiki/Copy_elision#Return_value_optimization
+   OutputType FooBar(const InputType&amp; input);
+   ```</p>
+<ol>
+<li>Use const whenever possible.</li>
+</ol>
+<p><code>C++
+   // Variables that don't change.
+   const int current_size = vec.size();
+   // Functions that have no side effect.
+   const std::string&amp; name() const;</code></p>
+<ol>
+<li>The DRY principle.</li>
+</ol>
+<p>Don't repeat yourself, in any way. Avoid duplicate classes, functions, const
+   variables, or a simple piece of code. Some examples:</p>
+<ul>
+<li>It's fine to refer a name with full path once, like
+     <code>apollo::common::util::Type</code>, but better to make a short alias
+     if you need to use twice or more: <code>using apollo::common::util::Type;</code>.</li>
+<li>It's fine to access a sub-field of proto once in cascade style, like
+     <code>a_proto.field_1().field_2().field_3()</code>, but better to save the reference
+     of a common part first if you need to access it twice or more:
+     <code>const auto&amp; field_2 = a_proto.field_1().field_2();</code>.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

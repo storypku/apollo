@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Cyber RT Quick Start - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cyber RT Quick Start";
+    var mkdocs_page_input_path = "cyber/CyberRT_Quick_Start.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Cyber RT Quick Start</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#set-up-the-component-file-structure">Set up the component file structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implement-the-component-class">Implement the component class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#implement-component-header-file">Implement component header file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implement-the-source-file-for-the-example-component">Implement the source file for the example component</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create-the-build-file-for-the-example-component">Create the build file for the example component</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#set-up-the-configuration-files">Set up the configuration files</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-the-dag-dependency-file">Configure the DAG dependency file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-the-launch-file">Configure the launch file</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#launch-the-component">Launch the component</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Cyber RT &raquo;</li>
+        
+      
+    
+    <li>Cyber RT Quick Start</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_Quick_Start.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-create-and-run-a-new-component-in-apollo-cyber-rt">How to create and run a new component in Apollo Cyber RT</h2>
+<p>Apollo Cyber RT framework is built based on the concept of component. As a basic building block of Apollo Cyber RT framework, each component contains a specific algorithm module which process a set of data inputs and generate a set of outputs.</p>
+<p>In order to successfully create and launch a new component, there are four essential steps that need to happen:</p>
+<ul>
+<li>Set up the component file structure</li>
+<li>Implement the component class</li>
+<li>Set up the configuration files</li>
+<li>Launch the component</li>
+</ul>
+<p>The example below demonstrates how to create a simple component, then build, run and watch the final output on screen. If you would like to explore more about Apollo Cyber RT, you can find a couple of examples showing how to use different functionalities of the framework under directory <code>/apollo/cyber/examples/</code>.</p>
+<blockquote>
+<p><strong>Note</strong>: the example has to be run within apollo docker environment and it's compiled with Bazel.</p>
+</blockquote>
+<h3 id="set-up-the-component-file-structure">Set up the component file structure</h3>
+<p>Please create the following files, assumed under the directory of <code>/apollo/cyber/examples/common_component_example/</code>:</p>
+<ul>
+<li>Header file: common_component_example.h</li>
+<li>Source file: common_component_example.cc</li>
+<li>Build file: BUILD</li>
+<li>DAG dependency file: common.dag</li>
+<li>Launch file: common.launch</li>
+</ul>
+<h3 id="implement-the-component-class">Implement the component class</h3>
+<h4 id="implement-component-header-file">Implement component header file</h4>
+<p>To implement <code>common_component_example.h</code>:</p>
+<ul>
+<li>Inherit the Component class</li>
+<li>Define your own <code>Init</code> and <code>Proc</code> functions. Proc function needs to specify its input data types</li>
+<li>Register your component classes to be global by using
+<code>CYBER_REGISTER_COMPONENT</code></li>
+</ul>
+<pre><code class="cpp">#include &lt;memory&gt;
+#include &quot;cyber/class_loader/class_loader.h&quot;
+#include &quot;cyber/component/component.h&quot;
+#include &quot;cyber/examples/proto/examples.pb.h&quot;
+
+using apollo::cyber::examples::proto::Driver;
+using apollo::cyber::Component;
+using apollo::cyber::ComponentBase;
+
+class CommonComponentSample : public Component&lt;Driver, Driver&gt; {
+ public:
+  bool Init() override;
+  bool Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
+            const std::shared_ptr&lt;Driver&gt;&amp; msg1) override;
+};
+
+CYBER_REGISTER_COMPONENT(CommonComponentSample)
+</code></pre>
+
+<h4 id="implement-the-source-file-for-the-example-component">Implement the source file for the example component</h4>
+<p>For <code>common_component_example.cc</code>, both <code>Init</code> and <code>Proc</code> functions need to be implemented.</p>
+<pre><code class="cpp">#include &quot;cyber/examples/common_component_example/common_component_example.h&quot;
+#include &quot;cyber/class_loader/class_loader.h&quot;
+#include &quot;cyber/component/component.h&quot;
+
+bool CommonComponentSample::Init() {
+  AINFO &lt;&lt; &quot;Commontest component init&quot;;
+  return true;
+}
+
+bool CommonComponentSample::Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
+                               const std::shared_ptr&lt;Driver&gt;&amp; msg1) {
+  AINFO &lt;&lt; &quot;Start common component Proc [&quot; &lt;&lt; msg0-&gt;msg_id() &lt;&lt; &quot;] [&quot;
+        &lt;&lt; msg1-&gt;msg_id() &lt;&lt; &quot;]&quot;;
+  return true;
+}
+</code></pre>
+
+<h4 id="create-the-build-file-for-the-example-component">Create the build file for the example component</h4>
+<p>Create bazel BUILD file.</p>
+<pre><code class="python">load(&quot;//tools:cpplint.bzl&quot;, &quot;cpplint&quot;)
+
+package(default_visibility = [&quot;//visibility:public&quot;])
+
+cc_binary(
+    name = &quot;libcommon_component_example.so&quot;,
+    deps = [&quot;:common_component_example_lib&quot;],
+    linkopts = [&quot;-shared&quot;],
+    linkstatic = False,
+)
+
+cc_library(
+    name = &quot;common_component_example_lib&quot;,
+    srcs = [
+        &quot;common_component_example.cc&quot;,
+    ],
+    hdrs = [
+        &quot;common_component_example.h&quot;,
+    ],
+    deps = [
+        &quot;//cyber&quot;,
+        &quot;//cyber/examples/proto:examples_cc_proto&quot;,
+    ],
+)
+
+cpplint()
+</code></pre>
+
+<h3 id="set-up-the-configuration-files">Set up the configuration files</h3>
+<h4 id="configure-the-dag-dependency-file">Configure the DAG dependency file</h4>
+<p>To configure the DAG dependency file (common.dag), specify the following items as below:</p>
+<ul>
+<li>Channel names: for data input and output</li>
+<li>Library path: library built from component class</li>
+<li>Class name: the class name of the component</li>
+</ul>
+<pre><code class="protobuf"># Define all coms in DAG streaming.
+component_config {
+    component_library : &quot;/apollo/bazel-bin/cyber/examples/common_component_example/libcommon_component_example.so&quot;
+    components {
+        class_name : &quot;CommonComponentSample&quot;
+        config {
+            name : &quot;common&quot;
+            readers {
+                channel: &quot;/apollo/prediction&quot;
+            }
+            readers {
+                channel: &quot;/apollo/test&quot;
+            }
+        }
+    }
+}
+</code></pre>
+
+<h4 id="configure-the-launch-file">Configure the launch file</h4>
+<p>To configure the launch (common.launch) file, specify the following items:</p>
+<ul>
+<li>The name of the component</li>
+<li>The dag file you just created in the previous step.</li>
+<li>The name of the process which the component runs within</li>
+</ul>
+<pre><code class="xml">&lt;cyber&gt;
+    &lt;component&gt;
+        &lt;name&gt;common&lt;/name&gt;
+        &lt;dag_conf&gt;/apollo/cyber/examples/common_component_example/common.dag&lt;/dag_conf&gt;
+        &lt;process_name&gt;common&lt;/process_name&gt;
+    &lt;/component&gt;
+&lt;/cyber&gt;
+</code></pre>
+
+<h3 id="launch-the-component">Launch the component</h3>
+<p>Build the component by running the command below:</p>
+<pre><code class="bash">bash /apollo/apollo.sh build
+</code></pre>
+
+<p>Note: make sure the example component builds fine</p>
+<p>Then configure the environment:</p>
+<pre><code class="bash">cd /apollo/cyber
+source setup.bash
+</code></pre>
+
+<p>There are two ways to launch the component:</p>
+<ul>
+<li>Launch with the launch file (recommended)</li>
+</ul>
+<pre><code class="bash">cyber_launch start /apollo/cyber/examples/common_component_example/common.launch
+</code></pre>
+
+<ul>
+<li>Launch with the DAG file</li>
+</ul>
+<pre><code class="bash">mainboard -d /apollo/cyber/examples/common_component_example/common.dag
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../FAQs/" class="btn btn-neutral float-right" title="FAQs">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../" class="btn btn-neutral" title="Introduction to Cyber RT"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../FAQs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

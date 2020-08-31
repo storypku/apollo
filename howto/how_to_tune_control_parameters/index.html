@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Tune Control Parameters - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Tune Control Parameters";
+    var mkdocs_page_input_path = "howto/how_to_tune_control_parameters.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Tune Control Parameters</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_tune_control_parameters.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-tune-control-parameters">How to Tune Control Parameters</h2>
+<h3 id="introduction">Introduction</h3>
+<p>The objective of the control module is to generate control commands to the vehicle based on planning trajectory and the current car status.</p>
+<h3 id="background">Background</h3>
+<h4 id="input-output">Input / Output</h4>
+<h5 id="input">Input</h5>
+<ul>
+<li>Planning trajectory</li>
+<li>Current car status</li>
+<li>HMI driving mode change request</li>
+<li>Monitor System</li>
+</ul>
+<h5 id="output">Output</h5>
+<p>The output control command governs functions such as steering, throttle, and brake in the <code>canbus</code>.</p>
+<h4 id="controller-introduction">Controller Introduction</h4>
+<p>The controllers include a lateral controller that manages the steering commands and a longitudinal controller that manages the throttle and brakes commands .</p>
+<h5 id="lateral-controller">Lateral Controller</h5>
+<p>The lateral controller is an LQR-Based Optimal Controller. The dynamic model of this controller is a simple bicycle model with side slip. It is divided into two categories, including a closed loop and an open loop.</p>
+<ul>
+<li>The closed loop provides discrete feedback LQR controller with 4 states:</li>
+<li>Lateral Error</li>
+<li>Lateral Error Rate</li>
+<li>Heading Error</li>
+<li>Heading Error Rate</li>
+<li>The open loop utilizes the path curvature information to cancel the constant steady state heading error.</li>
+</ul>
+<h5 id="longitudinal-controller">Longitudinal Controller</h5>
+<p>The longitudinal controller is configured as a cascaded PID + Calibration table. It is divided into two categories, including a closed loop and an open loop.</p>
+<ul>
+<li>The closed loop is a cascaded PID (station PID + Speed PID), which takes the following data as controller input:</li>
+<li>Station Error</li>
+<li>Speed Error</li>
+<li>The open loop provides a calibration table which maps acceleration onto throttle/brake percentages.</li>
+</ul>
+<h3 id="controller-tuning">Controller Tuning</h3>
+<h4 id="useful-tools">Useful tools</h4>
+<p>Tool like <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/diagnostics">diagnostics</a> and <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/realtime_plot">realtime_plot</a> are useful for controller tuning and can be found under <code>apollo/modules/tools/</code>.</p>
+<h4 id="lateral-controller-tuning">Lateral Controller Tuning</h4>
+<p>The lateral controller is designed for minimal tuning effort.  The basic lateral controller tuning steps for <em>all</em> vehicles are:</p>
+<ol>
+<li>
+<p>Set all elements in <code>matrix_q</code> to zero.</p>
+</li>
+<li>
+<p>Increase the third element of <code>matrix_q</code>, which defines the heading error weighting, to minimize the heading error.</p>
+</li>
+<li>
+<p>Increase the first element of <code>matrix_q</code>,  which defines the lateral error weighting to minimize the lateral error.</p>
+</li>
+</ol>
+<h5 id="tune-a-lincoln-mkz">Tune a Lincoln MKZ</h5>
+<p>For a Lincoln MKZ,  there are four elements that refer to the diagonal elements of the state weighting matrix Q:</p>
+<ul>
+<li>Lateral error weighting</li>
+<li>Lateral error rate weighting</li>
+<li>Heading error weighting</li>
+<li>Heading error rate weighting</li>
+</ul>
+<p>Tune the weighting parameters by following the basic lateral controller tuning steps listed above in <em>Lateral Controller Tuning</em>.  An example is shown below.</p>
+<pre><code>lat_controller_conf {
+  matrix_q: 0.05
+  matrix_q: 0.0
+  matrix_q: 1.0
+  matrix_q: 0.0
+}
+</code></pre>
+
+<h5 id="tune-additional-vehicle-types">Tune Additional Vehicle Types</h5>
+<p>When tuning a vehicle type that is other than a Lincoln MKZ, first update the vehicle-related physical parameters as shown in the example below.  Then, follow the basic lateral controller tuning steps listed above in <em>Lateral Controller Tuning</em> and define the matrix Q parameters.</p>
+<p>An example is shown below.</p>
+<pre><code>lat_controller_conf {
+  cf: 155494.663
+  cr: 155494.663
+  wheelbase: 2.85
+  mass_fl: 520
+  mass_fr: 520
+  mass_rl: 520
+  mass_rr: 520
+  eps: 0.01
+  steer_transmission_ratio: 16
+  steer_single_direction_max_degree: 470
+}
+</code></pre>
+
+<h4 id="longitudinal-controller-tuning">Longitudinal Controller Tuning</h4>
+<p>The longitudinal controller is composed of Cascaded PID controllers that include one station controller and a high/low speed controller with different gains for different speeds.  Apollo manages tuning in open loop and closed loop by:</p>
+<ul>
+<li>OpenLoop: Calibration table generation. Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_update_vehicle_calibration.md">how_to_update_vehicle_calibration.md</a> for detailed steps.</li>
+<li>Closeloop: Based on the order of High Speed Controller -&gt; Low Speed Controller -&gt; Station Controller.</li>
+</ul>
+<h5 id="highlow-speed-controller-tuning">High/Low Speed Controller Tuning</h5>
+<p>The high speed controller code is used mainly to track the desired speed above a certain speed value.  For example:</p>
+<pre><code>high_speed_pid_conf {
+  integrator_enable: true
+  integrator_saturation_level: 0.3
+  kp: 1.0
+  ki: 0.3
+  kd: 0.0
+}
+</code></pre>
+
+<ol>
+<li>First set the values for <code>kp</code>, <code>ki</code>, and <code>kd</code> to zero.</li>
+<li>Then start to increase <code>kp</code> to reduce the rising time of step response to velocity changes.</li>
+<li>Finally, increase <code>ki</code> to reduce velocity controller steady state error.</li>
+</ol>
+<p>Once you obtain relatively accurate speed tracking performance for the higher speed, you can start tuning the low speed PID controller for a comfortable acceleration rate from the start point.</p>
+<p><code>low_speed_pid_conf {
+   integrator_enable: true
+   integrator_saturation_level: 0.3
+   kp: 0.5
+   ki: 0.3
+   kd: 0.0
+ }</code>
+<em>Note:</em>  Apollo usually sets the switch speed to be a coasting speed when the gear switches to <em>Drive</em>.</p>
+<h5 id="station-controller-tuning">Station Controller Tuning</h5>
+<p>Apollo uses the station controller for the vehicle to track the station error between the vehicle trajectory reference and the vehicle position.  A station controller tuning example is shown below.</p>
+<pre><code>station_pid_conf {
+  integrator_enable: true
+  integrator_saturation_level: 0.3
+  kp: 0.3
+  ki: 0.0
+  kd: 0.0
+}
+</code></pre>
+
+<h3 id="references">References</h3>
+<ol>
+<li>
+<p>"Vehicle dynamics and control." Rajamani, Rajesh. Springer Science &amp; Business Media, 2011.</p>
+</li>
+<li>
+<p>"Optimal Trajectory generation for dynamic street scenarios in a Frenet
+   Frame", M. Werling et., ICRA2010</p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

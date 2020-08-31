@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Propak 6 IMU IGM A1 Installation Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Propak 6 IMU IGM A1 Installation Guide";
+    var mkdocs_page_input_path = "specs/Navigation/Propak_6_IMU-IGM-A1_Installation_Guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Propak 6 IMU IGM A1 Installation Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Navigation/Propak_6_IMU-IGM-A1_Installation_Guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="installation-guide-of-novatel-propak6-and-novatel-imu-igm-a1">Installation Guide of NovAtel Propak6 and NovAtel IMU-IGM-A1</h3>
+<p>NovAtel ProPak6 is a standalone GNSS receiver. It works with a separate NovAtel-supported IMU (in this case, the NovAtel IMU-IGM-A1)to provide localization functionality.</p>
+<p>The IMU-IGM-A1 is an IMU that pairs with a SPAN-enabled GNSS receiver such as the SPAN ProPak6.</p>
+<p><img alt="novatel_pp6" src="../images/Novatel_pp6.png" /></p>
+<p>The GPS Receiver/Antenna used with the GPS-IMU component is the <strong>NovAtel GPS-703-GGG-HV</strong>.</p>
+<p><img alt="gps_receiver" src="../images/gps_receiver.png" /></p>
+<h4 id="installing-the-gps-receiver-and-antenna">Installing the GPS Receiver and Antenna</h4>
+<p>The installation instructions describe the procedure to mount, connect, and take the lever arm measurements for the GPS NovAtel SPAN® ProPak6™ <strong>and</strong> the NovAtel IMU-IGM-A1.</p>
+<h6 id="components-for-the-installation">Components for the Installation</h6>
+<p>The components that are required for the installation include:</p>
+<ul>
+<li>NovAtel GPS SPAN ProPak6</li>
+<li>NovAtel IMU-IGM-A1</li>
+<li>NovAtel GPS-703-GGG-HV Antenna</li>
+<li>NovAtel GPS-C006 Cable (to connect antenna to GPS)</li>
+<li>NovAtel 01019014 Main Cable (to connect GPS to a serial port on the IPC)</li>
+<li>Data Transport Unit (DTU) – similar to a 4G router</li>
+<li>Magnetic adapters (for antenna and DTU)</li>
+<li>DB9 straight through cable</li>
+</ul>
+<h6 id="mounting">Mounting</h6>
+<p>You can place the two devices, the ProPak6 and the IMU in most places in the vehicle, but it is suggested that you follow these recommendations:</p>
+<ul>
+<li>Place and secure the ProPak6 and the IMU side-by-side inside the trunk with the Y-axis pointing forward.</li>
+<li>Mount the NovAtel GPS-703-GGG-HV antenna on top of the vehicle or on top of the trunk lid as shown:</li>
+</ul>
+<p><img alt="gps_receiver_on_car" src="../images/gps_receiver_on_car.png" /></p>
+<ul>
+<li>Use a magnetic adapter to tightly attach the antenna to the trunk lid.</li>
+<li>Install the antenna cable in the trunk by opening the trunk and placing the cable in the space between the trunk lid and the body of the car.</li>
+</ul>
+<h6 id="wiring">Wiring</h6>
+<p>Follow these steps to connect the ProPak6 GNSS Receiver and the IMU to the Apollo system:</p>
+<ul>
+<li>Use the split cable that comes with IMU-IGM-A1 to connect the IMU Main port and theProPak6 COM3/IMU port.</li>
+<li>Use a USB-A-to-MicroUSB cable to connect the USB port of the IPC and the MicroUSB port of the ProPak6.</li>
+<li>Connect the other end of the IMU-IGM-A1 split cable to the vehicle power.</li>
+<li>Connect the GNSS antenna to Propak6.</li>
+<li>Connect the Propak6 power cable.</li>
+</ul>
+<p><img alt="wiring" src="../images/wiring.png" /></p>
+<h5 id="taking-the-lever-arm-measurement">Taking the Lever Arm Measurement</h5>
+<p>Follow these steps:</p>
+<ul>
+<li>Before taking the measurement, turn on the IPC.</li>
+<li>When the IMU and the GPS Antenna are in position, the distance from the IMU to the GPS Antenna must be measured. The center of the IMU and the center of the antenna are labeled on the exterior of the devices.</li>
+<li>The distance should be measured as: X offset, Y offset, and Z offset. The axis should be determined by the IMU. The error of offset must be within one centimeter to achieve high accuracy in positioning and localization. </li>
+</ul>
+<h4 id="configuring-the-gps-and-imu">Configuring the GPS and IMU</h4>
+<p>Configure the GPS and IMU as shown below. This process can be done either by keying in the commands, or by loading batch configuraion file in NovAtel Connect.</p>
+<pre><code>WIFICONFIG STATE OFF
+UNLOGALL THISPORT
+CONNECTIMU COM3 IMU_ADIS16488
+INSCOMMAND ENABLE
+SETIMUORIENTATION 5
+ALIGNMENTMODE AUTOMATIC  
+VEHICLEBODYROTATION 0 0 0
+COM COM1 9600 N 8 1 N OFF OFF
+COM COM2 9600 N 8 1 N OFF OFF
+INTERFACEMODE COM1 NOVATEL NOVATEL ON
+PPSCONTROL ENABLE POSITIVE 1.0 10000
+MARKCONTROL MARK1 ENABLE POSITIVE
+EVENTINCONTROL MARK1 ENABLE POSITIVE 0 2
+interfacemode usb2 rtcmv3 none off
+rtksource auto any
+psrdiffsource auto any
+SETIMUTOANTOFFSET 0.00 1.10866 1.14165 0.05 0.05 0.08
+SETINSOFFSET 0 0 0
+EVENTOUTCONTROL MARK2 ENABLE POSITIVE 999999990 10
+EVENTOUTCONTROL MARK1 ENABLE POSITIVE 500000000 500000000
+
+
+LOG COM2 GPRMC ONTIME 1.0 0.25
+LOG USB1 GPGGA ONTIME 1.0
+
+log USB1 bestgnssposb ontime 1
+log USB1 bestgnssvelb ontime 1
+log USB1 bestposb ontime 1
+log USB1 INSPVAXB ontime 1
+log USB1 INSPVASB ontime 0.01
+log USB1 CORRIMUDATASB ontime 0.01
+log USB1 RAWIMUSXB onnew 0 0
+log USB1 mark1pvab onnew
+
+log USB1 rangeb ontime 1
+log USB1 bdsephemerisb
+log USB1 gpsephemb
+log USB1 gloephemerisb
+log USB1 bdsephemerisb ontime 15
+log USB1 gpsephemb ontime 15
+log USB1 gloephemerisb ontime 15
+
+log USB1 imutoantoffsetsb once
+log USB1 vehiclebodyrotationb onchanged
+ 
+SAVECONFIG
+</code></pre>
+
+<p><strong><img alt="warning_icon" src="../images/warning_icon.png" /> WARNING:</strong> Modify the <strong><u>SETIMUTOANTOFFSET</u></strong> line based on the actual measurement (of the antenna and the IMU offset).</p>
+<p>For example:</p>
+<pre><code>SETIMUTOANTOFFSET -0.05 0.5 0.8 0.05 0.05 0.08
+</code></pre>
+
+<p>The first 3 numbers indicate the result of the lever arm distance measurement. The last 3 numbers are the uncertainty of the measurement. </p>
+<h4 id="references">References</h4>
+<p>For more information about the NovAtel SPAN ProPak6 and the IMU-IGM-A1, see:
+* <a href="https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf">NovAtel ProPak6 Installation &amp; Operation Manual</a>
+* <a href="https://www.novatel.com/products/span-gnss-inertial-systems/span-imus/span-mems-imus/imu-igm-a1/#overview">NovAtel IMU-IGM-A1 Product Page</a></p>
+<ul>
+<li><a href="https://www.novatel.com/products/gnss-antennas/high-performance-gnss-antennas/gps-703-ggg-hv/">NovAtel GPS-703-GGG-HV</a></li>
+</ul>
+<h3 id="disclaimer">Disclaimer</h3>
+<p>This device is <code>Apollo Platform Supported</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Add a New Vehicle to Apollo - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Add a New Vehicle to Apollo";
+    var mkdocs_page_input_path = "howto/how_to_add_a_new_vehicle.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Add a New Vehicle to Apollo</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_new_vehicle.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-add-a-new-vehicle-to-apollo">How to Add a New Vehicle to Apollo</h2>
+<h3 id="introduction">Introduction</h3>
+<p>The instructions below demonstrate how to add a new vehicle to Apollo.</p>
+<pre><code>Note:  The Apollo control algorithm is configured for the default vehicle, which is a Lincoln MKZ.
+</code></pre>
+
+<p>When adding a new vehicle, if your vehicle requires different attributes from those offered by the Apollo control algorithm, consider:</p>
+<ul>
+<li>Using a different control algorithm that is appropriate for your vehicle.</li>
+<li>Modifying the existing algorithm's parameters to achieve better results.</li>
+</ul>
+<h3 id="adding-a-new-vehicle">Adding a New Vehicle</h3>
+<p>Complete the following task sequence to add a new vehicle:</p>
+<ul>
+<li>Implement the new vehicle controller.</li>
+<li>Implement the new message manager.</li>
+<li>Implement the new vehicle factory.</li>
+<li>Update the configuration file.</li>
+</ul>
+<h4 id="implement-the-new-vehicle-controller">Implement the New Vehicle Controller</h4>
+<p>The new vehicle controller is inherited from the  <code>VehicleController</code> class. An example header file is provided below.</p>
+<pre><code class="cpp">/**
+ * @class NewVehicleController
+ *
+ * @brief this class implements the vehicle controller for a new vehicle.
+ */
+class NewVehicleController final : public VehicleController {
+ public:
+  /**
+   * @brief initialize the new vehicle controller.
+   * @return init error_code
+   */
+  ::apollo::common::ErrorCode Init(
+      const VehicleParameter&amp; params, CanSender* const can_sender,
+      MessageManager* const message_manager) override;
+
+  /**
+   * @brief start the new vehicle controller.
+   * @return true if successfully started.
+   */
+  bool Start() override;
+
+  /**
+   * @brief stop the new vehicle controller.
+   */
+  void Stop() override;
+
+  /**
+   * @brief calculate and return the chassis.
+   * @returns a copy of chassis. Use copy here to avoid multi-thread issues.
+   */
+  Chassis chassis() override;
+
+  // more functions implemented here
+  ...
+
+};
+</code></pre>
+
+<h4 id="implement-the-new-message-manager">Implement the New Message Manager</h4>
+<p>The new message manager is inherited from the <code>MessageManager</code> class. An example header file is provided below.</p>
+<pre><code class="cpp">/**
+ * @class NewVehicleMessageManager
+ *
+ * @brief implementation of MessageManager for the new vehicle
+ */
+class NewVehicleMessageManager : public MessageManager {
+ public:
+  /**
+   * @brief construct a lincoln message manager. protocol data for send and
+   * receive are added in the construction.
+   */
+  NewVehicleMessageManager();
+  virtual ~NewVehicleMessageManager();
+
+  // define more functions here.
+  ...
+};
+</code></pre>
+
+<h4 id="implement-the-new-vehicle-factory-class">Implement the New Vehicle Factory Class.</h4>
+<p>The new vehicle factory class is inherited from the <code>AbstractVehicleFactory</code> class.  An example header file is provided below.</p>
+<pre><code class="cpp">/**
+ * @class NewVehicleFactory
+ *
+ * @brief this class is inherited from AbstractVehicleFactory. It can be used to
+ * create controller and message manager for lincoln vehicle.
+ */
+class NewVehicleFactory : public AbstractVehicleFactory {
+ public:
+  /**
+  * @brief destructor
+  */
+  virtual ~NewVehicleFactory() = default;
+
+  /**
+   * @brief create lincoln vehicle controller
+   * @returns a unique_ptr that points to the created controller
+   */
+  std::unique_ptr&lt;VehicleController&gt; CreateVehicleController() override;
+
+  /**
+   * @brief create lincoln message manager
+   * @returns a unique_ptr that points to the created message manager
+   */
+  std::unique_ptr&lt;MessageManager&gt; CreateMessageManager() override;
+};
+</code></pre>
+
+<p>An example .cc file is provided below.</p>
+<pre><code class="cpp">std::unique_ptr&lt;VehicleController&gt;
+NewVehicleFactory::CreateVehicleController() {
+  return std::unique_ptr&lt;VehicleController&gt;(new lincoln::LincolnController());
+}
+
+std::unique_ptr&lt;MessageManager&gt; NewVehicleFactory::CreateMessageManager() {
+  return std::unique_ptr&lt;MessageManager&gt;(new lincoln::LincolnMessageManager());
+}
+</code></pre>
+
+<p>Apollo provides the base class <code>ProtocolData</code> that can be used to implement the protocols of the new vehicle.</p>
+<h4 id="register-the-new-vehicle">Register the New Vehicle</h4>
+<p>Register the new vehicle in <code>modules/canbus/vehicle/vehicle_factory.cc</code>. An example header file is provided below.</p>
+<pre><code class="cpp">void VehicleFactory::RegisterVehicleFactory() {
+  Register(VehicleParameter::LINCOLN_MKZ, []() -&gt; AbstractVehicleFactory* {
+    return new LincolnVehicleFactory();
+  });
+
+  // register the new vehicle here.
+  Register(VehicleParameter::NEW_VEHICLE_BRAND, []() -&gt; AbstractVehicleFactory* {
+    return new NewVehicleFactory();
+  });
+}
+</code></pre>
+
+<h4 id="update-the-config-file">Update the config File</h4>
+<p>Update the config file <code>modules/canbus/conf/canbus_conf.pb.txt</code> to activate the new vehicle in the Apollo system.</p>
+<pre><code class="config">vehicle_parameter {
+  brand: NEW_VEHICLE_BRAND
+  // put other parameters below
+  ...
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

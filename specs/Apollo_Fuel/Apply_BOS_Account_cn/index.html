@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>百度云对象存储BOS注册与基本使用向导 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u767e\u5ea6\u4e91\u5bf9\u8c61\u5b58\u50a8BOS\u6ce8\u518c\u4e0e\u57fa\u672c\u4f7f\u7528\u5411\u5bfc";
+    var mkdocs_page_input_path = "specs/Apollo_Fuel/Apply_BOS_Account_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>百度云对象存储BOS注册与基本使用向导</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Apollo_Fuel/Apply_BOS_Account_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="bos">百度云对象存储BOS注册与基本使用向导</h2>
+<ul>
+<li><a href="#百度云对象存储bos注册与基本使用向导">百度云对象存储BOS注册与基本使用向导</a></li>
+<li><a href="#概述">概述</a></li>
+<li><a href="#前提条件">前提条件</a></li>
+<li><a href="#主要步骤">主要步骤</a><ul>
+<li><a href="#1登录开通bos">1、登录开通BOS</a></li>
+<li><a href="#2创建bucket">2、创建bucket</a></li>
+<li><a href="#3使用bos客户端">3、使用BOS客户端</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="_1">概述</h3>
+<p>该用户手册旨在帮助用户完成注册百度云对象存储BOS购买服务，使用客户端登录BOS上传下载数据。</p>
+<h3 id="_2">前提条件</h3>
+<p>注册一个百度账号，供后续使用。<a href="https://passport.baidu.com/">登录注册网址</a></p>
+<h3 id="_3">主要步骤</h3>
+<h4 id="1bos">1、登录开通BOS</h4>
+<p>打开<a href="https://console.bce.baidu.com/">BOS主页</a>用百度账号登录，登录成功界面如下图所示：</p>
+<p><img alt="mian" src="../images/login_main.png" /></p>
+<p>点击对象存储BOS，界面如下图所示：</p>
+<p><img alt="bos" src="../images/login_bos.png" /></p>
+<p>点击立即开通按钮弹出界面如下：</p>
+<p><img alt="bos_main" src="../images/login_bos_main.png" /></p>
+<p>在财务的位置点击充值按钮进行充值，弹出界面如下图所示：</p>
+<p><img alt="bos_recharge" src="../images/login_bos_recharge.png" /></p>
+<p>充值是一种按使用标准存储空间的容量进行付费的模式，相对开发者套件云服务来说比较划算，余额还可以随时提取。</p>
+<h4 id="2bucket">2、创建bucket</h4>
+<p>在上上图中点击新建bucket，弹出界面如下图所示：</p>
+<p><img alt="create" src="../images/bucket_create.png" /></p>
+<p>注意在所属地域的地方选择自己的区域，读写权限设置为私有，cdn计费方式选择按使用流量计费，这是一种后付费模式，使用多少流量，付多少费，比较划算。创建成功后界面如下图所示：</p>
+<p><img alt="main" src="../images/bucket_main.png" /></p>
+<p>权限设置修改如下图所示：</p>
+<p><img alt="authority" src="../images/bucket_authority.png" /></p>
+<p>创建成功后AK、SK查看方法：</p>
+<p><img alt="ak" src="../images/bucket_AK.png" /></p>
+<p>点击红框中的Access Key，弹出界面如下所示：</p>
+<p><img alt="sk" src="../images/bucket_SK.png" /></p>
+<p>点击Secret Key显示按钮输入验证码即可查看SK。</p>
+<h4 id="3bos">3、使用BOS客户端</h4>
+<p>从<a href="https://cloud.baidu.com/doc/BOS/s/lk4tnbkrm">BOS桌面客户端</a>上，下载桌面客户端软件，有Windows和Mac两种，下面以Windows为例来下载，安装成功后打开界面如下图所示：</p>
+<p><img alt="ak_sk" src="../images/bos_client_ak_sk.png" /></p>
+<p>填写上自己的AK、SK后，点击向右的箭头，如下图所示：</p>
+<p><img alt="security" src="../images/bos_client_security.png" /></p>
+<p>设置输入自己的安全码点击登录即可看到自己创建的bucket如下图所示：</p>
+<p><img alt="bucket" src="../images/bos_client_bucket.png" /></p>
+<p>然后上传下载单个文件或者整个文件夹数据即可。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

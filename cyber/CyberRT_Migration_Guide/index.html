@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Migration guide from Apollo ROS - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Migration guide from Apollo ROS";
+    var mkdocs_page_input_path = "cyber/CyberRT_Migration_Guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Migration guide from Apollo ROS</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_Migration_Guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="migration-guide-from-apollo-ros">Migration guide from Apollo ROS</h2>
+<p>This article describes the essential changes for projects to migrate from Apollo ROS (Apollo 3.0 and before) to Apollo Cyber RT (Apollo 3.5 and after). We will be using the very first ROS project talker/listener as example to demonstrate step by step migration instruction.</p>
+<h3 id="build-system">Build system</h3>
+<p>ROS use <code>CMake</code> as its build system but Cyber RT use <code>bazel</code>. In a ROS project, CmakeLists.txt and package.xml are required for defining build configs like build target, dependency, message files and so on. As for a Cyber RT component, a single bazel BUILD file covers. Some key build config mappings are listed below.</p>
+<p>Cmake</p>
+<pre><code class="cmake">project(pb_msgs_example)
+add_proto_files(
+  DIRECTORY proto
+  FILES chatter.proto
+)
+## Declare a C++ executable
+add_executable(pb_talker src/talker.cpp)
+target_link_libraries(pb_talker ${catkin_LIBRARIES}pb_msgs_example_proto)
+add_executable(pb_listener src/listener.cpp)
+target_link_libraries(pb_listener ${catkin_LIBRARIES}  pb_msgs_example_proto)
+</code></pre>
+
+<p>Bazel</p>
+<pre><code class="python">cc_binary(
+  name = &quot;talker&quot;,
+  srcs = [&quot;talker.cc&quot;],
+  deps = [
+    &quot;//cyber&quot;,
+    &quot;//cyber/examples/proto:examples_cc_proto&quot;,
+    ],
+  )
+cc_binary(
+  name = &quot;listener&quot;,
+  srcs = [&quot;listener.cc&quot;],
+  deps = [
+    &quot;//cyber&quot;,
+    &quot;//cyber/examples/proto:examples_cc_proto&quot;,
+    ],
+  )
+</code></pre>
+
+<p>We can find the mapping easily from the 2 file snippets. For example, <code>pb_talker</code> and <code>src/talker.cpp</code> in cmake <code>add_executable</code> setting map to <code>name = "talker"</code> and <code>srcs = ["talker.cc"]</code> in BUILD file <code>cc_binary</code>.</p>
+<h4 id="proto">Proto</h4>
+<p>Apollo ROS has customized to support proto message formate that a separate section <code>add_proto_files</code> and projectName_proto(<code>pb_msgs_example_proto</code>) in <code>target_link_libraries</code> are required to send message in proto formate. For config proto message in Cyber RT, it's as simple as adding the target proto file path concantenated with name of <code>cc_proto_library</code> in <code>deps</code> setting. The <code>cc_proto_library</code> is set up in BUILD file under proto folder.</p>
+<pre><code class="python">cc_proto_library(
+  name = &quot;examples_cc_proto&quot;,
+  deps = [
+    &quot;:examples_proto&quot;,
+  ],
+)
+proto_library(
+  name = &quot;examples_proto&quot;,
+  srcs = [
+    &quot;examples.proto&quot;,
+  ],
+)
+</code></pre>
+
+<p>The package definition has also changed in Cyber RT. In Apollo ROS a fixed package <code>package pb_msgs;</code> is used for proto files, but in Cyber RT, the proto file path <code>package apollo.cyber.examples.proto;</code> is used instead.</p>
+<h3 id="folder-structure">Folder structure</h3>
+<p>As shown below, Cyber RT remove the src folder and pull all source code in the same folder as BUILD file. BUILD file plays the same role as CMakeLists.txt plus package.xml. Both Cyber RT and Apollo ROS talker/listener example have a proto folder for message proto files but Cyber RT requires a separate BUILD file for proto folder to set up the proto library.</p>
+<h4 id="apollo-ros">Apollo ROS</h4>
+<ul>
+<li>CMakeLists.txt</li>
+<li>package.xml</li>
+<li>proto</li>
+<li>chatter.proto</li>
+<li>src</li>
+<li>listener.cpp</li>
+<li>talker.cpp</li>
+</ul>
+<h4 id="cyber-rt">Cyber RT</h4>
+<ul>
+<li>BUILD</li>
+<li>listener.cc</li>
+<li>talker.cc</li>
+<li>proto</li>
+<li>BUILD</li>
+<li>examples.proto (with chatter message)</li>
+</ul>
+<h3 id="update-source-code">Update source code</h3>
+<h4 id="listener">Listener</h4>
+<p>Cyber RT</p>
+<pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
+#include &quot;cyber/examples/proto/examples.pb.h&quot;
+
+void MessageCallback(
+    const std::shared_ptr&lt;apollo::cyber::examples::proto::Chatter&gt;&amp; msg) {
+  AINFO &lt;&lt; &quot;Received message seq-&gt; &quot; &lt;&lt; msg-&gt;seq();
+  AINFO &lt;&lt; &quot;msgcontent-&gt;&quot; &lt;&lt; msg-&gt;content();
+}
+
+int main(int argc, char* argv[]) {
+  // init cyber framework
+  apollo::cyber::Init(argv[0]);
+  // create listener node
+  auto listener_node = apollo::cyber::CreateNode(&quot;listener&quot;);
+  // create listener
+  auto listener =
+      listener_node-&gt;CreateReader&lt;apollo::cyber::examples::proto::Chatter&gt;(
+          &quot;channel/chatter&quot;, MessageCallback);
+  apollo::cyber::WaitForShutdown();
+  return 0;
+}
+</code></pre>
+
+<p>ROS</p>
+<pre><code class="cpp">#include &quot;ros/ros.h&quot;
+#include &quot;chatter.pb.h&quot;
+
+void MessageCallback(const boost::shared_ptr&lt;pb_msgs::Chatter&gt;&amp; msg) {
+  ROS_INFO_STREAM(&quot;Time: &quot; &lt;&lt; msg-&gt;stamp().sec() &lt;&lt; &quot;.&quot; &lt;&lt; msg-&gt;stamp().nsec());
+  ROS_INFO(&quot;I heard pb Chatter message: [%s]&quot;, msg-&gt;content().c_str());
+}
+
+int main(int argc, char** argv) {
+  ros::init(argc, argv, &quot;listener&quot;);
+  ros::NodeHandle n;
+  ros::Subscriber pb_sub = n.subscribe(&quot;chatter&quot;, 1000, MessageCallback);
+  ros::spin();
+  return 0;
+}
+</code></pre>
+
+<p>You can see easily from the two listener code above that Cyber RT provides very similar API to for developers to migrate from ROS.</p>
+<ul>
+<li><code>ros::init(argc, argv, "listener");</code> --&gt; <code>apollo::cyber::Init(argv[0]);</code></li>
+<li><code>ros::NodeHandle n;</code> --&gt; <code>auto listener_node = apollo::cyber::CreateNode("listener");</code></li>
+<li><code>ros::Subscriber pb_sub = n.subscribe("chatter", 1000, MessageCallback);</code> --&gt; <code>auto listener =
+      listener_node-&gt;CreateReader("channel/chatter", MessageCallback);</code></li>
+<li><code>ros::spin();</code> --&gt; <code>apollo::cyber::WaitForShutdown();</code></li>
+</ul>
+<p>Note: for Cyber RT, a listener node has to use <code>node-&gt;CreateReader&lt;messageType&gt;(channelName, callback)</code> to read data from channel.</p>
+<h4 id="talker">Talker</h4>
+<p>Cyber RT</p>
+<pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
+#include &quot;cyber/examples/proto/examples.pb.h&quot;
+
+using apollo::cyber::examples::proto::Chatter;
+
+int main(int argc, char *argv[]) {
+  // init cyber framework
+  apollo::cyber::Init(argv[0]);
+  // create talker node
+  auto talker_node = apollo::cyber::CreateNode(&quot;talker&quot;);
+  // create talker
+  auto talker = talker_node-&gt;CreateWriter&lt;Chatter&gt;(&quot;channel/chatter&quot;);
+  Rate rate(1.0);
+  while (apollo::cyber::OK()) {
+    static uint64_t seq = 0;
+    auto msg = std::make_shared&lt;Chatter&gt;();
+    msg-&gt;set_timestamp(Time::Now().ToNanosecond());
+    msg-&gt;set_lidar_timestamp(Time::Now().ToNanosecond());
+    msg-&gt;set_seq(seq++);
+    msg-&gt;set_content(&quot;Hello, apollo!&quot;);
+    talker-&gt;Write(msg);
+    AINFO &lt;&lt; &quot;talker sent a message!&quot;;
+    rate.Sleep();
+  }
+  return 0;
+}
+</code></pre>
+
+<p>ROS</p>
+<pre><code class="cpp">#include &quot;ros/ros.h&quot;
+#include &quot;chatter.pb.h&quot;
+
+#include &lt;sstream&gt;
+
+int main(int argc, char** argv) {
+  ros::init(argc, argv, &quot;talker&quot;);
+  ros::NodeHandle n;
+  ros::Publisher chatter_pub = n.advertise&lt;pb_msgs::Chatter&gt;(&quot;chatter&quot;, 1000);
+  ros::Rate loop_rate(10);
+  int count = 0;
+  while (ros::ok()) {
+    pb_msgs::Chatter msg;
+    ros::Time now = ros::Time::now();
+    msg.mutable_stamp()-&gt;set_sec(now.sec);
+    msg.mutable_stamp()-&gt;set_nsec(now.nsec);
+    std::stringstream ss;
+    ss &lt;&lt; &quot;Hello world &quot; &lt;&lt; count;
+    msg.set_content(ss.str());
+    chatter_pub.publish(msg);
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
+  return 0;
+}
+</code></pre>
+
+<p>Most of the mappings are illustrated in listener code above, the rest are listed here.</p>
+<ul>
+<li>
+<p><code>ros::Publisher chatter_pub = n.advertise&lt;pb_msgs::Chatter&gt;("chatter", 1000);</code> --&gt; <code>auto talker = talker_node-&gt;CreateWriter&lt;Chatter&gt;("channel/chatter");</code></p>
+</li>
+<li>
+<p><code>chatter_pub.publish(msg);</code> --&gt; <code>talker-&gt;Write(msg);</code></p>
+</li>
+</ul>
+<h3 id="tools-mapping">Tools mapping</h3>
+<table>
+<thead>
+<tr>
+<th align="left">ROS</th>
+<th align="left">Cyber RT</th>
+<th align="left">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">rosbag</td>
+<td align="left">cyber_recorder</td>
+<td align="left">data file</td>
+</tr>
+<tr>
+<td align="left">scripts/diagnostics.sh</td>
+<td align="left">cyber_monitor</td>
+<td align="left">channel debug</td>
+</tr>
+<tr>
+<td align="left">offline_lidar_visualizer_tool</td>
+<td align="left">cyber_visualizer</td>
+<td align="left">point cloud visualizer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ros-bag-data-migration">ROS bag data migration</h3>
+<p>The data file changed from ROS bag to Cyber record in Cyber RT. Cyber RT has a data migration tool <code>rosbag_to_record</code> for users to easily migrate data files before Apollo 3.0 (ROS) to Cyber RT like the sample usage below.</p>
+<pre><code class="bash">rosbag_to_record demo_3.0.bag demo_3.5.record
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

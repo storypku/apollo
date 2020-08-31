@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo 3.0 技术指南 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo 3.0 \u6280\u672f\u6307\u5357";
+    var mkdocs_page_input_path = "technical_tutorial/apollo_3.0_technical_tutorial_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo 3.0 技术指南</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/technical_tutorial/apollo_3.0_technical_tutorial_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-30">Apollo 3.0 技术指南</h2>
+<h3 id="_1">概况</h3>
+<blockquote>
+<p>了解Apollo3.0基础概念和Apollo3.0快速入门指南</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_3_0_quick_start_cn.md">Apollo 3.0快速入门指南</a></li>
+</ul>
+<h3 id="_2">硬件和系统安装</h3>
+<blockquote>
+<p>了解Apollo3.0硬件和系统安装过程</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_3_0_hardware_system_installation_guide_cn.md">Apollo 3.0硬件和系统安装指南</a></li>
+</ul>
+<h3 id="_3">校准</h3>
+<blockquote>
+<p>了解校准的过程</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_5_lidar_calibration_guide_cn.md">Apollo激光雷达校准指南</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_2_0_sensor_calibration_guide_cn.md">Apollo 2.0传感器校准指南</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/multiple_lidar_gnss_calibration_guide_cn.md">多激光雷达全球导航卫星系统(Multiple-LiDAR GNSS)校准指南</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/coordination_cn.md">Apollo坐标系统</a></li>
+</ul>
+<h3 id="_4">软件安装</h3>
+<blockquote>
+<p>了解Apollo3.0的软件安装过程</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide_cn.md">Apollo软件安装指南</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_debug_dreamview_start_problem_cn.md">如何调试Dreamview启动问题</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/demo_guide/README_cn.md">运行线下演示</a></li>
+</ul>
+<h3 id="apollo">Apollo系统架构和原理</h3>
+<blockquote>
+<p>了解核心模块的架构和原理</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Apollo_3.0_Software_Architecture_cn.md" title="Apollo software architecture">Apollo 3.0 软件架构</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/3d_obstacle_perception_cn.md">3D 障碍物感知</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/perception/README.md">Apollo 3.0感知</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/qp_spline_path_optimizer_cn.md">二次规划（QP）样条路径优化</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/qp_spline_st_speed_optimizer_cn.md">二次规划（QP）样条ST速度优化</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/reference_line_smoother_cn.md">参考线平滑设定</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/traffic_light_cn.md">交通信号灯感知</a></li>
+</ul>
+<h3 id="_5">功能模块和相关扩展知识</h3>
+<blockquote>
+<p>了解Apollo功能模块和相关扩展知识</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/canbus/README.md">控制总线模块</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/common/README.md">通用模块</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/control/README.md">控制模块</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/data/README.md">数据模块</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/localization/README.md">定位模块</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/perception/README.md">感知模块</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/planning/README.md">Planning模块</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/prediction/README.md">预测模块</a></li>
+<li>
+<p><a href="https://github.com/ApolloAuto/apollo/blob/master/modules/routing/README.md">寻路模块</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_add_a_gps_receiver_cn.md">如何添加新的GPS接收器</a></p>
+</li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_add_a_new_can_card_cn.md">如何添加新的CAN卡</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_add_a_new_control_algorithm_cn.md">如何添加新的控制算法</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_add_a_new_evaluator_in_prediction_module_cn.md">如何在预测模块中添加新评估器</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_add_a_new_predictor_in_prediction_module_cn.md">如何在预测模块中添加一个预测器</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_add_a_new_vehicle_cn.md">如何在Apollo中添加新的车辆</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_add_an_external_dependency_cn.md">如何添加新的外部依赖项</a></li>
+</ul>
+<p>## 开发者工具</p>
+<blockquote>
+<p>了解开发者工具</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_debug_apollo_in_vscode_cn.md" title="How  to build and debug Apollo in VSCode">使用VSCode构建、调试Apollo项目</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/dreamview_usage_table_cn.md">DreamView用法介绍</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

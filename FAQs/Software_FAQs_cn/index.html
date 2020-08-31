@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>软件FAQ - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u8f6f\u4ef6FAQ";
+    var mkdocs_page_input_path = "FAQs/Software_FAQs_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>软件FAQ</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/FAQs/Software_FAQs_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="faq">软件FAQ</h2>
+<h3 id="ubuntu">除了Ubuntu之外，其他操作系统还能使用吗？</h3>
+<p>我们只对Ubuntu进行了测试，这意味着它是我们目前正式支持的唯一操作系统。Ubuntu是一个理想的操作系统，因为ROS需要支持它。欢迎开发者尝试不同的操作系统，如果能够成功地使用它们，可以分享补丁与社区。</p>
+<h3 id="localhost8888dreamview">在链接到localhost：8888（DreamView）时有问题</h3>
+<p>Dreamview网页服务器由Dreamview节点提供（节点是ROS概念中的可执行文件）。在访问Dreamview页面之前，您需要跟着<a href="https://github.com/ApolloAuto/apollo/blob/master/README.md">指南</a>编译DOCKER容器内的系统（包括Dreamview节点）。一旦编译成功，Dreamview节点将在步骤“bash scripts/bootstrap.sh”之后启动。</p>
+<p>因此，如果你不能访问Dreamview，请检查：</p>
+<ul>
+<li>确保您的Dreamview进程正确运行。在最新版本中，如果Dreamview无法启动，<code>bash scripts/bootstrap.sh</code>会报告<code>dreamview: ERROR (spawn error)</code>。对于早期版本，请使用命令检查：<code>supervisorctl status dreamview</code> 或者 <code>ps aux | grep dreamview</code>。如果Dreamview没有运行，请参阅<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_debug_dreamview_start_problem.md">如何调试ValueVIEW启动问题</a>。</li>
+<li>确保地址和端口不被防火墙拦截。</li>
+<li>如果您没有通过主机访问Dreamview页面，确保您使用的是<Apollo_host_ip>：8888而不是localhost：8888。</li>
+</ul>
+<h3 id="_1">我如何进行分步调试？</h3>
+<p>大多数bug可以通过日志记录找到（使用AERROR, AINFO, ADEBUG）。如果需要一步一步的调试，我们建议使用gdb</p>
+<h3 id="_2">我如何运行离线可视化感知？</h3>
+<p>参考How-to指南<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_run_offline_perception_visualizer.md">这里</a>。</p>
+<h3 id="apolloubuntu-1404">在安装预构建的Apollo内核后，ubuntu 14.04登录循环问题。</h3>
+<p>这里有一种解决方案：
+ * 重新启动Ubuntu系统，按下并按住“shift”按钮，然后进入GRUB菜单。
+ * 选择一个通用的和可引导的选项（不是带有Apollo内核的引导加载程序）来启动。
+ * 按“CTRL+ALT+F1”，按照<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_2_0_hardware_system_installation_guide_v1.md">Link</a>来安装[NVIDIALIUX-X86Y64-75.39]。
+ * 重启并使用带有Apollo内核的默认引导加载程序启动计算机。</p>
+<p><strong>更多的软件常见问题。</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

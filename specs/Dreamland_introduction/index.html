@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Dreamland - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Dreamland";
+    var mkdocs_page_input_path = "specs/Dreamland_introduction.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Dreamland</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Dreamland_introduction.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="dreamland">Dreamland</h2>
+<h3 id="introduction">Introduction</h3>
+<p>Dreamland is Apollo's web-based simulation platform. Based on an enormous amount of driving scenario data and large-scale cloud computing capacity, Apollo simulation engine creates a powerful testing environment for the development of an autonomous driving system, from algorithms to grading, and then back to improved algorithms. It enables the developers and start-ups to run millions of miles of simulation daily, which dramatically accelerates the development cycle.</p>
+<p>To access Dreamland, please visit <a href="http://apollo.auto/platform/simulation.html">our Simulation website</a></p>
+<h3 id="overview">Overview</h3>
+<ol>
+<li>
+<p><strong>An Array of Scenarios:</strong>
+The simulation platform allows users to choose different road types, obstacles, driving plans, and traffic light states. There are currently around 200 scenario cases provided including:</p>
+<ul>
+<li>Different types of roads, such as intersection, U-turn lane, through lane, T-junction and curved lane.</li>
+<li>Different types of obstacles, such as pedestrians, motor vehicles, bicycles etc.</li>
+<li>Different driving plans, such as lane follow, U-turn, lane change, left-turn, right-turn and lane merge.</li>
+<li>Different traffic light status, such as red, yellow and green.</li>
+</ul>
+</li>
+<li>
+<p><strong>Execution Modes:</strong>
+The simulation platform gives users a complete setup to run multiple scenarios parallelly in the cloud and verify modules in the Apollo environment.</p>
+</li>
+<li>
+<p><strong>Automatic Grading System:</strong>
+The current Automatic Grading System tests via 12 metrics:</p>
+<ul>
+<li>Collision detection</li>
+<li>Red-light violation detection</li>
+<li>Speeding detection</li>
+<li>Off-road detection</li>
+<li>Arrival test</li>
+<li>Hard braking detection</li>
+<li>Acceleration test</li>
+<li>Routing test</li>
+<li>Lane-change in junction detection</li>
+<li>Yield to pedestrians at crosswalks</li>
+<li>Brake Taps</li>
+<li>Stop at stop-signs</li>
+</ul>
+<p>These grading metrics test different aspects of autonomous driving, ranging from traffic and road safety to the rider's comfort. The Apollo team is committed to safety while providing excellent user experience during the drive hence these metrics are tailored to ensure a rigorous testing environment before the car is even put on the road.</p>
+</li>
+<li>
+<p><strong>3D Visualization:</strong>
+3D Visualization illustrates real-time road conditions and helps to visualize the output from different modules. It also displays the status of the autonomous vehicle, such as velocity, heading etc. It also helps in visualizing the output of modules, such as routing, obstacles and planned trajectory.</p>
+</li>
+</ol>
+<h3 id="scenarios">Scenarios</h3>
+<p>Through Dreamland, you could run millions of scenarios on the Apollo platform, but broadly speaking, there are two types of scenarios:</p>
+<ol>
+<li>
+<p><strong>Worldsim:</strong>
+Worldsim is synthetic data created manually with specific and well-defined obstacle behavior and traffic light status. They are simple yet effective for testing the autonomous car in a well-defined environment. They do however lack the complexity found in real-world traffic conditions.</p>
+</li>
+<li>
+<p><strong>Logsim:</strong>
+Logsim is extracted from real world data using our sensors. They are more realistic but also less deterministic. The obstacles perceived may be fuzzy and the traffic conditions are more complicated.</p>
+</li>
+</ol>
+<h3 id="key-features">Key Features</h3>
+<ol>
+<li><strong>Web Based:</strong> Dreamland does not require you to download large packages or heavy software, it is a web based tool that can be accessed from any browser-friendly device</li>
+<li>
+<p><strong>Highly Customizable Scenarios:</strong> With a comprehensive list of traffic elements you can fine tune Dreamland to suit your niche development.</p>
+</li>
+<li>
+<p><strong>Rigorous Grading Metrics:</strong> The grading metrics include:</p>
+</li>
+<li>Collision detection - Checks whether there is a collision (any distance between objects less than 0.1m is considered a collision)</li>
+<li>Red-light violation detection - Checks whether the autonomous car runs a red light</li>
+<li>Speeding detection - Checks whether the speed of the autonomous car exceeds the current speed limit</li>
+<li>Off-road detection - Checks whether the autonomous car stays on the road</li>
+<li>Arrival test - Checks whether the autonomous car arrives at its destination</li>
+<li>Hard braking detection - Checks whether the autonomous car is braking too hard (deceleration is greater than 4m/s^2)</li>
+<li>Acceleration test - Check whether the autonomous car is speeding up too fast (acceleration is greater than 4m/s^2)</li>
+<li>Routing test - Checks whether a routing response is present</li>
+<li>Lane-change in junction detection - Checks whether the planning trajectory makes a lane-change in a traffic junction</li>
+<li>Yield to pedestrians at crosswalks - Checks whether the planning trajectory yields to pedestrians at crosswalks</li>
+<li>Brake Taps - Checks whether the autonomous car has quick brake taps.</li>
+<li>
+<p>Stop at stop-signs - Checks whether the autonomous car stops at stop-signs</p>
+</li>
+<li>
+<p><strong>Instant Verification on the Cloud:</strong> Dreamland offers you the unique opportunity to instantly verify your Apollo build on the cloud and test your code against a vast and diverse set of scenarios that can run with the push of a button.</p>
+</li>
+</ol>
+<h3 id="dreamland-tool">Dreamland Tool</h3>
+<ol>
+<li>To access Dreamland, please visit <a href="https://azure.apollo.auto/">our Dreamland Homepage</a></li>
+<li>You will then be redirected to a login screen. You could use either your existing accounts (Baidu, Google, Github, Microsoft) or create your own Dreamland account.
+<img alt="" src="../images/Dreamland_login.png" /></li>
+<li>Upon successful logging in, you will be redirected to the Dreamland Introduction page which includes a basic introduction and offerings
+<img alt="" src="../images/Dreamland_home.png" /></li>
+</ol>
+<p>Dreamland platform offers a number of features that you could explore to help you accelerate your autonomous driving testing and deployment.
+1. <strong>User Manual</strong> - This section includes documentation to help you get up and running with Dreamland.
+    - <a href="https://azure.apollo.auto/user-manual/quick-start">Quickstart</a>: This section will walk you through testing your build using our APIs and also how to manage and edit existing scenarios.
+    - <a href="">Scenario Editor</a>: The scenario editor is a new feature to be launched in Apollo 5.0 which enables our developers to create their own scenarios to test niche aspects of their algorithm. In order to use this feature, you will have to comeplete the form on the screen as seen in the image below:</p>
+<pre><code>    ![](images/form.png)
+
+    You should receive the following activation confirmation via email:
+
+    ![](images/email.png)
+
+    Feel free to reach out to the team if you do not receive an activation confirmation within 3 days.
+
+- [FAQ](https://azure.apollo.auto/user-manual/faq):
+This section will answer frequently encountered issues or questions to help make using Dreamland simpler. For any additional questions or issues you may face, feel free to reach out to the team on [Apollo's Github issues](https://github.com/ApolloAuto/apollo/issues)
+</code></pre>
+<ol>
+<li>
+<p><strong>Sample Scenarios:</strong> A large number of existing worldsim and logsim scenarios that you can later use to test your build and algorithms. It is always good to acclimate yourself to the existing scenario list to help you decide which scenarios will benefit which aspects of your development.
+<img alt="" src="../images/Dreamland_sample.png" /></p>
+</li>
+<li>
+<p><strong>Scenario Management:</strong> Scenario management helps you filter, search through and group scenarios together. You can then view your existing groups. This is especially helpful when running tasks in <code>Task Management</code> that does not require you to re-select from the scenario list and simply choose the existing group.</p>
+</li>
+</ol>
+<p><img alt="" src="../images/Dreamland_sm.png" /></p>
+<ol>
+<li><strong>Task Management:</strong> Like Scenario Editor, Task Management is also a service offering currently in beta testing and open only to selective partners. In order to use this feature, you will have to comeplete the form on the screen and request for activation.
+The Task Management tab is extremely useful when testing any one particular type of scenario like side pass or U-turns. It helps test your algorithms against very specific test cases.</li>
+</ol>
+<p>Within the Task Management page, you can run a <code>New Task</code> to test your personal Apollo github repository against a list of scenarios. You will receive a summary of the task which highlights if the build passed or not, along with the passing rate of both worldsim and logsim scenarios and finally the total miles tested virtually. You can also view the number of failed scenarios along with a description detailing the failed timestamp and the grading metric which failed. Finally, you can run the comparison tool to check how your build performed versus previous builds.</p>
+<ol>
+<li><strong>Daily Build:</strong> The Daily Build shows how well the current Apollo official Github repository runs against all the scenarios. It is run once every morning Pacific Time.</li>
+</ol>
+<p><img alt="" src="../images/Dreamland_build_1.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>二次规划（QP）样条路径优化 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u4e8c\u6b21\u89c4\u5212\uff08QP\uff09\u6837\u6761\u8def\u5f84\u4f18\u5316";
+    var mkdocs_page_input_path = "specs/qp_spline_path_optimizer_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>二次规划（QP）样条路径优化</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/qp_spline_path_optimizer_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="qp">二次规划（QP）样条路径优化</h2>
+<p><em><strong>Tip</strong>: 为了更好的展示本文档中的等式，我们建议使用者使用带有<a href="https://chrome.google.com/webstore/detail/tex-all-the-things/cbimabofgmfdkicghcadidpemeenbffn">插件</a>的Chrome浏览器，或者将Latex等式拷贝到<a href="http://www.hostmath.com/">在线编辑公式网站</a>进行浏览。</em></p>
+<p>二次规划（QP）+样条插值</p>
+<h3 id="1">1.  目标函数</h3>
+<h4 id="11">1.1  获得路径长度</h4>
+<p>路径定义在station-lateral坐标系中。<strong>s</strong>的变化区间为从车辆当前位置点到默认路径的长度。</p>
+<h4 id="12">1.2   获得样条段</h4>
+<p>将路径划分为<strong>n</strong>段，每段路径用一个多项式来表示。</p>
+<h4 id="13">1.3  定义样条段函数</h4>
+<p>每个样条段 <strong><em>i</em></strong> 都有沿着参考线的累加距离$d_i$。每段的路径默认用5介多项式表示。</p>
+<pre><code>$$
+l = f_i(s)
+  = a_{i0} + a_{i1} \cdot s + a_{i2} \cdot s^2 + a_{i3} \cdot s^3 + a_{i4} \cdot s^4 + a_{i5} \cdot s^5        (0 \leq s \leq d_{i})
+$$
+</code></pre>
+
+<h4 id="14">1.4  定义每个样条段优化目标函数</h4>
+<pre><code>$$
+cost = \sum_{i=1}^{n} \Big( w_1 \cdot \int\limits_{0}^{d_i} (f_i')^2(s) ds + w_2 \cdot \int\limits_{0}^{d_i} (f_i'')^2(s) ds + w_3 \cdot \int\limits_{0}^{d_i} (f_i^{\prime\prime\prime})^2(s) ds \Big)
+$$
+</code></pre>
+
+<h4 id="15-costqp">1.5  将开销（cost）函数转换为QP公式</h4>
+<p>QP公式:</p>
+<pre><code>$$
+\begin{aligned}
+minimize  &amp; \frac{1}{2}  \cdot x^T \cdot H \cdot x  + f^T \cdot x \\
+s.t. \qquad &amp; LB \leq x \leq UB \\
+      &amp; A_{eq}x = b_{eq} \\
+      &amp; Ax \geq b
+\end{aligned}
+$$
+</code></pre>
+
+<p>下面是将开销（cost）函数转换为QP公式的例子：</p>
+<pre><code>$$
+f_i(s) ＝
+\begin{vmatrix} 1 &amp; s &amp; s^2 &amp; s^3 &amp; s^4 &amp; s^5 \end{vmatrix}
+\cdot
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix}   
+$$
+</code></pre>
+
+<p>且</p>
+<pre><code>$$
+f_i'(s) =
+\begin{vmatrix} 0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4 \end{vmatrix}
+\cdot
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix}   
+$$
+</code></pre>
+
+<p>且</p>
+<pre><code>$$
+f_i'(s)^2 =
+\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5}  \end{vmatrix} 
+\cdot 
+\begin{vmatrix} 0 \\ 1 \\ 2s \\ 3s^2 \\ 4s^3 \\ 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} 0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix}
+$$
+</code></pre>
+
+<p>然后得到，</p>
+<pre><code>$$
+\int\limits_{0}^{d_i} f_i'(s)^2 ds ＝
+\int\limits_{0}^{d_i}
+\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5} \end{vmatrix} 
+\cdot  
+\begin{vmatrix} 0 \\ 1 \\ 2s \\ 3s^2 \\ 4s^3 \\ 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} 0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix} ds
+$$
+</code></pre>
+
+<p>从聚合函数中提取出常量得到，</p>
+<pre><code>$$
+\int\limits_{0}^{d_i} f'(s)^2 ds ＝
+\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5} \end{vmatrix} 
+\cdot 
+\int\limits_{0}^{d_i}  
+\begin{vmatrix} 0 \\ 1 \\ 2s \\ 3s^2 \\ 4s^3 \\ 5s^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix} 0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4 \end{vmatrix} ds 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix}
+$$
+$$
+＝\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5} \end{vmatrix} 
+\cdot \int\limits_{0}^{d_i}
+\begin{vmatrix} 
+0  &amp; 0 &amp;0&amp;0&amp;0&amp;0\\ 
+0 &amp; 1 &amp; 2s &amp; 3s^2 &amp; 4s^3 &amp; 5s^4\\
+0 &amp; 2s &amp; 4s^2 &amp; 6s^3 &amp; 8s^4 &amp; 10s^5\\
+0 &amp; 3s^2 &amp;  6s^3 &amp; 9s^4 &amp; 12s^5&amp;15s^6 \\
+0 &amp; 4s^3 &amp; 8s^4 &amp;12s^5 &amp;16s^6&amp;20s^7 \\
+0 &amp; 5s^4 &amp; 10s^5 &amp; 15s^6 &amp; 20s^7 &amp; 25s^8 
+\end{vmatrix} ds 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix}
+$$
+</code></pre>
+
+<p>最后得到，</p>
+<pre><code>$$
+\int\limits_{0}^{d_i} 
+f'_i(s)^2 ds =\begin{vmatrix} a_{i0} &amp; a_{i1} &amp; a_{i2} &amp; a_{i3} &amp; a_{i4} &amp; a_{i5} \end{vmatrix} 
+\cdot \begin{vmatrix} 
+0 &amp; 0 &amp; 0 &amp; 0 &amp;0&amp;0\\ 
+0 &amp; d_i &amp; d_i^2 &amp; d_i^3 &amp; d_i^4&amp;d_i^5\\
+0&amp; d_i^2 &amp; \frac{4}{3}d_i^3&amp; \frac{6}{4}d_i^4 &amp; \frac{8}{5}d_i^5&amp;\frac{10}{6}d_i^6\\
+0&amp; d_i^3 &amp; \frac{6}{4}d_i^4 &amp; \frac{9}{5}d_i^5 &amp; \frac{12}{6}d_i^6&amp;\frac{15}{7}d_i^7\\
+0&amp; d_i^4 &amp; \frac{8}{5}d_i^5 &amp; \frac{12}{6}d_i^6 &amp; \frac{16}{7}d_i^7&amp;\frac{20}{8}d_i^8\\
+0&amp; d_i^5 &amp; \frac{10}{6}d_i^6 &amp; \frac{15}{7}d_i^7 &amp; \frac{20}{8}d_i^8&amp;\frac{25}{9}d_i^9
+\end{vmatrix} 
+\cdot 
+\begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix}
+$$
+</code></pre>
+
+<p>请注意我们最后得到一个6介的矩阵来表示5介样条插值的衍生开销。
+应用同样的推理方法可以得到2介，3介样条插值的衍生开销。</p>
+<h3 id="2">2  约束条件</h3>
+<h4 id="21">2.1  初始点约束</h4>
+<p>假设第一个点为 ($s_0$, $l_0$), ($s_0$, $l'_0$) and ($s_0$, $l''_0$)，其中$l_0$ , $l'_0$ and $l''_0$表示横向的偏移，并且规划路径的起始点的第一，第二个点的衍生开销可以从$f_i(s)$, $f'_i(s)$, $f_i(s)''$计算得到。</p>
+<p>将上述约束转换为QP约束等式，使用等式：</p>
+<pre><code>$$
+A_{eq}x = b_{eq}
+$$
+</code></pre>
+
+<p>下面是转换的具体步骤：</p>
+<pre><code>$$
+f_i(s_0) = 
+\begin{vmatrix} 1 &amp; s_0 &amp; s_0^2 &amp; s_0^3 &amp; s_0^4&amp;s_0^5 \end{vmatrix} 
+\cdot 
+\begin{vmatrix}  a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}\end{vmatrix} = l_0
+$$
+</code></pre>
+
+<p>且</p>
+<pre><code>$$
+f'_i(s_0) = 
+\begin{vmatrix} 0&amp; 1 &amp; 2s_0 &amp; 3s_0^2 &amp; 4s_0^3 &amp;5 s_0^4 \end{vmatrix} 
+\cdot 
+\begin{vmatrix}  a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix} = l'_0
+$$
+</code></pre>
+
+<p>且 </p>
+<pre><code>$$
+f''_i(s_0) = 
+\begin{vmatrix} 0&amp;0&amp; 2 &amp; 3\times2s_0 &amp; 4\times3s_0^2 &amp; 5\times4s_0^3  \end{vmatrix} 
+\cdot 
+\begin{vmatrix}  a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix} = l''_0
+$$
+</code></pre>
+
+<p>其中，i是包含$s_0$的样条段的索引值。</p>
+<h4 id="22">2.2  终点约束</h4>
+<p>和起始点相同，终点$(s_e, l_e)$ 也应当按照起始点的计算方法生成约束条件。</p>
+<p>将起始点和终点组合在一起，得出约束等式为：</p>
+<pre><code>$$
+\begin{vmatrix} 
+ 1 &amp; s_0 &amp; s_0^2 &amp; s_0^3 &amp; s_0^4&amp;s_0^5 \\
+ 0&amp;1 &amp; 2s_0 &amp; 3s_0^2 &amp; 4s_0^3 &amp; 5s_0^4 \\
+ 0&amp; 0&amp;2 &amp; 3\times2s_0 &amp; 4\times3s_0^2 &amp; 5\times4s_0^3  \\
+ 1 &amp; s_e &amp; s_e^2 &amp; s_e^3 &amp; s_e^4&amp;s_e^5 \\
+ 0&amp;1 &amp; 2s_e &amp; 3s_e^2 &amp; 4s_e^3 &amp; 5s_e^4 \\
+ 0&amp; 0&amp;2 &amp; 3\times2s_e &amp; 4\times3s_e^2 &amp; 5\times4s_e^3  
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix}  a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5} \end{vmatrix} 
+ = 
+ \begin{vmatrix}
+ l_0\\
+ l'_0\\
+ l''_0\\
+ l_e\\
+ l'_e\\
+ l''_e\\
+ \end{vmatrix}
+$$
+</code></pre>
+
+<h4 id="23">2.3  平滑节点约束</h4>
+<p>该约束的目的是使样条的节点更加平滑。假设两个段$seg_k$ 和$seg_{k+1}$互相连接，且$seg_k$的累计值s为$s_k$。计算约束的等式为：</p>
+<pre><code>$$
+f_k(s_k) = f_{k+1} (s_0)
+$$
+</code></pre>
+
+<p>下面是计算的具体步骤：</p>
+<pre><code>$$
+\begin{vmatrix} 
+ 1 &amp; s_k &amp; s_k^2 &amp; s_k^3 &amp; s_k^4&amp;s_k^5 \\
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix} 
+ a_{k0} \\ a_{k1} \\ a_{k2} \\ a_{k3} \\ a_{k4} \\ a_{k5} 
+ \end{vmatrix} 
+ = 
+\begin{vmatrix} 
+ 1 &amp; s_{0} &amp; s_{0}^2 &amp; s_{0}^3 &amp; s_{0}^4&amp;s_{0}^5 \\
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix} 
+ a_{k+1,0} \\ a_{k+1,1} \\ a_{k+1,2} \\ a_{k+1,3} \\ a_{k+1,4} \\ a_{k+1,5} 
+ \end{vmatrix}
+$$
+</code></pre>
+
+<p>然后</p>
+<pre><code>$$
+\begin{vmatrix} 
+ 1 &amp; s_k &amp; s_k^2 &amp; s_k^3 &amp; s_k^4&amp;s_k^5 &amp;  -1 &amp; -s_{0} &amp; -s_{0}^2 &amp; -s_{0}^3 &amp; -s_{0}^4&amp;-s_{0}^5\\
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix} 
+ a_{k0} \\ a_{k1} \\ a_{k2} \\ a_{k3} \\ a_{k4} \\ a_{k5} \\ a_{k+1,0} \\ a_{k+1,1} \\ a_{k+1,2} \\ a_{k+1,3} \\ a_{k+1,4} \\ a_{k+1,5}  
+ \end{vmatrix} 
+ = 0
+$$
+</code></pre>
+
+<p>将$s_0$ = 0代入等式。</p>
+<p>同样地，可以为下述等式计算约束等式：</p>
+<pre><code>$$
+f'_k(s_k) = f'_{k+1} (s_0)
+\\
+f''_k(s_k) = f''_{k+1} (s_0)
+\\
+f'''_k(s_k) = f'''_{k+1} (s_0)
+$$
+</code></pre>
+
+<h4 id="24">2.4  点采样边界约束</h4>
+<p>在路径上均匀的取样<strong>m</strong>个点，检查这些点上的障碍物边界。将这些约束转换为QP约束不等式，使用不等式：</p>
+<pre><code>$$
+Ax \geq b
+$$
+</code></pre>
+
+<p>首先基于道路宽度和周围的障碍物找到点 $(s_j, l_j)$的下边界$l_{lb,j}$，且$j\in[0, m]$。计算约束的不等式为：</p>
+<pre><code>$$
+\begin{vmatrix} 
+ 1 &amp; s_0 &amp; s_0^2 &amp; s_0^3 &amp; s_0^4&amp;s_0^5 \\
+  1 &amp; s_1 &amp; s_1^2 &amp; s_1^3 &amp; s_1^4&amp;s_1^5 \\
+ ...&amp;...&amp;...&amp;...&amp;...&amp;... \\
+ 1 &amp; s_m &amp; s_m^2 &amp; s_m^3 &amp; s_m^4&amp;s_m^5 \\
+ \end{vmatrix} \cdot \begin{vmatrix}a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix} 
+ \geq 
+ \begin{vmatrix}
+ l_{lb,0}\\
+ l_{lb,1}\\
+ ...\\
+ l_{lb,m}\\
+ \end{vmatrix}
+$$
+</code></pre>
+
+<p>同样地，对上边界$l_{ub,j}$，计算约束的不等式为：</p>
+<pre><code>$$
+\begin{vmatrix} 
+ -1 &amp; -s_0 &amp; -s_0^2 &amp; -s_0^3 &amp; -s_0^4&amp;-s_0^5 \\
+  -1 &amp; -s_1 &amp; -s_1^2 &amp; -s_1^3 &amp; -s_1^4&amp;-s_1^5 \\
+ ...&amp;...-&amp;...&amp;...&amp;...&amp;... \\
+ -1 &amp; -s_m &amp; -s_m^2 &amp; -s_m^3 &amp; -s_m^4&amp;-s_m^5 \\
+ \end{vmatrix} 
+ \cdot 
+ \begin{vmatrix} a_{i0} \\ a_{i1} \\ a_{i2} \\ a_{i3} \\ a_{i4} \\ a_{i5}  \end{vmatrix} 
+ \geq
+ -1 \cdot
+ \begin{vmatrix}
+ l_{ub,0}\\
+ l_{ub,1}\\
+ ...\\
+ l_{ub,m}\\
+ \end{vmatrix}
+$$
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

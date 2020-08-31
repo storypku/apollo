@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Cyber RT API for Developers - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cyber RT API for Developers";
+    var mkdocs_page_input_path = "cyber/CyberRT_API_for_Developers.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Cyber RT API for Developers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_API_for_Developers.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="cyber-rt-api-for-developers">Cyber RT API for Developers</h2>
+<p>This document provides an extensive technical deep dive into how to create, manipulate and use Cyber RT's API.</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li><a href="#Talker-Listener">Talker-Listener</a></li>
+<li><a href="#Service-Creation-and-Use">Service Creation and Use</a></li>
+<li><a href="#Param-parameter-service">Param parameter service</a></li>
+<li><a href="#LOG-API">Log API</a></li>
+<li><a href="#Building-a-module-based-on-Component">Building a module based on Component</a></li>
+<li><a href="#Launch">Launch</a></li>
+<li><a href="#timer">Timer</a></li>
+<li><a href="#use-of-time">Time API</a></li>
+<li><a href="#Record-file-Read-and-Write">Record file: Read and Write</a></li>
+<li><a href="##API-Directory">C++ API Directory</a><ul>
+<li><a href="#node-api">Node</a></li>
+<li><a href="#writer-api">Writer</a></li>
+<li><a href="#client-api">Client</a></li>
+<li><a href="#parameter-api">Parameter</a></li>
+<li><a href="#timer-api">Timer</a></li>
+<li><a href="#timer-api">Time</a></li>
+<li><a href="#duration-api">Duration</a></li>
+<li><a href="#rate-api">Rate</a></li>
+<li><a href="#recordreader-api">RecordReader</a></li>
+<li><a href="#recordwriter-api">RecordWriter</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="talker-listener">Talker-Listener</h3>
+<p>The first part of demonstrating CyberRT API is to understand the Talker/Listener example. Following are three essential concepts: node (basic unit), reader(facility to read message) and writer(facility to write message) of the example.</p>
+<h4 id="create-a-node">Create a node</h4>
+<p>In the CyberRT framework, the node is the most fundamental unit, similar to the role of a <code>handle</code>. When creating a specific functional object (writer, reader, etc.), you need to create it based on an existing node instance.
+The node creation interface is as follows:</p>
+<pre><code class="cpp">std::unique_ptr&lt;Node&gt; apollo::cyber::CreateNode(const std::string&amp; node_name, const std::string&amp; name_space = &quot;&quot;);
+</code></pre>
+
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>node_name: name of the node, globally unique identifier</li>
+<li>name_space: name of the space where the node is located</li>
+</ul>
+<blockquote>
+<p>name_space is empty by default. It is the name of the space concatenated with node_name. The format is <code>/namespace/node_name</code></p>
+</blockquote>
+</li>
+<li>
+<p>Return value - An exclusive smart pointer to Node</p>
+</li>
+<li>Error Conditions - when <code>cyber::Init()</code> has not called, the system is in an uninitialized state, unable to create a node, return nullptr</li>
+</ul>
+<h4 id="create-a-writer">Create a writer</h4>
+<p>The writer is the basic facility used in CyberRT to send messages. Every writer corresponds to a channel with a specific data type.
+The writer is created by the <code>CreateWriter</code> interface in the node class. The interfaces are listed as below:</p>
+<pre><code class="cpp">template &lt;typename MessageT&gt;
+   auto CreateWriter(const std::string&amp; channel_name)
+       -&gt; std::shared_ptr&lt;Writer&lt;MessageT&gt;&gt;;
+template &lt;typename MessageT&gt;
+   auto CreateWriter(const proto::RoleAttributes&amp; role_attr)
+       -&gt; std::shared_ptr&lt;Writer&lt;MessageT&gt;&gt;;
+
+</code></pre>
+
+<ul>
+<li>Parameters:<ul>
+<li>channel_name: the name of the channel to write to</li>
+<li>MessageT: The type of message to be written out</li>
+</ul>
+</li>
+<li>Return value - Shared pointer to the Writer object</li>
+</ul>
+<h4 id="create-a-reader">Create a reader</h4>
+<p>The reader is the basic facility used in cyber to receive messages. Reader has to be bound to a callback function when it is created. When a new message arrives in the channel, the callback will be called.
+The reader is created by the <code>CreateReader</code> interface of the node class. The interfaces are listed as below:</p>
+<pre><code class="cpp">template &lt;typename MessageT&gt;
+auto CreateReader(const std::string&amp; channel_name, const std::function&lt;void(const std::shared_ptr&lt;MessageT&gt;&amp;)&gt;&amp; reader_func)
+    -&gt; std::shared_ptr&lt;Reader&lt;MessageT&gt;&gt;;
+
+template &lt;typename MessageT&gt;
+auto CreateReader(const ReaderConfig&amp; config,
+                  const CallbackFunc&lt;MessageT&gt;&amp; reader_func = nullptr)
+    -&gt; std::shared_ptr&lt;cyber::Reader&lt;MessageT&gt;&gt;;
+
+template &lt;typename MessageT&gt;
+auto CreateReader(const proto::RoleAttributes&amp; role_attr,
+                  const CallbackFunc&lt;MessageT&gt;&amp; reader_func = nullptr)
+-&gt; std::shared_ptr&lt;cyber::Reader&lt;MessageT&gt;&gt;;
+</code></pre>
+
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li>MessageT: The type of message to read</li>
+<li>channel_name: the name of the channel to receive from</li>
+<li>reader_func: callback function to process the messages</li>
+</ul>
+</li>
+<li>
+<p>Return value - Shared pointer to the Reader object</p>
+</li>
+</ul>
+<h4 id="code-example">Code Example</h4>
+<h5 id="talker-cyberexamplestalkercc">Talker (cyber/examples/talker.cc)</h5>
+<pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
+#include &quot;cyber/proto/chatter.pb.h&quot;
+#include &quot;cyber/time/rate.h&quot;
+#include &quot;cyber/time/time.h&quot;
+using apollo::cyber::Rate;
+using apollo::cyber::Time;
+using apollo::cyber::proto::Chatter;
+int main(int argc, char *argv[]) {
+  // init cyber framework
+  apollo::cyber::Init(argv[0]);
+  // create talker node
+  std::shared_ptr&lt;apollo::cyber::Node&gt; talker_node(
+      apollo::cyber::CreateNode(&quot;talker&quot;));
+  // create talker
+  auto talker = talker_node-&gt;CreateWriter&lt;Chatter&gt;(&quot;channel/chatter&quot;);
+  Rate rate(1.0);
+  while (apollo::cyber::OK()) {
+    static uint64_t seq = 0;
+    auto msg = std::make_shared&lt;apollo::cyber::proto::Chatter&gt;();
+    msg-&gt;set_timestamp(Time::Now().ToNanosecond());
+    msg-&gt;set_lidar_timestamp(Time::Now().ToNanosecond());
+    msg-&gt;set_seq(seq++);
+    msg-&gt;set_content(&quot;Hello, apollo!&quot;);
+    talker-&gt;Write(msg);
+    AINFO &lt;&lt; &quot;talker sent a message!&quot;;
+    rate.Sleep();
+  }
+  return 0;
+}
+</code></pre>
+
+<h5 id="listener-cyberexampleslistenercc">Listener (cyber/examples/listener.cc)</h5>
+<pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
+#include &quot;cyber/proto/chatter.pb.h&quot;
+void MessageCallback(
+    const std::shared_ptr&lt;apollo::cyber::proto::Chatter&gt;&amp; msg) {
+  AINFO &lt;&lt; &quot;Received message seq-&gt; &quot; &lt;&lt; msg-&gt;seq();
+  AINFO &lt;&lt; &quot;msgcontent-&gt;&quot; &lt;&lt; msg-&gt;content();
+}
+int main(int argc, char *argv[]) {
+  // init cyber framework
+  apollo::cyber::Init(argv[0]);
+  // create listener node
+  auto listener_node = apollo::cyber::CreateNode(&quot;listener&quot;);
+  // create listener
+  auto listener =
+      listener_node-&gt;CreateReader&lt;apollo::cyber::proto::Chatter&gt;(
+          &quot;channel/chatter&quot;, MessageCallback);
+  apollo::cyber::WaitForShutdown();
+  return 0;
+}
+</code></pre>
+
+<h5 id="bazel-build-filecybersamplesbuild">Bazel BUILD file(cyber/samples/BUILD)</h5>
+<pre><code class="python">cc_binary(
+    name = &quot;talker&quot;,
+    srcs = [ &quot;talker.cc&quot;, ],
+    deps = [
+        &quot;//cyber&quot;,
+        &quot;//cyber/examples/proto:examples_cc_proto&quot;,
+    ],
+)
+
+cc_binary(
+    name = &quot;listener&quot;,
+    srcs = [ &quot;listener.cc&quot;, ],
+    deps = [
+        &quot;//cyber&quot;,
+        &quot;//cyber/examples/proto:examples_cc_proto&quot;,
+    ],
+)
+</code></pre>
+
+<h5 id="build-and-run">Build and Run</h5>
+<ul>
+<li>Build: bazel build cyber/examples/…</li>
+<li>Run talker/listener in different terminals:</li>
+<li>./bazel-bin/cyber/examples/talker</li>
+<li>./bazel-bin/cyber/examples/listener</li>
+<li>Examine the results: you should see message printing out on listener.</li>
+</ul>
+<h3 id="service-creation-and-use">Service Creation and Use</h3>
+<h4 id="introduction">Introduction</h4>
+<p>In an autonomous driving system, there are many scenarios that require more from module communication than just sending or receiving messages. Service is another way of communication between nodes. Unlike channel, service implements <code>two-way</code> communication, e.g. a node obtains a response by sending a request. This section introduces the <code>service</code> module in CyberRT API with examples.</p>
+<h4 id="demo-example">Demo - Example</h4>
+<p>Problem: create a client-server model that pass Driver.proto back and forth.
+When a request is sent in by the client, the server parses/processes the request and returns the response.</p>
+<p>The implementation of the demo mainly includes the following steps.</p>
+<h5 id="define-request-and-response-messages">Define request and response messages</h5>
+<p>All messages in cyber are in the <code>protobuf</code> format. Any protobuf message with serialize/deserialize interfaces can be used as the service request and response message. <code>Driver</code> in examples.proto is used as service request and response in this example:</p>
+<pre><code class="protobuf">// filename: examples.proto
+syntax = &quot;proto2&quot;;
+package apollo.cyber.examples.proto;
+message Driver {
+    optional string content = 1;
+    optional uint64 msg_id = 2;
+    optional uint64 timestamp = 3;
+};
+</code></pre>
+
+<h5 id="create-a-service-and-a-client">Create a service and a client</h5>
+<pre><code class="cpp">// filename: cyber/examples/service.cc
+#include &quot;cyber/cyber.h&quot;
+#include &quot;cyber/examples/proto/examples.pb.h&quot;
+
+using apollo::cyber::examples::proto::Driver;
+
+int main(int argc, char* argv[]) {
+  apollo::cyber::Init(argv[0]);
+  std::shared_ptr&lt;apollo::cyber::Node&gt; node(
+      apollo::cyber::CreateNode(&quot;start_node&quot;));
+  auto server = node-&gt;CreateService&lt;Driver, Driver&gt;(
+      &quot;test_server&quot;, [](const std::shared_ptr&lt;Driver&gt;&amp; request,
+                        std::shared_ptr&lt;Driver&gt;&amp; response) {
+        AINFO &lt;&lt; &quot;server: I am driver server&quot;;
+        static uint64_t id = 0;
+        ++id;
+        response-&gt;set_msg_id(id);
+        response-&gt;set_timestamp(0);
+      });
+  auto client = node-&gt;CreateClient&lt;Driver, Driver&gt;(&quot;test_server&quot;);
+  auto driver_msg = std::make_shared&lt;Driver&gt;();
+  driver_msg-&gt;set_msg_id(0);
+  driver_msg-&gt;set_timestamp(0);
+  while (apollo::cyber::OK()) {
+    auto res = client-&gt;SendRequest(driver_msg);
+    if (res != nullptr) {
+      AINFO &lt;&lt; &quot;client: response: &quot; &lt;&lt; res-&gt;ShortDebugString();
+    } else {
+      AINFO &lt;&lt; &quot;client: service may not ready.&quot;;
+    }
+    sleep(1);
+  }
+
+  apollo::cyber::WaitForShutdown();
+  return 0;
+}
+</code></pre>
+
+<h5 id="bazel-build-file">Bazel build file</h5>
+<pre><code class="python">cc_binary(
+    name = &quot;service&quot;,
+    srcs = [ &quot;service.cc&quot;, ],
+    deps = [
+        &quot;//cyber&quot;,
+        &quot;//cyber/examples/proto:examples_cc_proto&quot;,
+    ],
+)
+</code></pre>
+
+<h5 id="build-and-run_1">Build and run</h5>
+<ul>
+<li>Build service/client: bazel build cyber/examples/…</li>
+<li>Run: ./bazel-bin/cyber/examples/service</li>
+<li>Examining result: you should see content below in apollo/data/log/service.INFO</li>
+</ul>
+<pre><code class="txt">I1124 16:36:44.568845 14965 service.cc:30] [service] server: i am driver server
+I1124 16:36:44.569031 14949 service.cc:43] [service] client: response: msg_id: 1 timestamp: 0
+I1124 16:36:45.569514 14966 service.cc:30] [service] server: i am driver server
+I1124 16:36:45.569932 14949 service.cc:43] [service] client: response: msg_id: 2 timestamp: 0
+I1124 16:36:46.570627 14967 service.cc:30] [service] server: i am driver server
+I1124 16:36:46.571024 14949 service.cc:43] [service] client: response: msg_id: 3 timestamp: 0
+I1124 16:36:47.571566 14968 service.cc:30] [service] server: i am driver server
+I1124 16:36:47.571962 14949 service.cc:43] [service] client: response: msg_id: 4 timestamp: 0
+I1124 16:36:48.572634 14969 service.cc:30] [service] server: i am driver server
+I1124 16:36:48.573030 14949 service.cc:43] [service] client: response: msg_id: 5 timestamp: 0
+</code></pre>
+
+<h4 id="precautions">Precautions</h4>
+<ul>
+<li>When registering a service, note that duplicate service names are not allowed</li>
+<li>The node name applied when registering the server and client should not be duplicated either</li>
+</ul>
+<h3 id="parameter-service">Parameter Service</h3>
+<p>The Parameter Service is used for shared data between nodes, and provides basic operations such as <code>set</code>, <code>get</code>, and <code>list</code>. The Parameter Service is based on the <code>Service</code> implementation and contains service and client.</p>
+<h4 id="parameter-object">Parameter Object</h4>
+<h5 id="supported-data-types">Supported Data types</h5>
+<p>All parameters passed through cyber are <code>apollo::cyber::Parameter</code> objects, the table below lists the 5 supported parameter types.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter type</th>
+<th align="left">C++ data type</th>
+<th align="left">protobuf data type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">apollo::cyber::proto::ParamType::INT</td>
+<td align="left">int64_t</td>
+<td align="left">int64</td>
+</tr>
+<tr>
+<td align="left">apollo::cyber::proto::ParamType::DOUBLE</td>
+<td align="left">double</td>
+<td align="left">double</td>
+</tr>
+<tr>
+<td align="left">apollo::cyber::proto::ParamType::BOOL</td>
+<td align="left">bool</td>
+<td align="left">bool</td>
+</tr>
+<tr>
+<td align="left">apollo::cyber::proto::ParamType::STRING</td>
+<td align="left">std::string</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">apollo::cyber::proto::ParamType::PROTOBUF</td>
+<td align="left">std::string</td>
+<td align="left">string</td>
+</tr>
+<tr>
+<td align="left">apollo::cyber::proto::ParamType::NOT_SET</td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p>Besides the 5 types above, Parameter also supports interface with protobuf object as incoming parameter. Post performing serialization processes the object and converts it to the STRING type for transfer.</p>
+<h5 id="creating-the-parameter-object">Creating the Parameter Object</h5>
+<p>Supported constructors:</p>
+<pre><code class="cpp">Parameter();  // Name is empty, type is NOT_SET
+explicit Parameter(const Parameter&amp; parameter);
+explicit Parameter(const std::string&amp; name);  // type为NOT_SET
+Parameter(const std::string&amp; name, const bool bool_value);
+Parameter(const std::string&amp; name, const int int_value);
+Parameter(const std::string&amp; name, const int64_t int_value);
+Parameter(const std::string&amp; name, const float double_value);
+Parameter(const std::string&amp; name, const double double_value);
+Parameter(const std::string&amp; name, const std::string&amp; string_value);
+Parameter(const std::string&amp; name, const char* string_value);
+Parameter(const std::string&amp; name, const std::string&amp; msg_str,
+          const std::string&amp; full_name, const std::string&amp; proto_desc);
+Parameter(const std::string&amp; name, const google::protobuf::Message&amp; msg);
+</code></pre>
+
+<p>Sample code of using Parameter object:</p>
+<pre><code class="cpp">Parameter a(&quot;int&quot;, 10);
+Parameter b(&quot;bool&quot;, true);
+Parameter c(&quot;double&quot;, 0.1);
+Parameter d(&quot;string&quot;, &quot;cyber&quot;);
+Parameter e(&quot;string&quot;, std::string(&quot;cyber&quot;));
+// proto message Chatter
+Chatter chatter;
+Parameter f(&quot;chatter&quot;, chatter);
+std::string msg_str(&quot;&quot;);
+chatter.SerializeToString(&amp;msg_str);
+std::string msg_desc(&quot;&quot;);
+ProtobufFactory::GetDescriptorString(chatter, &amp;msg_desc);
+Parameter g(&quot;chatter&quot;, msg_str, Chatter::descriptor()-&gt;full_name(), msg_desc);
+</code></pre>
+
+<h5 id="interface-and-data-reading">Interface and Data Reading</h5>
+<p>Interface list:</p>
+<pre><code class="cpp">inline ParamType type() const;
+inline std::string TypeName() const;
+inline std::string Descriptor() const;
+inline const std::string Name() const;
+inline bool AsBool() const;
+inline int64_t AsInt64() const;
+inline double AsDouble() const;
+inline const std::string AsString() const;
+std::string DebugString() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_base_of&lt;google::protobuf::Message, Type&gt;::value, Type&gt;::type
+value() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_integral&lt;Type&gt;::value &amp;&amp; !std::is_same&lt;Type, bool&gt;::value, Type&gt;::type
+value() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_floating_point&lt;Type&gt;::value, Type&gt;::type
+value() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_convertible&lt;Type, std::string&gt;::value, const std::string&amp;&gt;::type
+value() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_same&lt;Type, bool&gt;::value, bool&gt;::type
+value() const;
+</code></pre>
+
+<p>An example of how to use those interfaces:</p>
+<pre><code class="cpp">Parameter a(&quot;int&quot;, 10);
+a.Name();  // return int
+a.Type();  // return apollo::cyber::proto::ParamType::INT
+a.TypeName();  // return string: INT
+a.DebugString();  // return string: {name: &quot;int&quot;, type: &quot;INT&quot;, value: 10}
+int x = a.AsInt64();  // x = 10
+x = a.value&lt;int64_t&gt;();  // x = 10
+x = a.AsString();  // Undefined behavior, error log prompt
+f.TypeName();  // return string: chatter
+auto chatter = f.value&lt;Chatter&gt;();
+</code></pre>
+
+<h4 id="parameter-service_1">Parameter Service</h4>
+<p>If a node wants to provide a Parameter Service to other nodes, then you need to create a <code>ParameterService</code>.</p>
+<pre><code class="cpp">/**
+ * @brief Construct a new ParameterService object
+ *
+ * @param node shared_ptr of the node handler
+ */
+explicit ParameterService(const std::shared_ptr&lt;Node&gt;&amp; node);
+</code></pre>
+
+<p>Since all parameters are stored in the parameter service object, the parameters can be manipulated directly in the ParameterService without sending a service request.</p>
+<p><strong>Setting parameters:</strong></p>
+<pre><code class="cpp">/**
+ * @brief Set the Parameter object
+ *
+ * @param parameter parameter to be set
+ */
+void SetParameter(const Parameter&amp; parameter);
+</code></pre>
+
+<p><strong>Getting parameters:</strong></p>
+<pre><code class="cpp">/**
+ * @brief Get the Parameter object
+ *
+ * @param param_name
+ * @param parameter the pointer to store
+ * @return true
+ * @return false call service fail or timeout
+ */
+bool GetParameter(const std::string&amp; param_name, Parameter* parameter);
+</code></pre>
+
+<p><strong>Getting the list of parameters:</strong></p>
+<pre><code class="cpp">/**
+ * @brief Get all the Parameter objects
+ *
+ * @param parameters pointer of vector to store all the parameters
+ * @return true
+ * @return false call service fail or timeout
+ */
+bool ListParameters(std::vector&lt;Parameter&gt;* parameters);
+</code></pre>
+
+<h4 id="parameter-client">Parameter Client</h4>
+<p>If a node wants to use parameter services of other nodes, you need to create a <code>ParameterClient</code>.</p>
+<pre><code class="cpp">/**
+ * @brief Construct a new ParameterClient object
+ *
+ * @param node shared_ptr of the node handler
+ * @param service_node_name node name which provide a param services
+ */
+ParameterClient(const std::shared_ptr&lt;Node&gt;&amp; node, const std::string&amp; service_node_name);
+</code></pre>
+
+<p>You could also perform <code>SetParameter</code>, <code>GetParameter</code> and <code>ListParameters</code> mentioned under <a href="#Parameter-Service">Parameter Service</a>.</p>
+<h4 id="demo-example_1">Demo - example</h4>
+<pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
+#include &quot;cyber/parameter/parameter_client.h&quot;
+#include &quot;cyber/parameter/parameter_server.h&quot;
+
+using apollo::cyber::Parameter;
+using apollo::cyber::ParameterServer;
+using apollo::cyber::ParameterClient;
+
+int main(int argc, char** argv) {
+  apollo::cyber::Init(*argv);
+  std::shared_ptr&lt;apollo::cyber::Node&gt; node =
+      apollo::cyber::CreateNode(&quot;parameter&quot;);
+  auto param_server = std::make_shared&lt;ParameterServer&gt;(node);
+  auto param_client = std::make_shared&lt;ParameterClient&gt;(node, &quot;parameter&quot;);
+  param_server-&gt;SetParameter(Parameter(&quot;int&quot;, 1));
+  Parameter parameter;
+  param_server-&gt;GetParameter(&quot;int&quot;, &amp;parameter);
+  AINFO &lt;&lt; &quot;int: &quot; &lt;&lt; parameter.AsInt64();
+  param_client-&gt;SetParameter(Parameter(&quot;string&quot;, &quot;test&quot;));
+  param_client-&gt;GetParameter(&quot;string&quot;, &amp;parameter);
+  AINFO &lt;&lt; &quot;string: &quot; &lt;&lt; parameter.AsString();
+  param_client-&gt;GetParameter(&quot;int&quot;, &amp;parameter);
+  AINFO &lt;&lt; &quot;int: &quot; &lt;&lt; parameter.AsInt64();
+  return 0;
+}
+</code></pre>
+
+<h5 id="build-and-run_2">Build and run</h5>
+<ul>
+<li>Build: bazel build cyber/examples/…</li>
+<li>Run: ./bazel-bin/cyber/examples/paramserver</li>
+</ul>
+<h3 id="log-api">Log API</h3>
+<h4 id="log-library">Log library</h4>
+<p>Cyber log library is built on top of glog. The following header files need to be included:</p>
+<pre><code class="cpp">#include &quot;cyber/common/log.h&quot;
+#include &quot;cyber/init.h&quot;
+</code></pre>
+
+<h4 id="log-configuration">Log configuration</h4>
+<p>Default global config path: cyber/setup.bash</p>
+<p>The configs below could be modified by devloper:</p>
+<pre><code>export GLOG_log_dir=/apollo/data/log
+export GLOG_alsologtostderr=0
+export GLOG_colorlogtostderr=1
+export GLOG_minloglevel=0
+</code></pre>
+
+<h4 id="log-initialization">Log initialization</h4>
+<p>Call the Init method at the code entry to initialize the log:</p>
+<pre><code class="cpp++">apollo::cyber::cyber::Init(argv[0]) is initialized.
+If no macro definition is made in the previous component, the corresponding log is printed to the binary log.
+</code></pre>
+
+<h4 id="log-output-macro">Log output macro</h4>
+<p>Log library is encapsulated in Log printing macros. The related log macros are used as follows:</p>
+<pre><code class="cpp">ADEBUG &lt;&lt; &quot;hello cyber.&quot;;
+AINFO  &lt;&lt; &quot;hello cyber.&quot;;
+AWARN  &lt;&lt; &quot;hello cyber.&quot;;
+AERROR &lt;&lt; &quot;hello cyber.&quot;;
+AFATAL &lt;&lt; &quot;hello cyber.&quot;;
+
+</code></pre>
+
+<h4 id="log-format">Log format</h4>
+<p>The format is <code>&lt;MODULE_NAME&gt;.log.&lt;LOG_LEVEL&gt;.&lt;datetime&gt;.&lt;process_id&gt;</code></p>
+<h4 id="about-log-files">About log files</h4>
+<p>Currently, the only different output behavior from default glog is that different log levels of a module will be written into the same log file.</p>
+<h3 id="building-a-module-based-on-component">Building a module based on Component</h3>
+<h4 id="key-concepts">Key concepts</h4>
+<h5 id="1-component">1. Component</h5>
+<p>The component is the base class that Cyber RT provides to build application modules. Each specific application module can inherit the Component class and define its own <code>Init</code> and <code>Proc</code> functions so that it can be loaded into the Cyber framework.</p>
+<h5 id="2-binary-vs-component">2. Binary vs Component</h5>
+<p>There are two options to use Cyber RT framework for applications:</p>
+<ul>
+<li>Binary based: the application is compiled separately into a binary, which communicates with other cyber modules by creating its own <code>Reader</code> and <code>Writer</code>.</li>
+<li>Component based: the application is compiled into a Shared Library. By inheriting the Component class and writing the corresponding dag description file, the Cyber RT framework will load and run the application dynamically.</li>
+</ul>
+<h6 id="the-essential-component-interface">The essential Component interface</h6>
+<ul>
+<li>The component's <code>Init()</code> function is like the main function that does some initialization of the algorithm.</li>
+<li>Component's <code>Proc()</code> function works like Reader's callback function that is called by the framework when a message arrives.</li>
+</ul>
+<h6 id="advantages-of-using-component">Advantages of using Component</h6>
+<ul>
+<li>Component can be loaded into different processes through the launch file, and the deployment is flexible.</li>
+<li>Component can change the received channel name by modifying the dag file without recompiling.</li>
+<li>Component supports receiving multiple types of data.</li>
+<li>Component supports providing multiple fusion strategies.</li>
+</ul>
+<h5 id="3-dag-file-format">3. Dag file format</h5>
+<p>An example dag file:</p>
+<pre><code class="protobuf"># Define all coms in DAG streaming.
+module_config {
+    module_library : &quot;lib/libperception_component.so&quot;
+    components {
+        class_name : &quot;PerceptionComponent&quot;
+        config {
+            name : &quot;perception&quot;
+            readers {
+                channel: &quot;perception/channel_name&quot;
+            }
+        }
+    }
+    timer_components {
+        class_name : &quot;DriverComponent&quot;
+        config {
+            name : &quot;driver&quot;
+            interval : 100
+        }
+    }
+}
+</code></pre>
+
+<ul>
+<li><strong>module_library</strong>: If you want to load the .so library the root directory is the working directory of cyber (the same directory of <code>setup.bash</code>)</li>
+<li><strong>components &amp; timer_component</strong>: Select the base component class type that needs to be loaded.</li>
+<li><strong>class_name</strong>: the name of the component class to load</li>
+<li><strong>name</strong>: the loaded class_name as the identifier of the loading example</li>
+<li><strong>readers</strong>: Data received by the current component, supporting 1-3 channels of data.</li>
+</ul>
+<h4 id="demo-examples">Demo - examples</h4>
+<h5 id="common_component_examplecyberexamplescommon_component_example">Common_component_example(cyber/examples/common_component_example/*)</h5>
+<p>Header definition(common_component_example.h)</p>
+<pre><code class="cpp">#include &lt;memory&gt;
+
+#include &quot;cyber/class_loader/class_loader.h&quot;
+#include &quot;cyber/component/component.h&quot;
+#include &quot;cyber/examples/proto/examples.pb.h&quot;
+
+using apollo::cyber::examples::proto::Driver;
+using apollo::cyber::Component;
+using apollo::cyber::ComponentBase;
+
+class Commontestcomponent : public Component&lt;Driver, Driver&gt; {
+ public:
+  bool Init() override;
+  bool Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
+            const std::shared_ptr&lt;Driver&gt;&amp; msg1) override;
+};
+CYBER_REGISTER_COMPONENT(Commontestcomponent)
+</code></pre>
+
+<p>Cpp file implementation(common_component_example.cc)</p>
+<pre><code class="cpp">#include &quot;cyber/examples/common_component_smaple/common_component_example.h&quot;
+
+#include &quot;cyber/class_loader/class_loader.h&quot;
+#include &quot;cyber/component/component.h&quot;
+
+bool Commontestcomponent::Init() {
+  AINFO &lt;&lt; &quot;Commontest component init&quot;;
+  return true;
+}
+
+bool Commontestcomponent::Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
+                               const std::shared_ptr&lt;Driver&gt;&amp; msg1) {
+  AINFO &lt;&lt; &quot;Start commontest component Proc [&quot; &lt;&lt; msg0-&gt;msg_id() &lt;&lt; &quot;] [&quot;
+        &lt;&lt; msg1-&gt;msg_id() &lt;&lt; &quot;]&quot;;
+  return true;
+}
+</code></pre>
+
+<h5 id="timer_component_examplecyberexamplestimer_component_example">Timer_component_example(cyber/examples/timer_component_example/*)</h5>
+<p>Header definition(timer_component_example.h)</p>
+<pre><code class="cpp">#include &lt;memory&gt;
+
+#include &quot;cyber/class_loader/class_loader.h&quot;
+#include &quot;cyber/component/component.h&quot;
+#include &quot;cyber/component/timer_component.h&quot;
+#include &quot;cyber/examples/proto/examples.pb.h&quot;
+
+using apollo::cyber::examples::proto::Driver;
+using apollo::cyber::Component;
+using apollo::cyber::ComponentBase;
+using apollo::cyber::TimerComponent;
+using apollo::cyber::Writer;
+
+class TimertestComponent : public TimerComponent {
+ public:
+  bool Init() override;
+  bool Proc() override;
+
+ private:
+  std::shared_ptr&lt;Writer&lt;Driver&gt;&gt; driver_writer_ = nullptr;
+};
+CYBER_REGISTER_COMPONENT(TimertestComponent)
+</code></pre>
+
+<p>Cpp file implementation(timer_component_example.cc)</p>
+<pre><code class="cpp">#include &quot;cyber/examples/timer_component_example/timer_component_example.h&quot;
+
+#include &quot;cyber/class_loader/class_loader.h&quot;
+#include &quot;cyber/component/component.h&quot;
+#include &quot;cyber/examples/proto/examples.pb.h&quot;
+
+bool TimertestComponent::Init() {
+  driver_writer_ = node_-&gt;CreateWriter&lt;Driver&gt;(&quot;/carstatus/channel&quot;);
+  return true;
+}
+
+bool TimertestComponent::Proc() {
+  static int i = 0;
+  auto out_msg = std::make_shared&lt;Driver&gt;();
+  out_msg-&gt;set_msg_id(i++);
+  driver_writer_-&gt;Write(out_msg);
+  AINFO &lt;&lt; &quot;timertestcomponent: Write drivermsg-&gt;&quot;
+        &lt;&lt; out_msg-&gt;ShortDebugString();
+  return true;
+}
+</code></pre>
+
+<h5 id="build-and-run_3">Build and run</h5>
+<p>Use timertestcomponent as example:</p>
+<ul>
+<li>Build: bazel build cyber/examples/timer_component_smaple/…</li>
+<li>Run: mainboard -d cyber/examples/timer_component_smaple/timer.dag</li>
+</ul>
+<h4 id="precautions_1">Precautions</h4>
+<ul>
+<li>Component needs to be registered to load the class through SharedLibrary. The registration interface looks like:</li>
+</ul>
+<pre><code class="cpp">CYBER_REGISTER_COMPONENT(DriverComponent)
+</code></pre>
+
+<p>If you use a namespace when registering, you also need to add a namespace when you define it in the dag file.</p>
+<ul>
+<li>The configuration files of the Component and TimerComponent are different, please be careful not to mix the two up.</li>
+</ul>
+<h3 id="launch">Launch</h3>
+<p><strong>cyber_launch</strong> is the launcher of the Cyber RT framework. It starts multiple mainboards according to the launch file, and loads different components into different mainboards according to the dag file.
+cyber_launch supports two scenarios for dynamically loading components or starting Binary programs in a child process.</p>
+<h4 id="launch-file-format">Launch File Format</h4>
+<pre><code class="xml">&lt;cyber&gt;
+    &lt;module&gt;
+        &lt;name&gt;driver&lt;/name&gt;
+        &lt;dag_conf&gt;driver.dag&lt;/dag_conf&gt;
+        &lt;process_name&gt;&lt;/process_name&gt;
+        &lt;exception_handler&gt;exit&lt;/exception_handler&gt;
+    &lt;/module&gt;
+    &lt;module&gt;
+        &lt;name&gt;perception&lt;/name&gt;
+        &lt;dag_conf&gt;perception.dag&lt;/dag_conf&gt;
+        &lt;process_name&gt;&lt;/process_name&gt;
+        &lt;exception_handler&gt;respawn&lt;/exception_handler&gt;
+    &lt;/module&gt;
+    &lt;module&gt;
+        &lt;name&gt;planning&lt;/name&gt;
+        &lt;dag_conf&gt;planning.dag&lt;/dag_conf&gt;
+        &lt;process_name&gt;&lt;/process_name&gt;
+    &lt;/module&gt;
+&lt;/cyber&gt;
+</code></pre>
+
+<p><strong>Module</strong>:
+Each loaded component or binary is a module</p>
+<ul>
+<li><strong>name</strong> is the loaded module name</li>
+<li><strong>dag_conf</strong> is the name of the corresponding dag file of the component</li>
+<li><strong>process_name</strong> is the name of the mainboard process once started, and the same component of process_name will be loaded and run in the same process.</li>
+<li><strong>exception_handler</strong> is the handler method when the exception occurs in the process. The value can be exit or respawn listed below.<ul>
+<li>exit, which means that the entire process needs to stop running when the current process exits abnormally.</li>
+<li>respawn, the current process needs to be restarted after abnormal exit. Start this process. If there is no such thing as it is empty, it means no treatment. Can be controlled by the user according to the specific conditions of the process</li>
+</ul>
+</li>
+</ul>
+<h3 id="timer">Timer</h3>
+<p>Timer can be used to create a timed task to run on a periodic basis, or to run only once</p>
+<h4 id="timer-interface">Timer Interface</h4>
+<pre><code class="cpp">/**
+ * @brief Construct a new Timer object
+ *
+ * @param period The period of the timer, unit is ms
+ * @param callback The tasks that the timer needs to perform
+ * @param oneshot True: perform the callback only after the first timing cycle
+ *                False: perform the callback every timed period
+ */
+Timer(uint32_t period, std::function&lt;void()&gt; callback, bool oneshot);
+</code></pre>
+
+<p>Or you could encapsulate the parameters into a timer option as follows:</p>
+<pre><code class="cpp">struct TimerOption {
+  uint32_t period;                 // The period of the timer, unit is ms
+  std::function&lt;void()&gt; callback;  // The tasks that the timer needs to perform
+  bool oneshot;  // True: perform the callback only after the first timing cycle
+                 // False: perform the callback every timed period
+};
+/**
+ * @brief Construct a new Timer object
+ *
+ * @param opt Timer option
+ */
+explicit Timer(TimerOption opt);
+</code></pre>
+
+<h4 id="start-timer">Start Timer</h4>
+<p>After creating a Timer instance, you must call <code>Timer::Start()</code> to start the timer.</p>
+<h4 id="stop-timer">Stop Timer</h4>
+<p>When you need to manually stop a timer that has already started, you can call the <code>Timer::Stop()</code> interface.</p>
+<h4 id="demo-example_2">Demo - example</h4>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &quot;cyber/cyber.h&quot;
+int main(int argc, char** argv) {
+    cyber::Init(argv[0]);
+    // Print current time every 100ms
+    cyber::Timer timer(100, [](){
+        std::cout &lt;&lt; cyber::Time::Now() &lt;&lt; std::endl;
+    }, false);
+    timer.Start()
+    sleep(1);
+    timer.Stop();
+}
+</code></pre>
+
+<h3 id="time-api">Time API</h3>
+<p>Time is a class used to manage time; it can be used for current time acquisition, time-consuming calculation, time conversion, and so on.</p>
+<p>The time interfaces are as follows:</p>
+<pre><code class="cpp">// constructor, passing in a different value to construct Time
+Time(uint64_t nanoseconds); //uint64_t, in nanoseconds
+Time(int nanoseconds); // int type, unit: nanoseconds
+Time(double seconds); // double, in seconds
+Time(uint32_t seconds, uint32_t nanoseconds);
+// seconds seconds + nanoseconds nanoseconds
+Static Time Now(); // Get the current time
+Double ToSecond() const; // convert to seconds
+Uint64_t ToNanosecond() const; // Convert to nanoseconds
+Std::string ToString() const; // Convert to a string in the format &quot;2018-07-10 20:21:51.123456789&quot;
+Bool IsZero() const; // Determine if the time is 0
+
+</code></pre>
+
+<p>A code example can be seen below:</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &quot;cyber/cyber.h&quot;
+#include &quot;cyber/duration.h&quot;
+int main(int argc, char** argv) {
+    cyber::Init(argv[0]);
+    Time t1(1531225311123456789UL);
+    std::cout &lt;&lt; t1.ToString() &lt;&lt; std::endl; // 2018-07-10 20:21:51.123456789
+    // Duration time interval
+    Time t1(100);
+    Duration d(200);
+    Time t2(300);
+    assert(d == (t1-t2)); // true
+}
+
+</code></pre>
+
+<h3 id="record-file-read-and-write">Record file: Read and Write</h3>
+<h4 id="reading-the-reader-file">Reading the Reader file</h4>
+<p><strong>RecordReader</strong> is the component used to read messages in the cyber framework. Each RecordReader can open an existing record file through the <code>Open</code> method, and the thread will asynchronously read the information in the record file. The user only needs to execute ReadMessage to extract the latest message in RecordReader, and then get the message information through GetCurrentMessageChannelName, GetCurrentRawMessage, GetCurrentMessageTime.</p>
+<p><strong>RecordWriter</strong> is the component used to record messages in the cyber framework. Each RecordWriter can create a new record file through the Open method. The user only needs to execute WriteMessage and WriteChannel to write message and channel information, and the writing process is asynchronous.</p>
+<h4 id="demo-examplecyberexamplesrecordcc">Demo - example(cyber/examples/record.cc)</h4>
+<p>Write 100 RawMessage to<code>TEST_FILE</code> through <code>test_write</code> method, then read them out through <code>test_read</code> method.</p>
+<pre><code class="cpp">#include &lt;string&gt;
+
+#include &quot;cyber/cyber.h&quot;
+#include &quot;cyber/message/raw_message.h&quot;
+#include &quot;cyber/proto/record.pb.h&quot;
+#include &quot;cyber/record/record_message.h&quot;
+#include &quot;cyber/record/record_reader.h&quot;
+#include &quot;cyber/record/record_writer.h&quot;
+
+using ::apollo::cyber::record::RecordReader;
+using ::apollo::cyber::record::RecordWriter;
+using ::apollo::cyber::record::RecordMessage;
+using apollo::cyber::message::RawMessage;
+
+const char CHANNEL_NAME_1[] = &quot;/test/channel1&quot;;
+const char CHANNEL_NAME_2[] = &quot;/test/channel2&quot;;
+const char MESSAGE_TYPE_1[] = &quot;apollo.cyber.proto.Test&quot;;
+const char MESSAGE_TYPE_2[] = &quot;apollo.cyber.proto.Channel&quot;;
+const char PROTO_DESC[] = &quot;1234567890&quot;;
+const char STR_10B[] = &quot;1234567890&quot;;
+const char TEST_FILE[] = &quot;test.record&quot;;
+
+void test_write(const std::string &amp;writefile) {
+  RecordWriter writer;
+  writer.SetSizeOfFileSegmentation(0);
+  writer.SetIntervalOfFileSegmentation(0);
+  writer.Open(writefile);
+  writer.WriteChannel(CHANNEL_NAME_1, MESSAGE_TYPE_1, PROTO_DESC);
+  for (uint32_t i = 0; i &lt; 100; ++i) {
+    auto msg = std::make_shared&lt;RawMessage&gt;(&quot;abc&quot; + std::to_string(i));
+    writer.WriteMessage(CHANNEL_NAME_1, msg, 888 + i);
+  }
+  writer.Close();
+}
+
+void test_read(const std::string &amp;readfile) {
+  RecordReader reader(readfile);
+  RecordMessage message;
+  uint64_t msg_count = reader.GetMessageNumber(CHANNEL_NAME_1);
+  AINFO &lt;&lt; &quot;MSGTYPE: &quot; &lt;&lt; reader.GetMessageType(CHANNEL_NAME_1);
+  AINFO &lt;&lt; &quot;MSGDESC: &quot; &lt;&lt; reader.GetProtoDesc(CHANNEL_NAME_1);
+
+  // read all message
+  uint64_t i = 0;
+  uint64_t valid = 0;
+  for (i = 0; i &lt; msg_count; ++i) {
+    if (reader.ReadMessage(&amp;message)) {
+      AINFO &lt;&lt; &quot;msg[&quot; &lt;&lt; i &lt;&lt; &quot;]-&gt; &quot;
+            &lt;&lt; &quot;channel name: &quot; &lt;&lt; message.channel_name
+            &lt;&lt; &quot;; content: &quot; &lt;&lt; message.content
+            &lt;&lt; &quot;; msg time: &quot; &lt;&lt; message.time;
+      valid++;
+    } else {
+      AERROR &lt;&lt; &quot;read msg[&quot; &lt;&lt; i &lt;&lt; &quot;] failed&quot;;
+    }
+  }
+  AINFO &lt;&lt; &quot;static msg=================&quot;;
+  AINFO &lt;&lt; &quot;MSG validmsg:totalcount: &quot; &lt;&lt; valid &lt;&lt; &quot;:&quot; &lt;&lt; msg_count;
+}
+
+int main(int argc, char *argv[]) {
+  apollo::cyber::Init(argv[0]);
+  test_write(TEST_FILE);
+  sleep(1);
+  test_read(TEST_FILE);
+  return 0;
+}
+</code></pre>
+
+<h5 id="build-and-run_4">Build and run</h5>
+<ul>
+<li>Build: bazel build cyber/examples/…</li>
+<li>Run: ./bazel-bin/cyber/examples/record</li>
+<li>Examining result:</li>
+</ul>
+<pre><code>I1124 16:56:27.248200 15118 record.cc:64] [record] msg[0]-&gt; channel name: /test/channel1; content: abc0; msg time: 888
+I1124 16:56:27.248227 15118 record.cc:64] [record] msg[1]-&gt; channel name: /test/channel1; content: abc1; msg time: 889
+I1124 16:56:27.248239 15118 record.cc:64] [record] msg[2]-&gt; channel name: /test/channel1; content: abc2; msg time: 890
+I1124 16:56:27.248252 15118 record.cc:64] [record] msg[3]-&gt; channel name: /test/channel1; content: abc3; msg time: 891
+I1124 16:56:27.248297 15118 record.cc:64] [record] msg[4]-&gt; channel name: /test/channel1; content: abc4; msg time: 892
+I1124 16:56:27.248378 15118 record.cc:64] [record] msg[5]-&gt; channel name: /test/channel1; content: abc5; msg time: 893
+...
+I1124 16:56:27.250422 15118 record.cc:73] [record] static msg=================
+I1124 16:56:27.250434 15118 record.cc:74] [record] MSG validmsg:totalcount: 100:100
+</code></pre>
+
+<h3 id="api-directory">API Directory</h3>
+<h4 id="node-api">Node API</h4>
+<p>For additional information and examples, refer to <a href="#node">Node</a></p>
+<h4 id="api-list">API List</h4>
+<pre><code class="cpp">//create writer with user-define attr and message type
+auto CreateWriter(const proto::RoleAttributes&amp; role_attr)
+    -&gt; std::shared_ptr&lt;transport::Writer&lt;MessageT&gt;&gt;;
+//create reader with user-define attr, callback and message type
+auto CreateReader(const proto::RoleAttributes&amp; role_attr,
+    const croutine::CRoutineFunc&lt;MessageT&gt;&amp; reader_func)
+    -&gt; std::shared_ptr&lt;transport::Reader&lt;MessageT&gt;&gt;;
+//create writer with specific channel name and message type
+auto CreateWriter(const std::string&amp; channel_name)
+    -&gt; std::shared_ptr&lt;transport::Writer&lt;MessageT&gt;&gt;;
+//create reader with specific channel name, callback and message type
+auto CreateReader(const std::string&amp; channel_name,
+    const croutine::CRoutineFunc&lt;MessageT&gt;&amp; reader_func)
+    -&gt; std::shared_ptr&lt;transport::Reader&lt;MessageT&gt;&gt;;
+//create reader with user-define config, callback and message type
+auto CreateReader(const ReaderConfig&amp; config,
+                  const CallbackFunc&lt;MessageT&gt;&amp; reader_func)
+    -&gt; std::shared_ptr&lt;cybertron::Reader&lt;MessageT&gt;&gt;;
+//create service with name and specific callback
+auto CreateService(const std::string&amp; service_name,
+    const typename service::Service&lt;Request, Response&gt;::ServiceCallback&amp; service_calllback)
+    -&gt; std::shared_ptr&lt;service::Service&lt;Request, Response&gt;&gt;;
+//create client with name to send request to server
+auto CreateClient(const std::string&amp; service_name)
+    -&gt; std::shared_ptr&lt;service::Client&lt;Request, Response&gt;&gt;;
+
+</code></pre>
+
+<h3 id="writer-api">Writer API</h3>
+<p>For additional information and examples, refer to <a href="#writer">Writer</a></p>
+<h4 id="api-list_1">API List</h4>
+<pre><code class="cpp">bool Write(const std::shared_ptr&lt;MessageT&gt;&amp; message);
+</code></pre>
+
+<h3 id="client-api">Client API</h3>
+<p>For additional information and examples, refer to <a href="#service-creation-and-use">Client</a></p>
+<h4 id="api-list_2">API List</h4>
+<pre><code class="cpp">SharedResponse SendRequest(SharedRequest request,
+                           const std::chrono::seconds&amp; timeout_s = std::chrono::seconds(5));
+SharedResponse SendRequest(const Request&amp; request,
+                           const std::chrono::seconds&amp; timeout_s = std::chrono::seconds(5));
+</code></pre>
+
+<h3 id="parameter-api">Parameter API</h3>
+<p>The interface that the user uses to perform parameter related operations:</p>
+<ul>
+<li>Set the parameter related API.</li>
+<li>Read the parameter related API.</li>
+<li>Create a ParameterService to provide parameter service related APIs for other nodes.</li>
+<li>Create a ParameterClient that uses the parameters provided by other nodes to service related APIs.</li>
+</ul>
+<p>For additional information and examples, refer to <a href="##param-parameter-service">Parameter</a></p>
+<h4 id="api-list-setting-parameters">API List - Setting parameters</h4>
+<pre><code class="cpp">Parameter();  // Name is empty, type is NOT_SET
+explicit Parameter(const Parameter&amp; parameter);
+explicit Parameter(const std::string&amp; name);  // Type is NOT_SET
+Parameter(const std::string&amp; name, const bool bool_value);
+Parameter(const std::string&amp; name, const int int_value);
+Parameter(const std::string&amp; name, const int64_t int_value);
+Parameter(const std::string&amp; name, const float double_value);
+Parameter(const std::string&amp; name, const double double_value);
+Parameter(const std::string&amp; name, const std::string&amp; string_value);
+Parameter(const std::string&amp; name, const char* string_value);
+Parameter(const std::string&amp; name, const std::string&amp; msg_str,
+          const std::string&amp; full_name, const std::string&amp; proto_desc);
+Parameter(const std::string&amp; name, const google::protobuf::Message&amp; msg);
+</code></pre>
+
+<h4 id="api-list-reading-parameters">API List - Reading parameters</h4>
+<pre><code class="cpp">inline ParamType type() const;
+inline std::string TypeName() const;
+inline std::string Descriptor() const;
+inline const std::string Name() const;
+inline bool AsBool() const;
+inline int64_t AsInt64() const;
+inline double AsDouble() const;
+inline const std::string AsString() const;
+std::string DebugString() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_base_of&lt;google::protobuf::Message, Type&gt;::value, Type&gt;::type
+value() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_integral&lt;Type&gt;::value &amp;&amp; !std::is_same&lt;Type, bool&gt;::value, Type&gt;::type
+value() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_floating_point&lt;Type&gt;::value, Type&gt;::type
+value() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_convertible&lt;Type, std::string&gt;::value, const std::string&amp;&gt;::type
+value() const;
+template &lt;typename Type&gt;
+typename std::enable_if&lt;std::is_same&lt;Type, bool&gt;::value, bool&gt;::type
+value() const;
+</code></pre>
+
+<h4 id="api-list-creating-parameter-service">API List - Creating parameter service</h4>
+<pre><code class="cpp">explicit ParameterService(const std::shared_ptr&lt;Node&gt;&amp; node);
+void SetParameter(const Parameter&amp; parameter);
+bool GetParameter(const std::string&amp; param_name, Parameter* parameter);
+bool ListParameters(std::vector&lt;Parameter&gt;* parameters);
+</code></pre>
+
+<h4 id="api-list-creating-parameter-client">API List - Creating parameter client</h4>
+<pre><code class="cpp">ParameterClient(const std::shared_ptr&lt;Node&gt;&amp; node, const std::string&amp; service_node_name);
+bool SetParameter(const Parameter&amp; parameter);
+bool GetParameter(const std::string&amp; param_name, Parameter* parameter);
+bool ListParameters(std::vector&lt;Parameter&gt;* parameters);
+</code></pre>
+
+<h3 id="timer-api">Timer API</h3>
+<p>You can set the parameters of the Timer and call the start and stop interfaces to start the timer and stop the timer.
+For additional information and examples, refer to <a href="#timer">Timer</a></p>
+<h4 id="api-list_3">API List</h4>
+<pre><code class="cpp">Timer(uint32_t period, std::function&lt;void()&gt; callback, bool oneshot);
+Timer(TimerOption opt);
+void SetTimerOption(TimerOption opt);
+void Start();
+void Stop();
+</code></pre>
+
+<h3 id="time-api_1">Time API</h3>
+<p>For additional information and examples, refer to <a href="#use-of-time">Time</a></p>
+<h4 id="api-list_4">API List</h4>
+<pre><code class="cpp">static const Time MAX;
+static const Time MIN;
+Time() {}
+explicit Time(uint64_t nanoseconds);
+explicit Time(int nanoseconds);
+explicit Time(double seconds);
+Time(uint32_t seconds, uint32_t nanoseconds);
+Time(const Time&amp; other);
+static Time Now();
+static Time MonoTime();
+static void SleepUntil(const Time&amp; time);
+double ToSecond() const;
+uint64_t ToNanosecond() const;
+std::string ToString() const;
+bool IsZero() const;
+</code></pre>
+
+<h3 id="duration-api">Duration API</h3>
+<p>Interval-related interface, used to indicate the time interval, can be initialized according to the specified nanosecond or second.</p>
+<h4 id="api-list_5">API List</h4>
+<pre><code class="cpp">Duration() {}
+Duration(int64_t nanoseconds);
+Duration(int nanoseconds);
+Duration(double seconds);
+Duration(uint32_t seconds, uint32_t nanoseconds);
+Duration(const Rate&amp; rate);
+Duration(const Duration&amp; other);
+double ToSecond() const;
+int64_t ToNanosecond() const;
+bool IsZero() const;
+void Sleep() const;
+</code></pre>
+
+<h3 id="rate-api">Rate API</h3>
+<p>The frequency interface is generally used to initialize the time of the sleep frequency after the object is initialized according to the specified frequency.</p>
+<h4 id="api-list_6">API List</h4>
+<pre><code class="cpp">Rate(double frequency);
+Rate(uint64_t nanoseconds);
+Rate(const Duration&amp;);
+void Sleep();
+void Reset();
+Duration CycleTime() const;
+Duration ExpectedCycleTime() const { return expected_cycle_time_; }
+</code></pre>
+
+<h3 id="recordreader-api">RecordReader API</h3>
+<p>The interface for reading the record file is used to read the message and channel information in the record file.</p>
+<h4 id="api-list_7">API List</h4>
+<pre><code class="cpp">RecordReader();
+bool Open(const std::string&amp; filename, uint64_t begin_time = 0,
+          uint64_t end_time = UINT64_MAX);
+void Close();
+bool ReadMessage();
+bool EndOfFile();
+const std::string&amp; CurrentMessageChannelName();
+std::shared_ptr&lt;RawMessage&gt; CurrentRawMessage();
+uint64_t CurrentMessageTime();
+</code></pre>
+
+<h3 id="recordwriter-api">RecordWriter API</h3>
+<p>The interface for writing the record file, used to record the message and channel information into the record file.</p>
+<h4 id="api-list_8">API List</h4>
+<pre><code class="cpp">RecordWriter();
+bool Open(const std::string&amp; file);
+void Close();
+bool WriteChannel(const std::string&amp; name, const std::string&amp; type,
+                  const std::string&amp; proto_desc);
+template &lt;typename MessageT&gt;
+bool WriteMessage(const std::string&amp; channel_name, const MessageT&amp; message,
+                  const uint64_t time_nanosec,
+                  const std::string&amp; proto_desc = &quot;&quot;);
+bool SetSizeOfFileSegmentation(uint64_t size_kilobytes);
+bool SetIntervalOfFileSegmentation(uint64_t time_sec);
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

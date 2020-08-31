@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Traffic Light Perception - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Traffic Light Perception";
+    var mkdocs_page_input_path = "specs/traffic_light.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Traffic Light Perception</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/traffic_light.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="traffic-light-perception">Traffic Light Perception</h2>
+<p>This document provides the details about how traffic light perception functions in Apollo 2.0.</p>
+<h3 id="introduction">Introduction</h3>
+<p>The Traffic Light Perception Module is designed to provide accurate and comprehensive traffic light status using cameras.</p>
+<p>Typically, the traffic light has three states:</p>
+<ul>
+<li>Red</li>
+<li>Yellow</li>
+<li>Green</li>
+</ul>
+<p>However, if the traffic light is not working, it might display the color black or show a flashing red or yellow light. Sometimes the traffic light cannot be found in the camera's field of vision and the module fails to recognize its status.</p>
+<p>To account for all situations, the Traffic Light Perception Module provides output for five states:</p>
+<ul>
+<li>Red</li>
+<li>Yellow</li>
+<li>Green</li>
+<li>Black</li>
+<li>Unknown</li>
+</ul>
+<p>The module's HD-Map queries repeatedly to know whether there are lights present in front of the vehicle. The traffic light is represented by the four points on its boundary, which can be obtained by querying the HD-Map, given the car's location. The traffic light is projected from world coordinates to image coordinates if there is a light in front of the vehicle.</p>
+<p>Apollo has determined that using a single camera, which has a constant field of vision, cannot see traffic lights everywhere. This limitation is due to the following factors:</p>
+<ul>
+<li>The perception range should be above 100 meters</li>
+<li>The height of the traffic lights or the width of crossing varies widely</li>
+</ul>
+<p>Consequently, Apollo 2.0 uses two cameras to enlarge its perception range:</p>
+<ul>
+<li>
+<p>A <strong>telephoto</strong> <strong>camera</strong>, whose focus length is 25 mm, is installed to observe forward, distant traffic lights. Traffic lights that are captured in a telephoto camera are very large and easy to detect. However, the field of vision of a telephoto camera is quite limited. The lights are often outside of the image if the lane is not straight enough, or if the car is in very close proximity to the light.</p>
+</li>
+<li>
+<p>A <strong>wide-angle camera</strong>, whose focus length is 6 mm, is equipped to provide a supplementary field of vision.</p>
+</li>
+</ul>
+<p>The module decides which camera to use adaptively based on the light projection. Although there are only two cameras on the Apollo car, the algorithm can handle multiple cameras.</p>
+<p>The following photos show the detection of traffic lights using a telephoto camera (for the first photo) and a wide-angle camera (for the second photo).</p>
+<p><img alt="telephoto camera" src="../images/traffic_light/long.jpg" /></p>
+<p><img alt="wide angle camera" src="../images/traffic_light/short.jpg" /></p>
+<h2 id="pipeline">Pipeline</h2>
+<p>The Pipeline has two main parts and is described in following sections:
+- Pre-process
+  - Traffic light projection
+  - Camera selection
+  - Image and cached lights sync
+- Process
+  - Rectify — Provide the accurate traffic light bounding boxes
+  - Recognize — Provide the color of each bounding box
+  - Revise — Correct the color based on the time sequence</p>
+<h3 id="pre-process">Pre-process</h3>
+<p>There is no need to detect lights in every frame of an image. The status of a traffic light changes in low frequency and the computing resources are limited. Normally, images from different cameras would arrive almost simultaneously, and only one is fed to the Process part of the Pipeline. Therefore, the selection and the matching of images are necessary.</p>
+<h4 id="inputoutput">Input/Output</h4>
+<p>This section describes the input and the output of the Pre-process module. The input is obtained by subscribing to topic names from Apollo or directly reading them from locally stored files, and the output is fed to the successive Process module.</p>
+<h5 id="input">Input</h5>
+<ul>
+<li>
+<p>Images from different cameras, acquired by subscribing to the topic name:</p>
+<ul>
+<li><code>/apollo/sensor/camera/traffic/image_long</code></li>
+<li><code>/apollo/sensor/camera/traffic/image_short</code></li>
+</ul>
+</li>
+<li>
+<p>Localization, acquired by querying the topic:</p>
+<ul>
+<li><code>/tf</code></li>
+</ul>
+</li>
+<li>
+<p>HD Map</p>
+</li>
+<li>
+<p>Calibration results</p>
+</li>
+</ul>
+<h5 id="output">Output</h5>
+<ul>
+<li>Image from the selected camera</li>
+<li>Traffic light bounding box projected from world coordinates to image coordinates</li>
+</ul>
+<h4 id="camera-selection">Camera Selection</h4>
+<p>The traffic light is represented by a unique ID and four points on its boundary, each of which is described as a 3D point in the world coordinate system.</p>
+<p>The following example shows a typical entry for traffic light <code>signal info</code>. The four boundary points can be obtained by querying the HD Map, given the car's location.</p>
+<pre><code class="protobuf">signal info:
+id {
+  id: &quot;xxx&quot;
+}
+boundary {
+  point { x: ...  y: ...  z: ...  }
+  point { x: ...  y: ...  z: ...  }
+  point { x: ...  y: ...  z: ...  }
+  point { x: ...  y: ...  z: ...  }
+}
+</code></pre>
+
+<p>The boundary points in the 3D world coordinates are then projected to the 2D image coordinates of each camera. For one traffic light, the bounding box described by the four projected points in the telephoto camera image has a larger area. It is better for detection than that in the wide-range image. Consequently,  the image from the camera with the longest focal length that can see all the lights will be selected as the output image. The traffic light bounding box projected on this image will be the output bounding box.</p>
+<p>The selected camera ID with timestamp is cached in queue, as shown below:</p>
+<p><code>C++
+struct ImageLights {
+  CarPose pose;
+  CameraId camera_id;
+  double timestamp;
+  size_t num_signal;
+  ... other ...
+};</code>
+Thus far, all the information that we need includes the localization, the calibration results, and the HD Map. The selection can be performed at any time as the projection is independent of the image content. The task of performing the selection when images arrive is just for simplicity. Moreover, image selection does not need to be performed upon the arrival of every image, and a time interval for the selection is set.</p>
+<h4 id="image-sync">Image Sync</h4>
+<p>Images arrive with a timestamp and a camera ID. The pairing of a timestamp and a camera ID is used to find the appropriate cached information. If the image can find a cached record with same camera ID and a small difference between timestamps, the image can be published to the Process module. All inappropriate images are abandoned.</p>
+<h3 id="process">Process</h3>
+<p>The Process module is divided into three steps, with each step focusing on one task:</p>
+<ul>
+<li>Rectifier — Detects a traffic light bounding box in a ROI.</li>
+<li>Recognizer— Classifies the bounding box's color.</li>
+<li>Reviser — Correct color using sequential information.</li>
+</ul>
+<h4 id="inputoutput_1">Input/Output</h4>
+<p>This section describes the data input and output of the Process. The input is obtained from the Pre-process module and the output is published as a traffic light topic.</p>
+<h5 id="input_1">Input</h5>
+<ul>
+<li>Image from a selected camera</li>
+<li>A set of bounding boxes</li>
+</ul>
+<h5 id="output_1">Output</h5>
+<ul>
+<li>A set of bounding boxes with color labels.</li>
+</ul>
+<h4 id="rectifier">Rectifier</h4>
+<p>The projected position, which is affected by the calibration, localization, and the HD-Map label, is <strong><em>not completely reliable</em></strong>. A larger region of interest (ROI), calculated using the projected light's position, is used to find the accurate boundingbox for the traffic light.</p>
+<p>In the photo below, the blue rectangle indicates the projected light bounding box, which has a large offset to the actual light. The big, yellow rectangle is the ROI.</p>
+<p><img alt="example" src="../images/traffic_light/example.jpg" /></p>
+<p>The traffic light detection is implemented as a regular convolutional neural network (CNN) detection task. It receives an image with an ROI as input, and serial bounding boxes as output. There might be more lights in the ROI than those in input.</p>
+<p>Apollo needs to select the proper lights according to the detection score, and the input lights' position and shape. If the CNN network cannot find any lights in the ROI, the status from the input lights is marked as unknown and the two remaining steps (Recognizer and Reviser) are skipped.</p>
+<h4 id="recognizer">Recognizer</h4>
+<p>The traffic light recognition is implemented as a typical CNN classification task. The network receives an image with a ROI and a list of bounding boxes as input. The output of network is a <code>$4\times n$ vector</code>, representing four probabilities for each box to be black, red, yellow, and green.</p>
+<p>The class with maximum probability will be regarded as the light's status, if and only if the probability is large enough. Otherwise, the light's status will be set to black, which means that the status is not certain.</p>
+<h4 id="reviser">Reviser</h4>
+<p>Because a traffic light can be flashing or shaded, and the Recognizer is <strong><em>not</em></strong> perfect, the current status may fail to represent the real status. A Reviser that could correct the status is necessary.</p>
+<p>If the Reviser receives a definitive status such as red or green, the Reviser saves and outputs the status directly. If the received status is black or unknown, the Reviser looks up the saved map. When the status of this light is certain for a period of time, the Reviser outputs this saved status. Otherwise, the status of black or unknown is sent as output.</p>
+<p>Because of the time sequence, yellow only exists <strong><em>after</em></strong> green and <strong><em>before</em></strong> red. Any yellow <strong><em>after red</em></strong> is reset to red for the sake of safety until green displays.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

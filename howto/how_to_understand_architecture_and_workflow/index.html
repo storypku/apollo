@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to understand architecture and workflow - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to understand architecture and workflow";
+    var mkdocs_page_input_path = "howto/how_to_understand_architecture_and_workflow.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to understand architecture and workflow</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_understand_architecture_and_workflow.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-understand-architecture-and-workflow">HOW TO UNDERSTAND ARCHITECTURE AND WORKFLOW</h2>
+<h3 id="fundamentals-to-understand-aplloauto-core">Fundamentals to understand AplloAuto - core</h3>
+<p>Autonomous vehicles (AV) dynamics are controlled by the planning engine through the Controller Area Network bus (CAN bus). The software reads data from hardware registers and writes them back just like we would in Assembly language. For high-precision computation, the Localization, Perception and Planning modules function as independent
+input sources, while output sources work together though the Peer2Peer (P2P) protocol. P2P is supported by the RPC network application.</p>
+<p>ApolloAuto uses ROS1 as the underlying network which means that ApolloAuto borrows the Master-Nodes framework from ROS1. Since xmlRPC from ROS1 is really old (compared
+to the recent brpc and <a href="https://yiakwy.github.io/blog/2017/10/01/gRPC-C-CORE">grpc</a>), Baidu has developed its own protobuf version of RPC.</p>
+<p>In Baidu ApolloAuto, three stages of development have already been described</p>
+<ol>
+<li>Dreamviewer Offline Simulation Engine &amp; ApolloAuto core software module</li>
+<li>Get a first taste on how the algorithms work for a car</li>
+<li>We don't need to touch a real car or hardware and start development immediately</li>
+<li>Core modules Integration:</li>
+<li>Localization</li>
+<li>Perception (support third parties' solution like Mobileye ES4 chip based camera for L2 development) process point cloud data from <code>Lidar</code> and return segmented objects info on request</li>
+<li>Planning: compute the fine-tuned path, car dynamic controlling info for path segments from route service</li>
+<li>Routine: local implementation of finding path segments through <code>Navigator</code> interface; Using A*star algorithm.</li>
+<li>HD Maps. One of the key differences from L2 level AV development. L4 AV machine needs Hdmap. Since a robot (an autonomous vehicle ) needs to rebuild
+3d world (please check OpenCV <a href="">SLAM</a> chapter) in its microcomputer, reference object coordinates play a great role in relocating AV both in the map and the real world.</li>
+<li>Cloud-based Online Simulation Drive Scenario Engine and Data Center.</li>
+<li>As a partner of Baidu, you will be granted docker credentials to commit new images and replay the algorithm you developed on the cloud.</li>
+<li>Create and manage complex scenarios to simulate real-world driving experiences</li>
+</ol>
+<h3 id="ros-underlying-subscription-and-publication-mechanism-and-apolloauto-modules-structure">ROS underlying Subscription and Publication mechanism and ApolloAuto modules structure</h3>
+<h5 id="ros-underlying-subscription-and-publication-mechanism">ROS underlying Subscription and Publication mechanism</h5>
+<p>So how does ROS1 based system communicate with each other and how does ApolloAuto make use of it? ROS has <a href="http://wiki.ros.org/ROS/Tutorials">tutorials</a>, and I will explain it
+quickly before we analyze ApolloAuto modules structure.</p>
+<p>ROS is a software, currently exclusively well supported by Ubuntu series. It has master roscore.</p>
+<blockquote>
+<p>printenv | grep ROS</p>
+</blockquote>
+<p>default ros master uri is "http://localhost:11311. One can create an independent binary by performing ros::init and start it by performing ros::spin (some kind of Linux event loop)
+using c++ or python. The binary behind the freshly created package is called <strong><em>ROS node</em></strong>. The node will register its name and IP address in Master in case of other nodes querying. Nodes communicate
+with each by directly constructing a TCP connection.</p>
+<p>If a node wants to read data from others, we call it subscriber. The typical format is</p>
+<pre><code>... bla bla bla
+ros::NodeHandle h;
+ros::Subscriber sub = h.subscribe(&quot;topic_name&quot;, q_size, cb)
+.. bla bla bla
+</code></pre>
+
+<p>If a node wants to provide data for subscribers to read, we call it a publisher. The typical format is</p>
+<pre><code>... bla bla bla
+ros::NodeHandle h;
+ros::Publisher pub = h.advertise&lt;generated_msg_format_cls&gt;(&quot;topic_name&quot;, q_size)
+... bla bla bla
+</code></pre>
+
+<p>cb here is a callback executed when Linux kernel IO is ready. With these signatures bearing in mind, we can quickly analyze ApolloAuto
+module structures before diving deep into core modules implementation.</p>
+<h5 id="apolloauto-modules-structure">apolloauto modules structure</h5>
+<p>I have conducted full research about it but I cannot show you all of them. ApolloAuto modules/common/ provide basic micros to control ros::spin for each
+module and /modules/common/adaptor contains the most information on how a topic is registered. Every module will be registered from the <a href="https://github.com/yiakwy/apollo/blob/master/modules/common/adapters/adapter_manager.cc#L50">point</a>
+. By reading configuration file defined ${MODULE_NAME}/conf, we can get basic information about topics a module subscribe and publish.</p>
+<p>Each module starts by firing "Init" interface and register callbacks. If you want to step by step debug ApolloAuto in gdb, make sure you have added breakpoints in those back. This also
+demonstrate that if you don't like what implemented by Baidu, just override the callback.</p>
+<h3 id="data-preprocessing-and-extended-kalman-filter">Data preprocessing and Extended Kalman Filter</h3>
+<p>Kalman Filter is mathematical interactive methods to converge to real estimation without knowing the whole real-time input sequence. No matter what kind of data you need to process, you can
+rely on Kalman Filter. Extended Kalman Filter is used for 3d rigid movements in a matrix format. It is not hard. I recommend you a series tutorial from United States F15 director
+<a href="https://www.youtube.com/watch?v=CaCcOwJPytQ">Michel van Biezen</a>.</p>
+<p>Since it is used in input data preprocessing, you might see it in HD Maps, perception, planning and so on so forth.</p>
+<h3 id="selected-modules-analysis">Selected modules analysis</h3>
+<h5 id="hmi-dreamviewer">HMI &amp; Dreamviewer</h5>
+<p>There is not too much about hmi interface and dreamviewer but it is a good place to visualize the topics parameters.</p>
+<p>HMI is a simply simple python application based on Flask.
+Instead of using HTTP, it uses web socket to query ROS modules application. If you have experience on asynchronous HTTP downloaders, it is easy to understand, that an HTTP connection is just a
+socket connection file descriptor which we have already write HTTP headers, methods into that buffer. Once hmi flask backend receives a command, it will execute a subprocess
+to execute the corresponding binary.</p>
+<p>Dreamviewer, in contrast, works a little bit like frontend app written in React, Webpack, and Threejs ( WebGL, see /dreamview/backend/simulation_world, /dreamview/frontend/src/render ),
+techniques. It subscribes to messages from ROS nodes and draws it a frame after a frame.</p>
+<h5 id="perception">Perception</h5>
+<p>Initially, this module implemented logics exclusively for Lidar and Radar processes. It is registered by AdapterManager as a ros node functioning as an info fusion system to
+output observed Obstacles info. In the latest version of the codes, different hardware input handlers of ROS nodes are specified in /perception/obstacles/onboard and implemented in
+different parallel locations, which consists of <em>Lidar, Radar, Traffic lights and GPS</em>.</p>
+<ol>
+<li>Lidar:</li>
+<li>HD Maps: get transformation matrix convert point world coordinates to local coordinates and build map polygons</li>
+<li>ROI filter: get ROI and perform Kalman Filter on input data</li>
+<li>Segmentation: A U-Net based (a lot of variants) Caffe model will be loaded and perform forward computation based on data from HD Maps and ROI filtering results</li>
+<li>Object Building: Lidar return points (x, y, z). Hence you need to group them into "Obstacles" (vector or set)</li>
+<li>
+<p>Obstacles Tracker: Baidu is using HM solver from Google. For a large bipartite graph, KM algorithms in Lagrange format is usually deployed since
+     SGD is extremely simple for that.</p>
+</li>
+<li>
+<p>Radar:</p>
+</li>
+<li>Similar to Lidar with raw_obstacles info from sensors.</li>
+<li>ROI filter: get ROI objects and perform Kalman Filter on input data</li>
+<li>
+<p>Objects Tracker</p>
+</li>
+<li>
+<p>Probability Fusion(New in Apollo 1.5!):</p>
+</li>
+<li>As far as I can understand, fusion system in ApolloAuto</li>
+<li>It is typically one of most important parts: collects all the info and makes a final combination of information from sensors on the motherboard
+     for track lists and rule-based cognitive engine</li>
+<li>The major process is the association, hence HM algorithms here is used again as a bipartite graph.</li>
+<li>Tracklists are maintained along timestamps and each list will be updated based on a probabilistic rules engine</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

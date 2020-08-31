@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo Cyber RT FAQs - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo Cyber RT FAQs";
+    var mkdocs_page_input_path = "cyber/CyberRT_FAQs.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo Cyber RT FAQs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_FAQs.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-cyber-rt-faqs">Apollo Cyber RT FAQs</h2>
+<h3 id="what-is-apollo-cyber-rt">What is Apollo Cyber RT?</h3>
+<p>Apollo's Cyber RT is an open source runtime framework designed specifically for autonomous driving scenarios. Based on a centralized computing model, it is highly optimized for performance, latency, and data throughput</p>
+<hr />
+<h3 id="why-did-we-decide-to-work-on-a-new-runtime-framework">Why did we decide to work on a new runtime framework?</h3>
+<ul>
+<li>
+<p>During years of development of autonomous driving technologies, we have learned a lot from our previous experience with Apollo. In autonomous driving scenarious, we need an effective centralized computing model, with demands for high performance,  including high concurrency, low latency and high throughput。</p>
+</li>
+<li>
+<p>The industry is evolving, so does Apollo. Going forward, Apollo has already moved from development to productization, with volume deployments in the real world, we see the demands for the highest robustness and high performance. That’s why we spent years of building Apollo Cyber RT, which addresses that requirements of autonomous driving solutions.</p>
+</li>
+</ul>
+<hr />
+<h3 id="what-are-the-advantages-of-the-new-runtime-framework">What are the advantages of the new runtime framework?</h3>
+<ul>
+<li>Accelerate development</li>
+<li>Well defined task interface with data fusion</li>
+<li>Array of development tools</li>
+<li>Large set of sensor drivers</li>
+<li>Simplify deployment</li>
+<li>Efficient and adaptive message communication</li>
+<li>Configurable user level scheduler with resource awareness</li>
+<li>Portable with fewer dependencies</li>
+<li>Empower your own autonomous vehicles</li>
+<li>The default open source runtime framework</li>
+<li>Building blocks specifically designed for autonomous driving</li>
+<li>Plug and play your own AD system</li>
+</ul>
+<hr />
+<h3 id="can-we-still-use-the-data-that-we-have-collected">Can we still use the data that we have collected?</h3>
+<ul>
+<li>If the data you have collected is compatible with the previous versions of Apollo, you could use our recommended conversion tools to make the data compliant with our new runtime framework</li>
+<li>If you created a customized data format, then the previously generated data will not be supported by the new runtime framework</li>
+</ul>
+<hr />
+<h3 id="will-you-continue-to-support-ros">Will you continue to support ROS?</h3>
+<p>We will continue to support previous Apollo releases (3.0 and before) based on ROS. We do appreciate you continue growing with us and highly encourage you to move to Apollo 3.5. While we know that some of our developers would prefer to work on ROS, we do hope you will understand why Apollo as a team cannot continue to support ROS in our future releases as we strive to work towards developing a more holistic platform that meets automotive standards.</p>
+<hr />
+<h3 id="will-apollo-cyber-rt-affect-regular-code-development">Will Apollo Cyber RT affect regular code development?</h3>
+<p>If you have not modified anything at runtime framework layer and have only worked on Apollo's module code base, you will not be affected by the introduction of our new runtime framework as most of time you would only need to re-interface the access of the input and output data. Additional documents are under <a href="https://github.com/ApolloAuto/apollo/tree/master/docs/cyber/">cyber</a> with more details.</p>
+<hr />
+<h3 id="recommended-setup-for-apollo-cyber-rt">Recommended setup for Apollo Cyber RT</h3>
+<ul>
+<li>Currently the runtime framework only supports running on Trusty (Ubuntu 14.04)</li>
+<li>The runtime framework also uses apollo's docker environment</li>
+<li>It is recommended to run source setup.bash when opening a new terminal</li>
+<li>Fork and clone the Apollo repo with the new framework code which can be found at <a href="https://github.com/ApolloAuto/apollo/tree/master/cyber/">apollo/cyber</a></li>
+</ul>
+<h3 id="how-to-enable-shm-to-decrease-the-latency">How to enable SHM to decrease the latency?</h3>
+<p>To decrease number of threads, the readable notification mechanism of shared memory was changed in CyberRT. The default mechanism is UDP multicast, and system call(sendto) will cause some latency.</p>
+<p>So, to decrease the latency, you can change the mechanism, The steps are listed as following:
+1. update the CyberRT to the latest version;
+2. uncomment the transport_conf in https://github.com/ApolloAuto/apollo/blob/master/cyber/conf/cyber.pb.conf;
+3. change <strong>notifier_type</strong> of <strong>shm_conf</strong> from "multicast" to "condition";
+4. build CyberRT with opt like <code>bazel build -c opt --copt=-fpic //cyber/...</code>;
+5. run talker and listener;</p>
+<p>Note:You can select the corresponding transmission method according to the relationship between nodes.For example, the default configuration is <strong>INTRA</strong> in the process, <strong>SHM</strong> between the host process, and <strong>RTPS</strong> across the host.
+Of course you can change all three to RTPS. Or change <code>same_proc</code> and <code>diff_proc</code> to <strong>SHM</strong>;</p>
+<h3 id="how-to-use-the-no-serialization-message">How to use the no serialization message?</h3>
+<p>The message types supported by Cyber RT include both serializable structured data like protobuf and raw sequence of bytes.
+You can refer the sample code:
+- apollo::cyber::message::RawMessage
+- talker: https://github.com/gruminions/apollo/blob/record/cyber/examples/talker.cc
+- listener: https://github.com/gruminions/apollo/blob/record/cyber/examples/listener.cc</p>
+<h3 id="how-to-configure-multiple-hosts-communication">How to configure multiple hosts communication?</h3>
+<p>Make sure the two hosts(or more) are under the same network segment of the local area network, Like <code>192.168.10.6</code> and <code>192.168.10.7</code>.</p>
+<p>You just need to modify <code>CYBER_IP</code> of <code>/apollo/cyber/setup.bash</code></p>
+<pre><code class="bash">export CYBER_IP=127.0.0.1
+</code></pre>
+
+<p>Suppose you have two hosts A and B，the ip of A is <code>192.168.10.6</code>, and the ip of B is <code>192.168.10.7</code>. Then set <code>CYBER_IP</code> to <code>192.168.10.6</code> on host A, and set <code>CYBER_IP</code> to <code>192.168.10.7</code> on host B. Now host A can communicate with host B.</p>
+<hr />
+<p>More FAQs to follow...</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

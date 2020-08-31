@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Run NDT Localization Module On Your Local Computer - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Run NDT Localization Module On Your Local Computer";
+    var mkdocs_page_input_path = "howto/how_to_run_NDT_localization_module_on_your_local_computer.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Run NDT Localization Module On Your Local Computer</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_run_NDT_localization_module_on_your_local_computer.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-run-ndt-localization-module-on-your-local-computer">How to Run NDT Localization Module On Your Local Computer</h2>
+<h3 id="1-preparation">1. Preparation</h3>
+<ul>
+<li>Download source code of Apollo master branch from <a href="https://github.com/ApolloAuto/apollo">GitHub</a></li>
+<li>Follow the tutorial to set up <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_release.md">docker environment</a> and <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_launch_Apollo.md">build Apollo</a>.</li>
+<li>Download localization data from <a href="http://data.apollo.auto/?name=sensor%20data&amp;data_key=multisensor&amp;data_type=1&amp;locale=en-us&amp;lang=en">Apollo Data Open Platform</a>（US only)</li>
+</ul>
+<p>the localization data is a experimental dataset to verify the availability of localization. It contains localization map(ndt_map/), vehicle params(params/), sensor recording data(records/). The specific attributes are as follows:<br />
+duration: 5 mins<br />
+mileage: 3km<br />
+areas: city roads in Sunnyvale<br />
+weather: sunny day</p>
+<h3 id="2-configuring-parameters">2. Configuring Parameters</h3>
+<p>Assume that the path to download localization data from is DATA_PATH.</p>
+<h4 id="21-configure-sensor-extrinsics">2.1. Configure Sensor Extrinsics</h4>
+<p>NDT localization module use the same params path as msf localization module.</p>
+<pre><code>cp DATA_PATH/params/ant_imu_leverarm.yaml /apollo/modules/localization/msf/params/gnss_params/
+cp DATA_PATH/params/velodyne64_novatel_extrinsics_example.yaml /apollo/modules/localization/msf/params/velodyne_params/
+cp DATA_PATH/params/velodyne64_height.yaml /apollo/modules/localization/msf/params/velodyne_params/
+</code></pre>
+
+<p>Add config of sensor extrinsics in <code>/apollo/modules/localization/conf/localization.conf</code> to overwrite the default value.</p>
+<pre><code># The lidar extrinsics file
+--lidar_extrinsics_file=/apollo/modules/localization/msf/params/velodyne_params/velodyne64_novatel_extrinsics_example.yaml
+</code></pre>
+
+<p>The meaning of each file
+ - <strong>ant_imu_leverarm.yaml</strong>:  Lever arm value
+ - <strong>velodyne64_novatel_extrinsics_example.yaml</strong>: Transform from IMU coord to LiDAR coord
+ - <strong>velodyne64_height.yaml</strong>: Height of the LiDAR relative to the ground</p>
+<h4 id="22-configure-map-path">2.2. Configure Map Path</h4>
+<p>Add config of map path in /apollo/modules/localization/conf/localization.conf</p>
+<pre><code># Redefine the map_dir in global_flagfile.txt
+--map_dir=DATA_PATH
+</code></pre>
+
+<p>This will overwrite the default config defined in global_flagfile.txt</p>
+<h4 id="23-configure-topic-name">2.3 Configure Topic Name</h4>
+<p>For different LIDAR sensor, Apollo may has different LIDAR topic name. So set the right lidar topic name in <code>/apollo/modules/localization/conf/localization.conf</code> to overwrite the default value.</p>
+<pre><code># The pointcloud topic name.
+--lidar_topic=/apollo/sensor/velodyne64/compensator/PointCloud2
+</code></pre>
+
+<p>[optional] if you want to visualize localization result, you should also modify the LIDAR topic name in <code>/apollo/modules/localization/dag/dag_streaming_msf_visualizer.dag</code></p>
+<pre><code>channel: /apollo/sensor/velodyne64/compensator/PointCloud2
+</code></pre>
+
+<h3 id="3-run-the-multi-sensor-fusion-localization-module">3. Run the multi-sensor fusion localization module</h3>
+<p>run the script in apollo directory</p>
+<pre><code>./scripts/ndt_localization.sh
+</code></pre>
+
+<p>This script will run localization program in the background. You can check if the program is running by using the command.</p>
+<pre><code>ps -e | grep &quot;ndt_localization&quot;
+</code></pre>
+
+<p>In /apollo/data/log directory, you can see the localization log files.   <br />
+ - localization.INFO : INFO log
+ - localization.WARNING : WARNING log
+ - localization.ERROR : ERROR log
+ - localization.out : Redirect standard output
+ - localizaiton.flags : A backup of configuration file</p>
+<h3 id="4-play-record-bag">4. Play record bag</h3>
+<pre><code>cd DATA_PATH/bag
+cyber_recorder play -f *.record
+</code></pre>
+
+<p>Open another ternimal and log in the docker environment, then execute:</p>
+<pre><code>cyber_monitor
+</code></pre>
+
+<p>It will display a topic list in which you can see topic <code>/apollo/localization/pose</code></p>
+<h3 id="5-record-and-visualize-localization-result-optional">5. Record and Visualize localization result (optional)</h3>
+<h4 id="record-localization-result">Record localization result</h4>
+<pre><code>python ./scripts/record_bag.py
+</code></pre>
+
+<h4 id="visualize-localization-result">Visualize Localization result</h4>
+<p>NDT localization module use the same visualization tools as MSF localization module.</p>
+<pre><code>./scripts/localization_online_visualizer.sh
+</code></pre>
+
+<p>First, the visualization tool will generate a series of cache files from the localization map, which will be stored in the apollo/data/map_visual directory.</p>
+<p>Then it will receive the topics blew and draw them on screen.
+ - /apollo/sensor/velodyne64/compensator/PointCloud2
+ - /apollo/localization/pose</p>
+<p>If everything is fine, you should see this on screen.</p>
+<p><img alt="1" src="../images/ndt_localization/online_visualizer.png" /></p>
+<h3 id="6-stop-localization-module">6. Stop localization module</h3>
+<p>You can stop localizaiton module by</p>
+<pre><code>./scripts/ndt_localization.sh stop
+</code></pre>
+
+<p>If you record localization result in step 5, you will also need to end the recording process:</p>
+<pre><code>python ./scripts/record_bag.py stop
+</code></pre>
+
+<h3 id="7-verify-the-localization-result-optional">7. Verify the localization result (optional)</h3>
+<p>NDT localization module also use the same evaluation scripts as MSF localization module.
+First, rename the recording file with suffix <code>.record</code>.</p>
+<pre><code>./scripts/msf_local_evaluation.sh OUTPUT_PATH ANT_IMU_PATH
+</code></pre>
+
+<p>OUTPUT_PATH is the folder stored recording bag in step 5, and ANT_IMU_PATH is the file stored lever arm value.</p>
+<p>This script compares the localization results of NDT mode to RTK mode.</p>
+<p>(Aware that this comparison makes sense only when the RTK mode runs well.)</p>
+<p>And we can get the statistical results like this</p>
+<p><img alt="2" src="../images/ndt_localization/ndt_eval.png" /></p>
+<p>It only has one statistical data which is the localization result. Other result as in MSF mode will not show.</p>
+<p>The meaning of each row in the table
+ - <strong>error</strong>：  the plane error, unit is meter
+ - <strong>error lon</strong>：  the error in the car's heading direction, unit is meter
+ - <strong>error lat</strong>：  the error in the car's lateral direction, unit is meter
+ - <strong>error roll</strong>： the roll angle error, unit is degree
+ - <strong>error pit</strong>：  the pitch angle error, unit is degree
+ - <strong>error yaw</strong>：  the yaw angle error, unit is degree</p>
+<p>The meaning of each col in the table
+ - <strong>mean</strong>： evaluation value of the error
+ - <strong>std</strong>：  the standard deviation of the error
+ - <strong>max</strong>：  the maximum value of the error
+ - <strong>&lt; xx</strong>：  percentage of frames whose error is smaller than the indicated range
+ - <strong>con_frame()</strong>： the maximum number of consecutive frames that satisfy the conditions in parentheses</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

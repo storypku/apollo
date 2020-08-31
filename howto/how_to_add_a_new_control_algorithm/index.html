@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Add a New Control Algorithm - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Add a New Control Algorithm";
+    var mkdocs_page_input_path = "howto/how_to_add_a_new_control_algorithm.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Add a New Control Algorithm</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_new_control_algorithm.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-add-a-new-control-algorithm">How to Add a New Control Algorithm</h2>
+<p>The control algorithm in Apollo consists of one or more controllers that can be easily changed or replaced with different algorithms. Each controller outputs one or more control commands to <code>CANbus</code>. The default control algorithm in Apollo contains a lateral controller (LatController) and a longitudinal controller (LonController). They are responsible for the vehicle control in the lateral and longitudinal directions respectively.</p>
+<p>The new control algorithm does not have to follow the default pattern, e.g., one lateral controller + one longitudinal controller. It could be a single controller or a combination of any number of controllers.</p>
+<p>Complete the following task sequence to add a new control algorithm:</p>
+<ol>
+<li>Create a controller</li>
+<li>Add the new controller configuration into the <code>control_config</code> file</li>
+<li>Register the new controller</li>
+</ol>
+<p>The steps are elaborated below for better understanding:</p>
+<h3 id="create-a-controller">Create a Controller</h3>
+<p>All controllers must inherit the base class <code>Controller</code>, which defines a set of interfaces. Here is an example of a controller implementation:</p>
+<pre><code class="c++">namespace apollo {
+namespace control {
+
+class NewController : public Controller {
+ public:
+  NewController();
+  virtual ~NewController();
+  Status Init(const ControlConf* control_conf) override;
+  Status ComputeControlCommand(
+      const localization::LocalizationEstimate* localization,
+      const canbus::Chassis* chassis, const planning::ADCTrajectory* trajectory,
+      ControlCommand* cmd) override;
+  Status Reset() override;
+  void Stop() override;
+  std::string Name() const override;
+};
+}  // namespace control
+}  // namespace apollo
+</code></pre>
+
+<h3 id="add-a-new-controller-configuration-to-the-control_config-file">Add a New Controller Configuration to the control_config File</h3>
+<p>To add the new controller configuration complete the following steps:</p>
+<ol>
+<li>Define a <code>proto</code> for the new controller configurations and parameters based on the algorithm requirements. An example <code>proto</code> definition of <code>LatController</code> can be found at:  <code>modules/control/proto/lat_controller_conf.proto</code></li>
+<li>
+<p>After defining the new controller <code>proto</code>, e.g., <code>new_controller_conf.proto</code>, type the following:</p>
+<p>```protobuf
+syntax = "proto2";</p>
+<p>package apollo.control;</p>
+<p>message NewControllerConf {
+    double parameter1 = 1;
+    int32 parameter2 = 2;
+}
+```</p>
+</li>
+<li>
+<p>Update <code>control_conf.proto</code> at  <code>modules/control/proto/control_conf.proto</code>:</p>
+<p><code>protobuf
+optional apollo.control.NewControllerConf new_controller_conf = 15;</code></p>
+</li>
+<li>
+<p>Update <code>ControllerType</code> in this file:</p>
+<p><code>protobuf
+enum ControllerType {
+    LAT_CONTROLLER = 0;
+    LON_CONTROLLER = 1;
+    NEW_CONTROLLER = 2;
+  };</code></p>
+</li>
+<li>
+<p>When the <code>protobuf</code> definition is complete, update the control configuration file accordingly at <code>modules/control/conf/control_conf.pb.txt</code></p>
+</li>
+</ol>
+<pre><code>Note: The above `control/conf` file is the default for Apollo.  Your project may use a different control configuration file.
+</code></pre>
+
+<h3 id="register-the-new-controller">Register the New Controller</h3>
+<p>To activate a new controller in the Apollo system, register the new controller in <code>ControllerAgent</code>.  Go to:</p>
+<blockquote>
+<p>modules/control/controller/controller_agent.cc</p>
+</blockquote>
+<p>Type your registration information in the shell. For example:</p>
+<pre><code class="c++">void ControllerAgent::RegisterControllers() {
+  controller_factory_.Register(
+      ControlConf::NEW_CONTROLLER,
+      []() -&gt; Controller * { return new NewController(); });
+}
+</code></pre>
+
+<p>After this code update sequence is complete, you new controller should take effect in the Apollo system.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

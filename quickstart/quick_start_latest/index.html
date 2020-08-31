@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo Master Quick Start Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo Master Quick Start Guide";
+    var mkdocs_page_input_path = "quickstart/quick_start_latest.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo Master Quick Start Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/quick_start_latest.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-master-quick-start-guide">Apollo Master Quick Start Guide</h2>
+<p>The following guide serves as a user manual for launching the Apollo upgraded software and hardware stack on vehicle.</p>
+<h3 id="software-installation">Software Installation</h3>
+<h4 id="start-apollo-dev-docker-container">Start apollo-dev docker container</h4>
+<p>We start apollo-dev docker container following the convention in previous apollo releases.</p>
+<pre><code>bash docker/scripts/dev_start.sh
+</code></pre>
+
+<h4 id="enter-apollo-dev-docker-container">Enter apollo-dev docker container</h4>
+<pre><code>bash docker/scripts/dev_into.sh
+</code></pre>
+
+<h4 id="configure-custom-settings">Configure custom settings</h4>
+<p>The first time you get into apollo-dev container named <code>apollo_dev_${USER}</code>,
+please run apollo bootstrap command as follows:</p>
+<pre><code>bash ./apollo.sh config
+</code></pre>
+
+<blockquote>
+<p>Experimental:
+ There is also an <em>interactive</em> mode of bootstraping by running
+ <code>bash apollo.sh config --interactive</code> or <code>bash apollo.sh config -i</code>.
+ For now, this functionality is incomplete.</p>
+</blockquote>
+<h4 id="build-modules">Build modules</h4>
+<p>Run the following command to build all modules</p>
+<pre><code>bash apollo.sh build
+</code></pre>
+
+<p>Run the following to build individual modules</p>
+<pre><code>bash apollo.sh build cyber # OR
+bash apollo.sh build planning # OR
+bash apollo.sh build perception
+</code></pre>
+
+<p>By default, <code>apollo.sh build</code> generates debug outputs.</p>
+<p>To run optimization build,  just substitute <code>build</code> with <code>build_opt</code> in the examples above.</p>
+<h4 id="test-modules">Test modules</h4>
+<pre><code>bash apollo.sh test # To run unit-tests in all modules including cyber.
+bash apollo.sh test cyber # run all unit-tests for cyber
+bash apollo.sh test --config=gpu prediction # run all unit-test for the prediction module
+</code></pre>
+
+<h4 id="buildtest-an-insiders-view">Build/Test: An Insider's View</h4>
+<p>Please note also that when it comes to build/test, <code>apollo.sh</code> runs
+<code>scripts/apollo_build.sh</code> and <code>scripts/apollo_test.sh</code> respectively, both of
+which are just simple wrapper around <code>bazel build</code> and <code>bazel test</code> commands.</p>
+<p>So if you are familiar with bazel, you can run the following to build and test any targets:</p>
+<pre><code>bazel build //cyber/...
+bazel test --config=gpu //modules/localization/...
+bazel test //cyber/common:file_test
+</code></pre>
+
+<h4 id="running-lint">Running lint</h4>
+<pre><code>bash apollo.sh lint
+</code></pre>
+
+<h4 id="bazel-x-apollo">Bazel x Apollo</h4>
+<p>The bazel version pre-installed in our cyber/dev docker images are 3.2.0+.
+And the default <code>--distdir</code> destination is under
+<code>${APOLLO_ROOT_DIR}/.cache/distdir</code>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

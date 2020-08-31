@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Vehicle Control Calibration - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Vehicle Control Calibration";
+    var mkdocs_page_input_path = "specs/calibration_table/control_calibration.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Vehicle Control Calibration</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/calibration_table/control_calibration.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="vehicle-control-calibration">Vehicle Control Calibration</h2>
+<p>Control calibration system automatically generates calibration table for different vehicle models. It includes three parts: a frontend data collection monitor system, a data pipeline upload/download tool for uploading collected data and downloading generated calibration tables, and a visualization tool for performance evaluation.</p>
+<!-- # Table of Contents 1\. [Frontend](#frontend) 2\. [Data](#data) - [Upload Tool](#upload) - [Download Tool](#download) 3\. [Visulization](#visulization) -->
+
+<p>## Frontend</p>
+<p>In DreamView, a data collection monitor is presented for monitoring the data calibration process. In vehicle calibration mode, collected data frames are visualized in the data calibration monitor. Data frames are categorized into different driving conditions according to their chassis information. The amount of collected data frames are indicated as progress bars.</p>
+<h4 id="setup">Setup</h4>
+<p>In the on-vehicle DreamView environment,</p>
+<ol>
+<li>Choose <code>vehicle calibration</code> in <code>--setup mode--</code>,</li>
+<li>Choose <code>Data Collection Monitor</code> at <code>Others</code> panel.</li>
+</ol>
+<p><img alt="" src="../images/calibration_table.png" /></p>
+<p>The data collection monitor is displayed in DreamView.</p>
+<h4 id="data-collection">Data collection</h4>
+<p>When driving, data frames are automatically processed by reading their chassis messages. When a data frame satisfy the speed criterion (speed equal or larger than 0.2 mps), the data frame is categorized by its steering, speed and throttle/brake information. The data collection process is presented by bars in data collection monitor.</p>
+<p>There are 21 bars in total in data collection monitor. The overall process is indicated by the top bar. The rest 20 bars indicate 20 driving conditions, including</p>
+<ul>
+<li>
+<p>Six brake conditions at different speed level</p>
+</li>
+<li>
+<p>low speed (&lt;10 mps) brake pulse</p>
+</li>
+<li>middle speed (10 mps ~ 20 mps ) brake pulse</li>
+<li>high speed (&gt;=20 mps) brake pulsing</li>
+<li>low speed ( &lt;10 mps) brake tap</li>
+<li>middle speed (10 mps ~ 20 mps ) brake tap</li>
+<li>
+<p>high speed (&gt;=20 mps) brake tap</p>
+</li>
+<li>
+<p>Six throttle conditions at different speed level</p>
+</li>
+<li>
+<p>low speed (&lt;10 mps) under throttle</p>
+</li>
+<li>middle speed (10 mps ~ 20 mps ) under throttle</li>
+<li>high speed (&gt;=20 mps) under throttle</li>
+<li>low speed ( &lt;10 mps) harsh throttle</li>
+<li>middle speed (10 mps ~ 20 mps ) harsh throttle</li>
+<li>
+<p>high speed (&gt;=20 mps) harsh throttle</p>
+</li>
+<li>
+<p>Eight steering angle conditions</p>
+</li>
+<li>
+<p>left 0% ~ 20%</p>
+</li>
+<li>left 20% ~ 40%</li>
+<li>left 40% ~ 60%</li>
+<li>left 60% ~ 100%</li>
+<li>right 0% ~ 20%</li>
+<li>right 20% ~ 40%</li>
+<li>right 40% ~ 60%</li>
+<li>right 60% ~ 100%</li>
+</ul>
+<p>For each bar, there is a blue ribbon indicating collected data frames. When the blue ribbon fills the whole bar, the number of collected frames reaches the target number. There is also a number at right end of each bar indicating the completion percentage.</p>
+<p>For calibration table data collection, when the first 13 bars (total progress bar and 12 brake/throttle condition bars) reaches 100% the data collection process is considered as completed. For dynamic model data collection, the data collection process is completed when all bars reaches 100%.</p>
+<p>All data are saved in <code>nvme drive</code> or <code>data/record/</code></p>
+<h4 id="vehicle-configuration">Vehicle Configuration</h4>
+<p>The brake and throttle specs are different between vehicle models. Therefore, the criteria for brake pulsing/tap and hash/under throttle depend on vehicle models. The default setting is based on Lincoln MKZ model. For different vehicle model, these parameters is configurable at</p>
+<pre><code>/apollo/modules/dreamview/conf/mkz7_data_collection_table.pb.txt
+</code></pre>
+
+<p>(description)</p>
+<h3 id="data-uploaddownload">Data Upload/Download</h3>
+<h4 id="prerequisites">Prerequisites</h4>
+<p>Firstly, please make sure you have already finished setting up the <strong>Apollo Fuel Proxy</strong> following documents available at:</p>
+<p>https://github.com/ApolloAuto/apollo/blob/master/modules/tools/fuel_proxy/README.md</p>
+<p>This is <strong>essential</strong> before you can get enjoy control calibration or other Apollo Fuel-based cloud service.</p>
+<h3 id="folder-structure-requirement">Folder Structure Requirement</h3>
+<p>Before uploading your data, take a note of:
+1. The folder structure to be maintained is:
+   <img alt="" src="../images/file_system.png" /></p>
+<ol>
+<li>As seen above, the file structure to be maintained is
+   <code>Origin Folder -&gt; Task Folder -&gt;Vehicle Folder -&gt; Records + Configuration files</code></li>
+<li>A <strong>task</strong> folder needs to be created for your calibration job, such as task001, task002...</li>
+<li>A vehicle folder needs to be created for your vehicle. The name of the folder should be the same as seen in Dreamview</li>
+<li>Inside your folder, create a <strong>Records</strong> folder to hold the data</li>
+<li>Store all the <strong>Configuration files</strong> along with the Records folder, within the <strong>Vehicle</strong> folder</li>
+<li>The vehicle configuration file (vehicle_param.pb.txt) is updated since Apollo 5.0 and later, you should check it</li>
+<li>One task folder can contain more than one vehicle folder, you can  train more vehicles in one training job</li>
+</ol>
+<h4 id="upload">Upload</h4>
+<p>Use <a href="https://cloud.baidu.com/doc/BOS/BOSCLI/8.5CBOS.20FS.html">bosfs</a> to mount
+your bucket to local, for example,</p>
+<pre><code>BUCKET=&lt;bucket&gt;
+AK=&lt;access key&gt;
+SK=&lt;secret key&gt;
+MOUNT=/mnt/bos
+# It's required to provide correct BOS region. Please read the document
+# https://cloud.baidu.com/doc/BOS/S3.html#.E6.9C.8D.E5.8A.A1.E5.9F.9F.E5.90.8D
+REGION=bj
+
+mkdir -p &quot;${MOUNT}&quot;
+bosfs &quot;${BUCKET}&quot; &quot;${MOUNT}&quot; -o allow_other,logfile=/tmp/bos-${BUCKET}.log,endpoint=http://${REGION}.bcebos.com,ak=${AK},sk=${SK}
+</code></pre>
+
+<p>Then you can copy the prepared data folder to somewhere under /mnt/bos.</p>
+<h4 id="download">Download</h4>
+<p>No download needed, the results will be sent to your email associated with your BOS bucket.</p>
+<h3 id="result-visualization">Result Visualization</h3>
+<p>The docker environment does not support Matplotlib. Thus, result are visualized outside of the docker environment. The following two figures show the visualization result of PC training results.</p>
+<p><img alt="" src="../images/throttle.png" /></p>
+<p><img alt="" src="../images/brake.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

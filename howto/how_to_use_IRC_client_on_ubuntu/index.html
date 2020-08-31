@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to use IRC client on Ubuntu - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to use IRC client on Ubuntu";
+    var mkdocs_page_input_path = "howto/how_to_use_IRC_client_on_ubuntu.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to use IRC client on Ubuntu</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_use_IRC_client_on_ubuntu.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-use-irc-client-on-ubuntu">How to use IRC client on Ubuntu</h2>
+<h3 id="introduction">Introduction</h3>
+<p>Internet Relay Chat (IRC) is a form of real-time Internet chat. It is mainly designed for group (many-to-many) communication in discussion forums called channels, but also allows one-to-one communication via private message.[<a href="https://help.ubuntu.com/community/InternetRelayChat">Reference 1</a>]</p>
+<p>There are many IRC clients, like <a href="https://quassel-irc.org/">Quassel</a>, <a href="https://hexchat.github.io/">Hexchat</a>, XChat, Konversation(KDE), and console based irssi, WeeChat, etc.</p>
+<p>In this guide, we will take <strong>Hexchat</strong> for an example to demonstrate.
+Hexchat is free and open source, available for both Linux, Mac OS X and Windows.</p>
+<h3 id="installation">Installation</h3>
+<p>Installing hexchat is simple, just open up a terminal and run the following command:</p>
+<pre><code>sudo apt-get install hexchat
+</code></pre>
+
+<p>(Tested on Ubuntu 14.04, but it won't be much different from 16.04.)</p>
+<p>Once installed, start HexChat from Unity Dash or application menu.</p>
+<p><img alt="img" src="../images/irc_image_01.png" /></p>
+<h3 id="how-to-use-hexchat">How to use Hexchat</h3>
+<p>Upon your first launch, you will be asked to choose your nickname and a network server. IRC network is a network of IRC servers that are connected to each other. <a href="https://freenode.net">Freenode</a> is currently the largest IRC network and is also used by most open source projects.[<a href="https://www.linuxbabe.com/ubuntu/install-use-hexchat-ubuntu-16-04">Reference 2</a>]</p>
+<p>Enter you favourite nickname(it can be changed laterly by command <code>nick</code>, you will see later), and choose freenode IRC server from server list.</p>
+<p>Then click <code>Connect</code> button.</p>
+<p><img alt="img" src="../images/irc_image_02.png" /></p>
+<p>Note, if freenode isn't in the list, just click <code>Add</code> button to add one with a server name(here we can use "Freenode"), then click <code>Edit</code> button to add server address and port <code>chat.freenode.net/+6697</code>, which the <code>+</code> means to signify SSL. The port is entirely optional, if no port is given the default port used is 6667 and 6697 for SSL.[<a href="https://hexchat.readthedocs.io/en/latest/settings.html#servers">Reference 3</a>] Close the <code>Edit dialog</code> and go back to <code>Server list</code>.</p>
+<p><img alt="img" src="../images/irc_image_03.png" /></p>
+<p>It will take a few seconds to connect to the selected IRC server.
+Once connected, you can choose to join a channel, or join later with <code>join</code> command. Here we enter #apolloauto channel to join.</p>
+<p><img alt="img" src="../images/irc_image_04.png" /></p>
+<p>Then click <code>Ok</code> button, it will join #apolloauto channel.</p>
+<p><img alt="img" src="../images/irc_image_05.png" /></p>
+<p>Wow! Now you can say hello to the channel members :)</p>
+<h3 id="most-used-command">Most used command</h3>
+<p>To join a channel, just type join command(IRC command prefixed with <code>/</code>)  with channel name(IRC channel name prefixed with <code>#</code>)</p>
+<pre><code>/join #channel_name
+</code></pre>
+
+<p>To change a new nickname,</p>
+<pre><code>/nick new_nickname
+</code></pre>
+
+<p>To see all commands,</p>
+<pre><code>/help
+</code></pre>
+
+<p>To start one-to-one private chat,</p>
+<pre><code>/query the_nickname_talking_to
+</code></pre>
+
+<p>There are a <code>NickServ</code> and a <code>ChanServ</code> that you can register you nickname or maitain control of a channel.
+To see what you can do,</p>
+<pre><code>/msg NickServ help
+</code></pre>
+
+<p>and</p>
+<pre><code>/msg ChanServ help
+</code></pre>
+
+<h3 id="further-reading">Further reading</h3>
+<p><a href="http://www.ircbeginner.com/ircinfo/ircc-commands.html">Basic IRC Commands</a></p>
+<p><a href="http://www.ircbeginner.com/ircinfo/ircc-tips.html">Tips and Tricks</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

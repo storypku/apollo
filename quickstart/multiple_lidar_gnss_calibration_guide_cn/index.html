@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>多激光雷达全球导航卫星系统(Multiple-LiDAR GNSS)校准指南 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u591a\u6fc0\u5149\u96f7\u8fbe\u5168\u7403\u5bfc\u822a\u536b\u661f\u7cfb\u7edf(Multiple-LiDAR GNSS)\u6821\u51c6\u6307\u5357";
+    var mkdocs_page_input_path = "quickstart/multiple_lidar_gnss_calibration_guide_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>多激光雷达全球导航卫星系统(Multiple-LiDAR GNSS)校准指南</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/multiple_lidar_gnss_calibration_guide_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="multiple-lidar-gnss">多激光雷达全球导航卫星系统(Multiple-LiDAR GNSS)校准指南</h2>
+<p>欢迎使用多激光雷达全球导航卫星系统校准工具。本指南将向您展示如何成功校准多个LiDAR的步骤。</p>
+<h3 id="_1">内容</h3>
+<ul>
+<li>概述</li>
+<li>准备</li>
+<li>使用校准工具</li>
+<li>结果与验证</li>
+</ul>
+<h3 id="_2">概述</h3>
+<p>在许多自动驾驶任务，如HDMap的制作，多个激光雷达扫描结果需要注册在一个统一的坐标系统。在这种情况下，需要对多个LIDARs的外部参数进行仔细校准。为了解决这个问题，开发了多激光雷达GNSS校准工具。</p>
+<h3 id="_3">准备</h3>
+<p>下载校准工具，并将文件提取到$APOLLO_HOME/modules /calibration。$APOLLO_HOME是APOLLO repository的根目录。
+根据Apollo 1.5提供的校准指南选择校准位置。
+确保GNSS处于良好状态。为了验证这一点，使用‘rostopic echo /apollo/sensor/gnss/best_pose’并检查关键词latitude_std_dev, longitude_std_dev 和height_std_dev后的数量，偏差越小，校准质量越好。 我们强烈建议在偏差小于0.02时校准传感器。</p>
+<h3 id="_4">使用校准工具</h3>
+<h4 id="_5">记录校准数据</h4>
+<p>当LIDARS和GNSS准备就绪时，使用/apollo/modules/calibration/multi_lidar_gnss/record.sh记录校准数据。请注意，此脚本仅用于记录velodyne HDL64 和VLP16。为了其他目的，需要修改这个脚本，或者只需要使用rosbag record来做同样的事情。通常，2分钟的数据长度就足够了。在数据捕获之后，运行/apollo/modules/calibration/multi_lidar_gnss/calibrate.sh校准传感器。脚本由以下两个步骤组成。</p>
+<h4 id="_6">出口数据</h4>
+<p>一旦校准包被记录，使用/apollo/modules/calibration/exporter/export_msgs --config /apollo/modules/calibration/exporter/conf/export_config.yaml获得传感器数据。exporter的唯一输入是一个YAML配置文件，如下所示。</p>
+<pre><code class="bash">bag_path: &quot;/apollo/data/bag/calibration/&quot; # The path where the calibration bag is placed.
+dump_dir: &quot;/apollo/data/bag/calibration/export/&quot; # The path where the sensor data will be placed using exporter
+topics:
+    - /apollo/sensor/gnss/odometry: # Odometry topic name
+        type: ApolloOdometry        # Odometry type
+    - /apollo/sensor/velodyne16/PointCloud2: # vlp16 topic name
+        type: PointCloud2                    # vlp16 type
+    - /apollo/sensor/velodyne64/PointCloud2: # hdl64 topic name
+        type: PointCloud2                    # hdl64 type
+</code></pre>
+
+<p>如果将新topic按如下的规则添加到文件中，也可以导出PointCloud2 types的其他topic。</p>
+<pre><code class="bash">    - TOPIC_NAME: # topic name
+        type: PointCloud2
+</code></pre>
+
+<p>到目前为止，我们只支持ApolloOdometry和PointCloud2。</p>
+<h4 id="_7">运行校准工具</h4>
+<p>如果输出所有传感器数据，运行/apollo/modules/calibration/lidar_gnss_calibrator/multi_lidar_gnss_calibrator --config /apollo/modules/calibration/lidar_gnss_calibrator/conf/multi_lidar_gnss_calibrator_config.yaml将得到结果。该工具的输入是一个YAML配置文件，如下所示。</p>
+<pre><code class="bash"># multi-LiDAR-GNSS calibration configurations
+data:
+    odometry: &quot;/apollo/data/bag/calibration/export/multi_lidar_gnss/_apollo_sensor_gnss_odometry/odometry&quot;
+    lidars: 
+        - velodyne16: 
+            path: &quot;/apollo/data/bag/calibration/export/multi_lidar_gnss/_apollo_sensor_velodyne16_PointCloud2/&quot;
+        - velodyne64: 
+            path: &quot;/apollo/data/bag/calibration/export/multi_lidar_gnss/_apollo_sensor_velodyne64_PointCloud2/&quot;
+    result: &quot;/apollo/data/bag/calibration/export/multi_lidar_gnss/result/&quot;
+calibration:
+    init_extrinsics:
+        velodyne16:
+            translation:    
+                x: 0.0
+                y: 1.77 
+                z: 1.1
+            rotation:
+                x: 0.183014 
+                y: -0.183014 
+                z: 0.683008 
+                w: 0.683008
+        velodyne64:
+            translation:    
+                x: 0.0
+                y: 1.57
+                z: 1.3
+            rotation:
+                x: 0.0
+                y: 0.0
+                z: 0.707
+                w: 0.707
+    steps: 
+        - source_lidars: [&quot;velodyne64&quot;]
+          target_lidars: [&quot;velodyne64&quot;]
+          lidar_type: &quot;multiple&quot;
+          fix_target_lidars: false
+          fix_z: true
+          iteration: 3
+        - source_lidars: [&quot;velodyne16&quot;]
+          target_lidars: [&quot;velodyne16&quot;]
+          lidar_type: &quot;multiple&quot;
+          fix_target_lidars: false
+          fix_z: true
+          iteration: 3
+        - source_lidars: [&quot;velodyne16&quot;]
+          target_lidars: [&quot;velodyne64&quot;]
+          lidar_type: &quot;multiple&quot;
+          fix_target_lidars: true
+          fix_z: false
+          iteration: 3
+</code></pre>
+
+<p>数据部分告诉工具在哪里获取点云和测距文件，以及在哪里保存结果。注意，LIDAR节点中的关键字将被识别为LiDARs的Frame ID。</p>
+<p>校准部分提供了外部信息的初始猜测。所有的外部信息都是从激光雷达到GNSS，这意味着这种变换将激光雷达坐标系中定义的点的坐标映射到GNSS坐标系中定义的这一点的坐标。初始猜测要求旋转角度误差小于5度，平移误差小于0.1米。</p>
+<p>步骤部分详细说明了校准过程。每个步骤被如下定义并且它们的含义在注释中。</p>
+<pre><code class="bash">- source_lidars: [&quot;velodyne16&quot;] # Source LiDAR in point cloud registration.
+  target_lidars: [&quot;velodyne64&quot;] # Target LiDAR in point cloud registration.
+  lidar_type: &quot;multiple&quot; # &quot;multiple&quot; for multi-beam LiDAR, otherwise &quot;single&quot;
+  fix_target_lidars: true # Whether to fix  extrinsics of target LiDARS. Only &quot;true&quot; when align different LiDARs.
+  fix_z: false # Whether to fix the z component of translation. Only &quot;false&quot; when align different LiDARs.
+  iteration: 3 # Iteration number
+</code></pre>
+
+<h3 id="_8">结果和验证</h3>
+<p>校准工具将结果保存到结果路径中。</p>
+<pre><code class="bash">.
+└── calib_result
+    ├── velodyne16_novatel_extrinsics.yaml
+    ├── velodyne16_result.pcd
+    ├── velodyne16_result_rgb.pcd
+    ├── velodyne64_novatel_extrinsics.yaml
+    ├── velodyne64_result.pcd
+    └── velodyne64_result_rgb.pcd
+</code></pre>
+
+<p>这两个YAML文件是外部的。为了验证结果，使用pcl_viewer *_result.pcd检查注册质量。如果传感器校准好了，大量的细节可以从点云中识别出来。欲了解更多详情，请参阅校准指南Apollo 1.5。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

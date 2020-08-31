@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo Upgraded Hardware and System Installation Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo Upgraded Hardware and System Installation Guide";
+    var mkdocs_page_input_path = "quickstart/apollo_updated_hardware_system_installation_guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo Upgraded Hardware and System Installation Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/apollo_updated_hardware_system_installation_guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-upgraded-hardware-and-system-installation-guide">Apollo Upgraded Hardware and System Installation Guide</h2>
+<ul>
+<li><a href="#about-this-guide">About This Guide</a><ul>
+<li><a href="#document-conventions">Document Conventions</a></li>
+</ul>
+</li>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#documentation">Documentation</a></li>
+</ul>
+</li>
+<li><a href="#key-hardware-components">Key Hardware Components</a><ul>
+<li><a href="#additional-components-required">Additional Components Required</a></li>
+</ul>
+</li>
+<li><a href="#steps-for-the-installation-tasks">Steps for the Installation Tasks</a><ul>
+<li><a href="#at-the-office">At the Office</a></li>
+<li><a href="#in-the-vehicle">In the Vehicle</a><ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#diagrams-of-the-major-component-installations">Diagrams of the Major Component Installations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#additional-tasks-required">Additional Tasks Required</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+<h3 id="about-this-guide">About This Guide</h3>
+<p>The <em>Apollo upgraded Hardware and System Installation Guide</em> provides the instructions to install all of the hardware components and system software for the <strong>Apollo Project</strong>. The system installation information included pertains to the procedures to download and install the Apollo Linux Kernel.</p>
+<h4 id="document-conventions">Document Conventions</h4>
+<p>The following table lists the conventions that are used in this document:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bold</strong></td>
+<td>Emphasis</td>
+</tr>
+<tr>
+<td><code>Mono-space font</code></td>
+<td>Code, typed data</td>
+</tr>
+<tr>
+<td><em>Italic</em></td>
+<td>Titles of documents, sections, and headings Terms used</td>
+</tr>
+<tr>
+<td><img alt="info" src="../images/info_icon.png" /></td>
+<td><strong>Info</strong>  Contains information that might be useful.  Ignoring the Info icon has no negative consequences.</td>
+</tr>
+<tr>
+<td><img alt="tip" src="../images/tip_icon.png" /></td>
+<td><strong>Tip</strong>. Includes helpful hints or a shortcut that might assist you in completing a task.</td>
+</tr>
+<tr>
+<td><img alt="online" src="../images/online_icon.png" /></td>
+<td><strong>Online</strong>. Provides a link to a particular web site where you can get more information.</td>
+</tr>
+<tr>
+<td><img alt="warning" src="../images/warning_icon.png" /></td>
+<td><strong>Warning</strong>. Contains information that must <strong>not</strong> be ignored or you risk failure when you perform a certain task or step.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="introduction">Introduction</h3>
+<p>The <strong>Apollo Project</strong> is an initiative that provides an open, complete, and reliable software platform for Apollo partners in the automotive and autonomous driving industries. The aim of this project is to enable these entities to develop their own self-driving systems based on the Apollo software stack.</p>
+<h4 id="documentation">Documentation</h4>
+<p>The following set of documentation describes Apollo 3.0:</p>
+<ul>
+<li>
+<p><strong><em><u>[Apollo Hardware and System Installation Guide]</u></em></strong>  ─ Links to the Hardware Development Platform Documentation in Specs</p>
+<ul>
+<li>
+<p><strong>Vehicle</strong>:</p>
+</li>
+<li>
+<p><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/IPC/Nuvo-6108GC_Installation_Guide.md">Industrial PC (IPC)</a></p>
+</li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Navigation/README.md">Global Positioning System (GPS)</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Navigation/README.md">Inertial Measurement Unit (IMU)</a></li>
+<li>Controller Area Network (CAN) card</li>
+<li>GPS Antenna</li>
+<li>GPS Receiver</li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Lidar/README.md">Light Detection and Ranging System (LiDAR)</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Camera/README.md">Camera</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Radar/README.md">Radar</a></li>
+<li><a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Apollo_Sensor_Unit/Apollo_Sensor_Unit_Installation_Guide.md">Apollo Sensor Unit (ASU)</a></li>
+<li>
+<p>Apollo Extension Unit (AXU)</p>
+</li>
+<li>
+<p><strong>Software</strong>: Refer to the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Software_and_Kernel_Installation_guide.md">Software Installation Guide</a> for information on the following:</p>
+</li>
+<li>Ubuntu Linux</li>
+<li>Apollo Linux Kernel</li>
+<li>NVIDIA GPU Driver</li>
+</ul>
+</li>
+<li>
+<p><strong><em><u>[Apollo Quick Start Guide]</u></em></strong> ─ The combination of a tutorial and a roadmap that provides the complete set of end-to-end instructions. The Quick Start Guide also provides links to additional documents that describe the conversion of a regular car to an autonomous-driving vehicle.</p>
+</li>
+</ul>
+<h3 id="key-hardware-components">Key Hardware Components</h3>
+<p>The key hardware components to install include:</p>
+<ul>
+<li>Onboard computer system ─ Neousys Nuvo-6108GC (2)</li>
+<li>Controller Area Network (CAN) Card ─ ESD CAN-PCIe/402-B4</li>
+<li>Global Positioning System (GPS) and Inertial Measurement Unit (IMU) ─
+  You can select one of the following options:</li>
+<li>NovAtel SPAN-IGM-A1</li>
+<li>NovAtel SPAN® ProPak6™ and NovAtel IMU-IGM-A1</li>
+<li>NovAtel SPAN® PwrPak7™ </li>
+<li>Navtech NV-GI120</li>
+<li>Light Detection and Ranging System (LiDAR) ─  You can select one of the following options, please note Apollo upgrade uses VLS-128 LiDAR:<ul>
+<li><a href="https://github.com/ApolloAuto/apollo2/blob/master/docs/specs/Lidar/VLS_128_Installation_Guide.md">Velodyne VLS-128</a></li>
+<li>Velodyne HDL-64E S3</li>
+<li>Velodyne Puck series</li>
+<li>Innovusion LiDAR</li>
+<li>Hesai's Pandora</li>
+</ul>
+</li>
+<li>Cameras —  You can select one of the following options:<ul>
+<li>Leopard Imaging LI-USB30-AR023ZWDR with USB 3.0 case</li>
+<li>Argus Camera (FPD-Link)</li>
+<li>Wissen Camera</li>
+</ul>
+</li>
+<li>Radar —  You can select one of the following options: <ul>
+<li>Continental ARS408-21</li>
+<li>Racobit B01HC</li>
+</ul>
+</li>
+</ul>
+<h4 id="additional-components-required">Additional Components Required</h4>
+<p>You need to provide these additional components for the Additional Tasks Required:</p>
+<ul>
+<li>Apollo Sensor Unit (ASU)</li>
+<li>Apollo Extension Unit (AXU)</li>
+<li>A 4G router for Internet access</li>
+<li>A USB hub for extra USB ports</li>
+<li>A monitor, keyboard, and mouse for debugging at the car onsite</li>
+<li>Cables: a Digital Visual Interface (DVI) cable (optional), a customized cable for GPS-LiDAR time synchronization</li>
+<li>Apple iPad Pro: 9.7-inch, Wi-Fi (optional)</li>
+</ul>
+<p>The features of the key hardware components are presented in the subsequent sections.</p>
+<h3 id="steps-for-the-installation-tasks">Steps for the Installation Tasks</h3>
+<p>This section describes the steps to install:</p>
+<ul>
+<li>The key hardware and software components</li>
+<li>The hardware in the vehicle</li>
+</ul>
+<h4 id="at-the-office">At the Office</h4>
+<p>Perform the following tasks:</p>
+<ul>
+<li>
+<p>Prepare the IPC:</p>
+<ul>
+<li>Install the CAN card</li>
+<li>Install or replace the hard drive</li>
+<li>Prepare the IPC for powering up</li>
+</ul>
+</li>
+<li>
+<p>Install the software for the IPC:</p>
+<ul>
+<li>Ubuntu Linux</li>
+<li>Apollo Kernel</li>
+<li>Nvidia GPU Driver</li>
+</ul>
+</li>
+</ul>
+<p>The IPC is now ready to be mounted on the vehicle.</p>
+<h4 id="in-the-vehicle">In the Vehicle</h4>
+<p>Perform these tasks:</p>
+<ul>
+<li>Make the necessary modifications to the vehicle as specified in the list of prerequisites</li>
+<li>Install the major components:<ul>
+<li>GPS Antenna</li>
+<li>IPC</li>
+<li>GPS Receiver and IMU</li>
+<li>LiDAR</li>
+<li>Cameras</li>
+<li>Radar</li>
+</ul>
+</li>
+</ul>
+<h5 id="prerequisites">Prerequisites</h5>
+<p><strong><img alt="warning_icon" src="../images/warning_icon.png" />WARNING</strong>: Prior to mounting the major components (GPS Antenna, IPC, and GPS Receiver) in the vehicle, perform certain modifications as specified in the list of prerequisites. The instructions for making the mandatory changes in the list are outside the scope of this document.</p>
+<p>The list of prerequisites are as follows:</p>
+<ul>
+<li>The vehicle must be modified for “drive-by-wire” technology by a professional service company. Also, a CAN interface hookup must be provided in the trunk where the IPC will be mounted.</li>
+<li>A power panel must be installed in the trunk to provide power to the IPC and the GPS-IMU. The power panel would also service other devices in the vehicle such as a 4G LTE router. The power panel should be hooked up to the power system in the vehicle.</li>
+<li>A custom-made rack must be installed to mount the GPS-IMU Antenna, the cameras and the LiDAR's on top of the vehicle.</li>
+<li>A custom-made rack must be installed to mount the GPS-IMU in the trunk.</li>
+<li>A custom-made rack must be installed in front of the vehicle to mount the front-facing radar.</li>
+<li>A 4G LTE router must be mounted in the trunk to provide Internet access for the IPC. The router must have built-in Wi-Fi access point (AP) capability to connect to other devices, such as an iPad, to interface with the autonomous driving (AD) system. A user would be able to use the mobile device to start AD mode or monitor AD status, for example.</li>
+</ul>
+<h5 id="diagrams-of-the-major-component-installations">Diagrams of the Major Component Installations</h5>
+<p>The following two diagrams indicate the locations of where the three major components (GPS Antenna, IPC, GPS Receiver and LiDAR) should be installed on the vehicle:</p>
+<p><img alt="major_component_side_view" src="../images/Hardware_overview_3_5.png" /></p>
+<p><img alt="major_component_rear_view" src="../images/car_rearview_3_5.png" /></p>
+<h3 id="additional-tasks-required">Additional Tasks Required</h3>
+<p>Use the components that you were required to provide to perform the following tasks:</p>
+<ol>
+<li>
+<p>Connect a monitor using the DVI or the HDMI cables and connect the keyboard and mouse to perform debugging tasks at the car onsite.</p>
+</li>
+<li>
+<p>Establish a Wi-Fi connection on the Apple iPad Pro to access the HMI and control the Apollo ADS that is running on the IPC.</p>
+</li>
+</ol>
+<h3 id="time-sync-script-setup-optional">Time Sync Script Setup [Optional]</h3>
+<p>In order to, sync the computer time to the NTP server on the internet, you could use the <a href="https://github.com/ApolloAuto/apollo/blob/master/scripts/time_sync.sh">Time Sync script</a></p>
+<h3 id="next-steps">Next Steps</h3>
+<p>After you complete the hardware installation in the vehicle, see the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_3_5_quick_start.md">Apollo Quick Start</a> for the steps to complete the software installation.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

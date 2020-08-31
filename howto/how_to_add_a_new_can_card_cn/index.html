@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>如何添加新的CAN卡 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5982\u4f55\u6dfb\u52a0\u65b0\u7684CAN\u5361";
+    var mkdocs_page_input_path = "howto/how_to_add_a_new_can_card_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>如何添加新的CAN卡</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_new_can_card_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="can">如何添加新的CAN卡</h2>
+<h3 id="_1">简介</h3>
+<p>控制器区域网络（CAN）是在许多微控制器和设备中密集使用的网络，用于在没有主计算机帮助的情况下在设备之间传输数据。</p>
+<p>Apollo中使用的默认CAN卡是 <strong>ESD CAN-PCIe卡</strong>。您可以使用以下步骤添加新的CAN卡：</p>
+<h3 id="can_1">添加新CAN卡</h3>
+<p>添加新的CAN卡需要完成以下几个步骤:</p>
+<ol>
+<li>实现新CAN卡的<code>CanClient</code>类。</li>
+<li>在<code>CanClientFactory</code>中注册新的CAN卡。</li>
+<li>更新配置文件。</li>
+</ol>
+<p>以下步骤展示了如何添加新的CAN卡 - 示例添加CAN卡到您的工程。</p>
+<h4 id="1">步骤 1</h4>
+<p>实现新CAN卡的CanClient类
+下面的代码展示了如何实现 <code>CANClient</code> 类:</p>
+<pre><code class="cpp">#include &lt;string&gt;
+#include &lt;vector&gt;
+
+#include &quot;hermes_can/include/bcan.h&quot;
+#include &quot;modules/canbus/can_client/can_client.h&quot;
+#include &quot;modules/canbus/common/canbus_consts.h&quot;
+#include &quot;modules/common/proto/error_code.pb.h&quot;
+
+/**
+ * @namespace apollo::canbus::can
+ * @brief apollo::canbus::can
+ */
+namespace apollo {
+namespace canbus {
+namespace can {
+
+/**
+ * @class ExampleCanClient
+ * @brief The class which defines a Example CAN client which inherits CanClient.
+ */
+class ExampleCanClient : public CanClient {
+ public:
+  /**
+   * @brief Initialize the Example CAN client by specified CAN card parameters.
+   * @param parameter CAN card parameters to initialize the CAN client.
+   * @return If the initialization is successful.
+   */
+  bool Init(const CANCardParameter&amp; parameter) override;
+
+  /**
+   * @brief Destructor
+   */
+  virtual ~ExampleCanClient() = default;
+
+  /**
+   * @brief Start the Example CAN client.
+   * @return The status of the start action which is defined by
+   *         apollo::common::ErrorCode.
+   */
+  apollo::common::ErrorCode Start() override;
+
+  /**
+   * @brief Stop the Example CAN client.
+   */
+  void Stop() override;
+
+  /**
+   * @brief Send messages
+   * @param frames The messages to send.
+   * @param frame_num The amount of messages to send.
+   * @return The status of the sending action which is defined by
+   *         apollo::common::ErrorCode.
+   */
+  apollo::common::ErrorCode Send(const std::vector&lt;CanFrame&gt;&amp; frames,
+                                 int32_t* const frame_num) override;
+
+  /**
+   * @brief Receive messages
+   * @param frames The messages to receive.
+   * @param frame_num The amount of messages to receive.
+   * @return The status of the receiving action which is defined by
+   *         apollo::common::ErrorCode.
+   */
+  apollo::common::ErrorCode Receive(std::vector&lt;CanFrame&gt;* const frames,
+                                    int32_t* const frame_num) override;
+
+  /**
+   * @brief Get the error string.
+   * @param status The status to get the error string.
+   */
+  std::string GetErrorString(const int32_t status) override;
+
+ private:
+  ...
+  ...
+};
+
+}  // namespace can
+}  // namespace canbus
+}  // namespace apollo
+</code></pre>
+
+<h4 id="2">步骤 2</h4>
+<p>在CanClientFactory中注册新CAN卡，
+在 <code>CanClientFactory</code>中添加如下代码:</p>
+<pre><code class="cpp">void CanClientFactory::RegisterCanClients() {  
+  Register(CANCardParameter::ESD_CAN, 
+           []() -&gt; CanClient* { return new can::EsdCanClient(); });  
+
+  // register the new CAN card here.  
+  Register(CANCardParameter::EXAMPLE_CAN,  
+           []() -&gt; CanClient* { return new can::ExampleCanClient(); });  
+}  
+</code></pre>
+
+<h4 id="3">步骤 3</h4>
+<p>接下来，需要更新配置文件
+在<code>/modules/canbus/proto/can_card_parameter.proto</code>添加 EXAMPLE_CAN </p>
+<pre><code class="proto">message CANCardParameter {
+  enum CANCardBrand {
+    FAKE_CAN = 0;
+    ESD_CAN = 1;
+    EXAMPLE_CAN = 2; // add new CAN card here.
+  }
+  ... ... 
+}
+</code></pre>
+
+<p>Update <code>/modules/canbus/conf/canbus_conf.pb.txt</code></p>
+<pre><code class="txt">... ... 
+can_card_parameter {
+  brand:EXAMPLE_CAN
+  type: PCI_CARD // suppose the new can card is PCI_CARD
+  channel_id: CHANNEL_ID_ZERO // suppose the new can card has CHANNEL_ID_ZERO
+}
+... ...
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

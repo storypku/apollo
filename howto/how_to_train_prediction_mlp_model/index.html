@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to train prediction mlp model - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to train prediction mlp model";
+    var mkdocs_page_input_path = "howto/how_to_train_prediction_mlp_model.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to train prediction mlp model</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_train_prediction_mlp_model.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="how-to-train-the-mlp-deep-learning-model">How to train the MLP Deep Learning Model</h3>
+<h4 id="prerequisites">Prerequisites</h4>
+<p>There are 2 prerequisites to training the MLP Deep Learning Model:</p>
+<h5 id="download-and-install-anaconda">Download and Install Anaconda</h5>
+<ul>
+<li>Please download and install Anaconda from its <a href="https://www.anaconda.com/download">website</a></li>
+</ul>
+<h5 id="install-dependencies">Install Dependencies</h5>
+<p>Run the following commands to install the necessary dependencies:
+* <strong>Install numpy</strong>: <code>conda install numpy</code>
+* <strong>Install tensorflow</strong>: <code>conda install tensorflow</code>
+* <strong>Install keras</strong>: <code>conda install -c conda-forge keras</code>
+* <strong>Install h5py</strong>: <code>conda install h5py</code>
+* <strong>Install protobuf</strong>: <code>conda install -c conda-forge protobuf</code>
+* <strong>Install PyTorch</strong>: <code>conda install -c pytorch pytorch</code></p>
+<h4 id="train-the-model">Train the Model</h4>
+<p>The following steps are to be followed in order to train the MLP model using the released demo data. For convenience, we denote <code>APOLLO</code> as the path of the local apollo repository, for example, <code>/home/username/apollo</code></p>
+<ol>
+<li>
+<p>Create a folder to store offline prediction data using the command <code>mkdir APOLLO/data/prediction</code> if it does not exist</p>
+</li>
+<li>
+<p>Start dev docker using <code>bash docker/scripts/dev_start.sh</code> under the apollo folder</p>
+</li>
+<li>
+<p>Enter dev docker using <code>bash docker/scripts/dev_into.sh</code> under apollo folder</p>
+</li>
+<li>
+<p>In docker, under <code>/apollo/</code>, run <code>bash apollo.sh build</code> to compile</p>
+</li>
+<li>
+<p>In docker, under <code>/apollo/</code>, copy the demo record into <code>/apollo/data/prediction</code> by the command: <code>cp /apollo/docs/demo_guide/demo_3.5.record /apollo/data/prediction/</code></p>
+</li>
+<li>
+<p>In docker, under <code>/apollo/</code>, run the bash script for feature extraction: <code>bash modules/tools/prediction/mlp_train/feature_extraction.sh /apollo/data/prediction/ apollo/data/prediction/</code>, then the feature files will be generated in the folder <code>/apollo/data/prediction/</code>.</p>
+</li>
+<li>
+<p>Exit docker, train the cruise model and junction model according to <code>APOLLO/modules/tools/prediction/mlp_train/cruiseMLP_train.py</code> and <code>APOLLO/modules/tools/prediction/mlp_train/junctionMLP_train.py</code></p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

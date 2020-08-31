@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Launch and Run Apollo - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Launch and Run Apollo";
+    var mkdocs_page_input_path = "howto/how_to_launch_Apollo.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Launch and Run Apollo</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_launch_Apollo.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-launch-and-run-apollo">How to Launch and Run Apollo</h2>
+<p>First check and make sure you are in development docker container before you proceed. Now you will need to build from the source. If you want to run the entire system, make sure you have an
+nVidia GPU and that you have installed the Linux nVidia drivers.
+You could still proceed with the next few steps even if you are missing the Linux nVidia drivers, as the system will run but with the CUDA-based perception and other modules.</p>
+<pre><code># To get a list of build commands
+./apollo.sh
+# To make sure you start clean
+./apollo.sh clean
+# This will build the full system and requires that you have an nVidia GPU with nVidia drivers loaded
+bash apollo.sh build
+</code></pre>
+
+<p>If you do not have an nVidia GPU, the system will run but with the CUDA-based perception and other modules. You must
+specify either <code>dbg</code> for debug mode or <code>opt</code> for optimized code</p>
+<pre><code>./apollo.sh build_no_perception dbg
+</code></pre>
+
+<p>If you make modifications to the Dreamview frontend, then you must run <code>./apollo.sh build_fe</code>  before you run the
+full build.</p>
+<p>If the computer is very slow, you can enter the following command to limit the CPU.</p>
+<pre><code>bash apollo.sh build --local_resources 2048,1.0,1.0
+</code></pre>
+
+<h3 id="run-apollo">Run Apollo</h3>
+<p>Follow the steps below to launch Apollo. Note that you must build the system first before you run it. Note that the
+bootstrap.sh will actually succeed but the user interface will not come up if you skip the build step.</p>
+<h4 id="start-apollo">Start Apollo</h4>
+<p>Running Apollo will start the ROS core and then startup a web user interface called Dreamview, this is handled by
+the bootstrap script, so from within the docker container, you should run:</p>
+<pre><code># start module monitor
+bash scripts/bootstrap.sh
+</code></pre>
+
+<h4 id="access-dreamview">Access Dreamview</h4>
+<p>Access Dreamview by opening your favorite browser, e.g. Chrome, go to http://localhost:8888 and you should see this screen
+However, there will be nothing running in the system.</p>
+<p><img alt="Access Dreamview" src="../images/apollo_bootstrap_screen.png" /></p>
+<h4 id="select-drive-mode">Select Drive Mode</h4>
+<p>From the dropdown box selet "Navigation" mode.</p>
+<p><img alt="Navigation Mode" src="../images/dreamview_2_5_setup_profile.png" /></p>
+<h4 id="replay-demo-record">Replay demo record</h4>
+<p>To see if the system works, use the demo 'record' which feeds the system.</p>
+<pre><code># You need to download the demo record using the following commands
+cd docs/demo_guide/
+python3 rosbag_helper.py demo_3.5.record
+
+# You can now replay this demo &quot;record&quot; in a loop with the '-l' flag
+cyber_recorder play -f docs/demo_guide/demo_3.5.record -l
+</code></pre>
+
+<p>Dreamview should show a running vehicle now. (The following image might be different due to changes in frontend.)</p>
+<p><img alt="Dreamview with Trajectory" src="../images/dv_trajectory_2.5.png" /></p>
+<p>Congratulations! You have successfully built out Apollo!! If you do have the necessary Hardware setup, please go back to our <a href="https://github.com/ApolloAuto/apollo/blob/master/README.md">Readme</a> for additional guidelines.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

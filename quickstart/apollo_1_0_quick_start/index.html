@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo 1.0 Quick Start Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo 1.0 Quick Start Guide";
+    var mkdocs_page_input_path = "quickstart/apollo_1_0_quick_start.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo 1.0 Quick Start Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/apollo_1_0_quick_start.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo-10-quick-start-guide">Apollo 1.0 Quick Start Guide</h2>
+<h3 id="contents">Contents</h3>
+<ul>
+<li><a href="#about-this-guide">About This Guide</a><ul>
+<li><a href="#document-conventions">Document Conventions</a></li>
+</ul>
+</li>
+<li><a href="#overview-of-apollo">Overview of Apollo</a></li>
+<li><a href="#description-of-the-vehicle-environment">Description of the Vehicle Environment</a></li>
+<li><a href="#hardware-installation">Hardware Installation</a></li>
+<li><a href="#apollo-software-installation">Apollo Software Installation</a></li>
+<li><a href="#run-the-demo-on-vehicle">Run the Demo on Vehicle</a><ul>
+<li><a href="#launch-the-local-release-env-docker-image">Launch the Local Release Docker Image</a></li>
+<li><a href="#record-driving-trajectory">Record the Driving Trajectory</a></li>
+<li><a href="#perform-autonomous-driving">Perform Autonomous Driving</a></li>
+<li><a href="#shut-down">Shut Down</a></li>
+</ul>
+</li>
+<li><a href="#run-offline-demo">Run Offline Demo</a></li>
+</ul>
+<h2 id="about-this-guide">About This Guide</h2>
+<p>The <em>Apollo 1.0 Quick Start Guide</em> provides all of the basic instructions to understand, install, and build Apollo.</p>
+<h3 id="document-conventions">Document Conventions</h3>
+<p>The following table lists the conventions that are used in this document:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Icon</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bold</strong></td>
+<td>Emphasis</td>
+</tr>
+<tr>
+<td><code>Mono-space font</code></td>
+<td>Code, typed data</td>
+</tr>
+<tr>
+<td><em>Italic</em></td>
+<td>Titles of documents, sections, and headings Terms used</td>
+</tr>
+<tr>
+<td><img alt="info" src="../images/info_icon.png" /></td>
+<td><strong>Info</strong>  Contains information that might be useful.  Ignoring the Info icon has no negative consequences.</td>
+</tr>
+<tr>
+<td><img alt="tip" src="../images/tip_icon.png" /></td>
+<td><strong>Tip</strong>. Includes helpful hints or a shortcut that might assist you in completing a task.</td>
+</tr>
+<tr>
+<td><img alt="online" src="../images/online_icon.png" /></td>
+<td><strong>Online</strong>. Provides a link to a particular web site where you can get more information.</td>
+</tr>
+<tr>
+<td><img alt="warning" src="../images/warning_icon.png" /></td>
+<td><strong>Warning</strong>. Contains information that must <strong>not</strong> be ignored or you risk failure when you perform a certain task or step.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="about-apollo-10">About Apollo 1.0</h2>
+<p>Apollo 1.0, also referred to as the <em>Automatic GPS Waypoint Following</em>, works in an enclosed venue such as a test track or parking lot. It accurately replays a trajectory and the speed of that trajectory that a human driver has traveled in an enclosed, flat area on solid ground.</p>
+<p>At this stage of development, Apollo 1.0 <strong>cannot</strong> perceive obstacles in close proximity, drive on public roads, or drive in areas without GPS signals.</p>
+<h2 id="description-of-the-vehicle-environment">Description of the Vehicle Environment</h2>
+<p>The Lincoln MKZ, enhanced by Autonomous Stuff, provides users with an accessible autonomous vehicle platform. The platform supplies users with a comprehensive stack of hardware and software solutions.</p>
+<p>Users gain direct access to vehicle controls such as gear selection, speed, and indicator lights. Software interfaces have been created for steering, braking, acceleration, and gear selection to provide Developers with a workable user interface.</p>
+<p>Additional features include:</p>
+<ul>
+<li>Power distributor terminals</li>
+<li>Integrated PC with ROS pre-installed and configured</li>
+<li>Emergency Stop using a drive-by-wire system</li>
+<li>Ethernet network and USB connections (to PC)</li>
+</ul>
+<h2 id="hardware-installation">Hardware Installation</h2>
+<p>Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_0_hardware_system_installation_guide.md">Apollo 1.0 Hardware and System Installation Guide</a>
+for the steps to install the hardware components and the system software.</p>
+<h2 id="apollo-software-installation">Apollo Software Installation</h2>
+<p>Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md">Apollo Software Installation Guide</a>.</p>
+<h2 id="run-demo-on-vehicle">Run Demo on Vehicle</h2>
+<p>This section provides the instructions to run the Apollo 1.0 Demo on Vehicle.
+1. Set up the hardware:</p>
+<ul>
+<li>Power-on the platform vehicle.</li>
+<li>Power-on the Industrial PC (IPC).
+    <img alt="" src="../images/ipc_power_on.png" /></li>
+<li>Power-on the modem by pressing and holding the power button until the lights turn on.</li>
+<li>Set up the network configuration for the IPC: static IP (for example, 192.168.10.6), subnet mask (for example, 255.255.255.0), and gateway (for example, 192.168.10.1)</li>
+<li>Configurate your DNS server IP (for example, 8.8.8.8).</li>
+<li>Use a tablet to access <strong>Settings</strong> and connect to MKZ wifi:</li>
+</ul>
+<p><img alt="" src="../images/ipad_config_wifi.png" /></p>
+<ol>
+<li>Start the HMI in Docker <strong>using Chrome only</strong>:</li>
+</ol>
+<p><img alt="warning" src="../images/warning_icon.png" /><strong>Warning:</strong> Make sure that you are not starting HMI from two Docker containers concurrently.</p>
+<h3 id="launch-the-local-release-env-docker-image">Launch the Local release env Docker Image</h3>
+<p>Run the following commands:</p>
+<pre><code>cd $APOLLO_HOME
+bash docker/scripts/release_start.sh local_release
+</code></pre>
+
+<p>When Docker starts, it creates a port mapping, which maps the Docker internal port 8887 to the host port 8887. You can then visit the HMI web service in your host machine browser:</p>
+<p>Open the Chrome browser and start the Apollo HMI by going to <strong>192.168.10.6:8887</strong>.
+ <img alt="" src="../images/start_hmi.png" /></p>
+<h3 id="record-the-driving-trajectory">Record the Driving Trajectory</h3>
+<p>Follow these steps to record the driving trajectory:</p>
+<ol>
+<li>In the Apollo HMI, under Quick Record, click <strong>Setup</strong> to start all modules and perform the hardware health check.
+   <img alt="" src="../images/hmi_record_setup.png" /></li>
+<li>If the hardware health check passes, click the <strong>Start</strong> button to start to record the driver trajectory.
+   <img alt="" src="../images/hmi_record_start.png" /></li>
+<li>After arriving at a destination, click the <strong>Stop</strong> button to stop recording.
+   <img alt="" src="../images/hmi_record_stop.png" /></li>
+<li>If you want to record a <em>different</em> trajectory, click the <strong>New</strong> button to initiate recording again.
+   <img alt="" src="../images/hmi_record_reset.png" /></li>
+</ol>
+<h3 id="perform-autonomous-driving">Perform Autonomous Driving</h3>
+<p>Follow these steps to perform autonomous driving:</p>
+<ol>
+<li>
+<p>In the Apollo HMI, under Quick Play, click <strong>Setup</strong> to start all modules and perform a hardware health check.
+   <img alt="" src="../images/hmi_play_setup.png" /></p>
+</li>
+<li>
+<p>If the vehicle successfully passes the Setup step, it is ready to enter the Autonomous mode. <strong>MAKE SURE DRIVER IS READY!</strong>  Click the <strong>Start</strong> button to start the autonomous driving.</p>
+</li>
+</ol>
+<p><img alt="" src="../images/hmi_play_start.png" /></p>
+<ol>
+<li>After arriving at your destination,  click the <strong>Stop</strong> button to stop replaying the recorded trajectory.
+   <img alt="" src="../images/hmi_play_stop.png" /></li>
+</ol>
+<h3 id="shut-down">Shut Down</h3>
+<ol>
+<li>
+<p>Shut down the system from a terminal:
+    <code>sudo shutdown now</code></p>
+</li>
+<li>
+<p>Power-off the IPC (locate the icon on the top right of the desktop to click <strong>Shut Down</strong>).</p>
+</li>
+<li>
+<p>Turn off the modem by pressing and holding the power button until the lights turn off.</p>
+</li>
+<li>
+<p>Turn off the car.</p>
+</li>
+</ol>
+<h2 id="run-offline-demo">Run Offline Demo</h2>
+<p>See <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/demo_guide/README.md">Offline Demo Guide</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

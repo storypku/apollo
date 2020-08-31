@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Introduction - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_input_path = "howto/how_to_run_apollo_3.0_with_ubuntu16.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Introduction</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_run_apollo_3.0_with_ubuntu16.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="introduction">Introduction</h2>
+<p>The Ubuntu version recommended by Apollo to use is 14.04. This document decribes steps to run Apollo on Ubuntu 16.04, and the problems that might occur and how to resolve these problems.</p>
+<p>The Apollo version used in this document is the lastest release version which is 3.0. And this document focuses on How to Install Software, and conforms to the steps and rules provided by Apollo.</p>
+<p>All the tests decribed in this document are based on X86 architecture.</p>
+<h2 id="download-apollo">Download Apollo</h2>
+<p>please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md">Apollo Software Installation</a>，download Apollo version 3.0 source code onto the computer.</p>
+<h2 id="install-docker">Install Docker</h2>
+<p>Please follow the
+<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu">official guide to install the docker-ce</a>.</p>
+<p>Don't forget the
+<a href="https://docs.docker.com/install/linux/linux-postinstall">post-installation steps for Linux</a>.</p>
+<p>We recommend to install using Docker repository, but some errors which are shown below may occur if we perform the installation from a package.</p>
+<h4 id="install-from-a-package">Install from a package</h4>
+<p>Download <code>Docker</code> installation package from <a href="https://download.docker.com/linux/ubuntu/dists/">Docker installation package website</a>, the <code>Docker</code> version we recommend is 18.03.1。 There are various versions within directory <code>pool/stable/</code>.</p>
+<p>Install <code>Docker</code>：</p>
+<p><code>sudo dpkg –i docker_packagename.deb</code></p>
+<p>An error may occur:</p>
+<pre><code>dpkg: dependency problems prevent configuration of docker-ce:
+docker-ce depends on libsystemd-journal0 (&gt;= 201); however:
+  Package libsystemd-journal0 is not installed.
+  ```
+
+This error indicates that `Docker-ce` depends on `libsystemd-journal0`，but `libsystemd-journal0` has not been installed and could not be found in current repositories.
+
+Please refer to [Website](https://ubuntu.pkgs.org/14.04/ubuntu-main-amd64/libsystemd-journal0_204-5ubuntu20_amd64.deb.html) to download `libsystemd-journal0`.
+
+Install `libsystemd-journal0` after downloading:
+
+```sudo dpkg –i libsystemd-journal0_packagename.deb ```
+
+An error may occur:
+</code></pre>
+
+<p>dpkg: dependency problems prevent configuration of libsystemd-journal0:amd64:
+ libsystemd-journal0:amd64 depends on libgcrypt11 (&gt;= 1.5.1); however:
+  Package libgcrypt11 is not installed.
+  <code>``
+This error indicates that</code>libsystemd-journal0<code>depends on</code>libgcrypt11<code>，but</code>libgcrypt11<code>has not been installed and could not be found in current repositories.
+Please refer to [Website](https://ubuntu.pkgs.org/14.04/ubuntu-main-amd64/libgcrypt11_1.5.3-2ubuntu4_amd64.deb.html) to download</code>libgcrypt11`.</p>
+<p>Install <code>libgcrypt11</code> after downloading:</p>
+<p><code>sudo dpkg –i libgcrypt11_packagename.deb</code></p>
+<p>And then install <code>libsystemd-journal0</code> and <code>Docker-ce</code>.</p>
+<p>After installing successfully, perform command <code>docker --version</code>, and make sure the output is:</p>
+<pre><code>Docker version 18.03.1-ce, build 9ee9f40
+</code></pre>
+
+<h4 id="verify-the-installation">Verify the installation</h4>
+<p>Follow the steps provided by Apollo, perform command:</p>
+<p><code>sudo docker run hello-world</code></p>
+<p>An error may occur:</p>
+<pre><code>docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
+See 'docker run --help'.
+</code></pre>
+
+<p>This error indicates that service <code>Docker</code> is not running.</p>
+<p>Start service <code>Docker</code>:</p>
+<p><code>sudo service docker restart</code></p>
+<p>And then perform command <code>sudo docker run hello-world</code> to verify again.</p>
+<h2 id="build-apollo">Build Apollo</h2>
+<p>Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_release.md">How to Build and Release your Docker Container</a>。</p>
+<h2 id="launch-and-run-apollo">Launch and Run Apollo</h2>
+<p>Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_launch_Apollo.md">How to Launch and Run Apollo</a>。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

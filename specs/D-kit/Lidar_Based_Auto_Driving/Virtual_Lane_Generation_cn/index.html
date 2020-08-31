@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>封闭园区自动驾驶搭建--虚拟车道线制作 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5c01\u95ed\u56ed\u533a\u81ea\u52a8\u9a7e\u9a76\u642d\u5efa--\u865a\u62df\u8f66\u9053\u7ebf\u5236\u4f5c";
+    var mkdocs_page_input_path = "specs/D-kit/Lidar_Based_Auto_Driving/Virtual_Lane_Generation_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>封闭园区自动驾驶搭建--虚拟车道线制作</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/D-kit/Lidar_Based_Auto_Driving/Virtual_Lane_Generation_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="-">封闭园区自动驾驶搭建--虚拟车道线制作</h2>
+<ul>
+<li><a href="#封闭园区自动驾驶搭建--虚拟车道线制作">封闭园区自动驾驶搭建--虚拟车道线制作</a></li>
+<li><a href="#前提条件">前提条件</a></li>
+<li><a href="#百度云对象存储bos注册">百度云对象存储BOS注册</a></li>
+<li><a href="#开通云服务账号">开通云服务账号</a></li>
+<li><a href="#主要步骤">主要步骤</a><ul>
+<li><a href="#虚拟车道线数据包录制">虚拟车道线数据包录制</a></li>
+<li><a href="#使用虚拟车道线云服务生成虚拟车道线">使用虚拟车道线云服务生成虚拟车道线</a></li>
+<li><a href="#1-上传数据至bos">1. 上传数据至BOS</a></li>
+<li><a href="#2-提交虚拟车道线生成任务">2. 提交虚拟车道线生成任务</a></li>
+<li><a href="#3-获取虚拟车道线并添加到apollo中">3. 获取虚拟车道线并添加到apollo中</a></li>
+</ul>
+</li>
+<li><a href="#next">NEXT</a></li>
+<li><a href="#常见问题">常见问题</a><ul>
+<li><a href="#1-在bos中没有生成local_map文件夹">1. 在BOS中没有生成local_map文件夹</a></li>
+<li><a href="#2-在bos中生成的地图有问题">2. 在BOS中生成的地图有问题</a></li>
+<li><a href="#3-在bos没有生成任何地图数据">3. 在BOS没有生成任何地图数据</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="_1">前提条件</h3>
+<ul>
+<li>完成了<a href="../Sensor_Calibration_cn/">基于激光雷达的封闭园区自动驾驶搭建--感知设备标定</a></li>
+</ul>
+<h3 id="bos">百度云对象存储BOS注册</h3>
+<p>注册方法参考<a href="../../../Apollo_Fuel/Apply_BOS_Account_cn/">百度云对象存储BOS注册与基本使用向导</a></p>
+<h3 id="_2">开通云服务账号</h3>
+<p>请与商务部门联系开通云服务账号，需要提供上一步骤中注册的<code>Bucket名称</code>、<code>所属地域</code></p>
+<h3 id="_3">主要步骤</h3>
+<h4 id="_4">虚拟车道线数据包录制</h4>
+<p>将想要自动驾驶的区域提前按要求录制数据包，作为后面生成虚拟车道线的输入数据。</p>
+<ul>
+<li>需要的channel信息如下所示：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>/apollo/localization/pose</td>
+</tr>
+<tr>
+<td>2</td>
+<td>/apollo/sensor/gnss/odometry</td>
+</tr>
+<tr>
+<td>3</td>
+<td>/apollo/sensor/gnss/ins_stat</td>
+</tr>
+<tr>
+<td>4</td>
+<td>/apollo/sensor/lidar16/compensator/PointCloud2</td>
+</tr>
+</tbody>
+</table>
+<p>为获取上述<code>channel</code>，需要启动<code>GPS</code>、<code>Localization</code>、<code>Velodyne</code>三个模块，<code>GPS</code>、<code>Localization</code>模块的启动请参考定位模块配置文档，<code>Velodyne</code>模块的启动请参考感知传感器集成文档。由于GNSS设备的限制，<code>/apollo/sensor/gnss/odometry</code>、<code>/apollo/sensor/gnss/ins_stat</code>这两个<code>channel</code>不能由GNSS设备直接给出，需要借助<code>/apollo/modules/tools/sensor_calibration/</code>下的两个脚本工具。在<code>localization</code>模块正常启动且输出<code>/apollo/localization/pose</code>数据时，在不同终端分别执行<code>python modules/tools/sensor_calibration/ins_stat_publisher.py</code>、<code>python modules/tools/sensor_calibration/odom_publisher.py</code>两个命令，便可以分别产生<code>/apollo/sensor/gnss/ins_stat</code>、<code>/apollo/sensor/gnss/odometry</code>这两个<code>channel</code>。</p>
+<p><strong>注意</strong>：在执行<code>sensor_calibration/ins_stat_publisher.py</code>脚本前，请务必检查<code>/apollo/sensor/gnss/best_pose</code>中GPS信号质量，确保GPS信号质量为<code>NARROW_INT</code>时，才可以使用<code>ins_stat_publisher.py</code>脚本。在录制数据前，应首先确保<code>modules/localization/conf/localization.conf</code>文件中的<code>enable_lidar_localization</code>设置为<code>false</code>，待地图制作完成后如果需要msf定位，再修改为true。</p>
+<h4 id="_5">使用虚拟车道线云服务生成虚拟车道线</h4>
+<h5 id="1-bos">1. 上传数据至BOS</h5>
+<p><strong>注意：</strong> 必须使用开通过权限的 bucket，确认<code>Bucket名称</code>、<code>所属地域</code>和提交商务注册时的Bucket名称和所属地域保持一致。</p>
+<p>在BOS bucket中新建目录virtual_lane，作为后续云标定服务读取数据的<code>Input Data Path</code>，把前面录制的数据包以及lidar_GNSS外参文件拷贝至该目录。目录结构如图所示：</p>
+<p><img alt="virtual_lane_tree1" src="../images/virtual_lane_tree1.png" /></p>
+<h5 id="2">2. 提交虚拟车道线生成任务</h5>
+<p>打开apollo虚拟车道线云服务页面，如下图所示：</p>
+<p><img alt="virtual_lane_fuel" src="../images/virtual_lane_fuel.png" /></p>
+<p>在New Job下拉框中选择Virtual Lane Generation选项，填写Partner ID、Access Key、Secret Key、Input Data Path（在本例中为"virtual_lane"）、Output Data Path（地图生成路径此例中为"result"）、Zone ID（根据当地实际情况填写，本例中所在地方为北京应填50）、Lidar Type（是配置的/apollo/sensor/lidar16/compensator/PointCloud2这个channel的雷达类型，此例中是lidar16）、Lane Width(车道线的宽度，此例中为3.3)、Extra ROI Extension(车道线的边界到真实道路边缘的距离，此例中为0.5)，最后点击Submit Job按钮提交。
+<strong>注意</strong>：bos需要有写权限,并且传入的zone_id应和录制数据包时localiztion.conf配置文件中的local_utm_zone_id配置项的值一致才行。</p>
+<h5 id="3-apollo">3. 获取虚拟车道线并添加到apollo中</h5>
+<p>任务完成后，将在注册的邮箱中收到一封邮件：</p>
+<p><img alt="virtual_lane_email" src="../images/virtual_lane_email.png" /></p>
+<p>如果邮件内容为上图所示则表示虚拟车道线成功生成，查看bos上的Output Data Path（此例中为result），此path的目录结构如下图所示：</p>
+<p><img alt="virtual_lane_tree2" src="../images/virtual_lane_tree2.png" /></p>
+<p>将上图中的2020-01-16-08-08-42整个文件夹拷贝到/apollo/modules/map/data/下，重命名为自己的地图名字（例如gongyuan），重启DreamView即可在地图下拉框中看到自己刚添加的地图。</p>
+<h3 id="next">NEXT</h3>
+<p>现在，您已经完成虚拟车道线制作，根据您使用的是基于Lidar的感知方案还是基于Camera的感知方案，接下来可以开始<a href="../Perception_Configuration_cn/">基于激光雷达的封闭园区自动驾驶搭建--感知适配</a>或<a href="../../Camera_Based_Auto_Driving/Perception_Configuration_cn/">基于摄像头的封闭园区自动驾驶搭建--感知适配</a></p>
+<h3 id="_6">常见问题</h3>
+<h4 id="1-boslocal_map">1. 在BOS中没有生成local_map文件夹</h4>
+<ul>
+<li>确认/apollo/modules/localization/conf/localization.conf文件中<code>--local_utm_zone_id</code> 选项和提交虚拟车道线云服务的时传入的zone_id一致。</li>
+</ul>
+<h4 id="2-bos">2. 在BOS中生成的地图有问题</h4>
+<ul>
+<li>在虚拟车道线数据包录制过程中，车只能沿着预定道路走一遍且不能闭环。</li>
+</ul>
+<h4 id="3-bos">3. 在BOS没有生成任何地图数据</h4>
+<ul>
+<li>确认提交商务申请时给的BOS bucket name和现在上传数据的BOS bucket name一致。</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

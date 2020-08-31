@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>SPAN IGM A1 Installation Guide cn - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "SPAN IGM A1 Installation Guide cn";
+    var mkdocs_page_input_path = "specs/Navigation/SPAN-IGM-A1_Installation_Guide_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>SPAN IGM A1 Installation Guide cn</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Navigation/SPAN-IGM-A1_Installation_Guide_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="span-igm-a1">SPAN-IGM-A1安装指南</h3>
+<p>NovAtel SPAN-IGM-A1是一个集成的单盒的并且紧密耦合了全球卫星导航系统和惯性导航系统，以NovAtel OEM615接收器为本身特点的方案。</p>
+<p><img alt="novatel_imu" src="../images/Novatel_imu.png" /></p>
+<p>和GPS-IMU一同使用的GPS接收器/天线是 <strong>NovAtel GPS-703-GGG-HV</strong>.</p>
+<pre><code>GPS NovAtelGPS-703-GGG-HV必须和两种GPS-IMU选择的任一模型(SPAN-IGM-A1 和 Propak6), 全球定位系统(GPS)和惯性计算单元(IMU)协同工作。
+</code></pre>
+
+<p><img alt="gps_receiver" src="../images/gps_receiver.png" /></p>
+<h4 id="gps">安装GPS接收器和天线</h4>
+<p>本安装指令描述了挂载、连接和为GPS-IMU NovAtel SPAN-IGM-A1量取和设置控制杆尺寸的步骤。</p>
+<h6 id="_1">挂载</h6>
+<p>使用者可以将装置GPS-IMU NovAtel SPAN-IGM-A1放置在车辆上的大部分位置，但是我们建议使用者采用下述的建议方案：</p>
+<ul>
+<li>将GPS-IMU NovAtel SPAN-IGM-A1放置并固定在车辆内部，同时使Y轴指向前方。</li>
+<li>将NovAtel GPS-703-GGG-HV 天线挂载在车辆上方无遮挡的区域。</li>
+</ul>
+<h6 id="_2">配线</h6>
+<p>有三个需要连接的数据线</p>
+<ul>
+<li>天线数据线将GNSS天线连接到SPAN-IGM-A1天线端口</li>
+<li>主数据线：</li>
+<li>将15-pin端连接到SPAN-IGM-A1</li>
+<li>连接电源线到一个10-to-30V DC电源</li>
+<li>连接用户端口到IPC.</li>
+<li>如果电源供应来自于车辆的电池，则需要额外增加一个辅助电池（推荐）。</li>
+<li>AUX线:</li>
+<li>连接AUX数据线到15-pin AUX端口</li>
+<li>如果USB端口用于数据传输，则连接USB数据线到IPC
+请参考下述图片：</li>
+</ul>
+<p><img alt="imu_main_cable_connection" src="../images/imu_main_cable_connection.png" /></p>
+<p>如果需要了解更多信息，请访问<a href="http://www.novatel.com/assets/Documents/Manuals/GM-14915114.pdf">the SPAN-IGM™ Quick Start Guide</a>第3页获取更多详细的图片。</p>
+<h6 id="_3">量取控制臂长度</h6>
+<p>当SPAN-IGM-A1和GPS天线处在正确位置时量取SPAN-IGM-A1到GPS天线的距离。距离被测量并记录为X轴偏移、 Y轴偏移、 和Z轴偏移。设备的中点标记在设备的外部。</p>
+<p>如果需要了解更多信息，请访问<a href="http://www.novatel.com/assets/Documents/Manuals/GM-14915114.pdf">the SPAN-IGM™ Quick Start Guide</a>第5页获取更多详细的图片。</p>
+<h4 id="gpsspan-igm-a1">配置GPS和SPAN-IGM-A1</h4>
+<p>下面展现了配置GPS和SPAN-IGM-A1的方法。该配置过程可以通过键入命令或从NovAtel Connect下载批量配置文件完成。</p>
+<pre><code>WIFICONFIG STATE OFF
+UNLOGALL THISPORT
+INSCOMMAND ENABLE
+SETIMUORIENTATION 5
+ALIGNMENTMODE AUTOMATIC  
+VEHICLEBODYROTATION 0 0 0
+COM COM1 9600 N 8 1 N OFF OFF
+COM COM2 9600 N 8 1 N OFF OFF
+INTERFACEMODE COM1 NOVATEL NOVATEL ON
+PPSCONTROL ENABLE POSITIVE 1.0 10000
+MARKCONTROL MARK1 ENABLE POSITIVE
+EVENTINCONTROL MARK1 ENABLE POSITIVE 0 2
+interfacemode usb2 rtcmv3 none off
+rtksource auto any
+psrdiffsource auto any
+
+SETIMUTOANTOFFSET 0.00 1.10866 1.14165 0.05 0.05 0.08
+SETINSOFFSET 0 0 0
+EVENTOUTCONTROL MARK2 ENABLE POSITIVE 999999990 10
+EVENTOUTCONTROL MARK1 ENABLE POSITIVE 500000000 500000000
+
+
+LOG COM2 GPRMC ONTIME 1.0 0.25
+LOG USB1 GPGGA ONTIME 1.0
+
+log USB1 bestgnssposb ontime 1
+log USB1 bestgnssvelb ontime 1
+log USB1 bestposb ontime 1
+log USB1 INSPVAXB ontime 1
+log USB1 INSPVASB ontime 0.01
+log USB1 CORRIMUDATASB ontime 0.01
+log USB1 RAWIMUSXB onnew 0 0
+log USB1 mark1pvab onnew
+
+log USB1 rangeb ontime 1
+log USB1 bdsephemerisb
+log USB1 gpsephemb
+log USB1 gloephemerisb
+log USB1 bdsephemerisb ontime 15
+log USB1 gpsephemb ontime 15
+log USB1 gloephemerisb ontime 15
+
+log USB1 imutoantoffsetsb once
+log USB1 vehiclebodyrotationb onchanged
+ 
+SAVECONFIG
+</code></pre>
+
+<p><strong><img alt="warning_icon" src="../images/warning_icon.png" /> WARNING：</strong> 基于对 SPAN-IGM-A1和天线偏移值的实际测量数据修改 <strong><u>SETIMUTOANTOFFSE</u>T</strong> 行对应的参数</p>
+<p>例如：</p>
+<pre><code>SETIMUTOANTOFFSET -0.05 0.5 0.8 0.05 0.05 0.08
+</code></pre>
+
+<p>前3个数字表示控制杆的测距结果。后3个数字表示测量的不确定性（误差）。</p>
+<h4 id="_4">资料参考</h4>
+<p>获取更多关于NovAtel SPAN-IGM-A1的信息，请参考：</p>
+<ul>
+<li>
+<p><a href="https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/">NovAtel SPAN-IGM-A1 Product Page</a></p>
+</li>
+<li>
+<p><a href="https://www.novatel.com/products/gnss-antennas/high-performance-gnss-antennas/gps-703-ggg-hv/">NovAtel GPS-703-GGG-HV Product page</a></p>
+</li>
+<li>
+<p><a href="http://www.novatel.com/assets/Documents/Manuals/GM-14915114.pdf">SPAN-IGM™ Quick Start Guide</a></p>
+</li>
+<li>
+<p><a href="http://www.novatel.com/assets/Documents/Manuals/OM-20000141.pdf">SPAN-IGM™ User Manual</a></p>
+</li>
+</ul>
+<h3 id="_5">免责声明</h3>
+<p>This device is <code>Apollo Platform Supported</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

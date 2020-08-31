@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>PwrPak7 Installation Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "PwrPak7 Installation Guide";
+    var mkdocs_page_input_path = "specs/Navigation/PwrPak7_Installation_Guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>PwrPak7 Installation Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Navigation/PwrPak7_Installation_Guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="installation-guide-of-novatel-pwrpak7">Installation Guide of NovAtel PwrPak7</h3>
+<p>NovAtel PwrPak7 is an integrated INS receiver, which has GNSS receiver and IMU included in the device.</p>
+<p><img alt="novatel_pp7" src="../images/pp7_pic.jpg" /></p>
+<h4 id="installing-the-gps-receiver">Installing the GPS Receiver</h4>
+<p>The overview of Novatel PwrPak7 is shown as below.</p>
+<p><img alt="pp7_poweron" src="../images/pp7_power.jpg" /></p>
+<p>To power on the receiver, connect +VIN_A and +VIN_B from power extension cable to power source (i.e., 12VDC) positive side, and connect both -VIN to negative side. Refer to link below about PwrPak7 power cable.</p>
+<ul>
+<li><a href="https://docs.novatel.com/OEM7/Content/Technical_Specs_Receiver/PwrPak7_Power_Cable.htm">NovAtel ProPak7 Power Cable</a></li>
+</ul>
+<p>The PwrPak7 receiver supports dual antenna, ANT1 is the port on top and considered as primary antenna, which is required by Apollo system. ANT2 is the port on bottom and considered as secondary antenna, and this is optional.</p>
+<p>To send RTK correction and log data, similar as Novatel ProPak6, we can use a USB cable and connect to the MicroUSB port on PwrPak7, and the other side to the IPC on the vehicle.</p>
+<p>The COM2 port and PPS signal are required to connect to Lidar system, which needs an extension cable of the 26-pin connector on PwrPak7. For detail information about the extension cable, refer to Novatel PwrPak All I/O Cable website below.</p>
+<ul>
+<li><a href="https://docs.novatel.com/OEM7/Content/Technical_Specs_Receiver/PwrPak7_All_IO_Cable.htm?tocpath=Specifications%7CPwrPak7%20Technical%20Specifications%7C_____11">NovAtel ProPak7 All I/O Cable</a></li>
+</ul>
+<p>You can place the PwrPak7 in most places in the vehicle, but it is suggested that you follow these recommendations:</p>
+<ul>
+<li>Place and secure the PwrPak7 inside the trunk with the Y-axis pointing forward.</li>
+<li>Use a magnetic adapter to tightly attach the antenna to the trunk lid.</li>
+<li>Install the antenna cable in the trunk by opening the trunk and placing the cable in the space between the trunk lid and the body of the car.</li>
+</ul>
+<h5 id="taking-the-lever-arm-measurement">Taking the Lever Arm Measurement</h5>
+<p>Follow these steps:</p>
+<ul>
+<li>Before taking the measurement, turn on the IPC.</li>
+<li>When the PwrPak7 and the GPS Antenna are in position, the distance from the PwrPak7 to the GPS Antenna must be measured. The center of the PwrPak7 IMU and the center of the antenna are labeled on the exterior of the devices.</li>
+<li>The distance should be measured as: X offset, Y offset, and Z offset. The axis should be determined by the IMU. The error of offset must be within one centimeter to achieve high accuracy in positioning and localization.</li>
+</ul>
+<h4 id="configuring-the-pwrpak7">Configuring the PwrPak7</h4>
+<p>Configure the GPS and IMU as shown below. This process can be done either by keying in the commands, or by loading batch configuraion file in NovAtel Connect.</p>
+<p>For PwrPak7:</p>
+<pre><code>WIFICONFIG OFF
+UNLOGALL THISPORT
+INSCOMMAND ENABLE
+SETIMUORIENTATION 5
+ALIGNMENTMODE AUTOMATIC
+VEHICLEBODYROTATION 0 0 0
+SERIALCONFIG COM1 9600 N 8 1 N OFF
+SERIALCONFIG COM2 9600 N 8 1 N OFF
+INTERFACEMODE COM1 NOVATEL NOVATEL ON
+INTERFACEMODE COM2 NOVATEL NOVATEL ON
+INTERFACEMODE USB2 RTCMV3 NONE OFF
+PPSCONTROL ENABLE POSITIVE 1.0 10000
+MARKCONTROL MARK1 ENABLE POSITIVE
+EVENTINCONTROL MARK1 ENABLE POSITIVE 0 2
+RTKSOURCE AUTO ANY
+PSRDIFFSOURCE AUTO ANY
+SETINSTRANSLATION ANT1 0.00 1.10866 1.14165 0.05 0.05 0.08
+SETINSTRANSLATION ANT2 0.00 1.10866 1.14165 0.05 0.05 0.08
+SETINSTRANSLATION USER 0.00 0.00 0.00
+EVENTOUTCONTROL MARK2 ENABLE POSITIVE 999999990 10
+EVENTOUTCONTROL MARK1 ENABLE POSITIVE 500000000 500000000
+
+LOG COM2 GPRMC ONTIME 1.0 0.25
+LOG USB1 GPGGA ONTIME 1.0
+LOG USB1 BESTGNSSPOSB ONTIME 1
+LOG USB1 BESTGNSSVELB ONTIME 1
+LOG USB1 BESTPOSB ONTIME 1
+LOG USB1 INSPVAXB ONTIME 1
+LOG USB1 INSPVASB ONTIME 0.01
+LOG USB1 CORRIMUDATASB ONTIME 0.01
+LOG USB1 RAWIMUSXB ONNEW 0 0
+LOG USB1 MARK1PVAB ONNEW
+
+LOG USB1 RANGEB ONTIME 1
+LOG USB1 BDSEPHEMERISB ONTIME 15
+LOG USB1 GPSEPHEMB ONTIME 15
+LOG USB1 GLOEPHEMERISB ONTIME 15
+
+LOG USB1 INSCONFIGB ONCE
+LOG USB1 VEHICLEBODYROTATIONB ONCHANGED
+
+SAVECONFIG
+
+</code></pre>
+
+<p><strong><img alt="warning_icon" src="../images/warning_icon.png" /> WARNING:</strong> Modify the <strong><u>SETINSTRANSLATION</u>T</strong> line based on the actual measurement (of the antenna and the IMU offset). ANT1 is for primary antenna which is required, and ANT2 is for secondary antenna and it is optional.</p>
+<p>For example:</p>
+<pre><code>SETINSTRANSLATION ANT1 -0.05 0.5 0.8 0.05 0.05 0.08
+</code></pre>
+
+<p>The first 3 numbers indicate the result of the lever arm distance measurement. The last 3 numbers are the uncertainty of the measurement.</p>
+<h4 id="references">References</h4>
+<p>For more information about the NovAtel PwrPak7, see:
+* <a href="https://docs.novatel.com/OEM7/Content/PDFs/PwrPak7_Install_Ops_Manual.pdf">NovAtel PwrPak7 Installation &amp; Operation User Manual</a>
+* <a href="https://docs.novatel.com/OEM7/Content/PwrPak_Install/PwrPak7_Install_Overview.htm?TocPath=Installation%7CPwrPak7%20Installation%7C_____4">NovAtel PwrPak7 Installation Overview</a></p>
+<h3 id="disclaimer">Disclaimer</h3>
+<p>This device is <code>Apollo Platform Supported</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

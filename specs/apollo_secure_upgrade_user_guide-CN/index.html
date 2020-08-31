@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo安全更新SDK - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo\u5b89\u5168\u66f4\u65b0SDK";
+    var mkdocs_page_input_path = "specs/apollo_secure_upgrade_user_guide-CN.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo安全更新SDK</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/apollo_secure_upgrade_user_guide-CN.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollosdk">Apollo安全更新SDK</h2>
+<p>当前大部分的软件更新过程并没有被安全的保护起来，因此在更新过程中设备将被暴露在诸多的安全威胁下。Apollo安全更新SDK提供了多种保护更新安全的特性，并且能够很容易的被集成以使更新流程更加安全可靠。</p>
+<h3 id="_1">特性</h3>
+<ol>
+<li>在储存和传输阶段，更新包被加密和签名保护。</li>
+<li>服务器和设备可以互相鉴定</li>
+<li>加密信息被安全合理的保护</li>
+<li>服务器针对不同的设备提供不同的授权</li>
+<li>防止攻击者利用服务器的应答对设备实施重传攻击</li>
+<li>支持多个平台（Ubuntu 14, Centos 6, Centos 7 and Andorid）</li>
+</ol>
+<h3 id="_2">更新流程</h3>
+<p>一种典型的更新流程如下图所示：</p>
+<p><img alt="" src="../images/apollo_unsecure_upgrade_procedure.jpg" /></p>
+<ol>
+<li>更新服务器生成更新包</li>
+<li>更新包上传至存储服务器</li>
+<li>存储服务器将更新包的url地址发送给更新服务器</li>
+<li>设备发送更新请求到更新服务器</li>
+<li>更新服务器将更新包的url回复给设备</li>
+<li>设备从存储服务器请求下载更新包</li>
+<li>更新包下载到设备上</li>
+<li>设备安装更新包</li>
+</ol>
+<p>在集成Apollo安全更新SDK后，更新流程修改为：</p>
+<p><img alt="" src="../images/apollo_secure_upgrade_procedure.jpg" /></p>
+<ol>
+<li>更新服务器生成安全更新包和更新包的token</li>
+<li>安全更新包和更新包token上传至存储服务器</li>
+<li>存储服务器将安全更新包的url和更新包token的url发送给更新服务器</li>
+<li>设备生成设备token并发送到更新服务器</li>
+<li>更新服务器生成授权token并将该token连同安全更新包的url一起发送给设备</li>
+<li>设备向存储服务器请求安全更新包</li>
+<li>安全更新包下载到设备上</li>
+<li>设备使用授权token验证安全更新包，并生成原始更新包</li>
+<li>设备安装更新包</li>
+</ol>
+<h3 id="_3">用户指南</h3>
+<h4 id="1-sdk">1. SDK文件布局</h4>
+<p>SDK包含4个目录：
+1. python API: python接口
+2. config: SDK根配置文件，日志文件
+3. certificate: 证书文件
+4. depend_lib: 依赖库</p>
+<h4 id="2">2. 接口</h4>
+<h5 id="a">a) 初始化</h5>
+<p>该函数应当在使用安全更新API前调用</p>
+<pre><code>init_secure_upgrade(root_config_path)
+input para:
+  root_config_path  root configuration file path
+</code></pre>
+
+<h5 id="b-token">b) 设备token生成</h5>
+<p>该函数用于生成设备token</p>
+<pre><code>sec_upgrade_get_device_token()
+Output para:
+  return code: true    generating device token successfully
+               false    generating device token failed
+  Device_token: device token (string format)
+</code></pre>
+
+<h5 id="c">c) 更新包生成</h5>
+<p>该函数用于生成安全更新包和更新包token</p>
+<pre><code>sec_upgrade_get_package(original_package_path,
+                        secure_package_path,
+                        package_token_path)
+input para:
+    original_package_path    original upgrade package file path
+    secure_package_path    secure upgrade package file path
+    package_token_path    secure package token file     
+output para:
+    return code:
+        true    generating secure upgrade package successfully
+        false    generating secure upgrade package failed
+</code></pre>
+
+<h5 id="d-token">d) 授权token生成</h5>
+<p>该函数基于设备token和更新包token生成设备的授权token</p>
+<pre><code>sec_upgrade_get_authorization_token(package_token_path,
+                                    device_token_path)
+input para:
+    package_token_path    secure package token file path
+    device_token_path    device token file path
+output_para:
+    return code:
+        true    generating authorization token successfully
+        false    generating authorization token failed
+        authorization_token authorization token buffer(string formate)
+</code></pre>
+
+<h5 id="e-token">e) 授权token和更新包检验</h5>
+<p>该函数使用授权token检验下载的安全更新包并生成原始更新包</p>
+<pre><code>sec_upgrade_verify_package(authorization_token_buffer,
+                           secure_package_path)
+input para:
+    authorization_token_buffer    authorization token buffer(string format)
+    secure_package_path    secure upgrade package file path
+output para:
+    original_package_path    original upgrade package file path
+</code></pre>
+
+<h4 id="3">3. 附加信息</h4>
+<ol>
+<li>SDK使用标准的PEM证书</li>
+<li>在使用SDK前，使用者需要为服务器和设备生成两个不同的证书串</li>
+<li>服务器证书串中的证书配置给服务器，请确保其不能对其他证书进行签名</li>
+<li>设备证书串中的证书配置给设备，请确保其不能对其他证书进行签名</li>
+<li>根密钥不应当配置给服务器和设备</li>
+<li>使用者应当具有<code>config</code>文件夹的读写权限和<code>certificate</code>文件夹的读权限</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Apollo Sensor Unit Installation Guide - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo Sensor Unit Installation Guide";
+    var mkdocs_page_input_path = "specs/Apollo_Sensor_Unit/Apollo_Sensor_Unit_Installation_Guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo Sensor Unit Installation Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Apollo_Sensor_Unit/Apollo_Sensor_Unit_Installation_Guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="guide-for-apollo-sensor-unit">Guide for Apollo Sensor Unit</h3>
+<p>Apollo Sensor Unit (ASU) is designed to work with Industrial PC (IPC) to implement sensor fusion, vehicle control and network access in Apollo's autonomous driving platform.</p>
+<p>The ASU system provides sensor interfaces to collect data from various sensors, including cameras, Lidars, Radars, and Ultrasonic Sensors. The system also utilizes pulse per second (PPS) and GPRMC signals from GNSS receiver to implement data collection synchronization for the camera and LiDAR sensors.</p>
+<p>The communication between the ASU and the IPC is through PCI Express Interface. ASU collects sensor data and passes to IPC via PCI Express Interface, and the IPC uses the ASU to send out Vehicle Control commands in the Controller Area Network (CAN) protocol.</p>
+<p>In addition, Lidar connectivity via Ethernet, WWAN gateway via 4G LTE module, and WiFi access point via WiFi module will be enabled in the future releases.</p>
+<p><img alt="ASU_pic" src="../images/ASU_pic.jpg" /></p>
+<h4 id="system-connectors">System Connectors</h4>
+<h5 id="front-panel-connectors">Front Panel Connectors</h5>
+<ol>
+<li>External GPS PPS / GPRMC Input Port</li>
+<li>FAKRA Camera Data Input Port (5 ports)</li>
+<li>100 Base-TX/1000 Base-T Ethernet Port (2 Ports)</li>
+<li>KL-15 (AKA Car Ignition) Signal Input Port</li>
+</ol>
+<h5 id="rear-panel-connectors">Rear Panel Connectors</h5>
+<ol>
+<li>General purpose UART port(reserved)</li>
+<li>External PCI Express Port (Support X4 or X8) For connections to IPC, please use EXTN port.</li>
+<li>GPS PPS/GPRMC Output Rectangular Port (3 Ports) for LiDAR</li>
+<li>Power and PPS/GPRMC Cylindrical Output Port for Stereo Camera/LiDAR</li>
+<li>CAN Bus (4 Ports)</li>
+<li>Main Power Input Connector</li>
+</ol>
+<h4 id="purchase-channels">Purchase Channels</h4>
+<p>The Apollo Sensor Unit is currently only provided to our Partners and certain developers. Questions regarding the availability and access to ASU should be directed to  apollo-hw@baidu.com</p>
+<h4 id="installation">Installation</h4>
+<ol>
+<li>Power Cable</li>
+</ol>
+<p>The main power is from vehicle battery, 9V ~ 36V, 120W.</p>
+<p><img alt="conn-DTF13-2P" src="../images/conn-DTF13-2P.jpeg" /></p>
+<table>
+<thead>
+<tr>
+<th>MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TE Connectivity</td>
+<td>DTF13-2P</td>
+<td>DT RECP ASM</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>12V</td>
+<td>PWR</td>
+<td>12V (9V~36V, 120W)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GND</td>
+<td>PWR</td>
+<td>GROUND</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>FPD-Link III cameras.</li>
+</ol>
+<p>There are 5 FAKRA connectors for FPD Link III cameras in ASU Front Panel labeled with 1~5, respectively, from right to left. The ASU can support up to 5 cameras by enabling Camera 1 ~ 5 whose deserializers (TI, DS90UB914ATRHSTQ1) convert FPD Link III signals into parallel data signals.</p>
+<table>
+<thead>
+<tr>
+<th>Camera #</th>
+<th>I2C Address</th>
+<th>Deserializer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0x60</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0x61</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0x62</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0x63</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0x64</td>
+<td>DS90UB914ATRHSTQ1</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>GPS synchronization input channel</li>
+</ol>
+<p>GPS synchronization input channel is using 1565749-1 from TE Connectivity as the connector. The connector information and the pinout are shown in the tables below.</p>
+<p><img alt="conn_1565749-1" src="../images/conn_1565749-1.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">TE Connectivity</td>
+<td>1565749-1</td>
+<td>Automotive Connectors 025 CAP ASSY, 4 Pin</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GPRMC</td>
+<td>INPUT</td>
+<td>GPRMC TX</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NC</td>
+<td>NC</td>
+<td>NO CIRCUIT</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GND</td>
+<td>PWR</td>
+<td>GROUND (the ground for PPS and GPRMC should be shorted on ground)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PPS</td>
+<td>INPUT</td>
+<td>Pulse per Second from GPS transceiver, 3.3V CMOS Signal</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>GPS synchronization output channels</li>
+</ol>
+<p>ASU forwards the duplicated GPS PPS/GPRMC from external GPS to the customized 8 Pin connector. This connector provides 3 sets of PPS/GPRMC output for sensors that need to be synchronized, such as LiDARs, etc.</p>
+<p><img alt="1376350-2" src="../images/1376350-2.jpeg" /></p>
+<table>
+<thead>
+<tr>
+<th>MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TE Connectivity</td>
+<td>1376350-2</td>
+<td>Automotive Connectors 025 I/O CAP HSG ASSY, 8 Pin</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GPRMC0</td>
+<td>OUTPUT</td>
+<td>Channel 0, GPRMC OUTPUT, RS-232 Signal</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PPS0</td>
+<td>OUTPUT</td>
+<td>Pulse per Second from GPS transceiver, 3.3V CMOS Signal</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GPRMC1</td>
+<td>OUTPUT</td>
+<td>Channel 1, GPRMC OUTPUT, RS-232 Signal</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PPS1</td>
+<td>OUTPUT</td>
+<td>Pulse per Second from GPS transceiver, 3.3V CMOS Signal</td>
+</tr>
+<tr>
+<td>5</td>
+<td>GPRMC2</td>
+<td>OUTPUT</td>
+<td>Channel 2, GPRMC OUTPUT, RS-232 Signal</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GND</td>
+<td>PWR</td>
+<td>GROUND</td>
+</tr>
+<tr>
+<td>7</td>
+<td>GND</td>
+<td>PWR</td>
+<td>GROUND</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PPS2</td>
+<td>OUTPUT</td>
+<td>Pulse per Second from GPS transceiver, 3.3V CMOS Signal</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>CAN interface</li>
+</ol>
+<p>The ASU provides 4 CAN Bus ports, the datapath is :</p>
+<p><img alt="CAN_datapath" src="../images/CAN_path.png" /></p>
+<table>
+<thead>
+<tr>
+<th>MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TE Connectivity</td>
+<td>1318772-2</td>
+<td>Automotive Connectors 025 I/O CAP HSG ASSY, 12 Pin</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>CANH-0</td>
+<td>INOUT</td>
+<td>Channel 0, CANH</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CANL-0</td>
+<td>INOUT</td>
+<td>Channel 0, CANL</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CANH-1</td>
+<td>INOUT</td>
+<td>Channel 1, CANH</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CANL-1</td>
+<td>INOUT</td>
+<td>Channel 1, CANL</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CANH-2</td>
+<td>INOUT</td>
+<td>Channel 2, CANH</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CANL-2</td>
+<td>INOUT</td>
+<td>Channel 2, CANL</td>
+</tr>
+<tr>
+<td>9</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>10</td>
+<td>CANH-3</td>
+<td>INOUT</td>
+<td>Channel 3, CANH</td>
+</tr>
+<tr>
+<td>11</td>
+<td>CANL-3</td>
+<td>INOUT</td>
+<td>Channel 3, CANL</td>
+</tr>
+<tr>
+<td>12</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p>GPS PPS / GPRMC Output Rectangular Port</p>
+<p>The Connector provides 8 ports for 3 LiDARs</p>
+<p><img alt="" src="../images/ASU_Port3.png" /></p>
+<table>
+<thead>
+<tr>
+<th>MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digi-Key</td>
+<td>A121343-ND</td>
+<td>025 I/O PLUG HSG ASSY 8P</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GPRMC</td>
+<td>OUT</td>
+<td>GPRMC (ASU) -&gt; Pin4 GPS_RXD_CNT (LiDAR 1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PPS</td>
+<td>OUT</td>
+<td>PPS (ASU) -&gt; Pin1 GPS_PULSE_CNT (LiDAR 1)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GPRMC</td>
+<td>OUT</td>
+<td>GPRMC (ASU) -&gt; Pin4 GPS_RXD_CNT (LiDAR 2)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PPS</td>
+<td>OUT</td>
+<td>PPS (ASU) -&gt; Pin1 GPS_PULSE_CNT (LiDAR 2)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>GPRMC</td>
+<td>OUT</td>
+<td>GPRMC (ASU) -&gt; Pin4 GPS_RXD_CNT (LiDAR 3)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground (ASU) -&gt; Pin3 GND (LiDAR 1,3)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground (ASU) -&gt; Pin3 GND (LiDAR 2)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PPS</td>
+<td>OUT</td>
+<td>PPS (ASU) -&gt; Pin1 GPS_PULSE_CNT (LiDAR 3)</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>PPS/GPRMC Cylindrical Output Port for Stereo Camera/ LiDAR</p>
+<p>The Connector provides 8 ports but we currently use only 3</p>
+<p><img alt="" src="../images/ASU_Port4.png" /></p>
+<table>
+<thead>
+<tr>
+<th>MFR</th>
+<th>MPN</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digi-Key</td>
+<td>APC1735-ND</td>
+<td>CONN RCPT FMALE 8POS SOLDER CUP</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>PIN #</th>
+<th>NAME</th>
+<th>I/O</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>PPS</td>
+<td>OUT</td>
+<td>PPS (ASU) -&gt; Pin1 GPS_PULSE_CNT (LiDAR)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>GPRMC</td>
+<td>OUT</td>
+<td>GPRMC (ASU) -&gt; Pin4 GPS_RXD_CNT (LiDAR)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>GND</td>
+<td>PWR</td>
+<td>Ground (ASU) -&gt; Pin3 GND (LiDAR)</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h3 id="disclaimer">Disclaimer</h3>
+<p>This device is <code>Apollo Platform Supported</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Propak 6 IMU IGM A1 Installation Guide cn - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Propak 6 IMU IGM A1 Installation Guide cn";
+    var mkdocs_page_input_path = "specs/Navigation/Propak_6_IMU-IGM-A1_Installation_Guide_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Propak 6 IMU IGM A1 Installation Guide cn</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Navigation/Propak_6_IMU-IGM-A1_Installation_Guide_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="novatel-propak6-novatel-imu-igm-a1">NovAtel Propak6 和 NovAtel IMU-IGM-A1 安装指南</h3>
+<p>NovAtel ProPak6 是一个独立的GNSS接收器。它和一个单独的 NovAtel-supported IMU 协同工作提供定位功能。</p>
+<p>IMU-IGM-A1是一个IMU（惯性计算单元）并与一个SPAN-enabled GNSS接收器例如SPAN ProPak6相互配对进行工作。</p>
+<p><img alt="novatel_pp6" src="../images/Novatel_pp6.png" /></p>
+<p>和GPS-IMU一同使用的GPS接收器/天线是 <strong>NovAtel GPS-703-GGG-HV</strong>。</p>
+<p><img alt="gps_receiver" src="../images/gps_receiver.png" /></p>
+<h4 id="gps">安装GPS接收器和天线</h4>
+<p>本安装指令描述了挂载、连接和为 <strong>GPS NovAtel SPAN® ProPak6™</strong> 与 <strong>NovAtel IMU-IGM-A1</strong> 量取和设置控制杆尺寸的步骤</p>
+<h6 id="_1">安装需要的组件</h6>
+<p>在安装过程中需要的组件包括：</p>
+<ul>
+<li>NovAtel GPS SPAN ProPak6</li>
+<li>NovAtel IMU-IGM-A1</li>
+<li>NovAtel GPS-703-GGG-HV Antenna</li>
+<li>NovAtel GPS-C006 Cable (将天线连接到GPS)</li>
+<li>NovAtel 01019014 Main Cable (连接GPS到IPC上的串口)</li>
+<li>Data Transport Unit (DTU) – 和4G路由器相同</li>
+<li>磁性适配器 (固定天线和DTU)</li>
+<li>DB9 直通网线</li>
+</ul>
+<h6 id="_2">挂载</h6>
+<p>使用者可以将装置 ProPak6 和IMU放置在车辆上的大部分位置，但是我们建议使用者采用下述的建议方案：</p>
+<ul>
+<li>将ProPak6和IMU 并列放置并固定在车辆内部，同时使Y轴指向前方。</li>
+<li>将NovAtel GPS-703-GGG-HV 天线挂载在车辆上方，或者车辆盖子的上面 ，如下图所示：</li>
+</ul>
+<p><img alt="gps_receiver_on_car" src="../images/gps_receiver_on_car.png" /></p>
+<ul>
+<li>使用一个磁性适配器将天线牢固的固定在车辆盖子上。</li>
+<li>打开车辆盖子，将天线的数据线放置在车辆盖子和车身之间的空闲区域。</li>
+</ul>
+<h6 id="_3">配线</h6>
+<p>执行如下步骤将ProPak6 GNSS接收器和IMU连接到Apollo系统：</p>
+<ul>
+<li>使用为IMU-IGM-A1设备分配的分股数据线连接IMU Main端口和ProPak6 COM3/IMU端口。</li>
+<li>使用一个USB-A-to-MicroUSB数据线连接IPC的USB端口和ProPak6的MicroUSB端口。</li>
+<li>将IMU-IGM-A1分股数据线的其他端接口连接到车辆的电源系统。</li>
+<li>连接GNSS天线到Propak6。</li>
+<li>连接Propak6的电源线。</li>
+</ul>
+<p><img alt="wiring" src="../images/wiring.png" /></p>
+<h5 id="_4">量取控制臂长度</h5>
+<p>参考下述步骤：</p>
+<ul>
+<li>在量取尺寸前需要启动IPC</li>
+<li>当IMU和GPS天线处在正确位置时量取IMU到GPS天线的距离。IMU 的中点和天线的中点标记在设备的外部。</li>
+<li>距离被测量并记录为X轴偏移、Y轴偏移和Z轴偏移。 坐标轴由IMU的位置确定。偏移量的误差应该被控制在一厘米以内以获取高精度的定位信息。</li>
+</ul>
+<h4 id="gpsimu">配置GPS和IMU</h4>
+<p>下面展现了配置GPS和IMU的方法。该配置过程可以通过键入命令或从NovAtel Connect下载批量配置文件完成。</p>
+<pre><code>WIFICONFIG STATE OFF
+UNLOGALL THISPORT
+CONNECTIMU COM3 IMU_ADIS16488
+INSCOMMAND ENABLE
+SETIMUORIENTATION 5
+ALIGNMENTMODE AUTOMATIC  
+VEHICLEBODYROTATION 0 0 0
+COM COM1 9600 N 8 1 N OFF OFF
+COM COM2 9600 N 8 1 N OFF OFF
+INTERFACEMODE COM1 NOVATEL NOVATEL ON
+PPSCONTROL ENABLE POSITIVE 1.0 10000
+MARKCONTROL MARK1 ENABLE POSITIVE
+EVENTINCONTROL MARK1 ENABLE POSITIVE 0 2
+interfacemode usb2 rtcmv3 none off
+rtksource auto any
+psrdiffsource auto any
+SETIMUTOANTOFFSET 0.00 1.10866 1.14165 0.05 0.05 0.08
+SETINSOFFSET 0 0 0
+EVENTOUTCONTROL MARK2 ENABLE POSITIVE 999999990 10
+EVENTOUTCONTROL MARK1 ENABLE POSITIVE 500000000 500000000
+
+
+LOG COM2 GPRMC ONTIME 1.0 0.25
+LOG USB1 GPGGA ONTIME 1.0
+
+log USB1 bestgnssposb ontime 1
+log USB1 bestgnssvelb ontime 1
+log USB1 bestposb ontime 1
+log USB1 INSPVAXB ontime 1
+log USB1 INSPVASB ontime 0.01
+log USB1 CORRIMUDATASB ontime 0.01
+log USB1 RAWIMUSXB onnew 0 0
+log USB1 mark1pvab onnew
+
+log USB1 rangeb ontime 1
+log USB1 bdsephemerisb
+log USB1 gpsephemb
+log USB1 gloephemerisb
+log USB1 bdsephemerisb ontime 15
+log USB1 gpsephemb ontime 15
+log USB1 gloephemerisb ontime 15
+
+log USB1 imutoantoffsetsb once
+log USB1 vehiclebodyrotationb onchanged
+ 
+SAVECONFIG
+</code></pre>
+
+<p><strong><img alt="warning_icon" src="../images/warning_icon.png" /> WARNING：</strong> 基于对IMU和天线偏移值的实际测量数据修改 <strong><u>SETIMUTOANTOFFSET</u></strong> 行对应的参数</p>
+<p>例如：</p>
+<pre><code>SETIMUTOANTOFFSET -0.05 0.5 0.8 0.05 0.05 0.08
+</code></pre>
+
+<p>前3个数字表示控制杆的测距结果。后3个数字表示测量的不确定性（误差）</p>
+<h4 id="_5">参考资料</h4>
+<p>获取更多关于NovAtel SPAN ProPak6和IMU-IGM-A1的信息，请参考：
+* <a href="https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf">NovAtel ProPak6 Installation &amp; Operation Manual</a>
+* <a href="https://www.novatel.com/products/span-gnss-inertial-systems/span-imus/span-mems-imus/imu-igm-a1/#overview">NovAtel IMU-IGM-A1 Product Page</a></p>
+<ul>
+<li><a href="https://www.novatel.com/products/gnss-antennas/high-performance-gnss-antennas/gps-703-ggg-hv/">NovAtel GPS-703-GGG-HV</a></li>
+</ul>
+<h3 id="_6">免责声明</h3>
+<p>This device is <code>Apollo Platform Supported</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

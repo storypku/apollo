@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Software Overview of Apollo - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Software Overview of Apollo";
+    var mkdocs_page_input_path = "quickstart/apollo_software_installation_guide.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Software Overview of Apollo</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/apollo_software_installation_guide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="software-overview-of-apollo">Software Overview of Apollo</h2>
+<p>Apollo has been initiated to provide an open, comprehensive, and reliable software platform for its partners in the automotive and autonomous-driving industries. Partners can use the Apollo software platform and the reference hardware that Apollo has certified as a template to customize in the development of their own autonomous vehicles.</p>
+<h2 id="apollo-software-installation">Apollo Software Installation</h2>
+<p>This section includes:</p>
+<ul>
+<li><a href="#download-apollo-source">Download the Apollo Release Package</a></li>
+<li><a href="#Set-up-the-Docker-environment">Set up the Docker environment</a></li>
+<li><a href="#Support-a-new-Vehicle-in-DreamView">Support a new Vehicle in DreamView</a></li>
+<li><a href="#Install-apollo-kernel">Install Apollo Kernel</a></li>
+<li><a href="#Run-Apollo-in-Ubuntu-16">Run Apollo in Ubuntu 16</a></li>
+</ul>
+<p>Before getting started, please make sure you have installed Ubuntu Linux 14.04.3 and the Apollo Kernel following the steps in the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_0_hardware_system_installation_guide.md#installing-the-software-for-the-ipc">Apollo core Software Installation Guide</a>.</p>
+<h3 id="download-apollo-source">Download Apollo Source</h3>
+<ol>
+<li>
+<p>Download Apollo source code from the <a href="https://github.com/ApolloAuto/apollo/">github source</a> and check out the correct branch:</p>
+<p><code>git clone git@github.com:ApolloAuto/apollo.git
+cd apollo
+git checkout [release_branch_name]</code></p>
+</li>
+<li>
+<p>Set up environment variable <code>APOLLO_HOME</code> by the following command:</p>
+<p><code>echo "export APOLLO_HOME=$(pwd)" &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc</code></p>
+</li>
+<li>
+<p>Open a new terminal or run <code>source ~/.bashrc</code> in an existing terminal.</p>
+</li>
+</ol>
+<p><img alt="tip" src="../images/tip_icon.png" /> In the following sections, it is assumed that the Apollo directory is located in  <code>$APOLLO_HOME</code>.</p>
+<h3 id="set-up-the-docker-environment">Set Up the Docker Environment</h3>
+<p>The Docker container is the simplest way to set up the build environment for Apollo.</p>
+<p>For more information, see the detailed Docker tutorial <a href="https://docs.docker.com/">here</a>.</p>
+<ol>
+<li>Please follow the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu">official guide to install the docker-ce 19.03+</a>.</li>
+</ol>
+<p>Don't forget the <a href="https://docs.docker.com/install/linux/linux-postinstall">post-installation steps for Linux</a>.</p>
+<ol>
+<li>
+<p>After the installation, log out and then log back into the system to enable Docker.</p>
+</li>
+<li>
+<p>(Optional) If you already have Docker installed (before you installed the Apollo Kernel), add the following line in <code>/etc/default/docker</code>:</p>
+<p><code>DOCKER_OPTS = "-s overlay"</code></p>
+</li>
+<li>
+<p>Install latest nvidia-container-toolkit by following the <a href="https://github.com/NVIDIA/nvidia-docker">official doc</a>.</p>
+</li>
+</ol>
+<p>We encourage you to continue the Build process using <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_release.md#build_release">Build the Dev docker environment</a> if you have not already set it up.</p>
+<h3 id="support-a-new-vehicle-in-dreamview">Support a new Vehicle in DreamView</h3>
+<p>In order to support a new vehicle in DreamView, please follow the steps below:</p>
+<ol>
+<li>
+<p>Create a new folder for your vehicle under <code>modules/calibration/data</code></p>
+</li>
+<li>
+<p>There is already a sample file in the <code>modules/calibration/data</code> folder named <code>mkz_example</code>. Refer to this structure and include all necessary configuration files in the same file structure as “mkz_example”. Remember to update the configuration files with your own parameters if needed. </p>
+</li>
+<li>
+<p>Restart DreamView and you will be able to see your new vehicle (name is the same as your newly created folder) in the selected vehicle.</p>
+</li>
+</ol>
+<h3 id="install-apollo-kernel">Install Apollo Kernel</h3>
+<p>The Apollo runtime in the vehicle requires the <a href="https://github.com/ApolloAuto/apollo-kernel">Apollo Kernel</a>. It is strongly recommended to install the pre-built kernel.</p>
+<h4 id="use-the-pre-built-apollo-kernel">Use the pre-built Apollo Kernel</h4>
+<p>You get access to and install the pre-built kernel using the following commands.</p>
+<ol>
+<li>Download the release packages from the release section on GitHub:</li>
+</ol>
+<pre><code>https://github.com/ApolloAuto/apollo-kernel/releases
+</code></pre>
+
+<ol>
+<li>Install the kernel after having downloaded the release package:</li>
+</ol>
+<pre><code>tar zxvf linux-4.4.32-apollo-1.5.0.tar.gz
+cd install
+sudo bash install_kernel.sh
+</code></pre>
+
+<ol>
+<li>Reboot your system using the <code>reboot</code> command.</li>
+<li>[Optional - if you are using CAN card for interface] Build the CAN driver source code, according to the vendor's instructions</li>
+</ol>
+<h4 id="build-your-own-kernel">Build your own kernel</h4>
+<p>If you have modified the kernel, or the pre-built kernel is not the best for your platform, you can build your own kernel using the following steps:</p>
+<ol>
+<li>Clone the code from the repository</li>
+</ol>
+<pre><code>git clone https://github.com/ApolloAuto/apollo-kernel.git
+cd apollo-kernel
+</code></pre>
+
+<ol>
+<li>Add the CAN driver source code according to vendor's instruction</li>
+<li>Build the kernel using the following command:</li>
+</ol>
+<pre><code>bash build.sh
+</code></pre>
+
+<ol>
+<li>Install the kernel using the steps for a pre-built Apollo Kernel as described in the previous section.</li>
+</ol>
+<h3 id="run-apollo-in-ubuntu-16">Run Apollo in Ubuntu 16</h3>
+<p>Please refer to
+<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_run_apollo_2.5_with_ubuntu16.md">How to run Apollo with Ubuntu 16</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

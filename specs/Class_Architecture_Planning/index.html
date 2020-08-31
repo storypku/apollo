@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Class Architecture and Overview -- Planning Module - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Class Architecture and Overview -- Planning Module";
+    var mkdocs_page_input_path = "specs/Class_Architecture_Planning.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Class Architecture and Overview -- Planning Module</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/Class_Architecture_Planning.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="class-architecture-and-overview-planning-module">Class Architecture and Overview -- Planning Module</h2>
+<h3 id="data-output-and-input">Data Output and Input</h3>
+<h4 id="output-data">Output Data</h4>
+<p>The planning output data is defined in <code>planning.proto</code>, as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image001.png" /></p>
+<h5 id="planningproto"><em>planning.proto</em></h5>
+<p>Inside the proto data definition, the planning output includes the total planned time and length, as well as the actual trajectory for control to execute, and is defined in <code>repeated apollo.common.TrajectoryPointtrajectory_point</code>.  </p>
+<p>A trajectory point is derived from a <code>path_point</code>, where speed, acceleration and timing attributes are added. Each <code>trajectory_point</code> as defined in <code>pnc_point.proto</code>, and contains detailed attributes of the trajectory.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image002.png" /></p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image003.png" /></p>
+<p>In addition to the trajectory, the planning module also outputs rich annotation information. The important data fields are:</p>
+<ul>
+<li>Estop</li>
+<li>DecisionResult</li>
+<li>Debug information</li>
+</ul>
+<p><code>Estop</code> is a command that indicates errors and exceptions. For example, when the autonomous vehicle collides with an obstacle or cannot obey traffic rules, estop signals are sent. The <code>DecisionResult</code> data is used mainly for simulation display so that developers have a better understanding of the planning results. More detailed numerical intermediate results are stored in the debug information and sent out for debugging purposes.</p>
+<h3 id="input-data">Input Data</h3>
+<p>To compute the final published trajectory, the planning module leverages various input data sources. The planning input data sources are:</p>
+<ul>
+<li>Routing</li>
+<li>Perception and Prediction</li>
+<li>Vehicle Status and Localization</li>
+<li>HD-Map</li>
+</ul>
+<p>Routing defines the query concept “where I want to go” for the autonomous vehicle, and the message is defined in <code>routing.proto</code>. The <code>RoutingResponse</code> contains the <code>RoadSegment</code>, which identifies the road to follow or the lanes to use to reach the destination as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image004.png" /></p>
+<p>The messages regarding the query concept  “what is surrounding me” are defined mainly in <code>perception_obstacles.proto</code> and <code>traffic_light_detection.proto</code>. The <code>perception_obstacles.proto</code> defines the obstacles perceived by the perception module around the autonomous vehicle, while <code>traffic_light_detection</code> defines the perceived traffic light statuses (if any). In addition to the perceived obstacles, what is important for the planning module are the predicted trajectories for each perceived dynamic obstacle. Therefore, the <code>prediction.proto</code> wraps the <code>perception_obstacle</code> message with a predicted trajectory, as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image005.png" /></p>
+<p>Each predicted trajectory has a probability associated with it, and one obstacle might have multiple predicted trajectories. </p>
+<p>In addition to the query concepts “where I want to go” and “what is surrounding me”, another important query concept is “where am I”. Such information is obtained from the HD-Map and Localization modules. Both localization and vehicle chassis information are incorporated in the messages of <code>VehicleState</code> that is defined in the <code>vehicle_state.proto</code>, as shown below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image009.png" /></p>
+<h3 id="code-structure-and-class-hierarchy">Code Structure and Class Hierarchy</h3>
+<p>The code is organized as follows: The planning code entrance is the <code>planning.cc</code>. Inside the planner, the important class members are shown in the illustration below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image006.png" /></p>
+<p>The <code>ReferenceLineInfo</code> is a wrapper of the <code>ReferenceLine</code> class, which represents a smoothed guideline for planning. </p>
+<p><strong>Frame</strong> contains all the data dependencies including the perceived obstacles with their predicted trajectories, and the current status of the autonomous vehicle. </p>
+<p><strong>HD-Map</strong> is leveraged as a library inside the planning module for ad-hoc fashioned map queries. </p>
+<p><strong>EM Planner</strong> does the actual planning and derives from the <strong>Planner</strong> class. Both the Em Planner that is used in the Apollo 2.0 release, and the previously released <strong>RTK Planner</strong> derive from the Planner class.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image007.png" /></p>
+<p>For example, inside a planning cycle performed by the EM Planner, take an iterative approach where three categories of tasks interweave. The relationships of these “<strong>decider/optimizer</strong>” classes are illustrated below.</p>
+<p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image008.png" /></p>
+<ul>
+<li>
+<p><strong>Deciders</strong> include traffic decider, path decider and speed decider.</p>
+</li>
+<li>
+<p><strong>Path Optimizers</strong> are the DP/QP path optimizers.</p>
+</li>
+<li>
+<p><strong>Speed Optimizers</strong> are the DP/QP speed optimizers.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>NOTE:</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DP means dynamic programming while QP means quadratic programming. After the computation, the final spatio-temporal trajectory is then discretized and published so that the downstream control module is able to execute it.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

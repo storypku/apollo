@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Apollo简介 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Apollo\u7b80\u4ecb";
+    var mkdocs_page_input_path = "quickstart/apollo_software_installation_guide_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Apollo简介</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/quickstart/apollo_software_installation_guide_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="apollo">Apollo简介</h2>
+<p>Apollo已经开始为汽车和自主驾驶行业的合作伙伴提供开放，全面，可靠的软件平台。合作伙伴可以使用Apollo软件平台和通过Apollo认证的参考硬件模板来定制自己的自主车辆研发。</p>
+<h2 id="apollo_1">Apollo软件安装指南</h2>
+<p>本节包括：</p>
+<ul>
+<li>下载Apollo发行包</li>
+<li>设置Docker支持</li>
+<li>自定义你的发布容器</li>
+</ul>
+<p>在开始之前，请确保您已经按照<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_0_hardware_system_installation_guide.md#installing-the-software-for-the-ipc">Apollo 1.0 Hardware and System Installation Guide</a>中的步骤安装了Ubuntu Linux 14.04.3和Apollo Kernel。</p>
+<h3 id="apollo_2">下载Apollo源代码</h3>
+<ol>
+<li>
+<p>从<a href="https://github.com/ApolloAuto/apollo/">github source</a>下载Apollo的源代码：</p>
+<p><code>git clone git@github.com:ApolloAuto/apollo.git
+cd apollo
+git checkout [release_branch_name]</code></p>
+</li>
+<li>
+<p>参考以下命令设置环境变量 <code>APOLLO_HOME</code>:</p>
+<p><code>echo "export APOLLO_HOME=$(pwd)" &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc</code></p>
+</li>
+<li>
+<p>在一个新的终端或者已有的终端中输入<code>source ~/.bashrc</code></p>
+</li>
+</ol>
+<p><img alt="tip" src="../images/tip_icon.png" /> 在以下部分中，假设Apollo目录位于 <code>$APOLLO_HOME</code>.</p>
+<h3 id="docker">设置Docker支持</h3>
+<p>Docker容器是设置Apollo构建环境的最简单方法。</p>
+<p>有关更多信息，请参阅Docker详细教程 <a href="https://docs.docker.com/">here</a>.</p>
+<ol>
+<li>
+<p>请参考<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu">Ubuntu安装docker-ce指南</a>
+以及<a href="https://docs.docker.com/install/linux/linux-postinstall">Linux安装后续</a>.</p>
+</li>
+<li>
+<p>安装完成后，注销并重新登录系统以启用Docker。</p>
+</li>
+<li>
+<p>（可选）如果您已经安装了Docker（在安装Apollo内核之前），请在其中添加以下行 <code>/etc/default/docker</code>:</p>
+<p><code>DOCKER_OPTS = "-s overlay"</code>
+4. 安装最新的 <a href="https://github.com/NVIDIA/nvidia-docker">nvidia-container-toolkit</a>.</p>
+</li>
+</ol>
+<h3 id="release-container">使用你的Release Container</h3>
+<ol>
+<li>
+<p>通过运行以下命令下载并启动Apollo 发布的 Docker映像：</p>
+<p><code>cd $APOLLO_HOME
+bash docker/scripts/release_start.sh</code></p>
+</li>
+<li>
+<p>（可选）如果你需要定制化你的Docker映像，通过运行以下命令登录你已下载的 Docker映像：</p>
+<p><code>bash docker/scripts/release_into.sh</code></p>
+</li>
+<li>
+<p>（该步骤只用于车上设置。如果是在docker release container里线下实验，请跳过此布）通过修改文件中的以下行来设置全球导航卫星系统（GNSS）驱动程序的区域编号 <code>./modules/drivers/gnss/conf/gnss_conf.pb.txt</code>.</p>
+<p><code>proj4_text: "+proj=utm +zone=10 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"</code></p>
+<p>你只需修改上面一行的<code>+zone=10</code>的值即可。请参考<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/coordination.pdf">Apollo's Coordinate System</a> 找到您当地的区号。例如，如果你在中国北京，你必须设置<code>+zone=50</code>。</p>
+</li>
+<li>
+<p>（该步骤只用于车上设置。如果是在docker release container里线下实验，请跳过此步）通过修改以下文件，为GNSS驱动程序设置实时运动（RTK）基站：
+   <code>./modules/drivers/gnss/conf/gnss_conf.pb.txt</code></p>
+</li>
+</ol>
+<p>有关典型的RTK设置，请参阅以下示例：</p>
+<pre><code>```
+rtk_from {
+    format: RTCM_V3
+        ntrip {
+        address: &lt;provide your own value&gt;
+        port: &lt;provide your own value&gt;
+        mount_point: &lt;provide your own value&gt;
+        user: &lt;provide your own username&gt;
+        password: &lt;provide your own password&gt;
+        timeout_s: &lt;provide your own value, e.g., 5&gt;
+    }
+}
+rtk_to {
+    format: RTCM_V3
+    serial {
+        device: &lt;provide your own value, e.g., "/dev/ttyUSB1"&gt;
+        baud_rate: &lt;provide your own value, e.g., 115200&gt;
+    }
+}
+```
+
+`rtk_from` 用于RTK基站信息。
+
+`rtk_to` 用于将RTK差分数据发送到接收器。
+</code></pre>
+<ol>
+<li>
+<p>（该步骤只用于车上设置。如果是在docker release container里线下实验，请跳过此步）添加ESD CAN支持</p>
+<p>请参考 <a href="https://github.com/ApolloAuto/apollo/blob/master/third_party/can_card_library/esd_can/README.md">ESD CAN README</a>来设置ESD CAN库。</p>
+</li>
+<li>
+<p>（如果你没有修改过本地的Docker release container里的配置，可跳过此步）按照以下步骤保存你的本地环境：</p>
+<p>```</p>
+<h2 id="exit-out-of-docker-env">EXIT OUT OF DOCKER ENV</h2>
+<h2 id="commit-your-docker-local-changes-to-local-docker-image">commit your docker local changes to local docker image.</h2>
+<p>exit # exit from docker environment
+cd $APOLLO_HOME
+bash docker/scripts/release_commit.sh
+```</p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

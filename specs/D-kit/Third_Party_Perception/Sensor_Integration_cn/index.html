@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>基于双目感知的封闭园区自动驾驶搭建--设备集成 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u57fa\u4e8e\u53cc\u76ee\u611f\u77e5\u7684\u5c01\u95ed\u56ed\u533a\u81ea\u52a8\u9a7e\u9a76\u642d\u5efa--\u8bbe\u5907\u96c6\u6210";
+    var mkdocs_page_input_path = "specs/D-kit/Third_Party_Perception/Sensor_Integration_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>基于双目感知的封闭园区自动驾驶搭建--设备集成</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/D-kit/Third_Party_Perception/Sensor_Integration_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="-">基于双目感知的封闭园区自动驾驶搭建--设备集成</h2>
+<h3 id="_1">前提条件</h3>
+<ul>
+<li>完成了<a href="../../Waypoint_Following/Start_Waypoint_Following_cn/">循迹搭建--车辆循迹演示</a></li>
+</ul>
+<h3 id="_2">主要步骤</h3>
+<ul>
+<li>摄像头安装配置与数据验证。</li>
+</ul>
+<h4 id="_3">摄像头型号说明</h4>
+<ul>
+<li>
+<p>摄像头型号：smartereye S1双目相机。 </p>
+</li>
+<li>
+<p>smartereye S1双目相机采用标准RJ45的网络接口，由北京中科慧眼科技有限公司制造。</p>
+</li>
+<li>
+<p>更多详细参数可参考中科慧眼官网：<a href="http://www.smartereye.com/product/S1">Smartereye S1</a>。</p>
+</li>
+</ul>
+<h4 id="_4">摄像头安装配置与数据验证</h4>
+<ul>
+<li>牢固安装在小车结构架的竖杆上，水平安装，镜头保持清洁，避免影响图像采集。安装后的效果如下图所示：</li>
+</ul>
+<p><img alt="camera_integration_installation" src="../images/camera_integration_installation.jpg" /></p>
+<h4 id="_5">摄像头与工控机连接</h4>
+<ul>
+<li>
+<p>用车上的电源给相机供电。</p>
+</li>
+<li>
+<p>用网线将设备连接在IPC的网络接口上。</p>
+</li>
+<li>
+<p>向双目相机的供应厂询问设备的IP地址，例如设备的IP地址为192.168.1.251；在IPC的终端中ping 192.168.1.251，能ping通则表示相机和IPC之间的网络是通的。</p>
+</li>
+<li>
+<p>参考双目相机的官网文档对相机做一下相关的配置：<a href="http://www.smartereye.com/product/S1">Smartereye S1</a>。</p>
+</li>
+</ul>
+<h4 id="_6">摄像头的启动</h4>
+<ul>
+<li>
+<p>运行<code>git clone https://github.com/ApolloAuto/apollo-contrib.git</code>命令将apollo-contrib仓库克隆至本地，然后将apollo-contrib文件夹下面的smartereye文件夹整体拷贝到/apollo目录下。</p>
+</li>
+<li>
+<p>启动docker环境，在docker环境中输入以下命令：</p>
+</li>
+</ul>
+<p><code>sudo bash /apollo/smartereye/install.sh /apollo/third_party/camera_library/smartereye</code></p>
+<p>将smartereye的共享库拷贝至apollo的对应的位置。删除<code>/apollo/smartereye</code>文件夹。</p>
+<ul>
+<li>
+<p>将<code>/apollo/modules/dreamview/conf/hmi_modes/mkz_standard_debug.pb.txt</code>文件中的第四行的内容<code>dag_files: "/apollo/modules/drivers/camera/dag/camera.dag"</code>修改为<code>dag_files: "/apollo/modules/drivers/smartereye/dag/smartereye.dag"</code>并保存；将<code>/apollo/modules/common/data/global_flagfile.txt</code>文件中的末尾添加下面一行：<code>--image_short_topic=/apollo/sensor/smartereye/image/compressed</code>并保存。</p>
+</li>
+<li>
+<p>确保apollo被正确编译。</p>
+</li>
+<li>
+<p>启动DreamView： <code>bash /apollo/scripts/bootstrap.sh</code>，并在浏览器中输入DreamView地址：<code>http://localhost:8888/</code></p>
+</li>
+<li>
+<p>在<code>Module Controller</code>标签栏下，打开<code>Camera</code>开关，开关位置如下图所示：</p>
+</li>
+</ul>
+<p><img alt="camera_integration_dreamview1" src="../images/camera_integration_dreamview1.png" /></p>
+<ul>
+<li>在<code>Tasks</code>标签栏下依次打开<code>SimControl</code>和<code>Camera Sensor</code>开关，<code>Camera Sensor</code>打开后，务必关闭<code>SimControl</code>。选择<code>Mkz Standard Debug</code>模式，开关在dreamview界面的位置如下图所示：</li>
+</ul>
+<p><img alt="camera_integration_dreamview2" src="../images/camera_integration_dreamview2.png" /></p>
+<ul>
+<li>
+<p>如果一切正常，则会在<code>DreamView</code>右下角出现摄像头采集的图像。</p>
+</li>
+<li>
+<p>在正确完成上述步骤后，在<code>docker</code>环境内使用<code>cyber_monitor</code>工具，查看<code>/apollo/sensor/smartereye/image</code>、<code>/apollo/sensor/smartereye/image/compressed</code>是否有数据输出，且帧率是否稳定在15帧左右。</p>
+</li>
+</ul>
+<pre><code>//输入如下命令启动cyber_monitor
+budaoshi@in_dev_docker:/apollo$ cyber_monitor
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

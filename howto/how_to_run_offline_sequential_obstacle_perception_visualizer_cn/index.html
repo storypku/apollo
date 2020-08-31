@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>如何运行融合障碍可视化工具 - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5982\u4f55\u8fd0\u884c\u878d\u5408\u969c\u788d\u53ef\u89c6\u5316\u5de5\u5177";
+    var mkdocs_page_input_path = "howto/how_to_run_offline_sequential_obstacle_perception_visualizer_cn.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>如何运行融合障碍可视化工具</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_run_offline_sequential_obstacle_perception_visualizer_cn.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">如何运行融合障碍可视化工具</h2>
+<p>Apollo创建了LiDAR障碍物可视化工具，这是一种离线可视化工具，用于显示基于LiDAR的障碍物感知结果（请参看 <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_run_offline_perception_visualizer_cn.md">如何离线运行Perception Visulizer</a>）。但是，该工具缺乏基于雷达的障碍物感知结果和基于其两个传感器的融合结果的可视化能力。</p>
+<p>Apollo开发了第二个可视化工具，即融合障碍可视化工具，以补充LiDAR障碍物可视化工具。融合障碍可视化工具显示了这些模块的障碍感知结果：</p>
+<ul>
+<li>基于LiDAR的算法模块 </li>
+<li>基于雷达的算法模块</li>
+<li>融合算法模块，用于调试和测试完整的障碍物感知算法</li>
+</ul>
+<p>所有可视化都基于LiDAR数据可视化。来自LiDAR的源数据（用于对场景中的任何对象进行整形的一组3D点）在描绘整个场景的视觉特征方面优于雷达。获取更多关于融合障碍物可视化工具的信息，可参考<a href="http://apollo.auto/platform/perception.html">Demo视频</a>。</p>
+<p>通常，您可以按照三个步骤在Docker中构建和运行融合障碍物可视化工具：</p>
+<ol>
+<li>准备源数据。</li>
+<li>构建融合障碍物可视化工具。</li>
+<li>运行工具。</li>
+</ol>
+<p>下面对这三个步骤进行详细阐述。</p>
+<h3 id="_2">准备源数据</h3>
+<p>运行融合障碍物可视化工具之前，需要做如下准备：</p>
+<h6 id="lidar">基于LiDAR的障碍物感知</h6>
+<ul>
+<li>点云数据(PCD)文件</li>
+<li>车姿</li>
+</ul>
+<h6 id="_3">基于雷达的障碍物感知</h6>
+<ul>
+<li>基于雷达获取的障碍物数据的protobuf格式</li>
+<li>车姿</li>
+<li>车速</li>
+</ul>
+<p>为了便于数据提取，Apollo提供了一个名为<code>export_sensor_data</code>的工具来从ROS包中导出数据。</p>
+<h4 id="_4">步骤</h4>
+<ol>
+<li>用下面的命令构建数据导出工具：</li>
+</ol>
+<pre><code>cd /apollo
+bazel build //modules/perception/tool/export_sensor_data:export_sensor_data
+</code></pre>
+
+<ol>
+<li>用下面的命令运行数据导出工具：</li>
+</ol>
+<pre><code>/apollo/bazel-bin/modules/perception/tool/export_sensor_data/export_sensor_data
+</code></pre>
+
+<ol>
+<li>运行ROS bag.   </li>
+</ol>
+<p>​       ROS bag的默认目录是<code>/apollo/data/bag</code>。 
+​       下面的例子展示了文件名为<code>example.bag</code>的ROS bag.</p>
+<p>​      使用下面的命令：</p>
+<pre><code>cd /apollo/data/bag
+rosbag play --clock example.bag --rate=0.1
+</code></pre>
+
+<p>为确保在执行ROS消息回调时不丢失任何帧数据，建议您降低播放速率，在上例中设置为<code>0.1</code>。</p>
+<p>播放包时，所有数据文件都会逐帧转储到导出目录中，使用时间戳作为文件名。</p>
+<p>默认的LiDAR数据导出目录是<code>/apollo/data/lidar</code>。</p>
+<p>雷达的数据导出目录是<code>/apollo/data/radar</code>。</p>
+<p>这些目录通过flag <code>lidar_path</code>和<code>radar_path</code> 在文件<code>/apollo/modules/perception/tool/export_sensor_data/conf/export_sensor_data.flag</code>中定义。</p>
+<p>在<code>lidar_path</code>指定的目录中，会生成两种不同后缀的文件：<em><code>.pcd</code></em> 和 <em><code>.pose</code></em>。</p>
+<p>在<code>radar_path</code>指定的目录中，会生成三种不同后缀的文件：<em><code>.radar</code></em>, <em><code>.pose</code></em>, and <em><code>.velocity</code></em>。</p>
+<h3 id="_5">构建融合障碍物可视化工具</h3>
+<p>Apollo使用Bazel构建融合障碍物可视化工具。</p>
+<ol>
+<li>用下面的命令构建融合障碍物可视化工具：</li>
+</ol>
+<pre><code>cd /apollo
+bazel build -c opt //modules/perception/tool/offline_visualizer_tool:offline_sequential_obstacle_perception_test
+</code></pre>
+
+<p><code>-c opt</code>选项用来优化被构建程序的性能，这种优化对离线模拟和感知模块的实时可视化至关重要。</p>
+<ol>
+<li>(可选)如果你想在GPU模式下运行感知模块，请使用下面的命令：</li>
+</ol>
+<pre><code>bazel build -c opt --cxxopt=-DUSE_GPU //modules/perception/tool/offline_visualizer_tool:offline_sequential_obstacle_perception_test
+</code></pre>
+
+<h3 id="_6">运行工具</h3>
+<p>在运行融合障碍物可视化工具之前，您可以在配置文件中设置源数据目录和算法模块设置： <code>/apollo/modules/perception/tool/offline_visualizer_tool/conf/offline_sequential_obstacle_perception_test.flag</code>。</p>
+<p>默认源数据的目录<code>lidar_path</code>和<code>radar_path</code>分别对应的是<code>/apollo/data/lidar</code>和<code>/apollo/data/radar</code>。</p>
+<p>visualization-enabling布尔标志为<code>true</code>，默认情况下，要显示的障碍物结果类型为<code>fused</code>（基于LiDAR和RADAR传感器的融合障碍物结果）。 您可以将<code>fused</code>更改为<code>lidar</code>或<code>radar</code>，以显示基于单传感器的障碍物感知产生的纯障碍物结果。</p>
+<p>用下面的命令运行融合障碍物可视化工具：</p>
+<pre><code>/apollo/bazel-bin/modules/perception/tool/offline_visualizer_tool/offline_sequential_obstacle_perception_test
+</code></pre>
+
+<p>您可以看到如下的结果：</p>
+<ul>
+<li>一个弹出窗口，逐帧显示点云的感知结果 </li>
+<li>原点云以灰色显示</li>
+<li>已检测到的边界框（带有指示标题的红色箭头）：</li>
+<li>车辆 (绿色)</li>
+<li>行人 (粉色)</li>
+<li>自行车 (蓝色)</li>
+<li>无法识别的元素 (紫色) </li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
