@@ -10,4 +10,4 @@
 - [Hardware FAQs 中文版](Hardware_FAQs_cn.md)
 - [Software FAQs](Software_FAQs.md)
 - [Software FAQs 中文版](Software_FAQs_cn.md)
-- [Cyber RT FAQs](CyberRT_FAQs.md)
+- [Cyber RT FAQs](../cyber/CyberRT_FAQs.md)

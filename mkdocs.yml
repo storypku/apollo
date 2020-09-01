@@ -1,0 +1,79 @@
+site_name: Apollo Docs
+repo_url: https://github.com/ApolloAuto/apollo
+
+# site_url: https://apollo.auto
+edit_uri: edit/master/docs
+docs_dir: docs
+
+nav:
+  - Home: README.md
+
+  - 'Get Started':
+      - 'Install Apollo':
+          - 'Pre-requisites': specs/prerequisite_software_installation_guide.md
+          - 'Clone the repo': quickstart/README.md
+          - 'Start dev docker': quickstart/README.md
+      - 'Quick Start':
+          - 'Apollo': quickstart/README.md
+          - 'CyberRT':
+              - 'English Version': cyber/CyberRT_Quick_Start.md
+              - 'Chinese Version': cyber/CyberRT_Quick_Start_cn.md
+
+  - 'Cyber RT':
+      - 'Introduction': cyber/README.md
+      - 'Concepts and Terms': cyber/CyberRT_Terms.md
+      - 'MultiArch Support': cyber/CyberRT_Docker.md
+      - 'Cyber Tools': cyber/CyberRT_Developer_Tools.md
+      - 'C++ API': cyber/CyberRT_API_for_Developers.md
+      - 'Python API':
+          - 'English Version': cyber/CyberRT_Python_API.md
+          - 'Chinese Version': cyber/CyberRT_Python_API_cn.md
+      - 'Migration from ROS': cyber/CyberRT_Migration_Guide.md
+
+  - 'Modules':
+      - 'Perception': modules/perception/README.md
+      - 'Control': modules/control/README.md
+      - 'Canbus': modules/canbus/README.md
+      - 'Monitor': modules/monitor/README.md
+      - 'Prediction': modules/prediction/README.md
+      - 'Planning': modules/planning/README.md
+
+  - 'Technical Tutorials':
+      - 'Introductiion': technical_tutorial/README.md
+
+  - 'How-Tos':
+      - 'How to document code': howto/how_to_document_code.md
+      - 'How to install Apollo kernel': howto/how_to_install_apollo_kernel.md
+      - 'How to launch and run Apollo': howto/how_to_launch_Apollo.md
+      - 'CN Specific How-Tos':
+          - 'How to solve GitHub slow pull': howto/how_to_solve_slow_pull_from_cn.md
+          - 'How to install Apollo kernel': howto/how_to_install_apollo_kernel_cn.md
+
+  - 'Contribute':
+      - 'How to create pull request': howto/how_to_create_pull_request.md
+      - 'Linters and Formatters': specs/linters_and_formatters.md
+
+  - 'FAQs':
+      - 'General':
+          - 'English Version': FAQs/General_FAQs.md
+          - 'Chinese Version': FAQs/General_FAQs_cn.md
+      - 'Calibration':
+          - 'English Version': FAQs/Calibration_FAQs.md
+          - 'Chinese Version': FAQs/Calibration_FAQs_cn.md
+      - 'Perception': FAQs/Perception_FAQs.md
+      - 'Dreamview': FAQs/Dreamview_FAQs.md
+      - 'Hardware':
+          - 'English Version': FAQs/Hardware_FAQs.md
+          - 'Chinese Version': FAQs/Hardware_FAQs_cn.md
+      - 'Software':
+          - 'English Version': FAQs/Software_FAQs.md
+          - 'Chinese Version': FAQs/Software_FAQs_cn.md
+
+markdown_extensions:
+  - toc:
+      baselevel: 2
+      permalink: '#'
+      toc_depth: '2-4'
+  - attr_list
+
+theme: readthedocs
