@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,17 +158,17 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-add-a-new-predictor-in-prediction-module">How to add a new Predictor in Prediction module</h2>
-<h3 id="introduction">Introduction</h3>
+                <h2 id="how-to-add-a-new-predictor-in-prediction-module">How to add a new Predictor in Prediction module<a class="headerlink" href="#how-to-add-a-new-predictor-in-prediction-module" title="Permanent link">#</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>The Predictor generates the predicted trajectory for each obstacle. Here, let's assume we want to add a new predictor to our vehicle, for other types of obstacles, the procedure is very as follows:
 1. Define a class that inherits <code>Predictor</code>
 2. Implement the class <code>NewPredictor</code>
 3. Add a new predictor type in proto <code>prediction_conf.proto</code>
 4. Update prediction_conf
 5. Upate the Predictor manager</p>
-<h3 id="steps-to-add-a-new-predictor">Steps to add a new predictor</h3>
+<h3 id="steps-to-add-a-new-predictor">Steps to add a new predictor<a class="headerlink" href="#steps-to-add-a-new-predictor" title="Permanent link">#</a></h3>
 <p>The following steps will add a Predictor <code>NewPredictor</code>.</p>
-<h4 id="define-a-class-that-inherits-predictor">Define a class that inherits <code>Predictor</code></h4>
+<h4 id="define-a-class-that-inherits-predictor">Define a class that inherits <code>Predictor</code><a class="headerlink" href="#define-a-class-that-inherits-predictor" title="Permanent link">#</a></h4>
 <p>Create a new file named <code>new_predictor.h</code> in the folder  <code>modules/prediction/predictor/vehicle</code> and define it as follows:</p>
 <pre><code class="cpp">
 #include &quot;modules/prediction/predictor/predictor.h&quot;
@@ -155,7 +186,7 @@ class NewPredictor : public Predictor {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="implement-the-class-newpredictor">Implement the class <code>NewPredictor</code></h4>
+<h4 id="implement-the-class-newpredictor">Implement the class <code>NewPredictor</code><a class="headerlink" href="#implement-the-class-newpredictor" title="Permanent link">#</a></h4>
 <p>Create a new file named <code>new_predictor.cc</code> in the same folder of <code>new_predictor.h</code>. Implement it like this:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/predictor/vehicle/new_predictor.h&quot;
 
@@ -174,7 +205,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 
 </code></pre>
 
-<h4 id="add-a-new-predictor-type-in-proto-prediction_confproto">Add a new predictor type in proto <code>prediction_conf.proto</code></h4>
+<h4 id="add-a-new-predictor-type-in-proto-prediction_confproto">Add a new predictor type in proto <code>prediction_conf.proto</code><a class="headerlink" href="#add-a-new-predictor-type-in-proto-prediction_confproto" title="Permanent link">#</a></h4>
 <pre><code>  enum PredictorType {
     LANE_SEQUENCE_PREDICTOR = 0;
     FREE_MOVE_PREDICTOR = 1;
@@ -184,7 +215,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
   }
 </code></pre>
 
-<h4 id="update-prediction_conf">Update prediction_conf</h4>
+<h4 id="update-prediction_conf">Update prediction_conf<a class="headerlink" href="#update-prediction_conf" title="Permanent link">#</a></h4>
 <p>In the file <code>modules/prediction/conf/prediction_conf.pb.txt</code>, update the field <code>predictor_type</code> like this:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -194,7 +225,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 }
 </code></pre>
 
-<h4 id="upate-predictor-manager">Upate Predictor manager</h4>
+<h4 id="upate-predictor-manager">Upate Predictor manager<a class="headerlink" href="#upate-predictor-manager" title="Permanent link">#</a></h4>
 <p>Update <code>CreateEvluator( ... )</code> like this:</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_PREDICTOR: {
       predictor_ptr.reset(new NewPredictor());

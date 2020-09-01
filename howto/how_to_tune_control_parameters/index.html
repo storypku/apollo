@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,23 +158,23 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-tune-control-parameters">How to Tune Control Parameters</h2>
-<h3 id="introduction">Introduction</h3>
+                <h2 id="how-to-tune-control-parameters">How to Tune Control Parameters<a class="headerlink" href="#how-to-tune-control-parameters" title="Permanent link">#</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>The objective of the control module is to generate control commands to the vehicle based on planning trajectory and the current car status.</p>
-<h3 id="background">Background</h3>
-<h4 id="input-output">Input / Output</h4>
-<h5 id="input">Input</h5>
+<h3 id="background">Background<a class="headerlink" href="#background" title="Permanent link">#</a></h3>
+<h4 id="input-output">Input / Output<a class="headerlink" href="#input-output" title="Permanent link">#</a></h4>
+<h5>Input</h5>
 <ul>
 <li>Planning trajectory</li>
 <li>Current car status</li>
 <li>HMI driving mode change request</li>
 <li>Monitor System</li>
 </ul>
-<h5 id="output">Output</h5>
+<h5>Output</h5>
 <p>The output control command governs functions such as steering, throttle, and brake in the <code>canbus</code>.</p>
-<h4 id="controller-introduction">Controller Introduction</h4>
+<h4 id="controller-introduction">Controller Introduction<a class="headerlink" href="#controller-introduction" title="Permanent link">#</a></h4>
 <p>The controllers include a lateral controller that manages the steering commands and a longitudinal controller that manages the throttle and brakes commands .</p>
-<h5 id="lateral-controller">Lateral Controller</h5>
+<h5>Lateral Controller</h5>
 <p>The lateral controller is an LQR-Based Optimal Controller. The dynamic model of this controller is a simple bicycle model with side slip. It is divided into two categories, including a closed loop and an open loop.</p>
 <ul>
 <li>The closed loop provides discrete feedback LQR controller with 4 states:</li>
@@ -153,7 +184,7 @@
 <li>Heading Error Rate</li>
 <li>The open loop utilizes the path curvature information to cancel the constant steady state heading error.</li>
 </ul>
-<h5 id="longitudinal-controller">Longitudinal Controller</h5>
+<h5>Longitudinal Controller</h5>
 <p>The longitudinal controller is configured as a cascaded PID + Calibration table. It is divided into two categories, including a closed loop and an open loop.</p>
 <ul>
 <li>The closed loop is a cascaded PID (station PID + Speed PID), which takes the following data as controller input:</li>
@@ -161,10 +192,10 @@
 <li>Speed Error</li>
 <li>The open loop provides a calibration table which maps acceleration onto throttle/brake percentages.</li>
 </ul>
-<h3 id="controller-tuning">Controller Tuning</h3>
-<h4 id="useful-tools">Useful tools</h4>
+<h3 id="controller-tuning">Controller Tuning<a class="headerlink" href="#controller-tuning" title="Permanent link">#</a></h3>
+<h4 id="useful-tools">Useful tools<a class="headerlink" href="#useful-tools" title="Permanent link">#</a></h4>
 <p>Tool like <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/diagnostics">diagnostics</a> and <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/realtime_plot">realtime_plot</a> are useful for controller tuning and can be found under <code>apollo/modules/tools/</code>.</p>
-<h4 id="lateral-controller-tuning">Lateral Controller Tuning</h4>
+<h4 id="lateral-controller-tuning">Lateral Controller Tuning<a class="headerlink" href="#lateral-controller-tuning" title="Permanent link">#</a></h4>
 <p>The lateral controller is designed for minimal tuning effort.  The basic lateral controller tuning steps for <em>all</em> vehicles are:</p>
 <ol>
 <li>
@@ -177,7 +208,7 @@
 <p>Increase the first element of <code>matrix_q</code>,  which defines the lateral error weighting to minimize the lateral error.</p>
 </li>
 </ol>
-<h5 id="tune-a-lincoln-mkz">Tune a Lincoln MKZ</h5>
+<h5>Tune a Lincoln MKZ</h5>
 <p>For a Lincoln MKZ,  there are four elements that refer to the diagonal elements of the state weighting matrix Q:</p>
 <ul>
 <li>Lateral error weighting</li>
@@ -194,7 +225,7 @@
 }
 </code></pre>
 
-<h5 id="tune-additional-vehicle-types">Tune Additional Vehicle Types</h5>
+<h5>Tune Additional Vehicle Types</h5>
 <p>When tuning a vehicle type that is other than a Lincoln MKZ, first update the vehicle-related physical parameters as shown in the example below.  Then, follow the basic lateral controller tuning steps listed above in <em>Lateral Controller Tuning</em> and define the matrix Q parameters.</p>
 <p>An example is shown below.</p>
 <pre><code>lat_controller_conf {
@@ -211,13 +242,13 @@
 }
 </code></pre>
 
-<h4 id="longitudinal-controller-tuning">Longitudinal Controller Tuning</h4>
+<h4 id="longitudinal-controller-tuning">Longitudinal Controller Tuning<a class="headerlink" href="#longitudinal-controller-tuning" title="Permanent link">#</a></h4>
 <p>The longitudinal controller is composed of Cascaded PID controllers that include one station controller and a high/low speed controller with different gains for different speeds.  Apollo manages tuning in open loop and closed loop by:</p>
 <ul>
 <li>OpenLoop: Calibration table generation. Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_update_vehicle_calibration.md">how_to_update_vehicle_calibration.md</a> for detailed steps.</li>
 <li>Closeloop: Based on the order of High Speed Controller -&gt; Low Speed Controller -&gt; Station Controller.</li>
 </ul>
-<h5 id="highlow-speed-controller-tuning">High/Low Speed Controller Tuning</h5>
+<h5>High/Low Speed Controller Tuning</h5>
 <p>The high speed controller code is used mainly to track the desired speed above a certain speed value.  For example:</p>
 <pre><code>high_speed_pid_conf {
   integrator_enable: true
@@ -242,7 +273,7 @@
    kd: 0.0
  }</code>
 <em>Note:</em>  Apollo usually sets the switch speed to be a coasting speed when the gear switches to <em>Drive</em>.</p>
-<h5 id="station-controller-tuning">Station Controller Tuning</h5>
+<h5>Station Controller Tuning</h5>
 <p>Apollo uses the station controller for the vehicle to track the station error between the vehicle trajectory reference and the vehicle position.  A station controller tuning example is shown below.</p>
 <pre><code>station_pid_conf {
   integrator_enable: true
@@ -253,7 +284,7 @@
 }
 </code></pre>
 
-<h3 id="references">References</h3>
+<h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>"Vehicle dynamics and control." Rajamani, Rajesh. Springer Science &amp; Business Media, 2011.</p>

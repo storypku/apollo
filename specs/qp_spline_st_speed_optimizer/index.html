@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,9 +158,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="qp-spline-st-speed-optimizer">QP-Spline-ST-Speed Optimizer</h2>
+                <h2 id="qp-spline-st-speed-optimizer">QP-Spline-ST-Speed Optimizer<a class="headerlink" href="#qp-spline-st-speed-optimizer" title="Permanent link">#</a></h2>
 <p><em><strong>Tip</strong>: to read the equations in the document, you are recommended to use Chrome with <a href="https://chrome.google.com/webstore/detail/tex-all-the-things/cbimabofgmfdkicghcadidpemeenbffn">a plugin</a> or copy the latex equation to <a href="http://www.hostmath.com/">an online editor</a></em></p>
-<h3 id="1-definition">1  Definition</h3>
+<h3 id="1-definition">1  Definition<a class="headerlink" href="#1-definition" title="Permanent link">#</a></h3>
 <p>After finding a path in QP-Spline-Path, Apollo converts all obstacles on the path and the ADV (autonomous driving vehicle) into an path-time (S-T) graph, which represents that the station changes over time along the path. The speed optimization task is to find a path on the S-T graph that is collision-free and comfortable. </p>
 <p>Apollo uses splines to represent speed profiles, which are lists of S-T points in S-T graph. Apollo leverages Quadratic programming to find the best profile. The standard form of QP problem is defined as: </p>
 <pre><code>$$
@@ -143,10 +174,10 @@ Ax \leq b
 $$
 </code></pre>
 
-<h3 id="2-objective-function">2  Objective function</h3>
-<h4 id="21-get-spline-segments">2.1  Get spline segments</h4>
+<h3 id="2-objective-function">2  Objective function<a class="headerlink" href="#2-objective-function" title="Permanent link">#</a></h3>
+<h4 id="21-get-spline-segments">2.1  Get spline segments<a class="headerlink" href="#21-get-spline-segments" title="Permanent link">#</a></h4>
 <p>Split the S-T profile into <strong>n</strong> segments. Each segment trajectory is defined by a polynomial.</p>
-<h4 id="22-define-function-for-each-spline-segment">2.2  Define function for each spline segment</h4>
+<h4 id="22-define-function-for-each-spline-segment">2.2  Define function for each spline segment<a class="headerlink" href="#22-define-function-for-each-spline-segment" title="Permanent link">#</a></h4>
 <p>Each segment <strong><em>i</em></strong> has an accumulated distance $d_i$ along a reference line. And the trajectory for the segment is defined as a polynomial of degree five by default. The degree of the polynomials are adjustable by configuration parameters.</p>
 <pre><code>$$
 s = f_i(t) 
@@ -154,7 +185,7 @@ s = f_i(t)
 $$
 </code></pre>
 
-<h4 id="23-define-objective-function-of-optimization-for-each-segment">2.3  Define  objective function of optimization for each segment</h4>
+<h4 id="23-define-objective-function-of-optimization-for-each-segment">2.3  Define  objective function of optimization for each segment<a class="headerlink" href="#23-define-objective-function-of-optimization-for-each-segment" title="Permanent link">#</a></h4>
 <p>Apollo first defines $cost_1$ to make the trajectory smooth: </p>
 <pre><code>$$
 cost_1 = \sum_{i=1}^{n} \Big( w_1 \cdot \int\limits_{0}^{d_i} (f_i')^2(s) ds + w_2 \cdot \int\limits_{0}^{d_i} (f_i'')^2(s) ds + w_3 \cdot \int\limits_{0}^{d_i} (f_i^{\prime\prime\prime})^2(s) ds \Big)
@@ -179,15 +210,15 @@ cost = cost_1 + cost_2 + cost_3
 $$
 </code></pre>
 
-<h3 id="3-constraints">3  Constraints</h3>
-<h4 id="31-the-init-point-constraints">3.1 The init point constraints</h4>
+<h3 id="3-constraints">3  Constraints<a class="headerlink" href="#3-constraints" title="Permanent link">#</a></h3>
+<h4 id="31-the-init-point-constraints">3.1 The init point constraints<a class="headerlink" href="#31-the-init-point-constraints" title="Permanent link">#</a></h4>
 <p>Given the assumption that the first point is ($t0$, $s0$), and $s0$ is on the planned path $f_i(t)$, $f'i(t)$, and $f_i(t)''$ (position, velocity, acceleration).  Apollo converts those constraint into QP equality constraints:</p>
 <pre><code>$$
 A_{eq}x = b_{eq}
 $$
 </code></pre>
 
-<h4 id="32-monotone-constraint">3.2  Monotone constraint</h4>
+<h4 id="32-monotone-constraint">3.2  Monotone constraint<a class="headerlink" href="#32-monotone-constraint" title="Permanent link">#</a></h4>
 <p>The path must be monotone, e.g., the vehicle can only drive forward. </p>
 <p>Sample <strong>m</strong> points on the path, for each $j$ and $j-1$ point pairs ($j\in[1,...,m]$): </p>
 <p>If the two points on the same spline $k$:</p>
@@ -214,7 +245,7 @@ $$
 $$
 </code></pre>
 
-<h4 id="33-joint-smoothness-constraints">3.3  Joint smoothness  constraints</h4>
+<h4 id="33-joint-smoothness-constraints">3.3  Joint smoothness  constraints<a class="headerlink" href="#33-joint-smoothness-constraints" title="Permanent link">#</a></h4>
 <p>This constraint is designed to smooth the spline joint.  Given the assumption that two segments, $seg_k$ and $seg_{k+1}$, are connected, and the accumulated <strong>s</strong> of segment $seg_k$ is $s_k$,  Apollo calculates the constraint equation as: </p>
 <pre><code>$$
 f_k(t_k) = f_{k+1} (t_0)
@@ -265,7 +296,7 @@ f'''_k(t_k) = f'''_{k+1} (t_0)
 $$
 </code></pre>
 
-<h4 id="34-sampled-points-for-boundary-constraint">3.4  Sampled points for boundary constraint</h4>
+<h4 id="34-sampled-points-for-boundary-constraint">3.4  Sampled points for boundary constraint<a class="headerlink" href="#34-sampled-points-for-boundary-constraint" title="Permanent link">#</a></h4>
 <p>Evenly sample <strong>m</strong> points along the path, and check the obstacle boundary at those points.  Convert the constraint into QP inequality constraints, using:</p>
 <pre><code>$$
 Ax \leq b
@@ -309,7 +340,7 @@ $$
 $$
 </code></pre>
 
-<h4 id="35-speed-boundary-constraint">3.5  Speed Boundary constraint</h4>
+<h4 id="35-speed-boundary-constraint">3.5  Speed Boundary constraint<a class="headerlink" href="#35-speed-boundary-constraint" title="Permanent link">#</a></h4>
 <p>Apollo establishes a speed limit boundary as well.</p>
 <p>Sample <strong>m</strong> points on the st curve, and get speed limits defined as an upper boundary and a lower boundary for each point $j$, e.g., $v{ub,j}$ and $v{lb,j}$ . The constraints are defined as: </p>
 <pre><code>$$

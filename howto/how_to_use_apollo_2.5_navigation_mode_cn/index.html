@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,7 +158,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="apollo-25">Apollo 2.5版导航模式的使用方法</h2>
+                <h2 id="apollo-25">Apollo 2.5版导航模式的使用方法<a class="headerlink" href="#apollo-25" title="Permanent link">#</a></h2>
 <p><code>Apollo</code>项目以其优异的系统架构、完整的模块功能、良好的开源生态及规范的代码风格，受到众多开发者的喜爱和好评。不过在<code>Apollo</code>之前的版本中，感知、预测、导航、规划模块均依赖于高精地图，而高精地图的制作方法繁琐且不透明，对于很多开发者而言，这是一个难以逾越的障碍。因为没有高精地图，很多人只能使用<code>Apollo</code>提供的模拟数据包进行走马观花式的观赏，而无法在测试道路上完成真枪实弹式的实车调试，这极大降低了<code>Apollo</code>项目带来的便利，也不利于自动驾驶开源社区的发展和壮大。显然，<code>Apollo</code>项目组已注意到该问题，经过他们几个月的艰苦努力，终于在2.5版开发了一种新的基于相对地图(<code>relative map</code>)的导航模式(<code>navigation mode</code>)，利用该模式可顺利实施测试道路上的实车调试。</p>
 <p>相对地图是Apollo2.5引入的新特性。从架构层面，相对地图模块是连接高精地图(<code>HD Map</code>)、感知(<code>Perception</code>)模块和规划(<code>Planning</code>)模块的中间层。相对地图模块会实时生成基于车身坐标系的地图（格式与高精地图一致），并且输出供规划模块使用的参考线。更多信息，可以参考<a href="https://github.com/ApolloAuto/apollo/blob/master/modules/map/relative_map/README.md">相对地图的说明文档</a>。从开发者友好性角度看，基于相对地图的导航模式，让开发者可以不依赖高精地图便可实施测试道路的实车调试，极大降低了开发者的使用门槛。</p>
 <p>导航模式的基本思路是：</p>
@@ -139,15 +170,15 @@
 <li>目前，导航模式仅支持单车道行驶，可完成加减速、跟车、遇障碍物减速停车或在车道宽度允许的情形下对障碍物绕行等功能，后续版本的导航模式将会进一步完善以支持多车道行驶、交通标志和红绿灯检测等。</li>
 </ol>
 <p>本文对<code>Apollo2.5</code>版的构建、参考线数据采集与制作、<code>Dreamview</code>前端编译配置、导航模式使用等内容进行全面阐述，希望能给各位开发者正常使用<code>Apollo 2.5</code>版带来一定的便利。</p>
-<h3 id="apollo-25_1">一、Apollo 2.5版的构建</h3>
+<h3 id="apollo-25_1">一、Apollo 2.5版的构建<a class="headerlink" href="#apollo-25_1" title="Permanent link">#</a></h3>
 <p>首先从<a href="https://github.com/ApolloAuto/apollo">GitHub网站</a>下载<code>Apollo2.5</code>版源代码，可以使用<code>git</code>命令下载，也可以直接通过网页下载压缩包。源代码下载完成并放置到合适的目录后，可以使用两种方法构建：1.在<code>Visual Studio Code</code>中构建（推荐）；2.使用命令行构建。当然，两种方法都有一个前提，就是在你的机器上已经顺利安装了<code>Docker</code>。你可以使用<code>Apollo</code>提供的脚本文件<a href="https://github.com/ApolloAuto/apollo/blob/master/docker/scripts/install_docker.sh"><code>install_docker.sh</code></a>安装<code>Docker</code>。</p>
-<h4 id="11-visual-studio-code">1.1 在Visual Studio Code中构建</h4>
+<h4 id="11-visual-studio-code">1.1 在Visual Studio Code中构建<a class="headerlink" href="#11-visual-studio-code" title="Permanent link">#</a></h4>
 <p>打开<code>Visual Studio Code</code>，执行菜单命令<code>文件-&gt;打开文件夹</code>，在弹出的对话框中，选择<code>Apollo项目</code>源文件夹，点击“确定”，如下图所示：</p>
 <p><img alt="img" src="../images/navigation_mode/open_directory.png" /> </p>
 <p><img alt="img" src="../images/navigation_mode/choose_apollo_directory.png" /> </p>
 <p>之后，执行菜单命令<code>任务-&gt;运行生成任务</code>或直接按快捷键<code>Ctrl+Shift+B</code>（与<code>Visual Studio</code>和<code>QT</code>的快捷键一致）构建工程，若之前没有启动过<code>Docker</code>，则编译时会启动<code>Docker</code>，需在底部终端窗口输入超级用户密码。命令执行完毕，若在底部终端窗口出现<code>终端将被任务重用，按任意键关闭。</code>信息（如下图所示），则表示构建成功。整个过程<strong>一定要保持网络畅通</strong>，否则无法下载依赖包。构建过程可能会遇到一些问题，解决方法可参见我写的一篇<a href="https://blog.csdn.net/davidhopper/article/details/79349927">博客</a> ，也可直接查看<code>GitHub</code>网站的<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_debug_apollo_in_vscode_cn.md">帮助文档</a>。</p>
 <p><img alt="img" src="../images/navigation_mode/build_successfully.png" /> </p>
-<h4 id="12">1.2 在命令行中构建</h4>
+<h4 id="12">1.2 在命令行中构建<a class="headerlink" href="#12" title="Permanent link">#</a></h4>
 <p>按快捷键<code>Ctrl + Alt + T</code>打开命令行终端，输入如下命令启动<code>Docker</code>：</p>
 <pre><code class="bash">cd your_apollo_project_root_dir
 # 从中国大陆访问，最好加上“-C”选项，直接访问中国大陆镜像服务器以获取更快的下载速度
@@ -164,7 +195,7 @@ bash docker/scripts/dev_start.sh -C
 
 <p>整个操作如下图所示：</p>
 <p><img alt="img" src="../images/navigation_mode/build_with_command.png" /></p>
-<h4 id="13-utmid">1.3 修改定位模块UTM区域ID</h4>
+<h4 id="13-utmid">1.3 修改定位模块UTM区域ID<a class="headerlink" href="#13-utmid" title="Permanent link">#</a></h4>
 <p><code>Apollo</code>项目定位(<code>localization</code>)模块默认使用美国西部UTM坐标，在国内需要修改该值。在<code>Docker</code>外部，使用<code>vi</code>或其他文本编辑器，打开文件<code>[apollo项目根目录]/modules/localization/conf/localization.conf</code>，将下述内容：</p>
 <pre><code class="bash">--local_utm_zone_id=10
 </code></pre>
@@ -174,12 +205,12 @@ bash docker/scripts/dev_start.sh -C
 </code></pre>
 
 <p><strong>注意：</strong>如果录制数据时未修改上述内容，则线下模拟测试回放数据包时只能将错就错，千万不能再修改该值，否则地图上的参考线定位会出错！有一次我采集数据时，忘了修改该值，回放数据时又进行修改，结果导致参考线定位到了美国西海岸！我取消修改，按<code>F5</code>键刷新浏览器后显示就恢复正常了。</p>
-<h4 id="14-dreamviewutmid">1.4 配置Dreamview使用的UTM区域ID</h4>
+<h4 id="14-dreamviewutmid">1.4 配置Dreamview使用的UTM区域ID<a class="headerlink" href="#14-dreamviewutmid" title="Permanent link">#</a></h4>
 <p>打开文件<code>[apollo项目根目录]/modules/common/data/global_flagfile.txt</code>，在最后一行添加如下语句（这是长沙地区的UTM区域ID，中国UTM分区可参考<a href="http://www.360doc.com/content/14/0729/10/3046928_397828751.shtml">该网页</a>）：</p>
 <pre><code>--local_utm_zone_id=49
 </code></pre>
 
-<h3 id="_1">二、参考线原始数据的采集</h3>
+<h3 id="_1">二、参考线原始数据的采集<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
 <p>将构建好的<code>Apollo</code>项目文件导入车内工控机，并按照<strong>步骤1.2</strong>的方法进入<code>Docker</code>，再执行如下命令，启动<code>Dreamview</code>服务端程序：</p>
 <pre><code class="bash">bash scripts/bootstrap.sh
 </code></pre>
@@ -192,9 +223,9 @@ bash docker/scripts/dev_start.sh -C
 <p><strong>3</strong>  驾驶员从起点启动车辆并按预定路线行驶至终点；</p>
 <p><strong>4</strong>  操作员关闭<code>Dreamview</code>界面中的<code>Record Bag</code>选项，此时会在<code>/apollo/data/bag</code>目录（这是<code>Docker</code>中的目录，宿主机上对应的目录为<code>[你的apollo根目录]/data/bag</code>）中生成一个类似于<code>2018-04-01-09-58-00</code>的目录，该目录中保存着类似于<code>2018-04-01-09-58-00.bag</code>的数据包。这就是我们所需的数据包，请记住它的路径及名称。<strong>注意：</strong>单个数据包文件的默认录制时长为1分钟，默认文件大小为2048MB，可通过修改文件<code>/apollo/scripts/record_bag.sh</code>来改变默认值。</p>
 <p>为后文阐述方便起见，我假设数据包<code>2018-04-01-09-58-00.bag</code>直接存放于<code>/apollo/data/bag</code>目录。</p>
-<h3 id="_2">三、参考线的制作</h3>
+<h3 id="_2">三、参考线的制作<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>参考线的制作既可在车内工控机内完成，也可在其他计算机上实施。无论在哪台计算机上制作，我们首先假定已按<strong>步骤1.2</strong>的方法进入<code>Docker</code>，并按照<strong>步骤二</strong>中录制的数据包放置在<code>/apollo/data/bag</code>目录中，且假定该文件名为<code>2018-04-01-09-58-00.bag</code>（在你的机器上并非如此，这样做只是为了后文阐述方便而已）。</p>
-<h4 id="31">3.1 从原始数据包提取裸数据</h4>
+<h4 id="31">3.1 从原始数据包提取裸数据<a class="headerlink" href="#31" title="Permanent link">#</a></h4>
 <p>在<code>Docker</code>内部，使用如下命令从原始数据包提取裸数据：</p>
 <pre><code class="bash">cd /apollo/modules/tools/navigator
 python extractor.py /apollo/data/bag/2018-04-01-09-58-00.bag
@@ -207,7 +238,7 @@ python extractor.py /apollo/data/bag/2018-04-01-09-58-00.bag
 
 <p>会显示类似下图的路径图：</p>
 <p><img alt="img" src="../images/navigation_mode/view_raw_data.png" /> </p>
-<h4 id="32">3.2 对裸数据进行平滑处理</h4>
+<h4 id="32">3.2 对裸数据进行平滑处理<a class="headerlink" href="#32" title="Permanent link">#</a></h4>
 <p>如果录制数据时，车辆行驶不够平顺，提取的裸轨迹数据可能会不光滑，有必要对其进行平滑处理。继续在<code>Docker</code>内部使用如下命令完成平滑处理：</p>
 <pre><code class="bash">bash smooth.sh ./path_2018-04-01-09-58-00.bag.txt 200
 </code></pre>
@@ -219,9 +250,9 @@ python extractor.py /apollo/data/bag/2018-04-01-09-58-00.bag
 
 <p>其中，第一个参数<code>./path_2018-04-01-09-58-00.bag.txt</code>是裸数据，第二个参数<code>./path_2018-04-01-09-58-00.bag.txt.smoothed</code>是平滑结果，显示效果类似下图：</p>
 <p><img alt="img" src="../images/navigation_mode/view_smoothing_results.png" /> </p>
-<h3 id="dreamview">四、Dreamview前端的编译</h3>
+<h3 id="dreamview">四、Dreamview前端的编译<a class="headerlink" href="#dreamview" title="Permanent link">#</a></h3>
 <p><code>Dreamview</code>前端默认使用<code>Baidu</code>地图，也可修改为<code>Google</code>地图，但需重新编译<code>Dreamview</code>前端，具体方法如下（<strong>注意</strong>：如不需修改地图设置，可忽略该节内容）：</p>
-<h4 id="41">4.1 更改导航地图</h4>
+<h4 id="41">4.1 更改导航地图<a class="headerlink" href="#41" title="Permanent link">#</a></h4>
 <p>打开文件<code>[apollo项目根目录]/modules/dreamview/frontend/src/store/config/ parameters.yml</code>，根据需要将下述内容替换为<code>Google</code>地图或<code>Baidu</code>地图： </p>
 <pre><code class="bash">navigation:
   # possible options: BaiduMap or GoogleMap
@@ -232,7 +263,7 @@ python extractor.py /apollo/data/bag/2018-04-01-09-58-00.bag
   mapAPiUrl: &quot;https://api.map.baidu.com/api?v=3.0&amp;ak=0kKZnWWhXEPfzIkklmzAa3dZ&amp;callback=initMap&quot;
 </code></pre>
 
-<h4 id="42-dreamview">4.2 重新编译Dreamview前端</h4>
+<h4 id="42-dreamview">4.2 重新编译Dreamview前端<a class="headerlink" href="#42-dreamview" title="Permanent link">#</a></h4>
 <p>按照<strong>步骤1.2</strong>的方法进入<code>Docker</code>，运行如下命令编译<code>Dreamview</code>前端：</p>
 <pre><code class="bash"># 安装Dreamview前端依赖包，注意：该步骤只需执行一次，不必每次执行
 cd /apollo/modules/dreamview/frontend/
@@ -258,8 +289,8 @@ cd /apollo
 bash apollo.sh build_fe
 </code></pre>
 
-<h3 id="_3">五、导航模式的使用</h3>
-<h4 id="51-dreamview">5.1. 打开Dreamview并开启导航模式</h4>
+<h3 id="_3">五、导航模式的使用<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<h4 id="51-dreamview">5.1. 打开Dreamview并开启导航模式<a class="headerlink" href="#51-dreamview" title="Permanent link">#</a></h4>
 <p>进入<code>Docker</code>，启动<code>Dreamview</code>，命令如下：</p>
 <pre><code class="bash">cd your_apollo_project_root_dir
 # 如果没有启动Docker，首先启动，否则忽略该步
@@ -277,12 +308,12 @@ rosbag play -l /apollo/data/bag/2018-04-01-09-58-00.bag
 
 <p>在浏览器中打开网页<a href="http://localhost:8888">http://localhost:8888</a>（注意不要使用代理），进入<code>Dreamview</code>界面，点击右上方下拉框，将模式设置为<code>Navigation</code>（导航模式），如下图所示： </p>
 <p><img alt="img" src="../images/navigation_mode/enable_navigation_mode.png" /> </p>
-<h4 id="52">5.2 启用导航模式下的相关功能模块</h4>
+<h4 id="52">5.2 启用导航模式下的相关功能模块<a class="headerlink" href="#52" title="Permanent link">#</a></h4>
 <p>点击<code>Dreamview</code>界面左侧工具栏中的<code>Module Controller</code>按钮，进入模块控制页面。<strong>若是线下模拟测试</strong>，选中<code>Relative Map</code>、<code>Navi Planning</code>选项，其他模块根据需要开启，如下图所示（图中显示空白文本的模块是<code>Mobileye</code>模块，需安装配置好相关硬件后才可见））：</p>
 <p><img alt="img" src="../images/navigation_mode/test_in_navigation_mode.png" /> </p>
 <p><strong>若是实车调试</strong>，建议除<code>Record Bag</code>、<code>Mobileye</code>（若<code>Mobileye</code>硬件未安装，则会显示为空白文本）和<code>Third Party Perception</code>模块外，其余模块全部开启，如下图所示：</p>
 <p><img alt="img" src="../images/navigation_mode/drive_car_in_navigation_mode.png" /> </p>
-<h4 id="53">5.3 发送参考线数据</h4>
+<h4 id="53">5.3 发送参考线数据<a class="headerlink" href="#53" title="Permanent link">#</a></h4>
 <p>在<code>Docker</code>内部，使用如下命令发送<strong>步骤三</strong>中制作的参考线数据：</p>
 <pre><code class="bash">cd /apollo/modules/tools/navigator
 python navigator.py ./path_2018-04-01-09-58-00.bag.txt.smoothed

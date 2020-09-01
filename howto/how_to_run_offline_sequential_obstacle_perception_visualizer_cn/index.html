@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,7 +158,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">如何运行融合障碍可视化工具</h2>
+                <h2 id="_1">如何运行融合障碍可视化工具<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
 <p>Apollo创建了LiDAR障碍物可视化工具，这是一种离线可视化工具，用于显示基于LiDAR的障碍物感知结果（请参看 <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_run_offline_perception_visualizer_cn.md">如何离线运行Perception Visulizer</a>）。但是，该工具缺乏基于雷达的障碍物感知结果和基于其两个传感器的融合结果的可视化能力。</p>
 <p>Apollo开发了第二个可视化工具，即融合障碍可视化工具，以补充LiDAR障碍物可视化工具。融合障碍可视化工具显示了这些模块的障碍感知结果：</p>
 <ul>
@@ -143,21 +174,21 @@
 <li>运行工具。</li>
 </ol>
 <p>下面对这三个步骤进行详细阐述。</p>
-<h3 id="_2">准备源数据</h3>
+<h3 id="_2">准备源数据<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>运行融合障碍物可视化工具之前，需要做如下准备：</p>
-<h6 id="lidar">基于LiDAR的障碍物感知</h6>
+<h6>基于LiDAR的障碍物感知</h6>
 <ul>
 <li>点云数据(PCD)文件</li>
 <li>车姿</li>
 </ul>
-<h6 id="_3">基于雷达的障碍物感知</h6>
+<h6>基于雷达的障碍物感知</h6>
 <ul>
 <li>基于雷达获取的障碍物数据的protobuf格式</li>
 <li>车姿</li>
 <li>车速</li>
 </ul>
 <p>为了便于数据提取，Apollo提供了一个名为<code>export_sensor_data</code>的工具来从ROS包中导出数据。</p>
-<h4 id="_4">步骤</h4>
+<h4 id="_3">步骤<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
 <ol>
 <li>用下面的命令构建数据导出工具：</li>
 </ol>
@@ -188,7 +219,7 @@ rosbag play --clock example.bag --rate=0.1
 <p>这些目录通过flag <code>lidar_path</code>和<code>radar_path</code> 在文件<code>/apollo/modules/perception/tool/export_sensor_data/conf/export_sensor_data.flag</code>中定义。</p>
 <p>在<code>lidar_path</code>指定的目录中，会生成两种不同后缀的文件：<em><code>.pcd</code></em> 和 <em><code>.pose</code></em>。</p>
 <p>在<code>radar_path</code>指定的目录中，会生成三种不同后缀的文件：<em><code>.radar</code></em>, <em><code>.pose</code></em>, and <em><code>.velocity</code></em>。</p>
-<h3 id="_5">构建融合障碍物可视化工具</h3>
+<h3 id="_4">构建融合障碍物可视化工具<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p>Apollo使用Bazel构建融合障碍物可视化工具。</p>
 <ol>
 <li>用下面的命令构建融合障碍物可视化工具：</li>
@@ -204,7 +235,7 @@ bazel build -c opt //modules/perception/tool/offline_visualizer_tool:offline_seq
 <pre><code>bazel build -c opt --cxxopt=-DUSE_GPU //modules/perception/tool/offline_visualizer_tool:offline_sequential_obstacle_perception_test
 </code></pre>
 
-<h3 id="_6">运行工具</h3>
+<h3 id="_5">运行工具<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>在运行融合障碍物可视化工具之前，您可以在配置文件中设置源数据目录和算法模块设置： <code>/apollo/modules/perception/tool/offline_visualizer_tool/conf/offline_sequential_obstacle_perception_test.flag</code>。</p>
 <p>默认源数据的目录<code>lidar_path</code>和<code>radar_path</code>分别对应的是<code>/apollo/data/lidar</code>和<code>/apollo/data/radar</code>。</p>
 <p>visualization-enabling布尔标志为<code>true</code>，默认情况下，要显示的障碍物结果类型为<code>fused</code>（基于LiDAR和RADAR传感器的融合障碍物结果）。 您可以将<code>fused</code>更改为<code>lidar</code>或<code>radar</code>，以显示基于单传感器的障碍物感知产生的纯障碍物结果。</p>

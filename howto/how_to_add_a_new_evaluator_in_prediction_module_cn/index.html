@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,17 +158,17 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">如何在预测模块中添加新评估器</h2>
-<h3 id="_2">简介</h3>
+                <h2 id="_1">如何在预测模块中添加新评估器<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<h3 id="_2">简介<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>评估器通过应用预训练的深度学习模型生成特征（来自障碍物和当前车辆的原始信息）以获得模型输出。</p>
-<h3 id="_3">添加评估器的步骤</h3>
+<h3 id="_3">添加评估器的步骤<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>按照下面的步骤添加名称为<code>NewEvaluator</code>的评估器。
 1. 在proto中添加一个字段
 2. 声明一个从<code>Evaluator</code>类继承的类<code>NewEvaluator</code>
 3. 实现类<code>NewEvaluator</code>
 4. 更新预测配置
 5. 更新评估器管理</p>
-<h4 id="evaluatornewevaluator">声明一个从<code>Evaluator</code>类继承的类<code>NewEvaluator</code></h4>
+<h4 id="evaluatornewevaluator">声明一个从<code>Evaluator</code>类继承的类<code>NewEvaluator</code><a class="headerlink" href="#evaluatornewevaluator" title="Permanent link">#</a></h4>
 <p><code>modules/prediction/evaluator/vehicle</code>目录下新建文件<code>new_evaluator.h</code>。声明如下:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/evaluator/evaluator.h&quot;
 
@@ -156,7 +187,7 @@ class NewEvaluator : public Evaluator {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="newevaluator">实现类 <code>NewEvaluator</code></h4>
+<h4 id="newevaluator">实现类 <code>NewEvaluator</code><a class="headerlink" href="#newevaluator" title="Permanent link">#</a></h4>
 <p>在<code>new_evaluator.h</code>所在目录下新建文件<code>new_evaluator.cc</code>。实现如下:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/evaluator/vehicle/new_evaluator.h&quot;
 
@@ -183,7 +214,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 
 </code></pre>
 
-<h4 id="proto">在proto中添加新评估器</h4>
+<h4 id="proto">在proto中添加新评估器<a class="headerlink" href="#proto" title="Permanent link">#</a></h4>
 <p>在<code>prediction_conf.proto</code>中添加新评估器类型:</p>
 <pre><code class="cpp">  enum EvaluatorType {
     MLP_EVALUATOR = 0;
@@ -191,7 +222,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
   }
 </code></pre>
 
-<h4 id="prediction_conf">更新prediction_conf文件</h4>
+<h4 id="prediction_conf">更新prediction_conf文件<a class="headerlink" href="#prediction_conf" title="Permanent link">#</a></h4>
 <p>在 <code>modules/prediction/conf/prediction_conf.pb.txt</code>中，按照如下方式更新字段<code>evaluator_type</code>:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -201,7 +232,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 }
 </code></pre>
 
-<h4 id="_4">更新评估器管理</h4>
+<h4 id="_4">更新评估器管理<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
 <p>按照如下方式更新<code>CreateEvluator( ... )</code> :</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_EVALUATOR: {
       evaluator_ptr.reset(new NewEvaluator());
@@ -214,9 +245,9 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 </code></pre>
 
 <p>完成上述步骤后，新评估器便创建成功了。</p>
-<h3 id="_5">添加新特性</h3>
+<h3 id="_5">添加新特性<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>如果你想添加新特性，请按照如下的步骤进行操作:</p>
-<h4 id="proto_1">在proto中添加一个字段</h4>
+<h4 id="proto_1">在proto中添加一个字段<a class="headerlink" href="#proto_1" title="Permanent link">#</a></h4>
 <p>假设新的评估结果名称是<code>new_output</code>且类型是<code>int32</code>。如果输出直接与障碍物相关，可以将它添加到<code>modules/prediction/proto/feature.proto</code>中，如下所示:</p>
 <pre><code class="cpp">message Feature {
     // Other existing features

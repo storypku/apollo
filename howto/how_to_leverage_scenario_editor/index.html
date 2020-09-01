@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,12 +158,12 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-leverage-scenario-editor">How to Leverage Scenario Editor</h2>
-<h3 id="introduction">Introduction</h3>
+                <h2 id="how-to-leverage-scenario-editor">How to Leverage Scenario Editor<a class="headerlink" href="#how-to-leverage-scenario-editor" title="Permanent link">#</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>Simulation plays a central role in Apollo’s internal development cycle. Dreamland empowers developers and start-ups to run millions of miles of simulation daily, which dramatically accelerates the development cycle.</p>
 <p>So far Apollo simulation allowed external users to access over 200 sample scenarios which includes a diverse range of LogSim scenarios based on real world driving data and WorldSim scenarios that have been manually created by our simulation team. To learn more about Dreamland, refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Dreamland_introduction.md">our Dreamland Introduction Guide</a></p>
 <p>Several developers wrote in requesting that our Dreamland platform should support Scenario Creation and Editing which the Apollo team now proudly presents in Apollo 5.0!</p>
-<h3 id="setting-up-scenario-editor">Setting up Scenario Editor</h3>
+<h3 id="setting-up-scenario-editor">Setting up Scenario Editor<a class="headerlink" href="#setting-up-scenario-editor" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>Login to your Dreamland account. For additional details on How to create an account, please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Dreamland_introduction.md">our Dreamland Introduction Guide</a> </p>
@@ -150,7 +181,7 @@
 </li>
 </ol>
 <p><img alt="" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/email.png" /></p>
-<h3 id="using-scenario-editor">Using Scenario Editor</h3>
+<h3 id="using-scenario-editor">Using Scenario Editor<a class="headerlink" href="#using-scenario-editor" title="Permanent link">#</a></h3>
 <p>Congratulations! You are now ready to use our scenario editor.</p>
 <ol>
 <li>
@@ -164,7 +195,7 @@
 </ol>
 <p>You can navigate through the map using your arrow keys. Alternatively, you can right-click the mouse and drag it to move the map. If you are using a trackpad, you will have to double click and then drag with two fingers.
 Let's understand each tool along with its purpose</p>
-<h4 id="general-action-tools">General Action Tools</h4>
+<h4 id="general-action-tools">General Action Tools<a class="headerlink" href="#general-action-tools" title="Permanent link">#</a></h4>
 <p>The 4 General action tools can be found on the bottom right corner of the map. </p>
 <ol>
 <li>
@@ -183,15 +214,15 @@ Let's understand each tool along with its purpose</p>
 <p><strong>Add Route tool</strong>: this tool can be used both for the ego-car as well as the obstacles you set in its path. For the ego-car you can only set its destination, but for obstacles, you can set multiple points that define their driving behavior. </p>
 <p><img alt="" src="../images/se_addroute.png" />
  </p>
-<h4 id="configuration-tools">Configuration Tools</h4>
+<h4 id="configuration-tools">Configuration Tools<a class="headerlink" href="#configuration-tools" title="Permanent link">#</a></h4>
 </li>
 </ol>
 <p>There are 4 types of configurations that you will need to set up in order to create a scenario, three of which are listed on the left-side of the map - General, Ego-car and Participants (Obstacles) and the last one is Traffic Light</p>
 <p><img alt="" src="../images/se_config.png" /></p>
-<h5 id="general-configuration">General Configuration</h5>
+<h5>General Configuration</h5>
 <p>This configuration tool is selected by default upon the selection of a map. The form on your right requests general scenario information like the scenario name, duration, road structure, ego-car behavior along with which metrics you would like to track. Please note some fields are required while some are based on your discretion. Once you have set and confirmed all the parameters, please proceed to the <code>Ego Car</code> configuration tool.</p>
 <p>You can learn more about each parameter by hovering over the <code>?</code> sign next to each parameter.</p>
-<h5 id="ego-car-configuration">Ego Car Configuration</h5>
+<h5>Ego Car Configuration</h5>
 <p>This configuration tool allows you to set your Ego car on the map and configure its parameters. As soon as you select the tool icon, you can then hover over the map and place the car at your desired location. You will notice that your mouse pointer will turn into a cross until you place the ego-car on your map. Once placed, a form should appear on the right-hand side of the map, which allows you to configure the Ego car to set its speed, acceleration, along with your desired destination.</p>
 <p><img alt="" src="../images/se_ego.png" /></p>
 <p>The Ego car's heading can also be set by dragging the arrow linked to the ego car</p>
@@ -203,7 +234,7 @@ You can set the ego car’s end point by clicking on the “Add Route Point” i
 <p>Once you have placed the Ego car's end point on the map, The end point coordinates will then appear on the right-hand attribute's window. You can drag the end point flag to change the ego car’s end point location. The “End point” coordinates will be automatically updated accordingly.</p>
 <p><img alt="" src="../images/endpoints1.png" /></p>
 <p>Finally, you can always come back and edit the existing attributes of the ego car by clicking on the ego car on the map. This will open its attributes tab in the right-hand attributes window.</p>
-<h5 id="participants-configuration">Participants' Configuration</h5>
+<h5>Participants' Configuration</h5>
 <p>If you select <code>Participant</code> from the configuration menu, you can place your participant in your scenario by clicking on a desired location on the map. You will notice that your mouse pointer will turn into a cross until you place the new participant on your map. Once you place it, a form will appear on the right-hand attributes window as it did with <code>Ego Car</code>. Before you edit the fields on the form, you can change the position of the participant by clicking and dragging it. You can also modify its heading by clicking on the arrow head. Once you have finalized the heading and position of your participant, you can start working on specific details mentioned in the form - type, length, speed and motion type. </p>
 <p><img alt="" src="../images/obstacle.png" /></p>
 <p>In the Basic Information section, you will notice an auto-generated ID along with a description textbox. You could give your participant a suitable ID as well as a description about its expected behavior. You could also specify what is your participant's type, which will be set to <code>Car</code> by default. Upon selecting a different type, the participant on your screen will change accordingly. You will also need to determine its initial speed and other attributes including width, length and height. There are predetermined values for each vehicle type, which can be changed. </p>
@@ -216,20 +247,20 @@ You can set the ego car’s end point by clicking on the “Add Route Point” i
 <p><img alt="" src="../images/center2.png" /></p>
 <p>Your final participant screen should appear as follows:</p>
 <p><img alt="" src="../images/final_obs.png" /></p>
-<h5 id="traffic-light-configuration">Traffic Light Configuration</h5>
+<h5>Traffic Light Configuration</h5>
 <p>This configuration tool will allow you to edit the traffic lights that are a part of your scenario. To activate this tool, look for a traffic light on the map and click on it which opens a configuration form on the right-hand side of your window. You will notice 2 constant attricutes ID and its coordinates.
 However, you will need to select a trigger type for the traffic light:
 - <strong>Distance</strong> - the traffic light will be triggered by the distance between the ego car and the light
 - <strong>Time</strong> -  the light will be triggered by the scenario run time</p>
 <p><img alt="" src="../images/traffic_light.png" /></p>
 <p>You will also be required to set the <code>Initial State</code> of the traffic light. And once your trigger type is set, you will also be required to complete the <code>States</code> section, in terms of color and light durations for each state. If the traffic lights have reached the end of their configured states before the end of the scenario, the last state will remain until the end.</p>
-<h3 id="saving-a-scenario">Saving a Scenario</h3>
+<h3 id="saving-a-scenario">Saving a Scenario<a class="headerlink" href="#saving-a-scenario" title="Permanent link">#</a></h3>
 <p>You can save your scenario by clicking on <code>Save</code> in the file menu.</p>
 <pre><code>Note:
 The minimum requirements of saving a scenario are to configure all required attributes in the “General” and “Ego Car” configurations. If not, a pop-up window with a failure message will highlight what you are still required to configure.
 </code></pre>
 
-<h3 id="running-a-new-scenario">Running a New Scenario</h3>
+<h3 id="running-a-new-scenario">Running a New Scenario<a class="headerlink" href="#running-a-new-scenario" title="Permanent link">#</a></h3>
 <ol>
 <li>To locate and run your scenario requires you to trigger a <code>New Task</code> under <code>Task Management</code></li>
 </ol>

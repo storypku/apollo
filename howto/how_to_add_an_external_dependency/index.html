@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,8 +158,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-add-a-new-external-dependency">How to Add a New External Dependency</h2>
-<h3 id="1-library-that-supports-bazel">1. Library that supports bazel</h3>
+                <h2 id="how-to-add-a-new-external-dependency">How to Add a New External Dependency<a class="headerlink" href="#how-to-add-a-new-external-dependency" title="Permanent link">#</a></h2>
+<h3 id="1-library-that-supports-bazel">1. Library that supports bazel<a class="headerlink" href="#1-library-that-supports-bazel" title="Permanent link">#</a></h3>
 <p>For example,</p>
 <ul>
 <li><a href="https://github.com/abseil/abseil-cpp">Abseil</a></li>
@@ -142,7 +173,7 @@
 )
 </code></pre>
 
-<h3 id="2-library-that-has-third-party-bazel-rule">2. Library that has third-party bazel rule</h3>
+<h3 id="2-library-that-has-third-party-bazel-rule">2. Library that has third-party bazel rule<a class="headerlink" href="#2-library-that-has-third-party-bazel-rule" title="Permanent link">#</a></h3>
 <p>Some popular libraries don't support bazel natively, but may be resolved by
 other developers.</p>
 <p>Try boost as an example:</p>
@@ -158,7 +189,7 @@ boost_deps()
 </code></pre>
 
 <p>Now you can refer to it in BUILD files with <code>@boost//:system</code>, etc.</p>
-<h3 id="3-library-with-handcrafted-build-file">3. Library with handcrafted BUILD file</h3>
+<h3 id="3-library-with-handcrafted-build-file">3. Library with handcrafted BUILD file<a class="headerlink" href="#3-library-with-handcrafted-build-file" title="Permanent link">#</a></h3>
 <p>It's pretty common to do so. But it needs very solid knowledge with bazel.</p>
 <pre><code class="python">new_http_archive(
     name = &quot;civetweb&quot;,
@@ -169,7 +200,7 @@ boost_deps()
 )
 </code></pre>
 
-<h3 id="4-library-which-is-pre-installed-into-the-operating-system">4. Library which is pre-installed into the operating system</h3>
+<h3 id="4-library-which-is-pre-installed-into-the-operating-system">4. Library which is pre-installed into the operating system<a class="headerlink" href="#4-library-which-is-pre-installed-into-the-operating-system" title="Permanent link">#</a></h3>
 <p>It's NOT recommended, as it breaks the rule of a self-contained bazel WORKSPACE.
 However, some libraries are very complicated to build with bazel, while the
 operating system, such as Ubuntu, provides easy installation.</p>
@@ -194,7 +225,7 @@ image:</p>
 <p>Note that in such case, you should include the headers like
 <code>#include &lt;Poco/SharedLibrary.h&gt;</code> instead of <code>#include "Poco/SharedLibrary.h"</code>
 as they are in the system path.</p>
-<h3 id="references">References</h3>
+<h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h3>
 <p>For a detailed description on adding a dependency with Bazel, refer to the following:
 * <a href="https://bazel.build/versions/master/docs/be/workspace.html">Workspace Rules</a>
 * <a href="https://docs.bazel.build/versions/master/external.html">Working with external dependencies</a>.</p>

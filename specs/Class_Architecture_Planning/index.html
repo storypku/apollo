@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,12 +158,12 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="class-architecture-and-overview-planning-module">Class Architecture and Overview -- Planning Module</h2>
-<h3 id="data-output-and-input">Data Output and Input</h3>
-<h4 id="output-data">Output Data</h4>
+                <h2 id="class-architecture-and-overview-planning-module">Class Architecture and Overview -- Planning Module<a class="headerlink" href="#class-architecture-and-overview-planning-module" title="Permanent link">#</a></h2>
+<h3 id="data-output-and-input">Data Output and Input<a class="headerlink" href="#data-output-and-input" title="Permanent link">#</a></h3>
+<h4 id="output-data">Output Data<a class="headerlink" href="#output-data" title="Permanent link">#</a></h4>
 <p>The planning output data is defined in <code>planning.proto</code>, as shown below.</p>
 <p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image001.png" /></p>
-<h5 id="planningproto"><em>planning.proto</em></h5>
+<h5><em>planning.proto</em></h5>
 <p>Inside the proto data definition, the planning output includes the total planned time and length, as well as the actual trajectory for control to execute, and is defined in <code>repeated apollo.common.TrajectoryPointtrajectory_point</code>.  </p>
 <p>A trajectory point is derived from a <code>path_point</code>, where speed, acceleration and timing attributes are added. Each <code>trajectory_point</code> as defined in <code>pnc_point.proto</code>, and contains detailed attributes of the trajectory.</p>
 <p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image002.png" /></p>
@@ -144,7 +175,7 @@
 <li>Debug information</li>
 </ul>
 <p><code>Estop</code> is a command that indicates errors and exceptions. For example, when the autonomous vehicle collides with an obstacle or cannot obey traffic rules, estop signals are sent. The <code>DecisionResult</code> data is used mainly for simulation display so that developers have a better understanding of the planning results. More detailed numerical intermediate results are stored in the debug information and sent out for debugging purposes.</p>
-<h3 id="input-data">Input Data</h3>
+<h3 id="input-data">Input Data<a class="headerlink" href="#input-data" title="Permanent link">#</a></h3>
 <p>To compute the final published trajectory, the planning module leverages various input data sources. The planning input data sources are:</p>
 <ul>
 <li>Routing</li>
@@ -159,7 +190,7 @@
 <p>Each predicted trajectory has a probability associated with it, and one obstacle might have multiple predicted trajectories. </p>
 <p>In addition to the query concepts “where I want to go” and “what is surrounding me”, another important query concept is “where am I”. Such information is obtained from the HD-Map and Localization modules. Both localization and vehicle chassis information are incorporated in the messages of <code>VehicleState</code> that is defined in the <code>vehicle_state.proto</code>, as shown below.</p>
 <p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image009.png" /></p>
-<h3 id="code-structure-and-class-hierarchy">Code Structure and Class Hierarchy</h3>
+<h3 id="code-structure-and-class-hierarchy">Code Structure and Class Hierarchy<a class="headerlink" href="#code-structure-and-class-hierarchy" title="Permanent link">#</a></h3>
 <p>The code is organized as follows: The planning code entrance is the <code>planning.cc</code>. Inside the planner, the important class members are shown in the illustration below.</p>
 <p><img alt="img" src="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/images/class_architecture_planning/image006.png" /></p>
 <p>The <code>ReferenceLineInfo</code> is a wrapper of the <code>ReferenceLine</code> class, which represents a smoothed guideline for planning. </p>

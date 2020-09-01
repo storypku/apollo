@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,11 +158,11 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="can">如何添加新的CAN卡</h2>
-<h3 id="_1">简介</h3>
+                <h2 id="can">如何添加新的CAN卡<a class="headerlink" href="#can" title="Permanent link">#</a></h2>
+<h3 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
 <p>控制器区域网络（CAN）是在许多微控制器和设备中密集使用的网络，用于在没有主计算机帮助的情况下在设备之间传输数据。</p>
 <p>Apollo中使用的默认CAN卡是 <strong>ESD CAN-PCIe卡</strong>。您可以使用以下步骤添加新的CAN卡：</p>
-<h3 id="can_1">添加新CAN卡</h3>
+<h3 id="can_1">添加新CAN卡<a class="headerlink" href="#can_1" title="Permanent link">#</a></h3>
 <p>添加新的CAN卡需要完成以下几个步骤:</p>
 <ol>
 <li>实现新CAN卡的<code>CanClient</code>类。</li>
@@ -139,7 +170,7 @@
 <li>更新配置文件。</li>
 </ol>
 <p>以下步骤展示了如何添加新的CAN卡 - 示例添加CAN卡到您的工程。</p>
-<h4 id="1">步骤 1</h4>
+<h4 id="1">步骤 1<a class="headerlink" href="#1" title="Permanent link">#</a></h4>
 <p>实现新CAN卡的CanClient类
 下面的代码展示了如何实现 <code>CANClient</code> 类:</p>
 <pre><code class="cpp">#include &lt;string&gt;
@@ -224,7 +255,7 @@ class ExampleCanClient : public CanClient {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="2">步骤 2</h4>
+<h4 id="2">步骤 2<a class="headerlink" href="#2" title="Permanent link">#</a></h4>
 <p>在CanClientFactory中注册新CAN卡，
 在 <code>CanClientFactory</code>中添加如下代码:</p>
 <pre><code class="cpp">void CanClientFactory::RegisterCanClients() {  
@@ -237,7 +268,7 @@ class ExampleCanClient : public CanClient {
 }  
 </code></pre>
 
-<h4 id="3">步骤 3</h4>
+<h4 id="3">步骤 3<a class="headerlink" href="#3" title="Permanent link">#</a></h4>
 <p>接下来，需要更新配置文件
 在<code>/modules/canbus/proto/can_card_parameter.proto</code>添加 EXAMPLE_CAN </p>
 <pre><code class="proto">message CANCardParameter {

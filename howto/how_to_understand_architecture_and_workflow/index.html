@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,8 +158,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-understand-architecture-and-workflow">HOW TO UNDERSTAND ARCHITECTURE AND WORKFLOW</h2>
-<h3 id="fundamentals-to-understand-aplloauto-core">Fundamentals to understand AplloAuto - core</h3>
+                <h2 id="how-to-understand-architecture-and-workflow">HOW TO UNDERSTAND ARCHITECTURE AND WORKFLOW<a class="headerlink" href="#how-to-understand-architecture-and-workflow" title="Permanent link">#</a></h2>
+<h3 id="fundamentals-to-understand-aplloauto-core">Fundamentals to understand AplloAuto - core<a class="headerlink" href="#fundamentals-to-understand-aplloauto-core" title="Permanent link">#</a></h3>
 <p>Autonomous vehicles (AV) dynamics are controlled by the planning engine through the Controller Area Network bus (CAN bus). The software reads data from hardware registers and writes them back just like we would in Assembly language. For high-precision computation, the Localization, Perception and Planning modules function as independent
 input sources, while output sources work together though the Peer2Peer (P2P) protocol. P2P is supported by the RPC network application.</p>
 <p>ApolloAuto uses ROS1 as the underlying network which means that ApolloAuto borrows the Master-Nodes framework from ROS1. Since xmlRPC from ROS1 is really old (compared
@@ -149,8 +180,8 @@ to the recent brpc and <a href="https://yiakwy.github.io/blog/2017/10/01/gRPC-C-
 <li>As a partner of Baidu, you will be granted docker credentials to commit new images and replay the algorithm you developed on the cloud.</li>
 <li>Create and manage complex scenarios to simulate real-world driving experiences</li>
 </ol>
-<h3 id="ros-underlying-subscription-and-publication-mechanism-and-apolloauto-modules-structure">ROS underlying Subscription and Publication mechanism and ApolloAuto modules structure</h3>
-<h5 id="ros-underlying-subscription-and-publication-mechanism">ROS underlying Subscription and Publication mechanism</h5>
+<h3 id="ros-underlying-subscription-and-publication-mechanism-and-apolloauto-modules-structure">ROS underlying Subscription and Publication mechanism and ApolloAuto modules structure<a class="headerlink" href="#ros-underlying-subscription-and-publication-mechanism-and-apolloauto-modules-structure" title="Permanent link">#</a></h3>
+<h5>ROS underlying Subscription and Publication mechanism</h5>
 <p>So how does ROS1 based system communicate with each other and how does ApolloAuto make use of it? ROS has <a href="http://wiki.ros.org/ROS/Tutorials">tutorials</a>, and I will explain it
 quickly before we analyze ApolloAuto modules structure.</p>
 <p>ROS is a software, currently exclusively well supported by Ubuntu series. It has master roscore.</p>
@@ -176,19 +207,19 @@ ros::Publisher pub = h.advertise&lt;generated_msg_format_cls&gt;(&quot;topic_nam
 
 <p>cb here is a callback executed when Linux kernel IO is ready. With these signatures bearing in mind, we can quickly analyze ApolloAuto
 module structures before diving deep into core modules implementation.</p>
-<h5 id="apolloauto-modules-structure">apolloauto modules structure</h5>
+<h5>apolloauto modules structure</h5>
 <p>I have conducted full research about it but I cannot show you all of them. ApolloAuto modules/common/ provide basic micros to control ros::spin for each
 module and /modules/common/adaptor contains the most information on how a topic is registered. Every module will be registered from the <a href="https://github.com/yiakwy/apollo/blob/master/modules/common/adapters/adapter_manager.cc#L50">point</a>
 . By reading configuration file defined ${MODULE_NAME}/conf, we can get basic information about topics a module subscribe and publish.</p>
 <p>Each module starts by firing "Init" interface and register callbacks. If you want to step by step debug ApolloAuto in gdb, make sure you have added breakpoints in those back. This also
 demonstrate that if you don't like what implemented by Baidu, just override the callback.</p>
-<h3 id="data-preprocessing-and-extended-kalman-filter">Data preprocessing and Extended Kalman Filter</h3>
+<h3 id="data-preprocessing-and-extended-kalman-filter">Data preprocessing and Extended Kalman Filter<a class="headerlink" href="#data-preprocessing-and-extended-kalman-filter" title="Permanent link">#</a></h3>
 <p>Kalman Filter is mathematical interactive methods to converge to real estimation without knowing the whole real-time input sequence. No matter what kind of data you need to process, you can
 rely on Kalman Filter. Extended Kalman Filter is used for 3d rigid movements in a matrix format. It is not hard. I recommend you a series tutorial from United States F15 director
 <a href="https://www.youtube.com/watch?v=CaCcOwJPytQ">Michel van Biezen</a>.</p>
 <p>Since it is used in input data preprocessing, you might see it in HD Maps, perception, planning and so on so forth.</p>
-<h3 id="selected-modules-analysis">Selected modules analysis</h3>
-<h5 id="hmi-dreamviewer">HMI &amp; Dreamviewer</h5>
+<h3 id="selected-modules-analysis">Selected modules analysis<a class="headerlink" href="#selected-modules-analysis" title="Permanent link">#</a></h3>
+<h5>HMI &amp; Dreamviewer</h5>
 <p>There is not too much about hmi interface and dreamviewer but it is a good place to visualize the topics parameters.</p>
 <p>HMI is a simply simple python application based on Flask.
 Instead of using HTTP, it uses web socket to query ROS modules application. If you have experience on asynchronous HTTP downloaders, it is easy to understand, that an HTTP connection is just a
@@ -196,7 +227,7 @@ socket connection file descriptor which we have already write HTTP headers, meth
 to execute the corresponding binary.</p>
 <p>Dreamviewer, in contrast, works a little bit like frontend app written in React, Webpack, and Threejs ( WebGL, see /dreamview/backend/simulation_world, /dreamview/frontend/src/render ),
 techniques. It subscribes to messages from ROS nodes and draws it a frame after a frame.</p>
-<h5 id="perception">Perception</h5>
+<h5>Perception</h5>
 <p>Initially, this module implemented logics exclusively for Lidar and Radar processes. It is registered by AdapterManager as a ros node functioning as an info fusion system to
 output observed Obstacles info. In the latest version of the codes, different hardware input handlers of ROS nodes are specified in /perception/obstacles/onboard and implemented in
 different parallel locations, which consists of <em>Lidar, Radar, Traffic lights and GPS</em>.</p>

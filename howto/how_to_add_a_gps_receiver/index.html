@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,17 +158,17 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-add-a-new-gps-receiver">How to add a new GPS Receiver</h2>
-<h3 id="introduction">Introduction</h3>
+                <h2 id="how-to-add-a-new-gps-receiver">How to add a new GPS Receiver<a class="headerlink" href="#how-to-add-a-new-gps-receiver" title="Permanent link">#</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>GPS receiver is a device that receives information from GPS satellites and then calculates the device's geographical position, velocity and precise time. The device usually includes a receiver, an IMU (depends on the model), an interface to a wheel encoder, and a fusion engine that combines information from those sensors. The Default GPS receiver used in Apollo is Novatel cards. The instruction demonstrates how to add and use a new GPS Receiver.</p>
-<h3 id="steps-to-add-a-new-gps-receiver">Steps to add a new GPS Receiver</h3>
+<h3 id="steps-to-add-a-new-gps-receiver">Steps to add a new GPS Receiver<a class="headerlink" href="#steps-to-add-a-new-gps-receiver" title="Permanent link">#</a></h3>
 <p>Please follow the steps below to add a new GPS Receiver.
   1. Implement the new data parser for the new GPS receiver, by inheriting class <code>Parser</code>
   2. Add new interfaces in <code>Parser</code> class for the new GPS receiver
   3. In <code>config.proto</code>, add the new data format for the new GPS receiver
   4. In function <code>create_parser</code> from file data_parser.cpp, add the new parser instance for the new GPS receiver</p>
 <p>Let's look at how to add the GPS Receiver using the above-mentioned steps for Receiver: <code>u-blox</code>.</p>
-<h4 id="step-1">Step 1</h4>
+<h4 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">#</a></h4>
 <p>Let us implement the new data parser for the new GPS receiver, by inheriting class <code>Parser</code>:</p>
 <pre><code class="cpp">class UbloxParser : public Parser {
 public:
@@ -182,7 +213,7 @@ private:
 
 </code></pre>
 
-<h4 id="step-2">Step 2</h4>
+<h4 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">#</a></h4>
 <p>Let us now add the new interfaces in the Parser class for the new GPS receiver:</p>
 <p>Add the function <code>create_ublox</code> in <code>Parser</code> class:</p>
 <pre><code class="cpp">class Parser {
@@ -238,7 +269,7 @@ Parser* Parser::create_ublox() {
 }
 </code></pre>
 
-<h4 id="step-3">Step 3</h4>
+<h4 id="step-3">Step 3<a class="headerlink" href="#step-3" title="Permanent link">#</a></h4>
 <p>In config.proto, let us add the new data format definition for the new GPS receiver:</p>
 <p>Add <code>UBLOX_TEXT</code> and <code>UBLOX_BINARY</code> in the config file: modules/drivers/gnss/proto/config.proto</p>
 <pre><code class="txt">message Stream {
@@ -257,7 +288,7 @@ Parser* Parser::create_ublox() {
 ... ...
 </code></pre>
 
-<h4 id="step-4">Step 4</h4>
+<h4 id="step-4">Step 4<a class="headerlink" href="#step-4" title="Permanent link">#</a></h4>
 <p>In function <code>create_parser</code> from file data_parser.cpp, let us add the new parser instance for the new GPS receiver.
 We will do so by adding code to process <code>config::Stream::UBLOX_BINARY</code> as below:</p>
 <pre><code class="cpp">Parser* create_parser(config::Stream::Format format, bool is_base_station = false) {

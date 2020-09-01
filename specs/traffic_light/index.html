@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,9 +158,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="traffic-light-perception">Traffic Light Perception</h2>
+                <h2 id="traffic-light-perception">Traffic Light Perception<a class="headerlink" href="#traffic-light-perception" title="Permanent link">#</a></h2>
 <p>This document provides the details about how traffic light perception functions in Apollo 2.0.</p>
-<h3 id="introduction">Introduction</h3>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>The Traffic Light Perception Module is designed to provide accurate and comprehensive traffic light status using cameras.</p>
 <p>Typically, the traffic light has three states:</p>
 <ul>
@@ -165,7 +196,7 @@
 <p>The following photos show the detection of traffic lights using a telephoto camera (for the first photo) and a wide-angle camera (for the second photo).</p>
 <p><img alt="telephoto camera" src="../images/traffic_light/long.jpg" /></p>
 <p><img alt="wide angle camera" src="../images/traffic_light/short.jpg" /></p>
-<h2 id="pipeline">Pipeline</h2>
+<h2 id="pipeline">Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">#</a></h2>
 <p>The Pipeline has two main parts and is described in following sections:
 - Pre-process
   - Traffic light projection
@@ -175,11 +206,11 @@
   - Rectify — Provide the accurate traffic light bounding boxes
   - Recognize — Provide the color of each bounding box
   - Revise — Correct the color based on the time sequence</p>
-<h3 id="pre-process">Pre-process</h3>
+<h3 id="pre-process">Pre-process<a class="headerlink" href="#pre-process" title="Permanent link">#</a></h3>
 <p>There is no need to detect lights in every frame of an image. The status of a traffic light changes in low frequency and the computing resources are limited. Normally, images from different cameras would arrive almost simultaneously, and only one is fed to the Process part of the Pipeline. Therefore, the selection and the matching of images are necessary.</p>
-<h4 id="inputoutput">Input/Output</h4>
+<h4 id="inputoutput">Input/Output<a class="headerlink" href="#inputoutput" title="Permanent link">#</a></h4>
 <p>This section describes the input and the output of the Pre-process module. The input is obtained by subscribing to topic names from Apollo or directly reading them from locally stored files, and the output is fed to the successive Process module.</p>
-<h5 id="input">Input</h5>
+<h5>Input</h5>
 <ul>
 <li>
 <p>Images from different cameras, acquired by subscribing to the topic name:</p>
@@ -201,12 +232,12 @@
 <p>Calibration results</p>
 </li>
 </ul>
-<h5 id="output">Output</h5>
+<h5>Output</h5>
 <ul>
 <li>Image from the selected camera</li>
 <li>Traffic light bounding box projected from world coordinates to image coordinates</li>
 </ul>
-<h4 id="camera-selection">Camera Selection</h4>
+<h4 id="camera-selection">Camera Selection<a class="headerlink" href="#camera-selection" title="Permanent link">#</a></h4>
 <p>The traffic light is represented by a unique ID and four points on its boundary, each of which is described as a 3D point in the world coordinate system.</p>
 <p>The following example shows a typical entry for traffic light <code>signal info</code>. The four boundary points can be obtained by querying the HD Map, given the car's location.</p>
 <pre><code class="protobuf">signal info:
@@ -232,36 +263,36 @@ struct ImageLights {
   ... other ...
 };</code>
 Thus far, all the information that we need includes the localization, the calibration results, and the HD Map. The selection can be performed at any time as the projection is independent of the image content. The task of performing the selection when images arrive is just for simplicity. Moreover, image selection does not need to be performed upon the arrival of every image, and a time interval for the selection is set.</p>
-<h4 id="image-sync">Image Sync</h4>
+<h4 id="image-sync">Image Sync<a class="headerlink" href="#image-sync" title="Permanent link">#</a></h4>
 <p>Images arrive with a timestamp and a camera ID. The pairing of a timestamp and a camera ID is used to find the appropriate cached information. If the image can find a cached record with same camera ID and a small difference between timestamps, the image can be published to the Process module. All inappropriate images are abandoned.</p>
-<h3 id="process">Process</h3>
+<h3 id="process">Process<a class="headerlink" href="#process" title="Permanent link">#</a></h3>
 <p>The Process module is divided into three steps, with each step focusing on one task:</p>
 <ul>
 <li>Rectifier — Detects a traffic light bounding box in a ROI.</li>
 <li>Recognizer— Classifies the bounding box's color.</li>
 <li>Reviser — Correct color using sequential information.</li>
 </ul>
-<h4 id="inputoutput_1">Input/Output</h4>
+<h4 id="inputoutput_1">Input/Output<a class="headerlink" href="#inputoutput_1" title="Permanent link">#</a></h4>
 <p>This section describes the data input and output of the Process. The input is obtained from the Pre-process module and the output is published as a traffic light topic.</p>
-<h5 id="input_1">Input</h5>
+<h5>Input</h5>
 <ul>
 <li>Image from a selected camera</li>
 <li>A set of bounding boxes</li>
 </ul>
-<h5 id="output_1">Output</h5>
+<h5>Output</h5>
 <ul>
 <li>A set of bounding boxes with color labels.</li>
 </ul>
-<h4 id="rectifier">Rectifier</h4>
+<h4 id="rectifier">Rectifier<a class="headerlink" href="#rectifier" title="Permanent link">#</a></h4>
 <p>The projected position, which is affected by the calibration, localization, and the HD-Map label, is <strong><em>not completely reliable</em></strong>. A larger region of interest (ROI), calculated using the projected light's position, is used to find the accurate boundingbox for the traffic light.</p>
 <p>In the photo below, the blue rectangle indicates the projected light bounding box, which has a large offset to the actual light. The big, yellow rectangle is the ROI.</p>
 <p><img alt="example" src="../images/traffic_light/example.jpg" /></p>
 <p>The traffic light detection is implemented as a regular convolutional neural network (CNN) detection task. It receives an image with an ROI as input, and serial bounding boxes as output. There might be more lights in the ROI than those in input.</p>
 <p>Apollo needs to select the proper lights according to the detection score, and the input lights' position and shape. If the CNN network cannot find any lights in the ROI, the status from the input lights is marked as unknown and the two remaining steps (Recognizer and Reviser) are skipped.</p>
-<h4 id="recognizer">Recognizer</h4>
+<h4 id="recognizer">Recognizer<a class="headerlink" href="#recognizer" title="Permanent link">#</a></h4>
 <p>The traffic light recognition is implemented as a typical CNN classification task. The network receives an image with a ROI and a list of bounding boxes as input. The output of network is a <code>$4\times n$ vector</code>, representing four probabilities for each box to be black, red, yellow, and green.</p>
 <p>The class with maximum probability will be regarded as the light's status, if and only if the probability is large enough. Otherwise, the light's status will be set to black, which means that the status is not certain.</p>
-<h4 id="reviser">Reviser</h4>
+<h4 id="reviser">Reviser<a class="headerlink" href="#reviser" title="Permanent link">#</a></h4>
 <p>Because a traffic light can be flashing or shaded, and the Recognizer is <strong><em>not</em></strong> perfect, the current status may fail to represent the real status. A Reviser that could correct the status is necessary.</p>
 <p>If the Reviser receives a definitive status such as red or green, the Reviser saves and outputs the status directly. If the received status is black or unknown, the Reviser looks up the saved map. When the status of this light is certain for a period of time, the Reviser outputs this saved status. Otherwise, the status of black or unknown is sent as output.</p>
 <p>Because of the time sequence, yellow only exists <strong><em>after</em></strong> green and <strong><em>before</em></strong> red. Any yellow <strong><em>after red</em></strong> is reset to red for the sake of safety until green displays.</p>

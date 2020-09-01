@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>DreamView FAQs - Apollo Docs</title>
+  <title>Dreamview - Apollo Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "DreamView FAQs";
+    var mkdocs_page_name = "Dreamview";
     var mkdocs_page_input_path = "FAQs/Dreamview_FAQs.md";
     var mkdocs_page_url = null;
   </script>
@@ -65,31 +65,86 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Dreamview</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#im-having-difficulty-connecting-to-localhost8888-dreamview">I’m having difficulty connecting to localhost:8888 (Dreamview).</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dreamview-does-not-open-up-if-i-install-more-than-1-version-of-apollo">Dreamview does not open up if I install more than 1 version of Apollo?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dreamview-is-too-slow-how-do-i-resolve-it">Dreamview is too slow. How do I resolve it?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-draw-anything-in-dreamview-eg-an-arrow">How to draw anything in DreamView (e.g. an arrow)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-can-i-test-planning-algorithms-offline">How can I test planning algorithms offline?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adding-a-new-point-of-interest-permanently-in-the-dreamview-interface">Adding a new point of interest permanently in the Dreamview interface</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#whats-the-function-of-sim_control-in-the-backend-of-dreamview">What's the function of sim_control in the backend of dreamview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-do-i-turn-on-sim-control">How do I turn on Sim Control?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dreamview-does-not-start-even-though-the-build-is-successful">Dreamview does not start even though the build is successful</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#i-want-to-plot-my-own-graphs-for-my-algorithms-where-should-i-go">I want to plot my own graphs for my algorithms, where should I go?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-dreamland">What is Dreamland?</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -112,8 +167,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>FAQs &raquo;</li>
+        
+      
     
-    <li>DreamView FAQs</li>
+    <li>Dreamview</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/FAQs/Dreamview_FAQs.md"
@@ -127,8 +186,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="dreamview-faqs">DreamView FAQs</h2>
-<h3 id="im-having-difficulty-connecting-to-localhost8888-dreamview">I’m having difficulty connecting to localhost:8888 (Dreamview).</h3>
+                <h2 id="dreamview-faqs">DreamView FAQs<a class="headerlink" href="#dreamview-faqs" title="Permanent link">#</a></h2>
+<h3 id="im-having-difficulty-connecting-to-localhost8888-dreamview">I’m having difficulty connecting to localhost:8888 (Dreamview).<a class="headerlink" href="#im-having-difficulty-connecting-to-localhost8888-dreamview" title="Permanent link">#</a></h3>
 <p>The Dreamview web server is provided by the dreamview node(A node is an executable in ROS concept). Before accessing the Dreamview page, you need to build the system(including dreamview node) within the docker container following the <a href="https://github.com/ApolloAuto/apollo/blob/master/README.md">guide</a>. Once built, dreamview node will be started after the step <code>bash scripts/bootstrap.sh</code>.</p>
 <p>So if you can not access Dreamview, please check:</p>
 <ul>
@@ -137,7 +196,7 @@
 <li>Make sure you're using <apollo_host_ip>:8888 instead of localhost:8888 if you are not accessing the Dreamview page through the host machine.</li>
 </ul>
 <hr />
-<h3 id="dreamview-does-not-open-up-if-i-install-more-than-1-version-of-apollo">Dreamview does not open up if I install more than 1 version of Apollo?</h3>
+<h3 id="dreamview-does-not-open-up-if-i-install-more-than-1-version-of-apollo">Dreamview does not open up if I install more than 1 version of Apollo?<a class="headerlink" href="#dreamview-does-not-open-up-if-i-install-more-than-1-version-of-apollo" title="Permanent link">#</a></h3>
 <p>This issue occured because of port conflict error.
 Even though you setup two different docker environments, both of them are still trying to use port 8888 on your machine, therefore causing a port conflict issue. If you'd like to run both versions at the same time, please make sure different ports are set.</p>
 <p>To do so,</p>
@@ -151,22 +210,22 @@ Ex:
 </ol>
 <p>This way, dreamview can be accessed from http://localhost:<PORT_NUMBER> (http://localhost:5555 from the example)</p>
 <hr />
-<h3 id="dreamview-is-too-slow-how-do-i-resolve-it">Dreamview is too slow. How do I resolve it?</h3>
+<h3 id="dreamview-is-too-slow-how-do-i-resolve-it">Dreamview is too slow. How do I resolve it?<a class="headerlink" href="#dreamview-is-too-slow-how-do-i-resolve-it" title="Permanent link">#</a></h3>
 <p>If you feel Dreamview is taking too long to load/work, please run both the <a href="http://webglreport.com/?v=1">WebGL reports</a>. If there are any missing drivers, please install them</p>
 <hr />
-<h3 id="how-to-draw-anything-in-dreamview-eg-an-arrow">How to draw anything in DreamView (e.g. an arrow)</h3>
+<h3 id="how-to-draw-anything-in-dreamview-eg-an-arrow">How to draw anything in DreamView (e.g. an arrow)<a class="headerlink" href="#how-to-draw-anything-in-dreamview-eg-an-arrow" title="Permanent link">#</a></h3>
 <p>Dreamview uses https://github.com/mrdoob/three.js as graphics library. You can modify the frontend code to draw an arrow using the corresponding API of the library. After that you need to run a <code>./apollo.sh build_fe</code> to compile.</p>
 <hr />
-<h3 id="how-can-i-test-planning-algorithms-offline">How can I test planning algorithms offline?</h3>
+<h3 id="how-can-i-test-planning-algorithms-offline">How can I test planning algorithms offline?<a class="headerlink" href="#how-can-i-test-planning-algorithms-offline" title="Permanent link">#</a></h3>
 <p>Use dreamview and enable sim_control on dreamview to test your planning algorithm.</p>
 <hr />
-<h3 id="adding-a-new-point-of-interest-permanently-in-the-dreamview-interface">Adding a new point of interest permanently in the Dreamview interface</h3>
+<h3 id="adding-a-new-point-of-interest-permanently-in-the-dreamview-interface">Adding a new point of interest permanently in the Dreamview interface<a class="headerlink" href="#adding-a-new-point-of-interest-permanently-in-the-dreamview-interface" title="Permanent link">#</a></h3>
 <p>There's a default_end_way_point file for each map to specify point of interest, you can refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/map/data/demo/default_end_way_point.txt">the following file</a>.</p>
 <hr />
-<h3 id="whats-the-function-of-sim_control-in-the-backend-of-dreamview">What's the function of sim_control in the backend of dreamview</h3>
+<h3 id="whats-the-function-of-sim_control-in-the-backend-of-dreamview">What's the function of sim_control in the backend of dreamview<a class="headerlink" href="#whats-the-function-of-sim_control-in-the-backend-of-dreamview" title="Permanent link">#</a></h3>
 <p>It simulates a SDC's control module, and moves the car based on planning result. This is a really convenient way to visualize and test planning module</p>
 <hr />
-<h3 id="how-do-i-turn-on-sim-control">How do I turn on Sim Control?</h3>
+<h3 id="how-do-i-turn-on-sim-control">How do I turn on Sim Control?<a class="headerlink" href="#how-do-i-turn-on-sim-control" title="Permanent link">#</a></h3>
 <p>Purpose of sim control: drive the car based on the planning trajectory. Good for debugging planning algorithms.</p>
 <p><strong>Apollo 2.5 or after</strong>: simply turning on the SimControl switch as seen in the image below:</p>
 <p><img alt="" src="../images/sim_control_2.5.png" /></p>
@@ -181,7 +240,7 @@ Ex:
 <p><strong>Please note</strong>, planning and routing modules (see image below) should be ON while using SimControl. To navigate the ego-car, select either “route editing” or “default routing” from the side bar to define a route. You can turn the sim_control on and off from the toggle. However, a new routing request is needed each time the sim_control is restarted.
 <img alt="" src="../images/sim_control_2.0.png" /></p>
 <hr />
-<h3 id="dreamview-does-not-start-even-though-the-build-is-successful">Dreamview does not start even though the build is successful</h3>
+<h3 id="dreamview-does-not-start-even-though-the-build-is-successful">Dreamview does not start even though the build is successful<a class="headerlink" href="#dreamview-does-not-start-even-though-the-build-is-successful" title="Permanent link">#</a></h3>
 <p>There are 2 steps to deducing this issue:
 1. Identify if the issue is due to pcl lib through gdb: this can be done by finding the coredump file under <code>/apollo/data/core/</code> with name <strong><em>core_dreamview.$PID</em></strong>.
 If you see logs like:</p>
@@ -304,10 +363,10 @@ ldconfig
 </code></pre>
 
 <hr />
-<h3 id="i-want-to-plot-my-own-graphs-for-my-algorithms-where-should-i-go">I want to plot my own graphs for my algorithms, where should I go?</h3>
+<h3 id="i-want-to-plot-my-own-graphs-for-my-algorithms-where-should-i-go">I want to plot my own graphs for my algorithms, where should I go?<a class="headerlink" href="#i-want-to-plot-my-own-graphs-for-my-algorithms-where-should-i-go" title="Permanent link">#</a></h3>
 <p>Go to the PnC Monitor section in <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/dreamview_usage_table.md">Dreamview Doc</a>.</p>
 <hr />
-<h3 id="what-is-dreamland">What is Dreamland?</h3>
+<h3 id="what-is-dreamland">What is Dreamland?<a class="headerlink" href="#what-is-dreamland" title="Permanent link">#</a></h3>
 <p>Dreamland is Apollo's web-based simulation platform. Based on an enormous amount of driving scenario data and large-scale cloud computing capacity, Apollo simulation engine creates a powerful testing environment for the development of an autonomous driving system, from algorithms to grading, and then back to improved algorithms. It enables the developers and start-ups to run millions of miles of simulation daily, which dramatically accelerates the development cycle.</p>
 <p>To access Dreamland, please visit <a href="http://apollo.auto/platform/simulation.html">our Simulation website</a> and join now!</p>
 <hr />
@@ -316,6 +375,15 @@ ldconfig
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Hardware_FAQs/" class="btn btn-neutral float-right" title="Hardware">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Perception_FAQs/" class="btn btn-neutral" title="Perception"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -341,6 +409,10 @@ ldconfig
           <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../Perception_FAQs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Hardware_FAQs/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

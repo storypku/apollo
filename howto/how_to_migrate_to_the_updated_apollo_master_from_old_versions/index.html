@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,19 +158,19 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="migrate-to-apollo-master-from-old-versions">Migrate to Apollo master from old versions</h2>
-<h3 id="introduction">Introduction</h3>
+                <h2 id="migrate-to-apollo-master-from-old-versions">Migrate to Apollo master from old versions<a class="headerlink" href="#migrate-to-apollo-master-from-old-versions" title="Permanent link">#</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>Due to a fatal bug with Git LFS that has caused restricted access to Apollo repos, we have decided to retire the service from all Apollo repos. On May 14th 2:07 PM Pacific Time, the Apollo Team has completed the migration. We are sorry for any inconveniences this may cause you.</p>
 <pre><code>Note:
 If this is the first time you are cloning/building Apollo, you do not need to follow this guide. This guide is for people who had installed Git LFS previously with Apollo.
 </code></pre>
 
 <p>If this is your first time installing Apollo, please return to the <a href="https://github.com/ApolloAuto/apollo/blob/master/README.md">README</a> page.</p>
-<h3 id="why-did-we-retire-git-lfs">Why did we retire Git LFS</h3>
+<h3 id="why-did-we-retire-git-lfs">Why did we retire Git LFS<a class="headerlink" href="#why-did-we-retire-git-lfs" title="Permanent link">#</a></h3>
 <p>Several developers complained about bugs in the build process as well as loss of access to our repo due to Git LFS</p>
-<h3 id="migration-steps">Migration steps</h3>
+<h3 id="migration-steps">Migration steps<a class="headerlink" href="#migration-steps" title="Permanent link">#</a></h3>
 <p>We have compiled a list of steps that you can take to avoid being affected by this change. Please note, check if you have or have not made any local changes and/or submitted those changes to the old repo before starting the process:</p>
-<h4 id="not-made-any-local-changes">Not made any local changes</h4>
+<h4 id="not-made-any-local-changes">Not made any local changes<a class="headerlink" href="#not-made-any-local-changes" title="Permanent link">#</a></h4>
 <ol>
 <li>Disable LFS on your computer:</li>
 </ol>
@@ -158,20 +189,20 @@ If this is the first time you are cloning/building Apollo, you do not need to fo
 <pre><code>git push -f original master
 </code></pre>
 
-<h4 id="made-changes-and-have-not-submitted-to-the-repo">Made changes and have not submitted to the repo</h4>
+<h4 id="made-changes-and-have-not-submitted-to-the-repo">Made changes and have not submitted to the repo<a class="headerlink" href="#made-changes-and-have-not-submitted-to-the-repo" title="Permanent link">#</a></h4>
 <ol>
 <li>Save your changes</li>
 <li>Repeat the steps (1 - 3) in the section above</li>
 <li>Re-apply the changes</li>
 </ol>
-<h4 id="made-local-changes-and-have-submitted-to-your-forked-repo">Made local changes and have submitted to your forked repo,</h4>
+<h4 id="made-local-changes-and-have-submitted-to-your-forked-repo">Made local changes and have submitted to your forked repo,<a class="headerlink" href="#made-local-changes-and-have-submitted-to-your-forked-repo" title="Permanent link">#</a></h4>
 <p>please cherry-pick those changes to the new repo and submit your commits.</p>
 <pre><code>Note:
 If your repo did not sync with ours, you will still be using the Git LFS service. However, once the service is disabled, there is a high likelihood that your access to Apollo repos will be blocked/denied. To avoid such an incident, please follow the steps listed above that best 
 fit your situation.
 </code></pre>
 
-<h3 id="troubleshooting-steps">Troubleshooting steps</h3>
+<h3 id="troubleshooting-steps">Troubleshooting steps<a class="headerlink" href="#troubleshooting-steps" title="Permanent link">#</a></h3>
 <p>If you are still experiencing issues, you can always re-fork the repo. Let us know if you need any assistance on this process by creating an issue. </p>
               
             </div>

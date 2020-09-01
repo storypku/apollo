@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,7 +158,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="apollo-55-software-architecture">Apollo 5.5 Software Architecture</h2>
+                <h2 id="apollo-55-software-architecture">Apollo 5.5 Software Architecture<a class="headerlink" href="#apollo-55-software-architecture" title="Permanent link">#</a></h2>
 <p>Core software modules running on the Apollo 3.5 powered autonomous vehicle include:</p>
 <ul>
 <li><strong>Perception</strong> — The perception module identifies the world surrounding the autonomous vehicle. There are two important submodules inside perception: obstacle detection and traffic light detection.</li>
@@ -149,7 +180,7 @@
 <p>The interactions of these modules are illustrated in the picture below.</p>
 <p><img alt="img" src="../images/Apollo_3_5_software_architecture.png" /></p>
 <p>Every module is running as a separate CarOS-based ROS node. Each module node publishes and subscribes certain topics. The subscribed topics serve as data input while the published topics serve as data output. The detailed interactions are described in the following sections.</p>
-<h3 id="perception">Perception</h3>
+<h3 id="perception">Perception<a class="headerlink" href="#perception" title="Permanent link">#</a></h3>
 <p>Apollo Perception 3.5 has following new features:</p>
 <ul>
 <li><strong>Support for VLS-128 Line LiDAR</strong></li>
@@ -158,41 +189,41 @@
 <li><strong>Configurable sensor fusion</strong></li>
 </ul>
 <p>The perception module incorporates the capability of using 5 cameras (2 front, 2 on either side and 1 rear) and 2 radars (front and rear) along with 3 16-line LiDARs (2 rear and 1 front) and 1 128-line LiDAR to recognize obstacles and fuse their individual tracks to obtain a final track list. The obstacle sub-module detects, classifies and tracks obstacles. This sub-module also predicts obstacle motion and position information (e.g., heading and velocity). For lane line, we construct lane instances by postprocessing lane parsing pixels and calculate the lane relative location to the ego-vehicle (L0, L1, R0, R1, etc.).</p>
-<h3 id="prediction">Prediction</h3>
+<h3 id="prediction">Prediction<a class="headerlink" href="#prediction" title="Permanent link">#</a></h3>
 <p>The prediction module estimates the future motion trajectories for all the perceived obstacles. The output prediction message wraps the perception information. Prediction subscribes to localization, planning and perception obstacle messages as shown below.</p>
 <p><img alt="img" src="../images/pred.png" /></p>
 <p>When a localization update is received, the prediction module updates its internal status. The actual prediction is triggered when perception sends out its perception obstacle message.</p>
-<h3 id="localization">Localization</h3>
+<h3 id="localization">Localization<a class="headerlink" href="#localization" title="Permanent link">#</a></h3>
 <p>The localization module aggregates various data to locate the autonomous vehicle. There are two types of localization modes: OnTimer and Multiple SensorFusion.</p>
 <p>The first localization method is RTK-based, with a timer-based callback function <code>OnTimer</code>, as shown below.</p>
 <p><img alt="img" src="../images/localization1.png" /></p>
 <p>The other localization method is the Multiple Sensor Fusion (MSF) method, where a bunch of event-triggered callback functions are registered, as shown  below.</p>
 <p><img alt="img" src="../images/localization2.png" /></p>
-<h3 id="routing">Routing</h3>
+<h3 id="routing">Routing<a class="headerlink" href="#routing" title="Permanent link">#</a></h3>
 <p>The routing module needs to know the routing start point and routing end point, to compute the passage lanes and roads. Usually the routing start point is the autonomous vehicle location. The <code>RoutingResponse</code> is computed and published as shown below.</p>
 <p><img alt="img" src="../images/routing1.png" /></p>
-<h3 id="planning">Planning</h3>
+<h3 id="planning">Planning<a class="headerlink" href="#planning" title="Permanent link">#</a></h3>
 <p>Apollo 3.5 uses several information sources to plan a safe and collision free trajectory, so the planning module interacts with almost every other module. As Apollo matures and takes on different road conditions and driving use cases, planning has evolved to a more modular, scenario specific and wholistic approach. In this approach, each driving use case is treated as a different driving scenario. This is useful because an issue now reported in a particular scenario can be fixed without affecting the working of other scenarios as opposed to the previous versions, wherein an issue fix affected other driving use cases as they were all treated as a single driving scenario.</p>
 <p>Initially, the planning module takes the prediction output. Because the prediction output wraps the original perceived obstacle, the planning module subscribes to the traffic light detection output rather than the perception obstacles output.</p>
 <p>Then, the planning module takes the routing output. Under certain scenarios, the planning module might also trigger a new routing computation by sending a routing request if the current route cannot be faithfully followed.</p>
 <p>Finally, the planning module needs to know the location (Localization: where I am) as well as the current autonomous vehicle information (Chassis: what is my status).  </p>
 <p><img alt="img" src="../images/planning1.png" /></p>
-<h3 id="control">Control</h3>
+<h3 id="control">Control<a class="headerlink" href="#control" title="Permanent link">#</a></h3>
 <p>The Control takes the planned trajectory as input, and generates the control command to pass to CanBus.  It has five main data interfaces: OnPad, OnMonitor, OnChassis, OnPlanning and OnLocalization.</p>
 <p><img alt="img" src="../images/control1.png" /></p>
 <p>The <code>OnPad</code> and <code>OnMonitor</code> are routine interactions with the PAD-based human interface and simulations. </p>
-<h3 id="canbus">CanBus</h3>
+<h3 id="canbus">CanBus<a class="headerlink" href="#canbus" title="Permanent link">#</a></h3>
 <p>The CanBus has two data interfaces as shown below.</p>
 <p><img alt="img" src="../images/canbus1.png" /></p>
 <p>The first one is the <code>OnControlCommand</code> which is an event-based publisher with a callback function, which is triggered when the CanBus module receives control commands and the second one is <code>OnGuardianCommand</code>.</p>
-<h3 id="hmi">HMI</h3>
+<h3 id="hmi">HMI<a class="headerlink" href="#hmi" title="Permanent link">#</a></h3>
 <p>Human Machine Interface or DreamView in Apollo is a web application that:
     -   visualizes the current output of relevant autonomous driving modules, e.g. planning trajectory, car localization, chassis status, etc.
     -   provides human-machine interface for user to view hardware status, turn on/off of modules, and start the autonomous driving car.
     -   provides debugging tools, such as PnC Monitor to efficiently track module issues.</p>
-<h3 id="monitor">Monitor</h3>
+<h3 id="monitor">Monitor<a class="headerlink" href="#monitor" title="Permanent link">#</a></h3>
 <p>The surveillance system of all the modules in the vehicle including hardware. Monitor receives Data from different modules and passes them on to HMI for the driver to view and ensure that all the modules are working without any issue. In the event of a module or hardware failure, monitor sends an alert to Guardian (new Action Center Module) which then decides on which action needs to be taken to prevent a crash.</p>
-<h3 id="guardian">Guardian</h3>
+<h3 id="guardian">Guardian<a class="headerlink" href="#guardian" title="Permanent link">#</a></h3>
 <p>This new module is basically an action center that takes a decision based on the data that is sent by Monitor. There are 2 main functions of Guardian:
 - All modules working fine - Guardian allows the flow of control to work normally. Control signals are sent to CANBus as if Guardian were not present.
 - Module crash is detected by Monitor - if there is a failure detected by Monitor, Guardian will prevent Control signals from reaching CANBus and bring the car to a stop. There are 3 ways in which Guardian decides how to stop the car, and to do so, Guardian turns to the final Gatekeeper, Ultrasonic sensors,
@@ -205,7 +236,7 @@
 
 </code></pre>
 
-<h3 id="storytelling">Storytelling</h3>
+<h3 id="storytelling">Storytelling<a class="headerlink" href="#storytelling" title="Permanent link">#</a></h3>
 <p>Storytelling is a global and high-level Scenario Manager to help coordinate cross-module actions. In order to safely operate the autonomous vehicle on urban roads, complex planning scenarios are needed to ensure safe driving. These complex scenarios may involve different modules to ensure proper maneuvering. In order to avoid a sequential based approach to such scenarios, a new isolated scenario manager, the "Storytelling" module was created. This module creates stories which are complex scenarios that would trigger multiple modules' actions. Per some predefined rules, this module creates ne or multiple stories and publishes to
 <code>/apollo/storytelling</code> channel. The main advantage of this module is to fine tune the driving experience and also isolate complex scenarios packaging them into stories that can be subscribed to by other modules like Planning, Control etc. </p>
               

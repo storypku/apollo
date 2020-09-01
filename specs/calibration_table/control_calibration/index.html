@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,13 +158,13 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="vehicle-control-calibration">Vehicle Control Calibration</h2>
+                <h2 id="vehicle-control-calibration">Vehicle Control Calibration<a class="headerlink" href="#vehicle-control-calibration" title="Permanent link">#</a></h2>
 <p>Control calibration system automatically generates calibration table for different vehicle models. It includes three parts: a frontend data collection monitor system, a data pipeline upload/download tool for uploading collected data and downloading generated calibration tables, and a visualization tool for performance evaluation.</p>
 <!-- # Table of Contents 1\. [Frontend](#frontend) 2\. [Data](#data) - [Upload Tool](#upload) - [Download Tool](#download) 3\. [Visulization](#visulization) -->
 
 <p>## Frontend</p>
 <p>In DreamView, a data collection monitor is presented for monitoring the data calibration process. In vehicle calibration mode, collected data frames are visualized in the data calibration monitor. Data frames are categorized into different driving conditions according to their chassis information. The amount of collected data frames are indicated as progress bars.</p>
-<h4 id="setup">Setup</h4>
+<h4 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h4>
 <p>In the on-vehicle DreamView environment,</p>
 <ol>
 <li>Choose <code>vehicle calibration</code> in <code>--setup mode--</code>,</li>
@@ -141,7 +172,7 @@
 </ol>
 <p><img alt="" src="../images/calibration_table.png" /></p>
 <p>The data collection monitor is displayed in DreamView.</p>
-<h4 id="data-collection">Data collection</h4>
+<h4 id="data-collection">Data collection<a class="headerlink" href="#data-collection" title="Permanent link">#</a></h4>
 <p>When driving, data frames are automatically processed by reading their chassis messages. When a data frame satisfy the speed criterion (speed equal or larger than 0.2 mps), the data frame is categorized by its steering, speed and throttle/brake information. The data collection process is presented by bars in data collection monitor.</p>
 <p>There are 21 bars in total in data collection monitor. The overall process is indicated by the top bar. The rest 20 bars indicate 20 driving conditions, including</p>
 <ul>
@@ -188,18 +219,18 @@
 <p>For each bar, there is a blue ribbon indicating collected data frames. When the blue ribbon fills the whole bar, the number of collected frames reaches the target number. There is also a number at right end of each bar indicating the completion percentage.</p>
 <p>For calibration table data collection, when the first 13 bars (total progress bar and 12 brake/throttle condition bars) reaches 100% the data collection process is considered as completed. For dynamic model data collection, the data collection process is completed when all bars reaches 100%.</p>
 <p>All data are saved in <code>nvme drive</code> or <code>data/record/</code></p>
-<h4 id="vehicle-configuration">Vehicle Configuration</h4>
+<h4 id="vehicle-configuration">Vehicle Configuration<a class="headerlink" href="#vehicle-configuration" title="Permanent link">#</a></h4>
 <p>The brake and throttle specs are different between vehicle models. Therefore, the criteria for brake pulsing/tap and hash/under throttle depend on vehicle models. The default setting is based on Lincoln MKZ model. For different vehicle model, these parameters is configurable at</p>
 <pre><code>/apollo/modules/dreamview/conf/mkz7_data_collection_table.pb.txt
 </code></pre>
 
 <p>(description)</p>
-<h3 id="data-uploaddownload">Data Upload/Download</h3>
-<h4 id="prerequisites">Prerequisites</h4>
+<h3 id="data-uploaddownload">Data Upload/Download<a class="headerlink" href="#data-uploaddownload" title="Permanent link">#</a></h3>
+<h4 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h4>
 <p>Firstly, please make sure you have already finished setting up the <strong>Apollo Fuel Proxy</strong> following documents available at:</p>
 <p>https://github.com/ApolloAuto/apollo/blob/master/modules/tools/fuel_proxy/README.md</p>
 <p>This is <strong>essential</strong> before you can get enjoy control calibration or other Apollo Fuel-based cloud service.</p>
-<h3 id="folder-structure-requirement">Folder Structure Requirement</h3>
+<h3 id="folder-structure-requirement">Folder Structure Requirement<a class="headerlink" href="#folder-structure-requirement" title="Permanent link">#</a></h3>
 <p>Before uploading your data, take a note of:
 1. The folder structure to be maintained is:
    <img alt="" src="../images/file_system.png" /></p>
@@ -213,7 +244,7 @@
 <li>The vehicle configuration file (vehicle_param.pb.txt) is updated since Apollo 5.0 and later, you should check it</li>
 <li>One task folder can contain more than one vehicle folder, you can  train more vehicles in one training job</li>
 </ol>
-<h4 id="upload">Upload</h4>
+<h4 id="upload">Upload<a class="headerlink" href="#upload" title="Permanent link">#</a></h4>
 <p>Use <a href="https://cloud.baidu.com/doc/BOS/BOSCLI/8.5CBOS.20FS.html">bosfs</a> to mount
 your bucket to local, for example,</p>
 <pre><code>BUCKET=&lt;bucket&gt;
@@ -229,9 +260,9 @@ bosfs &quot;${BUCKET}&quot; &quot;${MOUNT}&quot; -o allow_other,logfile=/tmp/bos
 </code></pre>
 
 <p>Then you can copy the prepared data folder to somewhere under /mnt/bos.</p>
-<h4 id="download">Download</h4>
+<h4 id="download">Download<a class="headerlink" href="#download" title="Permanent link">#</a></h4>
 <p>No download needed, the results will be sent to your email associated with your BOS bucket.</p>
-<h3 id="result-visualization">Result Visualization</h3>
+<h3 id="result-visualization">Result Visualization<a class="headerlink" href="#result-visualization" title="Permanent link">#</a></h3>
 <p>The docker environment does not support Matplotlib. Thus, result are visualized outside of the docker environment. The following two figures show the visualization result of PC training results.</p>
 <p><img alt="" src="../images/throttle.png" /></p>
 <p><img alt="" src="../images/brake.png" /></p>

@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,9 +158,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="st">二次规划ST速度优化</h2>
+                <h2 id="st">二次规划ST速度优化<a class="headerlink" href="#st" title="Permanent link">#</a></h2>
 <p><em><strong>Tip</strong>: 为了更好的展示本文档中的等式，我们建议使用者使用带有<a href="https://chrome.google.com/webstore/detail/tex-all-the-things/cbimabofgmfdkicghcadidpemeenbffn">插件</a>的Chrome浏览器，或者将Latex等式拷贝到<a href="http://www.hostmath.com/">在线编辑公式网站</a>进行浏览。</em></p>
-<h3 id="1">1  定义</h3>
+<h3 id="1">1  定义<a class="headerlink" href="#1" title="Permanent link">#</a></h3>
 <p>从二次规划样条路径中选取一条路径后，Apollo将路线上的所有障碍物和自动驾驶车辆（ADV）展现在一个时间-路径图上（path-time ST），该路径图表示了路径上的站点变化。速度优化的任务是在ST图上找到一条合理的，无障碍的路径。</p>
 <p>Apollo使用多个样条来表示速度参数，在ST图上表示为一系列的ST点。Apollo会对二次规划的结果做再次的平衡以获得最佳的速度参数。QP问题的标准类型定义为：</p>
 <pre><code>$$
@@ -143,10 +174,10 @@ Ax \leq b
 $$
 </code></pre>
 
-<h3 id="2">2  目标函数</h3>
-<h4 id="21">2.1  获取样条段</h4>
+<h3 id="2">2  目标函数<a class="headerlink" href="#2" title="Permanent link">#</a></h3>
+<h4 id="21">2.1  获取样条段<a class="headerlink" href="#21" title="Permanent link">#</a></h4>
 <p>将路ST速度参数分为 <strong>n</strong> 段，每段路径用一个多项式来表示。</p>
-<h4 id="22">2.2  定义样条段函数</h4>
+<h4 id="22">2.2  定义样条段函数<a class="headerlink" href="#22" title="Permanent link">#</a></h4>
 <p>每个样条段 <strong><em>i</em></strong> 都有沿着参考线的累加距离$d_i$。每段的路径默认用5介多项式表示。多项式介数可以通过配置参数进行调整。</p>
 <pre><code>$$
 s = f_i(t) 
@@ -154,7 +185,7 @@ s = f_i(t)
 $$
 </code></pre>
 
-<h4 id="23">2.3  定义样条段优化函数</h4>
+<h4 id="23">2.3  定义样条段优化函数<a class="headerlink" href="#23" title="Permanent link">#</a></h4>
 <p>Apollo首先定义$cost_1$以使路径更加平滑：</p>
 <pre><code>$$
 cost_1 = \sum_{i=1}^{n} \Big( w_1 \cdot \int\limits_{0}^{d_i} (f_i')^2(s) ds + w_2 \cdot \int\limits_{0}^{d_i} (f_i'')^2(s) ds + w_3 \cdot \int\limits_{0}^{d_i} (f_i^{\prime\prime\prime})^2(s) ds \Big)
@@ -179,15 +210,15 @@ cost = cost_1 + cost_2 + cost_3
 $$
 </code></pre>
 
-<h3 id="3">3  约束条件</h3>
-<h4 id="31">3.1 初始点约束</h4>
+<h3 id="3">3  约束条件<a class="headerlink" href="#3" title="Permanent link">#</a></h3>
+<h4 id="31">3.1 初始点约束<a class="headerlink" href="#31" title="Permanent link">#</a></h4>
 <p>假设第一个点是($t0$, $s0$)，且$s0$在路径$f_i(t)$, $f'i(t)$, 和$f_i(t)''$上（位置、速率、加速度）。Apollo将这些约束转换为QP约束的等式为：</p>
 <pre><code>$$
 A_{eq}x = b_{eq}
 $$
 </code></pre>
 
-<h4 id="32">3.2  单调约束</h4>
+<h4 id="32">3.2  单调约束<a class="headerlink" href="#32" title="Permanent link">#</a></h4>
 <p>路线必须是单调的，比如车辆只能往前开。</p>
 <p>在路径上采样 <strong>m</strong> 个点，对每一个 $j$和$j-1$ 的点对，且($j\in[1,...,m]$)，如果两个点都处在同一个样条$k$上，则：</p>
 <pre><code>$$
@@ -213,7 +244,7 @@ $$
 $$
 </code></pre>
 
-<h4 id="33">3.3  平滑节点约束</h4>
+<h4 id="33">3.3  平滑节点约束<a class="headerlink" href="#33" title="Permanent link">#</a></h4>
 <p>该约束的目的是使样条的节点更加平滑。假设两个段$seg_k$ 和$seg_{k+1}$互相连接，且$seg_k$的累计值 <strong>s</strong> 为$s_k$。计算约束的等式为：</p>
 <pre><code>$$
 f_k(t_k) = f_{k+1} (t_0)
@@ -264,7 +295,7 @@ f'''_k(t_k) = f'''_{k+1} (t_0)
 $$
 </code></pre>
 
-<h4 id="34">3.4  点采样边界约束</h4>
+<h4 id="34">3.4  点采样边界约束<a class="headerlink" href="#34" title="Permanent link">#</a></h4>
 <p>在路径上均匀的取样 <strong>m</strong> 个点，检查这些点上的障碍物边界。将这些约束转换为QP约束不等式，使用不等式：</p>
 <pre><code>$$
 Ax \leq b
@@ -308,7 +339,7 @@ $$
 $$
 </code></pre>
 
-<h4 id="35">3.5  速度边界优化</h4>
+<h4 id="35">3.5  速度边界优化<a class="headerlink" href="#35" title="Permanent link">#</a></h4>
 <p>Apollo同样需要建立速度限制边界。</p>
 <p>在st曲线上取样 <strong>m</strong> 个点，为每个点$j$获取速度限制的上边界和下边界，例如$v{ub,j}$ 和 $v{lb,j}$，约束定义为：</p>
 <pre><code>$$

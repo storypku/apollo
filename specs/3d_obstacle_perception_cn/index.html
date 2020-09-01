@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,7 +158,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="3d">3D 障碍物感知</h2>
+                <h2 id="3d">3D 障碍物感知<a class="headerlink" href="#3d" title="Permanent link">#</a></h2>
 <p>Apollo解决的障碍物感知问题：</p>
 <ul>
 <li>高精地图ROI过滤器（HDMap ROI Filter）</li>
@@ -135,7 +166,7 @@
 <li>MinBox 障碍物边框构建（MinBox Builder）</li>
 <li>HM对象跟踪（HM Object Tracker）</li>
 </ul>
-<h3 id="roi">高精地图ROI过滤器</h3>
+<h3 id="roi">高精地图ROI过滤器<a class="headerlink" href="#roi" title="Permanent link">#</a></h3>
 <p>ROI（The Region of Interest）指定从高精地图检索到包含路面、路口的可驾驶区域。高精地图 ROI 过滤器（往下简称“过滤器”）处理在ROI之外的激光雷达点，去除背景对象，如路边建筑物和树木等，剩余的点云留待后续处理。</p>
 <p>给定一个高精地图，每个激光雷达点的关系意味着它在ROI内部还是外部。
 每个激光雷达点可以查询一个车辆周围区域的2D量化的查找表（LUT）。过滤器模块的输入和输出汇总于下表。</p>
@@ -163,15 +194,15 @@
 <li>ROI LUT构造</li>
 <li>ROI LUT点查询</li>
 </ol>
-<h4 id="_1">坐标转换</h4>
+<h4 id="_1">坐标转换<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
 <p>对于（高精地图ROI）过滤器来说，高精地图数据接口被定义为一系列多边形集合，每个集合由世界坐标系点组成有序点集。高精地图ROI点查询需要点云和多边形处在相同的坐标系，为此，Apollo将输入点云和HDMap多边形变换为来自激光雷达传感器位置的地方坐标系。</p>
-<h4 id="roi-lut">ROI LUT构造</h4>
+<h4 id="roi-lut">ROI LUT构造<a class="headerlink" href="#roi-lut" title="Permanent link">#</a></h4>
 <p>Apollo采用网格显示查找表（LUT），将ROI量化为俯视图2D网格，以此决定输入点是在ROI之内还是之外。</p>
 <p>如图1所示，该LUT覆盖了一个矩形区域，该区域位于高精地图边界上方，以普通视图周围的预定义空间范围为边界。它代表了与ROI关联网格的每个单元格（如用1/0表示在ROI的内部/外部）。 为了计算效率，Apollo使用 <strong>扫描线算法</strong>和 <strong>位图编码</strong>来构建ROI LUT。</p>
 <p><img src="images/3d_obstacle_perception/roi_lookup_table.png">
 <div align=center>图 1 ROI显示查找表（LUT）</div></p>
 <p>蓝色线条标出了高精地图ROI的边界，包含路标与路口。红色加粗点表示对应于激光雷达传感器位置的地方坐标系原始位置。2D网格由8*8个绿色正方形组成，在ROI中的单元格，为蓝色填充的正方形，而之外的是黄色填充的正方形。</p>
-<h4 id="roi-lut_1">ROI LUT点查询</h4>
+<h4 id="roi-lut_1">ROI LUT点查询<a class="headerlink" href="#roi-lut_1" title="Permanent link">#</a></h4>
 <p>基于ROI LUT，查询每个输入点的关系使用两步认证。对于点查询过程，Apollo数据编译输出如下，:</p>
 <ol>
 <li>检查点在ROI LUT矩形区域之内还是之外。</li>
@@ -205,7 +236,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="cnn">基于CNN的障碍物分割</h3>
+<h3 id="cnn">基于CNN的障碍物分割<a class="headerlink" href="#cnn" title="Permanent link">#</a></h3>
 <p>高精地图 ROI过滤之后，Apollo得到已过滤、只包含属于ROI内的点云，大部分背景障碍物，如路侧的建筑物、树木等均被移除，ROI内的点云被传递到分割模块。分割模块检测和划分前景障碍物，例如汽车，卡车，自行车和行人。</p>
 <table>
 <thead>
@@ -246,7 +277,7 @@
 </tbody>
 </table>
 <p>卷积神经网络详细介绍如下：</p>
-<h4 id="_2">通道特征提取</h4>
+<h4 id="_2">通道特征提取<a class="headerlink" href="#_2" title="Permanent link">#</a></h4>
 <p>给定一个点云框架，Apollo在地方坐标系中构建俯视图（即投影到X-Y平面）2D网格。 基于点的X、Y坐标，相对于LiDAR传感器原点的预定范围内，每个点被量化为2D网格的一个单元。 量化后，Apollo计算网格内每个单元格中点的8个统计测量，这将是下一步中传递给CNN的输入通道特征。 </p>
 <p>计算的8个统计测量：</p>
 <ol>
@@ -259,7 +290,7 @@
 <li>单元格中心与原点之间的距离</li>
 <li>二进制值标示单元格是空还是被占用</li>
 </ol>
-<h4 id="_3">基于卷积神经网络的障碍物预测</h4>
+<h4 id="_3">基于卷积神经网络的障碍物预测<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
 <p>基于上述通道特征，Apollo使用深度完全卷积神经网络（FCNN）来预测单元格障碍物属性，包括潜在物体中心的偏移位移（称为中心偏移）、对象性
 积极性和物体高度。如图2所示，网络的输入为 <em>W</em> x <em>H</em> x <em>C</em> 通道图像，其中：</p>
 <ul>
@@ -276,7 +307,7 @@
 
 <div align=center>图 2 FCNN在单元格方向上的障碍物预测</div>
 
-<h4 id="_4">障碍物聚类</h4>
+<h4 id="_4">障碍物聚类<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
 <p>在基于CNN的预测之后，Apollo获取单个单元格的预测信息。利用四个单元对象属性图像，其中包含：</p>
 <ul>
 <li>中心偏移</li>
@@ -295,7 +326,7 @@
 <p>(b) 固体红色多边形内的单元格组成候选对象集群。</p>
 <p>由五角星填充的红色范围表示对应于连接组件子图的根节点（单元格）。 </p>
 <p>一个候选对象集群可以由其根节点彼此相邻的多个相邻连接组件组成。</p>
-<h4 id="_5">后期处理</h4>
+<h4 id="_5">后期处理<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
 <p>聚类后，Apollo获得一组候选对象集，每个候选对象集包括若干单元格。 </p>
 <p>在后期处理中，Apollo首先对所涉及的单元格的积极性和物体高度值，平均计算每个候选群体的检测置信度分数和物体高度。 然后，Apollo去除相对于预测物体高度太高的点，并收集每个候选集中的有效单元格的点。 最后，Apollo删除具有非常低的可信度分数或小点数的候选聚类，以输出最终的障碍物集/分段。</p>
 <p>用户定义的参数可以在<code>modules/perception/model/cnn_segmentation/cnnseg.conf</code>的配置文件中设置。 下表说明了CNN细分的参数用法和默认值：</p>
@@ -344,33 +375,33 @@
 <td>0</td>
 </tr>
 <tr>
-<td>feature_param {width}</td>
+<td width="width">feature_param </td>
 <td>2D网格的X轴上的单元格数。</td>
 <td>512</td>
 </tr>
 <tr>
-<td>feature_param {height}</td>
+<td height="height">feature_param </td>
 <td>2D网格的Y轴上的单元格数。</td>
 <td>512</td>
 </tr>
 <tr>
-<td>feature_param {range}</td>
+<td range="range">feature_param </td>
 <td>2D格栅相对于原点（LiDAR传感器）的范围。</td>
 <td>60 meters</td>
 </tr>
 </tbody>
 </table>
 <p><strong>注意：提供的模型是一个样例，仅限于实验所用。</strong></p>
-<h3 id="minbox">MinBox 障碍物边框构建</h3>
+<h3 id="minbox">MinBox 障碍物边框构建<a class="headerlink" href="#minbox" title="Permanent link">#</a></h3>
 <p>对象构建器组件为检测到的障碍物建立一个边界框。因为LiDAR传感器的遮挡或距离，形成障碍物的点云可以是稀疏的，并且仅覆盖一部分表面。因此，盒构建器将恢复给定多边形点的完整边界框。即使点云稀疏，边界框的主要目的还是预估障碍物（例如，车辆）的方向。同样地，边框也用于可视化障碍物。</p>
 <p>算法背后的想法是找到给定多边形点边缘的所有区域。在以下示例中，如果AB是边缘，则Apollo将其他多边形点投影到AB上，并建立具有最大距离的交点对，这是属于边框的边缘之一。然后直接获得边界框的另一边。通过迭代多边形中的所有边，在以下图4所示，Apollo确定了一个6边界边框，将选择具有最小面积的方案作为最终的边界框。</p>
 <div align=center><img src="images/3d_obstacle_perception/object_building.png"></div>
 
 <div align=center>图 4 MinBox 对象构建</div>
 
-<h3 id="hm">HM对象跟踪</h3>
+<h3 id="hm">HM对象跟踪<a class="headerlink" href="#hm" title="Permanent link">#</a></h3>
 <p>HM对象跟踪器跟踪分段检测到的障碍物。通常，它通过将当前检测与现有跟踪列表相关联，来形成和更新跟踪列表，如不再存在，则删除旧的跟踪列表，并在识别出新的检测时生成新的跟踪列表。 更新后的跟踪列表的运动状态将在关联后进行估计。 在HM对象跟踪器中，<strong>匈牙利算法</strong>(Hungarian algorithm)用于检测到跟踪关联，并采用 <strong>鲁棒卡尔曼滤波器</strong>(Robust Kalman Filter) 进行运动估计。</p>
-<h4 id="detection-to-track-association">检测跟踪关联（Detection-to-Track Association）</h4>
+<h4 id="detection-to-track-association">检测跟踪关联（Detection-to-Track Association）<a class="headerlink" href="#detection-to-track-association" title="Permanent link">#</a></h4>
 <p>当将检测与现有跟踪列表相关联时，Apollo构建了一个二分图，然后使用 <strong>匈牙利算法</strong>以最小成本（距离）找到最佳检测跟踪匹配。</p>
 <p><strong>计算关联距离矩阵</strong></p>
 <p>首先，建立一个关联距离矩阵。根据一系列关联特征（包括运动一致性，外观一致性等）计算给定检测和一条轨迹之间的距离。HM跟踪器距离计算中使用的一些特征如下所示：</p>
@@ -411,7 +442,7 @@
 
 <div align=center>图 5 二分图匹配（Bipartite Graph Matching）</div>
 
-<h4 id="track-motion-estimation">跟踪动态预估 （Track Motion Estimation）</h4>
+<h4 id="track-motion-estimation">跟踪动态预估 （Track Motion Estimation）<a class="headerlink" href="#track-motion-estimation" title="Permanent link">#</a></h4>
 <p>在检测到跟踪关联之后，HM对象跟踪器使用 <strong>鲁棒卡尔曼滤波器</strong>来利用恒定速度运动模型估计当前跟踪列表的运动状态。 运动状态包括锚点和速度，分别对应于3D位置及其3D速度。 为了克服由不完美的检测引起的可能的分心，在跟踪器的滤波算法中实现了鲁棒统计技术。</p>
 <p><strong>观察冗余</strong></p>
 <p>在一系列重复观测中选择速度测量，即滤波算法的输入，包括锚点移位、边界框中心偏移、边界框角点移位等。冗余观测将为滤波测量带来额外的鲁棒性， 因为所有观察失败的概率远远小于单次观察失败的概率。</p>
@@ -427,7 +458,7 @@
 <p>1）构造跟踪对象并将其转换为世界坐标。</p>
 <p>2）预测现有跟踪列表的状态，并对其匹配检测。</p>
 <p>3）在更新后的跟踪列表中更新运动状态，并收集跟踪结果。</p>
-<h3 id="_6">参考</h3>
+<h3 id="_6">参考<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="https://zh.wikipedia.org/zh-cn/%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95">匈牙利算法</a></li>
 <li><a href="https://baike.baidu.com/item/%E5%9C%B0%E6%96%B9%E5%9D%90%E6%A0%87%E7%B3%BB/5154246">地方坐标系</a></li>

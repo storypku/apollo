@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,23 +158,23 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="dreamview-usage-table">Dreamview Usage Table</h2>
+                <h2 id="dreamview-usage-table">Dreamview Usage Table<a class="headerlink" href="#dreamview-usage-table" title="Permanent link">#</a></h2>
 <p>Dreamview is a web application that,
 1. visualizes the current output of relevant autonomous driving modules, e.g. planning trajectory, car localization, chassis status, etc.
 2. provides human-machine interface for users to view hardware status, turn on/off of modules, and start the autonomous driving car.
 3. provides debugging tools, such as PnC Monitor to efficiently track module issues.</p>
-<h3 id="layout-and-features">Layout and Features</h3>
+<h3 id="layout-and-features">Layout and Features<a class="headerlink" href="#layout-and-features" title="Permanent link">#</a></h3>
 <p>The application layout is divided into several regions: header, sidebar, main view, and tool view.</p>
-<h4 id="header">Header</h4>
+<h4 id="header">Header<a class="headerlink" href="#header" title="Permanent link">#</a></h4>
 <p>The Header has 3 drop-downs that can be set as shown:
 <img alt="" src="../images/dreamview_usage_table/header.png" /></p>
 <p>The Co-Driver switch is used to detect disengagement event automatically. Once detected, Dreamview will display a pop-up of the data recorder window for the co-driver to enter a new drive event.</p>
 <p>Depending on the mode chosen from the mode selector, the corresponding modules and commands, defined in <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/dreamview/conf/hmi.conf">hmi.conf</a>, will be presented in the <strong>Module Controller</strong>, and <strong>Quick Start</strong>, respectively.</p>
 <p>Note: navigation mode is for the purpose of the low-cost feature introduced in Apollo 2.5. Under this mode, Baidu (or Google) Map presents the absolute position of the ego-vehicle, while the main view has all objects and map elements presented in relative positions to the ego-vehicle.</p>
-<h4 id="sidebar-and-tool-view">Sidebar and Tool View</h4>
+<h4 id="sidebar-and-tool-view">Sidebar and Tool View<a class="headerlink" href="#sidebar-and-tool-view" title="Permanent link">#</a></h4>
 <p><img alt="" src="../images/dreamview_usage_table/sidebar.png" />
 Sidebar panel controls what is displayed in the tool view described below:</p>
-<h4 id="tasks">Tasks</h4>
+<h4 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">#</a></h4>
 <p>All the tasks that you could perform in DreamView:
 <img alt="" src="../images/dreamview_usage_table/tasks.png" /></p>
 <ul>
@@ -155,27 +186,27 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 * <strong>Others</strong>: switches and buttons for tools used frequently
 * <strong>Module Delay</strong>: the time delay between two messages for each topic
 * <strong>Console</strong>: monitor messages from the Apollo platform</p>
-<h4 id="module-controller">Module Controller</h4>
+<h4 id="module-controller">Module Controller<a class="headerlink" href="#module-controller" title="Permanent link">#</a></h4>
 <p>A panel to view the hardware status and turn the modules on/off
 <img alt="" src="../images/dreamview_usage_table/module_controller.png" /></p>
 </li>
 </ul>
-<h4 id="layer-menu">Layer Menu</h4>
+<h4 id="layer-menu">Layer Menu<a class="headerlink" href="#layer-menu" title="Permanent link">#</a></h4>
 <p>A toggle menu for visual elements displays.
 <img alt="" src="../images/dreamview_usage_table/layer_menu.png" /></p>
-<h4 id="route-editing">Route Editing</h4>
+<h4 id="route-editing">Route Editing<a class="headerlink" href="#route-editing" title="Permanent link">#</a></h4>
 <p>A visual tool to plan a route before sending the routing request to the Routing module
 <img alt="" src="../images/dreamview_usage_table/route_editing.png" /></p>
-<h4 id="data-recorder">Data Recorder</h4>
+<h4 id="data-recorder">Data Recorder<a class="headerlink" href="#data-recorder" title="Permanent link">#</a></h4>
 <p>A panel to report issues to drive event topic ("/apollo/drive_event") to rosbag.
 <img alt="" src="../images/dreamview_usage_table/data_recorder.png" /></p>
-<h4 id="default-routing">Default Routing</h4>
+<h4 id="default-routing">Default Routing<a class="headerlink" href="#default-routing" title="Permanent link">#</a></h4>
 <p>List of predefined routes or single points, known as point of interest (POI).</p>
 <p><img alt="" src="../images/dreamview_usage_table/default_routing.png" /></p>
 <p>If route editing is on, routing point(s) can be added visually on the map.</p>
 <p>If route editing is off, clicking a desired POI will send a routing request to the server. If the selected POI contains only a point, the start point of the routing request is the current position of the autonomous car; otherwise, the start position is the first point from the desired route.</p>
 <p>To edit POIs, see <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/map/data/demo/default_end_way_point.txt">default_end_way_point.txt</a> file under the directory of the Map. For example, if the map selected from the map selector is "Demo", then <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/map/data/demo/default_end_way_point.txt">default_end_way_point.txt</a> is located under <code>modules/map/data/demo</code>.</p>
-<h4 id="main-view">Main view:</h4>
+<h4 id="main-view">Main view:<a class="headerlink" href="#main-view" title="Permanent link">#</a></h4>
 <p>Main view animated 3D computer graphics in a web browser.</p>
 <p><img alt="" src="../images/dreamview_usage_table/mainview.png" /></p>
 <p>Elements in the main view are listed in the table below:</p>
@@ -221,7 +252,7 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 </tr>
 </tbody>
 </table>
-<h5 id="obstacles">Obstacles</h5>
+<h5>Obstacles</h5>
 <table>
 <thead>
 <tr>
@@ -264,8 +295,8 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 </tr>
 </tbody>
 </table>
-<h5 id="planning-decision">Planning Decision</h5>
-<h6 id="decision-fence">Decision Fence</h6>
+<h5>Planning Decision</h5>
+<h6>Decision Fence</h6>
 <p>Decision fences reflect decisions made by planning module to ego-vehicle (main) and obstacles (objects). Each type of decision is presented in different color and icon as shown below:</p>
 <table>
 <thead>
@@ -331,7 +362,7 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 </tr>
 </tbody>
 </table>
-<h6 id="stop-reasons">Stop reasons</h6>
+<h6>Stop reasons</h6>
 <p>When a STOP decision fence is shown, the reason to stop is displayed on the right side of the stop icon. Possible reasons and the corresponding icons are:</p>
 <table>
 <thead>
@@ -391,7 +422,7 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 </tr>
 </tbody>
 </table>
-<h5 id="point-of-view">Point of View</h5>
+<h5>Point of View</h5>
 <p>Main view that reflects the point of view chosen from <strong>Layer Menu</strong>:</p>
 <table>
 <thead>
@@ -419,7 +450,7 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="shortcut-keys">Shortcut Keys</h3>
+<h3 id="shortcut-keys">Shortcut Keys<a class="headerlink" href="#shortcut-keys" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -462,15 +493,15 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 </tr>
 </tbody>
 </table>
-<h3 id="pnc-monitor">PnC Monitor</h3>
+<h3 id="pnc-monitor">PnC Monitor<a class="headerlink" href="#pnc-monitor" title="Permanent link">#</a></h3>
 <p>To view the monitor:
 1. Build Apollo and run Dreamview on your web browser
 2. Turn on the "PNC Monitor" from the 'Others' panel.
 3. On the right-hand side, you should be able to view the Planning, Control, Latency graphs as seen below
 <img alt="" src="../images/Dreamview_landing.png" /></p>
-<h4 id="planningcontrol-graphs">Planning/Control Graphs</h4>
+<h4 id="planningcontrol-graphs">Planning/Control Graphs<a class="headerlink" href="#planningcontrol-graphs" title="Permanent link">#</a></h4>
 <p>The Planning/Control tab from the monitor plots various graphs to reflect the internal states of its modules.</p>
-<h5 id="customizable-graphs-for-planning-module">Customizable Graphs for Planning Module</h5>
+<h5>Customizable Graphs for Planning Module</h5>
 <p><a href="https://github.com/ApolloAuto/apollo2/blob/master/modules/planning/proto/planning_internal.proto#L180">planning_internal.proto</a> is a protobuf that stores debugging information, which is processed by dreamview server and send to dreamview client to help engineers debug. For users who want to plot their own graphs for new planning algorithms:
 1. Fill in the information of your "chart" defined in planning_internal.proto.
 2. X/Y axis: <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/dreamview/proto/chart.proto"><strong>chart.proto</strong> </a> has "Options" that you could set for axis which include
@@ -505,7 +536,7 @@ Refer to https://www.chartjs.org/docs/latest/charts/line.html for more propertie
 <ol>
 <li>Sample: You could look into <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/planning/on_lane_planning.cc#L562">on_lane_planning.cc</a> for a code sample.</li>
 </ol>
-<h5 id="additional-planning-paths">Additional Planning Paths</h5>
+<h5>Additional Planning Paths</h5>
 <p>For users who want to render additional paths on dreamview 3D scene, add the desired paths to the "path" field in <a href="https://github.com/ApolloAuto/apollo2/blob/master/modules/planning/proto/planning_internal.proto#L164">planning_internal.proto</a>. These paths will be rendered when PnC Monitor is on:
 <img alt="" src="../images/dreamview_usage_table/pncmonitor_paths.png" /></p>
 <p>Dreamview has predefined styles for the first four paths:</p>
@@ -552,7 +583,7 @@ Refer to https://www.chartjs.org/docs/latest/charts/line.html for more propertie
 </table>
 <p>If you have more than four paths to render or want to change the styles, edit the planning.pathProperties value in <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/dreamview/frontend/dist/parameters.json">dreamview/frtonend/dist/parameters.json</a>
 .</p>
-<h4 id="latency-graph">Latency graph</h4>
+<h4 id="latency-graph">Latency graph<a class="headerlink" href="#latency-graph" title="Permanent link">#</a></h4>
 <p>The graph displays the difference in time when the module receives sensor input data to when it will publish this data.
 <img alt="" src="../images/Dreamview_landing2.png" /></p>
 <p>The Latency Graph can be used to track the latency each individual faces. The graphs are coloured differently to help distinguish the modules and a key is included for better understanding. The graph is plotted as Latency measured in ms vs Timestamp measure in seconds as seen in the image below.

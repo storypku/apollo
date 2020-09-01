@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,19 +158,19 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="apollo">Apollo 系统架构代码分析</h2>
+                <h2 id="apollo">Apollo 系统架构代码分析<a class="headerlink" href="#apollo" title="Permanent link">#</a></h2>
 <p>以localization模块为例，其余模块节点类似。</p>
-<h3 id="_1">代码分析</h3>
+<h3 id="_1">代码分析<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
 <p>主要文件： main.cc，apollo_app.cc，apollo_app.h。</p>
-<h4 id="mianc">mian.c文件</h4>
+<h4 id="mianc">mian.c文件<a class="headerlink" href="#mianc" title="Permanent link">#</a></h4>
 <p>文件中只有一行代码：APOLLO_MAIN(apollo::localization::Localization) ，使用宏APOLLO_MAIN，开启了Localization节点，这里localization节点开始运行，这里的的节点与ros中的node概念一致，相当于一个进程。</p>
-<h4 id="apollo_main">APOLLO_MAIN宏解析：</h4>
+<h4 id="apollo_main">APOLLO_MAIN宏解析：<a class="headerlink" href="#apollo_main" title="Permanent link">#</a></h4>
 <ul>
 <li>APOLLO_MAIN宏定义位于"modules/common/apollo_app.h"文件。</li>
 <li>设置log和SIGINT信号处理程序，收到信号，关闭本节点。</li>
 <li>创建模块类对象，设置节点名字，调用基类（ApolloApp）的Spin()函数。</li>
 </ul>
-<h4 id="apolloapp">ApolloApp类：</h4>
+<h4 id="apolloapp">ApolloApp类：<a class="headerlink" href="#apolloapp" title="Permanent link">#</a></h4>
 <ul>
 <li>Spin()函数属于类ApolloApp public成员函数，类ApolloApp是所有模块类的基类。</li>
 <li>Public成员有name()函数，用于获取模块名字。Spin()函数用于初始化、启动、当ros关闭时关闭模块节点。还有一个析构函数。</li>

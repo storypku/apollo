@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,17 +158,17 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-add-a-new-evaluator-in-prediction-module">How to add a new evaluator in Prediction module</h2>
-<h3 id="introduction">Introduction</h3>
+                <h2 id="how-to-add-a-new-evaluator-in-prediction-module">How to add a new evaluator in Prediction module<a class="headerlink" href="#how-to-add-a-new-evaluator-in-prediction-module" title="Permanent link">#</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>The Evaluator generates features (from the raw information of obstacles and the ego vehicle) to get the model output by applying the pre-trained deep learning model.</p>
-<h3 id="steps-to-add-a-new-evaluator">Steps to add a new evaluator</h3>
+<h3 id="steps-to-add-a-new-evaluator">Steps to add a new evaluator<a class="headerlink" href="#steps-to-add-a-new-evaluator" title="Permanent link">#</a></h3>
 <p>Please follow the steps to add a new evaluator named <code>NewEvaluator</code>.
 1. Add a field in proto
 2. Define a class that inherits <code>Evaluator</code>
 3. Implement the class <code>NewEvaluator</code>
 4. Update prediction conf
 5. Upate the evaluator manager</p>
-<h4 id="define-a-class-that-inherits-evaluator">Define a class that inherits <code>Evaluator</code></h4>
+<h4 id="define-a-class-that-inherits-evaluator">Define a class that inherits <code>Evaluator</code><a class="headerlink" href="#define-a-class-that-inherits-evaluator" title="Permanent link">#</a></h4>
 <p>Create a new file named <code>new_evaluator.h</code> in the folder  <code>modules/prediction/evaluator/vehicle</code>. And define it like this:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/evaluator/evaluator.h&quot;
 
@@ -156,7 +187,7 @@ class NewEvaluator : public Evaluator {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="implement-the-class-newevaluator">Implement the class <code>NewEvaluator</code></h4>
+<h4 id="implement-the-class-newevaluator">Implement the class <code>NewEvaluator</code><a class="headerlink" href="#implement-the-class-newevaluator" title="Permanent link">#</a></h4>
 <p>Create a new file named <code>new_evaluator.cc</code> in the same folder as that of <code>new_evaluator.h</code>. Implement it like this:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/evaluator/vehicle/new_evaluator.h&quot;
 
@@ -183,7 +214,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 
 </code></pre>
 
-<h4 id="add-a-new-evaluator-in-proto">Add a new evaluator in proto</h4>
+<h4 id="add-a-new-evaluator-in-proto">Add a new evaluator in proto<a class="headerlink" href="#add-a-new-evaluator-in-proto" title="Permanent link">#</a></h4>
 <p>Add a new type of evaluator in <code>prediction_conf.proto</code>:</p>
 <pre><code class="cpp">  enum EvaluatorType {
     MLP_EVALUATOR = 0;
@@ -191,7 +222,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
   }
 </code></pre>
 
-<h4 id="update-prediction_conf-file">Update prediction_conf file</h4>
+<h4 id="update-prediction_conf-file">Update prediction_conf file<a class="headerlink" href="#update-prediction_conf-file" title="Permanent link">#</a></h4>
 <p>In the file <code>modules/prediction/conf/prediction_conf.pb.txt</code>, update the field <code>evaluator_type</code> like this:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -201,7 +232,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 }
 </code></pre>
 
-<h4 id="step-5-upate-the-evaluator-manager">Step 5: Upate the evaluator manager</h4>
+<h4 id="step-5-upate-the-evaluator-manager">Step 5: Upate the evaluator manager<a class="headerlink" href="#step-5-upate-the-evaluator-manager" title="Permanent link">#</a></h4>
 <p>Update <code>CreateEvluator( ... )</code> like this:</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_EVALUATOR: {
       evaluator_ptr.reset(new NewEvaluator());
@@ -214,9 +245,9 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 </code></pre>
 
 <p>After following the steps above, the new evaluator should be created.</p>
-<h3 id="adding-new-features">Adding new features</h3>
+<h3 id="adding-new-features">Adding new features<a class="headerlink" href="#adding-new-features" title="Permanent link">#</a></h3>
 <p>If you would like to add new features, follow the instructions that follow:</p>
-<h4 id="add-a-field-in-proto">Add a field in proto</h4>
+<h4 id="add-a-field-in-proto">Add a field in proto<a class="headerlink" href="#add-a-field-in-proto" title="Permanent link">#</a></h4>
 <p>Assume the new evaluating result named <code>new_output</code> and also assume its type is <code>int32</code>. If the output is related directly to the obstacles, you can add it into <code>modules/prediction/proto/feature.proto</code> like this:</p>
 <pre><code class="cpp">message Feature {
     // Other existing features

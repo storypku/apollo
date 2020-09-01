@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,25 +158,25 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">如何标定车辆油门和制动</h2>
-<h3 id="_2">介绍</h3>
+                <h2 id="_1">如何标定车辆油门和制动<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<h3 id="_2">介绍<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>车辆校准的目的是找到准确产生从控制模块请求的加速量的油门和制动命令</p>
-<h3 id="_3">准备</h3>
+<h3 id="_3">准备<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>按如下顺序完成准备工作:
 - 访问相关代码
 - 改变驾驶模式
 - 选择测试地点</p>
-<h4 id="_4">访问相关代码</h4>
+<h4 id="_4">访问相关代码<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
 <ul>
 <li>Canbus, 包括以下模块:</li>
 <li>GPS 驱动</li>
 <li>定位</li>
 </ul>
-<h4 id="_5">改变驾驶模式</h4>
+<h4 id="_5">改变驾驶模式<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
 <p>在<code>modules/canbus/conf/canbus_conf.pb.txt</code>中，设置驾驶模式为 <code>AUTO_SPEED_ONLY</code>.</p>
-<h4 id="_6">选择测试地点</h4>
+<h4 id="_6">选择测试地点<a class="headerlink" href="#_6" title="Permanent link">#</a></h4>
 <p>理想的测试地点是平坦的长直路</p>
-<h3 id="_7">更新车辆标定</h3>
+<h3 id="_7">更新车辆标定<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
 <p>以上准备工作完成后, 在<code>modules/tools/vehicle_calibration</code>中按顺序完成如下工作</p>
 <ul>
 <li>采集数据</li>
@@ -153,18 +184,18 @@
 <li>绘制结果</li>
 <li>转换结果为<code>protobuf</code>格式</li>
 </ul>
-<h4 id="_8">采集数据</h4>
+<h4 id="_8">采集数据<a class="headerlink" href="#_8" title="Permanent link">#</a></h4>
 <ol>
 <li>运行 <code>python data_collector.py</code>,参数如 x y z, x 代表了加速的控制指令, y 代表了限制速度(mps), z 是减速指令,正值标识油门量，负值标识刹车量.且每条命令运行多次，其中 <code>data_collector.py</code>在modules/tools/vehicle_calibration/</li>
 <li>根据车辆反应情况，调整命令脚本</li>
 <li>运行 <code>python plot_data.py</code> 使采集到的数据可视化</li>
 </ol>
 <p>比如输出指令 <code>15 5.2 -10</code>,将会生成名为<code>t15b-10r0.csv</code>的文件。</p>
-<h4 id="_9">处理数据</h4>
+<h4 id="_9">处理数据<a class="headerlink" href="#_9" title="Permanent link">#</a></h4>
 <p>对每个记录的日志分别运行<code>process_data.sh {dir}</code>，其中dir为<code>t15b-10r0.csv</code>所在的目录。每个数据日志被处理成<code>t15b-10r0.csv.result</code>。</p>
-<h4 id="_10">绘制结果</h4>
+<h4 id="_10">绘制结果<a class="headerlink" href="#_10" title="Permanent link">#</a></h4>
 <p>通过运行<code>python plot_results.py t15b-10r0.csv</code>得到可视化最终结果，检查是否有异常</p>
-<h4 id="protobuf">转换结果为<code>protobuf</code>格式</h4>
+<h4 id="protobuf">转换结果为<code>protobuf</code>格式<a class="headerlink" href="#protobuf" title="Permanent link">#</a></h4>
 <p>如果一切正常，运行<code>result2pb.sh</code>，把校准结果result.csv转换成控制模块定义的<code>protobuf</code>格式</p>
               
             </div>

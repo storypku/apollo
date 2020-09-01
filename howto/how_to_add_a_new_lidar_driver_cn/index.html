@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,9 +158,9 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="_1">引言</h3>
+                <h3 id="_1">引言<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
 <p>Lidar是一种常用的环境感知传感器，利用脉冲激光来照射目标并接收目标的反射脉冲，根据激光返回的时间来计算与目标的距离。通过对目标多次全方位的测量，可以得到目标环境的数字3D结构模型。Apollo平台默认支持velodyne 16线，32线，64线和128线等多种型号的lidar。该说明主要介绍Lidar驱动的主要功能以及如何在apollo平台中添加一款新的lidar设备驱动。</p>
-<h3 id="velodyne">Velodyne驱动的主要部分</h3>
+<h3 id="velodyne">Velodyne驱动的主要部分<a class="headerlink" href="#velodyne" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p><a href="https://github.com/ApolloAuto/apollo/tree/master/modules/drivers/velodyne/driver">Driver</a>: 通过网络端口接收lidar硬件产生的UDP数据包，将每一帧封装成VelodyneScan格式后发送。</p>
@@ -141,10 +172,10 @@
 <p><a href="https://github.com/ApolloAuto/apollo/tree/master/modules/drivers/velodyne/compensator">Compensator</a>: 接收点云数据和pose数据，根据每个点的对应的pose信息把点转换到点云中最大时刻对应的坐标系下，减小由车辆自身的运动带来的误差。需要点云数据中包含每个点的时间戳信息。</p>
 </li>
 </ol>
-<h3 id="lidar">添加新lidar驱动的步骤</h3>
-<h5 id="1-cyber">1. 熟悉cyber框架</h5>
+<h3 id="lidar">添加新lidar驱动的步骤<a class="headerlink" href="#lidar" title="Permanent link">#</a></h3>
+<h5>1. 熟悉cyber框架</h5>
 <p>cyber框架下系统中每一个功能单元都可以抽象为一个component，通过channel相互间进行通信，然后根据dag(有向无环图)配置文件，构建成相应的pipeline，实现数据的流式处理。</p>
-<h5 id="2">2. 消息定义</h5>
+<h5>2. 消息定义</h5>
 <p>apollo已经预定义了点云的消息格式，所以只需要为新lidar定义一个存储原始扫描数据的proto消息，用于数据的存档和离线开发调试，相比于点云数据，存档原始数据可以大量节省存储空间。一个新的扫描数据消息可以类似如下定义:</p>
 <pre><code>```c++
 // a scan message sample
@@ -159,7 +190,7 @@ message ScanData {
 ```
 </code></pre>
 <p>在velodyne驱动中，其扫描数据消息定义为<a href="https://github.com/ApolloAuto/apollo/blob/master/modules/drivers/velodyne/proto/velodyne.proto#L29">VelodyneScan</a>.</p>
-<h5 id="3">3. 读取原始数据</h5>
+<h5>3. 读取原始数据</h5>
 <p>lidar每秒会产生大量数据，一般通过UDP协议来进行数据的高效传输。编写一个DriverComponent类，继承于无模版参数Component类；在Init函数中启动一个异步poll线程，不断从相应的端口读取lidar数据；然后根据需求如将一段时间内的数据打包为一帧ScanData，如扫描一圈为一帧；最后通过writer将ScanData写至相应的channel发送出去。</p>
 <pre><code class="c++">// Inherit component with no template parameters, 
 // do not receive message from any channel
@@ -191,7 +222,7 @@ class DriverComponent : public Component&lt;&gt; {
 CYBER_REGISTER_COMPONENT(DriverComponent)
 </code></pre>
 
-<h5 id="4">4. 解析扫描数据，生成点云。</h5>
+<h5>4. 解析扫描数据，生成点云。</h5>
 <p>编写一个Parser类，输入为一帧ScanData，根据lidar自己的数据协议，解析出每一个点的时间戳，x/y/z三维坐标，以及反射强度，并组合成一帧点云。每个点都位于以lidar为原点的FLU（Front: x, Left: y, Up: z）坐标系下。</p>
 <pre><code class="c++">message PointXYZIT {
   optional float x = 1 [default = nan];
@@ -232,9 +263,9 @@ class ParserComponent : public Component&lt;ScanData&gt; {
 CYBER_REGISTER_COMPONENT(ParserComponent)
 </code></pre>
 
-<h5 id="5">5. 对点云进行运行补偿</h5>
+<h5>5. 对点云进行运行补偿</h5>
 <p>运动补偿是一个通用的点云处理过程，可以直接复用velodyne driver中compensator模块的算法逻辑。</p>
-<h5 id="6-dag">6. 配置dag文件</h5>
+<h5>6. 配置dag文件</h5>
 <p>将各个数据处理环节定义为component后，需要将各个component组成一个lidar数据处理pipeline，如下配置lidar_driver.dag:</p>
 <pre><code class="python"># Define all coms in DAG streaming.
 module_config {
@@ -273,7 +304,7 @@ module_config {
 }
 </code></pre>
 
-<h5 id="7-lidar">7. 运行lidar驱动并查看点云</h5>
+<h5>7. 运行lidar驱动并查看点云</h5>
 <p>完成以步骤后，就可以通过以下命令来启动lidar驱动。</p>
 <pre><code class="bash">mainboard -d /path/to/lidar_driver.dag
 </code></pre>

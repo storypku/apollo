@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,23 +158,23 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">如何调节控制参数</h2>
-<h3 id="_2">引言</h3>
+                <h2 id="_1">如何调节控制参数<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<h3 id="_2">引言<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>控制模块的目标是基于计划轨迹和当前车辆状态生成控制命令给车辆。</p>
-<h3 id="_3">背景</h3>
-<h4 id="_4">输入/输出</h4>
-<h5 id="_5">输入</h5>
+<h3 id="_3">背景<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<h4 id="_4">输入/输出<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h5>输入</h5>
 <ul>
 <li>规划轨迹</li>
 <li>当前的车辆状态</li>
 <li>HMI驱动模式更改请求</li>
 <li>监控系统</li>
 </ul>
-<h5 id="_6">输出</h5>
+<h5>输出</h5>
 <p>输出控制命令管理<code>canbus</code>中的转向、节流和制动等功能。</p>
-<h4 id="_7">控制器介绍</h4>
+<h4 id="_5">控制器介绍<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
 <p>控制器包括管理转向指令的横向控制器和管理节气门和制动器命令的纵向控制器。</p>
-<h5 id="_8">横向控制器</h5>
+<h5>横向控制器</h5>
 <p>横向控制器是基于LQR的最优控制器。 该控制器的动力学模型是一个简单的带有侧滑的自行车模型。它被分为两类，包括闭环和开环。</p>
 <ul>
 <li>闭环提供具有4种状态的离散反馈LQR控制器： </li>
@@ -153,7 +184,7 @@
 <li>航向误差率</li>
 <li>开环利用路径曲率信息消除恒定稳态航向误差。</li>
 </ul>
-<h5 id="_9">纵向控制器</h5>
+<h5>纵向控制器</h5>
 <p>纵向控制器配置为级联PID +校准表。它被分为两类，包括闭环和开环。</p>
 <ul>
 <li>闭环是一个级联PID（站PID +速度PID），它将以下数据作为控制器输入：</li>
@@ -161,10 +192,10 @@
 <li>速度误差</li>
 <li>开环提供了一个校准表，将加速度映射到节气门/制动百分比。</li>
 </ul>
-<h3 id="_10">控制器调谐</h3>
-<h4 id="_11">实用工具</h4>
+<h3 id="_6">控制器调谐<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<h4 id="_7">实用工具<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
 <p>类似于<a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/diagnostics">诊断</a> 和 <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/realtime_plot">realtime_plot</a> 可用于控制器调优，并且可以在<code>apollo/modules/tools/</code>中找到.</p>
-<h4 id="_12">横向控制器的整定</h4>
+<h4 id="_8">横向控制器的整定<a class="headerlink" href="#_8" title="Permanent link">#</a></h4>
 <p>横向控制器设计用于最小调谐力。“所有”车辆的基础横向控制器调谐步骤如下：</p>
 <ol>
 <li>
@@ -177,7 +208,7 @@
 <p>增加<code>matrix_q</code>的第一个元素，它定义横向误差加权以最小化横向误差。</p>
 </li>
 </ol>
-<h5 id="mkz">林肯MKZ调谐</h5>
+<h5>林肯MKZ调谐</h5>
 <p>对于Lincoln MKZ，有四个元素指的是状态加权矩阵Q的对角线元素：</p>
 <ul>
 <li>横向误差加权</li>
@@ -194,7 +225,7 @@
 }
 </code></pre>
 
-<h5 id="_13">调谐附加车辆类型</h5>
+<h5>调谐附加车辆类型</h5>
 <p>当调整除林肯MKZ以外的车辆类型时，首先更新车辆相关的物理参数，如下面的示例所示。然后，按照上面列出的基本横向控制器调整步骤<em>横向控制器调谐</em>和定义矩阵Q参数。</p>
 <p>下面是一个例子.</p>
 <pre><code>lat_controller_conf {
@@ -211,13 +242,13 @@
 }
 </code></pre>
 
-<h4 id="_14">纵控制器的调谐</h4>
+<h4 id="_9">纵控制器的调谐<a class="headerlink" href="#_9" title="Permanent link">#</a></h4>
 <p>纵向控制器由级联的PID控制器组成，该控制器包括一个站控制器和一个具有不同速度增益的高速/低速控制器。Apollo管理开环和闭环的调谐通过：</p>
 <ul>
 <li>开环: 校准表生成。请参阅<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_update_vehicle_calibration.md">how_to_update_vehicle_calibration.md</a>的详细步骤</li>
 <li>闭环: 基于高速控制器-&gt;低速控制器-&gt;站控制器的顺序。</li>
 </ul>
-<h5 id="_15">高/低速控制器的调谐</h5>
+<h5>高/低速控制器的调谐</h5>
 <p>高速控制器代码主要用于跟踪高于某一速度值的期望速度。例如：</p>
 <pre><code>high_speed_pid_conf {
   integrator_enable: true
@@ -242,7 +273,7 @@
    kd: 0.0
  }</code>
 <em>注意:</em>  当设备切换到 <em>Drive</em>时，Apollo 通常将速度设置为滑行速度。</p>
-<h5 id="_16">站控制器调谐</h5>
+<h5>站控制器调谐</h5>
 <p>Apollo 使用车辆的站控制器来跟踪车辆轨迹基准与车辆位置之间的站误差。  一个站控制器调谐示例如下所示。</p>
 <pre><code>station_pid_conf {
   integrator_enable: true
@@ -253,7 +284,7 @@
 }
 </code></pre>
 
-<h3 id="_17">参考文献</h3>
+<h3 id="_10">参考文献<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>"Vehicle dynamics and control." Rajamani, Rajesh. Springer Science &amp; Business Media, 2011.</p>

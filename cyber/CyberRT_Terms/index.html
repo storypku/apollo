@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,35 +158,35 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="apollo-cyber-rt-terminologies">Apollo Cyber RT Terminologies</h2>
+                <h2 id="apollo-cyber-rt-terminologies">Apollo Cyber RT Terminologies<a class="headerlink" href="#apollo-cyber-rt-terminologies" title="Permanent link">#</a></h2>
 <p>This page describes the definitions of the most commonly used terminologies in Cyber RT.</p>
-<h3 id="component">Component</h3>
+<h3 id="component">Component<a class="headerlink" href="#component" title="Permanent link">#</a></h3>
 <p>In an autonomous driving system, modules(like perception, localization, control systems...) exist in the form of components under Cyber RT. Each component communicates with the others through Cyber channels. The component concept not only decouples modules but also provides the flexibility for modules to be divided into components based individual module design.</p>
-<h3 id="channel">Channel</h3>
+<h3 id="channel">Channel<a class="headerlink" href="#channel" title="Permanent link">#</a></h3>
 <p>Channels are used to manage data communication in Cyber RT. Users can publish/subscribe to the same channel to achieve p2p communication.</p>
-<h3 id="task">Task</h3>
+<h3 id="task">Task<a class="headerlink" href="#task" title="Permanent link">#</a></h3>
 <p>Task is the abstract description of an asynchronous computation task in Cyber RT.</p>
-<h3 id="node">Node</h3>
+<h3 id="node">Node<a class="headerlink" href="#node" title="Permanent link">#</a></h3>
 <p>Node is the fundamental building block of Cyber RT; every module contains and communicates through the node. A module can have different types of communication by defining read/write and/or service/client in a node.</p>
-<h3 id="readerwriter">Reader/Writer</h3>
+<h3 id="readerwriter">Reader/Writer<a class="headerlink" href="#readerwriter" title="Permanent link">#</a></h3>
 <p>Message read/write class from/to channel. Reader/Writer are normally created within a node as the major message transfer interface in Cyber RT.</p>
-<h3 id="serviceclient">Service/Client</h3>
+<h3 id="serviceclient">Service/Client<a class="headerlink" href="#serviceclient" title="Permanent link">#</a></h3>
 <p>Besides Reader/writer, Cyber RT also provides service/client pattern for module communication. It supports two-way communication between nodes. A client node will receive a response when a request is made to a service.</p>
-<h3 id="parameter">Parameter</h3>
+<h3 id="parameter">Parameter<a class="headerlink" href="#parameter" title="Permanent link">#</a></h3>
 <p>Parameter service provides a global parameter access interface in Cyber RT. It's built based on the service/client pattern.</p>
-<h3 id="service-discovery">Service discovery</h3>
+<h3 id="service-discovery">Service discovery<a class="headerlink" href="#service-discovery" title="Permanent link">#</a></h3>
 <p>As a decentralized design framework, Cyber RT does not have a master/central node for service registration. All nodes are treated equally and can find other service nodes through <code>service discovery</code>. <code>UDP</code> is used in Service discovery.</p>
-<h3 id="croutine">CRoutine</h3>
+<h3 id="croutine">CRoutine<a class="headerlink" href="#croutine" title="Permanent link">#</a></h3>
 <p>Referred to as Coroutine concept, Cyber RT implemented CRoutine to optimize thread usage and system resource allocation.</p>
-<h3 id="scheduler">Scheduler</h3>
+<h3 id="scheduler">Scheduler<a class="headerlink" href="#scheduler" title="Permanent link">#</a></h3>
 <p>To better support autonomous driving scenarios, Cyber RT provides different kinds of resource scheduling algorithms for developers to choose from.</p>
-<h3 id="message">Message</h3>
+<h3 id="message">Message<a class="headerlink" href="#message" title="Permanent link">#</a></h3>
 <p>Message is the data unit used in Cyber RT for data transfer between modules.</p>
-<h3 id="dag-file">Dag file</h3>
+<h3 id="dag-file">Dag file<a class="headerlink" href="#dag-file" title="Permanent link">#</a></h3>
 <p>Dag file is the config file of module topology. You can define components used and upstream/downstream channels in the dag file.</p>
-<h3 id="launch-files">Launch files</h3>
+<h3 id="launch-files">Launch files<a class="headerlink" href="#launch-files" title="Permanent link">#</a></h3>
 <p>The Launch file provides an easy way to start modules. By defining one or multiple dag files in the launch file, you can start multiple modules at the same time.</p>
-<h3 id="record-file">Record file</h3>
+<h3 id="record-file">Record file<a class="headerlink" href="#record-file" title="Permanent link">#</a></h3>
 <p>The Record file is used to record messages sent/received to/from channels in Cyber RT. Reply record files can help reproduce the behavior of previous operations of Cyber RT.</p>
               
             </div>

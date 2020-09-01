@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,18 +158,18 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="guide-for-li-usb30-az023wdrb">Guide for LI-USB30-AZ023WDRB</h2>
+                <h2 id="guide-for-li-usb30-az023wdrb">Guide for LI-USB30-AZ023WDRB<a class="headerlink" href="#guide-for-li-usb30-az023wdrb" title="Permanent link">#</a></h2>
 <p>The cameras used are LI-USB30-AR023ZWDR with standard USB 3.0 case manufactured by Leopard Imaging Inc. This line of product is based on AZ023Z 1080P sensor and AP0202 ISP from ON Semiconductor. It supports external trigger and software trigger.</p>
 <p>We recommend using two cameras with 6 mm lens and one with 25 mm lens to achieve the required performance for traffic light detection application.</p>
 <p><img alt="camera_image" src="../images/LI-USB30-AZ023ZWDRB.png" /></p>
 <p>This camera can be connected to the IPC through USB 3.0 cable for power and data communication. External trigger signal can be sent into the camera via the HR25-7TP-8P(72) connector. A firmware change would also be needed to enable external trigger. For more detail on external triggers, please contact Leopard Imaging Inc. for more instructions.</p>
-<h3 id="reference">Reference</h3>
+<h3 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h3>
 <p>You can find additional information regarding the Leopard Imaging Inc. cameras on their <a href="https://leopardimaging.com/product/li-usb30-ar023zwdrb/">website</a></p>
 <ul>
 <li><a href="https://www.leopardimaging.com/LI-USB30-AR023ZWDRB_datasheet.pdf">Data Sheet</a></li>
 <li><a href="https://leopardimaging.com/product/li-usb3-trig_cable/">Trigger Cable</a></li>
 </ul>
-<h3 id="disclaimer">Disclaimer</h3>
+<h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">#</a></h3>
 <p>This device is <code>Apollo Platform Supported</code></p>
               
             </div>

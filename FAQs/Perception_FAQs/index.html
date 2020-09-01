@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Perception FAQs - Apollo Docs</title>
+  <title>Perception - Apollo Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Perception FAQs";
+    var mkdocs_page_name = "Perception";
     var mkdocs_page_input_path = "FAQs/Perception_FAQs.md";
     var mkdocs_page_url = null;
   </script>
@@ -65,31 +65,76 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Perception</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#how-many-typer-of-sensors-calibrations-are-present">How many typer of sensors calibrations are present?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#is-the-order-of-sensor-calibration-important-at-all-can-i-do-imu-vehicle-before-radar-camera">Is the order of sensor calibration important at all ? Can I do IMU - vehicle before Radar - Camera ?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-do-i-run-the-offline-perception-visualizer">How do I run the Offline Perception Visualizer?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#are-you-going-to-release-the-source-code-for-the-calibration-tools">Are you going to release the source code for the calibration tools ?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-do-you-ensure-that-the-right-calibration-files-are-loaded-for-the-perception-module">How do you ensure that the right calibration files are loaded for the perception module ?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#i-am-trying-to-run-the-extrinsic-sensor-calibration-tools-and-they-seem-to-complain-about-the-ins_stat-not-being-56-but-when-i-echo-the-apollosensorgnssins_stat-topic-i-can-see-that-the-position-type-is-56-what-could-be-the-problem">I am trying to run the extrinsic sensor calibration tools and they seem to complain about the INS_STAT not being 56. But when I echo the /apollo/sensor/gnss/ins_stat topic I can see that the position type is 56. What could be the problem?</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -112,8 +157,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>FAQs &raquo;</li>
+        
+      
     
-    <li>Perception FAQs</li>
+    <li>Perception</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/FAQs/Perception_FAQs.md"
@@ -127,8 +176,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="perception-faqs">Perception FAQs</h2>
-<h3 id="how-many-typer-of-sensors-calibrations-are-present">How many typer of sensors calibrations are present?</h3>
+                <h2 id="perception-faqs">Perception FAQs<a class="headerlink" href="#perception-faqs" title="Permanent link">#</a></h2>
+<h3 id="how-many-typer-of-sensors-calibrations-are-present">How many typer of sensors calibrations are present?<a class="headerlink" href="#how-many-typer-of-sensors-calibrations-are-present" title="Permanent link">#</a></h3>
 <p>There are 5 types of calibration:
 * Camera - Camera
 * Camera - LiDAR
@@ -138,22 +187,22 @@
 <p>For additional information on Sensor Calibration, please refer to our <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_2_0_sensor_calibration_guide.md">calibration guide</a></p>
 <p>For additional information on LiDAR - GNSS calibration please refer to our <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_1_5_lidar_calibration_guide.md">LiDAR - GNSS calibration guide</a></p>
 <hr />
-<h3 id="is-the-order-of-sensor-calibration-important-at-all-can-i-do-imu-vehicle-before-radar-camera">Is the order of sensor calibration important at all ? Can I do IMU - vehicle before Radar - Camera ?</h3>
+<h3 id="is-the-order-of-sensor-calibration-important-at-all-can-i-do-imu-vehicle-before-radar-camera">Is the order of sensor calibration important at all ? Can I do IMU - vehicle before Radar - Camera ?<a class="headerlink" href="#is-the-order-of-sensor-calibration-important-at-all-can-i-do-imu-vehicle-before-radar-camera" title="Permanent link">#</a></h3>
 <p>Yes it is important, but you could calibrate the IMU - Vehicle before Radar - Camera</p>
 <hr />
-<h3 id="how-do-i-run-the-offline-perception-visualizer">How do I run the Offline Perception Visualizer?</h3>
+<h3 id="how-do-i-run-the-offline-perception-visualizer">How do I run the Offline Perception Visualizer?<a class="headerlink" href="#how-do-i-run-the-offline-perception-visualizer" title="Permanent link">#</a></h3>
 <p>Refer to the How-To guide located <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_run_offline_perception_visualizer.md">here</a>.</p>
 <hr />
-<h3 id="are-you-going-to-release-the-source-code-for-the-calibration-tools">Are you going to release the source code for the calibration tools ?</h3>
+<h3 id="are-you-going-to-release-the-source-code-for-the-calibration-tools">Are you going to release the source code for the calibration tools ?<a class="headerlink" href="#are-you-going-to-release-the-source-code-for-the-calibration-tools" title="Permanent link">#</a></h3>
 <p>No, we currently have not released the source code for our calibration tools.</p>
 <hr />
-<h3 id="how-do-you-ensure-that-the-right-calibration-files-are-loaded-for-the-perception-module">How do you ensure that the right calibration files are loaded for the perception module ?</h3>
+<h3 id="how-do-you-ensure-that-the-right-calibration-files-are-loaded-for-the-perception-module">How do you ensure that the right calibration files are loaded for the perception module ?<a class="headerlink" href="#how-do-you-ensure-that-the-right-calibration-files-are-loaded-for-the-perception-module" title="Permanent link">#</a></h3>
 <p>In each car, specific Camera parameters should be saved and the default parameters will be replaced by the saved parameters when you install the release version.
 When user select a vehicle, we'll copy files from calibration/data/[vehicle]/[src_data] to target places.
 The code is at <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/dreamview/backend/hmi/vehicle_manager.cc#L43">Link</a>.
 This action is totally configurable, see the <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/dreamview/conf/vehicle_data.pb.txt">example here</a></p>
 <hr />
-<h3 id="i-am-trying-to-run-the-extrinsic-sensor-calibration-tools-and-they-seem-to-complain-about-the-ins_stat-not-being-56-but-when-i-echo-the-apollosensorgnssins_stat-topic-i-can-see-that-the-position-type-is-56-what-could-be-the-problem">I am trying to run the extrinsic sensor calibration tools and they seem to complain about the INS_STAT not being 56. But when I echo the /apollo/sensor/gnss/ins_stat topic I can see that the position type is 56. What could be the problem?</h3>
+<h3 id="i-am-trying-to-run-the-extrinsic-sensor-calibration-tools-and-they-seem-to-complain-about-the-ins_stat-not-being-56-but-when-i-echo-the-apollosensorgnssins_stat-topic-i-can-see-that-the-position-type-is-56-what-could-be-the-problem">I am trying to run the extrinsic sensor calibration tools and they seem to complain about the INS_STAT not being 56. But when I echo the /apollo/sensor/gnss/ins_stat topic I can see that the position type is 56. What could be the problem?<a class="headerlink" href="#i-am-trying-to-run-the-extrinsic-sensor-calibration-tools-and-they-seem-to-complain-about-the-ins_stat-not-being-56-but-when-i-echo-the-apollosensorgnssins_stat-topic-i-can-see-that-the-position-type-is-56-what-could-be-the-problem" title="Permanent link">#</a></h3>
 <p>The error log occurs (stat=-1) whenever the tool has not received any GNSS message or the image stamp is not correct. Please check the topic of GNSS message or image stamp.</p>
 <hr />
 <p><strong>More Perception FAQs to follow</strong></p>
@@ -161,6 +210,15 @@ This action is totally configurable, see the <a href="https://github.com/ApolloA
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Dreamview_FAQs/" class="btn btn-neutral float-right" title="Dreamview">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Calibration_FAQs_cn/" class="btn btn-neutral" title="[CN] Calibration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -186,6 +244,10 @@ This action is totally configurable, see the <a href="https://github.com/ApolloA
           <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../Calibration_FAQs_cn/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Dreamview_FAQs/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -89,31 +89,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -155,7 +186,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-create-and-run-a-new-component-in-apollo-cyber-rt">How to create and run a new component in Apollo Cyber RT</h2>
+                <h2 id="how-to-create-and-run-a-new-component-in-apollo-cyber-rt">How to create and run a new component in Apollo Cyber RT<a class="headerlink" href="#how-to-create-and-run-a-new-component-in-apollo-cyber-rt" title="Permanent link">#</a></h2>
 <p>Apollo Cyber RT framework is built based on the concept of component. As a basic building block of Apollo Cyber RT framework, each component contains a specific algorithm module which process a set of data inputs and generate a set of outputs.</p>
 <p>In order to successfully create and launch a new component, there are four essential steps that need to happen:</p>
 <ul>
@@ -168,7 +199,7 @@
 <blockquote>
 <p><strong>Note</strong>: the example has to be run within apollo docker environment and it's compiled with Bazel.</p>
 </blockquote>
-<h3 id="set-up-the-component-file-structure">Set up the component file structure</h3>
+<h3 id="set-up-the-component-file-structure">Set up the component file structure<a class="headerlink" href="#set-up-the-component-file-structure" title="Permanent link">#</a></h3>
 <p>Please create the following files, assumed under the directory of <code>/apollo/cyber/examples/common_component_example/</code>:</p>
 <ul>
 <li>Header file: common_component_example.h</li>
@@ -177,8 +208,8 @@
 <li>DAG dependency file: common.dag</li>
 <li>Launch file: common.launch</li>
 </ul>
-<h3 id="implement-the-component-class">Implement the component class</h3>
-<h4 id="implement-component-header-file">Implement component header file</h4>
+<h3 id="implement-the-component-class">Implement the component class<a class="headerlink" href="#implement-the-component-class" title="Permanent link">#</a></h3>
+<h4 id="implement-component-header-file">Implement component header file<a class="headerlink" href="#implement-component-header-file" title="Permanent link">#</a></h4>
 <p>To implement <code>common_component_example.h</code>:</p>
 <ul>
 <li>Inherit the Component class</li>
@@ -205,7 +236,7 @@ class CommonComponentSample : public Component&lt;Driver, Driver&gt; {
 CYBER_REGISTER_COMPONENT(CommonComponentSample)
 </code></pre>
 
-<h4 id="implement-the-source-file-for-the-example-component">Implement the source file for the example component</h4>
+<h4 id="implement-the-source-file-for-the-example-component">Implement the source file for the example component<a class="headerlink" href="#implement-the-source-file-for-the-example-component" title="Permanent link">#</a></h4>
 <p>For <code>common_component_example.cc</code>, both <code>Init</code> and <code>Proc</code> functions need to be implemented.</p>
 <pre><code class="cpp">#include &quot;cyber/examples/common_component_example/common_component_example.h&quot;
 #include &quot;cyber/class_loader/class_loader.h&quot;
@@ -224,7 +255,7 @@ bool CommonComponentSample::Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
 }
 </code></pre>
 
-<h4 id="create-the-build-file-for-the-example-component">Create the build file for the example component</h4>
+<h4 id="create-the-build-file-for-the-example-component">Create the build file for the example component<a class="headerlink" href="#create-the-build-file-for-the-example-component" title="Permanent link">#</a></h4>
 <p>Create bazel BUILD file.</p>
 <pre><code class="python">load(&quot;//tools:cpplint.bzl&quot;, &quot;cpplint&quot;)
 
@@ -254,8 +285,8 @@ cc_library(
 cpplint()
 </code></pre>
 
-<h3 id="set-up-the-configuration-files">Set up the configuration files</h3>
-<h4 id="configure-the-dag-dependency-file">Configure the DAG dependency file</h4>
+<h3 id="set-up-the-configuration-files">Set up the configuration files<a class="headerlink" href="#set-up-the-configuration-files" title="Permanent link">#</a></h3>
+<h4 id="configure-the-dag-dependency-file">Configure the DAG dependency file<a class="headerlink" href="#configure-the-dag-dependency-file" title="Permanent link">#</a></h4>
 <p>To configure the DAG dependency file (common.dag), specify the following items as below:</p>
 <ul>
 <li>Channel names: for data input and output</li>
@@ -280,7 +311,7 @@ component_config {
 }
 </code></pre>
 
-<h4 id="configure-the-launch-file">Configure the launch file</h4>
+<h4 id="configure-the-launch-file">Configure the launch file<a class="headerlink" href="#configure-the-launch-file" title="Permanent link">#</a></h4>
 <p>To configure the launch (common.launch) file, specify the following items:</p>
 <ul>
 <li>The name of the component</li>
@@ -296,7 +327,7 @@ component_config {
 &lt;/cyber&gt;
 </code></pre>
 
-<h3 id="launch-the-component">Launch the component</h3>
+<h3 id="launch-the-component">Launch the component<a class="headerlink" href="#launch-the-component" title="Permanent link">#</a></h3>
 <p>Build the component by running the command below:</p>
 <pre><code class="bash">bash /apollo/apollo.sh build
 </code></pre>
@@ -326,7 +357,7 @@ source setup.bash
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../modules/perception/" class="btn btn-neutral float-right" title="Perception">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../modules/planning/" class="btn btn-neutral float-right" title="Planning">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../" class="btn btn-neutral" title="Introduction to Cyber RT"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -360,7 +391,7 @@ source setup.bash
         <span><a href="../" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../modules/perception/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../modules/planning/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

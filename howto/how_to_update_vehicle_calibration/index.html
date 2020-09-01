@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,27 +158,27 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-update-vehicle-calibration-for-throttle-and-brakes">How to Update Vehicle Calibration for Throttle and Brakes</h2>
-<h3 id="introduction">Introduction</h3>
+                <h2 id="how-to-update-vehicle-calibration-for-throttle-and-brakes">How to Update Vehicle Calibration for Throttle and Brakes<a class="headerlink" href="#how-to-update-vehicle-calibration-for-throttle-and-brakes" title="Permanent link">#</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>The purpose of vehicle calibration is to find the throttle and brake commands that accurately produce the amount of acceleration requested from the control module.</p>
-<h3 id="preparation">Preparation</h3>
+<h3 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">#</a></h3>
 <p>Preparation consists of the following task sequence:</p>
 <ul>
 <li>Gain access to the relevant code.</li>
 <li>Change the driving mode.</li>
 <li>Select the testing site.</li>
 </ul>
-<h4 id="gain-access-to-the-relevant-code">Gain Access to the Relevant Code</h4>
+<h4 id="gain-access-to-the-relevant-code">Gain Access to the Relevant Code<a class="headerlink" href="#gain-access-to-the-relevant-code" title="Permanent link">#</a></h4>
 <ul>
 <li>Canbus, which includes modules for:</li>
 <li>GPS Driver</li>
 <li>Localization</li>
 </ul>
-<h4 id="change-the-driving-mode">Change the Driving Mode</h4>
+<h4 id="change-the-driving-mode">Change the Driving Mode<a class="headerlink" href="#change-the-driving-mode" title="Permanent link">#</a></h4>
 <p>Set the driving mode in <code>modules/canbus/conf/canbus_conf.pb.txt</code> to <code>AUTO_SPEED_ONLY</code>.</p>
-<h4 id="select-the-testing-site">Select the Testing Site</h4>
+<h4 id="select-the-testing-site">Select the Testing Site<a class="headerlink" href="#select-the-testing-site" title="Permanent link">#</a></h4>
 <p>The preferred testing site is a long flat road.</p>
-<h3 id="update-the-vehicle-calibration">Update the Vehicle Calibration</h3>
+<h3 id="update-the-vehicle-calibration">Update the Vehicle Calibration<a class="headerlink" href="#update-the-vehicle-calibration" title="Permanent link">#</a></h3>
 <p>After preparation, complete the following task sequence from <code>modules/tools/vehicle_calibration</code>:</p>
 <ul>
 <li>Collect data.</li>
@@ -155,18 +186,18 @@
 <li>Plot results.</li>
 <li>Convert results to <code>protobuf</code>.</li>
 </ul>
-<h4 id="collect-data">Collect Data</h4>
+<h4 id="collect-data">Collect Data<a class="headerlink" href="#collect-data" title="Permanent link">#</a></h4>
 <ol>
 <li>Run <code>python data_collector.py</code> for different commands, commands like x y z, where x is acceleration command, y is speed limit(mps), z is decceleration command,Positive number for throttle and negative number for brake.Run each command multiple times.</li>
 <li>Adjust the command script based on the vehicle response.</li>
 <li>Run <code>python plot_data.py</code> to open recorded data and visualize collected data.</li>
 </ol>
 <p>like <code>15 5.2 -10</code>, will create and record a file named <code>t15b-10r0.csv</code>.</p>
-<h4 id="process-data">Process Data</h4>
+<h4 id="process-data">Process Data<a class="headerlink" href="#process-data" title="Permanent link">#</a></h4>
 <p>Run <code>process_data.sh</code> on each recorded log individually. data log is processed to <code>t15b-10r0.csv.result</code>.</p>
-<h4 id="plot-results">Plot Results</h4>
+<h4 id="plot-results">Plot Results<a class="headerlink" href="#plot-results" title="Permanent link">#</a></h4>
 <p>Run <code>python plot_results.py t15b-10r0.csv.result</code> to visualize final results. Check for any abnormality.</p>
-<h4 id="convert-results-to-protobuf">Convert Results to <code>Protobuf</code></h4>
+<h4 id="convert-results-to-protobuf">Convert Results to <code>Protobuf</code><a class="headerlink" href="#convert-results-to-protobuf" title="Permanent link">#</a></h4>
 <p>If everything looks good, run <code>result2pb.sh</code> to move calibration results to <code>protobuf</code> defined for the control module.</p>
               
             </div>

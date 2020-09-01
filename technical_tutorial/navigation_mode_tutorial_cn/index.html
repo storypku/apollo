@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,24 +158,24 @@
           <div role="main">
             <div class="section">
               
-                <h4 id="apollo">Apollo导航模式教程</h4>
-<h5 id="1">1. 教程简介</h5>
+                <h4 id="apollo">Apollo导航模式教程<a class="headerlink" href="#apollo" title="Permanent link">#</a></h4>
+<h5>1. 教程简介</h5>
 <p>无人驾驶系统利用实时感知信息和静态地图信息构建出完整驾驶环境，并在构建的环境中，依据routing数据，规划出行车轨迹，并由控制模块执行完成。Apollo导航模式在上述的框架下，针对高速、乡村道路等简单道路场景，进行了以下的提升：</p>
 <ol>
 <li>Apollo导航模式以提高安全性和稳定性为目的，在驾驶环境中加入了静态引导信息，引导在驾驶环境中的轨迹规划，使其更安全更舒适。同时，引导信息也降低了对驾驶环境的完整性的要求 -- 即降低了对地图信息的要求。</li>
 <li>Apollo导航模式使用了相对/车身坐标系。减少了sensor数据的转化。同时也支持各种驾驶模式之间的转化，以应对不同的驾驶场景和条件。</li>
 <li>Apollo导航模式引入了百度地图的Routing功能，考虑实时路况信息，使得Routing的结果更实用，更精确，更稳定。也使得Apollo系统更易于落地和商用。</li>
 </ol>
-<h6 id="_1">在本教程中，你将完成</h6>
+<h6>在本教程中，你将完成</h6>
 <p>学习完本教程后，你将能够在导航模式下进行规划模块（planning）的线下调试和开发。</p>
-<h6 id="_2">在本教教中，你将掌握</h6>
+<h6>在本教教中，你将掌握</h6>
 <ul>
 <li>如何设置Apollo导航模式</li>
 <li>如何利用云端指引者发送指引线</li>
 <li>如何利用录制的ros bag产生指引线并用线下指引者发送</li>
 <li>如何进行规划模块的调试</li>
 </ul>
-<h6 id="_3">在本教程中，你需要如下准备</h6>
+<h6>在本教程中，你需要如下准备</h6>
 <ul>
 <li>
 <p>下载并编译Apollo最新源码（<a href="https://github.com/ApolloAuto/apollo/tree/master/docs/demo_guide">Howto</a>）</p>
@@ -153,7 +184,7 @@
 <p>下载 <a href="https://github.com/ApolloAuto/apollo/releases/download/v2.5.0/demo_2.5.bag">Apollo2.5 demo bag</a></p>
 </li>
 </ul>
-<h5 id="2">2. 配置导航模式</h5>
+<h5>2. 配置导航模式</h5>
 <p>在导航模式下，有以下几个参数需要进行配置：</p>
 <ul>
 <li>感知方案：目前支持摄像头方案（CAMERA）和基于Mobileye的方案（MOBILEYE）</li>
@@ -161,7 +192,7 @@
 <li>规划模块的Planner：目前支持EM, LATTICE, 和NAVI三种</li>
 <li>系统限速：单位为米/秒</li>
 </ul>
-<h6 id="docker">在Docker下修改配置文件</h6>
+<h6>在Docker下修改配置文件</h6>
 <p>配置文件位于：</p>
 <pre><code class="bash">/apollo/modules/tools/navigation/config/default.ini
 </code></pre>
@@ -183,14 +214,14 @@ speed_limit = 5
 </code></pre>
 
 <p>该默认配置为Apollo 2.5 Demo bag录制时的配置，在此教程中，我们直接使用。</p>
-<h6 id="_4">生效配置信息</h6>
+<h6>生效配置信息</h6>
 <p>为了使配置生效，在Docker内的Apollo根目录下，运行如下命令</p>
 <pre><code class="bash">in_dev_docker:/apollo$ cd /apollo/modules/tools/navigation/config/
 in_dev_docker:/apollo/modules/tools/navigation/config$ python navi_config.py default.ini
 </code></pre>
 
-<h5 id="3">3. 云端指引者的使用</h5>
-<h6 id="demo-bag">回放demo bag</h6>
+<h5>3. 云端指引者的使用</h5>
+<h6>回放demo bag</h6>
 <p>在进入Docker，启动Apollo之前，我们把<a href="https://github.com/ApolloAuto/apollo/releases/download/v2.5.0/demo_2.5.bag">Apollo2.5 demo bag</a> 拷贝到Apollo代码根目录下的data目录中。</p>
 <p>在Docker内编译成功后，我们用如下命令启动Dreamview：</p>
 <pre><code class="bash">in_dev_docker:/apollo$ ./scripts/bootstrap.sh start
@@ -209,13 +240,13 @@ in_dev_docker:/apollo/data$rosbag play demo_2.5.bag
 
 <p>播放开始后，可以看到Dreamview界面如下</p>
 <p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_2_play.png" /></p>
-<h6 id="_5">请求云端指引线</h6>
+<h6>请求云端指引线</h6>
 <p>在地图中选择一个目的地（沿canada路），点击地图视图中的红色Route按钮，云端指引者会接收到这个请求，并返回指引线，该指引线会被显示在地图视图中。如下图所示。</p>
 <p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_3_cloud.png" /></p>
 <p>以上就是云端指引者的调用过程。</p>
-<h5 id="4">4.  离线指引者工具的使用</h5>
+<h5>4.  离线指引者工具的使用</h5>
 <p>目前云端指引者只覆盖了有限的区域。除了云端的服务之外，我们还提供了离线指引者工具来制作和发送线下指引线。在本教程中，我们以<a href="https://github.com/ApolloAuto/apollo/releases/download/v2.5.0/demo_2.5.bag">Apollo2.5 demo bag</a>为例来生成指引线。</p>
-<h6 id="_6">指引线的制作</h6>
+<h6>指引线的制作</h6>
 <p>生成指引线的步骤为</p>
 <ul>
 <li>从bag中提取路径数据</li>
@@ -242,15 +273,15 @@ in_dev_docker:/apollo/modules/tools/navigator$python extractor.py /apollo/data/d
 <pre><code class="bash">in_dev_docker:/apollo/modules/tools/navigator$path_demo_2.5.bag.txt.smoothed
 </code></pre>
 
-<h6 id="_7">指引线的发送</h6>
+<h6>指引线的发送</h6>
 <p>得到平滑后的数据就可以发送到Apollo系统中，作为指引线，步骤为：</p>
 <pre><code class="bash">in_dev_docker:/apollo/modules/tools/navigator$python navigator.py path_demo_2.5.bag.txt.smoothed
 </code></pre>
 
 <p>发送完成后，Dreamview的地图视图中的红色指引线会更新为如下图所示：</p>
 <p><img alt="img" src="../images/navigation_mode_tutorial/navigation_mode_4_offline.png" /></p>
-<h5 id="5">5. 规划模块的调试</h5>
-<h6 id="_8">调试数据准备</h6>
+<h5>5. 规划模块的调试</h5>
+<h6>调试数据准备</h6>
 <p>利用bag来进行模块调试，首先要把bag中的相应ros message过滤掉。假设我们想要调试规划模块，我们需要把消息</p>
 <pre><code>/apollo/planning
 </code></pre>
@@ -264,7 +295,7 @@ in_dev_docker:/apollo/data$rosbag filter demo_2.5.bag demo_2.5_no_planning.bag &
 <pre><code class="bash">in_dev_docker:/apollo/data$demo_2.5_no_planning.bag
 </code></pre>
 
-<h6 id="_9">规划轨迹的产生</h6>
+<h6>规划轨迹的产生</h6>
 <p>我们播放没有规划的bag，用下面的命令</p>
 <pre><code class="bash">in_dev_docker:/apollo/data$rosbag play demo_2.5_no_planning.bag
 </code></pre>
@@ -278,7 +309,7 @@ in_dev_docker:/apollo/data$rosbag filter demo_2.5.bag demo_2.5_no_planning.bag &
 </code></pre>
 
 <p>去了解，这些参数会对规划结果有什么影响。或者修改规划算法的代码，进行调试。</p>
-<h5 id="6">6.结束</h5>
+<h5>6.结束</h5>
 <p>恭喜你完成了本教程。现在你应该了解</p>
 <ul>
 <li>如何设置Apollo导航模式</li>

@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,10 +158,10 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-run-offline-perception-lowcost-visualizer-apollo-25">How to Run Offline Perception LowCost Visualizer (Apollo 2.5)</h2>
+                <h2 id="how-to-run-offline-perception-lowcost-visualizer-apollo-25">How to Run Offline Perception LowCost Visualizer (Apollo 2.5)<a class="headerlink" href="#how-to-run-offline-perception-lowcost-visualizer-apollo-25" title="Permanent link">#</a></h2>
 <p>For Apollo 2.5, we provide an offline visualization tool based OpenGL and PCL libraries to show the obstacle perception results(including lane info) in both image front view and bird view.</p>
 <p>We introduce the detailed steps to build and run the offline visualizer in docker as below:</p>
-<h4 id="build-the-perception-lowcost">Build The Perception Lowcost</h4>
+<h4 id="build-the-perception-lowcost">Build The Perception Lowcost<a class="headerlink" href="#build-the-perception-lowcost" title="Permanent link">#</a></h4>
 <p>We use Bazel to build the offline perception visualizer:</p>
 <pre><code>cd /apollo
 ./apollo.sh build_opt_gpu
@@ -146,7 +177,7 @@
 <pre><code> --dag_config_path=conf/dag_camera_obstacle_offline_fusion_sync.config
 </code></pre>
 
-<h4 id="run-the-visualizer-with-collected-ros-bag-for-apollo-25">Run The Visualizer With Collected ROS Bag for Apollo 2.5</h4>
+<h4 id="run-the-visualizer-with-collected-ros-bag-for-apollo-25">Run The Visualizer With Collected ROS Bag for Apollo 2.5<a class="headerlink" href="#run-the-visualizer-with-collected-ros-bag-for-apollo-25" title="Permanent link">#</a></h4>
 <p>Please double check that your collected rosbag contains topics including camera images, radar, as well as localization results. The 3 corresponding topics are show below:</p>
 <pre><code>/apollo/sensor/camera/obstacle/front_6mm
 /apollo/sensor/conti_radar
@@ -163,16 +194,16 @@
 * Run full low-cost perception of camera, radar, lane markings + visualization
 * Run full low-cost perception of camera, radar, lane markings, and no visualization</p>
 <p>Let's look at how they can be run:</p>
-<h4 id="run-perception-with-camera-subnode-only-visualization">Run perception with camera subnode only + visualization</h4>
+<h4 id="run-perception-with-camera-subnode-only-visualization">Run perception with camera subnode only + visualization<a class="headerlink" href="#run-perception-with-camera-subnode-only-visualization" title="Permanent link">#</a></h4>
 <p>This option requires <code>/apollo/sensor/camera/obstacle/front_6mm</code> only.</p>
 <pre><code>./scripts/perception_offline_visualizer.sh
 </code></pre>
 
-<h4 id="run-full-low-cost-perception-of-camera-radar-lane-markings-visualization">Run full low-cost perception of camera, radar, lane markings + visualization</h4>
+<h4 id="run-full-low-cost-perception-of-camera-radar-lane-markings-visualization">Run full low-cost perception of camera, radar, lane markings + visualization<a class="headerlink" href="#run-full-low-cost-perception-of-camera-radar-lane-markings-visualization" title="Permanent link">#</a></h4>
 <pre><code>./scripts/perception_lowcost_vis.sh
 </code></pre>
 
-<h4 id="run-full-low-cost-perception-of-camera-radar-lane-markings-and-no-visualization">Run full low-cost perception of camera, radar, lane markings, and no visualization</h4>
+<h4 id="run-full-low-cost-perception-of-camera-radar-lane-markings-and-no-visualization">Run full low-cost perception of camera, radar, lane markings, and no visualization<a class="headerlink" href="#run-full-low-cost-perception-of-camera-radar-lane-markings-and-no-visualization" title="Permanent link">#</a></h4>
 <pre><code>./scripts/perception_lowcost.sh
 </code></pre>
 

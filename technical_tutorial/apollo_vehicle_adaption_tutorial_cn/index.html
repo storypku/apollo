@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,18 +158,18 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="apollo">Apollo车辆适配教程</h2>
-<h3 id="_1">引言</h3>
+                <h2 id="apollo">Apollo车辆适配教程<a class="headerlink" href="#apollo" title="Permanent link">#</a></h2>
+<h3 id="_1">引言<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
 <p>本文所介绍的Apollo新车适配方法，可以帮助开发者快速接入新车辆，以方便开发者在Apollo上进行软件开发。文中所介绍的车辆线控信号标准和要求均源自Apollo开放车辆认证平台，目前车辆认证平台已经有Lincoln，Lexus，GE3，WEY等车型，有意愿把车加入Apollo车辆认证平台的车企、车辆提供商，可以按照文档内对线控的具体要求，熟悉和准备车辆底层控制协议，节省前期准备时间，欢迎有兴趣的开发者移步至<a href="http://apollo.auto/vehicle/certificate_cn.html">Apollo开放车辆认证平台</a>(http://apollo.auto/vehicle/certificate_cn.html)  了解更多详细内容。</p>
-<h3 id="apollo_1">适配一辆符合Apollo标准的车辆</h3>
+<h3 id="apollo_1">适配一辆符合Apollo标准的车辆<a class="headerlink" href="#apollo_1" title="Permanent link">#</a></h3>
 <ul>
 <li>本文主要介绍如何在Apollo内添加一辆符合Apollo标准的新车，方便开发者设计符合Apollo线控要求的底盘系统，开发适配Apollo软件的底盘适配代码，构建快速接入Apollo软件的能力。</li>
 <li>开发者在适配一辆新车的CAN通信时，首先需要设计完成符合Apollo线控要求的底盘通信协议，这一部分就是根据Apollo线控列表构建一个车辆底盘信号的DBC文件，设计底盘相关接口定义、报文和信号与DBC一一对应。在完成了DBC文件设计后，根据Apollo提供的DBC转化代码工具，得到初版的canbus底层适配代码，然后添加相关车辆的控制逻辑，在Apollo搭建车辆底层chassis信号及控制车辆信号。最后通过canbus调试工具进行信号调试和验证，确保车辆的底盘信号与Apollo上层通信完全无问题。</li>
 </ul>
-<h3 id="apollo_2">一、符合Apollo线控标准的车辆</h3>
-<h4 id="dbc">车辆DBC</h4>
+<h3 id="apollo_2">一、符合Apollo线控标准的车辆<a class="headerlink" href="#apollo_2" title="Permanent link">#</a></h3>
+<h4 id="dbc">车辆DBC<a class="headerlink" href="#dbc" title="Permanent link">#</a></h4>
 <p>开发一台搭载Apollo系统的车辆，首先的工作就是建立Apollo与车辆底层之间的通信，整车是通过CAN总线(CAN bus, Controller Area Network)进行各个控制器(ECU, electronic control units)之间的通信，因此Apollo控制系统在接入车辆系统时，也通过CAN总线通信方式对车辆进行控制。车辆需要开放一部分底盘信号，将这些信号配置成符合Apollo的线控标准要求的DBC文件(Database file, 是一中用于描述CAN总线上数据的专用文件，能够方便用户快速构建车辆CAN通信的网络结构，定义CAN总线上的信号、报文等相关信息)。这里推荐开发者使用canoe软件的CANdb++编辑生成的文件，Apollo软件处理底盘DBC文件生成底盘适配代码模板，开发者通过简单的编程开发，即可将车辆开放的底盘信号适配至Apollo的软件中，实现Apollo与车辆底盘间的通信。</p>
-<h4 id="dbc_1">DBC线控标准详解</h4>
+<h4 id="dbc_1">DBC线控标准详解<a class="headerlink" href="#dbc_1" title="Permanent link">#</a></h4>
 <ul>
 <li>开发者在开发车辆底盘控制信号时，需要参照Apollo官网车辆认证平台（http://apollo.auto/docs/procedure_cn.html）  发布的车辆线控标准，
  乘用车标准：http://apollo-homepage.bj.bcebos.com/Apollo_by_wire_requirement.xlsx ；
@@ -151,7 +182,7 @@
 <img alt="apollo_by_wire_requirement2" src="../images/vehicle_adaption_tutorial/apollo_by_wire_requirement2.png" />
 <img alt="apollo_by_wire_requirement3" src="../images/vehicle_adaption_tutorial/apollo_by_wire_requirement3.png" /></p>
 <p>车辆的底盘控制是Apollo与底盘通信的基础，每一个控制信号都需要可靠和准确。人工接管和越界处理是保证在测试和使用时随时接管，确保突发情况发生时的行车安全。除了线控列表内对信号的详细要求外，<strong>开发者还需要格外注意横向和纵向使能信号的独立</strong>，<strong>底盘接管逻辑等特殊要求</strong>，下面对信号的功能特殊要求做详细说明。</p>
-<h5 id="_2">线控转向</h5>
+<h5>线控转向</h5>
 <ol>
 <li>转向使能信号</li>
 </ol>
@@ -180,7 +211,7 @@
 <p>越界处理的原则是越界拒绝执行，并退出自动驾驶模式。
 当Apollo下发控制指令超过原控制指令的定义范围时，此时称为越界。发生越界时，转向需要退出自动驾驶模式。
 如定义目标方向盘转角最大范围为-500deg~500deg，若Apollo下发的转角指令不在此范围时，底盘需要对此越界拒绝执行，并退出自动驾驶模式。</p>
-<h5 id="_3">线控驱动</h5>
+<h5>线控驱动</h5>
 <ol>
 <li>驱动使能：</li>
 </ol>
@@ -212,7 +243,7 @@
 <li>越界处理</li>
 </ol>
 <p>发生越界时，转向需要退出自动驾驶模式。如定义目标加速踏板位置范围为0~100%，若Apollo下发的控制踏板指令不在此范围时，底盘需要对此越界拒绝执行，并退出自动驾驶模式。</p>
-<h5 id="_4">线控制动</h5>
+<h5>线控制动</h5>
 <ol>
 <li>制动使能：</li>
 </ol>
@@ -242,7 +273,7 @@
 <li>越界处理</li>
 </ol>
 <p>发生越界时，转向需要退出自动驾驶模式。如定义目标制动踏板位置范围为0~100%，若Apollo下发的控制踏板指令不在此范围时，底盘需要对此越界拒绝执行，并使所有模式退出自动驾驶模式。</p>
-<h5 id="_5">线控档位</h5>
+<h5>线控档位</h5>
 <ol>
 <li>档位使能</li>
 </ol>
@@ -256,7 +287,7 @@
 </ol>
 <p>档位信息：反馈当前档位信号，反馈顺序与控制档位信号顺序一致：<code>0x00：N档；0x01：D；0x02：R；0x03：P；0x04：NONE</code>。多余的不必再增加。</p>
 <p>故障信息：反馈换挡系统是否存在故障。</p>
-<h5 id="_6">线控驻车</h5>
+<h5>线控驻车</h5>
 <ol>
 <li>驻车使能</li>
 </ol>
@@ -271,34 +302,34 @@
 <p>EPB开关状态：反馈当前电子手刹是否抱死或松开。</p>
 <p>驻车状态反馈：反馈当前驻车是自动驾驶模式还是手动控制模式。至少需要2种模式：<code>自动驾驶模式</code>，<code>手动驾驶模式</code>，<code>被人工接管模式</code>。</p>
 <p>驻车系统故障反馈：反馈驻车系统故障。</p>
-<h5 id="_7">其他车身功能</h5>
+<h5>其他车身功能</h5>
 <p>包括线控灯光，主要控制远、近光灯、转向灯、危险警报灯的打开和关闭，已经相应的状态反馈信号。</p>
 <p>还有雨刮和喇叭控制，作为可选项。</p>
-<h5 id="vin">车辆VIN码</h5>
+<h5>车辆VIN码</h5>
 <p>VIN码一般17位，按照ASCII码格式，每一个ASCII占1字节，需要3帧报文连续发出，但是VIN码不需要实时更新，所以在系统请求进入自动驾驶时，VIN码通过CAN总线发出，并一直保持该值不再更新，也可减少总线的负载。</p>
-<h4 id="dbc_2">DBC文件要求</h4>
+<h4 id="dbc_2">DBC文件要求<a class="headerlink" href="#dbc_2" title="Permanent link">#</a></h4>
 <p>熟悉了上述Apollo对车辆底盘信号的要求，第二步是进行车辆底盘信号database（DBC）文件进行编辑，设置通信的网络结构，每个信号的初值、符号类型，精度，大小范围，取值等，进而组合成相应的CAN通信报文（message）与Apollo进行通信。下面使用CANdb++软件对DBC文件进行编辑，有较好的可视化界面，该软件目前只适用于Windows系统。</p>
 <p>因为DBC文件后面会根据Apollo的转译脚本工具，将底盘定义的报文（message）、信号（signal）转化为C++程序代码，因此在编辑DBC时，对信号的名称定义、注释、赋值等就要符合C++语言定义规范，这样以确保在后期调试时不会因为DBC文件的问题无法调通CANBUS通信。根据Apollo代码要求，我们总结了以下注意事项：</p>
-<h5 id="1-acu">1. 控制信号名称建议为 ACU</h5>
+<h5>1. 控制信号名称建议为 ACU</h5>
 <p>在定义网络上ECU名称时，建议定义Apollo端的控制器名称为ACU（Apollo Control Unit）。</p>
 <p><img alt="name" src="../images/vehicle_adaption_tutorial/name.jpg" /></p>
-<h5 id="2-canid2048">2. CAN信号ID建议不大于2048</h5>
+<h5>2. CAN信号ID建议不大于2048</h5>
 <p>目前乘用车CAN通信建议采用标准帧格式（CAN Standard 2.0），Apollo可支持扩展帧。</p>
 <p><img alt="ID" src="../images/vehicle_adaption_tutorial/messageID_define.jpg" /></p>
-<h5 id="3-comment">3. 注释不能有回车符和换行符，comment（注释）必须为英文</h5>
+<h5>3. 注释不能有回车符和换行符，comment（注释）必须为英文</h5>
 <p>每帧报文（message）如果有注释，注释内不要有换行，不能写中文，必须为英文格式。</p>
 <p><img alt="comment" src="../images/vehicle_adaption_tutorial/comment.jpg" /></p>
-<h6 id="4-val_value-description">4. VAL_（枚举值）（Value Description）需要使用英文，且不能有相同定义名称，必须为字母或字母和数字组合，不能有符号。</h6>
+<h6>4. VAL_（枚举值）（Value Description）需要使用英文，且不能有相同定义名称，必须为字母或字母和数字组合，不能有符号。</h6>
 <p>对于大部分状态反馈信号和控制信号，如档位反馈，驾驶模式反馈等，需要对信号进行定义，在信号定义的Value Description项内进行定义，定义的名称要遵循C++命名规范，要求使用英文，且不能有相同定义名称，必须为字母或字母和数字组合，不能有符号。如下图是的档位反馈信号的Value Description定义。</p>
 <p><img alt="gear1" src="../images/vehicle_adaption_tutorial/gear1.jpg" /></p>
-<h6 id="5-doubledbcvalue-description">5. 反馈信号和控制信号中如车速，轮速，加速度，踏板位置（百分比）等double类型的反馈和控制信号在DBC中Value Description项中必须为空。</h6>
+<h6>5. 反馈信号和控制信号中如车速，轮速，加速度，踏板位置（百分比）等double类型的反馈和控制信号在DBC中Value Description项中必须为空。</h6>
 <p>对于实时数值反馈信号和数值控制信号，如车速（实际车速）、轮速反馈（实际轮速），踏板控制（百分比），转角控制（实际转角值）等，此类信号在定义Value Description项中不能加任何内容。</p>
 <p><img alt="val" src="../images/vehicle_adaption_tutorial/val.jpg" /></p>
-<h6 id="6-005degfactor01">6. 转向信号的范围，在定义时要填写准确的取值范围，注意控制转角的精度一般不高于0.05deg，踏板百分比精度（factor）不高于0.1。</h6>
+<h6>6. 转向信号的范围，在定义时要填写准确的取值范围，注意控制转角的精度一般不高于0.05deg，踏板百分比精度（factor）不高于0.1。</h6>
 <p>对于所有报文的Byte Order，一个DBC内的信号只能统一定义，全部是Motorola格式或者全部是Intel格式。</p>
 <p><img alt="define" src="../images/vehicle_adaption_tutorial/define.jpg" /></p>
-<h3 id="canbus">二、适配CANBUS代码</h3>
-<h4 id="1-dbccanbus">1. DBC文件转换成canbus模板代码</h4>
+<h3 id="canbus">二、适配CANBUS代码<a class="headerlink" href="#canbus" title="Permanent link">#</a></h3>
+<h4 id="1-dbccanbus">1. DBC文件转换成canbus模板代码<a class="headerlink" href="#1-dbccanbus" title="Permanent link">#</a></h4>
 <p>Canbus适配代码可以使用apollo的工具生成，在转换代码前，要保证DBC按照上述的DBC文件要求完成，并通过gedit打开dbc文件，另存转码为UTF-8格式保存。</p>
 <p>（1）将DBC文件放置指定目录下，目录<code>apollo/modules/tools/gen_vehicle_protocol</code>内。</p>
 <p>（2）修改DBC转换脚本的配置文件：下面以GE3车型添加为例，在<code>apollo/modules/tools/gen_vehicle_protocol</code>目录下，复制默认存在的<code>mkz_conf.yml</code>文件并重命名为<code>ge3_conf.yml</code>，修改该配置文件，如下图所示：</p>
@@ -321,7 +352,7 @@ python gen.py ge3_conf.ymal
 <pre><code>rm -rf output/
 </code></pre>
 
-<h4 id="2-apollo">2. 适配代码合入apollo文件内</h4>
+<h4 id="2-apollo">2. 适配代码合入apollo文件内<a class="headerlink" href="#2-apollo" title="Permanent link">#</a></h4>
 <p>下面以添加ge3车型为例，将该代码添加至apollo内：
 <img alt="output" src="../images/vehicle_adaption_tutorial/output.png" /></p>
 <p>（1）将<code>apollo/modules/tools/gen_vehicle_protocol/output/proto</code> 文件夹内<code>ge3.proto</code>文件拷贝至<code>apollo/modules/canbus/proto</code> 文件夹内，并在该文件夹内修改chassis_detail.proto，在该文件头部添加头文件<code>import "modules/canbus/proto/ge3.proto"</code>
@@ -332,7 +363,7 @@ python gen.py ge3_conf.ymal
 <img alt="BUILD_depend" src="../images/vehicle_adaption_tutorial/proto_BUILD_depend.png" />
 （2）将<code>apollo/modules/tools/gen_vehicle_protocol/output/vehicle/</code> 内的ge3文件夹拷贝至<code>apollo/modules/canbus/vehicle/</code> 文件夹下；
 <img alt="copy_ge3" src="../images/vehicle_adaption_tutorial/copy_ge3.png" /></p>
-<h4 id="3">3.实现新的车辆控制逻辑</h4>
+<h4 id="3">3.实现新的车辆控制逻辑<a class="headerlink" href="#3" title="Permanent link">#</a></h4>
 <p>实现新的车辆控制逻辑，在<code>apollo/modules/canbus/vehicle/ge3/ge3_controller.cc</code> 文件编写控制逻辑代码，主要包含将解析的底盘反馈报文的信息，通过<code>chassis</code>和<code>chassis_detail</code>广播出车辆底盘信息。<code>chassis</code>主要包括获取底盘的车速、轮速、发动机转速、踏板反馈、转角反馈等信息， <code>chassis_detail</code>是每一帧报文的实际信息，这一部分编写的代码如下所示：</p>
 <pre><code>  // 3
   chassis_.set_engine_started(true);
@@ -892,11 +923,11 @@ void Ge3Controller::SetTurningSignal(const ControlCommand&amp; command) {
 }
 </code></pre>
 
-<h4 id="4kmhms">4.修改底盘车速反馈协议，将车速反馈单位由km/h转化为m/s</h4>
+<h4 id="4kmhms">4.修改底盘车速反馈协议，将车速反馈单位由km/h转化为m/s<a class="headerlink" href="#4kmhms" title="Permanent link">#</a></h4>
 <p>Apollo系统内默认使用车速反馈量为<code>m/s</code>，底盘车速信息对Apollo非常重要，在车辆标定、控制、规划等都需要采集该数据，所以开发者要在开发适配代码时，重点检查车速反馈的单位。车速由<code>km/h</code>转化为<code>m/s</code>时，在反馈车速的信号除以<code>3.6</code>即可。
 找到Ge3车辆反馈车速的报文在文件<code>apollo/modules/canbus/vehicle/ge3/protocol/scu_bcs_2_307.cc</code> 下，反馈车速消息为<code>Scubcs2307::bcs_vehspd{}</code>，如下图所示：
 <img alt="speed_transfer" src="../images/vehicle_adaption_tutorial/speed_transfer.png" /></p>
-<h4 id="5">5.注册新车辆</h4>
+<h4 id="5">5.注册新车辆<a class="headerlink" href="#5" title="Permanent link">#</a></h4>
 <p>在<code>modules/canbus/vehicle/vehicle_factory.cc</code>里注册新的车辆，在该文件内新建如下类：
 <img alt="register_ge3" src="../images/vehicle_adaption_tutorial/register_ge3.png" />
 添加头文件
@@ -904,18 +935,18 @@ void Ge3Controller::SetTurningSignal(const ControlCommand&amp; command) {
 添加BUILD依赖库
 在<code>apollo/modules/canbus/vehicle/BUILD</code> 文件内添加<code>ge3_vehicle_factory</code>依赖库。
 <img alt="add_build_depend" src="../images/vehicle_adaption_tutorial/add_build_depend.png" /></p>
-<h4 id="6">6.更新配置文件</h4>
+<h4 id="6">6.更新配置文件<a class="headerlink" href="#6" title="Permanent link">#</a></h4>
 <p>在<code>modules/canbus/proto/vehicle_parameter.proto</code> 文件内添加GE3车辆分支。
 <img alt="register1_ge3" src="../images/vehicle_adaption_tutorial/register1_ge3.png" />
 在<code>modules/canbus/conf/canbus_conf.pb.txt</code> 更新配置，改为ge3的canbus通信程序。
 <img alt="register2_ge3" src="../images/vehicle_adaption_tutorial/register2_ge3.png" /></p>
-<h3 id="dbc_3">三、车辆底盘开环验证DBC的方法</h3>
-<h4 id="1">1、开环测试</h4>
+<h3 id="dbc_3">三、车辆底盘开环验证DBC的方法<a class="headerlink" href="#dbc_3" title="Permanent link">#</a></h3>
+<h4 id="1">1、开环测试<a class="headerlink" href="#1" title="Permanent link">#</a></h4>
 <p>在确定了车辆底盘DBC后，对DBC内定义的信号进行开环测试。开环测试的主要目的是测试车辆线控信号与车辆的实际功能是否相符，测试车辆的转向、加减速性能响应是否满足车辆的线控需求，测试车辆接管逻辑是否满足要求。</p>
 <p>底盘的开环单侧中，开发者要针对前文所述的DBC重点要求进行测试，如车辆横纵向使能独立性，横纵向接管的独立性，每个控制信号是否满足控制要求和控制边界，反馈信号是否反馈正确。在性能上，控制信号的转向和加减速延迟是否满足apollo控制性能要求，超调误差是否在线控列表范围内。请开发者根据线控列表内的性能要求，对控制信号进行测试。</p>
-<h4 id="2teleop">2、teleop底盘联调测试</h4>
+<h4 id="2teleop">2、teleop底盘联调测试<a class="headerlink" href="#2teleop" title="Permanent link">#</a></h4>
 <p>底盘联调测试就是通过将Apollo与车辆进行canbus通信后，测试Apollo下发控制信号（如加速/减速/转向/使能等）是否能够准确控制车辆，测试车辆的底盘反馈信号（如当前踏板百分比反馈/当前转角反馈/使能反馈/接管反馈等）是否与反馈了车辆的实际状态，验证Apollo下发的控制指令，车辆底盘能够准确执行。</p>
-<h5 id="teleop">teleop测试工具介绍</h5>
+<h5>teleop测试工具介绍</h5>
 <p>apollo里为开发者提供了一个teleop的测试工具，在<code>apollo/modules/canbus/tools/teleop.cc</code>，在term内输入</p>
 <pre><code>bash scripts/canbus_teleop.sh
 </code></pre>
@@ -923,41 +954,41 @@ void Ge3Controller::SetTurningSignal(const ControlCommand&amp; command) {
 <p>即可进入teleop界面，如下图所示：</p>
 <p><img alt="teleop" src="../images/vehicle_adaption_tutorial/teleop.png" /></p>
 <p>按<code>h</code>键，可以调出上图所示的帮助界面，可以查询Teleop工具的使用方法，下面简单对teleop各个控制指令介绍下。</p>
-<h6 id="set-action-apollo">Set Action 执行Apollo对车辆的使能控制：</h6>
+<h6>Set Action 执行Apollo对车辆的使能控制：</h6>
 <p>按<code>m</code>和<code>0</code>键组合，表示执行reset指令，车辆退出自动驾驶模式；
 按<code>m</code>和<code>1</code>键组合，表示执行start指令，车辆进入自动驾驶模式。</p>
-<h6 id="set-gear-g">Set Gear 表示设置档位，按<code>g</code>和<code>数字</code>组合，进行相应档位设置：</h6>
+<h6>Set Gear 表示设置档位，按<code>g</code>和<code>数字</code>组合，进行相应档位设置：</h6>
 <p>按<code>g</code>+<code>0</code>挂入N档（空挡）；
 按<code>g</code>+<code>1</code>挂入D档（前进挡）；
 按<code>g</code>+<code>2</code>挂入R档（倒车档）；
 按<code>g</code>+<code>3</code>挂入P档（驻车档）；
 其它档位控制指令暂不需要，根据我们DBC要求，一般车辆控制档位指令就这几个。</p>
-<h6 id="throttlespeed-up-2">Throttle/Speed up  表示每次增加油门踏板量2%，车辆加速</h6>
+<h6>Throttle/Speed up  表示每次增加油门踏板量2%，车辆加速</h6>
 <p>按 <code>w</code> 键增加油门踏板2%，使车辆加速。如果当前已经执行brake刹车指令，按<code>w</code>表示减少刹车踏板量2%。
 油门踏板量的控制范围是0~100%，即100%时相当于油门踏板全部踩下。默认每按<code>w</code>键一次，油门踏板量增加2%，这个值开发者可以根据实车测试，进行修改，根据经验，每次变化2%比较合适。</p>
 <p><code>注意：请先用teleop执行挂D档后再执行加油命令，请在开放场地测试，注意安全</code>！</p>
-<h6 id="set-throttle">Set  Throttle 设置油门踏板百分比</h6>
+<h6>Set  Throttle 设置油门踏板百分比</h6>
 <p>按<code>t</code>+<code>数字</code>可以直接设置具体的油门踏板百分比，油门踏板可设置的百分比数为0~100。如执行t20，表示直接设置当前油门踏板量为20%，并将刹车踏板百分比置为0，这一点与实际开车逻辑一致，如果踩下油门踏板，就不能踩刹车踏板。</p>
 <p><code>注意：直接设置油门踏板百分比时，注意每次不要设置太大，开放场地测试，注意安全！请在车辆为D档状态下执行该命令</code>。</p>
-<h6 id="brakespeed-down-2">Brake/Speed down 表示每次增加油门踏板量2%，车辆加速</h6>
+<h6>Brake/Speed down 表示每次增加油门踏板量2%，车辆加速</h6>
 <p>按<code>s</code>键增加刹车踏板百分比，使车辆减速。如当前已经执行throttle加速指令，按<code>s</code>键表示减少油门踏板百分比。</p>
 <p><code>注意：请先用teleop执行挂D档后再执行加油命令，请在开放场地测试，注意安全</code>！</p>
-<h6 id="set-brake">Set Brake 设置刹车踏板百分比</h6>
+<h6>Set Brake 设置刹车踏板百分比</h6>
 <p>按<code>b</code>+<code>数字</code>可以直接设置具体的刹车踏板百分比，刹车踏板可设置的百分比数为0~100。如执行b20，表示直接设置当前刹车踏板量为20%，并将油门踏板百分比置为0，这一点与实际开车逻辑一致，如果踩下刹车踏板，就不能踩油门踏板。</p>
 <p><code>注意：直接设置油门踏板百分比时，注意每次不要设置太大，开放场地测试，注意安全！请在车辆为D档状态下执行该命令</code>。</p>
-<h6 id="steer-left-2">Steer LEFT 表示方向盘每次向左转2%</h6>
+<h6>Steer LEFT 表示方向盘每次向左转2%</h6>
 <p>按<code>a</code>键表示每次向左转2%的方向盘最大转角，具体转动角度应根据车辆设置的最大方向盘转角乘以2%进行换算。
 该指令执行可以在车辆静止时执行，也可以在车辆启动后执行。</p>
-<h6 id="steer-right2">Steer RIGHT表示方向盘每次向右转2%</h6>
+<h6>Steer RIGHT表示方向盘每次向右转2%</h6>
 <p>按<code>s</code>键表示每次向右转2%的方向盘最大转角，具体转动角度应根据车辆设置的最大方向盘转角乘以2%进行换算。
 该指令执行可以在车辆静止时执行，也可以在车辆启动后执行。</p>
-<h6 id="parking-brake">Parking Brake 打开电子手刹</h6>
+<h6>Parking Brake 打开电子手刹</h6>
 <p>按<code>P</code>键（注意是大写P）可以手动控制车辆电子手刹开关。这个功能根据车辆的是否提供了电子手刹的控制接口而实现。</p>
 <p><code>注意：执行电子手刹开启或释放时，请将车辆用teleop设置为P档状态</code>。</p>
-<h6 id="emergency-stop">Emergency Stop 紧急停车</h6>
+<h6>Emergency Stop 紧急停车</h6>
 <p>按<code>E</code>键（注意是大写E）可以进行车辆紧急停车，默认执行50%刹车。
 建议开发者在测试时尽量少用此功能，体感差，调试车辆时多注意周围情况。发生突发情况时及时用外接踩刹车踏板的方式进行手动接管车辆。</p>
-<h4 id="_8">诊断工具介绍</h4>
+<h4 id="_2">诊断工具介绍<a class="headerlink" href="#_2" title="Permanent link">#</a></h4>
 <p>了解了teleop的基本操作后，开发者根据相应的指令，对车辆执行具体的控制命令，然后通过Apollo的可视化监控工具<code>diagnostic.sh（Apollo3.0及以前版本）/cyber_monitor</code> 进行查看车辆当前的反馈信号，确认控制下发后车辆的执行结果是否正确。
 在Apollo里提供了一个可视化的监控工具，可以用来监控底盘<code>chassis</code>和<code>chassis_detail</code>信息，通过执行</p>
 <pre><code>bash scripts/diagnostic.sh    //Apollo3.0及以前版本

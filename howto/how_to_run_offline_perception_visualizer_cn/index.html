@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,31 +158,31 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">如何运行脱机感知可视化</h2>
+                <h2 id="_1">如何运行脱机感知可视化<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
 <p>DreamView工具可以模拟感知模块并展现模拟效果，但它缺乏可视化点云和ROI区域的能力，这有助于调试和测试感知算法。为此，我们提供了一个基于OpenGL和PCL库的离线可视化工具，以显示点云的障碍感知结果。详细信息请参考 <a href="http://apollo.auto/platform/perception.html">官网</a> 关于离线可视化工具的介绍。</p>
 <p>我们将介绍在docker中构建和运行离线可视化工具的详细步骤，如下所示:</p>
-<h4 id="1-pcdpose">1. 准备PCD和Pose数据</h4>
+<h4 id="1-pcdpose">1. 准备PCD和Pose数据<a class="headerlink" href="#1-pcdpose" title="Permanent link">#</a></h4>
 <p>在运行可视化工具之前，我们需要准备必要的PCD和Pose数据，这些数据可以从带有记录点云数据的ROS包中提取。为了便于数据提取，我们提供了一个ROS启动文件来转储PCD帧文件和一个python脚本来为每个帧生成Pose文件。</p>
-<h5 id="11-pcd">1.1 启动PCD导出器</h5>
+<h5>1.1 启动PCD导出器</h5>
 <p>更多详细信息请参考 <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/drivers/velodyne">Velodyne驱动文档</a></p>
 <pre><code>roslaunch velodyne export_pcd_offline.launch
 </code></pre>
 
-<h5 id="12-ros-bag">1.2 播放 ROS bag</h5>
+<h5>1.2 播放 ROS bag</h5>
 <p>默认的ROS bag目录在<code>/apollo/data/bag</code>。假设ROS bag的文件名是<code>example.bag</code>.</p>
 <pre><code>cd /apollo/data/bag
 rosbag play --clock example.bag
 </code></pre>
 
 <p>播放包时，PCD文件将被转储到导出目录（defalut：<code>/ apollo / data / pcd</code>）。提取的PCD文件根据它们的帧号命名，帧号对应于从点云ROS主题播放记录时消息的顺序（例如，<code>/ apollo / sensor / velodyne64 / compensator / PointCloud2</code>）。此外，在导出目录中还有另外两个文件（<code>stamp.txt</code>和<code>pose.txt</code>）。它们将用于为每个帧生成Pose文件。</p>
-<h5 id="13-pose">1.3 生成Pose文件</h5>
+<h5>1.3 生成Pose文件</h5>
 <p>Python脚本 <code>gen_pose_file.py</code> 用来根据文件<code>pose.txt</code>生成Pose文件。</p>
 <pre><code>cd /apollo/modules/perception/tool
 python gen_pose_file.py /apollo/data/pcd
 </code></pre>
 
 <p>与生成Pose文件名称对应的帧编号作为PCD文件名。也就是帧的PCD和Pose文件的名称相同但具有不同的扩展名（即分别为.pcd和.pose）。</p>
-<h4 id="2">2. 构建离线感知可视化工具</h4>
+<h4 id="2">2. 构建离线感知可视化工具<a class="headerlink" href="#2" title="Permanent link">#</a></h4>
 <p>使用Bazel构建离线可视化工具</p>
 <pre><code>cd /apollo
 bazel build -c opt //modules/perception/tool/offline_visualizer_tool:offline_lidar_visualizer_tool
@@ -162,7 +193,7 @@ bazel build -c opt //modules/perception/tool/offline_visualizer_tool:offline_lid
 <pre><code>bazel build -c opt --cxxopt=-DUSE_GPU //modules/perception/tool/offline_visualizer_tool:offline_lidar_visualizer_tool
 </code></pre>
 
-<h4 id="3">3. 使用离线感知模拟运行可视化工具</h4>
+<h4 id="3">3. 使用离线感知模拟运行可视化工具<a class="headerlink" href="#3" title="Permanent link">#</a></h4>
 <p>在运行可视化工具之前，您可以在配置文件<code>/apollo/modules/perception/tool/offline_visualizer_tool/conf/offline_lidar_perception_test.flag</code>中设置数据目录和算法模块设置。每个算法模块的详细参数设置可以根据相应的配置文件<code>/apollo/modules/perception/tool/offline_visualizer_tool/conf/config_manager.config</code>进行设置。然后，您可以通过以下命令运行具有离线感知模拟的可视化工具：</p>
 <pre><code>/apollo/bazel-bin/modules/perception/tool/offline_visualizer_tool/offline_lidar_visualizer_tool
 </code></pre>

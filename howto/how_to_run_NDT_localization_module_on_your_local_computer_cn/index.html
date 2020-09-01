@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,9 +158,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="ndt">如何在本地运行基于NDT点云匹配的定位模块</h2>
+                <h2 id="ndt">如何在本地运行基于NDT点云匹配的定位模块<a class="headerlink" href="#ndt" title="Permanent link">#</a></h2>
 <p>本文档提供了如何在本地基于NDT点云匹配的定位模块的方法。</p>
-<h3 id="1">1. 事先准备</h3>
+<h3 id="1">1. 事先准备<a class="headerlink" href="#1" title="Permanent link">#</a></h3>
 <ul>
 <li>从<a href="https://github.com/ApolloAuto/apollo">GitHub网站</a>下载Apollo master分支源代码</li>
 <li>按照<a href="https://github.com/ApolloAuto/apollo/blob/master/README_cn.md">教程</a>设置Docker环境并搭建Apollo工程</li>
@@ -140,10 +171,10 @@
 里程：3km<br />
 场景：Sunnyvale 城市道路<br />
 天气：晴天  </p>
-<h3 id="2">2. 配置定位模块</h3>
+<h3 id="2">2. 配置定位模块<a class="headerlink" href="#2" title="Permanent link">#</a></h3>
 <p>为了使定位模块正确运行，需要对地图路径和传感器外参进行配置。假设下载的定位数据的所在路径为DATA_PATH。</p>
 <p>在进行以下步骤前，首先确定你在docker容器中。</p>
-<h4 id="21">2.1 配置传感器外参</h4>
+<h4 id="21">2.1 配置传感器外参<a class="headerlink" href="#21" title="Permanent link">#</a></h4>
 <p>将定位数据中的传感器外参拷贝至指定文件夹下, 目前NDT定位模块与MSF定位模块使用相同外参路径。</p>
 <pre><code>  cp DATA_PATH/params/ant_imu_leverarm.yaml /apollo/modules/localization/msf/params/gnss_params/
   cp DATA_PATH/params/velodyne64_novatel_extrinsics_example.yaml /apollo/modules/localization/msf/params/velodyne_params/
@@ -159,14 +190,14 @@
  - ant_imu_leverarm.yaml： 杆臂值参数，GNSS天线相对Imu的距离
  - velodyne64_novatel_extrinsics_example.yaml： Lidar相对Imu的外参
  - velodyne64_height.yaml： Lidar相对地面的高度</p>
-<h4 id="22">2.2 配置地图路径</h4>
+<h4 id="22">2.2 配置地图路径<a class="headerlink" href="#22" title="Permanent link">#</a></h4>
 <p>在<code>/apollo/modules/localization/conf/localization.conf</code>中添加关于地图路径的配置</p>
 <pre><code># Redefine the map_dir in global_flagfile.txt
 --map_dir=DATA_PATH
 </code></pre>
 
 <p>这将会覆盖global_flagfile.txt中的默认值。</p>
-<h4 id="23-topic">2.3 修改Topic名称</h4>
+<h4 id="23-topic">2.3 修改Topic名称<a class="headerlink" href="#23-topic" title="Permanent link">#</a></h4>
 <p>由于目前Apollo支持velodyne 64线,128线lidar, 因此为区分不同设备数据，采用不同的topic名称。因此，在启动之前需要设置正确的lidar topic名称。在<code>/apollo/modules/localization/conf/localization.conf</code>中添加lidar topic名称，以覆盖默认值。</p>
 <pre><code># The pointcloud topic name.
 --lidar_topic=/apollo/sensor/velodyne64/compensator/PointCloud2
@@ -176,7 +207,7 @@
 <pre><code>channel: /apollo/sensor/velodyne64/compensator/PointCloud2
 </code></pre>
 
-<h3 id="3-ndt">3. 运行NDT定位模块</h3>
+<h3 id="3-ndt">3. 运行NDT定位模块<a class="headerlink" href="#3-ndt" title="Permanent link">#</a></h3>
 <pre><code>./scripts/ndt_localization.sh
 </code></pre>
 
@@ -192,7 +223,7 @@
 <li>localization.out : 标准输出重定向文件</li>
 <li>localizaiton.flags : 启动localization模块使用的配置</li>
 </ul>
-<h3 id="4-record">4. 播放演示record</h3>
+<h3 id="4-record">4. 播放演示record<a class="headerlink" href="#4-record" title="Permanent link">#</a></h3>
 <pre><code>cd DATA_PATH/record
 cyber_record play -f *.record
 </code></pre>
@@ -202,13 +233,13 @@ cyber_record play -f *.record
 </code></pre>
 
 <p>终端会显示出topic列表，可以看到定位topic <code>/apollo/localization/pose</code> 有输出。</p>
-<h3 id="5">5. 记录与可视化定位结果（可选）</h3>
-<h4 id="_1">记录定位结果</h4>
+<h3 id="5">5. 记录与可视化定位结果（可选）<a class="headerlink" href="#5" title="Permanent link">#</a></h3>
+<h4 id="_1">记录定位结果<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
 <pre><code>python ./scripts/record_bag.py
 </code></pre>
 
 <p>该脚本会在后台运行录包程序，并将存放路径输出到终端上。</p>
-<h4 id="_2">可视化定位结果</h4>
+<h4 id="_2">可视化定位结果<a class="headerlink" href="#_2" title="Permanent link">#</a></h4>
 <p>NDT定位模块使用与MSF定位模块相同的可视化工具。</p>
 <p>运行可视化工具</p>
 <pre><code>./scripts/localization_online_visualizer.sh
@@ -228,7 +259,7 @@ bazel build -c opt //modules/localization/msf/local_tool/local_visualization/onl
 </code></pre>
 
 <p>编译选项-c opt优化程序性能，从而使可视化工具可以实时运行。</p>
-<h3 id="6">6. 结束运行定位模块</h3>
+<h3 id="6">6. 结束运行定位模块<a class="headerlink" href="#6" title="Permanent link">#</a></h3>
 <pre><code>./scripts/ndt_localization.sh stop
 </code></pre>
 
@@ -236,7 +267,7 @@ bazel build -c opt //modules/localization/msf/local_tool/local_visualization/onl
 <pre><code>python ./scripts/record_bag.py --stop
 </code></pre>
 
-<h3 id="7">7. 验证定位结果（可选）</h3>
+<h3 id="7">7. 验证定位结果（可选）<a class="headerlink" href="#7" title="Permanent link">#</a></h3>
 <p>NDT模块定位结果的验证使用MSF模块的验证工具。
 假设步骤5中录取的数据存放路径为OUTPUT_PATH，杆臂值外参的路径为ANT_IMU_PATH。
 首先将录制的数据包重命名为以<code>.record</code>为后缀的文件。</p>

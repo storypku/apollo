@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,8 +158,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-use-apollo-25-navigation-mode">How to use Apollo 2.5 navigation mode</h2>
-<h4 id="this-article-is-translated-by-the-apollo-community-team">This article is translated by the Apollo community team.</h4>
+                <h2 id="how-to-use-apollo-25-navigation-mode">How to use Apollo 2.5 navigation mode<a class="headerlink" href="#how-to-use-apollo-25-navigation-mode" title="Permanent link">#</a></h2>
+<h4 id="this-article-is-translated-by-the-apollo-community-team">This article is translated by the Apollo community team.<a class="headerlink" href="#this-article-is-translated-by-the-apollo-community-team" title="Permanent link">#</a></h4>
 <p>Apollo is well received and highly commended by developers in the field of autonomous driving for its well-designed architecture, full functionality, robust open-source ecosystem, and standardized coding style. However, previous versions of Apollo had their perception, prediction, routing, and planning modules all heavily reliant on HDMaps, for which development was cumbersome and opaque. For many developers, this posed an insurmountable barrier. Given the inaccessibility of HDMaps, developers could only play demo data bag on Apollo's simulation tools, rather than deploy the Apollo system on vehicles for road testing. This greatly undermined the usage scenarios of Apollo and hampered the development and growth of the Apollo community. Obviously, the Apollo team had been aware of this problem. With months of hard work, they released a new navigation mode in Apollo 2.5 based on a relative map. Leveraging navigation mode, developers could easily deploy Apollo for road testing on a real vehicle.</p>
 <p>Relative map is the newest feature to be introduced in Apollo 2.5. From the architectural level, the relative map module is the middle layer linking the HDMap to the Perception module and the Planning module as seen in the image below. The relative map module generates real-time maps based on the vehicle’s coordinate system (the format is in the same format as HDMaps). The module also outputs reference lines for the Planning module to use. From the angle of developers, a navigation mode based on relative maps enables developers to implement real-vehicle road tests. As a result, barriers to development have been significantly reduced.</p>
 <p><img alt="Software OverView" src="https://github.com/ApolloAuto/apollo/blob/master/docs/demo_guide/images/Software_Overview.png" /></p>
@@ -142,15 +173,15 @@
 * While travelling in the autonomous mode, the perception module’s camera will dynamically detect obstacles and road boundaries, while the map module’s relative map sub-module generates a relative map in real time (using a relative coordinate system with the current position of the vehicle as the origin), based on the recorded path (navigation line) and the road boundaries. With the relative map created by the map module and obstacle information created by the perception module, the planning module will dynamically output a local driving path to the control module for execution. 
 * At present, the navigation mode only supports single-lane driving. It can perform tasks such as acceleration and deceleration, car following, slowing down and stopping before obstacles, or nudge obstacles within the lane width. Subsequent versions will see further improvements to support multi-lane driving and traffic lights/signs detection.</p>
 <p>This article fully explains the build of Apollo 2.5, navigation line data collection and production, front-end compilation and configuration of Dreamview, and navigation mode usage, etc. Hopefully this will bring convenience to developers when properly using Apollo 2.5.</p>
-<h3 id="1-building-the-apollo-25-environment">1. Building the Apollo 2.5 environment</h3>
+<h3 id="1-building-the-apollo-25-environment">1. Building the Apollo 2.5 environment<a class="headerlink" href="#1-building-the-apollo-25-environment" title="Permanent link">#</a></h3>
 <p>First, download the Apollo 2.5 source code from GitHub website. This can be done by either using git command or getting the compressed package directly from the web page. There are two options to build Apollo after downloading the source code to an appropriate directory: 1. in Visual Studio Code (recommended); 2. by using the command line. Of course, the common prerequisite is that Docker has already been successfully installed on your computer. You can use the script file <a href="https://github.com/ApolloAuto/apollo/blob/master/docker/scripts/install_docker.sh"><code>install_docker.sh</code></a> to  install Docker firstly.</p>
-<h4 id="11-build-with-the-visual-studio-code">1.1 Build with the Visual Studio Code</h4>
+<h4 id="11-build-with-the-visual-studio-code">1.1 Build with the Visual Studio Code<a class="headerlink" href="#11-build-with-the-visual-studio-code" title="Permanent link">#</a></h4>
 <p>Open Visual Studio Code and execute menu command <code>File -&gt; Open Folder</code>. In the pop-up dialog, select a  Apollo project source folder and click <code>OK</code>, as shown in the following figure:</p>
 <p><img alt="img" src="../images/navigation_mode/open_directory_en.png" /> </p>
 <p><img alt="img" src="../images/navigation_mode/choose_apollo_directory_en.png" /> </p>
 <p>Next, execute menu command <code>Tasks -&gt; Run Build Task</code> or directly press <code>Ctrl + Shift + B</code> (shortcut keys which are  the same as in Visual Studio and QT) to build a project. Docker will be launched when compiling if it has not yet been started. A superuser password needs to be entered in the terminal window at the bottom. After the command is executed, a display of <code>Terminal will be reused by tasks, press any key to close it.</code> in the terminal window at the bottom indicates that the build is successful. Keep good internet connection during the whole process, otherwise the dependencies cannot be downloaded. You may encounter some problems during the build.  Solutions can be found in <a href="https://blog.csdn.net/davidhopper/article/details/79349927">this blog</a> post and the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_debug_apollo_in_vscode_cn.md">Help Doc</a> on GitHub.</p>
 <p><img alt="img" src="../images/navigation_mode/build_successfully_en.png" /> </p>
-<h4 id="12-build-in-a-terminal">1.2 Build in a terminal</h4>
+<h4 id="12-build-in-a-terminal">1.2 Build in a terminal<a class="headerlink" href="#12-build-in-a-terminal" title="Permanent link">#</a></h4>
 <p>Press <code>Ctrl + Alt + T</code> to open a terminal and enter the following command to launch Docker:</p>
 <pre><code class="bash">cd your_apollo_project_root_dir
 # if you access from mainland China, it’s better to add “-C” option, visit mirror servers in mainland China will enable the highest download speed
@@ -167,7 +198,7 @@ bash docker/scripts/dev_start.sh -C
 
 <p>The steps are shown in the following figure:</p>
 <p><img alt="img" src="../images/navigation_mode/build_with_command.png" /></p>
-<h4 id="13-change-the-utm-area-id-in-localization-module">1.3 Change the UTM area ID in <code>Localization</code> module</h4>
+<h4 id="13-change-the-utm-area-id-in-localization-module">1.3 Change the UTM area ID in <code>Localization</code> module<a class="headerlink" href="#13-change-the-utm-area-id-in-localization-module" title="Permanent link">#</a></h4>
 <p>The default ID of the localization module in Apollo is the UTM coordinates of the US west coast. If you are in China, this ID must be changed. Outside of Docker, using vi or another text editor, open<code>[your_apollo_root_dir]/modules/localization/conf/localization.conf</code>, and change:</p>
 <pre><code class="bash">--local_utm_zone_id=10
 </code></pre>
@@ -177,12 +208,12 @@ bash docker/scripts/dev_start.sh -C
 </code></pre>
 
 <p><code>Note:</code> If the coordinates were not changed before recording data, they must not be changed when playing back data during offline testing. Changing the ID after recording will disturb navigation line locating! </p>
-<h4 id="14-configuring-your-utm-area-id-for-dreamview">1.4 Configuring your UTM area ID for Dreamview</h4>
+<h4 id="14-configuring-your-utm-area-id-for-dreamview">1.4 Configuring your UTM area ID for Dreamview<a class="headerlink" href="#14-configuring-your-utm-area-id-for-dreamview" title="Permanent link">#</a></h4>
 <p>Open<code>[your_apollo_root_dir]/modules/common/data/global_flagfile.txt</code>, add this line at the bottom (we are using the UTM area ID of Changsha area, for UTM sub-areas in China, please go to <a href="http://www.360doc.com/content/14/0729/10/3046928_397828751.shtml">this page</a>): </p>
 <pre><code>--local_utm_zone_id=49
 </code></pre>
 
-<h3 id="2-collect-navigation-line-raw-data">2. Collect navigation line raw data</h3>
+<h3 id="2-collect-navigation-line-raw-data">2. Collect navigation line raw data<a class="headerlink" href="#2-collect-navigation-line-raw-data" title="Permanent link">#</a></h3>
 <p>Import the pre-specified Apollo file into the in-car IPC, enter Docker (follow steps in 1.2), and execute the following command to launch Dreamview: </p>
 <pre><code class="bash">bash scripts/bootstrap.sh
 </code></pre>
@@ -197,9 +228,9 @@ bash docker/scripts/dev_start.sh -C
 </ul>
 <p><code>Note:</code> the default recording time in a bag is 1 minute, and the default size of a bag is 2048 MB, which can be edited in <code>/apollo/scripts/record_bag.sh</code>.
 For convenience, the next steps assume the <code>2018-04-01-09-58-00.bag</code> is in the <code>/apollo/data/bag</code> directory in this article.</p>
-<h3 id="3-generation-of-navigation-lines">3. Generation of navigation lines</h3>
+<h3 id="3-generation-of-navigation-lines">3. Generation of navigation lines<a class="headerlink" href="#3-generation-of-navigation-lines" title="Permanent link">#</a></h3>
 <p>Either create a navigation line on an in-car IPC, or other computers. In both situations, we assume: we are already in Docker (Step 1.2), we have imported the data bag under the <code>/apollo/data/bag</code> directory, and the name of the file is <code>2018-04-01-09-58-00.bag</code> (which is not the name of the file in your computer, we are using it only as an example).</p>
-<h4 id="31-extract-raw-data-from-the-data-bag">3.1 Extract raw data from the data bag</h4>
+<h4 id="31-extract-raw-data-from-the-data-bag">3.1 Extract raw data from the data bag<a class="headerlink" href="#31-extract-raw-data-from-the-data-bag" title="Permanent link">#</a></h4>
 <p>In Docker, enter the command to extract the data from the data bag:</p>
 <pre><code class="bash">cd /apollo/modules/tools/navigator
 python extractor.py /apollo/data/bag/2018-04-01-09-58-00.bag
@@ -212,7 +243,7 @@ To check the data, enter the following command:</p>
 
 <p>And a figure like the image below, will be generated:</p>
 <p><img alt="img" src="../images/navigation_mode/view_raw_data.png" /> </p>
-<h4 id="32-smoothen-the-raw-data">3.2 Smoothen the raw data</h4>
+<h4 id="32-smoothen-the-raw-data">3.2 Smoothen the raw data<a class="headerlink" href="#32-smoothen-the-raw-data" title="Permanent link">#</a></h4>
 <p>If the test drive was bumpy, the raw path data will not be smooth enough. It must be smoothed in Docker using the following command:</p>
 <pre><code class="bash">bash smooth.sh ./path_2018-04-01-09-58-00.bag.txt 200
 </code></pre>
@@ -224,9 +255,9 @@ To verify the smoothed result, use the following command:</p>
 
 <p>The first argument <code>./path_2018-04-01-09-58-00.bag.txt</code> is raw data, the second argument <code>./path_2018-04-01-09-58-00.bag.txt.smoothed</code> is the smoothed result. A figure like below will be generated:</p>
 <p><img alt="img" src="../images/navigation_mode/view_smoothing_results.png" /> </p>
-<h3 id="4-dreamview-frontend-compilation-and-configuration">4. Dreamview frontend compilation and configuration</h3>
+<h3 id="4-dreamview-frontend-compilation-and-configuration">4. Dreamview frontend compilation and configuration<a class="headerlink" href="#4-dreamview-frontend-compilation-and-configuration" title="Permanent link">#</a></h3>
 <p>Dreamview frontend uses the Baidu Map by default. It can be changed to Google Maps by re-compiling frontend, as seen in the sub-sections below (Note: if you wish to continue with the default Map application, please ignore the sub-sections below): </p>
-<h4 id="41-change-navigation-map-settings">4.1 Change navigation map settings</h4>
+<h4 id="41-change-navigation-map-settings">4.1 Change navigation map settings<a class="headerlink" href="#41-change-navigation-map-settings" title="Permanent link">#</a></h4>
 <p>Open the file<code>[your_apollo_root_dir]/modules/dreamview/frontend/src/store/config/ parameters.yml</code>, change the map settings to meet your needs: </p>
 <pre><code class="bash">navigation:
   # possible options: BaiduMap or GoogleMap
@@ -237,7 +268,7 @@ To verify the smoothed result, use the following command:</p>
   mapAPiUrl: &quot;https://api.map.baidu.com/api?v=3.0&amp;ak=0kKZnWWhXEPfzIkklmzAa3dZ&amp;callback=initMap&quot;
 </code></pre>
 
-<h4 id="42-re-compile-the-dreamview-front-end">4.2 Re-compile the Dreamview front end</h4>
+<h4 id="42-re-compile-the-dreamview-front-end">4.2 Re-compile the Dreamview front end<a class="headerlink" href="#42-re-compile-the-dreamview-front-end" title="Permanent link">#</a></h4>
 <p>As in Step 1.2, enter Docker and execute the following command to compile Dreamview Front End:</p>
 <pre><code class="bash">#Install Dreamview front end dependent package. Note: you only need to execute it once, not every time.
 cd /apollo/modules/dreamview/frontend/
@@ -263,8 +294,8 @@ cd /apollo
 bash apollo.sh build_fe
 </code></pre>
 
-<h3 id="5-usage-of-the-navigation-mode">5. Usage of the navigation mode</h3>
-<h4 id="51-open-dreamview-and-switch-to-the-navigation-mode">5.1. Open Dreamview and switch to the navigation mode</h4>
+<h3 id="5-usage-of-the-navigation-mode">5. Usage of the navigation mode<a class="headerlink" href="#5-usage-of-the-navigation-mode" title="Permanent link">#</a></h3>
+<h4 id="51-open-dreamview-and-switch-to-the-navigation-mode">5.1. Open Dreamview and switch to the navigation mode<a class="headerlink" href="#51-open-dreamview-and-switch-to-the-navigation-mode" title="Permanent link">#</a></h4>
 <p>Enter Docker, open Dreamview and execute the following command:</p>
 <pre><code class="bash">cd your_apollo_project_root_dir
 # If you haven’t opened Docker, do it first or ignore that step
@@ -282,12 +313,12 @@ rosbag play -l /apollo/data/bag/2018-04-01-09-58-00.bag
 
 <p>Open this website<a href="http://localhost:8888"> http://localhost:8888</a> in the browser (DO NOT use proxy), enter Dreamview interface, click on the dropdown box in the upper right, and select <code>Navigation</code> mode, as shown in the screenshot below:</p>
 <p><img alt="img" src="../images/navigation_mode/enable_navigation_mode.png" /> </p>
-<h4 id="52-enable-relevant-modules-in-the-navigation-mode">5.2 Enable relevant modules in the navigation mode</h4>
+<h4 id="52-enable-relevant-modules-in-the-navigation-mode">5.2 Enable relevant modules in the navigation mode<a class="headerlink" href="#52-enable-relevant-modules-in-the-navigation-mode" title="Permanent link">#</a></h4>
 <p>Click on the <code>Module Controller</code> button in the toolbar on the left side of the Dreamview interface and enter the module controller page. For offline mock tests, select <code>Relative Map</code>, <code>Navi Planning</code>, and other modules as needed as shown in the screenshot below (the module that shows blank text is the Mobileye module, which will be visible only if the related hardware is installed and configured):</p>
 <p><img alt="img" src="../images/navigation_mode/test_in_navigation_mode.png" /> </p>
 <p>For real vehicle commissioning, all modules except <code>Record Bag</code>, <code>Mobileye</code>(if Mobileye hardware has not been installed, it will be shown as blank text) and <code>Third Party Perception</code> should be activated, as displayed in the next screenshot:</p>
 <p><img alt="img" src="../images/navigation_mode/drive_car_in_navigation_mode.png" /> </p>
-<h4 id="53-send-the-navigation-line-data">5.3 Send the navigation line data</h4>
+<h4 id="53-send-the-navigation-line-data">5.3 Send the navigation line data<a class="headerlink" href="#53-send-the-navigation-line-data" title="Permanent link">#</a></h4>
 <p>In Docker, execute the following command to send the navigation line data made in step 3:</p>
 <pre><code class="bash">cd /apollo/modules/tools/navigator
 python navigator.py ./path_2018-04-01-09-58-00.bag.txt.smoothed

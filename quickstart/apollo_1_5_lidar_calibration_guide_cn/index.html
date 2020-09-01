@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -128,7 +159,7 @@
             <div class="section">
               
                 <p>欢迎使用Apollo传感器标定服务。本文档提供64线激光雷达与组合惯导之间的外参标定服务使用流程。</p>
-<h4 id="_1">文档概览</h4>
+<h4 id="_1">文档概览<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
 <ol>
 <li>服务概述</li>
 <li>准备工作</li>
@@ -137,9 +168,9 @@
 <li>标定结果获取</li>
 <li>错误说明</li>
 </ol>
-<h4 id="_2">服务概述</h4>
+<h4 id="_2">服务概述<a class="headerlink" href="#_2" title="Permanent link">#</a></h4>
 <p>本服务作为Apollo整车传感器标定功能中的一部分，提供Velodyne 64线激光雷达HDL-64ES3与IMU之间的外参标定功能。标定结果可用于将激光雷达检测的障碍物转换至IMU坐标系，进而转到世界坐标系下。标定结果以 <code>.yaml</code> 文件形式返回。</p>
-<h4 id="_3">准备工作</h4>
+<h4 id="_3">准备工作<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
 <p>为了更好地使用本服务，请按以下顺序进行准备工作：</p>
 <p>1.安装Apollo所支持的64线激光雷达和组合惯性导航系统，下载镜像安装docker环境。</p>
 <p>2.开机并启动64线激光雷达以及组合惯导系统。Novatel组合惯导初次上电时需要校准。此时应将车在开阔地带进行直行、左右转弯等操作，直至惯导初始化完成。</p>
@@ -179,7 +210,7 @@
 <p align="center">图1 标定所需车辆行驶的轨迹。</p></p>
 <p><img alt="" src="../images/calibration/lidar_calibration/field.png" />
 <p align="center">图2 标定场地。</p></p>
-<h4 id="_4">标定数据录制</h4>
+<h4 id="_4">标定数据录制<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
 <p>准备工作完成后，将车辆驶入标定场地进行标定数据的录制。</p>
 <p>1.录制脚本工具为 <code>apollo/script/lidar_calibration.sh</code>。</p>
 <p>2.运行以下命令，开始数据录制工作：</p>
@@ -193,7 +224,7 @@
 </code></pre>
 
 <p>5.随后，程序会检测所录制的bag中是否含有所需的所有topics。检测通过后，会将bag打包成 <code>lidar_calib_data.tar.gz</code> 文件，内容包括录制的rosbag以及对应的MD5校验和文件。</p>
-<h4 id="_5">标定数据上传以及任务创建</h4>
+<h4 id="_5">标定数据上传以及任务创建<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
 <p>录制好标定数据后，登录至<a href="https://console.bce.baidu.com/apollo/calibrator/index/list">标定服务页面</a>以完成标定。</p>
 <p>1.进入标定服务页面，在<strong>任务管理</strong>列表下点击<strong>新建任务</strong>按钮以新建一个标定任务。</p>
 <p>2.进入新建任务页面后，需先填写简单的任务描述，然后点击<strong>上传数据并创建任务</strong>按钮，选择上传标定文件，则可以开始进行数据上传。</p>
@@ -213,7 +244,7 @@
 <p><img alt="" src="../images/calibration/lidar_calibration/calib_progress_cn.png" />
 <p align="center">图4 标定进度页面。</p></p>
 <p>7.标定完成后，进入人工质检环节。点击[查看]按钮会弹出用于质检的拼接点云，此时可以开始人工质检。若质检通过，则可以点击<strong>确认入库</strong>按钮以保存标定结果。最后，点击<strong>下载数据</strong>按钮来下载标定结果，至此标定流程完成。<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/FAQs/Calibration_FAQs_cn.md">如何进行质检？</a></p>
-<h4 id="_6">标定结果获取</h4>
+<h4 id="_6">标定结果获取<a class="headerlink" href="#_6" title="Permanent link">#</a></h4>
 <p>1.获取标定结果前，本服务需要用户根据可视化效果确认标定结果的质量。</p>
 <p>2.确认该标定结果质量合格后，用户可点击<strong>确认入库</strong>按钮将标定结果入库。之后可以在任务页面进行下载，未通过质检并入库的标定结果在任务页面不会出现下载地址。</p>
 <p>3.外参格式解析。外参以yaml文件形式返回给用户，下面是一个外参结果文件的样例。
@@ -274,7 +305,7 @@ transform:
 </code></pre>
 
 <p>其中，<strong>CAR_ID</strong>为标定车辆的车辆ID。然后将下载的外参yaml文件拷贝至对应的<strong>CAR_ID</strong> 文件夹内。最后，在启动hmi后，选择需正确的<strong>CAR_ID</strong>即可载入对应的标定yaml文件。</p>
-<h4 id="_7">错误说明</h4>
+<h4 id="_7">错误说明<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
 <ol>
 <li>数据解包错误：上传的数据不是一个合法的 <code>tar.gz</code> 文件。</li>
 <li>MD5校验和错误：上传数据的MD5校验和与服务器端计算的MD5校验和不同，通常由网络传输问题引发。</li>

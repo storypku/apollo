@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,10 +158,10 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="perception">Perception</h2>
+                <h2 id="perception">Perception<a class="headerlink" href="#perception" title="Permanent link">#</a></h2>
 <p>Apollo 5.0
 June 27, 2019</p>
-<h3 id="introduction">Introduction</h3>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>Apollo 5.0 Perception module introduced a few major features to provide diverse functionality, a more reliable platform and a more robust solution to enhance your AV performance. These include:</p>
 <ul>
 <li><strong>Supports Caffe and PaddlePaddle</strong>: <a href="https://github.com/PaddlePaddle/Paddle">PaddlePaddle</a> (PArallel Distributed Deep LEarning) is an easy-to-use, efficient, flexible and scalable deep learning platform, which was originally developed by Baidu scientists and engineers for the purpose of applying deep learning to many products at Baidu.</li>
@@ -141,17 +172,17 @@ June 27, 2019</p>
 </ul>
 <p><strong><em>Safety alert</em></strong></p>
 <p>Apollo 5.0 <em>does not</em> support a high curvature road, roads without lane lines including local roads and intersections. The perception module is based on visual detection using a deep network with limited data. Therefore, before we release a better network, the driver should be careful while driving and always be ready to disengage the autonomous driving mode by intervening (hit the brakes or turn the steering wheel). While testing Apollo 3.0, please choose a path that has the necessary conditions mentioned above and be vigilant.</p>
-<h3 id="perception-module">Perception module</h3>
+<h3 id="perception-module">Perception module<a class="headerlink" href="#perception-module" title="Permanent link">#</a></h3>
 <p>The flow chart of Apollo 5.0 Perception module:</p>
 <p><img alt="Image" src="../images/Apollo3.5_perception_detail.png" /></p>
 <p>To learn more about individual sub-modules, please visit <a href="../perception_apollo_3.0/">Perception - Apollo 3.0</a></p>
-<h4 id="supports-paddlepaddle">Supports PaddlePaddle</h4>
+<h4 id="supports-paddlepaddle">Supports PaddlePaddle<a class="headerlink" href="#supports-paddlepaddle" title="Permanent link">#</a></h4>
 <p>The Apollo platform's perception module actively depended on Caffe for its modelling, but will now support PaddlePaddle, an open source platform developed by Baidu to support its various deep learning projects.
 Some features include:
 - <strong>PCNNSeg</strong>: Object detection from 128-channel lidar or a fusion of three 16-channel lidars using PaddlePaddle
 - <strong>PCameraDetector</strong>: Object detection from a camera
 - <strong>PlaneDetector</strong>: Lane line detection from a camera</p>
-<h5 id="using-paddlepaddle-features">Using PaddlePaddle Features</h5>
+<h5>Using PaddlePaddle Features</h5>
 <ol>
 <li>
 <p>To use the PaddlePaddle model for Camera Obstacle Detector, set <code>camera_obstacle_perception_conf_file</code> to <code>obstacle_paddle.pt</code> in the following <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/perception/production/conf/perception/camera/fusion_camera_detection_component.pb.txt">configuration file</a></p>
@@ -160,13 +191,13 @@ Some features include:
 <p>To use the PaddlePaddle model for LiDAR Obstacle Detector, set <code>use_paddle</code> to <code>true</code> in the following <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/perception/production/data/perception/lidar/models/cnnseg/velodyne128/cnnseg.conf">configuration file</a></p>
 </li>
 </ol>
-<h4 id="online-sensor-calibration-service">Online sensor calibration service</h4>
+<h4 id="online-sensor-calibration-service">Online sensor calibration service<a class="headerlink" href="#online-sensor-calibration-service" title="Permanent link">#</a></h4>
 <p>Apollo currently offers a robust calibration service to support your calibration requirements from LiDARs to IMU to Cameras. This service is currently being offered to select partners only. If you would like to learn more about the calibration service, please reach out to us via email: <strong>apollopartner@baidu.com</strong></p>
-<h4 id="manual-camera-calibration">Manual Camera Calibration</h4>
+<h4 id="manual-camera-calibration">Manual Camera Calibration<a class="headerlink" href="#manual-camera-calibration" title="Permanent link">#</a></h4>
 <p>In Apollo 5.0, Perception launched a manual camera calibration tool for camera extrinsic parameters. This tool is simple, reliable and user-friendly. It comes equipped with a visualizer and the calibration can be performed using your keyboard. It helps to estimate the camera's orientation (pitch, yaw, roll). It provides a vanishing point, horizon, and top down view as guidelines. Users would need to change the 3 angles to align a horizon and make the lane lines parallel.</p>
 <p>The process of manual calibration can be seen below:</p>
 <p><img alt="" src="../images/Manual_calib.png" /></p>
-<h4 id="closest-in-path-object-cipo-detection">Closest In-Path Object (CIPO) Detection</h4>
+<h4 id="closest-in-path-object-cipo-detection">Closest In-Path Object (CIPO) Detection<a class="headerlink" href="#closest-in-path-object-cipo-detection" title="Permanent link">#</a></h4>
 <p>The CIPO includes detection of key objects on the road for longitudinal control. It utilizes the object and ego-lane line detection output. It creates a virtual ego lane line using the vehicle's ego motion prediction. Any vehicle model including Sphere model, Bicycle model and 4-wheel tire model can be used for the ego motion prediction. Based on the vehicle model using the translation of velocity and angular velocity, the length and curvature of the pseudo lanes are determined.
 Some examples of CIPO using Pseudo lane lines can be seen below:</p>
 <ol>
@@ -179,7 +210,7 @@ Some examples of CIPO using Pseudo lane lines can be seen below:</p>
 <img alt="" src="../images/CIPO_2.png" /></p>
 </li>
 </ol>
-<h4 id="vanishing-point-detection">Vanishing Point Detection</h4>
+<h4 id="vanishing-point-detection">Vanishing Point Detection<a class="headerlink" href="#vanishing-point-detection" title="Permanent link">#</a></h4>
 <p>In Apollo 5.0, an additional branch of network is attached to the end of the lane encoder to detect the vanishing point. This branch is composed of convolutional layers and fully connected layers, where convolutional layers translate lane features for the vanishing point task and fully connected layers make a global summary of the whole image to output the vanishing point location. Instead of giving an output in <code>x</code>, <code>y</code> coordinate directly, the output of vanishing point is in the form of <code>dx</code>, <code>dy</code> which indicate its distances to the image center in <code>x</code>, <code>y</code> coordinates. The new branch of network is trained separately by using pre-trained lane features directly, where the model weights with respect to the lane line network is fixed. The Flow Diagram is included below, note that the red color denotes the flow of the vanishing point detection algorithm.</p>
 <p><img alt="" src="../images/Vpt.png" /></p>
 <p>Two challenging visual examples of our vanishing point detection with lane network output are shown below:
@@ -192,14 +223,14 @@ Some examples of CIPO using Pseudo lane lines can be seen below:</p>
 <p><img alt="" src="../images/Vpt2.png" /></p>
 </li>
 </ol>
-<h5 id="key-features">Key Features</h5>
+<h5>Key Features</h5>
 <ul>
 <li>Regression to <code>(dx, dy)</code> rather than <code>(x, y)</code> reduces the search space</li>
 <li>Additional convolution layer is needed for feature translation which casts CNN features for vanishing point purpose</li>
 <li>Fully Connected layer is applied for holistic spatial summary of information, which is required for vanishing point estimation</li>
 <li>The branch design supports diverse training strategies, e.g. fine tune pre-trained laneline model, only train the subnet with direct use of laneline features, co-train of multi-task network</li>
 </ul>
-<h3 id="output-of-perception">Output of Perception</h3>
+<h3 id="output-of-perception">Output of Perception<a class="headerlink" href="#output-of-perception" title="Permanent link">#</a></h3>
 <p>The input of Planning and Control modules will be quite different with that of the previous Lidar-based system for Apollo 3.0.</p>
 <ul>
 <li>

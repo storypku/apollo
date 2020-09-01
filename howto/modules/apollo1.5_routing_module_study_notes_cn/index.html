@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,24 +158,24 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="routing">routing模块分析</h2>
-<h3 id="_1">功能：</h3>
+                <h2 id="routing">routing模块分析<a class="headerlink" href="#routing" title="Permanent link">#</a></h2>
+<h3 id="_1">功能：<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
 <p>基于请求，输出两点之间导航信息。</p>
-<h3 id="_2">输入：</h3>
+<h3 id="_2">输入：<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <ul>
 <li>用户的起始和终止位置。/apollo/routing_request[pb_msgs/RoutingRequest]。</li>
 <li>HD map。</li>
 <li>/apollo/monitor[pb_msgs/MonitorMessage]。</li>
 </ul>
-<h3 id="_3">输出：</h3>
+<h3 id="_3">输出：<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <ul>
 <li>请求的响应：/apollo/routing_response[pb_msgs/RoutingResponse],包含了最终的路由信息。</li>
 <li>/apollo/monitor[pb_msgs/MonitorMessage]。</li>
 </ul>
-<h3 id="io">节点I/O：</h3>
+<h3 id="io">节点I/O：<a class="headerlink" href="#io" title="Permanent link">#</a></h3>
 <p><img alt="routing data flow" src="../images/routing_node_arch.bmp" /></p>
-<h3 id="routing_1">routing源码：</h3>
-<h4 id="routingccroutingh">routing.cc和routing.h</h4>
+<h3 id="routing_1">routing源码：<a class="headerlink" href="#routing_1" title="Permanent link">#</a></h3>
+<h4 id="routingccroutingh">routing.cc和routing.h<a class="headerlink" href="#routingccroutingh" title="Permanent link">#</a></h4>
 <ul>
 <li>Name()函数：返回节点名字。</li>
 <li>Routing()：构造函数，初始化monitor_。</li>
@@ -159,7 +190,7 @@
 <li>执行SearchRoute()函数，根据routing_request，寻找路由，并设置routing_response。</li>
 <li>发布routing_response。</li>
 </ul>
-<h4 id="navigationccnavigationh">navigation.cc和navigation.h：</h4>
+<h4 id="navigationccnavigationh">navigation.cc和navigation.h：<a class="headerlink" href="#navigationccnavigationh" title="Permanent link">#</a></h4>
 <ul>
 <li>SearchRoute()函数：</li>
 <li>显示请求命令的信息。</li>

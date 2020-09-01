@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,17 +158,17 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="hd-map">HD map 使用</h2>
-<h3 id="hd-map_1">生成HD map:</h3>
+                <h2 id="hd-map">HD map 使用<a class="headerlink" href="#hd-map" title="Permanent link">#</a></h2>
+<h3 id="hd-map_1">生成HD map:<a class="headerlink" href="#hd-map_1" title="Permanent link">#</a></h3>
 <p>由于apollo的hd map制作没有开放，所以目前hd map的生成是需要向百度提需求的。
 如果想自己制作的话，apollo有提供建议如下：
  * 原始数据采集(视觉、激光雷达、GPS等)以及处理。
  * 地图数据生成。从步骤一生成的数据通过算法或者人工的方式获取地图数据。
  * 地图格式组织。将地图数据转换为Apollo的高精度地图格式（可以参照base_map.xml格式，其他的地图都可以从base_map.xml生成）。
  * 注意：这三个步骤的工具均需要自己开发，如果只是小规模的简单测试，也可以参照base_map.xml格式手工组织数据。</p>
-<h3 id="hd-mapapollo15">将HD map加入apollo1.5：</h3>
+<h3 id="hd-mapapollo15">将HD map加入apollo1.5：<a class="headerlink" href="#hd-mapapollo15" title="Permanent link">#</a></h3>
 <p>有两个方法，一个是通过添加一个新的目录，使用apollo系统；一个是替换原有目录下的地图文件。</p>
-<h4 id="hd-map_2">新加一个hd map：</h4>
+<h4 id="hd-map_2">新加一个hd map：<a class="headerlink" href="#hd-map_2" title="Permanent link">#</a></h4>
 <ul>
 <li>在/apollo/modules/map/data目录下，创建一个目录new_map。</li>
 <li>将生成的hd map放入new_map中，如有配置文件，可以参考sunnyvale_office目录下的配置文件。</li>
@@ -147,7 +178,7 @@
 <li>直接copy new_garage 重命名为new_garage_2测试的，测试通过。</li>
 <li>注1：编译的时候，应该相当于将/apollo/modules/map/data/new_map注册到系统中去，以便启动hmi时，前端网页可以定位到/apollo/modules/map/data/new_map目录，进而加载其中的文件。也因此，可以有第二个方法加入hd map。</li>
 </ul>
-<h4 id="_1">利用现有的地图目录，加入地图：</h4>
+<h4 id="_1">利用现有的地图目录，加入地图：<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
 <ul>
 <li>假设apollo1.5中，已经添加了new_map，此时只需要替换目录下的hd map所有的文件，这样不需要编译，即可使用新的hd map。</li>
 </ul>

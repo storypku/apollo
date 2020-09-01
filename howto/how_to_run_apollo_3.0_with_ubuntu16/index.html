@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,19 +158,19 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="introduction">Introduction</h2>
+                <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
 <p>The Ubuntu version recommended by Apollo to use is 14.04. This document decribes steps to run Apollo on Ubuntu 16.04, and the problems that might occur and how to resolve these problems.</p>
 <p>The Apollo version used in this document is the lastest release version which is 3.0. And this document focuses on How to Install Software, and conforms to the steps and rules provided by Apollo.</p>
 <p>All the tests decribed in this document are based on X86 architecture.</p>
-<h2 id="download-apollo">Download Apollo</h2>
+<h2 id="download-apollo">Download Apollo<a class="headerlink" href="#download-apollo" title="Permanent link">#</a></h2>
 <p>please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md">Apollo Software Installation</a>，download Apollo version 3.0 source code onto the computer.</p>
-<h2 id="install-docker">Install Docker</h2>
+<h2 id="install-docker">Install Docker<a class="headerlink" href="#install-docker" title="Permanent link">#</a></h2>
 <p>Please follow the
 <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu">official guide to install the docker-ce</a>.</p>
 <p>Don't forget the
 <a href="https://docs.docker.com/install/linux/linux-postinstall">post-installation steps for Linux</a>.</p>
 <p>We recommend to install using Docker repository, but some errors which are shown below may occur if we perform the installation from a package.</p>
-<h4 id="install-from-a-package">Install from a package</h4>
+<h4 id="install-from-a-package">Install from a package<a class="headerlink" href="#install-from-a-package" title="Permanent link">#</a></h4>
 <p>Download <code>Docker</code> installation package from <a href="https://download.docker.com/linux/ubuntu/dists/">Docker installation package website</a>, the <code>Docker</code> version we recommend is 18.03.1。 There are various versions within directory <code>pool/stable/</code>.</p>
 <p>Install <code>Docker</code>：</p>
 <p><code>sudo dpkg –i docker_packagename.deb</code></p>
@@ -173,7 +204,7 @@ Please refer to [Website](https://ubuntu.pkgs.org/14.04/ubuntu-main-amd64/libgcr
 <pre><code>Docker version 18.03.1-ce, build 9ee9f40
 </code></pre>
 
-<h4 id="verify-the-installation">Verify the installation</h4>
+<h4 id="verify-the-installation">Verify the installation<a class="headerlink" href="#verify-the-installation" title="Permanent link">#</a></h4>
 <p>Follow the steps provided by Apollo, perform command:</p>
 <p><code>sudo docker run hello-world</code></p>
 <p>An error may occur:</p>
@@ -185,9 +216,9 @@ See 'docker run --help'.
 <p>Start service <code>Docker</code>:</p>
 <p><code>sudo service docker restart</code></p>
 <p>And then perform command <code>sudo docker run hello-world</code> to verify again.</p>
-<h2 id="build-apollo">Build Apollo</h2>
+<h2 id="build-apollo">Build Apollo<a class="headerlink" href="#build-apollo" title="Permanent link">#</a></h2>
 <p>Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_build_and_release.md">How to Build and Release your Docker Container</a>。</p>
-<h2 id="launch-and-run-apollo">Launch and Run Apollo</h2>
+<h2 id="launch-and-run-apollo">Launch and Run Apollo<a class="headerlink" href="#launch-and-run-apollo" title="Permanent link">#</a></h2>
 <p>Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_launch_Apollo.md">How to Launch and Run Apollo</a>。</p>
               
             </div>

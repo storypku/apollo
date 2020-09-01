@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,19 +158,19 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="prediction">Prediction模块分析</h2>
-<h3 id="_1">作用：</h3>
+                <h2 id="prediction">Prediction模块分析<a class="headerlink" href="#prediction" title="Permanent link">#</a></h2>
+<h3 id="_1">作用：<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
 <p>预测障碍物的运动轨迹，每条轨迹都有一个概率值。</p>
-<h3 id="_2">输入：</h3>
+<h3 id="_2">输入：<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <ul>
 <li>车辆位置信息：/apollo/localization/pose（[pb_msgs/LocalizationEstimate]）。</li>
 <li>障碍物信息：/apollo/perception/obstacles（[pb_msgs/PerceptionObstacles]）。</li>
 </ul>
-<h3 id="_3">输出：</h3>
+<h3 id="_3">输出：<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>障碍物的运动轨迹。/apollo/prediction[pb_msgs/PredictionObstacle]。</p>
-<h3 id="_4">节点图：</h3>
+<h3 id="_4">节点图：<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p><img alt="prediction data flow" src="../images/prediction_node_arch.bmp" /></p>
-<h3 id="_5">子模块：</h3>
+<h3 id="_5">子模块：<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <ul>
 <li>容器： 存储订阅话题中的数据。</li>
 <li>评估器：对于任意一个障碍物，评估器预测路径和速度。一个评估器通过使用_prediction/data/_ 下的评估模型对每条路径给出一个概率值，实现评估。</li>
@@ -148,7 +179,7 @@
 <li>自由移动：障碍物自由移动。</li>
 <li>区域引动：障碍物只能在一定的区域移动。</li>
 </ul>
-<h3 id="_6">源码架构：</h3>
+<h3 id="_6">源码架构：<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <ul>
 <li>main.cc: 启动/prediction节点。</li>
 <li>prediction.cc和prediction.h:<ul>
@@ -182,7 +213,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="evaluator">评估器Evaluator:</h3>
+<h3 id="evaluator">评估器Evaluator:<a class="headerlink" href="#evaluator" title="Permanent link">#</a></h3>
 <ul>
 <li>创建一个新的NewEvaluator：</li>
 <li>data/mlp_vehicle_model.bin：利用深度学习实现的评估器核心部分。</li>
@@ -202,7 +233,7 @@
 <li>将概率值probability设置到lane_sequence_ptr。</li>
 <li>进一步的分析需要理解feature和lane_sequence概念，需要进入算法，暂时评估器到这里。</li>
 </ul>
-<h3 id="predictor">预测器Predictor：</h3>
+<h3 id="predictor">预测器Predictor：<a class="headerlink" href="#predictor" title="Permanent link">#</a></h3>
 <ul>
 <li>功能：预测障碍物的未来轨迹。</li>
 <li>创建一个新的预测器NewPredictor：</li>

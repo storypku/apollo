@@ -65,15 +65,15 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Planning</a>
     <ul class="current">
@@ -84,14 +84,6 @@
     <li class="toctree-l3"><a class="reference internal" href="#lane-follow-default">Lane Follow - Default</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#intersection">Intersection</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#stop-sign">STOP Sign</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#traffic-light">Traffic Light</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#bare-intersection">Bare Intersection</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#park">Park</a>
     </li>
@@ -106,18 +98,49 @@
     </ul>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -159,22 +182,34 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="planning">Planning</h2>
-<h3 id="introduction">Introduction</h3>
-<p>The previous versions of Apollo, including Apollo 3.0 currently use the same configuration and parameters to plan different driving scenarios. This approach although linear and easy to implement, was not flexible or scenario specific. As Apollo matures and takes on different road conditions and driving use cases, we felt the need to move to a more modular, scenario specific and wholistic approach for planning its trajectory. In this approach, each driving use case is treated as a different driving scenario. This is useful because an issue now reported in a particular scenario can be fixed without affecting the working of other scenarios as opposed to the previous versions, wherein an issue fix affected other driving use cases as they were all treated as a single driving scenario.
-Apollo 5.5 focuses on curb-to-curb autonomous driving on urban roads and introduces 2 new planning scenarios.</p>
-<h3 id="driving-scenarios">Driving Scenarios</h3>
+                <h2 id="planning">Planning<a class="headerlink" href="#planning" title="Permanent link">#</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
+<p>Prior to the 5.5 release, Apollo uses the same configuration and parameters to
+plan different driving scenarios. Although linear and easy to implement, this
+approach was not flexible or scenario specific. As Apollo matures and takes on
+different road conditions and driving use cases, we felt the need to move to a
+more modular, scenario specific and wholistic approach for planning its
+trajectory. In this approach, each driving use case is treated as a different
+driving scenario. This is useful because an issue now reported in a particular
+scenario can be fixed without affecting the working of other scenarios as
+opposed to the previous versions, wherein an issue fix affected other driving
+use cases as they were all treated as a single driving scenario.</p>
+<p>Apollo 5.5, which focuses on curb-to-curb autonomous driving on urban roads,
+introduced 2 new planning scenarios.</p>
+<h3 id="driving-scenarios">Driving Scenarios<a class="headerlink" href="#driving-scenarios" title="Permanent link">#</a></h3>
 <p>There are 5 main driving scenarios that we will focus on Lane Follow, Intersection, Pull-Over, and the newly introduced Park-and-go and Emergency. Let's dive into them individually:</p>
-<h4 id="lane-follow-default">Lane Follow - Default</h4>
+<h4 id="lane-follow-default">Lane Follow - Default<a class="headerlink" href="#lane-follow-default" title="Permanent link">#</a></h4>
 <p>As seen in the figure below, the lane-follow scenario, our default driving scenario, includes but is not limited to driving in a single lane (like cruising) or changing lane, following basic traffic convention or basic turning.</p>
-<p><img alt="" src="images/Planning_default.png" /></p>
-<pre><code>Note: Side Pass
-While the functionality of side pass still exists, it has now been made universal rather than limiting it to a type of scenario. The side-pass feature is incorporated as part of the path-bounds decider task. You can choose to turn it on or off by properly configuring the path-lane-borrow decider task. For example, if you want the vehicle to be agile, then turn side-pass on for all scenarios; if you feel it not safe to side-pass in intersections, then turn it off for those related scenarios.
-</code></pre>
-
-<h4 id="intersection">Intersection</h4>
+<p><img alt="" src="images/planning_default.png" /></p>
+<blockquote>
+<p>Note: Side Pass</p>
+<blockquote>
+<p>While the functionality of side pass still exists, it has now been made universal rather than limiting it to a type of scenario. The side-pass feature is incorporated as part of the path-bounds decider task. You can choose to turn it on or off by properly configuring the path-lane-borrow decider task. For example, if you want the vehicle to be agile, then turn side-pass on for all scenarios; if you feel it not safe to side-pass in intersections, then turn it off for those related scenarios.</p>
+</blockquote>
+</blockquote>
+<h4 id="intersection">Intersection<a class="headerlink" href="#intersection" title="Permanent link">#</a></h4>
 <p>The new intersection scenario includes STOP Signs, Traffic Lights and Bare Intersections which do not have either a light or a sign.</p>
-<h5 id="stop-sign">STOP Sign</h5>
+<h5>STOP Sign</h5>
 <p>There are two separate driving scenarios for STOP signs:</p>
 <ul>
 <li>
@@ -188,39 +223,67 @@ While the functionality of side pass still exists, it has now been made universa
 </ul>
 <p>In order to safely pass through a STOP sign, both protected and unprotected, the following steps are performed:</p>
 <ul>
-<li>Arriving at the STOP sign: Perceive all other cars or obstacles that are currently waiting at the other stop signs</li>
-<li>Come to a complete stop: Monitor to see if the cars that were previously stationary at other STOP signs have moved or not. It is essential that the cars that arrived before have all left</li>
-<li>Move forward slightly (Creep): Check to see if any other car is moving or in the case of unprotected stop, check to see if there are any oncoming vehicles on either side of the lane</li>
-<li>Safely move through the crossroad</li>
+<li>
+<p>Arriving at the STOP sign: Perceive all other cars or obstacles that are currently waiting at the other stop signs</p>
+</li>
+<li>
+<p>Come to a complete stop: Monitor to see if the cars that were previously stationary at other STOP signs have moved or not. It is essential that the cars that arrived before have all left</p>
+</li>
+<li>
+<p>Move forward slightly (Creep): Check to see if any other car is moving or in the case of unprotected stop, check to see if there are any oncoming vehicles on either side of the lane</p>
+</li>
+<li>
+<p>Safely move through the crossroad</p>
+</li>
 </ul>
-<pre><code>Note: The team is working to add additional driving scenarios into our planner. One such example is handling Traffic Lights.
-</code></pre>
-
-<h5 id="traffic-light">Traffic Light</h5>
+<blockquote>
+<p>Note:</p>
+<blockquote>
+<p>The team is working to add additional driving scenarios into our planner. One such example is handling Traffic Lights.</p>
+</blockquote>
+</blockquote>
+<h5>Traffic Light</h5>
 <p>In order to safely and smoothly pass through a traffic light, we created 3 driving scenarios:</p>
 <ul>
-<li><strong>Protected</strong>: In this scenario, our ego car has to pass through an intersection with a clear traffic light indicator. A left arrow or right arrow in green for the corresponding turn.</li>
-<li><strong>Unprotected Left</strong>: In this scenario, our ego car will have to make a left turn without a distinct light, meaning the car would need to yield to oncoming traffic. Just like in the unprotected STOP scenario, our ego car would have to creep to ensure that it is safe to cross the intersection before safely moving through the lane.</li>
-<li><strong>Unprotected Right</strong>: In this scenario, our ego car is expected to make an unprotected right turn while yielding to oncoming traffic. Our ego car will need to creep slowly and gauge the traffic and then make a safe turn.</li>
+<li>
+<p><strong>Protected</strong>: In this scenario, our ego car has to pass through an intersection with a clear traffic light indicator. A left arrow or right arrow in green for the corresponding turn.</p>
+</li>
+<li>
+<p><strong>Unprotected Left</strong>: In this scenario, our ego car will have to make a left turn without a distinct light, meaning the car would need to yield to oncoming traffic. Just like in the unprotected STOP scenario, our ego car would have to creep to ensure that it is safe to cross the intersection before safely moving through the lane.</p>
+</li>
+<li>
+<p><strong>Unprotected Right</strong>: In this scenario, our ego car is expected to make an unprotected right turn while yielding to oncoming traffic. Our ego car will need to creep slowly and gauge the traffic and then make a safe turn.</p>
+</li>
 </ul>
 <p>As discussed above, based on the three driving scenarios, the following 3 steps are performed:</p>
 <ul>
-<li><strong>Stop/Approach</strong>: If a stop is required, our ego car will stop in front of traffic light stop line</li>
-<li><strong>Move forward slightly (Creep)</strong>: Check to see if any other car is moving or in the case of unprotected turns, check to see if there are any oncoming vehicles on either side of the lane</li>
-<li><strong>Move</strong>: Safely drive through the intersection</li>
+<li>
+<p><strong>Stop/Approach</strong>: If a stop is required, our ego car will stop in front of traffic light stop line</p>
+</li>
+<li>
+<p><strong>Move forward slightly (Creep)</strong>: Check to see if any other car is moving or in the case of unprotected turns, check to see if there are any oncoming vehicles on either side of the lane</p>
+</li>
+<li>
+<p><strong>Move</strong>: Safely drive through the intersection</p>
+</li>
 </ul>
-<h5 id="bare-intersection">Bare Intersection</h5>
+<h5>Bare Intersection</h5>
 <p>Bare intersection is a scenario designated to an intersection without either a STOP sign or a traffic light. In this scenario, the following steps are performed:</p>
 <ul>
-<li><strong>Approach</strong>: Reach the intersection</li>
-<li><strong>Move forward slightly (Creep)</strong>: Check to see if any other car is moving or in the case of unprotected stop, check to see if there are any oncoming vehicles on either side of the lane</li>
-<li><strong>Move</strong>: Safely move through the intersection</li>
-</ul>
-<h4 id="park">Park</h4>
-<p>The Apollo team is proud to introduce Open Space Planner, a new planning algorithm that can be used for several use cases especially the parking scenario. To learn more about Open Space Planner, please refer to the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Open_Space_Planner.md">following document</a></p>
-<ul>
 <li>
-<p><strong>Valet</strong>: The Valet scenario was designed to safely park your ego car in a targeted parking spot. There are 2 main stages that are performed in order to park your ego car:</p>
+<p><strong>Approach</strong>: Reach the intersection</p>
+</li>
+<li>
+<p><strong>Move forward slightly (Creep)</strong>: Check to see if any other car is moving or in the case of unprotected stop, check to see if there are any oncoming vehicles on either side of the lane</p>
+</li>
+<li>
+<p><strong>Move</strong>: Safely move through the intersection</p>
+</li>
+</ul>
+<h4 id="park">Park<a class="headerlink" href="#park" title="Permanent link">#</a></h4>
+<p>The Apollo team is proud to introduce Open Space Planner, a new planning algorithm that can be used for several use cases especially the parking scenario. To learn more about Open Space Planner, please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Open_Space_Planner.md">Open Space Planner Algorithm</a></p>
+<h5>Valet</h5>
+<p>The Valet scenario was designed to safely park your ego car in a targeted parking spot. There are 2 main stages that are performed in order to park your ego car:</p>
 <ol>
 <li>
 <p><strong>Approaching the Parking Spot</strong>: In this stage, standard planning algorithms are used to approach the designated parking spot. The car will gradually cruise to a halt once it has found the right stopping point required in order to reverse into the parking spot as seen in the image below</p>
@@ -231,9 +294,8 @@ While the functionality of side pass still exists, it has now been made universa
 <p><img alt="" src="images/parking1.png" /></p>
 </li>
 </ol>
-</li>
-<li>
-<p><strong>Pull Over</strong>: The Pull Over scenario was designed especially for maneuvering to the side of the road upon reaching your destination like for curb-side parallel parking. There are 3 main stages to accomplish the pull over scenario.</p>
+<h5>Pull Over</h5>
+<p>The Pull Over scenario was designed especially for maneuvering to the side of the road upon reaching your destination like for curb-side parallel parking. There are 3 main stages to accomplish the pull over scenario.</p>
 <ol>
 <li>
 <p><strong>Approaching</strong>: In this stage, as there is no clear designated parking spot, the ego car simply approaches the side of the road where it seems feasible to park. Standard Planning algorithms are used for this stage. Once it comes to a halt, the second stage begins. An example of stage 1 can be seen in the image below:</p>
@@ -241,31 +303,38 @@ While the functionality of side pass still exists, it has now been made universa
 </li>
 <li>
 <p><strong>Retry Approach Parking</strong>: In this stage the ego car adjusts itself to enter the parking spot. It is similar to the <code>Approach Parking Spot</code> case in the Valet scenario. An example of stage 2 can be seen in the image below:</p>
-<p><img alt="" src="images/pull_over1.png" />
-    3. <strong>Retry Parking</strong>: This stage uses Open Space Planner to parallel park the vehicle. A zig-zag trajectory is generated to help the ego car park itself on the side of the road. A sample trajectory generated for the scenario in the previous image, can be seen below:</p>
+<p><img alt="" src="images/pull_over1.png" /></p>
+</li>
+<li>
+<p><strong>Retry Parking</strong>: This stage uses Open Space Planner to parallel park the vehicle. A zig-zag trajectory is generated to help the ego car park itself on the side of the road. A sample trajectory generated for the scenario in the previous image, can be seen below:</p>
+<p><img alt="" src="images/pull_over2.png" /></p>
 </li>
 </ol>
-<p><img alt="" src="images/pull_over2.png" /></p>
 <p>There is a special case in the Pull Over scenario that does not need the Open Space Planner stage. This case occurs when there are no obstacles blocking the curb-side parking of the ego car. An example can be seen below. In such a case, the car simply approaches the parking spot and then enters the spot using standard planning.</p>
 <p><img alt="" src="images/pull_over3.png" /></p>
-</li>
-</ul>
-<h4 id="park-and-go">Park-and-go</h4>
+<h4 id="park-and-go">Park-and-go<a class="headerlink" href="#park-and-go" title="Permanent link">#</a></h4>
 <p>Apollo 5.5 which focuses on curb-to-curb driving introduces the Park-and-go scenario which was designed to handle curb side parking, planning a new trajectory to the next destination and then driving along that trajectory. This scenario is extremely useful in situations like curb-side delivery or passenger pickup or drop-off. This scenario combines Open Space Planner along with other traditional trajectory planners to ensure that the car not only parks safely but is also able to exit per the new trajectory.</p>
 <p><img alt="" src="images/park_and_go.png" /></p>
-<h3 id="emergency">Emergency</h3>
-<p>The Emergency scenario is another newly introduced scenario in Apollo 5.5, developed to ensure that the vehicle can be brought to a stop safely in the situation of a given trigger event (either via human input or due to a failure in one or more of the vehicle's hardware or software modules). This scenario is extremely crucial to urban driving as one often encounters several unforeseen situations on the road that requires the vehicle to come to a complete stop. There are two types of emergency stops that are performed using this scenario:
-1. <strong>Pull Over and Stop</strong>: In this scenario, the autonomous car uses Open Space Planner to pull-over and then come to a full stop on the curb-side
-2. <strong>In Lane Stop</strong>: In this scenario, the autonomous car comes to a complete stop in its lane. In this situation the car is well aware of its surrounding obstacles to prevent any rear-end collisions and ensure not just the safety of itself but also the vehicles around it.</p>
-<pre><code>![](images/emergency.png)
-</code></pre>
-<h3 id="planning-module-architecture">Planning Module Architecture</h3>
+<h3 id="emergency">Emergency<a class="headerlink" href="#emergency" title="Permanent link">#</a></h3>
+<p>The Emergency scenario is another newly introduced scenario in Apollo 5.5, developed to ensure that the vehicle can be brought to a stop safely in the situation of a given trigger event (either via human input or due to a failure in one or more of the vehicle's hardware or software modules). This scenario is extremely crucial to urban driving as one often encounters several unforeseen situations on the road that requires the vehicle to come to a complete stop. There are two types of emergency stops that are performed using this scenario:</p>
+<ol>
+<li>
+<p><strong>Pull Over and Stop</strong>: In this scenario, the autonomous car uses Open Space Planner to pull-over and then come to a full stop on the curb-side</p>
+</li>
+<li>
+<p><strong>In Lane Stop</strong>: In this scenario, the autonomous car comes to a complete stop in its lane. In this situation the car is well aware of its surrounding obstacles to prevent any rear-end collisions and ensure not just the safety of itself but also the vehicles around it.</p>
+</li>
+</ol>
+<p><img alt="" src="images/emergency.png" /></p>
+<h3 id="planning-module-architecture">Planning Module Architecture<a class="headerlink" href="#planning-module-architecture" title="Permanent link">#</a></h3>
 <p>In Apollo 5.5, the Planning module architecture has been modified to incorporate new curb-to-curb driving scenarios on urban roads. As seen in the figure below, we have 2 new complex scenarios Emergency and Park-and-go. In order to plan these scenarios effectively, we have 2 new Deciders - Path Reuse Decider and Speed Bound Decider and have updated existing deciders making the planning architecture robust and flexible enough to handle many different types of urban road driving scenarios.</p>
 <p>Each driving scenario has its set of driving parameters that are unique to that scenario making it safer, efficient, easier to customize and debug and more flexible. </p>
-<pre><code>Note:
-If you wish to include your own driving scenarios, please refer to existing scenarios as a reference. We currently do not have a template for writing your own planning scenario.
-</code></pre>
-
+<blockquote>
+<p>Note:</p>
+<blockquote>
+<p>If you wish to include your own driving scenarios, please refer to existing scenarios as a reference. We currently do not have a template for writing your own planning scenario.</p>
+</blockquote>
+</blockquote>
 <p><img alt="" src="images/architecture_5.5.png" /></p>
               
             </div>
@@ -274,10 +343,10 @@ If you wish to include your own driving scenarios, please refer to existing scen
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../specs/D-kit/readme/" class="btn btn-neutral float-right" title="Introduction to D-Kit">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../howto/how_to_solve_slow_pull_from_cn/" class="btn btn-neutral float-right" title="[CN] How to Solve GitHub Slow Pull">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../prediction/" class="btn btn-neutral" title="Prediction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../cyber/CyberRT_Quick_Start/" class="btn btn-neutral" title="Cyber RT Quick Start"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -305,10 +374,10 @@ If you wish to include your own driving scenarios, please refer to existing scen
           <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../prediction/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../cyber/CyberRT_Quick_Start/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../specs/D-kit/readme/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../howto/how_to_solve_slow_pull_from_cn/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

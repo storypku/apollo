@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,8 +158,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="_1">如何在预测模块中添加一个预测器</h2>
-<h3 id="_2">简介</h3>
+                <h2 id="_1">如何在预测模块中添加一个预测器<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
+<h3 id="_2">简介<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>预测器为每个障碍物生成预测轨迹。在这里，假设我们想给我们的车辆增加一个新的预测器，用于其他类型的障碍，步骤如下：</p>
 <ol>
 <li>定义一个继承基类 <code>Predictor</code> 的类</li>
@@ -137,9 +168,9 @@
 <li>更新 prediction_conf</li>
 <li>更新预测器管理器（Predictor manager）</li>
 </ol>
-<h3 id="_3">添加新预测器的步骤</h3>
+<h3 id="_3">添加新预测器的步骤<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>如下步骤将会指导您在预测器中添加一个 <code>NewPredictor</code>。</p>
-<h4 id="predictor">定义一个继承基类 <code>Predictor</code> 的类</h4>
+<h4 id="predictor">定义一个继承基类 <code>Predictor</code> 的类<a class="headerlink" href="#predictor" title="Permanent link">#</a></h4>
 <p>在文件夹 <code>modules/prediction/predictor/vehicle</code>中创建一个名为<code>new_predictor.h</code>的文件，文件内容如下：</p>
 <pre><code class="cpp">
 #include &quot;modules/prediction/predictor/predictor.h&quot;
@@ -157,7 +188,7 @@ class NewPredictor : public Predictor {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="implement-the-class-newpredictor">Implement the class <code>NewPredictor</code></h4>
+<h4 id="implement-the-class-newpredictor">Implement the class <code>NewPredictor</code><a class="headerlink" href="#implement-the-class-newpredictor" title="Permanent link">#</a></h4>
 <p>在创建了 <code>new_predictor.h</code>的文件夹中创建文件 <code>new_predictor.cc</code>。 文件内容如下:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/predictor/vehicle/new_predictor.h&quot;
 
@@ -176,7 +207,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 
 </code></pre>
 
-<h4 id="prediction_confproto">在 <code>prediction_conf.proto</code>中添加一个新的预测期类型</h4>
+<h4 id="prediction_confproto">在 <code>prediction_conf.proto</code>中添加一个新的预测期类型<a class="headerlink" href="#prediction_confproto" title="Permanent link">#</a></h4>
 <pre><code>  enum PredictorType {
     LANE_SEQUENCE_PREDICTOR = 0;
     FREE_MOVE_PREDICTOR = 1;
@@ -186,7 +217,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
   }
 </code></pre>
 
-<h4 id="prediction_conf">更新 prediction_conf</h4>
+<h4 id="prediction_conf">更新 prediction_conf<a class="headerlink" href="#prediction_conf" title="Permanent link">#</a></h4>
 <p>在 <code>modules/prediction/conf/prediction_conf.pb.txt</code>中, 更新 <code>predictor_type</code>部分如下:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -196,7 +227,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 }
 </code></pre>
 
-<h4 id="predictor-manager">更新预测器管理器（Predictor manager）</h4>
+<h4 id="predictor-manager">更新预测器管理器（Predictor manager）<a class="headerlink" href="#predictor-manager" title="Permanent link">#</a></h4>
 <p>更新 <code>CreateEvluator( ... )</code> 如下:</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_PREDICTOR: {
       predictor_ptr.reset(new NewPredictor());
@@ -208,9 +239,9 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 <pre><code class="cpp">  RegisterPredictor(ObstacleConf::NEW_PREDICTOR);
 </code></pre>
 
-<h2 id="_4">在完成以上步骤以后，一个新的预测器就创建好了。</h2>
-<h2 id="_5">如何在预测模块中添加一个预测器</h2>
-<h3 id="_6">简介</h3>
+<h2 id="_4">在完成以上步骤以后，一个新的预测器就创建好了。<a class="headerlink" href="#_4" title="Permanent link">#</a></h2>
+<h2 id="_5">如何在预测模块中添加一个预测器<a class="headerlink" href="#_5" title="Permanent link">#</a></h2>
+<h3 id="_6">简介<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <p>预测器为每个障碍物生成预测轨迹。在这里，假设我们想给我们的车辆增加一个新的预测器，用于其他类型的障碍，步骤如下：</p>
 <ol>
 <li>定义一个继承基类 <code>Predictor</code> 的类</li>
@@ -219,9 +250,9 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 <li>更新 prediction_conf</li>
 <li>更新预测器管理器（Predictor manager）</li>
 </ol>
-<h3 id="_7">添加新预测器的步骤</h3>
+<h3 id="_7">添加新预测器的步骤<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
 <p>如下步骤将会指导您在预测器中添加一个 <code>NewPredictor</code>。</p>
-<h4 id="predictor_1">定义一个继承自基类 <code>Predictor</code> 的类</h4>
+<h4 id="predictor_1">定义一个继承自基类 <code>Predictor</code> 的类<a class="headerlink" href="#predictor_1" title="Permanent link">#</a></h4>
 <p>在文件夹 <code>modules/prediction/predictor/vehicle</code>中创建一个名为<code>new_predictor.h</code>的文件，文件内容如下：</p>
 <pre><code class="cpp">
 #include &quot;modules/prediction/predictor/predictor.h&quot;
@@ -239,7 +270,7 @@ class NewPredictor : public Predictor {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="implement-the-class-newpredictor_1">Implement the class <code>NewPredictor</code></h4>
+<h4 id="implement-the-class-newpredictor_1">Implement the class <code>NewPredictor</code><a class="headerlink" href="#implement-the-class-newpredictor_1" title="Permanent link">#</a></h4>
 <p>在创建了 <code>new_predictor.h</code>的文件夹中创建文件 <code>new_predictor.cc</code>。文件内容如下:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/predictor/vehicle/new_predictor.h&quot;
 
@@ -258,7 +289,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 
 </code></pre>
 
-<h4 id="prediction_confproto_1">在 <code>prediction_conf.proto</code>中添加一个新的预测器类型</h4>
+<h4 id="prediction_confproto_1">在 <code>prediction_conf.proto</code>中添加一个新的预测器类型<a class="headerlink" href="#prediction_confproto_1" title="Permanent link">#</a></h4>
 <pre><code>  enum PredictorType {
     LANE_SEQUENCE_PREDICTOR = 0;
     FREE_MOVE_PREDICTOR = 1;
@@ -268,7 +299,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
   }
 </code></pre>
 
-<h4 id="prediction_conf_1">更新 prediction_conf</h4>
+<h4 id="prediction_conf_1">更新 prediction_conf<a class="headerlink" href="#prediction_conf_1" title="Permanent link">#</a></h4>
 <p>在 <code>modules/prediction/conf/prediction_conf.pb.txt</code>中，更新 <code>predictor_type</code>部分如下:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -278,7 +309,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 }
 </code></pre>
 
-<h4 id="predictor-manager_1">更新预测器管理器（Predictor manager）</h4>
+<h4 id="predictor-manager_1">更新预测器管理器（Predictor manager）<a class="headerlink" href="#predictor-manager_1" title="Permanent link">#</a></h4>
 <p>更新 <code>CreateEvluator( ... )</code> 如下:</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_PREDICTOR: {
       predictor_ptr.reset(new NewPredictor());

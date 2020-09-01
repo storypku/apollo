@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,9 +158,9 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="migration-guide-from-apollo-ros">Migration guide from Apollo ROS</h2>
+                <h2 id="migration-guide-from-apollo-ros">Migration guide from Apollo ROS<a class="headerlink" href="#migration-guide-from-apollo-ros" title="Permanent link">#</a></h2>
 <p>This article describes the essential changes for projects to migrate from Apollo ROS (Apollo 3.0 and before) to Apollo Cyber RT (Apollo 3.5 and after). We will be using the very first ROS project talker/listener as example to demonstrate step by step migration instruction.</p>
-<h3 id="build-system">Build system</h3>
+<h3 id="build-system">Build system<a class="headerlink" href="#build-system" title="Permanent link">#</a></h3>
 <p>ROS use <code>CMake</code> as its build system but Cyber RT use <code>bazel</code>. In a ROS project, CmakeLists.txt and package.xml are required for defining build configs like build target, dependency, message files and so on. As for a Cyber RT component, a single bazel BUILD file covers. Some key build config mappings are listed below.</p>
 <p>Cmake</p>
 <pre><code class="cmake">project(pb_msgs_example)
@@ -164,7 +195,7 @@ cc_binary(
 </code></pre>
 
 <p>We can find the mapping easily from the 2 file snippets. For example, <code>pb_talker</code> and <code>src/talker.cpp</code> in cmake <code>add_executable</code> setting map to <code>name = "talker"</code> and <code>srcs = ["talker.cc"]</code> in BUILD file <code>cc_binary</code>.</p>
-<h4 id="proto">Proto</h4>
+<h4 id="proto">Proto<a class="headerlink" href="#proto" title="Permanent link">#</a></h4>
 <p>Apollo ROS has customized to support proto message formate that a separate section <code>add_proto_files</code> and projectName_proto(<code>pb_msgs_example_proto</code>) in <code>target_link_libraries</code> are required to send message in proto formate. For config proto message in Cyber RT, it's as simple as adding the target proto file path concantenated with name of <code>cc_proto_library</code> in <code>deps</code> setting. The <code>cc_proto_library</code> is set up in BUILD file under proto folder.</p>
 <pre><code class="python">cc_proto_library(
   name = &quot;examples_cc_proto&quot;,
@@ -181,9 +212,9 @@ proto_library(
 </code></pre>
 
 <p>The package definition has also changed in Cyber RT. In Apollo ROS a fixed package <code>package pb_msgs;</code> is used for proto files, but in Cyber RT, the proto file path <code>package apollo.cyber.examples.proto;</code> is used instead.</p>
-<h3 id="folder-structure">Folder structure</h3>
+<h3 id="folder-structure">Folder structure<a class="headerlink" href="#folder-structure" title="Permanent link">#</a></h3>
 <p>As shown below, Cyber RT remove the src folder and pull all source code in the same folder as BUILD file. BUILD file plays the same role as CMakeLists.txt plus package.xml. Both Cyber RT and Apollo ROS talker/listener example have a proto folder for message proto files but Cyber RT requires a separate BUILD file for proto folder to set up the proto library.</p>
-<h4 id="apollo-ros">Apollo ROS</h4>
+<h4 id="apollo-ros">Apollo ROS<a class="headerlink" href="#apollo-ros" title="Permanent link">#</a></h4>
 <ul>
 <li>CMakeLists.txt</li>
 <li>package.xml</li>
@@ -193,7 +224,7 @@ proto_library(
 <li>listener.cpp</li>
 <li>talker.cpp</li>
 </ul>
-<h4 id="cyber-rt">Cyber RT</h4>
+<h4 id="cyber-rt">Cyber RT<a class="headerlink" href="#cyber-rt" title="Permanent link">#</a></h4>
 <ul>
 <li>BUILD</li>
 <li>listener.cc</li>
@@ -202,8 +233,8 @@ proto_library(
 <li>BUILD</li>
 <li>examples.proto (with chatter message)</li>
 </ul>
-<h3 id="update-source-code">Update source code</h3>
-<h4 id="listener">Listener</h4>
+<h3 id="update-source-code">Update source code<a class="headerlink" href="#update-source-code" title="Permanent link">#</a></h3>
+<h4 id="listener">Listener<a class="headerlink" href="#listener" title="Permanent link">#</a></h4>
 <p>Cyber RT</p>
 <pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
 #include &quot;cyber/examples/proto/examples.pb.h&quot;
@@ -255,7 +286,7 @@ int main(int argc, char** argv) {
 <li><code>ros::spin();</code> --&gt; <code>apollo::cyber::WaitForShutdown();</code></li>
 </ul>
 <p>Note: for Cyber RT, a listener node has to use <code>node-&gt;CreateReader&lt;messageType&gt;(channelName, callback)</code> to read data from channel.</p>
-<h4 id="talker">Talker</h4>
+<h4 id="talker">Talker<a class="headerlink" href="#talker" title="Permanent link">#</a></h4>
 <p>Cyber RT</p>
 <pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
 #include &quot;cyber/examples/proto/examples.pb.h&quot;
@@ -322,7 +353,7 @@ int main(int argc, char** argv) {
 <p><code>chatter_pub.publish(msg);</code> --&gt; <code>talker-&gt;Write(msg);</code></p>
 </li>
 </ul>
-<h3 id="tools-mapping">Tools mapping</h3>
+<h3 id="tools-mapping">Tools mapping<a class="headerlink" href="#tools-mapping" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -349,7 +380,7 @@ int main(int argc, char** argv) {
 </tr>
 </tbody>
 </table>
-<h3 id="ros-bag-data-migration">ROS bag data migration</h3>
+<h3 id="ros-bag-data-migration">ROS bag data migration<a class="headerlink" href="#ros-bag-data-migration" title="Permanent link">#</a></h3>
 <p>The data file changed from ROS bag to Cyber record in Cyber RT. Cyber RT has a data migration tool <code>rosbag_to_record</code> for users to easily migrate data files before Apollo 3.0 (ROS) to Cyber RT like the sample usage below.</p>
 <pre><code class="bash">rosbag_to_record demo_3.0.bag demo_3.5.record
 </code></pre>

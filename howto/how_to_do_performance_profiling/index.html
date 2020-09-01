@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,16 +158,16 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-do-performance-profiling">How to do performance profiling</h2>
+                <h2 id="how-to-do-performance-profiling">How to do performance profiling<a class="headerlink" href="#how-to-do-performance-profiling" title="Permanent link">#</a></h2>
 <p>The purpose of profiling a module is to use tools (here we use google-perftools) to examine the performance problems of a module.</p>
 <p>The Apollo development docker has all the profiling tools you need configured. Therefore, you can do all the following steps in the Apollo development docker.</p>
-<h3 id="build-apollo-in-profiling-mode">Build Apollo in profiling mode</h3>
+<h3 id="build-apollo-in-profiling-mode">Build Apollo in profiling mode<a class="headerlink" href="#build-apollo-in-profiling-mode" title="Permanent link">#</a></h3>
 <p>First, build Apollo in profiling mode</p>
 <pre><code>bash apollo.sh clean
 bash apollo.sh build_prof
 </code></pre>
 
-<h3 id="play-a-rosbag">Play a rosbag</h3>
+<h3 id="play-a-rosbag">Play a rosbag<a class="headerlink" href="#play-a-rosbag" title="Permanent link">#</a></h3>
 <p>To profile a module, you need to provide its input data to make sure the majority of its code can be exercised.
 You can start play an information-rich rosbag by</p>
 <pre><code>rosbag play -l your_rosbag.bag
@@ -146,7 +177,7 @@ You can start play an information-rich rosbag by</p>
 <pre><code>cyber_record play -f your_record.record
 </code></pre>
 
-<h3 id="start-module-in-profiling-mode">Start module in profiling mode</h3>
+<h3 id="start-module-in-profiling-mode">Start module in profiling mode<a class="headerlink" href="#start-module-in-profiling-mode" title="Permanent link">#</a></h3>
 <p>Start your module with the following command</p>
 <pre><code>CPUPROFILE=/tmp/${MODULE}.prof /path/to/module/bin/${MODULE} --flagfile=modules/${MODULE}/conf/${MODULE}.conf \
  --${MODULE}_test_mode \
@@ -164,12 +195,12 @@ You can start play an information-rich rosbag by</p>
 
 </code></pre>
 
-<h3 id="the-profiling-mode-gflags">The profiling mode gflags</h3>
+<h3 id="the-profiling-mode-gflags">The profiling mode gflags<a class="headerlink" href="#the-profiling-mode-gflags" title="Permanent link">#</a></h3>
 <p>Each module should have a pre-defined <code>${MODULE}_test_mode</code>
 and <code>${MODULE}_test_duration</code> gflag.
 These two flags tells the module to run for <code>${MODULE}_test_duration</code> amount of time when <code>${MODULE}_test_mode</code> is true.</p>
 <p>Most of Apollo modules already have these two gflags. If they does not exist in the module you are interested in, you can define it by yourself. You can refer to gflag <code>planning_test_mode</code> and <code>planning_test_duration</code> to see how they are being used.</p>
-<h3 id="create-pdf-report">Create pdf report</h3>
+<h3 id="create-pdf-report">Create pdf report<a class="headerlink" href="#create-pdf-report" title="Permanent link">#</a></h3>
 <p>Finally you can create a pdf report to view the profiling result.</p>
 <pre><code>google-pprof --pdf --lines /path/to/module/bin/${MODULE} /tmp/${MODULE}.prof &gt; ${MODULE}_profiling.pdf
 </code></pre>
@@ -178,7 +209,7 @@ These two flags tells the module to run for <code>${MODULE}_test_duration</code>
 <pre><code>google-pprof --pdf --lines /path/to/module/component_lib/$lib{MODULE}_component_lib.so /tmp/${MODULE}.prof &gt; ${MODULE}_profiling.pdf
 </code></pre>
 
-<h3 id="example">Example</h3>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h3>
 <p>Here is an example command of starting the planning module.</p>
 <pre><code>CPUPROFILE=/tmp/planning.prof /apollo/bazel-bin/modules/planning/planning \
  --flagfile=modules/planning/conf/planning.conf \

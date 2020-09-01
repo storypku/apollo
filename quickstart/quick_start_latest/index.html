@@ -65,31 +65,62 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">CN Zone</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
                     </li>
                 </ul>
       </div>
@@ -127,19 +158,19 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="apollo-master-quick-start-guide">Apollo Master Quick Start Guide</h2>
+                <h2 id="apollo-master-quick-start-guide">Apollo Master Quick Start Guide<a class="headerlink" href="#apollo-master-quick-start-guide" title="Permanent link">#</a></h2>
 <p>The following guide serves as a user manual for launching the Apollo upgraded software and hardware stack on vehicle.</p>
-<h3 id="software-installation">Software Installation</h3>
-<h4 id="start-apollo-dev-docker-container">Start apollo-dev docker container</h4>
+<h3 id="software-installation">Software Installation<a class="headerlink" href="#software-installation" title="Permanent link">#</a></h3>
+<h4 id="start-apollo-dev-docker-container">Start apollo-dev docker container<a class="headerlink" href="#start-apollo-dev-docker-container" title="Permanent link">#</a></h4>
 <p>We start apollo-dev docker container following the convention in previous apollo releases.</p>
 <pre><code>bash docker/scripts/dev_start.sh
 </code></pre>
 
-<h4 id="enter-apollo-dev-docker-container">Enter apollo-dev docker container</h4>
+<h4 id="enter-apollo-dev-docker-container">Enter apollo-dev docker container<a class="headerlink" href="#enter-apollo-dev-docker-container" title="Permanent link">#</a></h4>
 <pre><code>bash docker/scripts/dev_into.sh
 </code></pre>
 
-<h4 id="configure-custom-settings">Configure custom settings</h4>
+<h4 id="configure-custom-settings">Configure custom settings<a class="headerlink" href="#configure-custom-settings" title="Permanent link">#</a></h4>
 <p>The first time you get into apollo-dev container named <code>apollo_dev_${USER}</code>,
 please run apollo bootstrap command as follows:</p>
 <pre><code>bash ./apollo.sh config
@@ -151,7 +182,7 @@ please run apollo bootstrap command as follows:</p>
  <code>bash apollo.sh config --interactive</code> or <code>bash apollo.sh config -i</code>.
  For now, this functionality is incomplete.</p>
 </blockquote>
-<h4 id="build-modules">Build modules</h4>
+<h4 id="build-modules">Build modules<a class="headerlink" href="#build-modules" title="Permanent link">#</a></h4>
 <p>Run the following command to build all modules</p>
 <pre><code>bash apollo.sh build
 </code></pre>
@@ -164,13 +195,13 @@ bash apollo.sh build perception
 
 <p>By default, <code>apollo.sh build</code> generates debug outputs.</p>
 <p>To run optimization build,  just substitute <code>build</code> with <code>build_opt</code> in the examples above.</p>
-<h4 id="test-modules">Test modules</h4>
+<h4 id="test-modules">Test modules<a class="headerlink" href="#test-modules" title="Permanent link">#</a></h4>
 <pre><code>bash apollo.sh test # To run unit-tests in all modules including cyber.
 bash apollo.sh test cyber # run all unit-tests for cyber
 bash apollo.sh test --config=gpu prediction # run all unit-test for the prediction module
 </code></pre>
 
-<h4 id="buildtest-an-insiders-view">Build/Test: An Insider's View</h4>
+<h4 id="buildtest-an-insiders-view">Build/Test: An Insider's View<a class="headerlink" href="#buildtest-an-insiders-view" title="Permanent link">#</a></h4>
 <p>Please note also that when it comes to build/test, <code>apollo.sh</code> runs
 <code>scripts/apollo_build.sh</code> and <code>scripts/apollo_test.sh</code> respectively, both of
 which are just simple wrapper around <code>bazel build</code> and <code>bazel test</code> commands.</p>
@@ -180,11 +211,11 @@ bazel test --config=gpu //modules/localization/...
 bazel test //cyber/common:file_test
 </code></pre>
 
-<h4 id="running-lint">Running lint</h4>
+<h4 id="running-lint">Running lint<a class="headerlink" href="#running-lint" title="Permanent link">#</a></h4>
 <pre><code>bash apollo.sh lint
 </code></pre>
 
-<h4 id="bazel-x-apollo">Bazel x Apollo</h4>
+<h4 id="bazel-x-apollo">Bazel x Apollo<a class="headerlink" href="#bazel-x-apollo" title="Permanent link">#</a></h4>
 <p>The bazel version pre-installed in our cyber/dev docker images are 3.2.0+.
 And the default <code>--distdir</code> destination is under
 <code>${APOLLO_ROOT_DIR}/.cache/distdir</code>.</p>

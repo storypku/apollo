@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>How to Build Apollo And Possible Error - Apollo Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "How to Build Apollo And Possible Error";
+    var mkdocs_page_input_path = "howto/how_to_build_and_possible_error.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Apollo Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Get Started</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Cyber RT</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Modules</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="" href="../../modules/perception/README.md">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../../modules/control/README.md">Control</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../../modules/canbus/README.md">Canbus</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../../modules/monitor/README.md">Monitor</a>
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../../modules/prediction/README.md">Prediction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">How-Tos</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_document_code/">How to document code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">FAQs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs_cn/">[CN] Calibration</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Perception_FAQs/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/CyberRT_FAQs/">Cyber RT</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">D-Kit</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">[CN] Introduction</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Apollo Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>How to Build Apollo And Possible Error</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/howto/how_to_build_and_possible_error.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="how-to-build-apollo-and-possible-error">How to Build Apollo And Possible Error<a class="headerlink" href="#how-to-build-apollo-and-possible-error" title="Permanent link">#</a></h2>
+<h3 id="install-docker">Install Docker<a class="headerlink" href="#install-docker" title="Permanent link">#</a></h3>
+<p>Please follow the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md#Set-up-the-Docker-environment">Apollo Software Installation Guide</a>.</p>
+<h3 id="build-apollo">Build Apollo<a class="headerlink" href="#build-apollo" title="Permanent link">#</a></h3>
+<h4 id="start-container">Start container<a class="headerlink" href="#start-container" title="Permanent link">#</a></h4>
+<p>We provide a build x86 image named dev-x86_64-18.04-*. The Container will mount your local apollo repo to /apollo.</p>
+<pre><code class="bash">bash docker/scripts/dev_start.sh
+</code></pre>
+
+<h4 id="get-into-the-container">Get into the container<a class="headerlink" href="#get-into-the-container" title="Permanent link">#</a></h4>
+<pre><code class="bash">bash docker/scripts/dev_into.sh
+</code></pre>
+
+<h4 id="build-modules">Build modules<a class="headerlink" href="#build-modules" title="Permanent link">#</a></h4>
+<pre><code class="bash">bash apollo.sh build [OPTION]
+</code></pre>
+
+<p>if you want to build apollo in diversified modules, you can choose 'build_dbg'、 'build_opt' etc.</p>
+<p><code>Note:</code> If you do not have a GPU, you can use the following script instead</p>
+<pre><code>bash apollo.sh build_cpu
+</code></pre>
+
+<p>some special build modules:</p>
+<p>build_dbg [module]: run debug build.</p>
+<p>build_opt [module]: run optimized build.</p>
+<p>build_cpu [module]: build in CPU mode. Equivalent to 'bazel build --config=cpu'</p>
+<p>build_gpu [module]: run build in GPU mode. Equivalent to 'bazel build --config=gpu'</p>
+<p>build_opt_gpu [module]: optimized build in GPU mode. Equivalent to 'bazel build --config=opt --config=gpu'</p>
+<h3 id="possible-errors-and-solution">Possible Errors And Solution<a class="headerlink" href="#possible-errors-and-solution" title="Permanent link">#</a></h3>
+<h4 id="error-error-query-interrupted-encountered-during-compilation">Error: "ERROR: query interrupted" encountered during compilation<a class="headerlink" href="#error-error-query-interrupted-encountered-during-compilation" title="Permanent link">#</a></h4>
+<p>This is due to inconsistencies in the bazel internal cache. </p>
+<h5>Solution:</h5>
+<p>Press any key to exit the compilation process. In the command terminal execute the following command to enter the Docker environment:</p>
+<pre><code class="bash">bash docker/scripts/dev_into.sh
+</code></pre>
+
+<p>Enter the following command in the Docker environment to perform the bazel cleanup cache task (must keep the network unblocked in order to successfully download the dependencies, otherwise the command will not work even if it is executed multiple times):</p>
+<pre><code class="bash">bazel query //...
+</code></pre>
+
+<p>Finally, enter the <code>exit</code> command to exit the Docker environment and <code>bash docker/scripts/dev_start.sh</code> to re-execute the build task.</p>
+<h4 id="staying-in-the-building-no-action-running-interface-for-a-long-time-during-compile-time">Staying in the "Building: no action running" interface for a long time during compile time<a class="headerlink" href="#staying-in-the-building-no-action-running-interface-for-a-long-time-during-compile-time" title="Permanent link">#</a></h4>
+<p>This is due to the existence of multiple different versions of Docker or bazel internal cache inconsistency in the current system. </p>
+<h5>Solution:</h5>
+<p>Press the shortcut key <strong>Ctrl+C</strong> to terminate the current build process. In the command terminal use any of the following methods to stop:</p>
+<ol>
+<li>
+<p>Stop all current running processes in Docker</p>
+<p><code>bash
+docker stop $(docker ps -a | grep apollo | awk '{print $1}')</code>
+2. Stop all instances of Docker</p>
+<p><code>bash
+docker stop $(docker ps -aq)</code>
+3. In the command terminal <code>./apollo.sh clean</code>
+4. Once complete, <code>./apollo.sh build</code> to rebuild the Apollo project.</p>
+</li>
+</ol>
+<h4 id="error-another-command-pid2466-is-running-waiting-for-it-to-complete-appears-at-compile-time">Error: "Another command (pid=2466) is running. Waiting for it to complete..." appears at compile time<a class="headerlink" href="#error-another-command-pid2466-is-running-waiting-for-it-to-complete-appears-at-compile-time" title="Permanent link">#</a></h4>
+<p>This is caused by compiling in other command line terminals or by pressing the <code>Ctrl+C</code> key during the previous compilation, causing the compiling process' execution to only partially complete.</p>
+<h5>Solution:</h5>
+<p>Press the shortcut key <code>Ctrl+C</code> to terminate the current build process. In the command terminal use the following command to terminate the residual build process:</p>
+<ol>
+<li>
+<p>Enter Docker</p>
+<p><code>bash
+bash docker/scripts/dev_into.sh</code></p>
+</li>
+<li>
+<p>Kill the remaining compilation process in Docker</p>
+<p><code>bash
+pkill bazel-real</code></p>
+</li>
+<li>
+<p>Check if the bazel-real process remains in the Docker. If yes, press <code>q</code> to exit and perform step 2 again. Also use <code>ps aux | grep bazel-real</code> to view</p>
+</li>
+<li>
+<p>Exit Docker using </p>
+<p><code>bash
+exit</code></p>
+</li>
+<li>
+<p>In the command terminal <code>./apollo.sh build</code> to re-execute the build task.</p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
