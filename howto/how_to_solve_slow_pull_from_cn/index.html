@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Github访问慢解决方案 - Apollo Docs</title>
+  <title>How to Solve GitHub Slow Pull - Apollo Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Github\u8bbf\u95ee\u6162\u89e3\u51b3\u65b9\u6848";
+    var mkdocs_page_name = "How to Solve GitHub Slow Pull";
     var mkdocs_page_input_path = "howto/how_to_solve_slow_pull_from_cn.md";
     var mkdocs_page_url = null;
   </script>
@@ -51,8 +51,9 @@
                     <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">Get Started</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Get Started</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Cyber RT</span></p>
@@ -62,6 +63,21 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
                     </li>
                 </ul>
+                <p class="caption"><span class="caption-text">Modules</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../modules/perception/">Perception</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../modules/control/">Control</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../modules/canbus/">Canbus</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../modules/monitor/">Monitor</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../modules/prediction/">Prediction</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../modules/planning/">Planning</a>
+                    </li>
+                </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../specs/D-kit/readme/">Introduction to D-Kit</a>
@@ -69,6 +85,19 @@
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">FAQs</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">CN Zone</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">How to Solve GitHub Slow Pull</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ip">第一步: 浏览器打开如下两个网址，找到对应 IP 地址:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hosts">第二步: 编辑 hosts 文件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dns-mac">第三步：更新 DNS 缓存（仅限 Mac 用户）</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -91,11 +120,15 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>CN Zone &raquo;</li>
+        
+      
     
-    <li>Github访问慢解决方案</li>
+    <li>How to Solve GitHub Slow Pull</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_solve_slow_pull_from_cn.md"
+        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/howto/how_to_solve_slow_pull_from_cn.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -106,29 +139,40 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="github">Github访问慢解决方案</h2>
-<p>浏览器打开如下网站</p>
-<p>http://github.global.ssl.fastly.net.ipaddress.com/</p>
-<p>找到对应IP地址，例如：151.101.xx.xx</p>
-<p>浏览器打开另外一个网站</p>
-<p>http://github.com.ipaddress.com/</p>
-<p>找到对应IP地址。例如：192.30.xx.xx</p>
-<p>编辑hosts文件</p>
+                <h2 id="github">GitHub 访问速度慢的临时缓解方案</h2>
+<h3 id="ip">第一步: 浏览器打开如下两个网址，找到对应 IP 地址:</h3>
+<ol>
+<li><a href="http://github.com.ipaddress.com/">http://github.com.ipaddress.com/</a></li>
+<li><a href="http://github.global.ssl.fastly.net.ipaddress.com/">http://github.global.ssl.fastly.net.ipaddress.com/</a></li>
+</ol>
+<p>假设对应 IP 地址分别为 140.82.xx.xxx 和 199.232.yy.yyy</p>
+<h3 id="hosts">第二步: 编辑 hosts 文件</h3>
 <pre><code>sudo vim /etc/hosts
 </code></pre>
 
-<p>在文件中加入如下两行</p>
-<pre><code>192.30.xx.xx github.com
-151.101.xx.xx github.global.ssl.fastly.net
+<p>加入如下两行:</p>
+<pre><code>140.82.xx.xxx  github.com
+199.232.yy.yyy github.global.ssl.fastly.net
 </code></pre>
 
-<p>如果使用mac，还需更新DNS缓存</p>
+<h3 id="dns-mac">第三步：更新 DNS 缓存（仅限 Mac 用户）</h3>
+<p>Linux 用户请忽略此步骤。</p>
 <pre><code>sudo dscacheutil -flushcache
 </code></pre>
+
+<p>大功告成!</p>
+<p>现在，您可以尝试从 GitHub 重新拉取代码了，是不是有变快一些？</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../FAQs/" class="btn btn-neutral" title="FAQs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -151,8 +195,10 @@
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
+      
+        <span><a href="../../FAQs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
