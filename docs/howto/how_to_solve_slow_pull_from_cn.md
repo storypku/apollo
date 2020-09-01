@@ -2,8 +2,8 @@
 
 ## 第一步: 浏览器打开如下两个网址，找到对应 IP 地址:
 
-1. http://github.com.ipaddress.com/
-2. http://github.global.ssl.fastly.net.ipaddress.com/
+1. [http://github.com.ipaddress.com/](http://github.com.ipaddress.com/)
+2. [http://github.global.ssl.fastly.net.ipaddress.com/](http://github.global.ssl.fastly.net.ipaddress.com/)
 
 假设对应 IP 地址分别为 140.82.xx.xxx 和 199.232.yy.yyy
 

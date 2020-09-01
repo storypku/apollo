@@ -77,3 +77,6 @@ tools/python_bin_path.sh
 
 # Flamegraph files
 tools/FlameGraph
+
+# mkdocs
+site
