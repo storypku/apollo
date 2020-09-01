@@ -84,16 +84,6 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">How to document code</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#file">File</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#namespace">Namespace</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#class">Class</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#function">Function</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#public-protected-class-member-variables">Public / protected class member variables</a>
-    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../how_to_install_apollo_kernel/">How to install Apollo kernel</a>
@@ -175,7 +165,7 @@
                 <h2 id="how-to-document-source-code-for-doxygen">How to document source code for doxygen<a class="headerlink" href="#how-to-document-source-code-for-doxygen" title="Permanent link">#</a></h2>
 <p>Developers who are not familiar with doxygen can get more information from its <a href="http://www.stack.nl/~dimitri/doxygen/">official website</a>.</p>
 <p>We use <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/common/time/time.h">time.h</a> as an example to explain how to successfully document code.</p>
-<h4 id="file">File<a class="headerlink" href="#file" title="Permanent link">#</a></h4>
+<h4>File</h4>
 <pre><code>/**
  * @file
  *
@@ -185,7 +175,7 @@
  */
 </code></pre>
 
-<h4 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">#</a></h4>
+<h4>Namespace</h4>
 <pre><code>/**
  * @namespace apollo::common::time
  * @brief apollo::common::time
@@ -195,7 +185,7 @@ namespace common {
 namespace time {
 </code></pre>
 
-<h4 id="class">Class<a class="headerlink" href="#class" title="Permanent link">#</a></h4>
+<h4>Class</h4>
 <pre><code>/**
  * @class Clock
  * @brief a singleton clock that can be used to get the current current
@@ -208,7 +198,7 @@ class Clock {
  ...
 </code></pre>
 
-<h4 id="function">Function<a class="headerlink" href="#function" title="Permanent link">#</a></h4>
+<h4>Function</h4>
 <pre><code>/**
   * @brief Set the behavior of the \class Clock.
   * @param is_system_clock if provided with value TRUE, further call
@@ -220,7 +210,7 @@ class Clock {
  }
 </code></pre>
 
-<h4 id="public-protected-class-member-variables">Public / protected class member variables<a class="headerlink" href="#public-protected-class-member-variables" title="Permanent link">#</a></h4>
+<h4>Public / protected class member variables</h4>
 <pre><code>/// Stores the currently set timestamp, which serves mock clock
 /// queries.
 Timestamp mock_now_;

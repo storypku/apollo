@@ -194,14 +194,14 @@
 </ul>
 <h3 id="_3">导航设备配置<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>下面介绍导航配置的方法。当设备正确接入系统后，在/dev/下面有名为ttyACM0的设备，即表示M2已经被正确地加载了。配置设备时，需要将设备的串口线连接上电脑的串口才可以对设备进行配置，也就是说，用来配置设备的电脑主机需要拥有串口。Windows下可以通过串口助手、串口猎人或者COMCenter等工具进行配置，Linux下可以通过Minicom、cutecom等工具进行配置。linux下建议使用cutecom软件，可使用<code>sudo apt install cutecom</code>来安装此软件，在终端中使用<code>sudo cutecom</code>命令打开该软件，在软件中<code>open</code>名为<code>ttyS0</code>的设备。</p>
-<h4 id="_4">杆臂配置<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h4>杆臂配置</h4>
 <p>车尾天线（后天线，通常是主天线，也就是Primary）杆臂配置：</p>
 <p><code>$cmd,set,leverarm,gnss,x_offset,y_offset,z_offset*ff</code></p>
 <p>这里的杆臂值<code>x_offset,y_offset,z_offset</code>就是车辆集成环节中测量所得的杆臂值，杆臂值请以自己使用的实际情况为准。</p>
-<h4 id="gnss">GNSS航向配置<a class="headerlink" href="#gnss" title="Permanent link">#</a></h4>
+<h4>GNSS航向配置</h4>
 <p>天线车头车尾前后安装</p>
 <p><code>$cmd,set,headoffset,0*ff</code></p>
-<h4 id="_5">导航模式配置<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
+<h4>导航模式配置</h4>
 <pre><code>$cmd,set,navmode,FineAlign,off*ff
 $cmd,set,navmode,coarsealign,off*ff
 $cmd,set,navmode,dynamicalign,on*ff
@@ -211,7 +211,7 @@ $cmd,set,navmode,zupt,on*ff
 $cmd,set,navmode,firmwareindex,0*ff
 </code></pre>
 
-<h4 id="usb">USB接口输出设置<a class="headerlink" href="#usb" title="Permanent link">#</a></h4>
+<h4>USB接口输出设置</h4>
 <pre><code>$cmd,output,usb0,rawimub,0.010*ff
 $cmd,output,usb0,inspvab,0.010*ff
 $cmd,through,usb0,bestposb,1.000*ff
@@ -222,7 +222,7 @@ $cmd,through,usb0,bdsephemerisb,1.000*ff
 $cmd,through,usb0,headingb,1.000*ff
 </code></pre>
 
-<h4 id="_6">网口配置<a class="headerlink" href="#_6" title="Permanent link">#</a></h4>
+<h4>网口配置</h4>
 <pre><code>$cmd,set,localip,192,168,0,123*ff
 $cmd,set,localmask,255,255,255,0*ff
 $cmd,set,localgate,192,168,0,1*ff
@@ -249,15 +249,15 @@ password:abc123
 $cmd,save,config*ff
 </code></pre>
 
-<h4 id="pps">PPS授时接口输出<a class="headerlink" href="#pps" title="Permanent link">#</a></h4>
+<h4>PPS授时接口输出</h4>
 <pre><code>ppscontrol enable positive 1.0 10000
 log com3 gprmc ontime 1 0.25
 </code></pre>
 
 <p>将所有配置逐条发送给设备，得到设备返回<code>$cmd,config,ok*ff</code>字段，说明配置成功，配置成功后要进行配置保存，发送<code>$cmd,save,config*ff</code>指令，然后将该设备断电后重新上电加载后即可使用。注意：PPS授时接口输出的两条配置命令是没有返回<code>$cmd,config,ok*ff</code>字段的，这是正常情况，不用担心。</p>
-<h3 id="_7">系统文件配置<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<h3 id="_4">系统文件配置<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p>系统文件配置主要包括两部分，GNSS配置、<code>localization.conf</code>文件配置。</p>
-<h4 id="gnss_1">GNSS配置<a class="headerlink" href="#gnss_1" title="Permanent link">#</a></h4>
+<h4>GNSS配置</h4>
 <p>修改<code>/apollo/modules/calibration/data/dev_kit/gnss_conf</code>文件夹下面的配置文件<code>gnss_conf.pb.txt</code>，修改如下内容配置基站信息：</p>
 <pre><code>rtk_from {
     format: RTCM_V3
@@ -300,7 +300,7 @@ password:abc123
 
 <p>注意：RTK基站信息需要同时配置在M2的IMU主机中和apollo的开发套件的<code>gnss_conf.pb.txt</code>配置文件中。</p>
 <p>同时将文档中的<code>proj4_text: "+proj=utm +zone=50 +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"</code>这一行中的<code>zone=50</code>中的50换成自己的城市所在的utmzone数值；比如这里的数值50代表的是北京，若您在纽约，则用纽约的utmzone数值10替换掉这里的数值50，以此类推。</p>
-<h4 id="localizationconf"><code>Localization.conf</code>文件的配置<a class="headerlink" href="#localizationconf" title="Permanent link">#</a></h4>
+<h4><code>Localization.conf</code>文件的配置</h4>
 <p>对<code>modules/calibration/data/dev_kit/localization_conf/localization.conf</code>文件进行配置。<strong>如果该配置文件没有进行正确配置，可能会对之后的传感器标定、虚拟车道线制作等功能产生影响</strong></p>
 <table>
 <thead>
@@ -336,7 +336,7 @@ password:abc123
 </tr>
 </tbody>
 </table>
-<h3 id="_8">检查定位模块能否正常启动<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<h3 id="_5">检查定位模块能否正常启动<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>将车辆移至室外平坦开阔处，按顺序执行如下操作</p>
 <h5>1. 编译项目，启动Dreamview</h5>
 <p>进入docker环境，用gpu编译项目，启动DreamView </p>
@@ -361,7 +361,7 @@ bash scripts/bootstrap.sh
 <img alt="localization_config_check_pose_2" src="../images/localization_config_check_pose_2.png" /></p>
 <h3 id="next">NEXT<a class="headerlink" href="#next" title="Permanent link">#</a></h3>
 <p>现在，您已经完成定位模块配置，接下来可以开始<a href="../Vehicle_Calibration_Online_cn/">循迹搭建--车辆动力学云标定</a></p>
-<h3 id="_9">常见问题<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
+<h3 id="_6">常见问题<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <p>a.系统无法生成驱动设备<code>ttyACM0</code>，在<code>/apollo/data/log/gnss.INFO</code>里面会有类似报错提示：</p>
 <pre><code>open device /dev/ttyACM0 failed， error: no such file or directory
 gnss driver connect failed, stream init failed

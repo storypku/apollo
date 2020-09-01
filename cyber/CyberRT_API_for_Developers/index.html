@@ -185,7 +185,7 @@
 </ul>
 <h3 id="talker-listener">Talker-Listener<a class="headerlink" href="#talker-listener" title="Permanent link">#</a></h3>
 <p>The first part of demonstrating CyberRT API is to understand the Talker/Listener example. Following are three essential concepts: node (basic unit), reader(facility to read message) and writer(facility to write message) of the example.</p>
-<h4 id="create-a-node">Create a node<a class="headerlink" href="#create-a-node" title="Permanent link">#</a></h4>
+<h4>Create a node</h4>
 <p>In the CyberRT framework, the node is the most fundamental unit, similar to the role of a <code>handle</code>. When creating a specific functional object (writer, reader, etc.), you need to create it based on an existing node instance.
 The node creation interface is as follows:</p>
 <pre><code class="cpp">std::unique_ptr&lt;Node&gt; apollo::cyber::CreateNode(const std::string&amp; node_name, const std::string&amp; name_space = &quot;&quot;);
@@ -207,7 +207,7 @@ The node creation interface is as follows:</p>
 </li>
 <li>Error Conditions - when <code>cyber::Init()</code> has not called, the system is in an uninitialized state, unable to create a node, return nullptr</li>
 </ul>
-<h4 id="create-a-writer">Create a writer<a class="headerlink" href="#create-a-writer" title="Permanent link">#</a></h4>
+<h4>Create a writer</h4>
 <p>The writer is the basic facility used in CyberRT to send messages. Every writer corresponds to a channel with a specific data type.
 The writer is created by the <code>CreateWriter</code> interface in the node class. The interfaces are listed as below:</p>
 <pre><code class="cpp">template &lt;typename MessageT&gt;
@@ -227,7 +227,7 @@ template &lt;typename MessageT&gt;
 </li>
 <li>Return value - Shared pointer to the Writer object</li>
 </ul>
-<h4 id="create-a-reader">Create a reader<a class="headerlink" href="#create-a-reader" title="Permanent link">#</a></h4>
+<h4>Create a reader</h4>
 <p>The reader is the basic facility used in cyber to receive messages. Reader has to be bound to a callback function when it is created. When a new message arrives in the channel, the callback will be called.
 The reader is created by the <code>CreateReader</code> interface of the node class. The interfaces are listed as below:</p>
 <pre><code class="cpp">template &lt;typename MessageT&gt;
@@ -258,7 +258,7 @@ auto CreateReader(const proto::RoleAttributes&amp; role_attr,
 <p>Return value - Shared pointer to the Reader object</p>
 </li>
 </ul>
-<h4 id="code-example">Code Example<a class="headerlink" href="#code-example" title="Permanent link">#</a></h4>
+<h4>Code Example</h4>
 <h5>Talker (cyber/examples/talker.cc)</h5>
 <pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
 #include &quot;cyber/proto/chatter.pb.h&quot;
@@ -342,9 +342,9 @@ cc_binary(
 <li>Examine the results: you should see message printing out on listener.</li>
 </ul>
 <h3 id="service-creation-and-use">Service Creation and Use<a class="headerlink" href="#service-creation-and-use" title="Permanent link">#</a></h3>
-<h4 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h4>
+<h4>Introduction</h4>
 <p>In an autonomous driving system, there are many scenarios that require more from module communication than just sending or receiving messages. Service is another way of communication between nodes. Unlike channel, service implements <code>two-way</code> communication, e.g. a node obtains a response by sending a request. This section introduces the <code>service</code> module in CyberRT API with examples.</p>
-<h4 id="demo-example">Demo - Example<a class="headerlink" href="#demo-example" title="Permanent link">#</a></h4>
+<h4>Demo - Example</h4>
 <p>Problem: create a client-server model that pass Driver.proto back and forth.
 When a request is sent in by the client, the server parses/processes the request and returns the response.</p>
 <p>The implementation of the demo mainly includes the following steps.</p>
@@ -428,14 +428,14 @@ I1124 16:36:48.572634 14969 service.cc:30] [service] server: i am driver server
 I1124 16:36:48.573030 14949 service.cc:43] [service] client: response: msg_id: 5 timestamp: 0
 </code></pre>
 
-<h4 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">#</a></h4>
+<h4>Precautions</h4>
 <ul>
 <li>When registering a service, note that duplicate service names are not allowed</li>
 <li>The node name applied when registering the server and client should not be duplicated either</li>
 </ul>
 <h3 id="parameter-service">Parameter Service<a class="headerlink" href="#parameter-service" title="Permanent link">#</a></h3>
 <p>The Parameter Service is used for shared data between nodes, and provides basic operations such as <code>set</code>, <code>get</code>, and <code>list</code>. The Parameter Service is based on the <code>Service</code> implementation and contains service and client.</p>
-<h4 id="parameter-object">Parameter Object<a class="headerlink" href="#parameter-object" title="Permanent link">#</a></h4>
+<h4>Parameter Object</h4>
 <h5>Supported Data types</h5>
 <p>All parameters passed through cyber are <code>apollo::cyber::Parameter</code> objects, the table below lists the 5 supported parameter types.</p>
 <table>
@@ -554,7 +554,7 @@ f.TypeName();  // return string: chatter
 auto chatter = f.value&lt;Chatter&gt;();
 </code></pre>
 
-<h4 id="parameter-service_1">Parameter Service<a class="headerlink" href="#parameter-service_1" title="Permanent link">#</a></h4>
+<h4>Parameter Service</h4>
 <p>If a node wants to provide a Parameter Service to other nodes, then you need to create a <code>ParameterService</code>.</p>
 <pre><code class="cpp">/**
  * @brief Construct a new ParameterService object
@@ -597,7 +597,7 @@ bool GetParameter(const std::string&amp; param_name, Parameter* parameter);
 bool ListParameters(std::vector&lt;Parameter&gt;* parameters);
 </code></pre>
 
-<h4 id="parameter-client">Parameter Client<a class="headerlink" href="#parameter-client" title="Permanent link">#</a></h4>
+<h4>Parameter Client</h4>
 <p>If a node wants to use parameter services of other nodes, you need to create a <code>ParameterClient</code>.</p>
 <pre><code class="cpp">/**
  * @brief Construct a new ParameterClient object
@@ -609,7 +609,7 @@ ParameterClient(const std::shared_ptr&lt;Node&gt;&amp; node, const std::string&a
 </code></pre>
 
 <p>You could also perform <code>SetParameter</code>, <code>GetParameter</code> and <code>ListParameters</code> mentioned under <a href="#Parameter-Service">Parameter Service</a>.</p>
-<h4 id="demo-example_1">Demo - example<a class="headerlink" href="#demo-example_1" title="Permanent link">#</a></h4>
+<h4>Demo - example</h4>
 <pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
 #include &quot;cyber/parameter/parameter_client.h&quot;
 #include &quot;cyber/parameter/parameter_server.h&quot;
@@ -643,13 +643,13 @@ int main(int argc, char** argv) {
 <li>Run: ./bazel-bin/cyber/examples/paramserver</li>
 </ul>
 <h3 id="log-api">Log API<a class="headerlink" href="#log-api" title="Permanent link">#</a></h3>
-<h4 id="log-library">Log library<a class="headerlink" href="#log-library" title="Permanent link">#</a></h4>
+<h4>Log library</h4>
 <p>Cyber log library is built on top of glog. The following header files need to be included:</p>
 <pre><code class="cpp">#include &quot;cyber/common/log.h&quot;
 #include &quot;cyber/init.h&quot;
 </code></pre>
 
-<h4 id="log-configuration">Log configuration<a class="headerlink" href="#log-configuration" title="Permanent link">#</a></h4>
+<h4>Log configuration</h4>
 <p>Default global config path: cyber/setup.bash</p>
 <p>The configs below could be modified by devloper:</p>
 <pre><code>export GLOG_log_dir=/apollo/data/log
@@ -658,13 +658,13 @@ export GLOG_colorlogtostderr=1
 export GLOG_minloglevel=0
 </code></pre>
 
-<h4 id="log-initialization">Log initialization<a class="headerlink" href="#log-initialization" title="Permanent link">#</a></h4>
+<h4>Log initialization</h4>
 <p>Call the Init method at the code entry to initialize the log:</p>
 <pre><code class="cpp++">apollo::cyber::cyber::Init(argv[0]) is initialized.
 If no macro definition is made in the previous component, the corresponding log is printed to the binary log.
 </code></pre>
 
-<h4 id="log-output-macro">Log output macro<a class="headerlink" href="#log-output-macro" title="Permanent link">#</a></h4>
+<h4>Log output macro</h4>
 <p>Log library is encapsulated in Log printing macros. The related log macros are used as follows:</p>
 <pre><code class="cpp">ADEBUG &lt;&lt; &quot;hello cyber.&quot;;
 AINFO  &lt;&lt; &quot;hello cyber.&quot;;
@@ -674,12 +674,12 @@ AFATAL &lt;&lt; &quot;hello cyber.&quot;;
 
 </code></pre>
 
-<h4 id="log-format">Log format<a class="headerlink" href="#log-format" title="Permanent link">#</a></h4>
+<h4>Log format</h4>
 <p>The format is <code>&lt;MODULE_NAME&gt;.log.&lt;LOG_LEVEL&gt;.&lt;datetime&gt;.&lt;process_id&gt;</code></p>
-<h4 id="about-log-files">About log files<a class="headerlink" href="#about-log-files" title="Permanent link">#</a></h4>
+<h4>About log files</h4>
 <p>Currently, the only different output behavior from default glog is that different log levels of a module will be written into the same log file.</p>
 <h3 id="building-a-module-based-on-component">Building a module based on Component<a class="headerlink" href="#building-a-module-based-on-component" title="Permanent link">#</a></h3>
-<h4 id="key-concepts">Key concepts<a class="headerlink" href="#key-concepts" title="Permanent link">#</a></h4>
+<h4>Key concepts</h4>
 <h5>1. Component</h5>
 <p>The component is the base class that Cyber RT provides to build application modules. Each specific application module can inherit the Component class and define its own <code>Init</code> and <code>Proc</code> functions so that it can be loaded into the Cyber framework.</p>
 <h5>2. Binary vs Component</h5>
@@ -731,7 +731,7 @@ module_config {
 <li><strong>name</strong>: the loaded class_name as the identifier of the loading example</li>
 <li><strong>readers</strong>: Data received by the current component, supporting 1-3 channels of data.</li>
 </ul>
-<h4 id="demo-examples">Demo - examples<a class="headerlink" href="#demo-examples" title="Permanent link">#</a></h4>
+<h4>Demo - examples</h4>
 <h5>Common_component_example(cyber/examples/common_component_example/*)</h5>
 <p>Header definition(common_component_example.h)</p>
 <pre><code class="cpp">#include &lt;memory&gt;
@@ -827,7 +827,7 @@ bool TimertestComponent::Proc() {
 <li>Build: bazel build cyber/examples/timer_component_smaple/…</li>
 <li>Run: mainboard -d cyber/examples/timer_component_smaple/timer.dag</li>
 </ul>
-<h4 id="precautions_1">Precautions<a class="headerlink" href="#precautions_1" title="Permanent link">#</a></h4>
+<h4>Precautions</h4>
 <ul>
 <li>Component needs to be registered to load the class through SharedLibrary. The registration interface looks like:</li>
 </ul>
@@ -841,7 +841,7 @@ bool TimertestComponent::Proc() {
 <h3 id="launch">Launch<a class="headerlink" href="#launch" title="Permanent link">#</a></h3>
 <p><strong>cyber_launch</strong> is the launcher of the Cyber RT framework. It starts multiple mainboards according to the launch file, and loads different components into different mainboards according to the dag file.
 cyber_launch supports two scenarios for dynamically loading components or starting Binary programs in a child process.</p>
-<h4 id="launch-file-format">Launch File Format<a class="headerlink" href="#launch-file-format" title="Permanent link">#</a></h4>
+<h4>Launch File Format</h4>
 <pre><code class="xml">&lt;cyber&gt;
     &lt;module&gt;
         &lt;name&gt;driver&lt;/name&gt;
@@ -877,7 +877,7 @@ Each loaded component or binary is a module</p>
 </ul>
 <h3 id="timer">Timer<a class="headerlink" href="#timer" title="Permanent link">#</a></h3>
 <p>Timer can be used to create a timed task to run on a periodic basis, or to run only once</p>
-<h4 id="timer-interface">Timer Interface<a class="headerlink" href="#timer-interface" title="Permanent link">#</a></h4>
+<h4>Timer Interface</h4>
 <pre><code class="cpp">/**
  * @brief Construct a new Timer object
  *
@@ -904,11 +904,11 @@ Timer(uint32_t period, std::function&lt;void()&gt; callback, bool oneshot);
 explicit Timer(TimerOption opt);
 </code></pre>
 
-<h4 id="start-timer">Start Timer<a class="headerlink" href="#start-timer" title="Permanent link">#</a></h4>
+<h4>Start Timer</h4>
 <p>After creating a Timer instance, you must call <code>Timer::Start()</code> to start the timer.</p>
-<h4 id="stop-timer">Stop Timer<a class="headerlink" href="#stop-timer" title="Permanent link">#</a></h4>
+<h4>Stop Timer</h4>
 <p>When you need to manually stop a timer that has already started, you can call the <code>Timer::Stop()</code> interface.</p>
-<h4 id="demo-example_2">Demo - example<a class="headerlink" href="#demo-example_2" title="Permanent link">#</a></h4>
+<h4>Demo - example</h4>
 <pre><code class="cpp">#include &lt;iostream&gt;
 #include &quot;cyber/cyber.h&quot;
 int main(int argc, char** argv) {
@@ -958,10 +958,10 @@ int main(int argc, char** argv) {
 </code></pre>
 
 <h3 id="record-file-read-and-write">Record file: Read and Write<a class="headerlink" href="#record-file-read-and-write" title="Permanent link">#</a></h3>
-<h4 id="reading-the-reader-file">Reading the Reader file<a class="headerlink" href="#reading-the-reader-file" title="Permanent link">#</a></h4>
+<h4>Reading the Reader file</h4>
 <p><strong>RecordReader</strong> is the component used to read messages in the cyber framework. Each RecordReader can open an existing record file through the <code>Open</code> method, and the thread will asynchronously read the information in the record file. The user only needs to execute ReadMessage to extract the latest message in RecordReader, and then get the message information through GetCurrentMessageChannelName, GetCurrentRawMessage, GetCurrentMessageTime.</p>
 <p><strong>RecordWriter</strong> is the component used to record messages in the cyber framework. Each RecordWriter can create a new record file through the Open method. The user only needs to execute WriteMessage and WriteChannel to write message and channel information, and the writing process is asynchronous.</p>
-<h4 id="demo-examplecyberexamplesrecordcc">Demo - example(cyber/examples/record.cc)<a class="headerlink" href="#demo-examplecyberexamplesrecordcc" title="Permanent link">#</a></h4>
+<h4>Demo - example(cyber/examples/record.cc)</h4>
 <p>Write 100 RawMessage to<code>TEST_FILE</code> through <code>test_write</code> method, then read them out through <code>test_read</code> method.</p>
 <pre><code class="cpp">#include &lt;string&gt;
 
@@ -1050,9 +1050,9 @@ I1124 16:56:27.250434 15118 record.cc:74] [record] MSG validmsg:totalcount: 100:
 </code></pre>
 
 <h3 id="api-directory">API Directory<a class="headerlink" href="#api-directory" title="Permanent link">#</a></h3>
-<h4 id="node-api">Node API<a class="headerlink" href="#node-api" title="Permanent link">#</a></h4>
+<h4>Node API</h4>
 <p>For additional information and examples, refer to <a href="#node">Node</a></p>
-<h4 id="api-list">API List<a class="headerlink" href="#api-list" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">//create writer with user-define attr and message type
 auto CreateWriter(const proto::RoleAttributes&amp; role_attr)
     -&gt; std::shared_ptr&lt;transport::Writer&lt;MessageT&gt;&gt;;
@@ -1083,13 +1083,13 @@ auto CreateClient(const std::string&amp; service_name)
 
 <h3 id="writer-api">Writer API<a class="headerlink" href="#writer-api" title="Permanent link">#</a></h3>
 <p>For additional information and examples, refer to <a href="#writer">Writer</a></p>
-<h4 id="api-list_1">API List<a class="headerlink" href="#api-list_1" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">bool Write(const std::shared_ptr&lt;MessageT&gt;&amp; message);
 </code></pre>
 
 <h3 id="client-api">Client API<a class="headerlink" href="#client-api" title="Permanent link">#</a></h3>
 <p>For additional information and examples, refer to <a href="#service-creation-and-use">Client</a></p>
-<h4 id="api-list_2">API List<a class="headerlink" href="#api-list_2" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">SharedResponse SendRequest(SharedRequest request,
                            const std::chrono::seconds&amp; timeout_s = std::chrono::seconds(5));
 SharedResponse SendRequest(const Request&amp; request,
@@ -1105,7 +1105,7 @@ SharedResponse SendRequest(const Request&amp; request,
 <li>Create a ParameterClient that uses the parameters provided by other nodes to service related APIs.</li>
 </ul>
 <p>For additional information and examples, refer to <a href="##param-parameter-service">Parameter</a></p>
-<h4 id="api-list-setting-parameters">API List - Setting parameters<a class="headerlink" href="#api-list-setting-parameters" title="Permanent link">#</a></h4>
+<h4>API List - Setting parameters</h4>
 <pre><code class="cpp">Parameter();  // Name is empty, type is NOT_SET
 explicit Parameter(const Parameter&amp; parameter);
 explicit Parameter(const std::string&amp; name);  // Type is NOT_SET
@@ -1121,7 +1121,7 @@ Parameter(const std::string&amp; name, const std::string&amp; msg_str,
 Parameter(const std::string&amp; name, const google::protobuf::Message&amp; msg);
 </code></pre>
 
-<h4 id="api-list-reading-parameters">API List - Reading parameters<a class="headerlink" href="#api-list-reading-parameters" title="Permanent link">#</a></h4>
+<h4>API List - Reading parameters</h4>
 <pre><code class="cpp">inline ParamType type() const;
 inline std::string TypeName() const;
 inline std::string Descriptor() const;
@@ -1148,14 +1148,14 @@ typename std::enable_if&lt;std::is_same&lt;Type, bool&gt;::value, bool&gt;::type
 value() const;
 </code></pre>
 
-<h4 id="api-list-creating-parameter-service">API List - Creating parameter service<a class="headerlink" href="#api-list-creating-parameter-service" title="Permanent link">#</a></h4>
+<h4>API List - Creating parameter service</h4>
 <pre><code class="cpp">explicit ParameterService(const std::shared_ptr&lt;Node&gt;&amp; node);
 void SetParameter(const Parameter&amp; parameter);
 bool GetParameter(const std::string&amp; param_name, Parameter* parameter);
 bool ListParameters(std::vector&lt;Parameter&gt;* parameters);
 </code></pre>
 
-<h4 id="api-list-creating-parameter-client">API List - Creating parameter client<a class="headerlink" href="#api-list-creating-parameter-client" title="Permanent link">#</a></h4>
+<h4>API List - Creating parameter client</h4>
 <pre><code class="cpp">ParameterClient(const std::shared_ptr&lt;Node&gt;&amp; node, const std::string&amp; service_node_name);
 bool SetParameter(const Parameter&amp; parameter);
 bool GetParameter(const std::string&amp; param_name, Parameter* parameter);
@@ -1165,7 +1165,7 @@ bool ListParameters(std::vector&lt;Parameter&gt;* parameters);
 <h3 id="timer-api">Timer API<a class="headerlink" href="#timer-api" title="Permanent link">#</a></h3>
 <p>You can set the parameters of the Timer and call the start and stop interfaces to start the timer and stop the timer.
 For additional information and examples, refer to <a href="#timer">Timer</a></p>
-<h4 id="api-list_3">API List<a class="headerlink" href="#api-list_3" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">Timer(uint32_t period, std::function&lt;void()&gt; callback, bool oneshot);
 Timer(TimerOption opt);
 void SetTimerOption(TimerOption opt);
@@ -1175,7 +1175,7 @@ void Stop();
 
 <h3 id="time-api_1">Time API<a class="headerlink" href="#time-api_1" title="Permanent link">#</a></h3>
 <p>For additional information and examples, refer to <a href="#use-of-time">Time</a></p>
-<h4 id="api-list_4">API List<a class="headerlink" href="#api-list_4" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">static const Time MAX;
 static const Time MIN;
 Time() {}
@@ -1195,7 +1195,7 @@ bool IsZero() const;
 
 <h3 id="duration-api">Duration API<a class="headerlink" href="#duration-api" title="Permanent link">#</a></h3>
 <p>Interval-related interface, used to indicate the time interval, can be initialized according to the specified nanosecond or second.</p>
-<h4 id="api-list_5">API List<a class="headerlink" href="#api-list_5" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">Duration() {}
 Duration(int64_t nanoseconds);
 Duration(int nanoseconds);
@@ -1211,7 +1211,7 @@ void Sleep() const;
 
 <h3 id="rate-api">Rate API<a class="headerlink" href="#rate-api" title="Permanent link">#</a></h3>
 <p>The frequency interface is generally used to initialize the time of the sleep frequency after the object is initialized according to the specified frequency.</p>
-<h4 id="api-list_6">API List<a class="headerlink" href="#api-list_6" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">Rate(double frequency);
 Rate(uint64_t nanoseconds);
 Rate(const Duration&amp;);
@@ -1223,7 +1223,7 @@ Duration ExpectedCycleTime() const { return expected_cycle_time_; }
 
 <h3 id="recordreader-api">RecordReader API<a class="headerlink" href="#recordreader-api" title="Permanent link">#</a></h3>
 <p>The interface for reading the record file is used to read the message and channel information in the record file.</p>
-<h4 id="api-list_7">API List<a class="headerlink" href="#api-list_7" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">RecordReader();
 bool Open(const std::string&amp; filename, uint64_t begin_time = 0,
           uint64_t end_time = UINT64_MAX);
@@ -1237,7 +1237,7 @@ uint64_t CurrentMessageTime();
 
 <h3 id="recordwriter-api">RecordWriter API<a class="headerlink" href="#recordwriter-api" title="Permanent link">#</a></h3>
 <p>The interface for writing the record file, used to record the message and channel information into the record file.</p>
-<h4 id="api-list_8">API List<a class="headerlink" href="#api-list_8" title="Permanent link">#</a></h4>
+<h4>API List</h4>
 <pre><code class="cpp">RecordWriter();
 bool Open(const std::string&amp; file);
 void Close();

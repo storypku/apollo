@@ -308,7 +308,7 @@
 <h3 id="onboard-computer-system-ipc">Onboard Computer System - IPC<a class="headerlink" href="#onboard-computer-system-ipc" title="Permanent link">#</a></h3>
 <p>The onboard computer system is an industrial PC (IPC) for the autonomous vehicle and uses the <strong>NeousysNuvo-6108GC</strong> that is powered by a sixth-generation Intel Xeon E3 1275 V5 CPU.</p>
 <p>The Neousys Nuvo-6108GC is the central unit of the autonomous driving system (ADS).</p>
-<h4 id="ipc-configuration">IPC Configuration<a class="headerlink" href="#ipc-configuration" title="Permanent link">#</a></h4>
+<h4>IPC Configuration</h4>
 <p>Configure the IPC as follows:</p>
 <ul>
 <li>ASUS GTX1080 GPU-A8G-Gaming GPU Card</li>
@@ -316,7 +316,7 @@
 <li>PO-280W-OW 280W AC/DC power adapter</li>
 <li>2.5" SATA Hard Disk 1TB 7200rpm</li>
 </ul>
-<h4 id="ipc-front-and-side-views">IPC Front and Side Views<a class="headerlink" href="#ipc-front-and-side-views" title="Permanent link">#</a></h4>
+<h4>IPC Front and Side Views</h4>
 <p>The front and rear views of the IPC are shown with the Graphics Processing Unit (GPU) installed in the following pictures:</p>
 <p>The front view of the Nuvo-6108GC:</p>
 <p><img alt="ipc_front" src="../images/IPC-6108GC-front-side.jpg" /></p>
@@ -341,13 +341,13 @@ Neousys Nuvo-6108GC Product Page:</p>
 <li><strong>Option 1: NovAtel SPAN-IGM-A1</strong></li>
 <li><strong>Option 2: NovAtel SPAN® ProPak6™ and NovAtel IMU-IGM-A1</strong></li>
 </ul>
-<h4 id="option-1-the-novatel-span-igm-a1">Option 1: The NovAtel SPAN-IGM-A1<a class="headerlink" href="#option-1-the-novatel-span-igm-a1" title="Permanent link">#</a></h4>
+<h4>Option 1: The NovAtel SPAN-IGM-A1</h4>
 <p>The NovAtel SPAN-IGM-A1 is an integrated, single-box solution that offers tightly coupled Global Navigation Satellite System (GNSS) positioning and inertial navigation featuring the NovAtel OEM615 receiver.</p>
 <p><img alt="novatel_imu" src="../images/Novatel_imu.png" /></p>
 <p>For more information about the NovAtel SPAN-IGM-A1, see:</p>
 <p><img alt="online" src="../images/online_icon.png" /> NovAtel SPAN-IGM-A1 Product Page:</p>
 <p><a href="https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/">https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/</a></p>
-<h4 id="option-2-the-novatel-span-propak6-and-novatel-imu-igm-a1">Option 2: The NovAtel SPAN ProPak6 and NovAtel IMU-IGM-A1<a class="headerlink" href="#option-2-the-novatel-span-propak6-and-novatel-imu-igm-a1" title="Permanent link">#</a></h4>
+<h4>Option 2: The NovAtel SPAN ProPak6 and NovAtel IMU-IGM-A1</h4>
 <p>NovAtel ProPak6 is a standalone GNSS receiver. It works with a separate NovAtel- supported IMU (in this case, the NovAtel IMU-IGM-A1)to provide localization.</p>
 <p>The ProPak6 provides the latest and most sophisticated enclosure product manufactured by NovAtel.</p>
 <p>The IMU-IGM-A1 is an IMU that pairs with a SPAN-enabled GNSS receiver such as the SPAN ProPak6.</p>
@@ -448,7 +448,7 @@ http://velodynelidar.com/hdl-64e.html</p>
 </ul>
 </li>
 </ul>
-<h4 id="preparing-the-ipc">Preparing the IPC<a class="headerlink" href="#preparing-the-ipc" title="Permanent link">#</a></h4>
+<h4>Preparing the IPC</h4>
 <p>Follow these steps:
 1. Prepare and install the Controller Area Network (CAN) card:<br />
   In the Neousys Nuvo-6108GC, ASUS® GTX-1080GPU-A8G-GAMING GPU card is pre-installed into one of the three PCI slots. We still need to install a CAN card into a PCI slot. 
@@ -490,7 +490,7 @@ http://velodynelidar.com/hdl-64e.html</p>
      - Go to [Power] =&gt; [SKU POWER CONFIG] =&gt; set the setting to "MAX. TDP"</p>
 <p>c. Connect the power: </p>
 <p><img alt="IPC-6108GC-PowerCable.jpg" src="../images/IPC-6108GC-PowerCable.jpg" /></p>
-<h4 id="installing-the-software-for-the-ipc">Installing the Software for the IPC<a class="headerlink" href="#installing-the-software-for-the-ipc" title="Permanent link">#</a></h4>
+<h4>Installing the Software for the IPC</h4>
 <p>This section describes the steps to install:</p>
 <ul>
 <li>Ubuntu Linux</li>
@@ -615,7 +615,7 @@ cd apollo-kernel
 </ul>
 </li>
 </ul>
-<h4 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h4>
+<h4>Prerequisites</h4>
 <p><strong><img alt="warning_icon" src="../images/warning_icon.png" />WARNING</strong>: Prior to mounting the major components (GPS Antenna, IPC, and GPS Receiver) in the vehicle, certain modifications must be performed as specified in the list of prerequisites. The instructions for making the mandatory changes in the list are outside the scope of this document.</p>
 <p>The list of prerequisites are as follows:</p>
 <ul>
@@ -625,11 +625,11 @@ cd apollo-kernel
 <li>A custom-made rack must be installed to mount the GPS-IMU in the trunk.</li>
 <li>A 4G LTE router must be mounted in the trunk to provide Internet access for the IPC. The router must have built-in Wi-Fi access point (AP) capability to connect to other devices, such as an iPad, to interface with the autonomous driving (AD) system. A user would be able to use the mobile device to start AD mode or monitor AD status, for example.</li>
 </ul>
-<h4 id="diagrams-of-the-major-component-installations">Diagrams of the Major Component Installations<a class="headerlink" href="#diagrams-of-the-major-component-installations" title="Permanent link">#</a></h4>
+<h4>Diagrams of the Major Component Installations</h4>
 <p>The following two diagrams indicate the locations of where the three major components (GPS Antenna, IPC, GPS Receiver and LiDAR) should be installed on the vehicle:</p>
 <p><img alt="major_component_side_view" src="../images/Car_Sideview.png" /></p>
 <p><img alt="major_component_rear_view" src="../images/Car_Rearview.png" /></p>
-<h4 id="installing-the-gps-receiver-and-antenna">Installing the GPS Receiver and Antenna<a class="headerlink" href="#installing-the-gps-receiver-and-antenna" title="Permanent link">#</a></h4>
+<h4>Installing the GPS Receiver and Antenna</h4>
 <p>This section provides general information about installing <strong>one</strong> of two choices:</p>
 <ul>
 <li><strong>Option 1:</strong> GPS-IMU: <strong>NovAtel SPAN-IGM-A1</strong></li>
@@ -719,7 +719,7 @@ cd apollo-kernel
 <p>For more information about the NovAtel SPAN ProPak6, see:</p>
 <p><img alt="online_icon" src="../images/online_icon.png" />NovAtel ProPak6 Installation&amp; Operation Manual:</p>
 <p><a href="https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf">https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf</a></p>
-<h4 id="installing-the-light-detection-and-ranging-system-lidar">Installing the Light Detection and Ranging System (LiDAR)<a class="headerlink" href="#installing-the-light-detection-and-ranging-system-lidar" title="Permanent link">#</a></h4>
+<h4>Installing the Light Detection and Ranging System (LiDAR)</h4>
 <p>This section provides descriptions on the installation procedure of HDL-64E S3 LiDAR</p>
 <h5>Mounting</h5>
 <p>A customized mounting structure is required to successfully mount an HDL64E S3 LiDAR on top of a vehicle. This structure needs to provide rigid support to the LiDAR system while raising the LiDAR to certain height above the ground to avoid the laser beams from the liDAR being blocked by the front and/or rear of the vehicle. The actual height needed for the LiDAR depends on the design of the vehicle and the mounting point of the LiDAR relative to the vehicle. The vertical tilt angle of the lasers normally ranges from +2~-24.8 degrees relative to the horizon. To fully utilize the angle range for detection, on a Lincoln MKZ, we recommend mounting the LiDAR at a minimum height of 1.8 meters (from ground to the base of the LiDAR). </p>
@@ -793,7 +793,7 @@ cd apollo-kernel
 <p><a href="http://velodynelidar.com/hdl-64e.html">http://velodynelidar.com/hdl-64e.html</a></p>
 </li>
 </ol>
-<h4 id="installing-the-ipc">Installing the IPC<a class="headerlink" href="#installing-the-ipc" title="Permanent link">#</a></h4>
+<h4>Installing the IPC</h4>
 <p>Follow these steps:</p>
 <ol>
 <li>
@@ -870,7 +870,7 @@ cd apollo-kernel
 <p><a href="https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf">https://www.novatel.com/assets/Documents/Manuals/OM-20000148.pdf</a></p>
 <p><img alt="online_icon" src="../images/online_icon.png" />NovAtel SPAN-IGM-A1 Product Page:</p>
 <p><a href="https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/">https://www.novatel.com/products/span-gnss-inertial-systems/span-combined-systems/span-igm-a1/</a></p>
-<h4 id="configuring-the-gps-and-imu">Configuring the GPS and IMU<a class="headerlink" href="#configuring-the-gps-and-imu" title="Permanent link">#</a></h4>
+<h4>Configuring the GPS and IMU</h4>
 <p>Configure the GPS and IMU as shown:</p>
 <pre><code>WIFICONFIGSTATE OFF
 UNLOGALLTHISPORT

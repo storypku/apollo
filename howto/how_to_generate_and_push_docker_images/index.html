@@ -158,14 +158,14 @@
               
                 <h3 id="how-to-generate-and-push-docker-images">How to Generate and Push Docker Images<a class="headerlink" href="#how-to-generate-and-push-docker-images" title="Permanent link">#</a></h3>
 <p>This How to will walk you through the basic steps of generating and pushing images through to your docker hub.</p>
-<h4 id="generate-release-image">Generate release image<a class="headerlink" href="#generate-release-image" title="Permanent link">#</a></h4>
+<h4>Generate release image</h4>
 <p>First, you would have to exit the Docker container by typing <code>exit</code></p>
 <p>Then, to create a new Docker image:</p>
 <pre><code class="bash">bash apollo_docker.sh gen
 </code></pre>
 
 <p>This will create a new docker image with the release directory. The release image will be named as <em>release-yyyymmdd_hhmm</em>. Meanwhile, your most recent built image will be tagged as <em>release-latest</em>.</p>
-<h4 id="push-docker-images">Push docker images<a class="headerlink" href="#push-docker-images" title="Permanent link">#</a></h4>
+<h4>Push docker images</h4>
 <p>By default, the images will be pushed to Apolloauto/apollo Docker hub when you run the following command:</p>
 <pre><code class="bash">bash apollo_docker.sh push
 </code></pre>

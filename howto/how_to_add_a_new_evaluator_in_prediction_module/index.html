@@ -166,7 +166,7 @@
 3. Implement the class <code>NewEvaluator</code>
 4. Update prediction conf
 5. Upate the evaluator manager</p>
-<h4 id="define-a-class-that-inherits-evaluator">Define a class that inherits <code>Evaluator</code><a class="headerlink" href="#define-a-class-that-inherits-evaluator" title="Permanent link">#</a></h4>
+<h4>Define a class that inherits <code>Evaluator</code></h4>
 <p>Create a new file named <code>new_evaluator.h</code> in the folder  <code>modules/prediction/evaluator/vehicle</code>. And define it like this:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/evaluator/evaluator.h&quot;
 
@@ -185,7 +185,7 @@ class NewEvaluator : public Evaluator {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="implement-the-class-newevaluator">Implement the class <code>NewEvaluator</code><a class="headerlink" href="#implement-the-class-newevaluator" title="Permanent link">#</a></h4>
+<h4>Implement the class <code>NewEvaluator</code></h4>
 <p>Create a new file named <code>new_evaluator.cc</code> in the same folder as that of <code>new_evaluator.h</code>. Implement it like this:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/evaluator/vehicle/new_evaluator.h&quot;
 
@@ -212,7 +212,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 
 </code></pre>
 
-<h4 id="add-a-new-evaluator-in-proto">Add a new evaluator in proto<a class="headerlink" href="#add-a-new-evaluator-in-proto" title="Permanent link">#</a></h4>
+<h4>Add a new evaluator in proto</h4>
 <p>Add a new type of evaluator in <code>prediction_conf.proto</code>:</p>
 <pre><code class="cpp">  enum EvaluatorType {
     MLP_EVALUATOR = 0;
@@ -220,7 +220,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
   }
 </code></pre>
 
-<h4 id="update-prediction_conf-file">Update prediction_conf file<a class="headerlink" href="#update-prediction_conf-file" title="Permanent link">#</a></h4>
+<h4>Update prediction_conf file</h4>
 <p>In the file <code>modules/prediction/conf/prediction_conf.pb.txt</code>, update the field <code>evaluator_type</code> like this:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -230,7 +230,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 }
 </code></pre>
 
-<h4 id="step-5-upate-the-evaluator-manager">Step 5: Upate the evaluator manager<a class="headerlink" href="#step-5-upate-the-evaluator-manager" title="Permanent link">#</a></h4>
+<h4>Step 5: Upate the evaluator manager</h4>
 <p>Update <code>CreateEvluator( ... )</code> like this:</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_EVALUATOR: {
       evaluator_ptr.reset(new NewEvaluator());
@@ -245,7 +245,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 <p>After following the steps above, the new evaluator should be created.</p>
 <h3 id="adding-new-features">Adding new features<a class="headerlink" href="#adding-new-features" title="Permanent link">#</a></h3>
 <p>If you would like to add new features, follow the instructions that follow:</p>
-<h4 id="add-a-field-in-proto">Add a field in proto<a class="headerlink" href="#add-a-field-in-proto" title="Permanent link">#</a></h4>
+<h4>Add a field in proto</h4>
 <p>Assume the new evaluating result named <code>new_output</code> and also assume its type is <code>int32</code>. If the output is related directly to the obstacles, you can add it into <code>modules/prediction/proto/feature.proto</code> like this:</p>
 <pre><code class="cpp">message Feature {
     // Other existing features

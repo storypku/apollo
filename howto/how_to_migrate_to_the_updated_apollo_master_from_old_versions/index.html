@@ -168,7 +168,7 @@ If this is the first time you are cloning/building Apollo, you do not need to fo
 <p>Several developers complained about bugs in the build process as well as loss of access to our repo due to Git LFS</p>
 <h3 id="migration-steps">Migration steps<a class="headerlink" href="#migration-steps" title="Permanent link">#</a></h3>
 <p>We have compiled a list of steps that you can take to avoid being affected by this change. Please note, check if you have or have not made any local changes and/or submitted those changes to the old repo before starting the process:</p>
-<h4 id="not-made-any-local-changes">Not made any local changes<a class="headerlink" href="#not-made-any-local-changes" title="Permanent link">#</a></h4>
+<h4>Not made any local changes</h4>
 <ol>
 <li>Disable LFS on your computer:</li>
 </ol>
@@ -187,13 +187,13 @@ If this is the first time you are cloning/building Apollo, you do not need to fo
 <pre><code>git push -f original master
 </code></pre>
 
-<h4 id="made-changes-and-have-not-submitted-to-the-repo">Made changes and have not submitted to the repo<a class="headerlink" href="#made-changes-and-have-not-submitted-to-the-repo" title="Permanent link">#</a></h4>
+<h4>Made changes and have not submitted to the repo</h4>
 <ol>
 <li>Save your changes</li>
 <li>Repeat the steps (1 - 3) in the section above</li>
 <li>Re-apply the changes</li>
 </ol>
-<h4 id="made-local-changes-and-have-submitted-to-your-forked-repo">Made local changes and have submitted to your forked repo,<a class="headerlink" href="#made-local-changes-and-have-submitted-to-your-forked-repo" title="Permanent link">#</a></h4>
+<h4>Made local changes and have submitted to your forked repo,</h4>
 <p>please cherry-pick those changes to the new repo and submit your commits.</p>
 <pre><code>Note:
 If your repo did not sync with ours, you will still be using the Git LFS service. However, once the service is disabled, there is a high likelihood that your access to Apollo repos will be blocked/denied. To avoid such an incident, please follow the steps listed above that best 

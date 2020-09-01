@@ -170,7 +170,7 @@
 <li>Time/Duration/Rate 时间操作</li>
 <li>Timer</li>
 </ul>
-<h4 id="31-channel">3.1 Channel 读写接口<a class="headerlink" href="#31-channel" title="Permanent link">#</a></h4>
+<h4>3.1 Channel 读写接口</h4>
 <p>使用步骤是：</p>
 <ol>
 <li>首先创建 Node;</li>
@@ -225,7 +225,7 @@ class Writer(object):
         &quot;&quot;&quot;
 </code></pre>
 
-<h4 id="32-record">3.2 Record 接口<a class="headerlink" href="#32-record" title="Permanent link">#</a></h4>
+<h4>3.2 Record 接口</h4>
 <p>Record 读的操作是：</p>
 <ol>
 <li>创建一个 RecordReader;</li>
@@ -321,7 +321,7 @@ class RecordWriter(object):
         &quot;&quot;&quot;
 </code></pre>
 
-<h4 id="33-time">3.3 Time 接口<a class="headerlink" href="#33-time" title="Permanent link">#</a></h4>
+<h4>3.3 Time 接口</h4>
 <pre><code class="python">class Time(object):
     @staticmethod
     def now():
@@ -343,7 +343,7 @@ class RecordWriter(object):
         return _CYBER_TIME.PyTime_sleep_until(self.time, nanoseconds)
 </code></pre>
 
-<h4 id="34-timer">3.4 Timer 接口<a class="headerlink" href="#34-timer" title="Permanent link">#</a></h4>
+<h4>3.4 Timer 接口</h4>
 <pre><code>
 class Timer(object):
 
@@ -365,7 +365,7 @@ class Timer(object):
 </code></pre>
 
 <h3 id="4">4. 例子<a class="headerlink" href="#4" title="Permanent link">#</a></h3>
-<h4 id="41-channel-cyberpythoncyber_py3exampleslistenerpy">4.1 读 channel （参见 cyber/python/cyber_py3/examples/listener.py)<a class="headerlink" href="#41-channel-cyberpythoncyber_py3exampleslistenerpy" title="Permanent link">#</a></h4>
+<h4>4.1 读 channel （参见 cyber/python/cyber_py3/examples/listener.py)</h4>
 <pre><code class="python">&quot;&quot;&quot;Module for example of listener.&quot;&quot;&quot;
 from cyber_py3 import cyber
 from cyber.proto.unit_test_pb2 import ChatterBenchmark
@@ -398,7 +398,7 @@ if __name__ == '__main__':
 
 </code></pre>
 
-<h4 id="42-channel-cyberpythoncyber_py3examplestalkerpy">4.2 写 channel（参见 cyber/python/cyber_py3/examples/talker.py)<a class="headerlink" href="#42-channel-cyberpythoncyber_py3examplestalkerpy" title="Permanent link">#</a></h4>
+<h4>4.2 写 channel（参见 cyber/python/cyber_py3/examples/talker.py)</h4>
 <pre><code class="python">&quot;&quot;&quot;Module for example of talker.&quot;&quot;&quot;
 import time
 
@@ -436,7 +436,7 @@ if __name__ == '__main__':
 
 </code></pre>
 
-<h4 id="43-record-cyberpythoncyber_py3examplesrecordpy">4.3 读写消息到 Record 文件（参见 cyber/python/cyber_py3/examples/record.py)<a class="headerlink" href="#43-record-cyberpythoncyber_py3examplesrecordpy" title="Permanent link">#</a></h4>
+<h4>4.3 读写消息到 Record 文件（参见 cyber/python/cyber_py3/examples/record.py)</h4>
 <pre><code class="python">cyber/python/cyber_py3/examples/record.py)
 
 ```python

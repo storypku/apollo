@@ -165,7 +165,7 @@
 <h2 id="docker">Docker的安装<a class="headerlink" href="#docker" title="Permanent link">#</a></h2>
 <p>请参考Docker官方网站提供的<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu">安装教程</a>及安装后其他必须的<a href="https://docs.docker.com/install/linux/linux-postinstall">操作步骤介绍</a></p>
 <p>在Ubuntu16上通过Docker仓库安装通常不会有什么问题，但是如果通过安装包进行安装可能会遇到以下的几个问题。</p>
-<h4 id="docker_1">使用Docker安装包<a class="headerlink" href="#docker_1" title="Permanent link">#</a></h4>
+<h4>使用Docker安装包</h4>
 <p>首先，从<a href="https://download.docker.com/linux/ubuntu/dists/">Docker安装包网站</a>下载对应版本的<code>Docker</code>安装包。我们推荐安装的版本是18.03.1。在文件夹<code>pool/stable/</code>可以找到不同平台和不同版本的安装包。</p>
 <p>在Ubuntu16上执行下述指令安装<code>Docker</code>：</p>
 <p><code>sudo dpkg –i docker_packagename.deb</code></p>
@@ -199,7 +199,7 @@ docker-ce depends on libsystemd-journal0 (&gt;= 201); however:
 <pre><code>Docker version 18.03.1-ce, build 9ee9f40
 </code></pre>
 
-<h4 id="docker_2">验证Docker是否安装成功<a class="headerlink" href="#docker_2" title="Permanent link">#</a></h4>
+<h4>验证Docker是否安装成功</h4>
 <p>按照Apollo官方提供的验证方法，执行指令：</p>
 <p><code>sudo docker run hello-world</code></p>
 <p>可能弹出下述错误：</p>

@@ -159,7 +159,7 @@
                 <h2 id="_1">如何运行脱机感知可视化<a class="headerlink" href="#_1" title="Permanent link">#</a></h2>
 <p>DreamView工具可以模拟感知模块并展现模拟效果，但它缺乏可视化点云和ROI区域的能力，这有助于调试和测试感知算法。为此，我们提供了一个基于OpenGL和PCL库的离线可视化工具，以显示点云的障碍感知结果。详细信息请参考 <a href="http://apollo.auto/platform/perception.html">官网</a> 关于离线可视化工具的介绍。</p>
 <p>我们将介绍在docker中构建和运行离线可视化工具的详细步骤，如下所示:</p>
-<h4 id="1-pcdpose">1. 准备PCD和Pose数据<a class="headerlink" href="#1-pcdpose" title="Permanent link">#</a></h4>
+<h4>1. 准备PCD和Pose数据</h4>
 <p>在运行可视化工具之前，我们需要准备必要的PCD和Pose数据，这些数据可以从带有记录点云数据的ROS包中提取。为了便于数据提取，我们提供了一个ROS启动文件来转储PCD帧文件和一个python脚本来为每个帧生成Pose文件。</p>
 <h5>1.1 启动PCD导出器</h5>
 <p>更多详细信息请参考 <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/drivers/velodyne">Velodyne驱动文档</a></p>
@@ -180,7 +180,7 @@ python gen_pose_file.py /apollo/data/pcd
 </code></pre>
 
 <p>与生成Pose文件名称对应的帧编号作为PCD文件名。也就是帧的PCD和Pose文件的名称相同但具有不同的扩展名（即分别为.pcd和.pose）。</p>
-<h4 id="2">2. 构建离线感知可视化工具<a class="headerlink" href="#2" title="Permanent link">#</a></h4>
+<h4>2. 构建离线感知可视化工具</h4>
 <p>使用Bazel构建离线可视化工具</p>
 <pre><code>cd /apollo
 bazel build -c opt //modules/perception/tool/offline_visualizer_tool:offline_lidar_visualizer_tool
@@ -191,7 +191,7 @@ bazel build -c opt //modules/perception/tool/offline_visualizer_tool:offline_lid
 <pre><code>bazel build -c opt --cxxopt=-DUSE_GPU //modules/perception/tool/offline_visualizer_tool:offline_lidar_visualizer_tool
 </code></pre>
 
-<h4 id="3">3. 使用离线感知模拟运行可视化工具<a class="headerlink" href="#3" title="Permanent link">#</a></h4>
+<h4>3. 使用离线感知模拟运行可视化工具</h4>
 <p>在运行可视化工具之前，您可以在配置文件<code>/apollo/modules/perception/tool/offline_visualizer_tool/conf/offline_lidar_perception_test.flag</code>中设置数据目录和算法模块设置。每个算法模块的详细参数设置可以根据相应的配置文件<code>/apollo/modules/perception/tool/offline_visualizer_tool/conf/config_manager.config</code>进行设置。然后，您可以通过以下命令运行具有离线感知模拟的可视化工具：</p>
 <pre><code>/apollo/bazel-bin/modules/perception/tool/offline_visualizer_tool/offline_lidar_visualizer_tool
 </code></pre>

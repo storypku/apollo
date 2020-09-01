@@ -158,7 +158,7 @@
               
                 <h3 id="docker">如何生成和发布docker镜像<a class="headerlink" href="#docker" title="Permanent link">#</a></h3>
 <p>本文档将演练一次生成和发布docker镜像到docker镜像数据中心的步骤。</p>
-<h4 id="_1">生成发布版本镜像<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
+<h4>生成发布版本镜像</h4>
 <p>首先，键入指令<code>exit</code>退出Docker容器环境</p>
 <p>然后，生成一个新的Docker镜像：</p>
 <pre><code class="bash">bash apollo_docker.sh gen
@@ -169,7 +169,7 @@
 </code></pre>
 
 <p>上述指令将在发布版本的文件夹内生成一个新的Docker镜像。发布版本镜像被命名为 <em>release-yyyymmdd_hhmm</em>。同时，最近构建的镜像文件会被标记为 <em>release-latest</em>。</p>
-<h4 id="docker_1">发布docker镜像<a class="headerlink" href="#docker_1" title="Permanent link">#</a></h4>
+<h4>发布docker镜像</h4>
 <p>默认情况下，如果执行下述指令，则镜像会被发布到Apolloauto/apollo上的docker镜像数据中心：</p>
 <pre><code class="bash">bash apollo_docker.sh push
 </code></pre>

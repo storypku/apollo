@@ -166,15 +166,15 @@
 <li>Change the driving mode.</li>
 <li>Select the testing site.</li>
 </ul>
-<h4 id="gain-access-to-the-relevant-code">Gain Access to the Relevant Code<a class="headerlink" href="#gain-access-to-the-relevant-code" title="Permanent link">#</a></h4>
+<h4>Gain Access to the Relevant Code</h4>
 <ul>
 <li>Canbus, which includes modules for:</li>
 <li>GPS Driver</li>
 <li>Localization</li>
 </ul>
-<h4 id="change-the-driving-mode">Change the Driving Mode<a class="headerlink" href="#change-the-driving-mode" title="Permanent link">#</a></h4>
+<h4>Change the Driving Mode</h4>
 <p>Set the driving mode in <code>modules/canbus/conf/canbus_conf.pb.txt</code> to <code>AUTO_SPEED_ONLY</code>.</p>
-<h4 id="select-the-testing-site">Select the Testing Site<a class="headerlink" href="#select-the-testing-site" title="Permanent link">#</a></h4>
+<h4>Select the Testing Site</h4>
 <p>The preferred testing site is a long flat road.</p>
 <h3 id="update-the-vehicle-calibration">Update the Vehicle Calibration<a class="headerlink" href="#update-the-vehicle-calibration" title="Permanent link">#</a></h3>
 <p>After preparation, complete the following task sequence from <code>modules/tools/vehicle_calibration</code>:</p>
@@ -184,18 +184,18 @@
 <li>Plot results.</li>
 <li>Convert results to <code>protobuf</code>.</li>
 </ul>
-<h4 id="collect-data">Collect Data<a class="headerlink" href="#collect-data" title="Permanent link">#</a></h4>
+<h4>Collect Data</h4>
 <ol>
 <li>Run <code>python data_collector.py</code> for different commands, commands like x y z, where x is acceleration command, y is speed limit(mps), z is decceleration command,Positive number for throttle and negative number for brake.Run each command multiple times.</li>
 <li>Adjust the command script based on the vehicle response.</li>
 <li>Run <code>python plot_data.py</code> to open recorded data and visualize collected data.</li>
 </ol>
 <p>like <code>15 5.2 -10</code>, will create and record a file named <code>t15b-10r0.csv</code>.</p>
-<h4 id="process-data">Process Data<a class="headerlink" href="#process-data" title="Permanent link">#</a></h4>
+<h4>Process Data</h4>
 <p>Run <code>process_data.sh</code> on each recorded log individually. data log is processed to <code>t15b-10r0.csv.result</code>.</p>
-<h4 id="plot-results">Plot Results<a class="headerlink" href="#plot-results" title="Permanent link">#</a></h4>
+<h4>Plot Results</h4>
 <p>Run <code>python plot_results.py t15b-10r0.csv.result</code> to visualize final results. Check for any abnormality.</p>
-<h4 id="convert-results-to-protobuf">Convert Results to <code>Protobuf</code><a class="headerlink" href="#convert-results-to-protobuf" title="Permanent link">#</a></h4>
+<h4>Convert Results to <code>Protobuf</code></h4>
 <p>If everything looks good, run <code>result2pb.sh</code> to move calibration results to <code>protobuf</code> defined for the control module.</p>
               
             </div>

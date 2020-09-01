@@ -159,7 +159,7 @@
                 <h2 id="how-to-run-offline-perception-lowcost-visualizer-apollo-25">How to Run Offline Perception LowCost Visualizer (Apollo 2.5)<a class="headerlink" href="#how-to-run-offline-perception-lowcost-visualizer-apollo-25" title="Permanent link">#</a></h2>
 <p>For Apollo 2.5, we provide an offline visualization tool based OpenGL and PCL libraries to show the obstacle perception results(including lane info) in both image front view and bird view.</p>
 <p>We introduce the detailed steps to build and run the offline visualizer in docker as below:</p>
-<h4 id="build-the-perception-lowcost">Build The Perception Lowcost<a class="headerlink" href="#build-the-perception-lowcost" title="Permanent link">#</a></h4>
+<h4>Build The Perception Lowcost</h4>
 <p>We use Bazel to build the offline perception visualizer:</p>
 <pre><code>cd /apollo
 ./apollo.sh build_opt_gpu
@@ -175,7 +175,7 @@
 <pre><code> --dag_config_path=conf/dag_camera_obstacle_offline_fusion_sync.config
 </code></pre>
 
-<h4 id="run-the-visualizer-with-collected-ros-bag-for-apollo-25">Run The Visualizer With Collected ROS Bag for Apollo 2.5<a class="headerlink" href="#run-the-visualizer-with-collected-ros-bag-for-apollo-25" title="Permanent link">#</a></h4>
+<h4>Run The Visualizer With Collected ROS Bag for Apollo 2.5</h4>
 <p>Please double check that your collected rosbag contains topics including camera images, radar, as well as localization results. The 3 corresponding topics are show below:</p>
 <pre><code>/apollo/sensor/camera/obstacle/front_6mm
 /apollo/sensor/conti_radar
@@ -192,16 +192,16 @@
 * Run full low-cost perception of camera, radar, lane markings + visualization
 * Run full low-cost perception of camera, radar, lane markings, and no visualization</p>
 <p>Let's look at how they can be run:</p>
-<h4 id="run-perception-with-camera-subnode-only-visualization">Run perception with camera subnode only + visualization<a class="headerlink" href="#run-perception-with-camera-subnode-only-visualization" title="Permanent link">#</a></h4>
+<h4>Run perception with camera subnode only + visualization</h4>
 <p>This option requires <code>/apollo/sensor/camera/obstacle/front_6mm</code> only.</p>
 <pre><code>./scripts/perception_offline_visualizer.sh
 </code></pre>
 
-<h4 id="run-full-low-cost-perception-of-camera-radar-lane-markings-visualization">Run full low-cost perception of camera, radar, lane markings + visualization<a class="headerlink" href="#run-full-low-cost-perception-of-camera-radar-lane-markings-visualization" title="Permanent link">#</a></h4>
+<h4>Run full low-cost perception of camera, radar, lane markings + visualization</h4>
 <pre><code>./scripts/perception_lowcost_vis.sh
 </code></pre>
 
-<h4 id="run-full-low-cost-perception-of-camera-radar-lane-markings-and-no-visualization">Run full low-cost perception of camera, radar, lane markings, and no visualization<a class="headerlink" href="#run-full-low-cost-perception-of-camera-radar-lane-markings-and-no-visualization" title="Permanent link">#</a></h4>
+<h4>Run full low-cost perception of camera, radar, lane markings, and no visualization</h4>
 <pre><code>./scripts/perception_lowcost.sh
 </code></pre>
 

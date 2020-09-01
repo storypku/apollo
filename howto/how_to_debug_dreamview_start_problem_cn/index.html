@@ -157,7 +157,7 @@
             <div class="section">
               
                 <h3 id="dreamview">如何调试Dreamview启动问题<a class="headerlink" href="#dreamview" title="Permanent link">#</a></h3>
-<h4 id="dreamview_1">Dreamview的启动步骤<a class="headerlink" href="#dreamview_1" title="Permanent link">#</a></h4>
+<h4>Dreamview的启动步骤</h4>
 <p>如果在<code>docker / scripts / dev</code>序列中启动Dreamview时遇到问题，请首先检查是否使用了如下所示的正确命令。</p>
 <pre><code class="bash">$ bash docker/scripts/dev_start.sh
 $ bash docker/scripts/dev_into.sh
@@ -166,7 +166,7 @@ $ bash apollo.sh build
 $ bash scripts/dreamview.sh
 </code></pre>
 
-<h4 id="dreamview_2">Dreamview启动失败<a class="headerlink" href="#dreamview_2" title="Permanent link">#</a></h4>
+<h4>Dreamview启动失败</h4>
 <p>如果Dreamview无法启动，请使用下面的脚本检查Dreamview的启动日志并重新启动Dreamview。</p>
 <pre><code class="bash"># Start Dreamview in foreground to see any error message it prints out during startup
 $ bash scripts/dreamview.sh start_fe
@@ -188,7 +188,7 @@ $ sudo fuser -k 8888/tcp
 $ bash scripts/dreamview.sh
 </code></pre>
 
-<h4 id="gdb">用gdb调试<a class="headerlink" href="#gdb" title="Permanent link">#</a></h4>
+<h4>用gdb调试</h4>
 <p>如果dreamview的启动日志中没有任何有效内容，您可以尝试使用gdb调试dreamview，请使用以下命令：</p>
 <pre><code>$ gdb --args /apollo/bazel-bin/modules/dreamview/dreamview --flagfile=/apollo/modules/dreamview/conf/dreamview.conf
 # or

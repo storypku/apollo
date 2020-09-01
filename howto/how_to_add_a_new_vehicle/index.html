@@ -175,7 +175,7 @@
 <li>Implement the new vehicle factory.</li>
 <li>Update the configuration file.</li>
 </ul>
-<h4 id="implement-the-new-vehicle-controller">Implement the New Vehicle Controller<a class="headerlink" href="#implement-the-new-vehicle-controller" title="Permanent link">#</a></h4>
+<h4>Implement the New Vehicle Controller</h4>
 <p>The new vehicle controller is inherited from the  <code>VehicleController</code> class. An example header file is provided below.</p>
 <pre><code class="cpp">/**
  * @class NewVehicleController
@@ -215,7 +215,7 @@ class NewVehicleController final : public VehicleController {
 };
 </code></pre>
 
-<h4 id="implement-the-new-message-manager">Implement the New Message Manager<a class="headerlink" href="#implement-the-new-message-manager" title="Permanent link">#</a></h4>
+<h4>Implement the New Message Manager</h4>
 <p>The new message manager is inherited from the <code>MessageManager</code> class. An example header file is provided below.</p>
 <pre><code class="cpp">/**
  * @class NewVehicleMessageManager
@@ -236,7 +236,7 @@ class NewVehicleMessageManager : public MessageManager {
 };
 </code></pre>
 
-<h4 id="implement-the-new-vehicle-factory-class">Implement the New Vehicle Factory Class.<a class="headerlink" href="#implement-the-new-vehicle-factory-class" title="Permanent link">#</a></h4>
+<h4>Implement the New Vehicle Factory Class.</h4>
 <p>The new vehicle factory class is inherited from the <code>AbstractVehicleFactory</code> class.  An example header file is provided below.</p>
 <pre><code class="cpp">/**
  * @class NewVehicleFactory
@@ -277,7 +277,7 @@ std::unique_ptr&lt;MessageManager&gt; NewVehicleFactory::CreateMessageManager() 
 </code></pre>
 
 <p>Apollo provides the base class <code>ProtocolData</code> that can be used to implement the protocols of the new vehicle.</p>
-<h4 id="register-the-new-vehicle">Register the New Vehicle<a class="headerlink" href="#register-the-new-vehicle" title="Permanent link">#</a></h4>
+<h4>Register the New Vehicle</h4>
 <p>Register the new vehicle in <code>modules/canbus/vehicle/vehicle_factory.cc</code>. An example header file is provided below.</p>
 <pre><code class="cpp">void VehicleFactory::RegisterVehicleFactory() {
   Register(VehicleParameter::LINCOLN_MKZ, []() -&gt; AbstractVehicleFactory* {
@@ -291,7 +291,7 @@ std::unique_ptr&lt;MessageManager&gt; NewVehicleFactory::CreateMessageManager() 
 }
 </code></pre>
 
-<h4 id="update-the-config-file">Update the config File<a class="headerlink" href="#update-the-config-file" title="Permanent link">#</a></h4>
+<h4>Update the config File</h4>
 <p>Update the config file <code>modules/canbus/conf/canbus_conf.pb.txt</code> to activate the new vehicle in the Apollo system.</p>
 <pre><code class="config">vehicle_parameter {
   brand: NEW_VEHICLE_BRAND

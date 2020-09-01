@@ -166,7 +166,7 @@
  * 注意：这三个步骤的工具均需要自己开发，如果只是小规模的简单测试，也可以参照base_map.xml格式手工组织数据。</p>
 <h3 id="hd-mapapollo15">将HD map加入apollo1.5：<a class="headerlink" href="#hd-mapapollo15" title="Permanent link">#</a></h3>
 <p>有两个方法，一个是通过添加一个新的目录，使用apollo系统；一个是替换原有目录下的地图文件。</p>
-<h4 id="hd-map_2">新加一个hd map：<a class="headerlink" href="#hd-map_2" title="Permanent link">#</a></h4>
+<h4>新加一个hd map：</h4>
 <ul>
 <li>在/apollo/modules/map/data目录下，创建一个目录new_map。</li>
 <li>将生成的hd map放入new_map中，如有配置文件，可以参考sunnyvale_office目录下的配置文件。</li>
@@ -176,7 +176,7 @@
 <li>直接copy new_garage 重命名为new_garage_2测试的，测试通过。</li>
 <li>注1：编译的时候，应该相当于将/apollo/modules/map/data/new_map注册到系统中去，以便启动hmi时，前端网页可以定位到/apollo/modules/map/data/new_map目录，进而加载其中的文件。也因此，可以有第二个方法加入hd map。</li>
 </ul>
-<h4 id="_1">利用现有的地图目录，加入地图：<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
+<h4>利用现有的地图目录，加入地图：</h4>
 <ul>
 <li>假设apollo1.5中，已经添加了new_map，此时只需要替换目录下的hd map所有的文件，这样不需要编译，即可使用新的hd map。</li>
 </ul>

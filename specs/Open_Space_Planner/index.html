@@ -166,11 +166,11 @@ This algorithm was initially inspired by several papers<cite>[1]</cite><cite>[2]
 - Perception data which includes but is not limited to obstacles
 - The Region of Interest (ROI) which is obtained via HD Map</p>
 <p>Once the data is in place, Open Space planner is triggered as seen in the image above. The algorithm itself is comprised of two stages:</p>
-<h4 id="searching-based-planning">Searching - Based Planning<a class="headerlink" href="#searching-based-planning" title="Permanent link">#</a></h4>
+<h4>Searching - Based Planning</h4>
 <p>In step 1, a raw trajectory is generated for the ego-car. This stage applies vehicle kinemetic model in algorithm to create the raw trajectory with a series of distance equidistant points as seen in the image below.
 The red line represents the raw trajectory output from Hybrid A*, which is sent to the next step, Optimization to calculate the green smoothened line.</p>
 <p><img alt="" src="../images/os_step1.png" /></p>
-<h4 id="optimization">Optimization<a class="headerlink" href="#optimization" title="Permanent link">#</a></h4>
+<h4>Optimization</h4>
 <p>This step involves two major tasks,
 - Smooth the trajectory to get better riding comfort experience and to make it easier for the control module to track
 - Ensure collision avoidance</p>
@@ -181,9 +181,9 @@ This not only ensures better turns, but as time/space is fixed, the nearer the p
 <p><img alt="" src="../images/os_step3.png" /></p>
 <h3 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">#</a></h3>
 <p>Currently Open Space Planner is used for 2 parking scenarios in the planning stage namely:</p>
-<h4 id="valet">Valet<a class="headerlink" href="#valet" title="Permanent link">#</a></h4>
+<h4>Valet</h4>
 <p>This scenario is designed to park the ego car in a designated parking spot using a zig-zag trajectory.</p>
-<h4 id="pull-over">Pull Over<a class="headerlink" href="#pull-over" title="Permanent link">#</a></h4>
+<h4>Pull Over</h4>
 <p>This scenario is designed to park the ego car along the curb, either normally or requiring parallel parking.</p>
 <p>To learn more about the existing planning scenarios, please refer to the <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/planning">Planning README</a></p>
 <h3 id="future-applications">Future Applications<a class="headerlink" href="#future-applications" title="Permanent link">#</a></h3>

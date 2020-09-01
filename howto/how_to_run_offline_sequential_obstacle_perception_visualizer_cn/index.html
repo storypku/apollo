@@ -186,7 +186,7 @@
 <li>车速</li>
 </ul>
 <p>为了便于数据提取，Apollo提供了一个名为<code>export_sensor_data</code>的工具来从ROS包中导出数据。</p>
-<h4 id="_3">步骤<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
+<h4>步骤</h4>
 <ol>
 <li>用下面的命令构建数据导出工具：</li>
 </ol>
@@ -217,7 +217,7 @@ rosbag play --clock example.bag --rate=0.1
 <p>这些目录通过flag <code>lidar_path</code>和<code>radar_path</code> 在文件<code>/apollo/modules/perception/tool/export_sensor_data/conf/export_sensor_data.flag</code>中定义。</p>
 <p>在<code>lidar_path</code>指定的目录中，会生成两种不同后缀的文件：<em><code>.pcd</code></em> 和 <em><code>.pose</code></em>。</p>
 <p>在<code>radar_path</code>指定的目录中，会生成三种不同后缀的文件：<em><code>.radar</code></em>, <em><code>.pose</code></em>, and <em><code>.velocity</code></em>。</p>
-<h3 id="_4">构建融合障碍物可视化工具<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<h3 id="_3">构建融合障碍物可视化工具<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>Apollo使用Bazel构建融合障碍物可视化工具。</p>
 <ol>
 <li>用下面的命令构建融合障碍物可视化工具：</li>
@@ -233,7 +233,7 @@ bazel build -c opt //modules/perception/tool/offline_visualizer_tool:offline_seq
 <pre><code>bazel build -c opt --cxxopt=-DUSE_GPU //modules/perception/tool/offline_visualizer_tool:offline_sequential_obstacle_perception_test
 </code></pre>
 
-<h3 id="_5">运行工具<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<h3 id="_4">运行工具<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p>在运行融合障碍物可视化工具之前，您可以在配置文件中设置源数据目录和算法模块设置： <code>/apollo/modules/perception/tool/offline_visualizer_tool/conf/offline_sequential_obstacle_perception_test.flag</code>。</p>
 <p>默认源数据的目录<code>lidar_path</code>和<code>radar_path</code>分别对应的是<code>/apollo/data/lidar</code>和<code>/apollo/data/radar</code>。</p>
 <p>visualization-enabling布尔标志为<code>true</code>，默认情况下，要显示的障碍物结果类型为<code>fused</code>（基于LiDAR和RADAR传感器的融合障碍物结果）。 您可以将<code>fused</code>更改为<code>lidar</code>或<code>radar</code>，以显示基于单传感器的障碍物感知产生的纯障碍物结果。</p>

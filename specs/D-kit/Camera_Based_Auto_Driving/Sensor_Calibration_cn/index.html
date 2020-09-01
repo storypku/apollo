@@ -235,7 +235,7 @@
 <p><img alt="camera_calibration_modify_localization_file" src="../images/camera_calibration_modify_localization_file.jpeg" /></p>
 <p><strong>注意</strong>：所有传感器标定完成后，如果用户要使用msf定位，则需要再改为<code>true</code>。</p>
 <h3 id="camera-lidar">Camera-Lidar标定初始外参测量和内参标定<a class="headerlink" href="#camera-lidar" title="Permanent link">#</a></h3>
-<h4 id="_5">各传感器坐标系的定义及初始化外参文件的配置<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
+<h4>各传感器坐标系的定义及初始化外参文件的配置</h4>
 <h5>1. Lidar、Camera的坐标系定义</h5>
 <p><img alt="camera_calibration_coordinate_system" src="../images/camera_calibration_coordinate_system.jpeg" /></p>
 <h5>2. Camera坐标系原点在传感器的位置</h5>
@@ -260,7 +260,7 @@
     z: -0.64</code></p>
 </li>
 </ul>
-<h4 id="_6">传感器内参标定<a class="headerlink" href="#_6" title="Permanent link">#</a></h4>
+<h4>传感器内参标定</h4>
 <p>内参包含相机的焦距、主点和畸变系数等信息，可以通过一些成熟的相机标定工具来获得，例如 <a href="http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration">ROS Camera Calibration Tools</a> 和 <a href="http://www.vision.caltech.edu/bouguetj/calib_doc/">Camera Calibration Toolbox for Matlab</a>。</p>
 <h3 id="camera-lidar_1">Camera-Lidar标定数据包录制<a class="headerlink" href="#camera-lidar_1" title="Permanent link">#</a></h3>
 <p>开发套件的摄像头有6mm和12mm两种规格，以下步骤以6mm标定为例说明。</p>
@@ -345,7 +345,7 @@ budaoshi@in_dev_docker:/apollo/modules/tools/sensor_calibration$ python extract_
 <h5>6. 修改初始化内参文件intrinsics.yaml</h5>
 <p>修改数据抽取工具生成的init_params/intrinsics.yaml文件。把内参标定的Camera内参信息填入，仅需要填写<code>R</code>、<code>K</code>、<code>D</code>字段。</p>
 <p>修改完之后把<code>camera_front_6mm_to_lidar16_calibration</code>目录准备后续待用。</p>
-<h3 id="_7">使用标定云服务生成外参文件<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<h3 id="_5">使用标定云服务生成外参文件<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <h5>1. 上传预处理后的数据至BOS</h5>
 <p><strong>注意：</strong> 必须使用开通过权限的 bucket，确认<code>Bucket名称</code>、<code>所属地域</code>和提交商务注册时的Bucket名称和所属区域保持一致。</p>
 <p>在BOS bucket中新建目录sensor_calibration，作为后续云标定服务读取数据的<code>Input Data Path</code>，把前面预处理生成的数据拷贝至该目录。目录结构如下：</p>
@@ -375,7 +375,7 @@ budaoshi@in_dev_docker:/apollo/modules/tools/sensor_calibration$ python extract_
 </ul>
 <h3 id="next">NEXT<a class="headerlink" href="#next" title="Permanent link">#</a></h3>
 <p>现在，您已经完成摄像头感知设备标定， 接下来可以开始<a href="../../Lidar_Based_Auto_Driving/Virtual_Lane_Generation_cn/">封闭园区自动驾驶搭建--虚拟车道线制作</a>(如果在适配基于激光雷达的自动驾驶过程中已经制作了虚拟车道线文件，则可以跳过此步骤，进行<a href="../Perception_Configuration_cn/">基于摄像头的封闭园区自动驾驶搭建--感知适配</a>)</p>
-<h3 id="_8">常见问题<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<h3 id="_6">常见问题<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
 <h5>1. 提交后，显示<code>UNAUTHORIZED</code></h5>
 <p><img alt="lidar_calibration_unauthorized" src="../images/lidar_calibration_unauthorized.png" />
 出现该问题，一般是<code>Partner ID</code>输入有误 </p>

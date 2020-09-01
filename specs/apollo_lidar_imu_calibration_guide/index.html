@@ -171,9 +171,9 @@ This guide cannot be used for version Apollo 3.5
 <li><a href="#obtaining-calibration-results">Obtaining calibration results</a></li>
 <li><a href="#types-of-errors">Types of Errors encountered</a></li>
 </ul>
-<h4 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h4>
+<h4>Overview</h4>
 <p>The Apollo vehicle sensor calibration function provides the extrinsic calibration between Velodyne HDL-64ES3 and IMU. The calibration results can be used to transfer the obstacle location detected by LiDAR to the IMU coordinate system, and then to the world coordinate system. The results are provided in <code>.yaml</code> format files.</p>
-<h4 id="preparing-the-sensors">Preparing the Sensors<a class="headerlink" href="#preparing-the-sensors" title="Permanent link">#</a></h4>
+<h4>Preparing the Sensors</h4>
 <p>In order to calibrate the sensors, it is important to prepare them first, using the following steps:</p>
 <ol>
 <li>
@@ -259,7 +259,7 @@ After the preparation steps are completed, drive the vehicle to the calibration 
 <ol>
 <li>Then, the program will detect whether or not the recorded bag contains all the required topics. After passing the test, the bag will be packaged into file <code>lidar_calib_data.tar.gz</code>, including the recorded rosbag and the corresponding MD5 checksum file.</li>
 </ol>
-<h4 id="uploading-calibration-data-and-creating-a-calibration-service-task">Uploading Calibration Data and Creating a Calibration Service Task<a class="headerlink" href="#uploading-calibration-data-and-creating-a-calibration-service-task" title="Permanent link">#</a></h4>
+<h4>Uploading Calibration Data and Creating a Calibration Service Task</h4>
 <p>After recording the calibration data, please login to the <a href="https://console.bce.baidu.com/apollo/calibrator/index/list">calibration service page</a> to complete the calibration.</p>
 <ol>
 <li>
@@ -296,7 +296,7 @@ After the preparation steps are completed, drive the vehicle to the calibration 
 </li>
 </ol>
 <p>For additional information, see: <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/FAQs/Calibration_FAQs.md">How to Check Point Cloud Quality?</a></p>
-<h4 id="obtaining-calibration-results">Obtaining Calibration Results<a class="headerlink" href="#obtaining-calibration-results" title="Permanent link">#</a></h4>
+<h4>Obtaining Calibration Results</h4>
 <ol>
 <li>
 <p>Before obtaining the calibration results, the service requires that you confirm the quality of the calibration results based on visualized point cloud.</p>
@@ -367,7 +367,7 @@ transform:
 </code></pre>
 
 <p>Here, <strong>CAR_ID</strong> is the vehicle ID for calibrating vehicles. Then, copy the downloaded extrinsic yaml file to the corresponding <strong>CAR_ID</strong> folder. Finally, after you start HMI, select the correct <strong>CAR_ID</strong> to load the corresponding calibration yaml file.</p>
-<h4 id="types-of-errors-encountered">Types of Errors encountered<a class="headerlink" href="#types-of-errors-encountered" title="Permanent link">#</a></h4>
+<h4>Types of Errors encountered</h4>
 <ol>
 <li><strong>Data unpacking error</strong>: The uploaded data is not a valid <code>tar.gz</code> file</li>
 <li><strong>MD5 checksum error</strong>:  If the MD5 checksum of the uploaded data differs from the MD5 checksum computed by the server side, it could be caused by network transmission problems.</li>

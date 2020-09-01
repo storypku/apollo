@@ -208,7 +208,7 @@
 </li>
 </ul>
 <p><img alt="lidar_integration_look" src="../images/lidar_integration_look.png" /></p>
-<h4 id="_4">激光雷达的安装固定<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h4>激光雷达的安装固定</h4>
 <ul>
 <li>16线激光雷达要牢靠固定安装在车顶部，建议激光雷达对地高度1.5～1.8米，水平放置，精度在2度以内。安装位置如下图：</li>
 </ul>
@@ -216,7 +216,7 @@
 <ul>
 <li>安装激光雷达时线缆方向朝向车辆的正后方。</li>
 </ul>
-<h4 id="_5">激光雷达与车辆的接线<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
+<h4>激光雷达与车辆的接线</h4>
 <p>请按照以下步骤进行激光雷达一拖三线缆的安装。</p>
 <h5>1.线缆端口及定义</h5>
 <p><img alt="lidar_integration_line" src="../images/lidar_integration_line.jpeg" /></p>
@@ -284,7 +284,7 @@
 <ul>
 <li>请务必再次确认正确执行了上述安装步骤，电源线接反会烧毁激光雷达，确认无误后才可以上电，至此激光雷达线束接线完成</li>
 </ul>
-<h4 id="_6">激光雷达的配置及启动<a class="headerlink" href="#_6" title="Permanent link">#</a></h4>
+<h4>激光雷达的配置及启动</h4>
 <h5>1.修改工控机IP地址</h5>
 <ul>
 <li>
@@ -296,7 +296,7 @@
 <p><img alt="lidar_integration_config" src="../images/lidar_integration_config.png" /></p>
 </li>
 </ul>
-<h4 id="_7">激光雷达数据的验证<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
+<h4>激光雷达数据的验证</h4>
 <h5>1. 编译项目，启动Dreamview</h5>
 <p>进入docker环境，用gpu编译项目，启动DreamView </p>
 <pre><code>cd /apollo
@@ -328,7 +328,7 @@ bash scripts/bootstrap.sh
 <p><img alt="lidar_integration_channel" src="../images/lidar_integration_channel.png" /></p>
 </li>
 </ul>
-<h3 id="_8">毫米波雷达安装与数据验证(根据自身需求配置)<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<h3 id="_4">毫米波雷达安装与数据验证(根据自身需求配置)<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p><strong>注意：</strong> 在目前的感知方案中，没有融合毫米波雷达数据，对于没有二次开发需求的用户可以不配置毫米波；对于有二次开发需求的用户，可按照本章节内容配置毫米波雷达
  - 毫米波雷达型号：continental AS 408-21</p>
 <ul>
@@ -337,7 +337,7 @@ bash scripts/bootstrap.sh
 <p><img alt="lidar_integration_radar_look" src="../images/lidar_integration_radar_look.jpeg" /></p>
 </li>
 </ul>
-<h4 id="_9">毫米波雷达接口及线序<a class="headerlink" href="#_9" title="Permanent link">#</a></h4>
+<h4>毫米波雷达接口及线序</h4>
 <ul>
 <li>
 <p>continental AS 408-21传感器采用12V直流供电，使用CAN通信接口。使用时，通过如下图所示的连接线缆将传感器CAN通信接口与Apollo的CAN1口连接，电源接口接入12V直流电源(车辆上提供12V电源接线盒)，注意正负极。</p>
@@ -353,7 +353,7 @@ bash scripts/bootstrap.sh
 <p><img alt="lidar_integration_radar_connection" src="../images/lidar_integration_radar_connection.jpeg" /></p>
 </li>
 </ul>
-<h4 id="_10">毫米波雷达的安装固定<a class="headerlink" href="#_10" title="Permanent link">#</a></h4>
+<h4>毫米波雷达的安装固定</h4>
 <ul>
 <li>
 <p>传感器应安装在车前方中心处，当人正向面对车辆正前方时，传感器的正面朝向人，传感器的连接口朝向人的右手边，如下图所示：</p>
@@ -364,7 +364,7 @@ bash scripts/bootstrap.sh
 <p>毫米波雷达要牢靠固定在车身上，连接到毫米波雷达的接头要牢靠接插。离地面高0.5米，不能向下倾斜，向上仰0-2度以内，高度误差±0.2米，俯仰角误差0-2度（向上仰小于2度，不能向下倾斜），翻滚角误差±2度（radar左右两侧的平齐程度），航向角误差±2度（radar是否正对前方）。</p>
 </li>
 </ul>
-<h4 id="_11">毫米波雷达的配置及启动<a class="headerlink" href="#_11" title="Permanent link">#</a></h4>
+<h4>毫米波雷达的配置及启动</h4>
 <ul>
 <li>由于只使用了前向毫米波，需要在配置文件modules/drivers/radar/contiradar/dag/conti_radar.dag中删除后向毫米波雷达（rear components）的相关配置，否则，由于后向毫米波雷达使用的can 2，而我们的socket can没有can 2将会导致canbus无法正常启动。修改后的<code>conti_radar.dag</code>文件内容如下：</li>
 </ul>
@@ -424,7 +424,7 @@ bash scripts/bootstrap.sh
 </table>
 </li>
 </ul>
-<h4 id="_12">毫米波雷达数据的验证<a class="headerlink" href="#_12" title="Permanent link">#</a></h4>
+<h4>毫米波雷达数据的验证</h4>
 <ul>
 <li>
 <p>纵向距离(<code>longitude_dist</code>)/横向距离(<code>lateral_dist</code>)的验证：该传感器默认使用<code>长距离</code>模式，检测距离为0.2~250m，在车辆正前方检测距离范围内，分别放置障碍物，查看<code>/apollo/sensor/conti_radar</code>话题中的<code>longitute_dist</code>、<code>lateral_dist</code>数据是否正常(单位m)。下图中红色部分为长距离模式下传感器检测范围，误差在+/-0.4m内为正常。</p>
@@ -440,7 +440,7 @@ bash scripts/bootstrap.sh
 </ul>
 <h3 id="next">NEXT<a class="headerlink" href="#next" title="Permanent link">#</a></h3>
 <p>现在，您已经完成激光雷达感知设备集成，接下来可以开始<a href="../Sensor_Calibration_cn/">基于激光雷达的封闭园区自动驾驶搭建--感知设备标定</a></p>
-<h3 id="_13">常见问题<a class="headerlink" href="#_13" title="Permanent link">#</a></h3>
+<h3 id="_5">常见问题<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <h5>1. 无法打开Lidar配置网页</h5>
 <p>一般情况下只要Lidar与工控机与Lidar连接的网口IP处于相同号段就可以在浏览器中打开配置网页，确认确认本地IP已经正确修改还不能打开配置页面，请确认Lidar的IP地址是否被修改，可以下载<code>wireshark</code>来查看Lidar IP</p>
               

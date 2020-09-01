@@ -160,7 +160,7 @@
 <h3 id="_2">引言<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
 <p>控制模块的目标是基于计划轨迹和当前车辆状态生成控制命令给车辆。</p>
 <h3 id="_3">背景<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
-<h4 id="_4">输入/输出<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h4>输入/输出</h4>
 <h5>输入</h5>
 <ul>
 <li>规划轨迹</li>
@@ -170,7 +170,7 @@
 </ul>
 <h5>输出</h5>
 <p>输出控制命令管理<code>canbus</code>中的转向、节流和制动等功能。</p>
-<h4 id="_5">控制器介绍<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
+<h4>控制器介绍</h4>
 <p>控制器包括管理转向指令的横向控制器和管理节气门和制动器命令的纵向控制器。</p>
 <h5>横向控制器</h5>
 <p>横向控制器是基于LQR的最优控制器。 该控制器的动力学模型是一个简单的带有侧滑的自行车模型。它被分为两类，包括闭环和开环。</p>
@@ -190,10 +190,10 @@
 <li>速度误差</li>
 <li>开环提供了一个校准表，将加速度映射到节气门/制动百分比。</li>
 </ul>
-<h3 id="_6">控制器调谐<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
-<h4 id="_7">实用工具<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
+<h3 id="_4">控制器调谐<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
+<h4>实用工具</h4>
 <p>类似于<a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/diagnostics">诊断</a> 和 <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/realtime_plot">realtime_plot</a> 可用于控制器调优，并且可以在<code>apollo/modules/tools/</code>中找到.</p>
-<h4 id="_8">横向控制器的整定<a class="headerlink" href="#_8" title="Permanent link">#</a></h4>
+<h4>横向控制器的整定</h4>
 <p>横向控制器设计用于最小调谐力。“所有”车辆的基础横向控制器调谐步骤如下：</p>
 <ol>
 <li>
@@ -240,7 +240,7 @@
 }
 </code></pre>
 
-<h4 id="_9">纵控制器的调谐<a class="headerlink" href="#_9" title="Permanent link">#</a></h4>
+<h4>纵控制器的调谐</h4>
 <p>纵向控制器由级联的PID控制器组成，该控制器包括一个站控制器和一个具有不同速度增益的高速/低速控制器。Apollo管理开环和闭环的调谐通过：</p>
 <ul>
 <li>开环: 校准表生成。请参阅<a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_update_vehicle_calibration.md">how_to_update_vehicle_calibration.md</a>的详细步骤</li>
@@ -282,7 +282,7 @@
 }
 </code></pre>
 
-<h3 id="_10">参考文献<a class="headerlink" href="#_10" title="Permanent link">#</a></h3>
+<h3 id="_5">参考文献<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <ol>
 <li>
 <p>"Vehicle dynamics and control." Rajamani, Rajesh. Springer Science &amp; Business Media, 2011.</p>

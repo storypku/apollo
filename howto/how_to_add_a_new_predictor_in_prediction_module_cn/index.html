@@ -168,7 +168,7 @@
 </ol>
 <h3 id="_3">添加新预测器的步骤<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>如下步骤将会指导您在预测器中添加一个 <code>NewPredictor</code>。</p>
-<h4 id="predictor">定义一个继承基类 <code>Predictor</code> 的类<a class="headerlink" href="#predictor" title="Permanent link">#</a></h4>
+<h4>定义一个继承基类 <code>Predictor</code> 的类</h4>
 <p>在文件夹 <code>modules/prediction/predictor/vehicle</code>中创建一个名为<code>new_predictor.h</code>的文件，文件内容如下：</p>
 <pre><code class="cpp">
 #include &quot;modules/prediction/predictor/predictor.h&quot;
@@ -186,7 +186,7 @@ class NewPredictor : public Predictor {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="implement-the-class-newpredictor">Implement the class <code>NewPredictor</code><a class="headerlink" href="#implement-the-class-newpredictor" title="Permanent link">#</a></h4>
+<h4>Implement the class <code>NewPredictor</code></h4>
 <p>在创建了 <code>new_predictor.h</code>的文件夹中创建文件 <code>new_predictor.cc</code>。 文件内容如下:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/predictor/vehicle/new_predictor.h&quot;
 
@@ -205,7 +205,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 
 </code></pre>
 
-<h4 id="prediction_confproto">在 <code>prediction_conf.proto</code>中添加一个新的预测期类型<a class="headerlink" href="#prediction_confproto" title="Permanent link">#</a></h4>
+<h4>在 <code>prediction_conf.proto</code>中添加一个新的预测期类型</h4>
 <pre><code>  enum PredictorType {
     LANE_SEQUENCE_PREDICTOR = 0;
     FREE_MOVE_PREDICTOR = 1;
@@ -215,7 +215,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
   }
 </code></pre>
 
-<h4 id="prediction_conf">更新 prediction_conf<a class="headerlink" href="#prediction_conf" title="Permanent link">#</a></h4>
+<h4>更新 prediction_conf</h4>
 <p>在 <code>modules/prediction/conf/prediction_conf.pb.txt</code>中, 更新 <code>predictor_type</code>部分如下:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -225,7 +225,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 }
 </code></pre>
 
-<h4 id="predictor-manager">更新预测器管理器（Predictor manager）<a class="headerlink" href="#predictor-manager" title="Permanent link">#</a></h4>
+<h4>更新预测器管理器（Predictor manager）</h4>
 <p>更新 <code>CreateEvluator( ... )</code> 如下:</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_PREDICTOR: {
       predictor_ptr.reset(new NewPredictor());
@@ -250,7 +250,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 </ol>
 <h3 id="_7">添加新预测器的步骤<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
 <p>如下步骤将会指导您在预测器中添加一个 <code>NewPredictor</code>。</p>
-<h4 id="predictor_1">定义一个继承自基类 <code>Predictor</code> 的类<a class="headerlink" href="#predictor_1" title="Permanent link">#</a></h4>
+<h4>定义一个继承自基类 <code>Predictor</code> 的类</h4>
 <p>在文件夹 <code>modules/prediction/predictor/vehicle</code>中创建一个名为<code>new_predictor.h</code>的文件，文件内容如下：</p>
 <pre><code class="cpp">
 #include &quot;modules/prediction/predictor/predictor.h&quot;
@@ -268,7 +268,7 @@ class NewPredictor : public Predictor {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="implement-the-class-newpredictor_1">Implement the class <code>NewPredictor</code><a class="headerlink" href="#implement-the-class-newpredictor_1" title="Permanent link">#</a></h4>
+<h4>Implement the class <code>NewPredictor</code></h4>
 <p>在创建了 <code>new_predictor.h</code>的文件夹中创建文件 <code>new_predictor.cc</code>。文件内容如下:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/predictor/vehicle/new_predictor.h&quot;
 
@@ -287,7 +287,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 
 </code></pre>
 
-<h4 id="prediction_confproto_1">在 <code>prediction_conf.proto</code>中添加一个新的预测器类型<a class="headerlink" href="#prediction_confproto_1" title="Permanent link">#</a></h4>
+<h4>在 <code>prediction_conf.proto</code>中添加一个新的预测器类型</h4>
 <pre><code>  enum PredictorType {
     LANE_SEQUENCE_PREDICTOR = 0;
     FREE_MOVE_PREDICTOR = 1;
@@ -297,7 +297,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
   }
 </code></pre>
 
-<h4 id="prediction_conf_1">更新 prediction_conf<a class="headerlink" href="#prediction_conf_1" title="Permanent link">#</a></h4>
+<h4>更新 prediction_conf</h4>
 <p>在 <code>modules/prediction/conf/prediction_conf.pb.txt</code>中，更新 <code>predictor_type</code>部分如下:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -307,7 +307,7 @@ NewPredictor::Predict(Obstacle* obstacle)() {
 }
 </code></pre>
 
-<h4 id="predictor-manager_1">更新预测器管理器（Predictor manager）<a class="headerlink" href="#predictor-manager_1" title="Permanent link">#</a></h4>
+<h4>更新预测器管理器（Predictor manager）</h4>
 <p>更新 <code>CreateEvluator( ... )</code> 如下:</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_PREDICTOR: {
       predictor_ptr.reset(new NewPredictor());

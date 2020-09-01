@@ -172,9 +172,9 @@
 根据Apollo 1.5提供的校准指南选择校准位置。
 确保GNSS处于良好状态。为了验证这一点，使用‘rostopic echo /apollo/sensor/gnss/best_pose’并检查关键词latitude_std_dev, longitude_std_dev 和height_std_dev后的数量，偏差越小，校准质量越好。 我们强烈建议在偏差小于0.02时校准传感器。</p>
 <h3 id="_4">使用校准工具<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
-<h4 id="_5">记录校准数据<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
+<h4>记录校准数据</h4>
 <p>当LIDARS和GNSS准备就绪时，使用/apollo/modules/calibration/multi_lidar_gnss/record.sh记录校准数据。请注意，此脚本仅用于记录velodyne HDL64 和VLP16。为了其他目的，需要修改这个脚本，或者只需要使用rosbag record来做同样的事情。通常，2分钟的数据长度就足够了。在数据捕获之后，运行/apollo/modules/calibration/multi_lidar_gnss/calibrate.sh校准传感器。脚本由以下两个步骤组成。</p>
-<h4 id="_6">出口数据<a class="headerlink" href="#_6" title="Permanent link">#</a></h4>
+<h4>出口数据</h4>
 <p>一旦校准包被记录，使用/apollo/modules/calibration/exporter/export_msgs --config /apollo/modules/calibration/exporter/conf/export_config.yaml获得传感器数据。exporter的唯一输入是一个YAML配置文件，如下所示。</p>
 <pre><code class="bash">bag_path: &quot;/apollo/data/bag/calibration/&quot; # The path where the calibration bag is placed.
 dump_dir: &quot;/apollo/data/bag/calibration/export/&quot; # The path where the sensor data will be placed using exporter
@@ -193,7 +193,7 @@ topics:
 </code></pre>
 
 <p>到目前为止，我们只支持ApolloOdometry和PointCloud2。</p>
-<h4 id="_7">运行校准工具<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
+<h4>运行校准工具</h4>
 <p>如果输出所有传感器数据，运行/apollo/modules/calibration/lidar_gnss_calibrator/multi_lidar_gnss_calibrator --config /apollo/modules/calibration/lidar_gnss_calibrator/conf/multi_lidar_gnss_calibrator_config.yaml将得到结果。该工具的输入是一个YAML配置文件，如下所示。</p>
 <pre><code class="bash"># multi-LiDAR-GNSS calibration configurations
 data:
@@ -258,7 +258,7 @@ calibration:
   iteration: 3 # Iteration number
 </code></pre>
 
-<h3 id="_8">结果和验证<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
+<h3 id="_5">结果和验证<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
 <p>校准工具将结果保存到结果路径中。</p>
 <pre><code class="bash">.
 └── calib_result

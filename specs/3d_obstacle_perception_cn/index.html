@@ -192,15 +192,15 @@
 <li>ROI LUT构造</li>
 <li>ROI LUT点查询</li>
 </ol>
-<h4 id="_1">坐标转换<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
+<h4>坐标转换</h4>
 <p>对于（高精地图ROI）过滤器来说，高精地图数据接口被定义为一系列多边形集合，每个集合由世界坐标系点组成有序点集。高精地图ROI点查询需要点云和多边形处在相同的坐标系，为此，Apollo将输入点云和HDMap多边形变换为来自激光雷达传感器位置的地方坐标系。</p>
-<h4 id="roi-lut">ROI LUT构造<a class="headerlink" href="#roi-lut" title="Permanent link">#</a></h4>
+<h4>ROI LUT构造</h4>
 <p>Apollo采用网格显示查找表（LUT），将ROI量化为俯视图2D网格，以此决定输入点是在ROI之内还是之外。</p>
 <p>如图1所示，该LUT覆盖了一个矩形区域，该区域位于高精地图边界上方，以普通视图周围的预定义空间范围为边界。它代表了与ROI关联网格的每个单元格（如用1/0表示在ROI的内部/外部）。 为了计算效率，Apollo使用 <strong>扫描线算法</strong>和 <strong>位图编码</strong>来构建ROI LUT。</p>
 <p><img src="images/3d_obstacle_perception/roi_lookup_table.png">
 <div align=center>图 1 ROI显示查找表（LUT）</div></p>
 <p>蓝色线条标出了高精地图ROI的边界，包含路标与路口。红色加粗点表示对应于激光雷达传感器位置的地方坐标系原始位置。2D网格由8*8个绿色正方形组成，在ROI中的单元格，为蓝色填充的正方形，而之外的是黄色填充的正方形。</p>
-<h4 id="roi-lut_1">ROI LUT点查询<a class="headerlink" href="#roi-lut_1" title="Permanent link">#</a></h4>
+<h4>ROI LUT点查询</h4>
 <p>基于ROI LUT，查询每个输入点的关系使用两步认证。对于点查询过程，Apollo数据编译输出如下，:</p>
 <ol>
 <li>检查点在ROI LUT矩形区域之内还是之外。</li>
@@ -275,7 +275,7 @@
 </tbody>
 </table>
 <p>卷积神经网络详细介绍如下：</p>
-<h4 id="_2">通道特征提取<a class="headerlink" href="#_2" title="Permanent link">#</a></h4>
+<h4>通道特征提取</h4>
 <p>给定一个点云框架，Apollo在地方坐标系中构建俯视图（即投影到X-Y平面）2D网格。 基于点的X、Y坐标，相对于LiDAR传感器原点的预定范围内，每个点被量化为2D网格的一个单元。 量化后，Apollo计算网格内每个单元格中点的8个统计测量，这将是下一步中传递给CNN的输入通道特征。 </p>
 <p>计算的8个统计测量：</p>
 <ol>
@@ -288,7 +288,7 @@
 <li>单元格中心与原点之间的距离</li>
 <li>二进制值标示单元格是空还是被占用</li>
 </ol>
-<h4 id="_3">基于卷积神经网络的障碍物预测<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
+<h4>基于卷积神经网络的障碍物预测</h4>
 <p>基于上述通道特征，Apollo使用深度完全卷积神经网络（FCNN）来预测单元格障碍物属性，包括潜在物体中心的偏移位移（称为中心偏移）、对象性
 积极性和物体高度。如图2所示，网络的输入为 <em>W</em> x <em>H</em> x <em>C</em> 通道图像，其中：</p>
 <ul>
@@ -305,7 +305,7 @@
 
 <div align=center>图 2 FCNN在单元格方向上的障碍物预测</div>
 
-<h4 id="_4">障碍物聚类<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h4>障碍物聚类</h4>
 <p>在基于CNN的预测之后，Apollo获取单个单元格的预测信息。利用四个单元对象属性图像，其中包含：</p>
 <ul>
 <li>中心偏移</li>
@@ -324,7 +324,7 @@
 <p>(b) 固体红色多边形内的单元格组成候选对象集群。</p>
 <p>由五角星填充的红色范围表示对应于连接组件子图的根节点（单元格）。 </p>
 <p>一个候选对象集群可以由其根节点彼此相邻的多个相邻连接组件组成。</p>
-<h4 id="_5">后期处理<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
+<h4>后期处理</h4>
 <p>聚类后，Apollo获得一组候选对象集，每个候选对象集包括若干单元格。 </p>
 <p>在后期处理中，Apollo首先对所涉及的单元格的积极性和物体高度值，平均计算每个候选群体的检测置信度分数和物体高度。 然后，Apollo去除相对于预测物体高度太高的点，并收集每个候选集中的有效单元格的点。 最后，Apollo删除具有非常低的可信度分数或小点数的候选聚类，以输出最终的障碍物集/分段。</p>
 <p>用户定义的参数可以在<code>modules/perception/model/cnn_segmentation/cnnseg.conf</code>的配置文件中设置。 下表说明了CNN细分的参数用法和默认值：</p>
@@ -399,7 +399,7 @@
 
 <h3 id="hm">HM对象跟踪<a class="headerlink" href="#hm" title="Permanent link">#</a></h3>
 <p>HM对象跟踪器跟踪分段检测到的障碍物。通常，它通过将当前检测与现有跟踪列表相关联，来形成和更新跟踪列表，如不再存在，则删除旧的跟踪列表，并在识别出新的检测时生成新的跟踪列表。 更新后的跟踪列表的运动状态将在关联后进行估计。 在HM对象跟踪器中，<strong>匈牙利算法</strong>(Hungarian algorithm)用于检测到跟踪关联，并采用 <strong>鲁棒卡尔曼滤波器</strong>(Robust Kalman Filter) 进行运动估计。</p>
-<h4 id="detection-to-track-association">检测跟踪关联（Detection-to-Track Association）<a class="headerlink" href="#detection-to-track-association" title="Permanent link">#</a></h4>
+<h4>检测跟踪关联（Detection-to-Track Association）</h4>
 <p>当将检测与现有跟踪列表相关联时，Apollo构建了一个二分图，然后使用 <strong>匈牙利算法</strong>以最小成本（距离）找到最佳检测跟踪匹配。</p>
 <p><strong>计算关联距离矩阵</strong></p>
 <p>首先，建立一个关联距离矩阵。根据一系列关联特征（包括运动一致性，外观一致性等）计算给定检测和一条轨迹之间的距离。HM跟踪器距离计算中使用的一些特征如下所示：</p>
@@ -440,7 +440,7 @@
 
 <div align=center>图 5 二分图匹配（Bipartite Graph Matching）</div>
 
-<h4 id="track-motion-estimation">跟踪动态预估 （Track Motion Estimation）<a class="headerlink" href="#track-motion-estimation" title="Permanent link">#</a></h4>
+<h4>跟踪动态预估 （Track Motion Estimation）</h4>
 <p>在检测到跟踪关联之后，HM对象跟踪器使用 <strong>鲁棒卡尔曼滤波器</strong>来利用恒定速度运动模型估计当前跟踪列表的运动状态。 运动状态包括锚点和速度，分别对应于3D位置及其3D速度。 为了克服由不完美的检测引起的可能的分心，在跟踪器的滤波算法中实现了鲁棒统计技术。</p>
 <p><strong>观察冗余</strong></p>
 <p>在一系列重复观测中选择速度测量，即滤波算法的输入，包括锚点移位、边界框中心偏移、边界框角点移位等。冗余观测将为滤波测量带来额外的鲁棒性， 因为所有观察失败的概率远远小于单次观察失败的概率。</p>
@@ -456,7 +456,7 @@
 <p>1）构造跟踪对象并将其转换为世界坐标。</p>
 <p>2）预测现有跟踪列表的状态，并对其匹配检测。</p>
 <p>3）在更新后的跟踪列表中更新运动状态，并收集跟踪结果。</p>
-<h3 id="_6">参考<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<h3 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
 <ul>
 <li><a href="https://zh.wikipedia.org/zh-cn/%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95">匈牙利算法</a></li>
 <li><a href="https://baike.baidu.com/item/%E5%9C%B0%E6%96%B9%E5%9D%90%E6%A0%87%E7%B3%BB/5154246">地方坐标系</a></li>

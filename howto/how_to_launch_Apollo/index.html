@@ -93,18 +93,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#build-apollo">Build Apollo</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#run-apollo">Run Apollo</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#start-apollo">Start Apollo</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#access-dreamview-web-ui">Access Dreamview Web UI</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#select-drive-mode">Select Drive Mode</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#replay-demo-record">Replay Demo Record</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#congrats">Congrats!</a>
-    </li>
-        </ul>
     </li>
     </ul>
                     </li>
@@ -202,22 +190,22 @@ any modifications to the Dreamview frontend.</p>
 <p>Once you have finished building Apollo, follow the steps below to launch it.
 Note that although <code>bootstrap.sh</code> may succeed, the Web UI won't be ready if the
 former building step was skipped.</p>
-<h4 id="start-apollo">Start Apollo<a class="headerlink" href="#start-apollo" title="Permanent link">#</a></h4>
+<h4>Start Apollo</h4>
 <p>Running <code>scripts/bootstrap.sh</code> will start Dreamview with the monitor module
 enabled.</p>
 <pre><code># Startup modules monitor and dreamview, the default option is start.
 ./scripts/bootstrap.sh [start | stop | restart]
 </code></pre>
 
-<h4 id="access-dreamview-web-ui">Access Dreamview Web UI<a class="headerlink" href="#access-dreamview-web-ui" title="Permanent link">#</a></h4>
+<h4>Access Dreamview Web UI</h4>
 <p>Open <a href="http://localhost:8888">http://localhost:8888</a> in your favorite browser,
 e.g. Chrome, and you should see this screen. However, no modules are running in
 the backend at this time.</p>
 <p><img alt="Access Dreamview" src="../images/apollo_bootstrap_screen.png" /></p>
-<h4 id="select-drive-mode">Select Drive Mode<a class="headerlink" href="#select-drive-mode" title="Permanent link">#</a></h4>
+<h4>Select Drive Mode</h4>
 <p>From the dropdown box selet "Navigation" mode.</p>
 <p><img alt="Navigation Mode" src="../images/dreamview_2_5_setup_profile.png" /></p>
-<h4 id="replay-demo-record">Replay Demo Record<a class="headerlink" href="#replay-demo-record" title="Permanent link">#</a></h4>
+<h4>Replay Demo Record</h4>
 <p>To see if the system works, use the demo 'record' to "feed" the system.</p>
 <pre><code># You need to download the demo record using the following commands
 cd docs/demo_guide/
@@ -230,7 +218,7 @@ cyber_recorder play -f docs/demo_guide/demo_3.5.record -l
 <p>Dreamview should show a running vehicle now. (The following image might be
 different due to frontend code changes.)</p>
 <p><img alt="Dreamview with Trajectory" src="../images/dv_trajectory_2.5.png" /></p>
-<h4 id="congrats">Congrats!<a class="headerlink" href="#congrats" title="Permanent link">#</a></h4>
+<h4>Congrats!</h4>
 <p>You have successfully built Apollo! Now you can revisit
 <a href="https://github.com/ApolloAuto/apollo/blob/master/README.md">Apollo Readme</a> for
 additional guidelines on the neccessary hardware setup.</p>

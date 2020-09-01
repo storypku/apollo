@@ -170,16 +170,16 @@
 场景：Sunnyvale 城市道路<br />
 天气：晴天</p>
 <h3 id="2-apollo">2. 编译apollo工程<a class="headerlink" href="#2-apollo" title="Permanent link">#</a></h3>
-<h4 id="21-docker">2.1 构建docker容器<a class="headerlink" href="#21-docker" title="Permanent link">#</a></h4>
+<h4>2.1 构建docker容器</h4>
 <p>我们提供了一个叫做<em>dev-latest</em>的docker镜像，docker容器会将你本地的apollo工程挂载到 <em>/apollo</em> 。</p>
 <pre><code>bash docker/scripts/dev_start.sh
 </code></pre>
 
-<h4 id="22-docker">2.2 进入docker容器<a class="headerlink" href="#22-docker" title="Permanent link">#</a></h4>
+<h4>2.2 进入docker容器</h4>
 <pre><code>bash docker/scripts/dev_into.sh
 </code></pre>
 
-<h4 id="23">2.3 编译工程<a class="headerlink" href="#23" title="Permanent link">#</a></h4>
+<h4>2.3 编译工程</h4>
 <pre><code># To make sure you start clean
 bash apollo.sh clean
 # Build the full system
@@ -193,7 +193,7 @@ bash apollo.sh build_opt
 <h3 id="3">3. 配置定位模块<a class="headerlink" href="#3" title="Permanent link">#</a></h3>
 <p>为了使定位模块正确运行，需要对地图路径和传感器外参进行配置。假设下载的定位数据的所在路径为DATA_PATH。</p>
 <p>在进行以下步骤前，首先确定你在docker容器中。</p>
-<h4 id="31">3.1 配置传感器外参<a class="headerlink" href="#31" title="Permanent link">#</a></h4>
+<h4>3.1 配置传感器外参</h4>
 <p>将定位数据中的传感器外参拷贝至指定文件夹下。</p>
 <pre><code>  cp -r DATA_PATH/params/* /apollo/modules/localization/msf/params/
 </code></pre>
@@ -202,7 +202,7 @@ bash apollo.sh build_opt
  - ant_imu_leverarm.yaml： 杆臂值参数，GNSS天线相对Imu的距离
  - velodyne128_novatel_extrinsics.yaml： Lidar相对Imu的外参
  - velodyne128_height.yaml： Lidar相对地面的高度</p>
-<h4 id="32">3.2 配置地图和参数路径<a class="headerlink" href="#32" title="Permanent link">#</a></h4>
+<h4>3.2 配置地图和参数路径</h4>
 <p>在/apollo/modules/localization/conf/localization.conf中配置地图和参数的路径</p>
 <pre><code># Redefine the map_dir in global_flagfile.txt
 --map_dir=DATA_PATH
@@ -234,12 +234,12 @@ cyber_recorder play -f record.*
 
 <p>从播放数据到定位模块开始输出定位消息，大约需要50s左右时间。</p>
 <h3 id="6">6. 记录并可视化定位结果（可选）<a class="headerlink" href="#6" title="Permanent link">#</a></h3>
-<h4 id="_2">记录定位结果<a class="headerlink" href="#_2" title="Permanent link">#</a></h4>
+<h4>记录定位结果</h4>
 <pre><code>python /apollo/scripts/record_bag.py --start
 </code></pre>
 
 <p>该脚本会在后台运行录包程序，并将存放路径输出到终端上。</p>
-<h4 id="_3">可视化定位结果<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
+<h4>可视化定位结果</h4>
 <p>运行可视化工具</p>
 <pre><code>cyber_launch start /apollo/modules/localization/launch/msf_visualizer.launch
 </code></pre>

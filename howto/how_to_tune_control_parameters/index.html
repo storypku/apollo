@@ -160,7 +160,7 @@
 <h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>The objective of the control module is to generate control commands to the vehicle based on planning trajectory and the current car status.</p>
 <h3 id="background">Background<a class="headerlink" href="#background" title="Permanent link">#</a></h3>
-<h4 id="input-output">Input / Output<a class="headerlink" href="#input-output" title="Permanent link">#</a></h4>
+<h4>Input / Output</h4>
 <h5>Input</h5>
 <ul>
 <li>Planning trajectory</li>
@@ -170,7 +170,7 @@
 </ul>
 <h5>Output</h5>
 <p>The output control command governs functions such as steering, throttle, and brake in the <code>canbus</code>.</p>
-<h4 id="controller-introduction">Controller Introduction<a class="headerlink" href="#controller-introduction" title="Permanent link">#</a></h4>
+<h4>Controller Introduction</h4>
 <p>The controllers include a lateral controller that manages the steering commands and a longitudinal controller that manages the throttle and brakes commands .</p>
 <h5>Lateral Controller</h5>
 <p>The lateral controller is an LQR-Based Optimal Controller. The dynamic model of this controller is a simple bicycle model with side slip. It is divided into two categories, including a closed loop and an open loop.</p>
@@ -191,9 +191,9 @@
 <li>The open loop provides a calibration table which maps acceleration onto throttle/brake percentages.</li>
 </ul>
 <h3 id="controller-tuning">Controller Tuning<a class="headerlink" href="#controller-tuning" title="Permanent link">#</a></h3>
-<h4 id="useful-tools">Useful tools<a class="headerlink" href="#useful-tools" title="Permanent link">#</a></h4>
+<h4>Useful tools</h4>
 <p>Tool like <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/diagnostics">diagnostics</a> and <a href="https://github.com/ApolloAuto/apollo/tree/master/modules/tools/realtime_plot">realtime_plot</a> are useful for controller tuning and can be found under <code>apollo/modules/tools/</code>.</p>
-<h4 id="lateral-controller-tuning">Lateral Controller Tuning<a class="headerlink" href="#lateral-controller-tuning" title="Permanent link">#</a></h4>
+<h4>Lateral Controller Tuning</h4>
 <p>The lateral controller is designed for minimal tuning effort.  The basic lateral controller tuning steps for <em>all</em> vehicles are:</p>
 <ol>
 <li>
@@ -240,7 +240,7 @@
 }
 </code></pre>
 
-<h4 id="longitudinal-controller-tuning">Longitudinal Controller Tuning<a class="headerlink" href="#longitudinal-controller-tuning" title="Permanent link">#</a></h4>
+<h4>Longitudinal Controller Tuning</h4>
 <p>The longitudinal controller is composed of Cascaded PID controllers that include one station controller and a high/low speed controller with different gains for different speeds.  Apollo manages tuning in open loop and closed loop by:</p>
 <ul>
 <li>OpenLoop: Calibration table generation. Please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/howto/how_to_update_vehicle_calibration.md">how_to_update_vehicle_calibration.md</a> for detailed steps.</li>

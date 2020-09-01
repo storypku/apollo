@@ -193,7 +193,7 @@ cc_binary(
 </code></pre>
 
 <p>We can find the mapping easily from the 2 file snippets. For example, <code>pb_talker</code> and <code>src/talker.cpp</code> in cmake <code>add_executable</code> setting map to <code>name = "talker"</code> and <code>srcs = ["talker.cc"]</code> in BUILD file <code>cc_binary</code>.</p>
-<h4 id="proto">Proto<a class="headerlink" href="#proto" title="Permanent link">#</a></h4>
+<h4>Proto</h4>
 <p>Apollo ROS has customized to support proto message formate that a separate section <code>add_proto_files</code> and projectName_proto(<code>pb_msgs_example_proto</code>) in <code>target_link_libraries</code> are required to send message in proto formate. For config proto message in Cyber RT, it's as simple as adding the target proto file path concantenated with name of <code>cc_proto_library</code> in <code>deps</code> setting. The <code>cc_proto_library</code> is set up in BUILD file under proto folder.</p>
 <pre><code class="python">cc_proto_library(
   name = &quot;examples_cc_proto&quot;,
@@ -212,7 +212,7 @@ proto_library(
 <p>The package definition has also changed in Cyber RT. In Apollo ROS a fixed package <code>package pb_msgs;</code> is used for proto files, but in Cyber RT, the proto file path <code>package apollo.cyber.examples.proto;</code> is used instead.</p>
 <h3 id="folder-structure">Folder structure<a class="headerlink" href="#folder-structure" title="Permanent link">#</a></h3>
 <p>As shown below, Cyber RT remove the src folder and pull all source code in the same folder as BUILD file. BUILD file plays the same role as CMakeLists.txt plus package.xml. Both Cyber RT and Apollo ROS talker/listener example have a proto folder for message proto files but Cyber RT requires a separate BUILD file for proto folder to set up the proto library.</p>
-<h4 id="apollo-ros">Apollo ROS<a class="headerlink" href="#apollo-ros" title="Permanent link">#</a></h4>
+<h4>Apollo ROS</h4>
 <ul>
 <li>CMakeLists.txt</li>
 <li>package.xml</li>
@@ -222,7 +222,7 @@ proto_library(
 <li>listener.cpp</li>
 <li>talker.cpp</li>
 </ul>
-<h4 id="cyber-rt">Cyber RT<a class="headerlink" href="#cyber-rt" title="Permanent link">#</a></h4>
+<h4>Cyber RT</h4>
 <ul>
 <li>BUILD</li>
 <li>listener.cc</li>
@@ -232,7 +232,7 @@ proto_library(
 <li>examples.proto (with chatter message)</li>
 </ul>
 <h3 id="update-source-code">Update source code<a class="headerlink" href="#update-source-code" title="Permanent link">#</a></h3>
-<h4 id="listener">Listener<a class="headerlink" href="#listener" title="Permanent link">#</a></h4>
+<h4>Listener</h4>
 <p>Cyber RT</p>
 <pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
 #include &quot;cyber/examples/proto/examples.pb.h&quot;
@@ -284,7 +284,7 @@ int main(int argc, char** argv) {
 <li><code>ros::spin();</code> --&gt; <code>apollo::cyber::WaitForShutdown();</code></li>
 </ul>
 <p>Note: for Cyber RT, a listener node has to use <code>node-&gt;CreateReader&lt;messageType&gt;(channelName, callback)</code> to read data from channel.</p>
-<h4 id="talker">Talker<a class="headerlink" href="#talker" title="Permanent link">#</a></h4>
+<h4>Talker</h4>
 <p>Cyber RT</p>
 <pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
 #include &quot;cyber/examples/proto/examples.pb.h&quot;

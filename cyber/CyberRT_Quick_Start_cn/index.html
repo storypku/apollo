@@ -177,7 +177,7 @@
 <li>Launch file: common.launch</li>
 </ul>
 <h3 id="_2">实现组件类<a class="headerlink" href="#_2" title="Permanent link">#</a></h3>
-<h4 id="_3">实现组件头文件<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
+<h4>实现组件头文件</h4>
 <p>如何实现<code>common_component_example.h</code>:</p>
 <ul>
 <li>继承 Component 类</li>
@@ -203,7 +203,7 @@ class CommonComponentSample : public Component&lt;Driver, Driver&gt; {
 CYBER_REGISTER_COMPONENT(CommonComponentSample)
 </code></pre>
 
-<h4 id="_4">实现组件源文件<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h4>实现组件源文件</h4>
 <p>对于源文件 <code>common_component_example.cc</code>,  <code>Init</code> 和 <code>Proc</code> 这两个函数需要实现。</p>
 <pre><code class="cpp">#include &quot;cyber/examples/common_component_example/common_component_example.h&quot;
 #include &quot;cyber/class_loader/class_loader.h&quot;
@@ -222,7 +222,7 @@ bool CommonComponentSample::Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
 }
 </code></pre>
 
-<h4 id="build">创建 BUILD 编译文件<a class="headerlink" href="#build" title="Permanent link">#</a></h4>
+<h4>创建 BUILD 编译文件</h4>
 <p>创建 bazel BUILD 文件。</p>
 <pre><code class="python">load(&quot;//tools:cpplint.bzl&quot;, &quot;cpplint&quot;)
 
@@ -252,8 +252,8 @@ cc_library(
 cpplint()
 </code></pre>
 
-<h3 id="_5">设置配置文件<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
-<h4 id="dag">配置 DAG 依赖文件<a class="headerlink" href="#dag" title="Permanent link">#</a></h4>
+<h3 id="_3">设置配置文件<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
+<h4>配置 DAG 依赖文件</h4>
 <p>在 DAG 依赖配置文件 （例如 common.dag) 中配置下面的项：</p>
 <ul>
 <li>Channel names: 输入输出数椐的 Channel 名字</li>
@@ -278,7 +278,7 @@ component_config {
 }
 </code></pre>
 
-<h4 id="launch">配置 launch 启动文件<a class="headerlink" href="#launch" title="Permanent link">#</a></h4>
+<h4>配置 launch 启动文件</h4>
 <p>在 launch 启动文件中 (common.launch), 配置下面的项：</p>
 <ul>
 <li>组件的名字</li>
@@ -294,7 +294,7 @@ component_config {
 &lt;/cyber&gt;
 </code></pre>
 
-<h3 id="_6">启动这个组件<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
+<h3 id="_4">启动这个组件<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p>通过下面的命令来编译组件：</p>
 <pre><code class="bash">bash /apollo/apollo.sh build
 </code></pre>

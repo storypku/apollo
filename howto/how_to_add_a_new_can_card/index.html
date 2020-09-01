@@ -168,7 +168,7 @@
 <li>Update the config file.</li>
 </ol>
 <p>The steps below show how you can add a new CAN card -- EXAMPLE CAN card to your stack.</p>
-<h4 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">#</a></h4>
+<h4>Step 1</h4>
 <p>Let us Implement the CanClient Class of the New CAN Card
 Use the following code to implement the specific <code>CANClient</code> class:</p>
 <pre><code class="cpp">#include &lt;string&gt;
@@ -253,7 +253,7 @@ class ExampleCanClient : public CanClient {
 }  // namespace apollo
 </code></pre>
 
-<h4 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">#</a></h4>
+<h4>Step 2</h4>
 <p>To register the New CAN Card in CanClientFactory,
 add the following code to <code>CanClientFactory</code>:</p>
 <pre><code class="cpp">void CanClientFactory::RegisterCanClients() {
@@ -266,7 +266,7 @@ add the following code to <code>CanClientFactory</code>:</p>
 }
 </code></pre>
 
-<h4 id="step-3">Step 3<a class="headerlink" href="#step-3" title="Permanent link">#</a></h4>
+<h4>Step 3</h4>
 <p>Next, you would need to update the config File
 Add the EXAMPLE_CAN into <code>/modules/drivers/canbus/proto/can_card_parameter.proto</code></p>
 <pre><code class="proto">message CANCardParameter {

@@ -173,9 +173,9 @@ $$
 </code></pre>
 
 <h3 id="2">2  目标函数<a class="headerlink" href="#2" title="Permanent link">#</a></h3>
-<h4 id="21">2.1  获取样条段<a class="headerlink" href="#21" title="Permanent link">#</a></h4>
+<h4>2.1  获取样条段</h4>
 <p>将路ST速度参数分为 <strong>n</strong> 段，每段路径用一个多项式来表示。</p>
-<h4 id="22">2.2  定义样条段函数<a class="headerlink" href="#22" title="Permanent link">#</a></h4>
+<h4>2.2  定义样条段函数</h4>
 <p>每个样条段 <strong><em>i</em></strong> 都有沿着参考线的累加距离$d_i$。每段的路径默认用5介多项式表示。多项式介数可以通过配置参数进行调整。</p>
 <pre><code>$$
 s = f_i(t) 
@@ -183,7 +183,7 @@ s = f_i(t)
 $$
 </code></pre>
 
-<h4 id="23">2.3  定义样条段优化函数<a class="headerlink" href="#23" title="Permanent link">#</a></h4>
+<h4>2.3  定义样条段优化函数</h4>
 <p>Apollo首先定义$cost_1$以使路径更加平滑：</p>
 <pre><code>$$
 cost_1 = \sum_{i=1}^{n} \Big( w_1 \cdot \int\limits_{0}^{d_i} (f_i')^2(s) ds + w_2 \cdot \int\limits_{0}^{d_i} (f_i'')^2(s) ds + w_3 \cdot \int\limits_{0}^{d_i} (f_i^{\prime\prime\prime})^2(s) ds \Big)
@@ -209,14 +209,14 @@ $$
 </code></pre>
 
 <h3 id="3">3  约束条件<a class="headerlink" href="#3" title="Permanent link">#</a></h3>
-<h4 id="31">3.1 初始点约束<a class="headerlink" href="#31" title="Permanent link">#</a></h4>
+<h4>3.1 初始点约束</h4>
 <p>假设第一个点是($t0$, $s0$)，且$s0$在路径$f_i(t)$, $f'i(t)$, 和$f_i(t)''$上（位置、速率、加速度）。Apollo将这些约束转换为QP约束的等式为：</p>
 <pre><code>$$
 A_{eq}x = b_{eq}
 $$
 </code></pre>
 
-<h4 id="32">3.2  单调约束<a class="headerlink" href="#32" title="Permanent link">#</a></h4>
+<h4>3.2  单调约束</h4>
 <p>路线必须是单调的，比如车辆只能往前开。</p>
 <p>在路径上采样 <strong>m</strong> 个点，对每一个 $j$和$j-1$ 的点对，且($j\in[1,...,m]$)，如果两个点都处在同一个样条$k$上，则：</p>
 <pre><code>$$
@@ -242,7 +242,7 @@ $$
 $$
 </code></pre>
 
-<h4 id="33">3.3  平滑节点约束<a class="headerlink" href="#33" title="Permanent link">#</a></h4>
+<h4>3.3  平滑节点约束</h4>
 <p>该约束的目的是使样条的节点更加平滑。假设两个段$seg_k$ 和$seg_{k+1}$互相连接，且$seg_k$的累计值 <strong>s</strong> 为$s_k$。计算约束的等式为：</p>
 <pre><code>$$
 f_k(t_k) = f_{k+1} (t_0)
@@ -293,7 +293,7 @@ f'''_k(t_k) = f'''_{k+1} (t_0)
 $$
 </code></pre>
 
-<h4 id="34">3.4  点采样边界约束<a class="headerlink" href="#34" title="Permanent link">#</a></h4>
+<h4>3.4  点采样边界约束</h4>
 <p>在路径上均匀的取样 <strong>m</strong> 个点，检查这些点上的障碍物边界。将这些约束转换为QP约束不等式，使用不等式：</p>
 <pre><code>$$
 Ax \leq b
@@ -337,7 +337,7 @@ $$
 $$
 </code></pre>
 
-<h4 id="35">3.5  速度边界优化<a class="headerlink" href="#35" title="Permanent link">#</a></h4>
+<h4>3.5  速度边界优化</h4>
 <p>Apollo同样需要建立速度限制边界。</p>
 <p>在st曲线上取样 <strong>m</strong> 个点，为每个点$j$获取速度限制的上边界和下边界，例如$v{ub,j}$ 和 $v{lb,j}$，约束定义为：</p>
 <pre><code>$$

@@ -166,7 +166,7 @@
   3. In <code>config.proto</code>, add the new data format for the new GPS receiver
   4. In function <code>create_parser</code> from file data_parser.cpp, add the new parser instance for the new GPS receiver</p>
 <p>Let's look at how to add the GPS Receiver using the above-mentioned steps for Receiver: <code>u-blox</code>.</p>
-<h4 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">#</a></h4>
+<h4>Step 1</h4>
 <p>Let us implement the new data parser for the new GPS receiver, by inheriting class <code>Parser</code>:</p>
 <pre><code class="cpp">class UbloxParser : public Parser {
 public:
@@ -211,7 +211,7 @@ private:
 
 </code></pre>
 
-<h4 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">#</a></h4>
+<h4>Step 2</h4>
 <p>Let us now add the new interfaces in the Parser class for the new GPS receiver:</p>
 <p>Add the function <code>create_ublox</code> in <code>Parser</code> class:</p>
 <pre><code class="cpp">class Parser {
@@ -267,7 +267,7 @@ Parser* Parser::create_ublox() {
 }
 </code></pre>
 
-<h4 id="step-3">Step 3<a class="headerlink" href="#step-3" title="Permanent link">#</a></h4>
+<h4>Step 3</h4>
 <p>In config.proto, let us add the new data format definition for the new GPS receiver:</p>
 <p>Add <code>UBLOX_TEXT</code> and <code>UBLOX_BINARY</code> in the config file: modules/drivers/gnss/proto/config.proto</p>
 <pre><code class="txt">message Stream {
@@ -286,7 +286,7 @@ Parser* Parser::create_ublox() {
 ... ...
 </code></pre>
 
-<h4 id="step-4">Step 4<a class="headerlink" href="#step-4" title="Permanent link">#</a></h4>
+<h4>Step 4</h4>
 <p>In function <code>create_parser</code> from file data_parser.cpp, let us add the new parser instance for the new GPS receiver.
 We will do so by adding code to process <code>config::Stream::UBLOX_BINARY</code> as below:</p>
 <pre><code class="cpp">Parser* create_parser(config::Stream::Format format, bool is_base_station = false) {

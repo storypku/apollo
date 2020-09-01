@@ -164,13 +164,13 @@
 </code></pre>
 
 <h3 id="cyber_visualizer">Cyber_visualizer<a class="headerlink" href="#cyber_visualizer" title="Permanent link">#</a></h3>
-<h4 id="install-and-run">Install and run<a class="headerlink" href="#install-and-run" title="Permanent link">#</a></h4>
+<h4>Install and run</h4>
 <p><code>cyber_visualizer</code> is a visualization tool for displaying the channel data in Apollo Cyber RT.</p>
 <pre><code class="bash">username@computername:~$: source /your-path-to-apollo-install-dir/cyber/setup.bash
 username@computername:~$: cyber_visualizer
 </code></pre>
 
-<h4 id="interacting-with-cyber_visualizer">Interacting with cyber_visualizer<a class="headerlink" href="#interacting-with-cyber_visualizer" title="Permanent link">#</a></h4>
+<h4>Interacting with cyber_visualizer</h4>
 <ul>
 <li>
 <p>After launching cyber_visualizer, you will see the following interface:</p>
@@ -198,13 +198,13 @@ As shown in figure below, three cameras' channel data on the button sections and
 <p>Place the mouse on the image of the camera channel, you can double-click the left button to highlight the corresponding data channel on the left menu bar. Right click on the image to bring up menu for deleting the camera channel.</p>
 <p>Play and Pause buttons: when clicking the <code>Play</code> button, all channels will be shown. While when clicking the <code>Pause</code> button, all channels will stop showing on the tool.</p>
 <h3 id="cyber_monitor">Cyber_monitor<a class="headerlink" href="#cyber_monitor" title="Permanent link">#</a></h3>
-<h4 id="install-and-run_1">Install and run<a class="headerlink" href="#install-and-run_1" title="Permanent link">#</a></h4>
+<h4>Install and run</h4>
 <p>The command line tool <code>cyber_monitor</code> provides a clear view of the list of real time channel information Apollo Cyber RT in the terminal.</p>
 <pre><code class="bash">username@computername:~$: source /your-path-to-apollo-install-dir/cyber/setup.bash
 username@computername:~$: cyber_monitor
 </code></pre>
 
-<h4 id="useful-commands">Useful commands<a class="headerlink" href="#useful-commands" title="Permanent link">#</a></h4>
+<h4>Useful commands</h4>
 <h5>Display help information</h5>
 <p>Use the -h option to get help for cyber_monitor</p>
 <pre><code class="bash">username@computername:~$: cyber_monitor -h
@@ -219,7 +219,7 @@ username@computername:~$: cyber_monitor
 <p>After launching the command line tool, you will notice it is similar to cyber_visualizer. It automatically collects the information of all the channels through the topology and displays them in two columns (channel name, channel data type).</p>
 <p>The default display for channel information is in red. However, if there is data flowing through the a channel, the corresponding line of the channel is displayed in green. As shown in the image below:</p>
 <p><img alt="monitor" src="../images/cyber_monitor.png" /></p>
-<h4 id="interacting-with-cyber_monitor">Interacting with cyber_monitor<a class="headerlink" href="#interacting-with-cyber_monitor" title="Permanent link">#</a></h4>
+<h4>Interacting with cyber_monitor</h4>
 <h5>Common commands</h5>
 <pre><code>ESC | q key ---- Exit
 Backspace ---- Back
@@ -253,7 +253,7 @@ m | M ---- Repeat one data on the domain
 
 <h3 id="cyber_recorder">Cyber_recorder<a class="headerlink" href="#cyber_recorder" title="Permanent link">#</a></h3>
 <p><code>cyber_recorder</code> is a record/playback tool provided by Apollo Cyber RT. It provides many useful functions, including recording a record file, playing back a record file, splitting a record file, checking the information of record file and etc.</p>
-<h4 id="install-and-run_2">Install and run<a class="headerlink" href="#install-and-run_2" title="Permanent link">#</a></h4>
+<h4>Install and run</h4>
 <p>Launch cyber_recorder:</p>
 <pre><code class="bash">$ source /your-path-to-apollo-install-dir/cyber/setup.bash
 $ cyber_recorder
@@ -266,7 +266,7 @@ The cyber_recorder commands are:
     recover                            Recover an exist record.
 </code></pre>
 
-<h4 id="commands-of-cyber_recorder">Commands of cyber_recorder<a class="headerlink" href="#commands-of-cyber_recorder" title="Permanent link">#</a></h4>
+<h4>Commands of cyber_recorder</h4>
 <ul>
 <li>To view the information of a record file:</li>
 </ul>
@@ -333,7 +333,7 @@ usage: cyber_recorder recover [options]
     -o, --output &lt;file&gt;                output record file
 </code></pre>
 
-<h4 id="examples-of-using-cyber_recorder">Examples of using cyber_recorder<a class="headerlink" href="#examples-of-using-cyber_recorder" title="Permanent link">#</a></h4>
+<h4>Examples of using cyber_recorder</h4>
 <h5>Check the details of a record file</h5>
 <pre><code>$ cyber_recorder info demo.record
 record_file:    demo.record
@@ -410,7 +410,7 @@ play finished. file: 20180720202307.record
 /apollo/sensor/velodyne64/compensator/PointCloud2
 </code></pre>
 
-<h4 id="install-and-run_3">Install and run<a class="headerlink" href="#install-and-run_3" title="Permanent link">#</a></h4>
+<h4>Install and run</h4>
 <p>Launch rosbag_to_record:</p>
 <pre><code class="bash">$ source /your-path-to-apollo-install-dir/cyber/setup.bash
 $ rosbag_to_record
@@ -418,7 +418,7 @@ Usage:
   rosbag_to_record input.bag output.record
 </code></pre>
 
-<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h4>
+<h4>Example</h4>
 <p>We can convert <a href="https://github.com/ApolloAuto/apollo/releases/download/v2.5.0/demo_2.5.bag">Apollo2.5 demo bag</a> to record file.</p>
 <pre><code class="bash">$ rosbag_to_record demo_2.5.bag demo.record
 record_file:    demo.record

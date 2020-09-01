@@ -183,7 +183,7 @@
 <p>更新配置文件</p>
 </li>
 </ul>
-<h4 id="_3">实现新的车辆控制器<a class="headerlink" href="#_3" title="Permanent link">#</a></h4>
+<h4>实现新的车辆控制器</h4>
 <p>新的车辆控制器是从 <code>VehicleController</code>类继承的。 下面提供了一个头文件示例。</p>
 <pre><code class="cpp">/**
  * @class NewVehicleController
@@ -223,7 +223,7 @@ class NewVehicleController final : public VehicleController {
 };
 </code></pre>
 
-<h4 id="_4">实现新的消息管理器<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h4>实现新的消息管理器</h4>
 <p>新的消息管理器是从 <code>MessageManager</code> 类继承的。 下面提供了一个头文件示例。</p>
 <pre><code class="cpp">/**
  * @class NewVehicleMessageManager
@@ -244,7 +244,7 @@ class NewVehicleMessageManager : public MessageManager {
 };
 </code></pre>
 
-<h4 id="_5">实现新的车辆工厂类<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
+<h4>实现新的车辆工厂类</h4>
 <p>新的车辆工厂是从 <code>AbstractVehicleFactory</code> 类继承的。下面提供了一个头文件示例。</p>
 <pre><code class="cpp">/**
  * @class NewVehicleFactory
@@ -285,7 +285,7 @@ std::unique_ptr&lt;MessageManager&gt; NewVehicleFactory::CreateMessageManager() 
 </code></pre>
 
 <p>Apollo提供可以用于实现新的车辆协议的基类 <code>ProtocolData</code>。</p>
-<h4 id="_6">更新配置文件<a class="headerlink" href="#_6" title="Permanent link">#</a></h4>
+<h4>更新配置文件</h4>
 <p>在<code>modules/canbus/vehicle/vehicle_factory.cc</code>里注册新的车辆。 下面提供了一个头文件示例。</p>
 <pre><code class="cpp">void VehicleFactory::RegisterVehicleFactory() {
   Register(VehicleParameter::LINCOLN_MKZ, []() -&gt; AbstractVehicleFactory* {
@@ -299,7 +299,7 @@ std::unique_ptr&lt;MessageManager&gt; NewVehicleFactory::CreateMessageManager() 
 }
 </code></pre>
 
-<h4 id="_7">更新配置文件<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
+<h4>更新配置文件</h4>
 <p>在 <code>modules/canbus/conf/canbus_conf.pb.txt</code> 中更新配置，在Apollo系统中激活车辆。</p>
 <pre><code class="config">vehicle_parameter {
   brand: NEW_VEHICLE_BRAND

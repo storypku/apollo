@@ -160,11 +160,11 @@
 <p><em><strong>Tip</strong>: 为了更好的展示本文档中的等式，我们建议使用者使用带有<a href="https://chrome.google.com/webstore/detail/tex-all-the-things/cbimabofgmfdkicghcadidpemeenbffn">插件</a>的Chrome浏览器，或者将Latex等式拷贝到<a href="http://www.hostmath.com/">在线编辑公式网站</a>进行浏览。</em></p>
 <p>二次规划（QP）+样条插值</p>
 <h3 id="1">1.  目标函数<a class="headerlink" href="#1" title="Permanent link">#</a></h3>
-<h4 id="11">1.1  获得路径长度<a class="headerlink" href="#11" title="Permanent link">#</a></h4>
+<h4>1.1  获得路径长度</h4>
 <p>路径定义在station-lateral坐标系中。<strong>s</strong>的变化区间为从车辆当前位置点到默认路径的长度。</p>
-<h4 id="12">1.2   获得样条段<a class="headerlink" href="#12" title="Permanent link">#</a></h4>
+<h4>1.2   获得样条段</h4>
 <p>将路径划分为<strong>n</strong>段，每段路径用一个多项式来表示。</p>
-<h4 id="13">1.3  定义样条段函数<a class="headerlink" href="#13" title="Permanent link">#</a></h4>
+<h4>1.3  定义样条段函数</h4>
 <p>每个样条段 <strong><em>i</em></strong> 都有沿着参考线的累加距离$d_i$。每段的路径默认用5介多项式表示。</p>
 <pre><code>$$
 l = f_i(s)
@@ -172,13 +172,13 @@ l = f_i(s)
 $$
 </code></pre>
 
-<h4 id="14">1.4  定义每个样条段优化目标函数<a class="headerlink" href="#14" title="Permanent link">#</a></h4>
+<h4>1.4  定义每个样条段优化目标函数</h4>
 <pre><code>$$
 cost = \sum_{i=1}^{n} \Big( w_1 \cdot \int\limits_{0}^{d_i} (f_i')^2(s) ds + w_2 \cdot \int\limits_{0}^{d_i} (f_i'')^2(s) ds + w_3 \cdot \int\limits_{0}^{d_i} (f_i^{\prime\prime\prime})^2(s) ds \Big)
 $$
 </code></pre>
 
-<h4 id="15-costqp">1.5  将开销（cost）函数转换为QP公式<a class="headerlink" href="#15-costqp" title="Permanent link">#</a></h4>
+<h4>1.5  将开销（cost）函数转换为QP公式</h4>
 <p>QP公式:</p>
 <pre><code>$$
 \begin{aligned}
@@ -283,7 +283,7 @@ $$
 <p>请注意我们最后得到一个6介的矩阵来表示5介样条插值的衍生开销。
 应用同样的推理方法可以得到2介，3介样条插值的衍生开销。</p>
 <h3 id="2">2  约束条件<a class="headerlink" href="#2" title="Permanent link">#</a></h3>
-<h4 id="21">2.1  初始点约束<a class="headerlink" href="#21" title="Permanent link">#</a></h4>
+<h4>2.1  初始点约束</h4>
 <p>假设第一个点为 ($s_0$, $l_0$), ($s_0$, $l'_0$) and ($s_0$, $l''_0$)，其中$l_0$ , $l'_0$ and $l''_0$表示横向的偏移，并且规划路径的起始点的第一，第二个点的衍生开销可以从$f_i(s)$, $f'_i(s)$, $f_i(s)''$计算得到。</p>
 <p>将上述约束转换为QP约束等式，使用等式：</p>
 <pre><code>$$
@@ -319,7 +319,7 @@ $$
 </code></pre>
 
 <p>其中，i是包含$s_0$的样条段的索引值。</p>
-<h4 id="22">2.2  终点约束<a class="headerlink" href="#22" title="Permanent link">#</a></h4>
+<h4>2.2  终点约束</h4>
 <p>和起始点相同，终点$(s_e, l_e)$ 也应当按照起始点的计算方法生成约束条件。</p>
 <p>将起始点和终点组合在一起，得出约束等式为：</p>
 <pre><code>$$
@@ -345,7 +345,7 @@ $$
 $$
 </code></pre>
 
-<h4 id="23">2.3  平滑节点约束<a class="headerlink" href="#23" title="Permanent link">#</a></h4>
+<h4>2.3  平滑节点约束</h4>
 <p>该约束的目的是使样条的节点更加平滑。假设两个段$seg_k$ 和$seg_{k+1}$互相连接，且$seg_k$的累计值s为$s_k$。计算约束的等式为：</p>
 <pre><code>$$
 f_k(s_k) = f_{k+1} (s_0)
@@ -396,7 +396,7 @@ f'''_k(s_k) = f'''_{k+1} (s_0)
 $$
 </code></pre>
 
-<h4 id="24">2.4  点采样边界约束<a class="headerlink" href="#24" title="Permanent link">#</a></h4>
+<h4>2.4  点采样边界约束</h4>
 <p>在路径上均匀的取样<strong>m</strong>个点，检查这些点上的障碍物边界。将这些约束转换为QP约束不等式，使用不等式：</p>
 <pre><code>$$
 Ax \geq b

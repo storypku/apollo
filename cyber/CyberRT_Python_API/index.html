@@ -170,7 +170,7 @@
 <li>Time/Duration/Rate related operations</li>
 <li>Timer</li>
 </ul>
-<h4 id="31-readwrite-of-channels">3.1 Read/Write of Channels<a class="headerlink" href="#31-readwrite-of-channels" title="Permanent link">#</a></h4>
+<h4>3.1 Read/Write of Channels</h4>
 <p>Steps shown as below:
   1. First create a Node；
   2. Create corresponding reader or writer;
@@ -223,7 +223,7 @@ class Writer(object):
         &quot;&quot;&quot;
 </code></pre>
 
-<h4 id="32-record-interfaces">3.2 Record Interfaces<a class="headerlink" href="#32-record-interfaces" title="Permanent link">#</a></h4>
+<h4>3.2 Record Interfaces</h4>
 <p>Read from record：</p>
 <ol>
 <li>Create a RecordReader;</li>
@@ -320,7 +320,7 @@ class RecordWriter(object):
 
 </code></pre>
 
-<h4 id="33-time-interfaces">3.3 Time Interfaces<a class="headerlink" href="#33-time-interfaces" title="Permanent link">#</a></h4>
+<h4>3.3 Time Interfaces</h4>
 <pre><code class="python">class Time(object):
     @staticmethod
     def now():
@@ -342,7 +342,7 @@ class RecordWriter(object):
         return _CYBER_TIME.PyTime_sleep_until(self.time, nanoseconds)
 </code></pre>
 
-<h4 id="34-timer-interfaces">3.4 Timer Interfaces<a class="headerlink" href="#34-timer-interfaces" title="Permanent link">#</a></h4>
+<h4>3.4 Timer Interfaces</h4>
 <pre><code class="python">class Timer(object):
 
     def set_option(self, period, callback, oneshot=0):
@@ -361,7 +361,7 @@ class RecordWriter(object):
 </code></pre>
 
 <h3 id="4-examples">4. Examples<a class="headerlink" href="#4-examples" title="Permanent link">#</a></h3>
-<h4 id="41-read-from-channel-in-cyberpythoncyber_py3exampleslistenerpy">4.1 Read from Channel (in cyber/python/cyber_py3/examples/listener.py)<a class="headerlink" href="#41-read-from-channel-in-cyberpythoncyber_py3exampleslistenerpy" title="Permanent link">#</a></h4>
+<h4>4.1 Read from Channel (in cyber/python/cyber_py3/examples/listener.py)</h4>
 <pre><code class="python">from cyber_py3 import cyber
 from cyber.proto.unit_test_pb2 import ChatterBenchmark
 
@@ -431,7 +431,7 @@ if __name__ == '__main__':
 
 </code></pre>
 
-<h4 id="43-read-and-write-messages-fromto-record-filein-cyberpythoncyber_py3examplesrecordpy">4.3 Read and Write Messages from/to Record File(in cyber/python/cyber_py3/examples/record.py)<a class="headerlink" href="#43-read-and-write-messages-fromto-record-filein-cyberpythoncyber_py3examplesrecordpy" title="Permanent link">#</a></h4>
+<h4>4.3 Read and Write Messages from/to Record File(in cyber/python/cyber_py3/examples/record.py)</h4>
 <pre><code class="python">&quot;&quot;&quot;
 Module for example of record.
 Run with:

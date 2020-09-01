@@ -65,22 +65,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#set-up-the-component-file-structure">Set up the component file structure</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#implement-the-component-class">Implement the component class</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#implement-component-header-file">Implement component header file</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#implement-the-source-file-for-the-example-component">Implement the source file for the example component</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#create-the-build-file-for-the-example-component">Create the build file for the example component</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#set-up-the-configuration-files">Set up the configuration files</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#configure-the-dag-dependency-file">Configure the DAG dependency file</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#configure-the-launch-file">Configure the launch file</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#launch-the-component">Launch the component</a>
     </li>
@@ -207,7 +193,7 @@
 <li>Launch file: common.launch</li>
 </ul>
 <h3 id="implement-the-component-class">Implement the component class<a class="headerlink" href="#implement-the-component-class" title="Permanent link">#</a></h3>
-<h4 id="implement-component-header-file">Implement component header file<a class="headerlink" href="#implement-component-header-file" title="Permanent link">#</a></h4>
+<h4>Implement component header file</h4>
 <p>To implement <code>common_component_example.h</code>:</p>
 <ul>
 <li>Inherit the Component class</li>
@@ -234,7 +220,7 @@ class CommonComponentSample : public Component&lt;Driver, Driver&gt; {
 CYBER_REGISTER_COMPONENT(CommonComponentSample)
 </code></pre>
 
-<h4 id="implement-the-source-file-for-the-example-component">Implement the source file for the example component<a class="headerlink" href="#implement-the-source-file-for-the-example-component" title="Permanent link">#</a></h4>
+<h4>Implement the source file for the example component</h4>
 <p>For <code>common_component_example.cc</code>, both <code>Init</code> and <code>Proc</code> functions need to be implemented.</p>
 <pre><code class="cpp">#include &quot;cyber/examples/common_component_example/common_component_example.h&quot;
 #include &quot;cyber/class_loader/class_loader.h&quot;
@@ -253,7 +239,7 @@ bool CommonComponentSample::Proc(const std::shared_ptr&lt;Driver&gt;&amp; msg0,
 }
 </code></pre>
 
-<h4 id="create-the-build-file-for-the-example-component">Create the build file for the example component<a class="headerlink" href="#create-the-build-file-for-the-example-component" title="Permanent link">#</a></h4>
+<h4>Create the build file for the example component</h4>
 <p>Create bazel BUILD file.</p>
 <pre><code class="python">load(&quot;//tools:cpplint.bzl&quot;, &quot;cpplint&quot;)
 
@@ -284,7 +270,7 @@ cpplint()
 </code></pre>
 
 <h3 id="set-up-the-configuration-files">Set up the configuration files<a class="headerlink" href="#set-up-the-configuration-files" title="Permanent link">#</a></h3>
-<h4 id="configure-the-dag-dependency-file">Configure the DAG dependency file<a class="headerlink" href="#configure-the-dag-dependency-file" title="Permanent link">#</a></h4>
+<h4>Configure the DAG dependency file</h4>
 <p>To configure the DAG dependency file (common.dag), specify the following items as below:</p>
 <ul>
 <li>Channel names: for data input and output</li>
@@ -309,7 +295,7 @@ component_config {
 }
 </code></pre>
 
-<h4 id="configure-the-launch-file">Configure the launch file<a class="headerlink" href="#configure-the-launch-file" title="Permanent link">#</a></h4>
+<h4>Configure the launch file</h4>
 <p>To configure the launch (common.launch) file, specify the following items:</p>
 <ul>
 <li>The name of the component</li>

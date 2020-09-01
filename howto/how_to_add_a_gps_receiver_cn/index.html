@@ -166,7 +166,7 @@
   3. 在文件<code>config.proto</code>中, 为新GPS接收器添加新数据格式
   4. 在函数<code>create_parser</code>（见文件data_parser.cpp）, 为新GPS接收器添加新解析器实例</p>
 <p>下面让我们用上面的方法来添加u-blox GPS接收器。</p>
-<h4 id="1">步骤 1<a class="headerlink" href="#1" title="Permanent link">#</a></h4>
+<h4>步骤 1</h4>
 <p>通过继承类“Parser”，为新GPS接收器实现新的数据解析器:</p>
 <pre><code class="cpp">class UbloxParser : public Parser {
 public:
@@ -211,7 +211,7 @@ private:
 
 </code></pre>
 
-<h4 id="2">步骤 2<a class="headerlink" href="#2" title="Permanent link">#</a></h4>
+<h4>步骤 2</h4>
 <p>在Parser类中，为新GPS接收器添加新的接口:</p>
 <p>在Parser类中添加函数‘create_ublox‘:</p>
 <pre><code class="cpp">class Parser {
@@ -267,7 +267,7 @@ Parser* Parser::create_ublox() {
 }
 </code></pre>
 
-<h4 id="3">步骤 3<a class="headerlink" href="#3" title="Permanent link">#</a></h4>
+<h4>步骤 3</h4>
 <p>在config.proto文件中, 为新的GPS接收器添加新的数据格式定义:</p>
 <p>在配置文件（modules/drivers/gnss/proto/config.proto）中添加<code>UBLOX_TEXT</code> and <code>UBLOX_BINARY</code> </p>
 <pre><code class="txt">message Stream {
@@ -286,7 +286,7 @@ Parser* Parser::create_ublox() {
 ... ...
 </code></pre>
 
-<h4 id="4">步骤 4<a class="headerlink" href="#4" title="Permanent link">#</a></h4>
+<h4>步骤 4</h4>
 <p>在函数<code>create_parser</code>（见data_parser.cpp）, 为新GPS接收器添加新解析器实例.
 我们将通过添加处理<code>config::Stream::UBLOX_BINARY</code>的代码实现上面的步骤，具体如下。</p>
 <pre><code class="cpp">Parser* create_parser(config::Stream::Format format, bool is_base_station = false) {

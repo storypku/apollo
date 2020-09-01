@@ -172,7 +172,7 @@
 <li>HM ObjectTracker</li>
 <li>Sequential TypeFusion</li>
 </ul>
-<h4 id="hdmap-region-of-interest-roi-filter">HDMap Region of Interest (ROI) Filter<a class="headerlink" href="#hdmap-region-of-interest-roi-filter" title="Permanent link">#</a></h4>
+<h4>HDMap Region of Interest (ROI) Filter</h4>
 <p>The Region of Interest (ROI) specifies the drivable area that includes road surfaces and junctions that are retrieved from the HD (high-resolution) map. The HDMap ROI filter processes LiDAR points that are outside the ROI, removing background objects, e.g., buildings and trees around the road. What remains is the point cloud in the ROI for subsequent processing.</p>
 <p>Given an HDMap, the affiliation of each LiDAR point indicates whether it is inside or outside the ROI. Each LiDAR point can be queried with a lookup table (LUT) of 2D quantization of the region around the car. The
 input and output of the HDMap ROI filter module are summarized in the table below.</p>
@@ -266,7 +266,7 @@ input and output of the HDMap ROI filter module are summarized in the table belo
 </tr>
 </tbody>
 </table>
-<h4 id="convolutional-neural-networks-cnn-segmentation">Convolutional Neural Networks (CNN) Segmentation<a class="headerlink" href="#convolutional-neural-networks-cnn-segmentation" title="Permanent link">#</a></h4>
+<h4>Convolutional Neural Networks (CNN) Segmentation</h4>
 <p>After identifying the surrounding environment using the HDMap ROI filter, Apollo obtains the filtered point cloud that includes <em>only</em> the points inside the ROI (i.e., the drivable road and junction areas). Most of the background obstacles, such as buildings and trees around the road region, have been removed, and the point cloud inside the ROI is fed into the segmentation module. This process detects and segments out foreground obstacles, e.g., cars, trucks, bicycles, and pedestrians.</p>
 <table>
 <thead>
@@ -486,7 +486,7 @@ feature image to the spatial resolution of the input 2D grid, which can recover 
 </tbody>
 </table>
 <p><strong>Note: the provided model is a sample for experiment purpose only.</strong></p>
-<h4 id="minbox-builder">MinBox Builder<a class="headerlink" href="#minbox-builder" title="Permanent link">#</a></h4>
+<h4>MinBox Builder</h4>
 <p>The object builder component establishes a bounding box for the detected obstacles. Due to occlusions or the distance to the LiDAR sensor, the point cloud forming an obstacle can be sparse and cover only a portion of the surfaces. Thus, the box builder works to recover the full bounding box given the polygon point. The main purpose of the bounding box is to estimate the heading of the obstacle (e.g., vehicle) even if the point cloud is sparse. Equally, the bounding box is used to visualize the obstacles.</p>
 <p>The idea behind the algorithm is to find the all areas given an edge of the polygon point. In the following example, if AB is the edge, Apollo projects other polygon points onto AB and establishes the pair of
 intersections that has the maximum distance. That’s one of the edges belonging to the bounding box. Then it is straightforward to obtain the other edge of the bounding box. By iterating all edges in the polygon, as shown in Figure 4, Apollo determines a 6-edge bounding box. Apollo then selects the solution that has the minimum area as the final bounding box.</p>
@@ -494,7 +494,7 @@ intersections that has the maximum distance. That’s one of the edges belonging
 
 <div align=center>Figure 4 Illustration of MinBox Object Builder</div>
 
-<h4 id="hm-object-tracker">HM Object Tracker<a class="headerlink" href="#hm-object-tracker" title="Permanent link">#</a></h4>
+<h4>HM Object Tracker</h4>
 <p>The HM object tracker is designed to track obstacles detected by the segmentation step. In general, it forms and updates track lists by associating current detections with existing track lists, deletes the old track lists if they no longer persist, and spawns new track lists if new detections are identified. The motion state of the updated track lists are estimated after association. In the HM object tracker, the Hungarian algorithm is used for detection-to-track association, and a Robust Kalman Filter is adopted for motion estimation.</p>
 <h5>Detection-to-Track Association</h5>
 <p>When associating detection to existing track lists, Apollo constructs a bipartite graph and then uses the Hungarian algorithm to find the best detection-to-track matching with minimum cost (distance).</p>
@@ -554,7 +554,7 @@ intersections that has the maximum distance. That’s one of the edges belonging
 <p>1)  Construct the tracked objects and transform them into world coordinates.</p>
 <p>2)  Predict the states of existing track lists and match detections to them.</p>
 <p>3)  Update the motion state of updated track lists and collect the tracking results.</p>
-<h4 id="sequential-type-fusion">Sequential Type Fusion<a class="headerlink" href="#sequential-type-fusion" title="Permanent link">#</a></h4>
+<h4>Sequential Type Fusion</h4>
 <p>To smooth the obstacle type and reduce the type switch over the entire trajectory, Apollo utilizes a sequential type fusion algorithm based on a linear-chain Conditional Random Field (CRF), which can be formulated as follows:</p>
 <p><img alt="CRF_eq1" src="../images/3d_obstacle_perception/CRF_eq1.png" /></p>
 <p><img alt="CRF_eq2" src="../images/3d_obstacle_perception/CRF_eq2.png" /></p>
@@ -570,11 +570,11 @@ intersections that has the maximum distance. That’s one of the edges belonging
 <h3 id="obstacle-results-fusion">Obstacle Results Fusion<a class="headerlink" href="#obstacle-results-fusion" title="Permanent link">#</a></h3>
 <p>The sensor fusion module is designed to fuse LiDAR tracking results and radar detection results.  Apollo first matches the sensor results with the fusion items by tracking their IDs. Then it computes the association matrix for unmatched sensor results and unmatched fusion items to get an optimal matching result.</p>
 <p>For the matched sensor result, update the corresponding fusion item using the Adaptive Kalman Filter. For the unmatched sensor result, create a new fusion item. Remove any stale unmatched fusion items.</p>
-<h4 id="fusion-items-management">Fusion Items Management<a class="headerlink" href="#fusion-items-management" title="Permanent link">#</a></h4>
+<h4>Fusion Items Management</h4>
 <p>Apollo has the concept of publish-sensor. The given radar results are cached.  The given LiDAR results trigger the fusion action. The frequency of sensor fusion output is the same as the frequency of publish sensor. Apollo's publish-sensor is LiDAR. The sensor results feed the fusion pipeline sorted by the sensor time stamp. Apollo keeps all sensor results. The object survival time is set for different sensor objects in Apollo. An object is kept alive if at least one sensor result survives. The Apollo perception module provides fusion results of LiDAR and radar in the short-range area around the car and radar-only results for the long distance.</p>
-<h4 id="sensor-results-to-fusion-lists-association">Sensor Results to Fusion Lists Association<a class="headerlink" href="#sensor-results-to-fusion-lists-association" title="Permanent link">#</a></h4>
+<h4>Sensor Results to Fusion Lists Association</h4>
 <p>When associating sensor results to the fusion lists, Apollo first matches the identical track ID  of the same sensor, then constructs a bipartite graph and uses the Hungarian algorithm to find the best result-to-fusion matching of the unmatched sensor results and fusion lists, via minimizing the distance cost. The Hungarian algorithm is the same algorithm that the HM Object Tracker uses. The distance cost is computed by the Euclidean distance of the anchor points of the sensor result and fusion item.</p>
-<h4 id="motion-fusion">Motion Fusion<a class="headerlink" href="#motion-fusion" title="Permanent link">#</a></h4>
+<h4>Motion Fusion</h4>
 <p>Apollo uses the Adaptive Kalman filter to estimate the motion of a current item with a constant acceleration motion model. The motion state includes its belief anchor point, belief velocity and belief acceleration, which correspond to the 3D position, its 3D velocity and acceleration respectively. Apollo uses only position and velocity from sensor results. In motion fusion, Apollo caches the state of all sensor results and computes the acceleration via the Kalman Filter.  Apollo provides uncertainty of position and velocity in LiDAR tracker and radar detector data. Apollo feeds all the states and uncertainties to the Adaptive Kalman Filter and obtains the fused results. Apollo uses a breakdown threshold in the filtering process to neutralize the over-estimation of update gain.</p>
               
             </div>

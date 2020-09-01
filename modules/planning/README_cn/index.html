@@ -162,16 +162,16 @@
 <p>在这个方法中，每个驾驶用例都被当作不同的驾驶场景。这样做非常有用，因为与先前的版本相比，现在在特定场景中报告的问题可以在不影响其他场景的工作的情况下得到修复，其中问题修复影响其他驾驶用例，因为它们都被当作单个驾驶场景处理。</p>
 <h3 id="_3">驾驶场景<a class="headerlink" href="#_3" title="Permanent link">#</a></h3>
 <p>Apollo3.5主要聚焦在三个主要驾驶场景，即：</p>
-<h4 id="-">车道保持 - 默认<a class="headerlink" href="#-" title="Permanent link">#</a></h4>
+<h4>车道保持 - 默认</h4>
 <p>如下图所示，车道保持场景（我们的默认驾驶场景）包括但不限于在单车道（如巡航）或换道行驶，遵循基本的交通约定或基本转弯。</p>
 <p><img alt="" src="../images/planning_default.png" /></p>
-<h4 id="side-pass">Side Pass<a class="headerlink" href="#side-pass" title="Permanent link">#</a></h4>
+<h4>Side Pass</h4>
 <p>在这种情况下，如果在自动驾驶车辆（ADC）的车道上有静态车辆或静态障碍物，并且车辆不能在不接触障碍物的情况下安全地通过车道，则执行以下策略：
 - 检查邻近车道是否接近通行
 - 如果无车辆，进行绕行，绕过当前车道进入邻道
 - 一旦障碍物安全通过，回到原车道上</p>
 <p><img alt="" src="../images/sidepass.png" /></p>
-<h4 id="_4">停止标识<a class="headerlink" href="#_4" title="Permanent link">#</a></h4>
+<h4>停止标识</h4>
 <p>停止标识有两种分离的驾驶场景：
 1、未保护：在这种情况下，汽车预计会通过具有双向停车位的十字路口。因此，我们的ADC必须爬过并测量十字路口的交通密度，然后才能继续走上它的道路。</p>
 <p><img alt="" src="../images/unprotected1.png" /></p>

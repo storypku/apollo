@@ -170,7 +170,7 @@ areas: city roads in Sunnyvale<br />
 weather: sunny day</p>
 <h3 id="2-configuring-parameters">2. Configuring Parameters<a class="headerlink" href="#2-configuring-parameters" title="Permanent link">#</a></h3>
 <p>Assume that the path to download localization data from is DATA_PATH.</p>
-<h4 id="21-configure-sensor-extrinsics">2.1. Configure Sensor Extrinsics<a class="headerlink" href="#21-configure-sensor-extrinsics" title="Permanent link">#</a></h4>
+<h4>2.1. Configure Sensor Extrinsics</h4>
 <p>NDT localization module use the same params path as msf localization module.</p>
 <pre><code>cp DATA_PATH/params/ant_imu_leverarm.yaml /apollo/modules/localization/msf/params/gnss_params/
 cp DATA_PATH/params/velodyne64_novatel_extrinsics_example.yaml /apollo/modules/localization/msf/params/velodyne_params/
@@ -186,14 +186,14 @@ cp DATA_PATH/params/velodyne64_height.yaml /apollo/modules/localization/msf/para
  - <strong>ant_imu_leverarm.yaml</strong>:  Lever arm value
  - <strong>velodyne64_novatel_extrinsics_example.yaml</strong>: Transform from IMU coord to LiDAR coord
  - <strong>velodyne64_height.yaml</strong>: Height of the LiDAR relative to the ground</p>
-<h4 id="22-configure-map-path">2.2. Configure Map Path<a class="headerlink" href="#22-configure-map-path" title="Permanent link">#</a></h4>
+<h4>2.2. Configure Map Path</h4>
 <p>Add config of map path in /apollo/modules/localization/conf/localization.conf</p>
 <pre><code># Redefine the map_dir in global_flagfile.txt
 --map_dir=DATA_PATH
 </code></pre>
 
 <p>This will overwrite the default config defined in global_flagfile.txt</p>
-<h4 id="23-configure-topic-name">2.3 Configure Topic Name<a class="headerlink" href="#23-configure-topic-name" title="Permanent link">#</a></h4>
+<h4>2.3 Configure Topic Name</h4>
 <p>For different LIDAR sensor, Apollo may has different LIDAR topic name. So set the right lidar topic name in <code>/apollo/modules/localization/conf/localization.conf</code> to overwrite the default value.</p>
 <pre><code># The pointcloud topic name.
 --lidar_topic=/apollo/sensor/velodyne64/compensator/PointCloud2
@@ -229,11 +229,11 @@ cyber_recorder play -f *.record
 
 <p>It will display a topic list in which you can see topic <code>/apollo/localization/pose</code></p>
 <h3 id="5-record-and-visualize-localization-result-optional">5. Record and Visualize localization result (optional)<a class="headerlink" href="#5-record-and-visualize-localization-result-optional" title="Permanent link">#</a></h3>
-<h4 id="record-localization-result">Record localization result<a class="headerlink" href="#record-localization-result" title="Permanent link">#</a></h4>
+<h4>Record localization result</h4>
 <pre><code>python ./scripts/record_bag.py
 </code></pre>
 
-<h4 id="visualize-localization-result">Visualize Localization result<a class="headerlink" href="#visualize-localization-result" title="Permanent link">#</a></h4>
+<h4>Visualize Localization result</h4>
 <p>NDT localization module use the same visualization tools as MSF localization module.</p>
 <pre><code>./scripts/localization_online_visualizer.sh
 </code></pre>

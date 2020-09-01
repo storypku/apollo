@@ -162,7 +162,7 @@
 
 <p>## Frontend</p>
 <p>In DreamView, a data collection monitor is presented for monitoring the data calibration process. In vehicle calibration mode, collected data frames are visualized in the data calibration monitor. Data frames are categorized into different driving conditions according to their chassis information. The amount of collected data frames are indicated as progress bars.</p>
-<h4 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h4>
+<h4>Setup</h4>
 <p>In the on-vehicle DreamView environment,</p>
 <ol>
 <li>Choose <code>vehicle calibration</code> in <code>--setup mode--</code>,</li>
@@ -170,7 +170,7 @@
 </ol>
 <p><img alt="" src="../images/calibration_table.png" /></p>
 <p>The data collection monitor is displayed in DreamView.</p>
-<h4 id="data-collection">Data collection<a class="headerlink" href="#data-collection" title="Permanent link">#</a></h4>
+<h4>Data collection</h4>
 <p>When driving, data frames are automatically processed by reading their chassis messages. When a data frame satisfy the speed criterion (speed equal or larger than 0.2 mps), the data frame is categorized by its steering, speed and throttle/brake information. The data collection process is presented by bars in data collection monitor.</p>
 <p>There are 21 bars in total in data collection monitor. The overall process is indicated by the top bar. The rest 20 bars indicate 20 driving conditions, including</p>
 <ul>
@@ -217,14 +217,14 @@
 <p>For each bar, there is a blue ribbon indicating collected data frames. When the blue ribbon fills the whole bar, the number of collected frames reaches the target number. There is also a number at right end of each bar indicating the completion percentage.</p>
 <p>For calibration table data collection, when the first 13 bars (total progress bar and 12 brake/throttle condition bars) reaches 100% the data collection process is considered as completed. For dynamic model data collection, the data collection process is completed when all bars reaches 100%.</p>
 <p>All data are saved in <code>nvme drive</code> or <code>data/record/</code></p>
-<h4 id="vehicle-configuration">Vehicle Configuration<a class="headerlink" href="#vehicle-configuration" title="Permanent link">#</a></h4>
+<h4>Vehicle Configuration</h4>
 <p>The brake and throttle specs are different between vehicle models. Therefore, the criteria for brake pulsing/tap and hash/under throttle depend on vehicle models. The default setting is based on Lincoln MKZ model. For different vehicle model, these parameters is configurable at</p>
 <pre><code>/apollo/modules/dreamview/conf/mkz7_data_collection_table.pb.txt
 </code></pre>
 
 <p>(description)</p>
 <h3 id="data-uploaddownload">Data Upload/Download<a class="headerlink" href="#data-uploaddownload" title="Permanent link">#</a></h3>
-<h4 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h4>
+<h4>Prerequisites</h4>
 <p>Firstly, please make sure you have already finished setting up the <strong>Apollo Fuel Proxy</strong> following documents available at:</p>
 <p>https://github.com/ApolloAuto/apollo/blob/master/modules/tools/fuel_proxy/README.md</p>
 <p>This is <strong>essential</strong> before you can get enjoy control calibration or other Apollo Fuel-based cloud service.</p>
@@ -242,7 +242,7 @@
 <li>The vehicle configuration file (vehicle_param.pb.txt) is updated since Apollo 5.0 and later, you should check it</li>
 <li>One task folder can contain more than one vehicle folder, you can  train more vehicles in one training job</li>
 </ol>
-<h4 id="upload">Upload<a class="headerlink" href="#upload" title="Permanent link">#</a></h4>
+<h4>Upload</h4>
 <p>Use <a href="https://cloud.baidu.com/doc/BOS/BOSCLI/8.5CBOS.20FS.html">bosfs</a> to mount
 your bucket to local, for example,</p>
 <pre><code>BUCKET=&lt;bucket&gt;
@@ -258,7 +258,7 @@ bosfs &quot;${BUCKET}&quot; &quot;${MOUNT}&quot; -o allow_other,logfile=/tmp/bos
 </code></pre>
 
 <p>Then you can copy the prepared data folder to somewhere under /mnt/bos.</p>
-<h4 id="download">Download<a class="headerlink" href="#download" title="Permanent link">#</a></h4>
+<h4>Download</h4>
 <p>No download needed, the results will be sent to your email associated with your BOS bucket.</p>
 <h3 id="result-visualization">Result Visualization<a class="headerlink" href="#result-visualization" title="Permanent link">#</a></h3>
 <p>The docker environment does not support Matplotlib. Thus, result are visualized outside of the docker environment. The following two figures show the visualization result of PC training results.</p>

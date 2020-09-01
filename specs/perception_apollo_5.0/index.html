@@ -174,7 +174,7 @@ June 27, 2019</p>
 <p>The flow chart of Apollo 5.0 Perception module:</p>
 <p><img alt="Image" src="../images/Apollo3.5_perception_detail.png" /></p>
 <p>To learn more about individual sub-modules, please visit <a href="../perception_apollo_3.0/">Perception - Apollo 3.0</a></p>
-<h4 id="supports-paddlepaddle">Supports PaddlePaddle<a class="headerlink" href="#supports-paddlepaddle" title="Permanent link">#</a></h4>
+<h4>Supports PaddlePaddle</h4>
 <p>The Apollo platform's perception module actively depended on Caffe for its modelling, but will now support PaddlePaddle, an open source platform developed by Baidu to support its various deep learning projects.
 Some features include:
 - <strong>PCNNSeg</strong>: Object detection from 128-channel lidar or a fusion of three 16-channel lidars using PaddlePaddle
@@ -189,13 +189,13 @@ Some features include:
 <p>To use the PaddlePaddle model for LiDAR Obstacle Detector, set <code>use_paddle</code> to <code>true</code> in the following <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/perception/production/data/perception/lidar/models/cnnseg/velodyne128/cnnseg.conf">configuration file</a></p>
 </li>
 </ol>
-<h4 id="online-sensor-calibration-service">Online sensor calibration service<a class="headerlink" href="#online-sensor-calibration-service" title="Permanent link">#</a></h4>
+<h4>Online sensor calibration service</h4>
 <p>Apollo currently offers a robust calibration service to support your calibration requirements from LiDARs to IMU to Cameras. This service is currently being offered to select partners only. If you would like to learn more about the calibration service, please reach out to us via email: <strong>apollopartner@baidu.com</strong></p>
-<h4 id="manual-camera-calibration">Manual Camera Calibration<a class="headerlink" href="#manual-camera-calibration" title="Permanent link">#</a></h4>
+<h4>Manual Camera Calibration</h4>
 <p>In Apollo 5.0, Perception launched a manual camera calibration tool for camera extrinsic parameters. This tool is simple, reliable and user-friendly. It comes equipped with a visualizer and the calibration can be performed using your keyboard. It helps to estimate the camera's orientation (pitch, yaw, roll). It provides a vanishing point, horizon, and top down view as guidelines. Users would need to change the 3 angles to align a horizon and make the lane lines parallel.</p>
 <p>The process of manual calibration can be seen below:</p>
 <p><img alt="" src="../images/Manual_calib.png" /></p>
-<h4 id="closest-in-path-object-cipo-detection">Closest In-Path Object (CIPO) Detection<a class="headerlink" href="#closest-in-path-object-cipo-detection" title="Permanent link">#</a></h4>
+<h4>Closest In-Path Object (CIPO) Detection</h4>
 <p>The CIPO includes detection of key objects on the road for longitudinal control. It utilizes the object and ego-lane line detection output. It creates a virtual ego lane line using the vehicle's ego motion prediction. Any vehicle model including Sphere model, Bicycle model and 4-wheel tire model can be used for the ego motion prediction. Based on the vehicle model using the translation of velocity and angular velocity, the length and curvature of the pseudo lanes are determined.
 Some examples of CIPO using Pseudo lane lines can be seen below:</p>
 <ol>
@@ -208,7 +208,7 @@ Some examples of CIPO using Pseudo lane lines can be seen below:</p>
 <img alt="" src="../images/CIPO_2.png" /></p>
 </li>
 </ol>
-<h4 id="vanishing-point-detection">Vanishing Point Detection<a class="headerlink" href="#vanishing-point-detection" title="Permanent link">#</a></h4>
+<h4>Vanishing Point Detection</h4>
 <p>In Apollo 5.0, an additional branch of network is attached to the end of the lane encoder to detect the vanishing point. This branch is composed of convolutional layers and fully connected layers, where convolutional layers translate lane features for the vanishing point task and fully connected layers make a global summary of the whole image to output the vanishing point location. Instead of giving an output in <code>x</code>, <code>y</code> coordinate directly, the output of vanishing point is in the form of <code>dx</code>, <code>dy</code> which indicate its distances to the image center in <code>x</code>, <code>y</code> coordinates. The new branch of network is trained separately by using pre-trained lane features directly, where the model weights with respect to the lane line network is fixed. The Flow Diagram is included below, note that the red color denotes the flow of the vanishing point detection algorithm.</p>
 <p><img alt="" src="../images/Vpt.png" /></p>
 <p>Two challenging visual examples of our vanishing point detection with lane network output are shown below:

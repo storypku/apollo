@@ -163,16 +163,16 @@
 3. provides debugging tools, such as PnC Monitor to efficiently track module issues.</p>
 <h3 id="layout-and-features">Layout and Features<a class="headerlink" href="#layout-and-features" title="Permanent link">#</a></h3>
 <p>The application layout is divided into several regions: header, sidebar, main view, and tool view.</p>
-<h4 id="header">Header<a class="headerlink" href="#header" title="Permanent link">#</a></h4>
+<h4>Header</h4>
 <p>The Header has 3 drop-downs that can be set as shown:
 <img alt="" src="../images/dreamview_usage_table/header.png" /></p>
 <p>The Co-Driver switch is used to detect disengagement event automatically. Once detected, Dreamview will display a pop-up of the data recorder window for the co-driver to enter a new drive event.</p>
 <p>Depending on the mode chosen from the mode selector, the corresponding modules and commands, defined in <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/dreamview/conf/hmi.conf">hmi.conf</a>, will be presented in the <strong>Module Controller</strong>, and <strong>Quick Start</strong>, respectively.</p>
 <p>Note: navigation mode is for the purpose of the low-cost feature introduced in Apollo 2.5. Under this mode, Baidu (or Google) Map presents the absolute position of the ego-vehicle, while the main view has all objects and map elements presented in relative positions to the ego-vehicle.</p>
-<h4 id="sidebar-and-tool-view">Sidebar and Tool View<a class="headerlink" href="#sidebar-and-tool-view" title="Permanent link">#</a></h4>
+<h4>Sidebar and Tool View</h4>
 <p><img alt="" src="../images/dreamview_usage_table/sidebar.png" />
 Sidebar panel controls what is displayed in the tool view described below:</p>
-<h4 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">#</a></h4>
+<h4>Tasks</h4>
 <p>All the tasks that you could perform in DreamView:
 <img alt="" src="../images/dreamview_usage_table/tasks.png" /></p>
 <ul>
@@ -184,27 +184,27 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 * <strong>Others</strong>: switches and buttons for tools used frequently
 * <strong>Module Delay</strong>: the time delay between two messages for each topic
 * <strong>Console</strong>: monitor messages from the Apollo platform</p>
-<h4 id="module-controller">Module Controller<a class="headerlink" href="#module-controller" title="Permanent link">#</a></h4>
+<h4>Module Controller</h4>
 <p>A panel to view the hardware status and turn the modules on/off
 <img alt="" src="../images/dreamview_usage_table/module_controller.png" /></p>
 </li>
 </ul>
-<h4 id="layer-menu">Layer Menu<a class="headerlink" href="#layer-menu" title="Permanent link">#</a></h4>
+<h4>Layer Menu</h4>
 <p>A toggle menu for visual elements displays.
 <img alt="" src="../images/dreamview_usage_table/layer_menu.png" /></p>
-<h4 id="route-editing">Route Editing<a class="headerlink" href="#route-editing" title="Permanent link">#</a></h4>
+<h4>Route Editing</h4>
 <p>A visual tool to plan a route before sending the routing request to the Routing module
 <img alt="" src="../images/dreamview_usage_table/route_editing.png" /></p>
-<h4 id="data-recorder">Data Recorder<a class="headerlink" href="#data-recorder" title="Permanent link">#</a></h4>
+<h4>Data Recorder</h4>
 <p>A panel to report issues to drive event topic ("/apollo/drive_event") to rosbag.
 <img alt="" src="../images/dreamview_usage_table/data_recorder.png" /></p>
-<h4 id="default-routing">Default Routing<a class="headerlink" href="#default-routing" title="Permanent link">#</a></h4>
+<h4>Default Routing</h4>
 <p>List of predefined routes or single points, known as point of interest (POI).</p>
 <p><img alt="" src="../images/dreamview_usage_table/default_routing.png" /></p>
 <p>If route editing is on, routing point(s) can be added visually on the map.</p>
 <p>If route editing is off, clicking a desired POI will send a routing request to the server. If the selected POI contains only a point, the start point of the routing request is the current position of the autonomous car; otherwise, the start position is the first point from the desired route.</p>
 <p>To edit POIs, see <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/map/data/demo/default_end_way_point.txt">default_end_way_point.txt</a> file under the directory of the Map. For example, if the map selected from the map selector is "Demo", then <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/map/data/demo/default_end_way_point.txt">default_end_way_point.txt</a> is located under <code>modules/map/data/demo</code>.</p>
-<h4 id="main-view">Main view:<a class="headerlink" href="#main-view" title="Permanent link">#</a></h4>
+<h4>Main view:</h4>
 <p>Main view animated 3D computer graphics in a web browser.</p>
 <p><img alt="" src="../images/dreamview_usage_table/mainview.png" /></p>
 <p>Elements in the main view are listed in the table below:</p>
@@ -497,7 +497,7 @@ Sidebar panel controls what is displayed in the tool view described below:</p>
 2. Turn on the "PNC Monitor" from the 'Others' panel.
 3. On the right-hand side, you should be able to view the Planning, Control, Latency graphs as seen below
 <img alt="" src="../images/Dreamview_landing.png" /></p>
-<h4 id="planningcontrol-graphs">Planning/Control Graphs<a class="headerlink" href="#planningcontrol-graphs" title="Permanent link">#</a></h4>
+<h4>Planning/Control Graphs</h4>
 <p>The Planning/Control tab from the monitor plots various graphs to reflect the internal states of its modules.</p>
 <h5>Customizable Graphs for Planning Module</h5>
 <p><a href="https://github.com/ApolloAuto/apollo2/blob/master/modules/planning/proto/planning_internal.proto#L180">planning_internal.proto</a> is a protobuf that stores debugging information, which is processed by dreamview server and send to dreamview client to help engineers debug. For users who want to plot their own graphs for new planning algorithms:
@@ -581,7 +581,7 @@ Refer to https://www.chartjs.org/docs/latest/charts/line.html for more propertie
 </table>
 <p>If you have more than four paths to render or want to change the styles, edit the planning.pathProperties value in <a href="https://github.com/ApolloAuto/apollo/blob/master/modules/dreamview/frontend/dist/parameters.json">dreamview/frtonend/dist/parameters.json</a>
 .</p>
-<h4 id="latency-graph">Latency graph<a class="headerlink" href="#latency-graph" title="Permanent link">#</a></h4>
+<h4>Latency graph</h4>
 <p>The graph displays the difference in time when the module receives sensor input data to when it will publish this data.
 <img alt="" src="../images/Dreamview_landing2.png" /></p>
 <p>The Latency Graph can be used to track the latency each individual faces. The graphs are coloured differently to help distinguish the modules and a key is included for better understanding. The graph is plotted as Latency measured in ms vs Timestamp measure in seconds as seen in the image below.

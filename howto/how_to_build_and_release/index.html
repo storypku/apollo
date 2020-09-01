@@ -168,16 +168,16 @@
 <h3 id="install-docker">Install Docker<a class="headerlink" href="#install-docker" title="Permanent link">#</a></h3>
 <p>Please follow the <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md#Set-up-the-Docker-environment">Apollo Software Installation Guide</a>.</p>
 <h3 id="build-apollo">Build Apollo<a class="headerlink" href="#build-apollo" title="Permanent link">#</a></h3>
-<h4 id="start-container">Start container<a class="headerlink" href="#start-container" title="Permanent link">#</a></h4>
+<h4>Start container</h4>
 <p>We provide a build image named <em>dev-latest</em>. The Container will mount your local apollo repo to <em>/apollo</em>.</p>
 <pre><code class="bash">bash docker/scripts/dev_start.sh
 </code></pre>
 
-<h4 id="get-into-the-container">Get into the container<a class="headerlink" href="#get-into-the-container" title="Permanent link">#</a></h4>
+<h4>Get into the container</h4>
 <pre><code class="bash">bash docker/scripts/dev_into.sh
 </code></pre>
 
-<h4 id="build-modules">Build modules<a class="headerlink" href="#build-modules" title="Permanent link">#</a></h4>
+<h4>Build modules</h4>
 <pre><code class="bash">bash apollo.sh build
 </code></pre>
 
@@ -195,31 +195,31 @@
 <li>If you do have a vehicle setup, please continue back to our <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/quickstart/apollo_software_installation_guide.md">Software Installation guide</a></li>
 </ol>
 <h3 id="build-in-visual-studio-code">Build in Visual Studio Code<a class="headerlink" href="#build-in-visual-studio-code" title="Permanent link">#</a></h3>
-<h4 id="install-vscode">Install VSCode<a class="headerlink" href="#install-vscode" title="Permanent link">#</a></h4>
+<h4>Install VSCode</h4>
 <p>The easiest way to install for Debian/Ubuntu based distributions is to download from  https://code.visualstudio.com and install the .deb package (64-bit) either through the graphical software center if it's available or through the command line with:</p>
 <pre><code class="bash">sudo dpkg -i &lt;file&gt;.deb
 sudo apt-get install -f # Install dependencies
 </code></pre>
 
-<h4 id="start-vscode">Start VSCode<a class="headerlink" href="#start-vscode" title="Permanent link">#</a></h4>
+<h4>Start VSCode</h4>
 <p>Start VSCode with the following command:</p>
 <pre><code class="bash">code
 </code></pre>
 
-<h4 id="open-the-apollo-project-in-vscode">Open the Apollo project in VSCode<a class="headerlink" href="#open-the-apollo-project-in-vscode" title="Permanent link">#</a></h4>
+<h4>Open the Apollo project in VSCode</h4>
 <p>Use the keyboard shortcut <strong>(Ctrl+K Ctrl+O)</strong> to open the Apollo project.</p>
-<h4 id="build-the-apollo-project-in-vscode">Build the Apollo project in VSCode<a class="headerlink" href="#build-the-apollo-project-in-vscode" title="Permanent link">#</a></h4>
+<h4>Build the Apollo project in VSCode</h4>
 <p>Use the keyboard shortcut <strong>(Ctrl+Shift+B)</strong> to build the Apollo project.</p>
-<h4 id="run-all-unit-tests-for-the-apollo-project-in-vscode">Run all unit tests for the Apollo project in VSCode<a class="headerlink" href="#run-all-unit-tests-for-the-apollo-project-in-vscode" title="Permanent link">#</a></h4>
+<h4>Run all unit tests for the Apollo project in VSCode</h4>
 <p>Select the "Tasks-&gt;Run Tasks..." menu command and click "run all unit tests for the apollo project" from a popup menu to check the code style for the Apollo project.</p>
 <p>If you are currently developing on 16.04, you will get a build error.
 As seen in the image below, 2 perception tests. To avoid this build error, refer to the <a href="../how_to_run_apollo_2.5_with_ubuntu16/">how to build Apollo using Ubuntu 16</a>.</p>
 <p><img alt="Build error" src="../images/build_fail.png" /></p>
-<h4 id="run-a-code-style-check-task-for-the-apollo-project-in-vscode">Run a code style check task for the Apollo project in VSCode<a class="headerlink" href="#run-a-code-style-check-task-for-the-apollo-project-in-vscode" title="Permanent link">#</a></h4>
+<h4>Run a code style check task for the Apollo project in VSCode</h4>
 <p>Select the "Tasks-&gt;Run Tasks..." menu command and click "code style check for the apollo project" from a popup menu to check the code style for the Apollo project.</p>
-<h4 id="clean-the-apollo-project-in-vscode">Clean the Apollo project in VSCode<a class="headerlink" href="#clean-the-apollo-project-in-vscode" title="Permanent link">#</a></h4>
+<h4>Clean the Apollo project in VSCode</h4>
 <p>Select the "Tasks-&gt;Run Tasks..." menu command and click "clean the apollo project" from a popup menu to clean the Apollo project.</p>
-<h4 id="change-the-building-option">Change the building option<a class="headerlink" href="#change-the-building-option" title="Permanent link">#</a></h4>
+<h4>Change the building option</h4>
 <p>You can change the "build" option to another one such as "build_gpu" (refer to the "apollo.sh" file for details) in ".vscode/tasks.json"</p>
 <h3 id="test"><span id="test">Test</span><a class="headerlink" href="#test" title="Permanent link">#</a></h3>
 <pre><code class="bash">bash docker/scripts/release_start.sh [release tag]

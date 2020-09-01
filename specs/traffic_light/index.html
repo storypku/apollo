@@ -206,7 +206,7 @@
   - Revise — Correct the color based on the time sequence</p>
 <h3 id="pre-process">Pre-process<a class="headerlink" href="#pre-process" title="Permanent link">#</a></h3>
 <p>There is no need to detect lights in every frame of an image. The status of a traffic light changes in low frequency and the computing resources are limited. Normally, images from different cameras would arrive almost simultaneously, and only one is fed to the Process part of the Pipeline. Therefore, the selection and the matching of images are necessary.</p>
-<h4 id="inputoutput">Input/Output<a class="headerlink" href="#inputoutput" title="Permanent link">#</a></h4>
+<h4>Input/Output</h4>
 <p>This section describes the input and the output of the Pre-process module. The input is obtained by subscribing to topic names from Apollo or directly reading them from locally stored files, and the output is fed to the successive Process module.</p>
 <h5>Input</h5>
 <ul>
@@ -235,7 +235,7 @@
 <li>Image from the selected camera</li>
 <li>Traffic light bounding box projected from world coordinates to image coordinates</li>
 </ul>
-<h4 id="camera-selection">Camera Selection<a class="headerlink" href="#camera-selection" title="Permanent link">#</a></h4>
+<h4>Camera Selection</h4>
 <p>The traffic light is represented by a unique ID and four points on its boundary, each of which is described as a 3D point in the world coordinate system.</p>
 <p>The following example shows a typical entry for traffic light <code>signal info</code>. The four boundary points can be obtained by querying the HD Map, given the car's location.</p>
 <pre><code class="protobuf">signal info:
@@ -261,7 +261,7 @@ struct ImageLights {
   ... other ...
 };</code>
 Thus far, all the information that we need includes the localization, the calibration results, and the HD Map. The selection can be performed at any time as the projection is independent of the image content. The task of performing the selection when images arrive is just for simplicity. Moreover, image selection does not need to be performed upon the arrival of every image, and a time interval for the selection is set.</p>
-<h4 id="image-sync">Image Sync<a class="headerlink" href="#image-sync" title="Permanent link">#</a></h4>
+<h4>Image Sync</h4>
 <p>Images arrive with a timestamp and a camera ID. The pairing of a timestamp and a camera ID is used to find the appropriate cached information. If the image can find a cached record with same camera ID and a small difference between timestamps, the image can be published to the Process module. All inappropriate images are abandoned.</p>
 <h3 id="process">Process<a class="headerlink" href="#process" title="Permanent link">#</a></h3>
 <p>The Process module is divided into three steps, with each step focusing on one task:</p>
@@ -270,7 +270,7 @@ Thus far, all the information that we need includes the localization, the calibr
 <li>Recognizer— Classifies the bounding box's color.</li>
 <li>Reviser — Correct color using sequential information.</li>
 </ul>
-<h4 id="inputoutput_1">Input/Output<a class="headerlink" href="#inputoutput_1" title="Permanent link">#</a></h4>
+<h4>Input/Output</h4>
 <p>This section describes the data input and output of the Process. The input is obtained from the Pre-process module and the output is published as a traffic light topic.</p>
 <h5>Input</h5>
 <ul>
@@ -281,16 +281,16 @@ Thus far, all the information that we need includes the localization, the calibr
 <ul>
 <li>A set of bounding boxes with color labels.</li>
 </ul>
-<h4 id="rectifier">Rectifier<a class="headerlink" href="#rectifier" title="Permanent link">#</a></h4>
+<h4>Rectifier</h4>
 <p>The projected position, which is affected by the calibration, localization, and the HD-Map label, is <strong><em>not completely reliable</em></strong>. A larger region of interest (ROI), calculated using the projected light's position, is used to find the accurate boundingbox for the traffic light.</p>
 <p>In the photo below, the blue rectangle indicates the projected light bounding box, which has a large offset to the actual light. The big, yellow rectangle is the ROI.</p>
 <p><img alt="example" src="../images/traffic_light/example.jpg" /></p>
 <p>The traffic light detection is implemented as a regular convolutional neural network (CNN) detection task. It receives an image with an ROI as input, and serial bounding boxes as output. There might be more lights in the ROI than those in input.</p>
 <p>Apollo needs to select the proper lights according to the detection score, and the input lights' position and shape. If the CNN network cannot find any lights in the ROI, the status from the input lights is marked as unknown and the two remaining steps (Recognizer and Reviser) are skipped.</p>
-<h4 id="recognizer">Recognizer<a class="headerlink" href="#recognizer" title="Permanent link">#</a></h4>
+<h4>Recognizer</h4>
 <p>The traffic light recognition is implemented as a typical CNN classification task. The network receives an image with a ROI and a list of bounding boxes as input. The output of network is a <code>$4\times n$ vector</code>, representing four probabilities for each box to be black, red, yellow, and green.</p>
 <p>The class with maximum probability will be regarded as the light's status, if and only if the probability is large enough. Otherwise, the light's status will be set to black, which means that the status is not certain.</p>
-<h4 id="reviser">Reviser<a class="headerlink" href="#reviser" title="Permanent link">#</a></h4>
+<h4>Reviser</h4>
 <p>Because a traffic light can be flashing or shaded, and the Recognizer is <strong><em>not</em></strong> perfect, the current status may fail to represent the real status. A Reviser that could correct the status is necessary.</p>
 <p>If the Reviser receives a definitive status such as red or green, the Reviser saves and outputs the status directly. If the received status is black or unknown, the Reviser looks up the saved map. When the status of this light is certain for a period of time, the Reviser outputs this saved status. Otherwise, the status of black or unknown is sent as output.</p>
 <p>Because of the time sequence, yellow only exists <strong><em>after</em></strong> green and <strong><em>before</em></strong> red. Any yellow <strong><em>after red</em></strong> is reset to red for the sake of safety until green displays.</p>

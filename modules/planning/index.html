@@ -80,16 +80,6 @@
     <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#driving-scenarios">Driving Scenarios</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#lane-follow-default">Lane Follow - Default</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#intersection">Intersection</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#park">Park</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#park-and-go">Park-and-go</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#emergency">Emergency</a>
     </li>
@@ -196,7 +186,7 @@ use cases as they were all treated as a single driving scenario.</p>
 introduced 2 new planning scenarios.</p>
 <h3 id="driving-scenarios">Driving Scenarios<a class="headerlink" href="#driving-scenarios" title="Permanent link">#</a></h3>
 <p>There are 5 main driving scenarios that we will focus on Lane Follow, Intersection, Pull-Over, and the newly introduced Park-and-go and Emergency. Let's dive into them individually:</p>
-<h4 id="lane-follow-default">Lane Follow - Default<a class="headerlink" href="#lane-follow-default" title="Permanent link">#</a></h4>
+<h4>Lane Follow - Default</h4>
 <p>As seen in the figure below, the lane-follow scenario, our default driving scenario, includes but is not limited to driving in a single lane (like cruising) or changing lane, following basic traffic convention or basic turning.</p>
 <p><img alt="" src="images/planning_default.png" /></p>
 <blockquote>
@@ -205,7 +195,7 @@ introduced 2 new planning scenarios.</p>
 <p>While the functionality of side pass still exists, it has now been made universal rather than limiting it to a type of scenario. The side-pass feature is incorporated as part of the path-bounds decider task. You can choose to turn it on or off by properly configuring the path-lane-borrow decider task. For example, if you want the vehicle to be agile, then turn side-pass on for all scenarios; if you feel it not safe to side-pass in intersections, then turn it off for those related scenarios.</p>
 </blockquote>
 </blockquote>
-<h4 id="intersection">Intersection<a class="headerlink" href="#intersection" title="Permanent link">#</a></h4>
+<h4>Intersection</h4>
 <p>The new intersection scenario includes STOP Signs, Traffic Lights and Bare Intersections which do not have either a light or a sign.</p>
 <h5>STOP Sign</h5>
 <p>There are two separate driving scenarios for STOP signs:</p>
@@ -278,7 +268,7 @@ introduced 2 new planning scenarios.</p>
 <p><strong>Move</strong>: Safely move through the intersection</p>
 </li>
 </ul>
-<h4 id="park">Park<a class="headerlink" href="#park" title="Permanent link">#</a></h4>
+<h4>Park</h4>
 <p>The Apollo team is proud to introduce Open Space Planner, a new planning algorithm that can be used for several use cases especially the parking scenario. To learn more about Open Space Planner, please refer to <a href="https://github.com/ApolloAuto/apollo/blob/master/docs/specs/Open_Space_Planner.md">Open Space Planner Algorithm</a></p>
 <h5>Valet</h5>
 <p>The Valet scenario was designed to safely park your ego car in a targeted parking spot. There are 2 main stages that are performed in order to park your ego car:</p>
@@ -310,7 +300,7 @@ introduced 2 new planning scenarios.</p>
 </ol>
 <p>There is a special case in the Pull Over scenario that does not need the Open Space Planner stage. This case occurs when there are no obstacles blocking the curb-side parking of the ego car. An example can be seen below. In such a case, the car simply approaches the parking spot and then enters the spot using standard planning.</p>
 <p><img alt="" src="images/pull_over3.png" /></p>
-<h4 id="park-and-go">Park-and-go<a class="headerlink" href="#park-and-go" title="Permanent link">#</a></h4>
+<h4>Park-and-go</h4>
 <p>Apollo 5.5 which focuses on curb-to-curb driving introduces the Park-and-go scenario which was designed to handle curb side parking, planning a new trajectory to the next destination and then driving along that trajectory. This scenario is extremely useful in situations like curb-side delivery or passenger pickup or drop-off. This scenario combines Open Space Planner along with other traditional trajectory planners to ensure that the car not only parks safely but is also able to exit per the new trajectory.</p>
 <p><img alt="" src="images/park_and_go.png" /></p>
 <h3 id="emergency">Emergency<a class="headerlink" href="#emergency" title="Permanent link">#</a></h3>

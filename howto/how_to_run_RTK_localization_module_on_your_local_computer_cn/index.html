@@ -165,16 +165,16 @@
 <li>从<a href="http://data.apollo.auto/?name=sensor%20data&amp;data_key=multisensor&amp;data_type=1&amp;locale=en-us&amp;lang=en">Apollo数据平台</a>下载多传感器融合定位demo数据包（仅限美国地区），使用其中<em>apollo3.5</em>文件夹下的数据。</li>
 </ul>
 <h3 id="2-apollo">2. 编译apollo工程<a class="headerlink" href="#2-apollo" title="Permanent link">#</a></h3>
-<h4 id="21-docker">2.1 构建docker容器<a class="headerlink" href="#21-docker" title="Permanent link">#</a></h4>
+<h4>2.1 构建docker容器</h4>
 <p>我们提供了一个叫做<em>dev-latest</em>的docker镜像，docker容器会将你本地的apollo工程挂载到 <em>/apollo</em> 。</p>
 <pre><code>bash docker/scripts/dev_start.sh
 </code></pre>
 
-<h4 id="22-docker">2.2 进入docker容器<a class="headerlink" href="#22-docker" title="Permanent link">#</a></h4>
+<h4>2.2 进入docker容器</h4>
 <pre><code>bash docker/scripts/dev_into.sh
 </code></pre>
 
-<h4 id="23">2.3 编译工程<a class="headerlink" href="#23" title="Permanent link">#</a></h4>
+<h4>2.3 编译工程</h4>
 <pre><code># To make sure you start clean
 bash apollo.sh clean
 # Build the full system
@@ -204,7 +204,7 @@ cyber_recorder play -f record.*
 </code></pre>
 
 <h3 id="6">6. 可视化定位结果（可选）<a class="headerlink" href="#6" title="Permanent link">#</a></h3>
-<h4 id="_1">可视化定位结果<a class="headerlink" href="#_1" title="Permanent link">#</a></h4>
+<h4>可视化定位结果</h4>
 <p>运行可视化工具</p>
 <pre><code>cyber_launch start /apollo/modules/localization/launch/msf_visualizer.launch
 </code></pre>

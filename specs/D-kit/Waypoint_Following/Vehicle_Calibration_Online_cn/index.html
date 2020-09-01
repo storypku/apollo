@@ -379,7 +379,7 @@ scenario {
 }
 </code></pre>
 <h3 id="_6">标定数据采集<a class="headerlink" href="#_6" title="Permanent link">#</a></h3>
-<h4 id="_7">准备<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
+<h4>准备</h4>
 <p>完成配置文件修改后，将车辆移动至适合标定的场地后，启动apollo，并执行以下命令：</p>
 <pre><code>    bash apollo.sh build_opt
     bash scripts/bootstrap.sh 
@@ -390,7 +390,7 @@ scenario {
 <p>2、在<code>Others</code>按钮区，选择<code>Data Collection Monitor</code>（数据采集监视器），选择<code>Go Straight</code>按钮。
 如下图所示，为标定数据才采集面板。</p>
 <p><img alt="vehicle_calibration_online_dreamview1" src="../images/vehicle_calibration_online_dreamview1.png" /></p>
-<h4 id="_8">开始采集<a class="headerlink" href="#_8" title="Permanent link">#</a></h4>
+<h4>开始采集</h4>
 <p>准备所需channel：
 <strong>车辆标定数据采集开始前，一定要检查标定需要的channel数据是否正常，否则会造成采集的标定数据缺少信息而造成后续生成标定表失败</strong>。需要采集包含车辆底盘、定位信息的数据作为输入，所需要的channel如下表所示：</p>
 <table>
@@ -431,8 +431,8 @@ scenario {
 <p>这时，我们使用遥控器遥控车辆，根据右侧数据采集监视器，采集相应标定条件的车辆数据，直到采集监视器内各标定条件进度条（<strong>蓝色</strong>）全部集满后，点击关闭<code>Recorder</code>开关，关闭数据记录，结束车辆标定数据采集。</p>
 <p><img alt="vehicle_calibration_online_mainboard2" src="../images/vehicle_calibration_online_mainboard2.png" /></p>
 <p>所有采集的标定数据都保存在<code>apollo/data/bag/</code>目录下，找到以<code>年-月-日-时-分-秒</code>命名的文件夹，根据时间找到属于车辆标定采集的数据。我们可以分批采集数据，即每一次可以采集一部分数据，这样数据会记录在不同的<code>年-月-日-时-分-秒</code>文件夹，（<strong>注意</strong>：默认情况下，数据采集后会在<code>apollo/data/bag/</code>文件夹下生成2个<code>年月日时分秒相似</code>的文件夹，分别以<code>年-月-日-时-分-秒</code>和<code>年-月-日-时-分-秒_s</code>命名，开发者可以不用理会<code>_s</code>后缀的文件夹，只需要使用<code>年-月-日-时-分-秒</code>文件夹内录制的标定数据即可）也可以一次全部采集，这样所有的数据都记录在同一个文件夹内，通常完成上述标定条件的车辆标定数据采集需要20分钟左右。</p>
-<h3 id="_9">标定任务提交<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
-<h4 id="_10">文件夹结构要求<a class="headerlink" href="#_10" title="Permanent link">#</a></h4>
+<h3 id="_7">标定任务提交<a class="headerlink" href="#_7" title="Permanent link">#</a></h3>
+<h4>文件夹结构要求</h4>
 <h5>1. 准备百度云对象存储BOS服务</h5>
 <p>在使用云标定服务前，需要准备<a href="https://cloud.baidu.com/product/bos.html">百度云对象存储BOS服务</a>用于存放标定预处理后的数据。</p>
 <p><strong>注意:</strong> 必须使用开通过权限的 bucket，确认<code>Bucket名称</code>、<code>所属地域</code>和提交商务注册时的<code>Bucket名称</code>和<code>所属区域</code>保持一致。</p>
@@ -485,7 +485,7 @@ calibration {
   command: -58.89473684210526
 }
 </code></pre>
-<h3 id="_11">结果显示<a class="headerlink" href="#_11" title="Permanent link">#</a></h3>
+<h3 id="_8">结果显示<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
 <p>标定表和结果，以邮件的形式，发送至与BOS存储绑定的电子邮箱中。</p>
 <ul>
 <li>油门踏板标定结果</li>
@@ -498,7 +498,7 @@ calibration {
 <h3 id="next">NEXT<a class="headerlink" href="#next" title="Permanent link">#</a></h3>
 <p>车辆云标定能够提供精度较高的车辆踏板标定表，对于自动驾驶的控制精度有显著提升。当然，使用<code>D-KIT</code>文件夹内默认的标定表数据，也可以进行循迹等自动驾驶控制。</p>
 <p>现在，您已经完成车辆动力学标定，接下来可以开始<a href="../Start_Waypoint_Following_cn/">车辆循迹演示</a></p>
-<h3 id="_12">常见问题<a class="headerlink" href="#_12" title="Permanent link">#</a></h3>
+<h3 id="_9">常见问题<a class="headerlink" href="#_9" title="Permanent link">#</a></h3>
 <h5>1. 提交后，显示<code>UNAUTHORIZED</code>,如下图所示</h5>
 <p><img alt="vehicle_calibration_unauthorized" src="../images/vehicle_calibration_unauthorized.png" /></p>
 <p>出现该问题，一般是<code>Partner ID</code>输入有误。</p>
