@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Migration guide from Apollo ROS - Apollo Docs</title>
+  <title>Migration Guide - Apollo Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Migration guide from Apollo ROS";
+    var mkdocs_page_name = "Migration Guide";
     var mkdocs_page_input_path = "cyber/CyberRT_Migration_Guide.md";
     var mkdocs_page_url = null;
   </script>
@@ -53,14 +53,74 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Get Started</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Quick Start</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../quickstart/">Apollo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CyberRT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../CyberRT_Quick_Start/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../CyberRT_Quick_Start_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Cyber RT</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Terms/">Terms</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Python Support</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Python API</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../CyberRT_Python_API/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../CyberRT_Python_API_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Docker/">MultiArch Support</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Developer_Tools/">Developer Tools</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Migration Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#build-system">Build system</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#proto">Proto</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#folder-structure">Folder structure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#apollo-ros">Apollo ROS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cyber-rt">Cyber RT</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#update-source-code">Update source code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listener">Listener</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#talker">Talker</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tools-mapping">Tools mapping</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ros-bag-data-migration">ROS bag data migration</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_API_for_Developers/">API Reference</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
@@ -93,11 +153,13 @@
                 </ul>
                 <p class="caption"><span class="caption-text">FAQs</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">General</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
                     </li>
@@ -107,13 +169,21 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Software</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
@@ -141,11 +211,15 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Cyber RT &raquo;</li>
+        
+      
     
-    <li>Migration guide from Apollo ROS</li>
+    <li>Migration Guide</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_Migration_Guide.md"
+        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/cyber/CyberRT_Migration_Guide.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -193,7 +267,7 @@ cc_binary(
 </code></pre>
 
 <p>We can find the mapping easily from the 2 file snippets. For example, <code>pb_talker</code> and <code>src/talker.cpp</code> in cmake <code>add_executable</code> setting map to <code>name = "talker"</code> and <code>srcs = ["talker.cc"]</code> in BUILD file <code>cc_binary</code>.</p>
-<h4>Proto</h4>
+<h4 id="proto">Proto<a class="headerlink" href="#proto" title="Permanent link">#</a></h4>
 <p>Apollo ROS has customized to support proto message formate that a separate section <code>add_proto_files</code> and projectName_proto(<code>pb_msgs_example_proto</code>) in <code>target_link_libraries</code> are required to send message in proto formate. For config proto message in Cyber RT, it's as simple as adding the target proto file path concantenated with name of <code>cc_proto_library</code> in <code>deps</code> setting. The <code>cc_proto_library</code> is set up in BUILD file under proto folder.</p>
 <pre><code class="python">cc_proto_library(
   name = &quot;examples_cc_proto&quot;,
@@ -212,7 +286,7 @@ proto_library(
 <p>The package definition has also changed in Cyber RT. In Apollo ROS a fixed package <code>package pb_msgs;</code> is used for proto files, but in Cyber RT, the proto file path <code>package apollo.cyber.examples.proto;</code> is used instead.</p>
 <h3 id="folder-structure">Folder structure<a class="headerlink" href="#folder-structure" title="Permanent link">#</a></h3>
 <p>As shown below, Cyber RT remove the src folder and pull all source code in the same folder as BUILD file. BUILD file plays the same role as CMakeLists.txt plus package.xml. Both Cyber RT and Apollo ROS talker/listener example have a proto folder for message proto files but Cyber RT requires a separate BUILD file for proto folder to set up the proto library.</p>
-<h4>Apollo ROS</h4>
+<h4 id="apollo-ros">Apollo ROS<a class="headerlink" href="#apollo-ros" title="Permanent link">#</a></h4>
 <ul>
 <li>CMakeLists.txt</li>
 <li>package.xml</li>
@@ -222,7 +296,7 @@ proto_library(
 <li>listener.cpp</li>
 <li>talker.cpp</li>
 </ul>
-<h4>Cyber RT</h4>
+<h4 id="cyber-rt">Cyber RT<a class="headerlink" href="#cyber-rt" title="Permanent link">#</a></h4>
 <ul>
 <li>BUILD</li>
 <li>listener.cc</li>
@@ -232,7 +306,7 @@ proto_library(
 <li>examples.proto (with chatter message)</li>
 </ul>
 <h3 id="update-source-code">Update source code<a class="headerlink" href="#update-source-code" title="Permanent link">#</a></h3>
-<h4>Listener</h4>
+<h4 id="listener">Listener<a class="headerlink" href="#listener" title="Permanent link">#</a></h4>
 <p>Cyber RT</p>
 <pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
 #include &quot;cyber/examples/proto/examples.pb.h&quot;
@@ -284,7 +358,7 @@ int main(int argc, char** argv) {
 <li><code>ros::spin();</code> --&gt; <code>apollo::cyber::WaitForShutdown();</code></li>
 </ul>
 <p>Note: for Cyber RT, a listener node has to use <code>node-&gt;CreateReader&lt;messageType&gt;(channelName, callback)</code> to read data from channel.</p>
-<h4>Talker</h4>
+<h4 id="talker">Talker<a class="headerlink" href="#talker" title="Permanent link">#</a></h4>
 <p>Cyber RT</p>
 <pre><code class="cpp">#include &quot;cyber/cyber.h&quot;
 #include &quot;cyber/examples/proto/examples.pb.h&quot;
@@ -387,6 +461,15 @@ int main(int argc, char** argv) {
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../CyberRT_API_for_Developers/" class="btn btn-neutral float-right" title="API Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../CyberRT_Developer_Tools/" class="btn btn-neutral" title="Developer Tools"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -408,9 +491,13 @@ int main(int argc, char** argv) {
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+        <span><a href="../CyberRT_Developer_Tools/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../CyberRT_API_for_Developers/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

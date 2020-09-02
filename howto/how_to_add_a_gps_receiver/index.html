@@ -53,14 +53,46 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Get Started</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Quick Start</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../quickstart/">Apollo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CyberRT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Cyber RT</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Terms/">Terms</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Python Support</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Python API</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Python_API/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Python_API_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Docker/">MultiArch Support</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Developer_Tools/">Developer Tools</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Migration_Guide/">Migration Guide</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_API_for_Developers/">API Reference</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
@@ -93,11 +125,13 @@
                 </ul>
                 <p class="caption"><span class="caption-text">FAQs</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">General</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
                     </li>
@@ -107,13 +141,21 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Software</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
@@ -145,7 +187,7 @@
     <li>How to add a new GPS Receiver</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_gps_receiver.md"
+        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/howto/how_to_add_a_gps_receiver.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -166,7 +208,7 @@
   3. In <code>config.proto</code>, add the new data format for the new GPS receiver
   4. In function <code>create_parser</code> from file data_parser.cpp, add the new parser instance for the new GPS receiver</p>
 <p>Let's look at how to add the GPS Receiver using the above-mentioned steps for Receiver: <code>u-blox</code>.</p>
-<h4>Step 1</h4>
+<h4 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">#</a></h4>
 <p>Let us implement the new data parser for the new GPS receiver, by inheriting class <code>Parser</code>:</p>
 <pre><code class="cpp">class UbloxParser : public Parser {
 public:
@@ -211,7 +253,7 @@ private:
 
 </code></pre>
 
-<h4>Step 2</h4>
+<h4 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">#</a></h4>
 <p>Let us now add the new interfaces in the Parser class for the new GPS receiver:</p>
 <p>Add the function <code>create_ublox</code> in <code>Parser</code> class:</p>
 <pre><code class="cpp">class Parser {
@@ -267,7 +309,7 @@ Parser* Parser::create_ublox() {
 }
 </code></pre>
 
-<h4>Step 3</h4>
+<h4 id="step-3">Step 3<a class="headerlink" href="#step-3" title="Permanent link">#</a></h4>
 <p>In config.proto, let us add the new data format definition for the new GPS receiver:</p>
 <p>Add <code>UBLOX_TEXT</code> and <code>UBLOX_BINARY</code> in the config file: modules/drivers/gnss/proto/config.proto</p>
 <pre><code class="txt">message Stream {
@@ -286,7 +328,7 @@ Parser* Parser::create_ublox() {
 ... ...
 </code></pre>
 
-<h4>Step 4</h4>
+<h4 id="step-4">Step 4<a class="headerlink" href="#step-4" title="Permanent link">#</a></h4>
 <p>In function <code>create_parser</code> from file data_parser.cpp, let us add the new parser instance for the new GPS receiver.
 We will do so by adding code to process <code>config::Stream::UBLOX_BINARY</code> as below:</p>
 <pre><code class="cpp">Parser* create_parser(config::Stream::Format format, bool is_base_station = false) {
@@ -329,7 +371,7 @@ We will do so by adding code to process <code>config::Stream::UBLOX_BINARY</code
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
       

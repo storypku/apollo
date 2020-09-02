@@ -53,14 +53,46 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Get Started</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Quick Start</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../quickstart/">Apollo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CyberRT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Cyber RT</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Terms/">Terms</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Python Support</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Python API</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Python_API/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Python_API_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Docker/">MultiArch Support</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Developer_Tools/">Developer Tools</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Migration_Guide/">Migration Guide</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_API_for_Developers/">API Reference</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
@@ -93,11 +125,13 @@
                 </ul>
                 <p class="caption"><span class="caption-text">FAQs</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">General</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
                     </li>
@@ -107,13 +141,21 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Software</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
@@ -145,7 +187,7 @@
     <li>How to add a new evaluator in Prediction module</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/storypku/apollo/edit/master/docs/howto/how_to_add_a_new_evaluator_in_prediction_module.md"
+        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/howto/how_to_add_a_new_evaluator_in_prediction_module.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -166,7 +208,7 @@
 3. Implement the class <code>NewEvaluator</code>
 4. Update prediction conf
 5. Upate the evaluator manager</p>
-<h4>Define a class that inherits <code>Evaluator</code></h4>
+<h4 id="define-a-class-that-inherits-evaluator">Define a class that inherits <code>Evaluator</code><a class="headerlink" href="#define-a-class-that-inherits-evaluator" title="Permanent link">#</a></h4>
 <p>Create a new file named <code>new_evaluator.h</code> in the folder  <code>modules/prediction/evaluator/vehicle</code>. And define it like this:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/evaluator/evaluator.h&quot;
 
@@ -185,7 +227,7 @@ class NewEvaluator : public Evaluator {
 }  // namespace apollo
 </code></pre>
 
-<h4>Implement the class <code>NewEvaluator</code></h4>
+<h4 id="implement-the-class-newevaluator">Implement the class <code>NewEvaluator</code><a class="headerlink" href="#implement-the-class-newevaluator" title="Permanent link">#</a></h4>
 <p>Create a new file named <code>new_evaluator.cc</code> in the same folder as that of <code>new_evaluator.h</code>. Implement it like this:</p>
 <pre><code class="cpp">#include &quot;modules/prediction/evaluator/vehicle/new_evaluator.h&quot;
 
@@ -212,7 +254,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 
 </code></pre>
 
-<h4>Add a new evaluator in proto</h4>
+<h4 id="add-a-new-evaluator-in-proto">Add a new evaluator in proto<a class="headerlink" href="#add-a-new-evaluator-in-proto" title="Permanent link">#</a></h4>
 <p>Add a new type of evaluator in <code>prediction_conf.proto</code>:</p>
 <pre><code class="cpp">  enum EvaluatorType {
     MLP_EVALUATOR = 0;
@@ -220,7 +262,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
   }
 </code></pre>
 
-<h4>Update prediction_conf file</h4>
+<h4 id="update-prediction_conf-file">Update prediction_conf file<a class="headerlink" href="#update-prediction_conf-file" title="Permanent link">#</a></h4>
 <p>In the file <code>modules/prediction/conf/prediction_conf.pb.txt</code>, update the field <code>evaluator_type</code> like this:</p>
 <pre><code>obstacle_conf {
   obstacle_type: VEHICLE
@@ -230,7 +272,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 }
 </code></pre>
 
-<h4>Step 5: Upate the evaluator manager</h4>
+<h4 id="step-5-upate-the-evaluator-manager">Step 5: Upate the evaluator manager<a class="headerlink" href="#step-5-upate-the-evaluator-manager" title="Permanent link">#</a></h4>
 <p>Update <code>CreateEvluator( ... )</code> like this:</p>
 <pre><code class="cpp">  case ObstacleConf::NEW_EVALUATOR: {
       evaluator_ptr.reset(new NewEvaluator());
@@ -245,7 +287,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
 <p>After following the steps above, the new evaluator should be created.</p>
 <h3 id="adding-new-features">Adding new features<a class="headerlink" href="#adding-new-features" title="Permanent link">#</a></h3>
 <p>If you would like to add new features, follow the instructions that follow:</p>
-<h4>Add a field in proto</h4>
+<h4 id="add-a-field-in-proto">Add a field in proto<a class="headerlink" href="#add-a-field-in-proto" title="Permanent link">#</a></h4>
 <p>Assume the new evaluating result named <code>new_output</code> and also assume its type is <code>int32</code>. If the output is related directly to the obstacles, you can add it into <code>modules/prediction/proto/feature.proto</code> like this:</p>
 <pre><code class="cpp">message Feature {
     // Other existing features
@@ -285,7 +327,7 @@ NewEvaluator::Evaluate(Obstacle* obstacle_ptr)() {
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
       

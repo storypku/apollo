@@ -53,14 +53,46 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Get Started</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Quick Start</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../quickstart/">Apollo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CyberRT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../CyberRT_Quick_Start/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../CyberRT_Quick_Start_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Cyber RT</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction to Cyber RT</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../">Introduction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Terms/">Terms</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Python Support</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Python API</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../CyberRT_Python_API/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../CyberRT_Python_API_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Docker/">MultiArch Support</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Developer_Tools/">Developer Tools</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_Migration_Guide/">Migration Guide</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../CyberRT_API_for_Developers/">API Reference</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
@@ -93,11 +125,13 @@
                 </ul>
                 <p class="caption"><span class="caption-text">FAQs</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">General</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
                     </li>
@@ -107,13 +141,21 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Software</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
@@ -145,7 +187,7 @@
     <li>CyberRT Scheduler cn</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/storypku/apollo/edit/master/docs/cyber/CyberRT_Scheduler_cn.md"
+        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/cyber/CyberRT_Scheduler_cn.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -161,7 +203,7 @@
 classic策略是一个较为通用的调度策略，如果对当前车上dag结构不清楚，建议用此策略。<br />
 choreography策略是基于对车上任务足够熟悉，根据任务的依赖执行关系、任务的执行时长、任务cpu消耗情况、消息频率等，对任务进行编排。  </p>
 <h3 id="2-classic">2. classic策略<a class="headerlink" href="#2-classic" title="Permanent link">#</a></h3>
-<h4>2.1 classic策略配置示例</h4>
+<h4 id="21-classic">2.1 classic策略配置示例<a class="headerlink" href="#21-classic" title="Permanent link">#</a></h4>
 <p>cyber/conf/example_classic_sched.conf：</p>
 <pre><code class="bash">scheduler_conf {
     policy: &quot;classic&quot;
@@ -222,7 +264,7 @@ choreography策略是基于对车上任务足够熟悉，根据任务的依赖�
 }
 </code></pre>
 
-<h4>2.2 配置属性说明</h4>
+<h4 id="22">2.2 配置属性说明<a class="headerlink" href="#22" title="Permanent link">#</a></h4>
 <p>每个配置属性的含义、影响：
 - groups：如2.1的配置示例，classic策略可以配置多个group，主要为了实现资源隔离、跨numa问题，比如一个进程产生的所有task在0-31号cpu上执行，内核的调度会将线程在0-31号cpu上切换，跨numa节点会给系统带来额外的开销，这里可以通过group将numa节点进行隔离，一个numa节点下的0-7,16-23号cpu划分到一个group中，另外一个numa节点下的8-15,24-31号cpu划分到另一个group，这样既保证了资源利用，也能避免跨numa节点带来的开销。</p>
 <ul>
@@ -239,12 +281,12 @@ choreography策略是基于对车上任务足够熟悉，根据任务的依赖�
 <p>tasks：这里是对task任务进行配置，name表示task的名字，prio表示任务的优先级，为了提高性能，减小任务队列锁的粒度，调度模型中采用的是多优先级队列，也就是同一优先级的task在同一个队列里面，系统调度时会优先执行优先级高的任务。</p>
 </li>
 </ul>
-<h4>2.3 配置案例详解</h4>
+<h4 id="23">2.3 配置案例详解<a class="headerlink" href="#23" title="Permanent link">#</a></h4>
 <p>例如拓扑结构为下图所示，对应2.1中的配置文件，那么A、B、C、D任务在第一个group中执行，E在第二个group中执行，对于没有出现在配置中的任务，比如F默认会放到第一个group中执行。
 而且配置中我们对于任务进行了优先级设置，A、B、C、D优先级依次增大，正好对应下图的拓扑依赖关系，在链路中越靠后的任务优先级越高。这样设置的目的是解决任务优先级反转的问题。</p>
 <p><img src="images/topo_sched.png" width="30%" height="30%" /></p>
 <h3 id="3-choreography">3. choreography策略<a class="headerlink" href="#3-choreography" title="Permanent link">#</a></h3>
-<h4>3.1 choreography策略配置示例</h4>
+<h4 id="31-choreography">3.1 choreography策略配置示例<a class="headerlink" href="#31-choreography" title="Permanent link">#</a></h4>
 <p>cyber/conf/example_choreography_sched.conf:</p>
 <pre><code class="bash">scheduler_conf {
     policy: &quot;choreography&quot;
@@ -304,12 +346,12 @@ choreography策略是基于对车上任务足够熟悉，根据任务的依赖�
 }
 </code></pre>
 
-<h4>3.2 配置属性说明</h4>
+<h4 id="32">3.2 配置属性说明<a class="headerlink" href="#32" title="Permanent link">#</a></h4>
 <p>choreography策略，主要是对主链路上的任务进行编排（choreography开头的配置），将非主链路的任务放到线程池中由classic策略（pool开头的配置）执行，choreography策略中classic线程池存在的意义：主链路的任务执行先后关系比较明确，但是存在一些其他链路的任务在不清楚前后拓扑关系的情况下，或者说未被编排的任务（包括Async创建的异步task），会被放到classic线程池中执行。<br />
 关于配置属性：<br />
 - affinity： 在2.2中进行了解释说明。
 - choreography_processor_policy和choreography_processor_prio是设置编排线程的调度策略和优先级，这里设置SCHED_FIFO是为了保证主链路能够及时抢占cpu执行， pool_processor_policy和pool_processor_prio是设置classic线程的调度策略和优先级。</p>
-<h4>3.3 配置案例详解</h4>
+<h4 id="33">3.3 配置案例详解<a class="headerlink" href="#33" title="Permanent link">#</a></h4>
 <p>用2.3中的拓扑图来进行说明
 A、B、C、D是主链路任务，都设置了processor属性，那么A、B在0号cpu上执行，C、D在1号cpu上执行。在同一个核上，A和B还设置了优先级，所以优先执行B，再执行A。<br />
 没有配置processor属性的任务E以及没有出现在task配置中的任务如F，则默认进入classic线程池中执行。<br />
@@ -351,7 +393,7 @@ A、B、C、D是主链路任务，都设置了processor属性，那么A、B在0�
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
       

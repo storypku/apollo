@@ -53,14 +53,46 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Get Started</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../quickstart/">Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Quick Start</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../quickstart/">Apollo</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">CyberRT</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Cyber RT</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction to Cyber RT</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/">Introduction</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Quick_Start/">Cyber RT Quick Start</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Terms/">Terms</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Python Support</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="#">Python API</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Python_API/">English Version</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Python_API_cn/">Chinese Version</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Docker/">MultiArch Support</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Developer_Tools/">Developer Tools</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Migration_Guide/">Migration Guide</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_API_for_Developers/">API Reference</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
@@ -93,11 +125,13 @@
                 </ul>
                 <p class="caption"><span class="caption-text">FAQs</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/">Index</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs/">General</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">[CN] General</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">General</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/General_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Calibration_FAQs/">Calibration</a>
                     </li>
@@ -107,13 +141,21 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Dreamview_FAQs/">Dreamview</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">Hardware</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Hardware</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Hardware_FAQs_cn/">[CN] Hardware</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs/">Software</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">[CN] Software</a>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Software</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../FAQs/Software_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">D-Kit</span></p>
@@ -145,7 +187,7 @@
     <li>交通信号灯感知</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/storypku/apollo/edit/master/docs/specs/traffic_light_cn.md"
+        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/specs/traffic_light_cn.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -206,7 +248,7 @@
   - 修正—根据时间顺序关系修正颜色</p>
 <h3 id="_4">预处理阶段<a class="headerlink" href="#_4" title="Permanent link">#</a></h3>
 <p>没有必要在每一帧的图像中去检测信号灯。信号灯的变化频率是很低的而且计算机的资源也有限。通常，从不同摄像头输入的图像信息会几乎同时的到达，但是只有一个会进入管道的处理阶段。因此图像的遴选和匹配是很必要的。</p>
-<h4>输入输出</h4>
+<h4 id="_5">输入输出<a class="headerlink" href="#_5" title="Permanent link">#</a></h4>
 <p>本章节介绍了预处理阶段的输入输出数据。输入数据可以通过订阅Apollo相关模块数据来获得，或者直接读取本地的存储文件。输出数据被传输到下一层的处理阶段。</p>
 <h5>输入数据</h5>
 <ul>
@@ -235,7 +277,7 @@
 <li>被选择的摄像头输出的的图像信息</li>
 <li>从世界坐标系投射到图像坐标系的信号灯边界盒</li>
 </ul>
-<h4>摄像头选择</h4>
+<h4 id="_6">摄像头选择<a class="headerlink" href="#_6" title="Permanent link">#</a></h4>
 <p>使用一个唯一的ID和其边界上的4个点来表示信号灯，每个点都是世界坐标系中的3维坐标点。</p>
 <p>下例展示了一个典型的信号灯记录信息<code>signal info</code>。给出车辆位置后，4个边界点可以通过查询高精地图获得。</p>
 <pre><code class="protobuf">signal info:
@@ -261,16 +303,16 @@ struct ImageLights {
   ... other ...
 };</code></p>
 <p>至此，我们需要的所有信息包括定位信息、校准结果和高精地图。因为投射不依赖于图像的内容，所以选择可以在任何时间完成。在图像信息到达时进行选择仅仅是为了简单。而且，并不是图像信息一到达就要进行选择，通常会设置选择的时间间隔。</p>
-<h4>图像同步</h4>
+<h4 id="_7">图像同步<a class="headerlink" href="#_7" title="Permanent link">#</a></h4>
 <p>图像信息包含了摄像头ID和时间戳。摄像头ID和时间戳的组合用来找到可能存在的缓存信息。如果能在缓存区找到和该图像的摄像头ID一样且时间戳相差很小的缓存信息，则该图像会被传输到处理阶段。所有不合适的缓存信息会被丢弃。</p>
-<h3 id="_5">处理阶段<a class="headerlink" href="#_5" title="Permanent link">#</a></h3>
+<h3 id="_8">处理阶段<a class="headerlink" href="#_8" title="Permanent link">#</a></h3>
 <p>该阶段分为3个步骤，每个步骤重点执行一个任务：</p>
 <ul>
 <li>调整 — 在ROI中检测信号灯边界盒</li>
 <li>识别 — 鉴别边界盒的颜色</li>
 <li>修正 — 根据信号灯颜色的时间顺序关系修正颜色</li>
 </ul>
-<h4>输入输出</h4>
+<h4 id="_9">输入输出<a class="headerlink" href="#_9" title="Permanent link">#</a></h4>
 <p>本章节介绍处理阶段的输入和输出数据。输入数据从预处理阶段获得，输出数据作为鉴别信号灯的结果。</p>
 <h5>输入数据</h5>
 <ul>
@@ -281,16 +323,16 @@ struct ImageLights {
 <ul>
 <li>一组带有颜色标签的边界盒信息</li>
 </ul>
-<h4>调整</h4>
+<h4 id="_10">调整<a class="headerlink" href="#_10" title="Permanent link">#</a></h4>
 <p>被定位信息、校准信息和高精地图信息影响的投射点 <strong><em>不是完全可靠的</em></strong> 。通过投射的信号灯位置计算的一个大的兴趣区域（Region of Interest ROI）被用来确定信号灯精确的边界盒。</p>
 <p>在下述图片中，蓝色的长方形表示被投射的信号灯的边界盒，实际上和信号灯的准确位置有一定的偏差。大的黄色长方形是ROI。</p>
 <p><img alt="example" src="../images/traffic_light/example.jpg" /></p>
 <p>信号灯检测是一个常规的卷积神经网络检测任务，它接收带有ROI信息的图像作为输入数据，顺序输出边界盒。输出结果中的信号灯数量可能多于输入数据。</p>
 <p>Apollo会根据输入信号灯的位置、形状及检测的评分选择合适的信号灯。如果CNN在ROI内找不到任何的信号灯，则输入数据中的信号灯将被标记为未知，且跳过剩下的两个步骤。</p>
-<h4>识别</h4>
+<h4 id="_11">识别<a class="headerlink" href="#_11" title="Permanent link">#</a></h4>
 <p>信号灯识别是一个常规的卷积神经网络鉴别任务，它接收带有ROI信息的图像和一组边界盒信息作为输入数据。输出数据是一个<code>$4\times n$ vector</code>， 表示每个边界盒是黑色、红色、黄色和绿色的概率。
 当且仅当概率足够大时，有最大概率的类别会被识别为信号灯的状态。否则信号灯状态被设置为未知，表示状态未确定。</p>
-<h4>修正</h4>
+<h4 id="_12">修正<a class="headerlink" href="#_12" title="Permanent link">#</a></h4>
 <p>因为信号灯可能会闪烁或者被遮挡，并且识别阶段也 <strong><em>并不是</em></strong> 完美的，输出的信号灯状态可能不是真正的状态。修正信号灯状态是很有必要的。</p>
 <p>如果修正器接收到一个确定的信号灯状态例如红色或者绿色，则修正器保存该状态并直接输出。如果接收到黑色或者未知，修正器会检测状态保存列表。如果信号灯状态已经确定持续了一段时间，那么将保存的状态输出。否则将黑色或者未知输出。</p>
 <p>因为时间顺序关系的存在，黄色只会在绿色之后红色之前出现，所以为了安全的考虑，在绿色出现之前任何红色之后的黄色都会被设置为红色。</p>
@@ -320,7 +362,7 @@ struct ImageLights {
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-          <a href="https://github.com/storypku/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+          <a href="https://github.com/ApolloAuto/apollo/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
       
