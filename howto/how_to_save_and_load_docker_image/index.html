@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>How to save and load your docker image - Apollo Docs</title>
+  <title>How to Save and Load Apollo Docker Images - Apollo Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "How to save and load your docker image";
-    var mkdocs_page_input_path = "howto/how_to_save_load_docker_image_locally.md";
+    var mkdocs_page_name = "How to Save and Load Apollo Docker Images";
+    var mkdocs_page_input_path = "howto/how_to_save_and_load_docker_image.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -188,10 +188,10 @@
     
       
     
-    <li>How to save and load your docker image</li>
+    <li>How to Save and Load Apollo Docker Images</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/howto/how_to_save_load_docker_image_locally.md"
+        <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/howto/how_to_save_and_load_docker_image.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -202,19 +202,22 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-save-and-load-your-docker-image">How to save and load your docker image<a class="headerlink" href="#how-to-save-and-load-your-docker-image" title="Permanent link">#</a></h2>
-<p>Considering the docker image is more than one Gigabyte, it is better to generate or download the docker image using WiFi or a very stable internet connection, and then copy the image to your car.</p>
+                <h2 id="how-to-save-and-load-apollo-docker-images">How to Save and Load Apollo Docker Images<a class="headerlink" href="#how-to-save-and-load-apollo-docker-images" title="Permanent link">#</a></h2>
+<p>Considering that Apollo docker images are usually more than serveral Gigabytes,
+it is better to download them over WIFI or other stable internet connections And
+then copy the downloaded image to your vehicle.</p>
 <h3 id="save-the-docker-image">Save the Docker Image<a class="headerlink" href="#save-the-docker-image" title="Permanent link">#</a></h3>
-<p>After generating or downloading a docker image, you can save the docker image into a local tar file.</p>
-<p>e.g.</p>
-<pre><code># docker save -o &lt;save image to path&gt; &lt;image name&gt;
-docker save -o apollo_img.tar apolloauto/apollo:release-latest
+<p>After generating or downloading your docker image, you can save it as a local
+tarball using the following command:</p>
+<pre><code class="bash"># docker save -o &lt;path/to/saved/image/tar&gt; &lt;repo:tag&gt;
+docker save -o apollo_dev.tar apolloauto/apollo:dev-x86_64-18.04-20200823_0534
 </code></pre>
 
 <h3 id="load-the-docker-image">Load the Docker Image<a class="headerlink" href="#load-the-docker-image" title="Permanent link">#</a></h3>
-<p>After copying the .tar file to the car, you need to load the docker image from the .tar file as shown below:</p>
-<pre><code># docker load -i &lt;path to image tar file&gt;
-docker load -i apollo_img.tar
+<p>After copying the saved taball to your vehicle, you can load Apollo docker image
+from it by running:</p>
+<pre><code class="bash"># docker load -i &lt;path/to/docker/tarball&gt;
+docker load -i apollo_dev.tar
 </code></pre>
               
             </div>

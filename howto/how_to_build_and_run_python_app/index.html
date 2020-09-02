@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>How to Build and Run(Test) your Python Application - Apollo Docs</title>
+  <title>How to Build, Test and Run your Python Application - Apollo Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "How to Build and Run(Test) your Python Application";
+    var mkdocs_page_name = "How to Build, Test and Run your Python Application";
     var mkdocs_page_input_path = "howto/how_to_build_and_run_python_app.md";
     var mkdocs_page_url = null;
   </script>
@@ -188,7 +188,7 @@
     
       
     
-    <li>How to Build and Run(Test) your Python Application</li>
+    <li>How to Build, Test and Run your Python Application</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/howto/how_to_build_and_run_python_app.md"
@@ -202,8 +202,13 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="how-to-build-and-runtest-your-python-application">How to Build and Run(Test) your Python Application<a class="headerlink" href="#how-to-build-and-runtest-your-python-application" title="Permanent link">#</a></h2>
-<p>Everything managed by pure <a href="https://docs.bazel.build/versions/master/be/python.html">Bazel</a> in Apollo 6.0.</p>
+                <h2 id="how-to-build-test-and-run-your-python-application">How to Build, Test and Run your Python Application<a class="headerlink" href="#how-to-build-test-and-run-your-python-application" title="Permanent link">#</a></h2>
+<p>Starting from Apollo 6.0, building and testing Python applications in Apollo is
+done using <a href="https://docs.bazel.build/versions/master/be/python.html">Bazel</a>
+exclusively. We use Bazel Python rules to build, run, and test Python programs.
+This not only frees us from hand-crafting Protobuf dependencies and managing
+Python related Env variables manually, but also helps with managing third party
+Python module dependency.</p>
 <h3 id="create-the-build-file">Create the BUILD file<a class="headerlink" href="#create-the-build-file" title="Permanent link">#</a></h3>
 <p>Generally you need a BUILD target for each python file, which could be one of</p>
 <ul>
@@ -247,7 +252,11 @@ py_test(
 )
 </code></pre>
 
-<h3 id="build-run-commands">Build &amp; Run commands<a class="headerlink" href="#build-run-commands" title="Permanent link">#</a></h3>
+<p>Above is a BUILD file template, you can also use the
+<a href="https://github.com/ApolloAuto/apollo/blob/master/cyber/python/BUILD">BUILD</a> and
+<a href="https://github.com/ApolloAuto/apollo/blob/master/cyber/python/examples/BUILD">BUILD</a>
+file as examples.</p>
+<h3 id="build-test-and-run-commands">Build, Test and Run commands<a class="headerlink" href="#build-test-and-run-commands" title="Permanent link">#</a></h3>
 <ol>
 <li>To build any target:</li>
 </ol>
@@ -262,7 +271,7 @@ py_test(
 <li>To run a unit test target:</li>
 </ol>
 <p><code>bash
-   bazel test //path/to:test_target</code></p>
+   bazel test //path/to:target_test</code></p>
               
             </div>
           </div>
