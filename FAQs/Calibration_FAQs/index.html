@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Calibration - Apollo Docs</title>
+  <title>English Version - Apollo Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Calibration";
+    var mkdocs_page_name = "English Version";
     var mkdocs_page_input_path = "FAQs/Calibration_FAQs.md";
     var mkdocs_page_url = null;
   </script>
@@ -74,25 +74,21 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Terms/">Terms</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="#">Python Support</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="#">Python API</a>
-    <ul>
-                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Python_API/">English Version</a>
-                </li>
-                <li class="toctree-l3"><a class="reference internal" href="../../cyber/CyberRT_Python_API_cn/">Chinese Version</a>
-                </li>
-    </ul>
-                </li>
-    </ul>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Docker/">MultiArch Support</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Developer_Tools/">Developer Tools</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Developer_Tools/">CyberRT Tools</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Migration_Guide/">Migration Guide</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_Migration_Guide/">Migration from ROS1</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_API_for_Developers/">API Reference</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cyber/CyberRT_API_for_Developers/">CyberRT API</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Python API</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../cyber/CyberRT_Python_API/">English Version</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../cyber/CyberRT_Python_API_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Modules</span></p>
@@ -112,15 +108,19 @@
                 </ul>
                 <p class="caption"><span class="caption-text">How-Tos</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">[CN] How to Solve GitHub Slow Pull</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_document_code/">How to document code</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel/">How to install Apollo kernel</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">[CN] How to install Apollo kernel</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../howto/how_to_launch_Apollo/">How to launch and run Apollo</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">CN specific How-Tos</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../howto/how_to_solve_slow_pull_from_cn/">How to Solve GitHub Slow Pull</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../howto/how_to_install_apollo_kernel_cn/">How to install Apollo kernel</a>
+                </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">FAQs</span></p>
@@ -133,21 +133,25 @@
                 </li>
     </ul>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Calibration</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Calibration</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-check-sensor-output">How to Check  Sensor Output?</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">English Version</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-check-sensor-output">How to Check  Sensor Output?</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-check-ins-status">How to Check INS Status?</a>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-check-ins-status">How to Check INS Status?</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-complete-a-quality-inspection">How to Complete a Quality Inspection?</a>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-complete-a-quality-inspection">How to Complete a Quality Inspection?</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-solve-the-permission-error-of-calibration-tools">How to solve the permission error of calibration tools?</a>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-solve-the-permission-error-of-calibration-tools">How to solve the permission error of calibration tools?</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-solve-permission-error-when-running-sensor_calibrationsh">How to solve permission error when running sensor_calibration.sh?</a>
+    <li class="toctree-l3"><a class="reference internal" href="#how-to-solve-permission-error-when-running-sensor_calibrationsh">How to solve permission error when running sensor_calibration.sh?</a>
     </li>
     </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Calibration_FAQs_cn/">[CN] Calibration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Calibration_FAQs_cn/">Chinese Version</a>
+                </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Perception_FAQs/">Perception</a>
                     </li>
@@ -196,11 +200,15 @@
     
       
         
+          <li>Calibration &raquo;</li>
+        
+      
+        
           <li>FAQs &raquo;</li>
         
       
     
-    <li>Calibration</li>
+    <li>English Version</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/ApolloAuto/apollo/edit/master/docs/FAQs/Calibration_FAQs.md"
@@ -269,7 +277,7 @@ sudo chmod a+w /apollo/modules/calibration/data/mkz8 -R
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Calibration_FAQs_cn/" class="btn btn-neutral float-right" title="[CN] Calibration">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Calibration_FAQs_cn/" class="btn btn-neutral float-right" title="Chinese Version">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../General_FAQs_cn/" class="btn btn-neutral" title="Chinese Version"><span class="icon icon-circle-arrow-left"></span> Previous</a>
