@@ -42,6 +42,9 @@ bash ${CURR_DIR}/install_protobuf.sh
 info "Install fast-rtps ..."
 bash ${CURR_DIR}/install_fast-rtps.sh
 
+info "Install pybind11 ..."
+bash ${CURR_DIR}/install_pybind11.sh
+
 # Clean up cache to reduce layer size.
 apt-get clean && \
     rm -rf /var/lib/apt/lists/*
