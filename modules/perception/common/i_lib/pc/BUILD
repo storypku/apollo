@@ -1,12 +1,13 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
+load("//tools/platform:build_defs.bzl", "if_x86_mode")
 load("//tools:cpplint.bzl", "cpplint")
 
 package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "i_ground",
-    srcs = ["i_ground.cc"],
-    hdrs = ["i_ground.h"],
+    srcs = if_x86_mode(["i_ground.cc"]),
+    hdrs = if_x86_mode(["i_ground.h"]),
     deps = [
         ":i_struct_s",
         ":i_util",
@@ -19,7 +20,7 @@ cc_library(
 
 cc_library(
     name = "i_struct_s",
-    hdrs = ["i_struct_s.h"],
+    hdrs = if_x86_mode(["i_struct_s.h"]),
 )
 
 cc_library(
