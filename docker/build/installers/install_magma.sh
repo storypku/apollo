@@ -56,7 +56,7 @@ if [[ "${INSTALL_MODE}" == "download" ]]; then
             CHECKSUM="962447d0f4dfbfade34d4b1dd8658a97b6fdeb88340637581566f24861a60812"
             PKG_NAME="magma-${VERSION}-cu102-x86_64.tar.gz"
         else
-            CHECKSUM="TODO"
+            CHECKSUM="546f7739109ba6cf93696882d8b18c0e35e68e0c8531ce9f9ca8fa345a1f227c"
             PKG_NAME="magma-${VERSION}-cu111-x86_64.tar.gz"
         fi
     else # AArch64
@@ -97,6 +97,7 @@ else
     rm -rf magma-${VERSION} ${PKG_NAME}
 fi
 
+info "Successfully built Magma for CUDA SMs=${GPU_ARCHS}"
 ldconfig
 
 if [[ -n "${CLEAN_DEPS}" ]]; then
